@@ -1,1 +1,4 @@
+# Pod files
 /Pods
+*.xcworkspace
+*.lock
