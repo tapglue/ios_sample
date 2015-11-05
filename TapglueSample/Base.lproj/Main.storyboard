@@ -265,13 +265,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6xL-v8-c98">
-                                <rect key="frame" x="175" y="82" width="250" height="250"/>
+                                <rect key="frame" x="225" y="131" width="150" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6xL-v8-c98" secondAttribute="height" multiplier="1:1" id="4P3-6b-mwY"/>
+                                    <constraint firstAttribute="width" secondItem="6xL-v8-c98" secondAttribute="height" multiplier="1:1" id="71z-i8-SxD"/>
+                                    <constraint firstAttribute="height" constant="150" id="IGw-T6-30z"/>
+                                    <constraint firstAttribute="width" constant="150" id="ROa-z6-jwP"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="71z-i8-SxD"/>
+                                    </mask>
+                                </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRa-7v-q90">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRa-7v-q90">
                                 <rect key="frame" x="200" y="358" width="200" height="35"/>
                                 <animations/>
                                 <constraints>
@@ -342,11 +350,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="239-FV-0DT"/>
+                            <constraint firstItem="6xL-v8-c98" firstAttribute="top" secondItem="tm3-Ak-c3W" secondAttribute="bottom" constant="67" id="2Lj-Uj-cO6"/>
                             <constraint firstItem="kgV-rJ-Ql5" firstAttribute="leading" secondItem="XmX-vC-fFJ" secondAttribute="trailing" constant="44" id="5Xb-RT-ehL"/>
                             <constraint firstItem="Hy0-MW-Pwg" firstAttribute="centerY" secondItem="XmX-vC-fFJ" secondAttribute="centerY" id="5bY-JG-TZr"/>
                             <constraint firstItem="geq-l8-Kb1" firstAttribute="top" secondItem="HXO-og-sMj" secondAttribute="bottom" constant="18" id="A8k-yS-B8S"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="top" secondItem="tm3-Ak-c3W" secondAttribute="bottom" constant="18" id="AVu-bc-XwX"/>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="top" secondItem="nRa-7v-q90" secondAttribute="bottom" constant="18" id="QbI-Ch-vaK"/>
+                            <constraint firstItem="6xL-v8-c98" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="RLx-iT-4Ud"/>
                             <constraint firstItem="nRa-7v-q90" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="f4h-OQ-V41"/>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="leading" secondItem="Hy0-MW-Pwg" secondAttribute="trailing" constant="44" id="g4P-W1-nn1"/>
                             <constraint firstItem="HXO-og-sMj" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="pKq-Hp-Mmx"/>
@@ -355,6 +365,13 @@
                             <constraint firstItem="kgV-rJ-Ql5" firstAttribute="centerY" secondItem="XmX-vC-fFJ" secondAttribute="centerY" id="yoy-ib-jbc"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="z4N-0O-lPp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AVu-bc-XwX"/>
+                                <exclude reference="z4N-0O-lPp"/>
+                                <exclude reference="wIR-aZ-1b0"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="ProfileEmpty" selectedImage="ProfileFilled" id="4e7-jt-nf9"/>
                     <connections>

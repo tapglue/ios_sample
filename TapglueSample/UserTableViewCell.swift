@@ -52,7 +52,7 @@ class UserTableViewCell: UITableViewCell {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         sender.selected = false
                     })
-                } else {
+                } else if error != nil{
                     print("Error happened\n")
                     print(error)
                 }
@@ -61,9 +61,9 @@ class UserTableViewCell: UITableViewCell {
             Tapglue.friendUser(cellUser, createEvent: true, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = !sender.selected
+                        sender.selected = true
                     })
-                } else {
+                } else if error != nil{
                     print("Error happened\n")
                     print(error)
                 }

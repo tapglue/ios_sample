@@ -90,6 +90,4 @@ class LoginVC: UIViewController {
             "No avatar was pressed"
         }
     }
-    
-
 }

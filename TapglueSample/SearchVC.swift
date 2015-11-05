@@ -43,7 +43,7 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     
     override func viewWillDisappear(animated: Bool) {
         self.resultSearchController.searchBar.hidden = true;
-
+        self.resultSearchController.active = false;
     }
     
     /*
@@ -86,7 +86,7 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
                         self.users = users as! [TGUser]
                         self.friendsTableView.reloadData()
                     })
-                } else {
+                } else if error != nil{
                     print("Error happened\n")
                     print(error)
                 }
@@ -101,5 +101,4 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
             self.friendsTableView.reloadData()
         }
     }
-    
 }

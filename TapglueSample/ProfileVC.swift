@@ -14,7 +14,6 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     
-    
     override func viewWillAppear(animated: Bool) {
         self.userNameLabel.text = TGUser.currentUser().username
         
@@ -31,8 +30,9 @@ class ProfileVC: UIViewController {
         Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
             if success {
                 print("User logged out")
-            } else {
-                // Error handling
+            } else if error != nil{
+                print("Error happened\n")
+                print(error)
             }
         }
         self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
@@ -50,5 +50,4 @@ class ProfileVC: UIViewController {
     @IBAction func heartEventButton(sender: AnyObject) {
         Tapglue.createEventWithType("Loves your Picture", onObjectWithId: "HeartFilled")
     }
-
 }

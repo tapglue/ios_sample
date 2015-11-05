@@ -43,18 +43,11 @@ class MeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 print(error)
             }
             else {
-                print(feed.count)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.profileEvents = feed as! [TGEvent]
                     self.activityTableView.reloadData()
                 })
                 self.refreshControl.endRefreshing()
-            }
-        }
-        
-        Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (friends : [AnyObject]!, error : NSError!) -> Void in
-            if error == nil {
-                print(friends)
             }
         }
     }
@@ -77,5 +70,4 @@ class MeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-
 }

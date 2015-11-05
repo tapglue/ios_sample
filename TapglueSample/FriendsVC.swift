@@ -11,7 +11,6 @@ import Tapglue
 
 class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var friendsTableView: UITableView!
     
     // Tapglue users array
@@ -29,10 +28,6 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.refreshControl.addTarget(self, action: "loadFriends", forControlEvents: UIControlEvents.ValueChanged)
         self.friendsTableView.addSubview(refreshControl)
         self.friendsTableView.sendSubviewToBack(refreshControl)
-        
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: "loadFriends", forControlEvents: UIControlEvents.ValueChanged)
-//        self.refreshControl = refreshControl
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,7 +44,7 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     self.users = users as! [TGUser]
                     self.friendsTableView.reloadData()
                 })
-            } else {
+            } else if error != nil{
                 print("Error happened\n")
                 print(error)
             }
@@ -68,7 +63,6 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return self.users.count
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserTableViewCell
         let user = self.users[indexPath.row]
@@ -76,5 +70,4 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
 }
