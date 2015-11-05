@@ -2,7 +2,7 @@
 //  ActivityVC.swift
 //  TapglueSample
 //
-//  Created by Özgür Celebi on 23.10.15.
+//  Created by Onur Akpolat on 23.10.15.
 //  Copyright © 2015 Tapglue. All rights reserved.
 //
 
@@ -31,6 +31,7 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.refreshControl?.beginRefreshing()
         self.loadFriendsActivityFeed()
         
     }
@@ -38,19 +39,14 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func loadFriendsActivityFeed() {
         Tapglue.retrieveFeedForCurrentUserWithCompletionBlock { (feed : [AnyObject]!, unreadCount : Int, error : NSError!) -> Void in
             if error != nil {
+                print("Error happened\n")
                 print(error)
             }
             else {
-                if (NSThread.isMainThread()) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.events = feed as! [TGEvent]
                     self.activityTableView.reloadData()
-                }
-                else {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.events = feed as! [TGEvent]
-                        self.activityTableView.reloadData()
-                    })
-                }
+                })
                 self.refreshControl.endRefreshing()
             }
         }

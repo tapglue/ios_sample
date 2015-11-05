@@ -16,10 +16,11 @@
 		6A61F3481BDAD2D500EC64DF /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F3471BDAD2D500EC64DF /* FeedVC.swift */; };
 		6A61F34A1BDAD2FF00EC64DF /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F3491BDAD2FF00EC64DF /* MeVC.swift */; };
 		6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */; };
-		6A61F3561BDAE58700EC64DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A61F3551BDAE58700EC64DF /* Assets.xcassets */; };
 		6A61F3591BDAEB9300EC64DF /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F3581BDAEB9300EC64DF /* EventTableViewCell.swift */; };
-		6AE5AFC61BDD1DCC00193864 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE5AFC51BDD1DCC00193864 /* FriendsVC.swift */; };
+		6AE5AFC61BDD1DCC00193864 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE5AFC51BDD1DCC00193864 /* SearchVC.swift */; };
 		970E6E5A1BDD6E9D00BCE1C0 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E6E591BDD6E9D00BCE1C0 /* UserTableViewCell.swift */; };
+		9727BB0C1BEB93B500CC8279 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9727BB0B1BEB93B500CC8279 /* FriendsVC.swift */; };
+		9727BB0E1BEBAED800CC8279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9727BB0D1BEBAED800CC8279 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +35,12 @@
 		6A61F3471BDAD2D500EC64DF /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		6A61F3491BDAD2FF00EC64DF /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		6A61F3551BDAE58700EC64DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A61F3581BDAEB9300EC64DF /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		6AE5AFC51BDD1DCC00193864 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		6AE5AFC51BDD1DCC00193864 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		813F3D3CE6E748A8783EEFCC /* Pods-TapglueSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapglueSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TapglueSample/Pods-TapglueSample.debug.xcconfig"; sourceTree = "<group>"; };
 		970E6E591BDD6E9D00BCE1C0 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		9727BB0B1BEB93B500CC8279 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		9727BB0D1BEBAED800CC8279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0F954FF310B1F27CA82A7E1 /* Pods-TapglueSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapglueSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TapglueSample/Pods-TapglueSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				6A61F3341BDACCFD00EC64DF /* TapglueSample */,
+				9727BB0D1BEBAED800CC8279 /* Assets.xcassets */,
 				6A61F3331BDACCFD00EC64DF /* Products */,
 				C17748AE376223C4AC86B05E /* Pods */,
 				358D991F824B0CEC60127C33 /* Frameworks */,
@@ -87,7 +90,6 @@
 				6A61F34D1BDADBD100EC64DF /* ViewControllers */,
 				6A61F3571BDAEB4B00EC64DF /* CustomCells */,
 				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
-				6A61F3551BDAE58700EC64DF /* Assets.xcassets */,
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
 				6A61F3411BDACCFD00EC64DF /* Info.plist */,
 			);
@@ -101,8 +103,9 @@
 				6A509A401BDCEF6B00CC8A82 /* LoginVC.swift */,
 				6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */,
 				6A61F3471BDAD2D500EC64DF /* FeedVC.swift */,
-				6AE5AFC51BDD1DCC00193864 /* FriendsVC.swift */,
+				6AE5AFC51BDD1DCC00193864 /* SearchVC.swift */,
 				6A61F3491BDAD2FF00EC64DF /* MeVC.swift */,
+				9727BB0B1BEB93B500CC8279 /* FriendsVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -186,7 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A61F3401BDACCFD00EC64DF /* LaunchScreen.storyboard in Resources */,
-				6A61F3561BDAE58700EC64DF /* Assets.xcassets in Resources */,
+				9727BB0E1BEBAED800CC8279 /* Assets.xcassets in Resources */,
 				6A61F33B1BDACCFD00EC64DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AE5AFC61BDD1DCC00193864 /* FriendsVC.swift in Sources */,
+				9727BB0C1BEB93B500CC8279 /* FriendsVC.swift in Sources */,
+				6AE5AFC61BDD1DCC00193864 /* SearchVC.swift in Sources */,
 				970E6E5A1BDD6E9D00BCE1C0 /* UserTableViewCell.swift in Sources */,
 				6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */,
 				6A61F34A1BDAD2FF00EC64DF /* MeVC.swift in Sources */,
@@ -369,6 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TapglueSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,6 +387,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TapglueSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

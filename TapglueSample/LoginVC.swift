@@ -2,7 +2,7 @@
 //  LoginVC.swift
 //  TapglueSample
 //
-//  Created by Özgür Celebi on 25.10.15.
+//  Created by Onur Akpolat on 25.10.15.
 //  Copyright © 2015 Tapglue. All rights reserved.
 //
 
@@ -56,7 +56,6 @@ class LoginVC: UIViewController {
                     print("Error happened\n")
                     print(error)
                 } else {
-                    print(success)
                     print("User was created\n")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.navigationController?.popToRootViewControllerAnimated(false)
@@ -79,15 +78,12 @@ class LoginVC: UIViewController {
         
         switch currentTag! {
         case 0:
-            print("First Avatar Pressed")
             avatarOneImageView.backgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.0)
             currentAvatar = "avatar-1"
         case 1:
-            print("Second Avatar Pressed")
             avatarTwoImageView.backgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.0)
             currentAvatar = "avatar-6"
         case 2:
-            print("Third Avatar Pressed")
             avatarThreeImageView.backgroundColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
             currentAvatar = "avatar-3"
         default:

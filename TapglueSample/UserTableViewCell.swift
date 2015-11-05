@@ -19,7 +19,6 @@ class UserTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Customize the layout of the userImageView
         userImageView.layer.cornerRadius = userImageView.frame.width / 2
         userImageView.layer.masksToBounds = true
     }
@@ -35,29 +34,38 @@ class UserTableViewCell: UITableViewCell {
         
         self.userImageView.image = UIImage(named: userImage.url)
         
+        if self.connectButton != nil {
+            if cellUser.isFriend {
+                self.connectButton.selected = true
+            } else {
+                self.connectButton.selected = false
+            }
+        }
+        
     }
     
     @IBAction func connectPressed(sender: UIButton) {
         if sender.selected {
             Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
                 if success {
-                    print("Disconnected")
+                    print("User unfriend successful")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         sender.selected = false
                     })
                 } else {
-                    // Error handling
+                    print("Error happened\n")
+                    print(error)
                 }
             })
         } else {
             Tapglue.friendUser(cellUser, createEvent: true, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
                 if success {
-                    print(success)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         sender.selected = !sender.selected
                     })
                 } else {
-                    // Error handling
+                    print("Error happened\n")
+                    print(error)
                 }
             })
         }

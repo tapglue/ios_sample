@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -365,10 +366,10 @@
             </objects>
             <point key="canvasLocation" x="1036" y="1109"/>
         </scene>
-        <!--Friends-->
+        <!--Search-->
         <scene sceneID="mU7-0h-azv">
             <objects>
-                <viewController id="Wqg-Rs-gNK" customClass="FriendsVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wqg-Rs-gNK" customClass="SearchVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qQQ-ed-VHa"/>
                         <viewControllerLayoutGuide type="bottom" id="dZn-r7-unc"/>
@@ -421,10 +422,10 @@
                                                         <constraint firstAttribute="height" constant="50" id="C2H-2U-9Gw"/>
                                                         <constraint firstAttribute="width" constant="50" id="DQm-3F-lYW"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="ConnectEmpty">
+                                                    <state key="normal" backgroundImage="AddUser">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
-                                                    <state key="selected" backgroundImage="ConnectFilled"/>
+                                                    <state key="selected" backgroundImage="RemoveUser"/>
                                                     <connections>
                                                         <action selector="connectPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="cZT-FP-xgg"/>
                                                     </connections>
@@ -459,7 +460,7 @@
                             <constraint firstAttribute="trailing" secondItem="4OP-x6-snE" secondAttribute="trailing" id="n8P-l2-02F"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" image="FriendsEmpty" selectedImage="FriendsFilled" id="y8X-yR-M7W"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="SearchEmpty" selectedImage="SearchFilled" id="y8X-yR-M7W"/>
                     <connections>
                         <outlet property="friendsTableView" destination="4OP-x6-snE" id="kMf-yS-kPQ"/>
                     </connections>
@@ -467,6 +468,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Cw-js-zCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1756" y="1109"/>
+        </scene>
+        <!--Friends-->
+        <scene sceneID="P6h-L6-5CB">
+            <objects>
+                <viewController id="l2P-hw-7UA" customClass="FriendsVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v1e-EB-cEu"/>
+                        <viewControllerLayoutGuide type="bottom" id="i0u-p0-XTF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WN6-rJ-KTR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LmI-Qh-eSl" userLabel="Friends Table View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="q5f-Ug-oST">
+                                    <rect key="frame" x="0.0" y="212" width="600" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="V1F-cW-Jqn" customClass="UserTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1F-cW-Jqn" id="yPN-mh-RHt">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q29-Om-IHn" userLabel="User Image View">
+                                                    <rect key="frame" x="14" y="35" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="0Wg-bA-QTd"/>
+                                                        <constraint firstAttribute="height" constant="50" id="KKG-lJ-IIh"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="NEx-NZ-IrS"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ahN-m7-kfL"/>
+                                                        <constraint firstAttribute="width" constant="50" id="eGB-tq-bOC"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="tIh-a2-EQD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HY-eW-YPB" userLabel="Username Label">
+                                                    <rect key="frame" x="82" y="35" width="500" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="eio-bK-zgM"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="gUc-Di-sgk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="q29-Om-IHn" firstAttribute="leading" secondItem="yPN-mh-RHt" secondAttribute="leading" constant="14" id="J3C-Wx-Vdf"/>
+                                                <constraint firstAttribute="trailing" secondItem="0HY-eW-YPB" secondAttribute="trailing" constant="18" id="mlx-JO-kPU"/>
+                                                <constraint firstItem="q29-Om-IHn" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="rtB-MB-F0h"/>
+                                                <constraint firstItem="0HY-eW-YPB" firstAttribute="leading" secondItem="q29-Om-IHn" secondAttribute="trailing" constant="18" id="tzu-az-ety"/>
+                                                <constraint firstItem="0HY-eW-YPB" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="zV7-BP-Les"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userImageView" destination="q29-Om-IHn" id="y6j-2w-NEO"/>
+                                            <outlet property="usernameLabel" destination="0HY-eW-YPB" id="bdu-Kl-WLp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LmI-Qh-eSl" firstAttribute="top" secondItem="v1e-EB-cEu" secondAttribute="bottom" id="2cR-ig-gwl"/>
+                            <constraint firstAttribute="trailing" secondItem="LmI-Qh-eSl" secondAttribute="trailing" id="GfR-4w-lAm"/>
+                            <constraint firstItem="LmI-Qh-eSl" firstAttribute="leading" secondItem="WN6-rJ-KTR" secondAttribute="leading" id="YHl-Ob-ZZ2"/>
+                            <constraint firstItem="i0u-p0-XTF" firstAttribute="top" secondItem="LmI-Qh-eSl" secondAttribute="bottom" id="fQk-sF-2Xq"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Friends" image="FriendsEmpty" selectedImage="FriendsFilled" id="8WL-TG-fEw"/>
+                    <connections>
+                        <outlet property="friendsTableView" destination="LmI-Qh-eSl" id="qpd-DL-pwZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sl1-sG-eoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="-504"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="CXl-W1-i8r">
@@ -619,6 +702,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Eo0-za-VU6"/>
                         <segue destination="Wqg-Rs-gNK" kind="relationship" relationship="viewControllers" id="eyh-Py-zyi"/>
                         <segue destination="rCZ-WW-raX" kind="relationship" relationship="viewControllers" id="CEw-9j-coZ"/>
+                        <segue destination="l2P-hw-7UA" kind="relationship" relationship="viewControllers" id="Bo1-jY-Wqp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="quM-aA-Czd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -627,8 +711,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ConnectEmpty" width="50" height="50"/>
-        <image name="ConnectFilled" width="50" height="50"/>
+        <image name="AddUser" width="32" height="32"/>
         <image name="FeedEmpty" width="25" height="25"/>
         <image name="FeedFilled" width="25" height="25"/>
         <image name="FriendsEmpty" width="25" height="25"/>
@@ -639,6 +722,9 @@
         <image name="MeFilled" width="25" height="25"/>
         <image name="ProfileEmpty" width="25" height="25"/>
         <image name="ProfileFilled" width="25" height="25"/>
+        <image name="RemoveUser" width="32" height="32"/>
+        <image name="SearchEmpty" width="32" height="32"/>
+        <image name="SearchFilled" width="32" height="32"/>
         <image name="StarEmpty" width="100" height="100"/>
         <image name="StarFilled" width="100" height="100"/>
         <image name="ThumbEmpty" width="100" height="100"/>

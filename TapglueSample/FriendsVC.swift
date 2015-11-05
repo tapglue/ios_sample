@@ -2,48 +2,59 @@
 //  FriendsVC.swift
 //  TapglueSample
 //
-//  Created by Özgür Celebi on 25.10.15.
-//  Copyright © 2015 Tapglue. All rights reserved.
+//  Created by Onur Akpolat on 05/11/15.
+//  Copyright © 2015 Özgür Celebi. All rights reserved.
 //
 
 import UIKit
 import Tapglue
 
-class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
-
+class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
     @IBOutlet weak var friendsTableView: UITableView!
     
+    // Tapglue users array
     var users: [TGUser] = []
-    var resultSearchController = UISearchController()
+    
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.friendsTableView.dataSource = self
-        self.friendsTableView.delegate = self
         
-        self.resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-            
-            self.friendsTableView.tableHeaderView = controller.searchBar
-            
-            return controller
-        })()
+        friendsTableView.delegate = self
+        friendsTableView.dataSource = self
         
-        // Reload the table
-        self.friendsTableView.reloadData()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "loadFriends", forControlEvents: UIControlEvents.ValueChanged)
+        self.friendsTableView.addSubview(refreshControl)
+        self.friendsTableView.sendSubviewToBack(refreshControl)
+        
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: "loadFriends", forControlEvents: UIControlEvents.ValueChanged)
+//        self.refreshControl = refreshControl
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.resultSearchController.searchBar.hidden = false;
+        
+        super.viewWillAppear(animated)
+        self.refreshControl?.beginRefreshing()
+        self.loadFriends()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.resultSearchController.searchBar.hidden = true;
-
+    func loadFriends() {
+        Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (users : [AnyObject]!, error : NSError!) -> Void in
+            if users != nil && error == nil {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.users = users as! [TGUser]
+                    self.friendsTableView.reloadData()
+                })
+            } else {
+                print("Error happened\n")
+                print(error)
+            }
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     /*
@@ -54,55 +65,16 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.resultSearchController.active) {
-            return self.users.count
-        }
-        else {
-            return 0
-        }
+        return self.users.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserTableViewCell
         let user = self.users[indexPath.row]
+        cell.configureCellWithUser(user)
         
-        if (self.resultSearchController.active) {
-            
-            cell.configureCellWithUser(user)
-            return cell
-        }
-        else {
-            
-            return cell
-        }
-    }
-    
-    /*
-    * Searchbar Methods
-    */
-    func updateSearchResultsForSearchController(searchController: UISearchController)
-    {
-        users.removeAll(keepCapacity: false)
-
-        if (searchController.searchBar.text?.characters.count > 2) {
-            Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
-                if users != nil && error == nil {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        for user in users {
-                            self.users.append(user as! TGUser)
-                        }
-                        self.friendsTableView.reloadData()
-                    })
-                } else {
-                    print(error)
-                }
-            }
-        }
-        
-        if !searchController.active {
-            users.removeAll(keepCapacity: false)
-            self.friendsTableView.reloadData()
-        }
+        return cell
     }
     
 }

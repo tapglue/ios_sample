@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TapglueSample
 //
-//  Created by Özgür Celebi on 23.10.15.
+//  Created by Onur Akpolat on 23.10.15.
 //  Copyright © 2015 Tapglue. All rights reserved.
 //
 
