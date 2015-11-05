@@ -3,7 +3,7 @@
 //  TapglueSample
 //
 //  Created by Onur Akpolat on 05/11/15.
-//  Copyright © 2015 Özgür Celebi. All rights reserved.
+//  Copyright © 2015 Tapglue. All rights reserved.
 //
 
 import UIKit
