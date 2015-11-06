@@ -60,16 +60,9 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserTableViewCell
         let user = self.users[indexPath.row]
+        cell.configureCellWithUser(user)
+        return cell
         
-        if (self.resultSearchController.active) {
-            
-            cell.configureCellWithUser(user)
-            return cell
-        }
-        else {
-            
-            return cell
-        }
     }
     
     /*
@@ -77,12 +70,12 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     */
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
-        users.removeAll(keepCapacity: false)
-
+        
         if (searchController.searchBar.text?.characters.count > 2) {
             Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
                 if users != nil && error == nil {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.users.removeAll(keepCapacity: false)
                         self.users = users as! [TGUser]
                         self.friendsTableView.reloadData()
                     })
@@ -100,5 +93,7 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
             users.removeAll(keepCapacity: false)
             self.friendsTableView.reloadData()
         }
+        
+        
     }
 }

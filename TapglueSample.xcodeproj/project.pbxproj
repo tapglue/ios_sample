@@ -162,6 +162,7 @@
 				TargetAttributes = {
 					6A61F3311BDACCFD00EC64DF = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = P3263GKWK9;
 					};
 				};
 			};
@@ -372,8 +373,9 @@
 			baseConfigurationReference = 813F3D3CE6E748A8783EEFCC /* Pods-TapglueSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TapglueSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -386,8 +388,9 @@
 			baseConfigurationReference = A0F954FF310B1F27CA82A7E1 /* Pods-TapglueSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TapglueSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
