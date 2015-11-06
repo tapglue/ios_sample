@@ -33,7 +33,12 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(animated: Bool) {
         self.refreshControl?.beginRefreshing()
         self.loadFriendsActivityFeed()
-        
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        self.refreshControl?.beginRefreshing()
+        self.loadFriendsActivityFeed()
     }
     
     func loadFriendsActivityFeed() {

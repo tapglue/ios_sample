@@ -33,11 +33,16 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        self.refreshControl?.beginRefreshing()
+        self.loadFriends()
+    }
+    
+    func refresh(sender:AnyObject)
+    {
         self.loadFriends()
     }
     
     func loadFriends() {
+        self.refreshControl?.beginRefreshing()
         Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (users : [AnyObject]!, error : NSError!) -> Void in
             if users != nil && error == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

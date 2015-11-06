@@ -534,16 +534,35 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21u-TK-M72">
+                                                    <rect key="frame" x="532" y="35" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="2BB-vz-WZa"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Lzy-CU-mpd"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="OHa-ym-tzY"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="qck-1T-LLy"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="RemoveUser">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <state key="selected" backgroundImage="RemoveUser"/>
+                                                    <connections>
+                                                        <action selector="unfriendPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="nPV-cz-9aS"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="q29-Om-IHn" firstAttribute="leading" secondItem="yPN-mh-RHt" secondAttribute="leading" constant="14" id="J3C-Wx-Vdf"/>
+                                                <constraint firstItem="21u-TK-M72" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="hK9-1F-wEb"/>
                                                 <constraint firstAttribute="trailing" secondItem="0HY-eW-YPB" secondAttribute="trailing" constant="18" id="mlx-JO-kPU"/>
                                                 <constraint firstItem="q29-Om-IHn" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="rtB-MB-F0h"/>
                                                 <constraint firstItem="0HY-eW-YPB" firstAttribute="leading" secondItem="q29-Om-IHn" secondAttribute="trailing" constant="18" id="tzu-az-ety"/>
+                                                <constraint firstAttribute="trailing" secondItem="21u-TK-M72" secondAttribute="trailing" constant="18" id="yML-gE-efE"/>
                                                 <constraint firstItem="0HY-eW-YPB" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="zV7-BP-Les"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="unfriendButton" destination="21u-TK-M72" id="vW2-vD-AMl"/>
                                             <outlet property="userImageView" destination="q29-Om-IHn" id="y6j-2w-NEO"/>
                                             <outlet property="usernameLabel" destination="0HY-eW-YPB" id="bdu-Kl-WLp"/>
                                         </connections>

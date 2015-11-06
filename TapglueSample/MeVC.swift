@@ -32,11 +32,17 @@ class MeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.refreshControl?.beginRefreshing()
+        self.loadMyActivityFeed()
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        
         self.loadMyActivityFeed()
     }
     
     func loadMyActivityFeed() {
+        self.refreshControl?.beginRefreshing()
         Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (feed : [AnyObject]!, error : NSError!) -> Void in
             if error != nil {
                 print("Error happened\n")
