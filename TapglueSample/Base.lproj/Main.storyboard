@@ -51,7 +51,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="asU-wT-7mT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1R4-S4-Cqn">
@@ -174,7 +174,7 @@
                                                         <constraint firstAttribute="width" constant="143" id="kZ8-aR-3MW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2JF-eM-red">
@@ -429,18 +429,18 @@
                                                         <constraint firstAttribute="height" constant="50" id="OYF-qq-udl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6q-Fx-sVI">
-                                                    <rect key="frame" x="536" y="35" width="50" height="50"/>
+                                                    <rect key="frame" x="557" y="42" width="35" height="35"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="C2H-2U-9Gw"/>
-                                                        <constraint firstAttribute="width" constant="50" id="DQm-3F-lYW"/>
+                                                        <constraint firstAttribute="height" constant="35" id="C2H-2U-9Gw"/>
+                                                        <constraint firstAttribute="width" constant="35" id="DQm-3F-lYW"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="AddUser">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <state key="selected" backgroundImage="RemoveUser"/>
                                                     <connections>
@@ -452,10 +452,10 @@
                                             <constraints>
                                                 <constraint firstItem="YDH-7Y-NiC" firstAttribute="leading" secondItem="bw7-6G-5wk" secondAttribute="leading" constant="14" id="2FJ-7T-gWV"/>
                                                 <constraint firstItem="4Ox-IB-fCS" firstAttribute="top" secondItem="bw7-6G-5wk" secondAttribute="top" constant="35" id="I2W-M6-HfR"/>
-                                                <constraint firstAttribute="trailing" secondItem="I6q-Fx-sVI" secondAttribute="trailing" constant="14" id="OYV-VD-2BP"/>
+                                                <constraint firstAttribute="trailing" secondItem="I6q-Fx-sVI" secondAttribute="trailing" constant="8" id="OYV-VD-2BP"/>
                                                 <constraint firstItem="4Ox-IB-fCS" firstAttribute="leading" secondItem="YDH-7Y-NiC" secondAttribute="trailing" constant="18" id="TTk-3a-abY"/>
                                                 <constraint firstItem="YDH-7Y-NiC" firstAttribute="top" secondItem="bw7-6G-5wk" secondAttribute="top" constant="35" id="XYc-RV-XkO"/>
-                                                <constraint firstItem="I6q-Fx-sVI" firstAttribute="top" secondItem="bw7-6G-5wk" secondAttribute="top" constant="35" id="pza-95-7Fv"/>
+                                                <constraint firstItem="I6q-Fx-sVI" firstAttribute="top" secondItem="bw7-6G-5wk" secondAttribute="top" constant="42" id="pza-95-7Fv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -531,35 +531,53 @@
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="gUc-Di-sgk"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21u-TK-M72">
-                                                    <rect key="frame" x="532" y="35" width="50" height="50"/>
+                                                    <rect key="frame" x="557" y="42" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="2BB-vz-WZa"/>
+                                                        <constraint firstAttribute="width" constant="35" id="DhS-9v-Lg7"/>
                                                         <constraint firstAttribute="width" constant="50" id="Lzy-CU-mpd"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="OHa-ym-tzY"/>
+                                                        <constraint firstAttribute="height" constant="35" id="pT0-wZ-Md7"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="qck-1T-LLy"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="RemoveUser">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <state key="selected" backgroundImage="RemoveUser"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="2BB-vz-WZa"/>
+                                                            <exclude reference="Lzy-CU-mpd"/>
+                                                            <exclude reference="OHa-ym-tzY"/>
+                                                            <exclude reference="qck-1T-LLy"/>
+                                                        </mask>
+                                                    </variation>
                                                     <connections>
                                                         <action selector="unfriendPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="nPV-cz-9aS"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="21u-TK-M72" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="42" id="FUd-YI-hSL"/>
                                                 <constraint firstItem="q29-Om-IHn" firstAttribute="leading" secondItem="yPN-mh-RHt" secondAttribute="leading" constant="14" id="J3C-Wx-Vdf"/>
                                                 <constraint firstItem="21u-TK-M72" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="hK9-1F-wEb"/>
                                                 <constraint firstAttribute="trailing" secondItem="0HY-eW-YPB" secondAttribute="trailing" constant="18" id="mlx-JO-kPU"/>
+                                                <constraint firstAttribute="trailing" secondItem="21u-TK-M72" secondAttribute="trailing" constant="8" id="p3P-aa-nJy"/>
                                                 <constraint firstItem="q29-Om-IHn" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="rtB-MB-F0h"/>
                                                 <constraint firstItem="0HY-eW-YPB" firstAttribute="leading" secondItem="q29-Om-IHn" secondAttribute="trailing" constant="18" id="tzu-az-ety"/>
                                                 <constraint firstAttribute="trailing" secondItem="21u-TK-M72" secondAttribute="trailing" constant="18" id="yML-gE-efE"/>
                                                 <constraint firstItem="0HY-eW-YPB" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="zV7-BP-Les"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="hK9-1F-wEb"/>
+                                                    <exclude reference="yML-gE-efE"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="unfriendButton" destination="21u-TK-M72" id="vW2-vD-AMl"/>
@@ -659,7 +677,7 @@
                                     <constraint firstAttribute="height" constant="35" id="eHN-tw-JQl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

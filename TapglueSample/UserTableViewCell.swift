@@ -31,7 +31,7 @@ class UserTableViewCell: UITableViewCell {
         self.usernameLabel.text = self.cellUser.username
         
         var userImage = TGImage()
-        userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
+        userImage = cellUser.images.valueForKey("avatar") as! TGImage
         
         self.userImageView.image = UIImage(named: userImage.url)
         
