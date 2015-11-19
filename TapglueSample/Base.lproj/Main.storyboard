@@ -580,53 +580,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21u-TK-M72">
-                                                    <rect key="frame" x="557" y="42" width="35" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="2BB-vz-WZa"/>
-                                                        <constraint firstAttribute="width" constant="35" id="DhS-9v-Lg7"/>
-                                                        <constraint firstAttribute="width" constant="50" id="Lzy-CU-mpd"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="OHa-ym-tzY"/>
-                                                        <constraint firstAttribute="height" constant="35" id="pT0-wZ-Md7"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="qck-1T-LLy"/>
-                                                    </constraints>
-                                                    <state key="normal" backgroundImage="RemoveUser">
-                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <state key="selected" backgroundImage="RemoveUser"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="2BB-vz-WZa"/>
-                                                            <exclude reference="Lzy-CU-mpd"/>
-                                                            <exclude reference="OHa-ym-tzY"/>
-                                                            <exclude reference="qck-1T-LLy"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <action selector="unfriendPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="nPV-cz-9aS"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="21u-TK-M72" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="42" id="FUd-YI-hSL"/>
                                                 <constraint firstItem="q29-Om-IHn" firstAttribute="leading" secondItem="yPN-mh-RHt" secondAttribute="leading" constant="14" id="J3C-Wx-Vdf"/>
-                                                <constraint firstItem="21u-TK-M72" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="hK9-1F-wEb"/>
                                                 <constraint firstAttribute="trailing" secondItem="0HY-eW-YPB" secondAttribute="trailing" constant="18" id="mlx-JO-kPU"/>
-                                                <constraint firstAttribute="trailing" secondItem="21u-TK-M72" secondAttribute="trailing" constant="8" id="p3P-aa-nJy"/>
                                                 <constraint firstItem="q29-Om-IHn" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="rtB-MB-F0h"/>
                                                 <constraint firstItem="0HY-eW-YPB" firstAttribute="leading" secondItem="q29-Om-IHn" secondAttribute="trailing" constant="18" id="tzu-az-ety"/>
-                                                <constraint firstAttribute="trailing" secondItem="21u-TK-M72" secondAttribute="trailing" constant="18" id="yML-gE-efE"/>
                                                 <constraint firstItem="0HY-eW-YPB" firstAttribute="top" secondItem="yPN-mh-RHt" secondAttribute="top" constant="35" id="zV7-BP-Les"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="hK9-1F-wEb"/>
-                                                    <exclude reference="yML-gE-efE"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="unfriendButton" destination="21u-TK-M72" id="vW2-vD-AMl"/>
                                             <outlet property="userImageView" destination="q29-Om-IHn" id="y6j-2w-NEO"/>
                                             <outlet property="usernameLabel" destination="0HY-eW-YPB" id="bdu-Kl-WLp"/>
                                         </connections>

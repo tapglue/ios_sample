@@ -16,7 +16,6 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var connectButton: UIButton!
-    @IBOutlet weak var unfriendButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -69,18 +68,6 @@ class UserTableViewCell: UITableViewCell {
                     print(error)
                 }
             })
-        }
-    }
-    
-    @IBAction func unfriendPressed(sender: AnyObject) {
-        Tapglue.unfriendUser(cellUser) { (success : Bool, error : NSError!) -> Void in
-            if success {
-                print("User unfriend successful")
-                //TODO: Update UI
-            } else if error != nil{
-                print("Error happened\n")
-                print(error)
-            }
         }
     }
     

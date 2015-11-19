@@ -36,11 +36,6 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.loadFriends()
     }
     
-    func refresh(sender:AnyObject)
-    {
-        self.loadFriends()
-    }
-    
     func loadFriends() {
         self.refreshControl?.beginRefreshing()
         Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (users : [AnyObject]!, error : NSError!) -> Void in
@@ -74,5 +69,20 @@ class FriendsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.configureCellWithUser(user)
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            Tapglue.unfriendUser(users[indexPath.row]) { (success : Bool, error : NSError!) -> Void in
+                if success {
+                    print("User unfriend successful")
+                } else if error != nil{
+                    print("Error happened\n")
+                    print(error)
+                }
+            }
+            users.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
 }
