@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -291,17 +291,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXO-og-sMj">
-                                <rect key="frame" x="225" y="493" width="150" height="40"/>
+                                <rect key="frame" x="131" y="493" width="150" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="4TV-cv-W1b"/>
                                     <constraint firstAttribute="width" constant="150" id="CKq-Hx-1xo"/>
                                     <constraint firstAttribute="height" constant="40" id="Ipy-ia-iYE"/>
+                                    <constraint firstAttribute="height" constant="40" id="VU1-Bx-L5S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CKq-Hx-1xo"/>
+                                        <exclude reference="Ipy-ia-iYE"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="ymy-hm-KRc" eventType="touchUpInside" id="u3Y-us-53y"/>
                                 </connections>
@@ -345,23 +353,55 @@
                                     <action selector="starEventButton:" destination="ymy-hm-KRc" eventType="touchUpInside" id="vf8-YA-10B"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rts-AY-o26">
+                                <rect key="frame" x="319" y="493" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3Fi-Z3-dsa"/>
+                                    <constraint firstAttribute="width" constant="150" id="Fv3-DG-68O"/>
+                                    <constraint firstAttribute="height" constant="40" id="L3o-ip-RUn"/>
+                                    <constraint firstAttribute="height" constant="40" id="iKv-co-neh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3Fi-Z3-dsa"/>
+                                        <exclude reference="L3o-ip-RUn"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="ymy-hm-KRc" eventType="touchUpInside" id="ZBe-cy-XFg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="239-FV-0DT"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="top" secondItem="tm3-Ak-c3W" secondAttribute="bottom" constant="67" id="2Lj-Uj-cO6"/>
+                            <constraint firstAttribute="trailing" secondItem="rts-AY-o26" secondAttribute="trailing" constant="131" id="4iK-xO-o2c"/>
                             <constraint firstItem="kgV-rJ-Ql5" firstAttribute="leading" secondItem="XmX-vC-fFJ" secondAttribute="trailing" constant="44" id="5Xb-RT-ehL"/>
                             <constraint firstItem="Hy0-MW-Pwg" firstAttribute="centerY" secondItem="XmX-vC-fFJ" secondAttribute="centerY" id="5bY-JG-TZr"/>
+                            <constraint firstItem="rts-AY-o26" firstAttribute="leading" secondItem="HXO-og-sMj" secondAttribute="trailing" constant="38" id="6MX-nd-3oq"/>
                             <constraint firstItem="geq-l8-Kb1" firstAttribute="top" secondItem="HXO-og-sMj" secondAttribute="bottom" constant="18" id="A8k-yS-B8S"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="top" secondItem="tm3-Ak-c3W" secondAttribute="bottom" constant="18" id="AVu-bc-XwX"/>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="top" secondItem="nRa-7v-q90" secondAttribute="bottom" constant="18" id="QbI-Ch-vaK"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="RLx-iT-4Ud"/>
+                            <constraint firstItem="rts-AY-o26" firstAttribute="top" secondItem="XmX-vC-fFJ" secondAttribute="bottom" constant="32" id="SdH-NU-HRP"/>
+                            <constraint firstItem="HXO-og-sMj" firstAttribute="top" secondItem="XmX-vC-fFJ" secondAttribute="bottom" constant="32" id="Zfe-PR-2KK"/>
                             <constraint firstItem="nRa-7v-q90" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="f4h-OQ-V41"/>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="leading" secondItem="Hy0-MW-Pwg" secondAttribute="trailing" constant="44" id="g4P-W1-nn1"/>
                             <constraint firstItem="HXO-og-sMj" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="pKq-Hp-Mmx"/>
                             <constraint firstItem="HXO-og-sMj" firstAttribute="top" secondItem="XmX-vC-fFJ" secondAttribute="bottom" constant="32" id="sod-ZS-hIa"/>
+                            <constraint firstItem="rts-AY-o26" firstAttribute="centerX" secondItem="kgV-rJ-Ql5" secondAttribute="centerX" id="sqq-E3-bpt"/>
+                            <constraint firstItem="rts-AY-o26" firstAttribute="leading" secondItem="HXO-og-sMj" secondAttribute="trailing" constant="38" id="tdO-n3-VoC"/>
+                            <constraint firstItem="geq-l8-Kb1" firstAttribute="top" secondItem="HXO-og-sMj" secondAttribute="bottom" constant="18" id="uOm-q5-ciP"/>
                             <constraint firstItem="nRa-7v-q90" firstAttribute="top" secondItem="6xL-v8-c98" secondAttribute="bottom" constant="26" id="wIR-aZ-1b0"/>
+                            <constraint firstItem="HXO-og-sMj" firstAttribute="centerX" secondItem="Hy0-MW-Pwg" secondAttribute="centerX" id="wTj-u0-XsE"/>
+                            <constraint firstItem="geq-l8-Kb1" firstAttribute="top" secondItem="rts-AY-o26" secondAttribute="bottom" constant="18" id="wge-49-bND"/>
                             <constraint firstItem="kgV-rJ-Ql5" firstAttribute="centerY" secondItem="XmX-vC-fFJ" secondAttribute="centerY" id="yoy-ib-jbc"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="z4N-0O-lPp"/>
                         </constraints>
@@ -370,6 +410,12 @@
                                 <exclude reference="AVu-bc-XwX"/>
                                 <exclude reference="z4N-0O-lPp"/>
                                 <exclude reference="wIR-aZ-1b0"/>
+                                <exclude reference="pKq-Hp-Mmx"/>
+                                <exclude reference="sod-ZS-hIa"/>
+                                <exclude reference="A8k-yS-B8S"/>
+                                <exclude reference="4iK-xO-o2c"/>
+                                <exclude reference="6MX-nd-3oq"/>
+                                <exclude reference="tdO-n3-VoC"/>
                             </mask>
                         </variation>
                     </view>
