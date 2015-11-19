@@ -3,6 +3,6 @@ use_frameworks!
 
 target 'TapglueSample' do
 
-pod 'Tapglue', :git => 'https://github.com/tapglue/ios_sdk.git', :commit => 'cd003cb372cef7f43cc5dcb7801613cf8f6d4877'
+pod 'Tapglue', :git => 'https://github.com/tapglue/ios_sdk.git', :commit => 'd5f62371a510418d872b90028b214d24e677e892'
 
 end
