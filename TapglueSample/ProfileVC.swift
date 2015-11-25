@@ -13,8 +13,16 @@ class ProfileVC: UIViewController {
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var friendsCountLabel: UILabel!
     
     override func viewWillAppear(animated: Bool) {
+        Tapglue.retrieveCurrentUserWithCompletionBlock { (myUser : TGUser!, error : NSError!) -> Void in
+            if ((myUser != nil) && (error == nil)) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.friendsCountLabel.text = String(TGUser.currentUser().friendsCount) + " Friends"
+                })
+            }
+        }
         self.userNameLabel.text = TGUser.currentUser().username
         
         var userImage = TGImage()

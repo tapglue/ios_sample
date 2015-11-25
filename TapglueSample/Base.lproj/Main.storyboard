@@ -280,7 +280,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRa-7v-q90">
-                                <rect key="frame" x="200" y="358" width="200" height="35"/>
+                                <rect key="frame" x="200" y="305" width="200" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="98w-fw-K2I"/>
@@ -376,10 +376,23 @@
                                     <action selector="editButtonPressed:" destination="ymy-hm-KRc" eventType="touchUpInside" id="ZBe-cy-XFg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cb-wj-1JO">
+                                <rect key="frame" x="200" y="358" width="200" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="GU4-h1-ENK"/>
+                                    <constraint firstAttribute="width" constant="200" id="K69-kR-5eS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="TnR-IH-L7E"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="ryZ-Yz-IpO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XmX-vC-fFJ" firstAttribute="top" secondItem="9Cb-wj-1JO" secondAttribute="bottom" constant="18" id="1In-9A-K6j"/>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="239-FV-0DT"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="top" secondItem="tm3-Ak-c3W" secondAttribute="bottom" constant="67" id="2Lj-Uj-cO6"/>
                             <constraint firstAttribute="trailing" secondItem="rts-AY-o26" secondAttribute="trailing" constant="131" id="4iK-xO-o2c"/>
@@ -391,6 +404,7 @@
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="top" secondItem="nRa-7v-q90" secondAttribute="bottom" constant="18" id="QbI-Ch-vaK"/>
                             <constraint firstItem="6xL-v8-c98" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="RLx-iT-4Ud"/>
                             <constraint firstItem="rts-AY-o26" firstAttribute="top" secondItem="XmX-vC-fFJ" secondAttribute="bottom" constant="32" id="SdH-NU-HRP"/>
+                            <constraint firstItem="9Cb-wj-1JO" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="Z9m-L7-ASk"/>
                             <constraint firstItem="HXO-og-sMj" firstAttribute="top" secondItem="XmX-vC-fFJ" secondAttribute="bottom" constant="32" id="Zfe-PR-2KK"/>
                             <constraint firstItem="nRa-7v-q90" firstAttribute="centerX" secondItem="Fw2-Hu-U5P" secondAttribute="centerX" id="f4h-OQ-V41"/>
                             <constraint firstItem="XmX-vC-fFJ" firstAttribute="leading" secondItem="Hy0-MW-Pwg" secondAttribute="trailing" constant="44" id="g4P-W1-nn1"/>
@@ -400,6 +414,7 @@
                             <constraint firstItem="rts-AY-o26" firstAttribute="leading" secondItem="HXO-og-sMj" secondAttribute="trailing" constant="38" id="tdO-n3-VoC"/>
                             <constraint firstItem="geq-l8-Kb1" firstAttribute="top" secondItem="HXO-og-sMj" secondAttribute="bottom" constant="18" id="uOm-q5-ciP"/>
                             <constraint firstItem="nRa-7v-q90" firstAttribute="top" secondItem="6xL-v8-c98" secondAttribute="bottom" constant="26" id="wIR-aZ-1b0"/>
+                            <constraint firstItem="9Cb-wj-1JO" firstAttribute="top" secondItem="nRa-7v-q90" secondAttribute="bottom" constant="18" id="wSp-uT-7iJ"/>
                             <constraint firstItem="HXO-og-sMj" firstAttribute="centerX" secondItem="Hy0-MW-Pwg" secondAttribute="centerX" id="wTj-u0-XsE"/>
                             <constraint firstItem="geq-l8-Kb1" firstAttribute="top" secondItem="rts-AY-o26" secondAttribute="bottom" constant="18" id="wge-49-bND"/>
                             <constraint firstItem="kgV-rJ-Ql5" firstAttribute="centerY" secondItem="XmX-vC-fFJ" secondAttribute="centerY" id="yoy-ib-jbc"/>
@@ -410,17 +425,19 @@
                                 <exclude reference="AVu-bc-XwX"/>
                                 <exclude reference="z4N-0O-lPp"/>
                                 <exclude reference="wIR-aZ-1b0"/>
+                                <exclude reference="QbI-Ch-vaK"/>
                                 <exclude reference="pKq-Hp-Mmx"/>
                                 <exclude reference="sod-ZS-hIa"/>
-                                <exclude reference="A8k-yS-B8S"/>
                                 <exclude reference="4iK-xO-o2c"/>
                                 <exclude reference="6MX-nd-3oq"/>
                                 <exclude reference="tdO-n3-VoC"/>
+                                <exclude reference="A8k-yS-B8S"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="ProfileEmpty" selectedImage="ProfileFilled" id="4e7-jt-nf9"/>
                     <connections>
+                        <outlet property="friendsCountLabel" destination="9Cb-wj-1JO" id="zW6-WM-WYo"/>
                         <outlet property="userImageView" destination="6xL-v8-c98" id="OD2-XY-LyI"/>
                         <outlet property="userNameLabel" destination="nRa-7v-q90" id="7De-Ne-8cU"/>
                     </connections>

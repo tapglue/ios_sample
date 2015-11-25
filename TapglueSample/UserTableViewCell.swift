@@ -46,6 +46,7 @@ class UserTableViewCell: UITableViewCell {
     
     @IBAction func connectPressed(sender: UIButton) {
         if sender.selected {
+            
             Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
                 if success {
                     print("User unfriend successful")

@@ -32,11 +32,17 @@ class EventTableViewCell: UITableViewCell {
         var eventText = String()
         
         if event.type == "tg_friend" {
+            
             self.eventImageView.image = UIImage(named: "Friendship")
             if event.target.objectId == TGUser.currentUser().objectId {
                 eventText = "is now your friend"
             } else {
-                eventText = "just friended another user"
+                if event.target.user != nil {
+                    eventText = "just friended " + event.target.user.username
+                } else {
+                    eventText = "just friended another user"
+                }
+                
             }
             
         } else {
