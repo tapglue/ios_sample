@@ -42,7 +42,7 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func loadFriendsActivityFeed() {
-        Tapglue.retrieveFeedForCurrentUserWithCompletionBlock { (feed : [AnyObject]!, unreadCount : Int, error : NSError!) -> Void in
+        Tapglue.retrieveNewsFeedForCurrentUserWithCompletionBlock { (posts : [AnyObject]!, feed : [AnyObject]!, error : NSError!) -> Void in
             if error != nil {
                 print("Error happened\n")
                 print(error)

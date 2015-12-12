@@ -59,7 +59,7 @@ class UserTableViewCell: UITableViewCell {
                 }
             })
         } else {
-            Tapglue.friendUser(cellUser, createEvent: true, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+            Tapglue.friendUser(cellUser, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         sender.selected = true

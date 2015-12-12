@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.blackColor()
         
         // Initialise the SDK with your app Token and Config
-        Tapglue.setUpWithAppToken("ec26aa41d61508639b8129f1c0517b07")
+        Tapglue.setUpWithAppToken("a4ec9947ae00618b6a86b6ea9c01470c")
         
         return true
     }
