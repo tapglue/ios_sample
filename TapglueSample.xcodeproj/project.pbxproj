@@ -12,6 +12,7 @@
 		6A2C88AC1C1EDA4C00A4EE96 /* LoginSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */; };
 		6A2C88AE1C1F105800A4EE96 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88AD1C1F105800A4EE96 /* EditProfileVC.swift */; };
 		6A2C88B11C1F193000A4EE96 /* EditProfilTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88B01C1F193000A4EE96 /* EditProfilTableViewCell.swift */; };
+		6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */; };
 		6A509A411BDCEF6B00CC8A82 /* LoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A509A401BDCEF6B00CC8A82 /* LoginRegisterVC.swift */; };
 		6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A509A421BDCF5BC00CC8A82 /* NavigationVC.swift */; };
 		6A61F3361BDACCFD00EC64DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 		6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignInVC.swift; sourceTree = "<group>"; };
 		6A2C88AD1C1F105800A4EE96 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		6A2C88B01C1F193000A4EE96 /* EditProfilTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilTableViewCell.swift; sourceTree = "<group>"; };
+		6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6A509A401BDCEF6B00CC8A82 /* LoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVC.swift; sourceTree = "<group>"; };
 		6A509A421BDCF5BC00CC8A82 /* NavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		6A61F3321BDACCFD00EC64DF /* TapglueSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapglueSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,46 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		6A2C88B21C1F269200A4EE96 /* OLD VCS */ = {
+			isa = PBXGroup;
+			children = (
+				6A61F3471BDAD2D500EC64DF /* FeedVC.swift */,
+				6AE5AFC51BDD1DCC00193864 /* SearchVC.swift */,
+				6A61F3491BDAD2FF00EC64DF /* MeVC.swift */,
+				9727BB0B1BEB93B500CC8279 /* FriendsVC.swift */,
+			);
+			name = "OLD VCS";
+			sourceTree = "<group>";
+		};
+		6A2C88B31C1F269F00A4EE96 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		6A2C88B61C1F26D300A4EE96 /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SearchVC;
+			sourceTree = "<group>";
+		};
+		6A2C88B71C1F26E500A4EE96 /* NewsVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NewsVC;
+			sourceTree = "<group>";
+		};
+		6A2C88B81C1F26F200A4EE96 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
 		6A61F3291BDACCFD00EC64DF = {
 			isa = PBXGroup;
 			children = (
@@ -136,11 +178,12 @@
 			children = (
 				6A2C88A81C1EDA1500A4EE96 /* Navigation */,
 				6A2C88A71C1EDA0D00A4EE96 /* Login */,
+				6A2C88B31C1F269F00A4EE96 /* Home */,
+				6A2C88B61C1F26D300A4EE96 /* SearchVC */,
+				6A2C88B71C1F26E500A4EE96 /* NewsVC */,
+				6A2C88B81C1F26F200A4EE96 /* Activities */,
 				6A2C88AF1C1F170B00A4EE96 /* Profile */,
-				6A61F3471BDAD2D500EC64DF /* FeedVC.swift */,
-				6AE5AFC51BDD1DCC00193864 /* SearchVC.swift */,
-				6A61F3491BDAD2FF00EC64DF /* MeVC.swift */,
-				9727BB0B1BEB93B500CC8279 /* FriendsVC.swift */,
+				6A2C88B21C1F269200A4EE96 /* OLD VCS */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -292,6 +335,7 @@
 				970E6E5A1BDD6E9D00BCE1C0 /* UserTableViewCell.swift in Sources */,
 				6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */,
 				6A61F34A1BDAD2FF00EC64DF /* MeVC.swift in Sources */,
+				6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */,
 				6A61F3481BDAD2D500EC64DF /* FeedVC.swift in Sources */,
 				6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */,
 				6A2C88AC1C1EDA4C00A4EE96 /* LoginSignInVC.swift in Sources */,
