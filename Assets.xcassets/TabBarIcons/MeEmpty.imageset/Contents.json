@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "User Male-25.png",
+      "filename" : "Gender Neutral User-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "User Male-50.png",
+      "filename" : "Gender Neutral User-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "User Male-75.png",
+      "filename" : "Gender Neutral User-75.png",
       "scale" : "3x"
     }
   ],

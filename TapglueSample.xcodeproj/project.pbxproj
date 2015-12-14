@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40E452201186E413918811A0 /* Pods_TapglueSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BA028FF89F01A4BAA4FD47 /* Pods_TapglueSample.framework */; };
-		6A509A411BDCEF6B00CC8A82 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A509A401BDCEF6B00CC8A82 /* LoginVC.swift */; };
+		6A2C88AA1C1EDA3800A4EE96 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88A91C1EDA3800A4EE96 /* LoginVC.swift */; };
+		6A2C88AC1C1EDA4C00A4EE96 /* LoginSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */; };
+		6A509A411BDCEF6B00CC8A82 /* LoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A509A401BDCEF6B00CC8A82 /* LoginRegisterVC.swift */; };
 		6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A509A421BDCF5BC00CC8A82 /* NavigationVC.swift */; };
 		6A61F3361BDACCFD00EC64DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */; };
 		6A61F33B1BDACCFD00EC64DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A61F3391BDACCFD00EC64DF /* Main.storyboard */; };
@@ -25,7 +27,9 @@
 
 /* Begin PBXFileReference section */
 		67BA028FF89F01A4BAA4FD47 /* Pods_TapglueSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapglueSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A509A401BDCEF6B00CC8A82 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6A2C88A91C1EDA3800A4EE96 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignInVC.swift; sourceTree = "<group>"; };
+		6A509A401BDCEF6B00CC8A82 /* LoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVC.swift; sourceTree = "<group>"; };
 		6A509A421BDCF5BC00CC8A82 /* NavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		6A61F3321BDACCFD00EC64DF /* TapglueSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapglueSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6A2C88A71C1EDA0D00A4EE96 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6A2C88A91C1EDA3800A4EE96 /* LoginVC.swift */,
+				6A509A401BDCEF6B00CC8A82 /* LoginRegisterVC.swift */,
+				6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6A2C88A81C1EDA1500A4EE96 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				6A509A421BDCF5BC00CC8A82 /* NavigationVC.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
 		6A61F3291BDACCFD00EC64DF = {
 			isa = PBXGroup;
 			children = (
@@ -99,8 +121,8 @@
 		6A61F34D1BDADBD100EC64DF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6A509A421BDCF5BC00CC8A82 /* NavigationVC.swift */,
-				6A509A401BDCEF6B00CC8A82 /* LoginVC.swift */,
+				6A2C88A81C1EDA1500A4EE96 /* Navigation */,
+				6A2C88A71C1EDA0D00A4EE96 /* Login */,
 				6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */,
 				6A61F3471BDAD2D500EC64DF /* FeedVC.swift */,
 				6AE5AFC51BDD1DCC00193864 /* SearchVC.swift */,
@@ -250,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A2C88AA1C1EDA3800A4EE96 /* LoginVC.swift in Sources */,
 				9727BB0C1BEB93B500CC8279 /* FriendsVC.swift in Sources */,
 				6AE5AFC61BDD1DCC00193864 /* SearchVC.swift in Sources */,
 				970E6E5A1BDD6E9D00BCE1C0 /* UserTableViewCell.swift in Sources */,
@@ -257,8 +280,9 @@
 				6A61F34A1BDAD2FF00EC64DF /* MeVC.swift in Sources */,
 				6A61F3481BDAD2D500EC64DF /* FeedVC.swift in Sources */,
 				6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */,
+				6A2C88AC1C1EDA4C00A4EE96 /* LoginSignInVC.swift in Sources */,
 				6A61F3591BDAEB9300EC64DF /* EventTableViewCell.swift in Sources */,
-				6A509A411BDCEF6B00CC8A82 /* LoginVC.swift in Sources */,
+				6A509A411BDCEF6B00CC8A82 /* LoginRegisterVC.swift in Sources */,
 				6A61F3361BDACCFD00EC64DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TapglueSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -390,7 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TapglueSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
