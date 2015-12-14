@@ -12,18 +12,28 @@ import Tapglue
 class ProfileVC: UIViewController {
     
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userAboutLabel: UILabel!
+    @IBOutlet weak var userFullnameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var friendsCountLabel: UILabel!
     
     override func viewWillAppear(animated: Bool) {
-        Tapglue.retrieveCurrentUserWithCompletionBlock { (myUser : TGUser!, error : NSError!) -> Void in
-            if ((myUser != nil) && (error == nil)) {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.friendsCountLabel.text = String(TGUser.currentUser().friendsCount) + " Friends"
-                })
-            }
-        }
-        self.userNameLabel.text = TGUser.currentUser().username
+//        Tapglue.retrieveCurrentUserWithCompletionBlock { (myUser : TGUser!, error : NSError!) -> Void in
+//            if ((myUser != nil) && (error == nil)) {
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.friendsCountLabel.text = String(TGUser.currentUser().friendsCount) + " Friends"
+//                })
+//            }
+//        }
+        
+        
+        
+        let tapglueUser = TGUser.currentUser()
+        
+        let meta = tapglueUser.metadata as AnyObject
+        self.userNameLabel.text = tapglueUser.username
+        self.userFullnameLabel.text = tapglueUser.firstName + " " + tapglueUser.lastName
+        self.userAboutLabel.text = String(meta.valueForKey("about")!)
         
         var userImage = TGImage()
         userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage

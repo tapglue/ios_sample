@@ -35,9 +35,9 @@ class LoginRegisterVC: UIViewController, UITextFieldDelegate {
 //    override func viewWillAppear(animated: Bool) {
 //        self.navigationController?.navigationBarHidden = true
 //    }
-//    override func viewWillDisappear(animated: Bool) {
-//        self.navigationController?.navigationBarHidden = false
-//    }
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
     
     @IBAction func signUpButtonPressed(sender: AnyObject) {
         

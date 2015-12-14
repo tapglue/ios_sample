@@ -18,6 +18,10 @@ class LoginSignInVC: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
     @IBAction func signInButtonPressed(sender: UIButton) {
         if userNameTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 {
             
