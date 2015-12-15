@@ -25,6 +25,17 @@ class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     @IBAction func dismissVC(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func logoutButtonPressed(sender: UIButton) {
+        Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(success)
+            }
+        }
+    }
+    
 
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

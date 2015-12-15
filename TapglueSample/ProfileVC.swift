@@ -95,16 +95,57 @@ class ProfileVC: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func thumbEventButton(sender: AnyObject) {
-        Tapglue.createEventWithType("Likes your status", onObjectWithId: "ThumbFilled")
+    // Post buttons with different visibilities
+    @IBAction func privateButtonPressed(sender: UIButton) {
+        let publicPost = TGPost()
+        
+        publicPost.visibility = TGVisibility.Private
+        publicPost.addAttachment(TGAttachment(text: "Custom post that only I can see.", andName: "status"))
+        
+        Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(success)
+            }
+        }
+        
         
     }
-    
-    @IBAction func starEventButton(sender: AnyObject) {
-        Tapglue.createEventWithType("Saved this article", onObjectWithId: "StarFilled")
+    @IBAction func connectionButtonPressed(sender: UIButton) {
+        // createPostWithText visibility is automatically set to connection
+        Tapglue.createPostWithText("This status will be seen by friends and followers.", named: "status") { (success: Bool, error: NSError!) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(success)
+            }
+        }
+    }
+    @IBAction func publicButtonPressed(sender: UIButton) {
+        let publicPost = TGPost()
+        
+        publicPost.visibility = TGVisibility.Public
+        publicPost.addAttachment(TGAttachment(text: "Custom post that all the world can see.", andName: "status"))
+        
+        Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(success)
+            }
+        }
     }
     
-    @IBAction func heartEventButton(sender: AnyObject) {
+    
+    // Event type buttons
+    @IBAction func thumbEventButtonPressed(sender: AnyObject) {
+        Tapglue.createEventWithType("Likes your status", onObjectWithId: "ThumbFilled")
+    }
+    @IBAction func statusPostButtonPressed(sender: AnyObject) {
+        Tapglue.createEventWithType("Starred your Picture", onObjectWithId: "StarFilled")
+    }
+    @IBAction func heartEventButtonPressed(sender: AnyObject) {
         Tapglue.createEventWithType("Loves your Picture", onObjectWithId: "HeartFilled")
     }
 }

@@ -15,7 +15,8 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     // Tapglue events array
-    var events: [TGEvent] = []
+//    var events: [TGEvent] = []
+    var posts: [TGPost] = []
     
     var refreshControl: UIRefreshControl!
     
@@ -40,19 +41,35 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func loadFriendsActivityFeed() {
-        Tapglue.retrieveNewsFeedForCurrentUserWithCompletionBlock { (posts : [AnyObject]!, feed : [AnyObject]!, error : NSError!) -> Void in
+        
+        Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
+            
             if error != nil {
                 print("Error happened\n")
                 print(error)
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.events = feed as! [TGEvent]
+                    self.posts = feed as! [TGPost]
                     self.homeTableView.reloadData()
                 })
                 self.refreshControl.endRefreshing()
             }
         }
+        
+//        Tapglue.retrieveNewsFeedForCurrentUserWithCompletionBlock { (posts : [AnyObject]!, feed : [AnyObject]!, error : NSError!) -> Void in
+//            if error != nil {
+//                print("Error happened\n")
+//                print(error)
+//            }
+//            else {
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.events = feed as! [TGEvent]
+//                    self.homeTableView.reloadData()
+//                })
+//                self.refreshControl.endRefreshing()
+//            }
+//        }
     }
     
     /*
@@ -63,21 +80,27 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.events.count
+        return self.posts.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EventTableViewCell
-        let event = self.events[indexPath.row]
-        cell.configureCellWithEvent(event)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
+        
+        
+        let post = self.posts[indexPath.row]
+        print(post)
+        cell.configureCellWithPost(post)
         
         return cell
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
