@@ -101,20 +101,20 @@ class ProfileVC: UIViewController {
     
     // Event type buttons
     @IBAction func thumbEventButtonPressed(sender: AnyObject) {
-        Tapglue.createEventWithType("Likes your status", onObjectWithId: "ThumbFilled")
+        Tapglue.createEventWithType("like_event", onObjectWithId: "ThumbFilled")
     }
     @IBAction func statusPostButtonPressed(sender: AnyObject) {
-        Tapglue.createEventWithType("Starred your Picture", onObjectWithId: "StarFilled")
+        Tapglue.createEventWithType("star_event", onObjectWithId: "StarFilled")
     }
     @IBAction func heartEventButtonPressed(sender: AnyObject) {
-        Tapglue.createEventWithType("Loves your Picture", onObjectWithId: "HeartFilled")
+        Tapglue.createEventWithType("heart_event", onObjectWithId: "HeartFilled")
     }
     
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (friends: [AnyObject]!, error: NSError!) -> Void in
             
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 usersViewController.users = friends as! [TGUser]
@@ -125,7 +125,7 @@ class ProfileVC: UIViewController {
     @IBAction func followerCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFollowersForCurrentUserWithCompletionBlock { (followers: [AnyObject]!,error: NSError!) -> Void in
             
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 usersViewController.users = followers as! [TGUser]
@@ -136,7 +136,7 @@ class ProfileVC: UIViewController {
     @IBAction func followingCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFollowsForCurrentUserWithCompletionBlock { (following: [AnyObject]!,error: NSError!) -> Void in
             
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 usersViewController.users = following as! [TGUser]

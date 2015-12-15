@@ -34,34 +34,6 @@ class ProfileFeedTableViewCell: UITableViewCell {
         // PostText
         let postAttachment = post.attachments
         self.typeLabel.text = postAttachment[0].name
-        
-//        // UserText
-//        self.userNameLabel.text = post.user.username
-//        
-//        // PostText
-//        let postAttachment = post.attachments
-//        self.postTextLabel.text = postAttachment[0].content
-//        
-//        var userImage = TGImage()
-//        userImage = post.user.images.valueForKey("avatar") as! TGImage
-//        self.userImageView.image = UIImage(named: userImage.url)
-//        
-//        // Check visibility
-//        switch post.visibility {
-//        case TGVisibility.Private:
-//            self.visibilityImageView.image = UIImage(named: "privateFilled")
-//            
-//        case TGVisibility.Connection:
-//            self.visibilityImageView.image = UIImage(named: "connectionFilled")
-//            
-//        case TGVisibility.Public:
-//            self.visibilityImageView.image = UIImage(named: "publicFilled")
-//        }
-//        
-//        let date = post.createdAt
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "hh:mm"
-//        self.dateLabel.text = dateFormatter.stringFromDate(date)
     }
 
     // Configure Cell with TGEvent data
@@ -70,35 +42,6 @@ class ProfileFeedTableViewCell: UITableViewCell {
         self.userName.text = event.user.username
 
         self.typeLabel.text = event.type
-        
-//        // UserText
-//        self.userNameLabel.text = post.user.username
-//        
-//        // PostText
-//        let postAttachment = post.attachments
-//        self.postTextLabel.text = postAttachment[0].content
-//        
-//        var userImage = TGImage()
-//        userImage = post.user.images.valueForKey("avatar") as! TGImage
-//        self.userImageView.image = UIImage(named: userImage.url)
-//        
-//        // Check visibility
-//        switch post.visibility {
-//        case TGVisibility.Private:
-//            self.visibilityImageView.image = UIImage(named: "privateFilled")
-//            
-//        case TGVisibility.Connection:
-//            self.visibilityImageView.image = UIImage(named: "connectionFilled")
-//            
-//        case TGVisibility.Public:
-//            self.visibilityImageView.image = UIImage(named: "publicFilled")
-//        }
-//        
-//        let date = post.createdAt
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "hh:mm"
-//        self.dateLabel.text = dateFormatter.stringFromDate(date)
-        
     }
 
 }

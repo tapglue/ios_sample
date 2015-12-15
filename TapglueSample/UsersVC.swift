@@ -1,5 +1,5 @@
 //
-//  UsersViewController.swift
+//  UsersVC.swift
 //  TapglueSample
 //
 //  Created by Özgür Celebi on 15/12/15.
@@ -9,7 +9,7 @@
 import UIKit
 import Tapglue
 
-class UsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var users: [TGUser] = []
     
@@ -48,8 +48,6 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.userAboutLabel.text = String(meta!.valueForKey("about")!)
         }
         cell.userNameLabel.text = users[indexPath.row].username
-        
-
         
         // Image
         var userImage = TGImage()

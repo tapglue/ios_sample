@@ -9,7 +9,7 @@
         <!--Notifications-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FeedVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NotificationVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="ntc-4i-Ldp" customClass="EventTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="ntc-4i-Ldp" customClass="NotificationTableViewCell" customModule="TapglueSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ntc-4i-Ldp" id="Mch-5P-a3F">
@@ -57,7 +57,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="WEZ-mk-Dti"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wir-8P-Niu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wir-8P-Niu">
                                                     <rect key="frame" x="542" y="84" width="50" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9rj-9o-Yij"/>
@@ -92,14 +92,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="eventCreatedLabel" destination="Wir-8P-Niu" id="99C-dI-Lb2"/>
-                                            <outlet property="eventImageView" destination="VlN-L8-LzM" id="sh5-kA-uw3"/>
-                                            <outlet property="eventNameLabel" destination="ybX-av-cYD" id="8CS-iB-bFE"/>
-                                            <outlet property="eventUserNameLabel" destination="Eni-dk-SrY" id="avN-63-M9C"/>
-                                            <outlet property="userImageView" destination="1R4-S4-Cqn" id="enM-so-IOu"/>
+                                            <outlet property="dateLabel" destination="Wir-8P-Niu" id="vcX-be-THS"/>
+                                            <outlet property="eventNameLabel" destination="ybX-av-cYD" id="mgy-8g-apl"/>
+                                            <outlet property="eventTypeImageView" destination="VlN-L8-LzM" id="ML7-M9-0gn"/>
+                                            <outlet property="userNameLabel" destination="Eni-dk-SrY" id="d2t-2W-mes"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="boB-l1-gr6"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="m8H-gv-F4s"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -112,7 +115,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Notifications" image="NotificationEmpty" selectedImage="NotificationFilled" id="4w5-no-Q77"/>
                     <connections>
-                        <outlet property="activityTableView" destination="DzK-Wn-zVD" id="RR1-wm-5cT"/>
+                        <outlet property="notificationsTableView" destination="DzK-Wn-zVD" id="N9N-Bh-cfC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -600,10 +603,10 @@
             </objects>
             <point key="canvasLocation" x="2505" y="1839"/>
         </scene>
-        <!--Users View Controller-->
+        <!--UsersVC-->
         <scene sceneID="XcY-Ql-kDX">
             <objects>
-                <viewController storyboardIdentifier="UsersViewController" id="u7k-TF-utD" customClass="UsersViewController" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UsersViewController" id="u7k-TF-utD" customClass="UsersVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wae-Xv-K0G"/>
                         <viewControllerLayoutGuide type="bottom" id="XmY-wM-Vlw"/>

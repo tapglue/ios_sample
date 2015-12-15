@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Christmas Star Filled-100.png",
+      "filename" : "Clenched Fist-24.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Clenched Fist-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Clenched Fist-100.png",
       "scale" : "3x"
     }
   ],
