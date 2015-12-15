@@ -11,22 +11,36 @@ import Tapglue
 
 class ProfileVC: UIViewController {
     
+    @IBOutlet weak var friendsCountButton: UIButton!
+    @IBOutlet weak var followerCountButton: UIButton!
+    @IBOutlet weak var followingCountButton: UIButton!
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAboutLabel: UILabel!
     @IBOutlet weak var userFullnameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var friendsCountLabel: UILabel!
+    
+    @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var profileFeedTableView: UITableView!
+    
+    var events: [TGEvent] = []
+    var posts: [TGPost] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
     
     override func viewWillAppear(animated: Bool) {
-//        Tapglue.retrieveCurrentUserWithCompletionBlock { (myUser : TGUser!, error : NSError!) -> Void in
-//            if ((myUser != nil) && (error == nil)) {
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.friendsCountLabel.text = String(TGUser.currentUser().friendsCount) + " Friends"
-//                })
-//            }
-//        }
+        refreshTGUser()
         
-        
+        getEventsAndPostsOfCurrentUser()
+        print(events.count)
+        print(posts.count)
+        profileFeedTableView.reloadData()
+        currentFriendsFollowerFollowingCount()
         
         let tapglueUser = TGUser.currentUser()
         
@@ -40,60 +54,7 @@ class ProfileVC: UIViewController {
         
         self.userImageView.image = UIImage(named: userImage.url)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
-        Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-            if success {
-                print("User logged out")
-            } else if error != nil{
-                print("Error happened\n")
-                print(error)
-            }
-        }
-        self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
-    }
-    
-    @IBAction func editButtonPressed(sender: AnyObject) {
-        let user = TGUser.currentUser()
-        
-        let alertController = UIAlertController(title: "Change Username", message: "Enter new username:", preferredStyle: .Alert)
-        alertController.view.frame = CGRectMake(0.0, 0.0, 320.0, 400.0)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
-            let newUsername = alertController.textFields?.first?.text
-            if (newUsername != nil && newUsername?.characters.count > 2) {
-                user.username = newUsername
-                user.saveWithCompletionBlock { (success : Bool, error : NSError!) -> Void in
-                    if success {
-                        // Implementation success.
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.userNameLabel.text = newUsername
-                        })
-                        print("Username changed: \(newUsername) ")
-                    } else {
-                        // Implement error handling.
-                        print("Server error")
-                    }
-                }
-            } else {
-                print("Username wrong")
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
-        
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = user.username
-        }
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
+
     
     // Post buttons with different visibilities
     @IBAction func privateButtonPressed(sender: UIButton) {
@@ -147,5 +108,120 @@ class ProfileVC: UIViewController {
     }
     @IBAction func heartEventButtonPressed(sender: AnyObject) {
         Tapglue.createEventWithType("Loves your Picture", onObjectWithId: "HeartFilled")
+    }
+    
+    // Friends, Follower and Following buttons
+    @IBAction func friendsCountButtonPressed(sender: UIButton) {
+        Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (friends: [AnyObject]!, error: NSError!) -> Void in
+            
+            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                usersViewController.users = friends as! [TGUser]
+                self.navigationController?.pushViewController(usersViewController, animated: true)
+            })
+        }
+    }
+    @IBAction func followerCountButtonPressed(sender: UIButton) {
+        Tapglue.retrieveFollowersForCurrentUserWithCompletionBlock { (followers: [AnyObject]!,error: NSError!) -> Void in
+            
+            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                usersViewController.users = followers as! [TGUser]
+                self.navigationController?.pushViewController(usersViewController, animated: true)
+            })
+        }
+    }
+    @IBAction func followingCountButtonPressed(sender: UIButton) {
+        Tapglue.retrieveFollowsForCurrentUserWithCompletionBlock { (following: [AnyObject]!,error: NSError!) -> Void in
+            
+            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                usersViewController.users = following as! [TGUser]
+                self.navigationController?.pushViewController(usersViewController, animated: true)
+            })
+        }
+    }
+    
+    
+    
+    @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
+        self.profileFeedTableView.reloadData()
+    }
+    
+    
+        // MARK: - Table view data source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        var numberOfRows = 0
+            switch feedSegmentedControl.selectedSegmentIndex {
+            case 0:
+                numberOfRows = events.count
+                
+            case 1:
+                numberOfRows = posts.count
+                
+            default: print("More then two segments")
+            }
+        return numberOfRows
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ProfileFeedTableViewCell
+        // Configure the cell...
+        switch feedSegmentedControl.selectedSegmentIndex {
+        case 0:
+            cell.configureCellWithEvent(events[indexPath.row])
+        case 1:
+            cell.configureCellWithPost(posts[indexPath.row])
+        default: print("More then two segments")
+        }
+        
+    
+        return cell
+    }
+    
+    
+    func getEventsAndPostsOfCurrentUser() {
+        Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (events: [AnyObject]!,error: NSError!) -> Void in
+            if error != nil {
+                print("Error happened\n")
+                print(error)
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.events = events as! [TGEvent]
+                })
+            }
+        }
+        Tapglue.retrievePostsForCurrentUserWithCompletionBlock { (posts: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil {
+                print("Error happened\n")
+                print(error)
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.posts = posts as! [TGPost]
+                })
+            }
+        }
+    }
+    
+    func currentFriendsFollowerFollowingCount() {
+        friendsCountButton.setTitle(String(TGUser.currentUser().friendsCount) + " Friends", forState: .Normal)
+        followerCountButton.setTitle(String(TGUser.currentUser().followersCount) + " Follower", forState: .Normal)
+        followingCountButton.setTitle(String(TGUser.currentUser().followingCount) + " Following", forState: .Normal)
+    }
+    
+    func refreshTGUser() {
+        Tapglue.retrieveCurrentUserWithCompletionBlock { (user: TGUser!,error: NSError!) -> Void in
+        }
     }
 }

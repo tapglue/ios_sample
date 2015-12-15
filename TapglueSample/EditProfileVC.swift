@@ -11,7 +11,6 @@ import Tapglue
 
 class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-
     let tapglueUser = TGUser.currentUser()
     
     let userInfoTitle = ["Username", "Firstname", "Lastname", "About", "Email"]

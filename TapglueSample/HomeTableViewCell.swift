@@ -37,7 +37,7 @@ class HomeTableViewCell: UITableViewCell {
 
     
     
-    // Configure Cell with TGEvent data
+    // Configure Cell with TGPost data
     func configureCellWithPost(post: TGPost!){
         
         // UserText
