@@ -23,7 +23,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: "loadMyActivityFeed", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "loadNotificationFeed", forControlEvents: UIControlEvents.ValueChanged)
         self.notificationsTableView.addSubview(refreshControl)
         self.notificationsTableView.sendSubviewToBack(refreshControl)
     }
@@ -58,19 +58,6 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.refreshControl.endRefreshing()
             }
         }
-//        Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (feed : [AnyObject]!, error : NSError!) -> Void in
-//            if error != nil {
-//                print("Error happened\n")
-//                print(error)
-//            }
-//            else {
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.currentUserEvents = feed as! [TGEvent]
-//                    self.notificationsTableView.reloadData()
-//                })
-//                self.refreshControl.endRefreshing()
-//            }
-//        }
     }
     
     /*
