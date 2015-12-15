@@ -63,41 +63,11 @@ class HomeTableViewCell: UITableViewCell {
             self.visibilityImageView.image = UIImage(named: "publicFilled")
         }
         
-//        var eventText = String()
+        let date = post.createdAt
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        self.dateLabel.text = dateFormatter.stringFromDate(date)
 
-//        if event.type == "" {
-//
-//            self.eventImageView.image = UIImage(named: "Friendship")
-//            if event.target.objectId == TGUser.currentUser().objectId {
-//                eventText = "is now your friend"
-//            } else {
-//                if event.target.user != nil {
-//                    eventText = "just friended " + event.target.user.username
-//                } else {
-//                    eventText = "just friended another user"
-//                }
-//
-//            }
-//
-//        } else {
-//            eventText = event.type
-//        }
-//        self.eventNameLabel.text = eventText
-//
-//        var userImage = TGImage()
-//        userImage = event.user.images.valueForKey("avatar") as! TGImage;
-//
-//        self.userImageView.image = UIImage(named: userImage.url)
-//
-//        
-//        
-
-//
-//
-//        let date = event.createdAt
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "hh:mm"
-//        self.eventCreatedLabel.text = dateFormatter.stringFromDate(date)
     }
 
 
