@@ -12,6 +12,8 @@ import Tapglue
 class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventTypeImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView!
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

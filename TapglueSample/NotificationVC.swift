@@ -41,7 +41,11 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (feed : [AnyObject]!, error : NSError!) -> Void in
+        let types = ["like_event", "star_event", "heart_event", "tg_friend"]
+        let query = TGQuery()
+        query.addTypeIn(types)
+        
+        Tapglue.retrieveEventsForCurrentUserWithQuery(query) { (feed: [AnyObject]!,error: NSError!) -> Void in
             if error != nil {
                 print("Error happened\n")
                 print(error)
@@ -54,6 +58,19 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.refreshControl.endRefreshing()
             }
         }
+//        Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (feed : [AnyObject]!, error : NSError!) -> Void in
+//            if error != nil {
+//                print("Error happened\n")
+//                print(error)
+//            }
+//            else {
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.currentUserEvents = feed as! [TGEvent]
+//                    self.notificationsTableView.reloadData()
+//                })
+//                self.refreshControl.endRefreshing()
+//            }
+//        }
     }
     
     /*
@@ -70,6 +87,16 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
         cell.configureCellWithEvent(currentUserEvents[indexPath.row])
+        
+        
+        
+        if currentUserEvents[indexPath.row].type == "tg_friend" {
+            cell.eventNameLabel.text = "You are now friends with " + currentUserEvents[indexPath.row].target.user.username
+            
+            var userImage = TGImage()
+            userImage = currentUserEvents[indexPath.row].target.user.images.valueForKey("avatar") as! TGImage
+            cell.userImageView.image = UIImage(named: userImage.url)
+        }
         
         return cell
     }

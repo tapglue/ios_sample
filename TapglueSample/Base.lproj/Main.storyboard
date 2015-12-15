@@ -95,6 +95,7 @@
                                             <outlet property="dateLabel" destination="Wir-8P-Niu" id="vcX-be-THS"/>
                                             <outlet property="eventNameLabel" destination="ybX-av-cYD" id="mgy-8g-apl"/>
                                             <outlet property="eventTypeImageView" destination="VlN-L8-LzM" id="ML7-M9-0gn"/>
+                                            <outlet property="userImageView" destination="1R4-S4-Cqn" id="vhe-tY-7uM"/>
                                             <outlet property="userNameLabel" destination="Eni-dk-SrY" id="d2t-2W-mes"/>
                                         </connections>
                                     </tableViewCell>
