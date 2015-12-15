@@ -95,7 +95,7 @@
                                             <outlet property="dateLabel" destination="Wir-8P-Niu" id="vcX-be-THS"/>
                                             <outlet property="eventNameLabel" destination="ybX-av-cYD" id="mgy-8g-apl"/>
                                             <outlet property="eventTypeImageView" destination="VlN-L8-LzM" id="ML7-M9-0gn"/>
-                                            <outlet property="userImageView" destination="1R4-S4-Cqn" id="vhe-tY-7uM"/>
+                                            <outlet property="userImageView" destination="1R4-S4-Cqn" id="PZJ-jZ-0Up"/>
                                             <outlet property="userNameLabel" destination="Eni-dk-SrY" id="d2t-2W-mes"/>
                                         </connections>
                                     </tableViewCell>
@@ -126,7 +126,7 @@
         <!--News-->
         <scene sceneID="7k9-9P-cjb">
             <objects>
-                <viewController id="rCZ-WW-raX" customClass="MeVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rCZ-WW-raX" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gmq-0Z-j6S"/>
                         <viewControllerLayoutGuide type="bottom" id="ZWr-Nk-RMX"/>
@@ -143,7 +143,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="06H-wD-gVF" customClass="EventTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="06H-wD-gVF">
                                         <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06H-wD-gVF" id="gfl-ss-gQG">
@@ -163,9 +163,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" image="NewsEmpty" selectedImage="NewsFilled" id="MlS-iA-AfY"/>
-                    <connections>
-                        <outlet property="activityTableView" destination="bV0-cM-exl" id="RRG-8R-MHF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6G-qy-ve0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
