@@ -1,4 +1,4 @@
-# Tapglue Sample App
+# Tapglue Sample iOS App
 
 This will help you get started with Tapglue on iOS by showing a complete app.
 
