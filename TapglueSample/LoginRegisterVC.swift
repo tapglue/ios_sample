@@ -66,6 +66,7 @@ class LoginRegisterVC: UIViewController, UITextFieldDelegate {
                 } else {
                     print("User was created\n")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.setupCheckedForEvents()
                         self.navigationController?.popToRootViewControllerAnimated(false)
                         
                     })
@@ -119,5 +120,12 @@ class LoginRegisterVC: UIViewController, UITextFieldDelegate {
         }
         
         return false
+    }
+    
+    func setupCheckedForEvents(){
+        let checked: [Bool] = [true, true, true, true]
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(checked, forKey: "checked")
+        defaults.synchronize()
     }
 }

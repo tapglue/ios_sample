@@ -34,6 +34,7 @@ class LoginSignInVC: UIViewController {
                 } else {
                     print("User was created\n:\(success)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.setupCheckedForEvents()
                         self.navigationController?.popToRootViewControllerAnimated(false)
                         
                     })
@@ -50,6 +51,12 @@ class LoginSignInVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setupCheckedForEvents(){
+        let checked: [Bool] = [true, true, true, true]
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(checked, forKey: "checked")
+        defaults.synchronize()
+    }
 
     /*
     // MARK: - Navigation

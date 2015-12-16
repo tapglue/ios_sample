@@ -37,7 +37,9 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(animated: Bool) {
         print("viewWillAppear")
-//        checked.append(true)
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+        checkedEvents = defaults.objectForKey("checked") as! [Bool]
         print(checkedEvents)
         
         self.loadNotificationFeed()
@@ -51,7 +53,8 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(animated: Bool) {
         print("viewDidAppear")
-        print(checkedEvents)
+        
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -66,7 +69,17 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        let types = ["like_event", "star_event", "heart_event", "tg_friend"]
+        let allTypes = ["like_event", "star_event", "heart_event", "tg_friend"]
+        
+        var types = [String]()
+        var count = 0
+        for checked in checkedEvents {
+            if checked {
+                types.append(allTypes[count])
+            }
+            count++
+        }
+        
         let query = TGQuery()
         query.addTypeIn(types)
         
@@ -92,6 +105,8 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Show loginVC if no user
         self.performSegueWithIdentifier("filterSegue", sender: nil)
     }
+
+    
     
     /*
     * TableView Methods

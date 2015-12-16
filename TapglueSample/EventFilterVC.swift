@@ -9,28 +9,20 @@
 import UIKit
 
 class EventFilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     
     let events: [String] = ["Likes", "Stars", "Hearts", "Friend"]
     let eventType: [String] = ["like_event", "star_event", "heart_event", "tg_friend"]
     
-    var checked: [Bool] = [true, true, true, true]
+    var checked: [Bool] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
 
-    override func willMoveToParentViewController(parent: UIViewController?) {
-
-        if parent == nil {
-            //"Back pressed"
-//            let notficationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NotificationViewController") as! NotificationVC
-//            
-            print("Filter \(self.checked)")
-//            let notficationViewController = NotificationVC()
-//            notficationViewController.checked.append([checked])
-        }
+    override func viewWillAppear(animated: Bool) {
+        readChecked()
     }
     
     // MARK: - Table view data source
@@ -77,19 +69,37 @@ class EventFilterVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
+    func readChecked()  {
+        // get default checked array
+        let defaults = NSUserDefaults.standardUserDefaults()
+        checked = defaults.objectForKey("checked") as! [Bool]
+        print(checked)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            // "Back button pressed"
+            // Save checked to defaults
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(checked, forKey: "checked")
+            defaults.synchronize()
 
+        }
+    }
 }
