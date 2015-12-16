@@ -9,10 +9,13 @@
 import UIKit
 import Tapglue
 
+
 class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // TableView outlet
     @IBOutlet weak var notificationsTableView: UITableView!
+    
+    var checkedEvents: [Bool] = []
     
     // Tapglue events array
     var currentUserEvents: [TGEvent] = []
@@ -22,18 +25,40 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("viewDidLoad")
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: "loadNotificationFeed", forControlEvents: UIControlEvents.ValueChanged)
         self.notificationsTableView.addSubview(refreshControl)
         self.notificationsTableView.sendSubviewToBack(refreshControl)
+        
+
     }
     
     override func viewWillAppear(animated: Bool) {
+        print("viewWillAppear")
+//        checked.append(true)
+        print(checkedEvents)
+        
         self.loadNotificationFeed()
+        
+        let plusImage = UIImage(named: "FilterFilled")
+        let plusBarButtonItem = UIBarButtonItem(image: plusImage, style: UIBarButtonItemStyle.Plain, target: self, action: "filterButton:") //Use a selector
+        tabBarController?.navigationItem.rightBarButtonItem = plusBarButtonItem
+        
+        
     }
     
-    func refresh(sender:AnyObject)
-    {
+    override func viewDidAppear(animated: Bool) {
+        print("viewDidAppear")
+        print(checkedEvents)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
+    
+    func refresh(sender:AnyObject){
         
         self.loadNotificationFeed()
     }
@@ -58,6 +83,14 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.refreshControl.endRefreshing()
             }
         }
+    }
+    
+    func filterButton(sender:AnyObject){
+        
+        print("BarButtonItemPressed")
+        
+        // Show loginVC if no user
+        self.performSegueWithIdentifier("filterSegue", sender: nil)
     }
     
     /*
