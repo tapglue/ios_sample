@@ -124,6 +124,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.configureCellWithEvent(currentUserEvents[indexPath.row])
         
         
+        cell.userImageView.image = nil
         
         if currentUserEvents[indexPath.row].type == "tg_friend" {
             cell.eventNameLabel.text = "You are now friends with " + currentUserEvents[indexPath.row].target.user.username
