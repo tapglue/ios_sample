@@ -196,7 +196,7 @@
         <!--News-->
         <scene sceneID="7k9-9P-cjb">
             <objects>
-                <viewController id="rCZ-WW-raX" sceneMemberID="viewController">
+                <viewController id="rCZ-WW-raX" customClass="NewsVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gmq-0Z-j6S"/>
                         <viewControllerLayoutGuide type="bottom" id="ZWr-Nk-RMX"/>
@@ -205,34 +205,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bV0-cM-exl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="fdM-Z8-tCy">
-                                    <rect key="frame" x="0.0" y="212" width="600" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="06H-wD-gVF">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="120"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06H-wD-gVF" id="gfl-ss-gQG">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKy-Nc-cOo">
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-LV-yU9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem image="HomeFilledToolbar" id="T68-08-Zqy">
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="goHome:" destination="rCZ-WW-raX" id="kqH-3m-swu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="16" style="plain" systemItem="fixedSpace" id="RdU-Ss-ECS"/>
+                                    <barButtonItem image="RefreshFilled" id="yeY-P3-pqy">
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="doRefresh:" destination="rCZ-WW-raX" id="UiP-IS-5cL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="frD-7d-z5j"/>
+                                    <barButtonItem image="BackFilled" id="JjC-BE-lUg">
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="rCZ-WW-raX" id="dpK-8B-1hY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="16" style="plain" systemItem="fixedSpace" id="H38-FY-mUf"/>
+                                    <barButtonItem image="ForwardFilled" id="din-eP-Lhl">
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="goForward:" destination="rCZ-WW-raX" id="vLX-li-5ct"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bV0-cM-exl" firstAttribute="top" secondItem="Gmq-0Z-j6S" secondAttribute="bottom" id="AaP-pF-L0y"/>
-                            <constraint firstAttribute="trailing" secondItem="bV0-cM-exl" secondAttribute="trailing" id="gGF-D0-UFa"/>
-                            <constraint firstItem="bV0-cM-exl" firstAttribute="leading" secondItem="05R-EM-8Om" secondAttribute="leading" id="hnr-d7-QEO"/>
-                            <constraint firstItem="ZWr-Nk-RMX" firstAttribute="top" secondItem="bV0-cM-exl" secondAttribute="bottom" id="kLb-a8-KAX"/>
+                            <constraint firstAttribute="trailing" secondItem="iDc-LV-yU9" secondAttribute="trailing" id="1bL-0z-ct7"/>
+                            <constraint firstItem="iDc-LV-yU9" firstAttribute="top" secondItem="Gmq-0Z-j6S" secondAttribute="bottom" id="6hi-mp-QL8"/>
+                            <constraint firstItem="qKy-Nc-cOo" firstAttribute="top" secondItem="iDc-LV-yU9" secondAttribute="bottom" id="AGg-Og-iEV"/>
+                            <constraint firstItem="iDc-LV-yU9" firstAttribute="leading" secondItem="05R-EM-8Om" secondAttribute="leading" id="GnW-Sd-Q8q"/>
+                            <constraint firstItem="ZWr-Nk-RMX" firstAttribute="top" secondItem="qKy-Nc-cOo" secondAttribute="bottom" id="aO3-Xv-XK0"/>
+                            <constraint firstAttribute="trailing" secondItem="qKy-Nc-cOo" secondAttribute="trailing" id="t4C-bD-0Xb"/>
+                            <constraint firstItem="qKy-Nc-cOo" firstAttribute="leading" secondItem="05R-EM-8Om" secondAttribute="leading" id="wgL-kU-uI1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" image="NewsEmpty" selectedImage="NewsFilled" id="MlS-iA-AfY"/>
+                    <connections>
+                        <outlet property="webView" destination="qKy-Nc-cOo" id="mfX-yN-eXP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6G-qy-ve0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1377,11 +1401,14 @@
     </scenes>
     <resources>
         <image name="AddUser" width="32" height="32"/>
+        <image name="BackFilled" width="22" height="22"/>
         <image name="ChatFilled" width="30" height="30"/>
+        <image name="ForwardFilled" width="22" height="22"/>
         <image name="HeartEmpty" width="100" height="100"/>
         <image name="HeartFilled" width="100" height="100"/>
         <image name="HomeEmpty" width="25" height="25"/>
         <image name="HomeFilled" width="25" height="25"/>
+        <image name="HomeFilledToolbar" width="22" height="22"/>
         <image name="LikeFilled" width="30" height="30"/>
         <image name="NetworkEmpty" width="25" height="25"/>
         <image name="NetworkFilled" width="25" height="25"/>
@@ -1391,6 +1418,7 @@
         <image name="NotificationFilled" width="25" height="25"/>
         <image name="ProfileEmpty" width="25" height="25"/>
         <image name="ProfileFilled" width="25" height="25"/>
+        <image name="RefreshFilled" width="22" height="22"/>
         <image name="RemoveUser" width="32" height="32"/>
         <image name="ShareFilled" width="30" height="30"/>
         <image name="StarEmpty" width="100" height="100"/>
