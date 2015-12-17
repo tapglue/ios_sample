@@ -36,11 +36,12 @@ class ProfileVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         refreshTGUser()
         
-        getEventsAndPostsOfCurrentUser()
-        print(events.count)
-        print(posts.count)
-        profileFeedTableView.reloadData()
         currentFriendsFollowerFollowingCount()
+        
+        getEventsAndPostsOfCurrentUser()
+        
+        profileFeedTableView.reloadData()
+        
         
         let tapglueUser = TGUser.currentUser()
         
@@ -53,61 +54,6 @@ class ProfileVC: UIViewController {
         userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
         
         self.userImageView.image = UIImage(named: userImage.url)
-    }
-
-    
-    // Post buttons with different visibilities
-    @IBAction func privateButtonPressed(sender: UIButton) {
-        let publicPost = TGPost()
-        
-        publicPost.visibility = TGVisibility.Private
-        publicPost.addAttachment(TGAttachment(text: "Custom post that only I can see.", andName: "status"))
-        
-        Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print(error)
-            } else {
-                print(success)
-            }
-        }
-        
-        
-    }
-    @IBAction func connectionButtonPressed(sender: UIButton) {
-        // createPostWithText visibility is automatically set to connection
-        Tapglue.createPostWithText("This status will be seen by friends and followers.", named: "status") { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print(error)
-            } else {
-                print(success)
-            }
-        }
-    }
-    @IBAction func publicButtonPressed(sender: UIButton) {
-        let publicPost = TGPost()
-        
-        publicPost.visibility = TGVisibility.Public
-        publicPost.addAttachment(TGAttachment(text: "Custom post that all the world can see.", andName: "status"))
-        
-        Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print(error)
-            } else {
-                print(success)
-            }
-        }
-    }
-    
-    
-    // Event type buttons
-    @IBAction func thumbEventButtonPressed(sender: AnyObject) {
-//        Tapglue.createEventWithType("like_event", onObjectWithId: "ThumbFilled")
-    }
-    @IBAction func statusPostButtonPressed(sender: AnyObject) {
-//        Tapglue.createEventWithType("star_event", onObjectWithId: "StarFilled")
-    }
-    @IBAction func heartEventButtonPressed(sender: AnyObject) {
-//        Tapglue.createEventWithType("heart_event", onObjectWithId: "HeartFilled")
     }
     
     // Friends, Follower and Following buttons
