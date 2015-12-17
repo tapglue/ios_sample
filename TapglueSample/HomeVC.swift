@@ -9,10 +9,9 @@
 import UIKit
 import Tapglue
 
-class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var homeTableView: UITableView!
-    
     
     // Tapglue events array
 //    var events: [TGEvent] = []
@@ -94,6 +93,14 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        // Show loginVC if no user
+        textField.resignFirstResponder()
+        self.performSegueWithIdentifier("postSegue", sender: nil)
+        print("beginEditing")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

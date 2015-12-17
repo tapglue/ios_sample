@@ -122,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="-504"/>
+            <point key="canvasLocation" x="1756" y="1014"/>
         </scene>
         <!--Event FilterVC-->
         <scene sceneID="BRE-Ad-eCL">
@@ -191,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAp-ER-fhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2469" y="-504"/>
+            <point key="canvasLocation" x="2469" y="1014"/>
         </scene>
         <!--News-->
         <scene sceneID="7k9-9P-cjb">
@@ -593,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PJ-7Q-tOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="1839"/>
+            <point key="canvasLocation" x="1756" y="1693"/>
         </scene>
         <!--Title-->
         <scene sceneID="cES-eN-ieY">
@@ -703,7 +703,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQ3-tg-axO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2505" y="1839"/>
+            <point key="canvasLocation" x="2469" y="1693"/>
         </scene>
         <!--UsersVC-->
         <scene sceneID="XcY-Ql-kDX">
@@ -789,7 +789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5CF-98-1LJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="2623"/>
+            <point key="canvasLocation" x="2469" y="2371"/>
         </scene>
         <!--Network-->
         <scene sceneID="mU7-0h-azv">
@@ -897,7 +897,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Cw-js-zCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="1109"/>
+            <point key="canvasLocation" x="1756" y="-343"/>
+        </scene>
+        <!--PostVC-->
+        <scene sceneID="Ai3-p0-569">
+            <objects>
+                <viewController id="TP8-Ef-3mc" customClass="PostVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kXf-KH-X13"/>
+                        <viewControllerLayoutGuide type="bottom" id="Upn-IY-XUr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9JG-HA-FDl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BhZ-ku-796" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2449" y="-1000"/>
         </scene>
         <!--Home-->
         <scene sceneID="P6h-L6-5CB">
@@ -912,15 +930,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LmI-Qh-eSl" userLabel="Home Table View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="135" width="600" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="q5f-Ug-oST">
-                                    <rect key="frame" x="0.0" y="322" width="600" height="20"/>
+                                    <rect key="frame" x="0.0" y="258" width="600" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="230" id="V1F-cW-Jqn" customClass="HomeTableViewCell" customModule="TapglueSample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="230"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1F-cW-Jqn" id="yPN-mh-RHt">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="229.5"/>
@@ -1032,23 +1050,61 @@
                                     <outlet property="delegate" destination="l2P-hw-7UA" id="860-o9-vgP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwH-4R-RKV">
+                                <rect key="frame" x="0.0" y="72" width="600" height="55"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-7g-y2f">
+                                        <rect key="frame" x="8" y="8" width="39" height="39"/>
+                                        <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QhE-7g-y2f" secondAttribute="height" multiplier="1:1" id="559-xe-hVl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G4c-9G-ICa">
+                                        <rect key="frame" x="55" y="8" width="537" height="39"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="l2P-hw-7UA" id="XM8-Fc-ywX"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="QhE-7g-y2f" secondAttribute="bottom" constant="8" id="023-6t-Sfx"/>
+                                    <constraint firstItem="G4c-9G-ICa" firstAttribute="leading" secondItem="QhE-7g-y2f" secondAttribute="trailing" constant="8" id="6yR-JC-DuJ"/>
+                                    <constraint firstItem="QhE-7g-y2f" firstAttribute="top" secondItem="bwH-4R-RKV" secondAttribute="top" constant="8" id="GwD-jS-1GX"/>
+                                    <constraint firstAttribute="bottom" secondItem="G4c-9G-ICa" secondAttribute="bottom" constant="8" id="KE9-P5-eVM"/>
+                                    <constraint firstAttribute="trailing" secondItem="G4c-9G-ICa" secondAttribute="trailing" constant="8" id="S52-2Z-VIs"/>
+                                    <constraint firstAttribute="height" constant="55" id="WJG-rB-kJm"/>
+                                    <constraint firstItem="G4c-9G-ICa" firstAttribute="top" secondItem="bwH-4R-RKV" secondAttribute="top" constant="8" id="frl-4U-DPO"/>
+                                    <constraint firstItem="QhE-7g-y2f" firstAttribute="leading" secondItem="bwH-4R-RKV" secondAttribute="leading" constant="8" id="mqb-aJ-WVo"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LmI-Qh-eSl" firstAttribute="top" secondItem="v1e-EB-cEu" secondAttribute="bottom" id="2cR-ig-gwl"/>
                             <constraint firstAttribute="trailing" secondItem="LmI-Qh-eSl" secondAttribute="trailing" id="GfR-4w-lAm"/>
+                            <constraint firstItem="bwH-4R-RKV" firstAttribute="top" secondItem="v1e-EB-cEu" secondAttribute="bottom" constant="8" id="M4d-xc-Z3n"/>
+                            <constraint firstAttribute="trailing" secondItem="bwH-4R-RKV" secondAttribute="trailing" id="SYt-q0-f0d"/>
+                            <constraint firstItem="bwH-4R-RKV" firstAttribute="leading" secondItem="WN6-rJ-KTR" secondAttribute="leading" id="Y9A-lb-DIV"/>
                             <constraint firstItem="LmI-Qh-eSl" firstAttribute="leading" secondItem="WN6-rJ-KTR" secondAttribute="leading" id="YHl-Ob-ZZ2"/>
+                            <constraint firstItem="LmI-Qh-eSl" firstAttribute="top" secondItem="bwH-4R-RKV" secondAttribute="bottom" constant="8" id="elz-dE-f9n"/>
                             <constraint firstItem="i0u-p0-XTF" firstAttribute="top" secondItem="LmI-Qh-eSl" secondAttribute="bottom" id="fQk-sF-2Xq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="HomeEmpty" selectedImage="HomeFilled" id="8WL-TG-fEw"/>
                     <connections>
                         <outlet property="homeTableView" destination="LmI-Qh-eSl" id="zDt-cV-F8q"/>
+                        <segue destination="TP8-Ef-3mc" kind="popoverPresentation" identifier="postSegue" popoverAnchorView="G4c-9G-ICa" id="cay-Qe-gLx">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sl1-sG-eoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="-504"/>
+            <point key="canvasLocation" x="1756" y="-1000"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="043-gq-lhV">
@@ -1406,7 +1462,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="quM-aA-Czd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="324"/>
+            <point key="canvasLocation" x="820" y="324"/>
         </scene>
     </scenes>
     <resources>
