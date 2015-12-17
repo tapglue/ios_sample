@@ -101,13 +101,13 @@ class ProfileVC: UIViewController {
     
     // Event type buttons
     @IBAction func thumbEventButtonPressed(sender: AnyObject) {
-        Tapglue.createEventWithType("like_event", onObjectWithId: "ThumbFilled")
+//        Tapglue.createEventWithType("like_event", onObjectWithId: "ThumbFilled")
     }
     @IBAction func statusPostButtonPressed(sender: AnyObject) {
-        Tapglue.createEventWithType("star_event", onObjectWithId: "StarFilled")
+//        Tapglue.createEventWithType("star_event", onObjectWithId: "StarFilled")
     }
     @IBAction func heartEventButtonPressed(sender: AnyObject) {
-        Tapglue.createEventWithType("heart_event", onObjectWithId: "HeartFilled")
+//        Tapglue.createEventWithType("heart_event", onObjectWithId: "HeartFilled")
     }
     
     // Friends, Follower and Following buttons
