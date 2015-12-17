@@ -11,17 +11,53 @@ import Tapglue
 
 class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    
+    @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
+    
     let tapglueUser = TGUser.currentUser()
+
+    var defaultTGUser = TGUser()
     
     let userInfoTitle = ["Username", "Firstname", "Lastname", "About", "Email"]
-    var userInfoPlaceholder = ["edit username","edit firstname","edit lastname","edit about","edit email"]
+    var userUserInfo = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, "edit about", TGUser.currentUser().email]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Observer for keyboard
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
+        
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        defaultTGUser = defaults.objectForKey("tgUser") as! TGUser
+//        
+//        Tapglue.updateUser(TGUser.currentUser().sa) { (success: Bool, error: NSError!) -> Void in
+//            if error != nil {
+//                print("Error happened\n\(error)")
+//            }
+//            else {
+//                print("Successful: \n\(success)")
+//            }
+//        }
+        
+        // Update user information
+        TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("Error happened\n\(error)")
+                }
+                else {
+                    print("Successful: \n\(success)")
+                }
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func dismissVC(sender: AnyObject) {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -52,10 +88,18 @@ class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         // Configure the cell...
         cell.userInfoTitleLabel.text = userInfoTitle[indexPath.row]
-        cell.userInfoEditTextField.placeholder = userInfoPlaceholder[indexPath.row]
-        
+        cell.userInfoEditTextField.text = userUserInfo[indexPath.row]
+        cell.userInfoEditTextField.tag = indexPath.row
         
         return cell
+    }
+    
+    // Mark: Keyboard observer methods
+    func keyboardWillShow(notification: NSNotification) {
+        updateUIBarButton.enabled = false
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        updateUIBarButton.enabled = true
     }
     
     override func didReceiveMemoryWarning() {

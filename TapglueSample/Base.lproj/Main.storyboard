@@ -620,8 +620,11 @@
                                                 <action selector="dismissVC:" destination="GQW-Lx-LEk" id="Cdf-Aj-FRf"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="TeE-RQ-6uk">
+                                        <barButtonItem key="rightBarButtonItem" title="Update" id="TeE-RQ-6uk">
                                             <color key="tintColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="updateButtonPressed:" destination="GQW-Lx-LEk" id="uah-OX-ZTn"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -662,7 +665,7 @@
                                                     <rect key="frame" x="131" y="8" width="461" height="33.5"/>
                                                     <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -700,6 +703,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="His-PG-ggK"/>
+                    <connections>
+                        <outlet property="updateUIBarButton" destination="TeE-RQ-6uk" id="FKS-IP-CeZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQ3-tg-axO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -959,7 +965,7 @@
                                     <constraint firstAttribute="height" constant="39" id="tU4-Uo-xTl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="TP8-Ef-3mc" id="pde-tD-ZOV"/>
                                 </connections>
@@ -981,6 +987,7 @@
                     </view>
                     <connections>
                         <outlet property="postTextField" destination="tQM-sW-wLi" id="fmw-IF-Q7o"/>
+                        <outlet property="postUIBarButton" destination="bUk-Gd-PhX" id="CRg-bf-XYe"/>
                         <outlet property="userImageView" destination="HFF-ue-nvT" id="yLV-8U-Qcm"/>
                         <outlet property="visibilitySegmentedControl" destination="Gzm-5U-Qi9" id="kl8-wh-lxQ"/>
                     </connections>
