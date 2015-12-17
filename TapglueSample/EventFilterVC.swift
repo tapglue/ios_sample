@@ -6,6 +6,9 @@
 //  Copyright © 2015 Özgür Celebi. All rights reserved.
 //
 
+//  Checked Default Array: will be initialized at LoginRegister and LoginSigIn success.
+
+
 import UIKit
 
 class EventFilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
