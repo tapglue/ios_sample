@@ -33,9 +33,7 @@ class PostVC: UIViewController, UITextFieldDelegate {
         
         self.userImageView.image = UIImage(named: userImage.url)
         
-        // Observer for keyboard
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+        postUIBarButton.enabled = false
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
@@ -80,14 +78,6 @@ class PostVC: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // Mark: Keyboard observer methods
-    func keyboardWillShow(notification: NSNotification) {
-        postUIBarButton.enabled = false
-    }
-    func keyboardWillHide(notification: NSNotification) {
-        postUIBarButton.enabled = true
-    }
 
     
     // Mark: - TextField
@@ -95,6 +85,20 @@ class PostVC: UIViewController, UITextFieldDelegate {
         postText = textField.text
         textField.resignFirstResponder()
         return false
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        print(range.location)
+        if range.location > 2 {
+            postUIBarButton.enabled = true
+            postText = textField.text
+        }
+        if range.location <= 2{
+            postUIBarButton.enabled = false
+        }
+        
+        return true
     }
     
     func resignKeyboardAndDismissVC(){

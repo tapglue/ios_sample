@@ -70,7 +70,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        let allTypes = ["like_event", "bookmark_event", "tg_friend"]
+        let allTypes = ["like_event", "bookmark_event", "tg_friend", "tg_follow"]
         
         var types = [String]()
         var count = 0
@@ -82,10 +82,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             count++
         }
         
-        let query = TGQuery()
-        query.addTypeIn(types)
-        
-        Tapglue.retrieveEventsForCurrentUserWithQuery(query) { (feed: [AnyObject]!,error: NSError!) -> Void in
+        Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("Error happened\n")
                 print(error)

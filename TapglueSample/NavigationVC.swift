@@ -27,7 +27,7 @@ class NavigationVC: UINavigationController {
     
     // TapglueSample uses 3 event types
     func setupCheckedForEvents(){
-        let checked: [Bool] = [true, true, true]
+        let checked: [Bool] = [true, true, true, true]
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(checked, forKey: "checked")
         defaults.synchronize()
