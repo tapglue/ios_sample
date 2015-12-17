@@ -18,8 +18,18 @@ class NavigationVC: UINavigationController {
         if TGUser.currentUser() != nil {
             print(TGUser.currentUser())
         } else {
+            setupCheckedForEvents()
+            
             // Show loginVC if no user
             performSegueWithIdentifier("loginSegue", sender: nil)
         }
+    }
+    
+    // TapglueSample uses 3 event types
+    func setupCheckedForEvents(){
+        let checked: [Bool] = [true, true, true]
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(checked, forKey: "checked")
+        defaults.synchronize()
     }
 }

@@ -34,7 +34,9 @@ class NotificationTableViewCell: UITableViewCell {
         
         self.userNameLabel.text = event.user.username
         
-        self.eventNameLabel.text = event.type
+        if event.object != nil {
+            self.eventNameLabel.text = event.object.objectId
+        }
         
         self.eventTypeImageView.image = UIImage(named: event.type)
         

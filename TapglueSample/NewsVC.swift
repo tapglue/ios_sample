@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Tapglue
 
 class NewsVC: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
     
     let url = "https://www.tapglue.com/blog/"
+    
+    
+    // Tapglue events array
+    var currentUserEvents: [TGEvent] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +37,14 @@ class NewsVC: UIViewController {
     }
     @IBAction func goForward(sender: UIBarButtonItem) {
         webView.goForward()
+    }
+    
+    @IBAction func bookmarkButtonPressed(sender: UIBarButtonItem) {
+        print((webView.request?.URL?.absoluteString)!)
+        Tapglue.createEventWithType("bookmark_event", onObjectWithId: (webView.request?.URL?.absoluteString)!)
+    }
+    @IBAction func likeButtonPressed(sender: UIBarButtonItem) {
+        Tapglue.createEventWithType("like_event", onObjectWithId: (webView.request?.URL?.absoluteString)!)
     }
     
     func loadTapglueBlogPage(){

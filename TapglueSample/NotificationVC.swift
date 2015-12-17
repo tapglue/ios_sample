@@ -70,13 +70,14 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        let allTypes = ["like_event", "star_event", "heart_event", "tg_friend"]
+        let allTypes = ["like_event", "bookmark_event", "tg_friend"]
         
         var types = [String]()
         var count = 0
         for checked in checkedEvents {
             if checked {
                 types.append(allTypes[count])
+               
             }
             count++
         }

@@ -6,15 +6,15 @@
 //  Copyright © 2015 Özgür Celebi. All rights reserved.
 //
 
-//  Checked Default Array: will be initialized at LoginRegister and LoginSigIn success.
+//  Checked Default Array: will be initialized at NavigationController.
 
 
 import UIKit
 
 class EventFilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let events: [String] = ["Likes", "Stars", "Hearts", "Friend"]
-    let eventType: [String] = ["like_event", "star_event", "heart_event", "tg_friend"]
+    let events: [String] = ["Likes", "Bookmarked", "Friend"]
+    let eventType: [String] = ["like_event", "bookmark_event", "tg_friend"]
     
     var checked: [Bool] = []
     
