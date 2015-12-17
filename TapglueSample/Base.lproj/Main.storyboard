@@ -910,8 +910,80 @@
                     <view key="view" contentMode="scaleToFill" id="9JG-HA-FDl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUW-MM-TT9">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Update Status" id="LJ1-tB-aez">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qln-Er-kpW">
+                                            <color key="tintColor" red="0.94901960780000005" green="0.3294117647" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="dismissVC:" destination="TP8-Ef-3mc" id="BUf-fO-alI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Post" id="bUk-Gd-PhX">
+                                            <color key="tintColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="postButtonPressed:" destination="TP8-Ef-3mc" id="jwh-e5-AQv"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gzm-5U-Qi9">
+                                <rect key="frame" x="150" y="79" width="300" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="aL2-Qi-PsL"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="private"/>
+                                    <segment title="connection"/>
+                                    <segment title="public"/>
+                                </segments>
+                                <color key="tintColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFF-ue-nvT">
+                                <rect key="frame" x="20" y="122" width="39" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="Dp8-Kd-Dt8"/>
+                                    <constraint firstAttribute="height" constant="39" id="E9F-PU-x5D"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-sW-wLi">
+                                <rect key="frame" x="67" y="122" width="513" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="tU4-Uo-xTl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TP8-Ef-3mc" id="pde-tD-ZOV"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VUW-MM-TT9" firstAttribute="leading" secondItem="9JG-HA-FDl" secondAttribute="leading" id="Aj8-6b-SNq"/>
+                            <constraint firstItem="Gzm-5U-Qi9" firstAttribute="centerX" secondItem="9JG-HA-FDl" secondAttribute="centerX" id="DQk-jj-tjk"/>
+                            <constraint firstItem="Gzm-5U-Qi9" firstAttribute="top" secondItem="VUW-MM-TT9" secondAttribute="bottom" constant="15" id="QlM-cl-VKI"/>
+                            <constraint firstItem="tQM-sW-wLi" firstAttribute="top" secondItem="Gzm-5U-Qi9" secondAttribute="bottom" constant="15" id="evU-xR-2Ga"/>
+                            <constraint firstItem="VUW-MM-TT9" firstAttribute="top" secondItem="kXf-KH-X13" secondAttribute="bottom" id="kZX-Ym-APW"/>
+                            <constraint firstAttribute="trailing" secondItem="VUW-MM-TT9" secondAttribute="trailing" id="ly9-yb-UWA"/>
+                            <constraint firstItem="HFF-ue-nvT" firstAttribute="top" secondItem="Gzm-5U-Qi9" secondAttribute="bottom" constant="15" id="ocZ-fA-ywH"/>
+                            <constraint firstItem="tQM-sW-wLi" firstAttribute="leading" secondItem="HFF-ue-nvT" secondAttribute="trailing" constant="8" id="sN3-6c-dZd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HFF-ue-nvT" secondAttribute="leading" id="u11-xL-Zko"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tQM-sW-wLi" secondAttribute="trailing" id="zCO-An-OcP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="postTextField" destination="tQM-sW-wLi" id="fmw-IF-Q7o"/>
+                        <outlet property="userImageView" destination="HFF-ue-nvT" id="yLV-8U-Qcm"/>
+                        <outlet property="visibilitySegmentedControl" destination="Gzm-5U-Qi9" id="kl8-wh-lxQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhZ-ku-796" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1053,13 +1125,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwH-4R-RKV">
                                 <rect key="frame" x="0.0" y="72" width="600" height="55"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-7g-y2f">
-                                        <rect key="frame" x="8" y="8" width="39" height="39"/>
-                                        <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="QhE-7g-y2f" secondAttribute="height" multiplier="1:1" id="559-xe-hVl"/>
-                                        </constraints>
-                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G4c-9G-ICa">
                                         <rect key="frame" x="55" y="8" width="537" height="39"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1069,6 +1134,12 @@
                                             <outlet property="delegate" destination="l2P-hw-7UA" id="XM8-Fc-ywX"/>
                                         </connections>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-7g-y2f">
+                                        <rect key="frame" x="8" y="8" width="39" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QhE-7g-y2f" secondAttribute="height" multiplier="1:1" id="559-xe-hVl"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1097,6 +1168,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="HomeEmpty" selectedImage="HomeFilled" id="8WL-TG-fEw"/>
                     <connections>
                         <outlet property="homeTableView" destination="LmI-Qh-eSl" id="zDt-cV-F8q"/>
+                        <outlet property="userImageView" destination="QhE-7g-y2f" id="AFC-wl-FBt"/>
                         <segue destination="TP8-Ef-3mc" kind="popoverPresentation" identifier="postSegue" popoverAnchorView="G4c-9G-ICa" id="cay-Qe-gLx">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
                         </segue>

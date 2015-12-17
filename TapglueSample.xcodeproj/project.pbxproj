@@ -238,6 +238,7 @@
 				6A61F3571BDAEB4B00EC64DF /* CustomCells */,
 				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
+				6A2C88B21C1F269200A4EE96 /* OLD VCS */,
 				6A61F3411BDACCFD00EC64DF /* Info.plist */,
 			);
 			path = TapglueSample;
@@ -254,7 +255,6 @@
 				6A2C88B81C1F26F200A4EE96 /* Notifications */,
 				6A2C88AF1C1F170B00A4EE96 /* Profile */,
 				6A1A98A21C20554E00299CD1 /* Connection */,
-				6A2C88B21C1F269200A4EE96 /* OLD VCS */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
