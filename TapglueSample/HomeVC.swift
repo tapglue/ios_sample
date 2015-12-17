@@ -19,13 +19,19 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     
     var refreshControl: UIRefreshControl!
     
+    @IBOutlet weak var userImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: "loadFriendsActivityFeed:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "loadFriendsActivityFeed", forControlEvents: UIControlEvents.ValueChanged)
         self.homeTableView.addSubview(refreshControl)
         self.homeTableView.sendSubviewToBack(refreshControl)
+        
+        var userImage = TGImage()
+        userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
+        self.userImageView.image = UIImage(named: userImage.url)
     }
     
     override func viewWillAppear(animated: Bool) {
