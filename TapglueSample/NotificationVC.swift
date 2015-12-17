@@ -44,9 +44,10 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.loadNotificationFeed()
         
-        let plusImage = UIImage(named: "FilterFilled")
-        let plusBarButtonItem = UIBarButtonItem(image: plusImage, style: UIBarButtonItemStyle.Plain, target: self, action: "filterButton:") //Use a selector
-        tabBarController?.navigationItem.rightBarButtonItem = plusBarButtonItem
+        let filterImage = UIImage(named: "FilterFilled")
+        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: "filterButton:") //Use a selector
+        filterButtonItem.tintColor = UIColor.darkGrayColor()
+        tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
         
         
     }
