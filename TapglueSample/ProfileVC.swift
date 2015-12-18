@@ -122,6 +122,8 @@ class ProfileVC: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ProfileFeedTableViewCell
         // Configure the cell...
+        cell.layoutMargins = UIEdgeInsetsZero
+        
         switch feedSegmentedControl.selectedSegmentIndex {
         case 0:
             cell.configureCellWithEvent(events[indexPath.row])
