@@ -22,11 +22,11 @@ class NewsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadTapglueBlogPage()
+        loadTapglueBlogPage(url)
     }
     
     @IBAction func goHome(sender: UIBarButtonItem) {
-        loadTapglueBlogPage()
+        loadTapglueBlogPage(url)
     }
     
     @IBAction func doRefresh(sender: UIBarButtonItem) {
@@ -47,8 +47,8 @@ class NewsVC: UIViewController {
         Tapglue.createEventWithType("like_event", onObjectWithId: (webView.request?.URL?.absoluteString)!)
     }
     
-    func loadTapglueBlogPage(){
-        let requestURL = NSURL(string:url)
+    func loadTapglueBlogPage(str: String){
+        let requestURL = NSURL(string: str)
         let request = NSURLRequest(URL: requestURL!)
         webView.loadRequest(request)
     }
