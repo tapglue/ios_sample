@@ -18,7 +18,7 @@ class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 
     var defaultTGUser = TGUser()
     
-    let userInfoTitle = ["Username", "Firstname", "Lastname", "About", "Email"]
+    let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
     var userUserInfo = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, "edit about", TGUser.currentUser().email]
 
     override func viewDidLoad() {
