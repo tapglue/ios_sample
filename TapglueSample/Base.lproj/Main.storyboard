@@ -980,14 +980,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viu-AY-KF2">
-                                                            <rect key="frame" x="402" y="188" width="25" height="25"/>
+                                                            <rect key="frame" x="402" y="186" width="25" height="25"/>
                                                             <state key="normal" backgroundImage="ShareFilled"/>
                                                             <connections>
                                                                 <action selector="shareButtonPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="K0C-ih-Fzx"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLV-Od-Tes">
-                                                            <rect key="frame" x="172" y="188" width="25" height="25"/>
+                                                            <rect key="frame" x="172" y="186" width="25" height="25"/>
                                                             <state key="normal" backgroundImage="LikeFilled"/>
                                                             <connections>
                                                                 <action selector="likeButtonPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="4NZ-qU-Nwh"/>
@@ -1020,7 +1020,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="tLV-Od-Tes" firstAttribute="centerY" secondItem="g0d-zN-RQz" secondAttribute="centerY" id="21T-2H-mdv"/>
+                                                        <constraint firstItem="tLV-Od-Tes" firstAttribute="centerY" secondItem="g0d-zN-RQz" secondAttribute="centerY" constant="-2" id="21T-2H-mdv"/>
                                                         <constraint firstItem="viu-AY-KF2" firstAttribute="leading" secondItem="g0d-zN-RQz" secondAttribute="trailing" constant="89" id="23h-pp-hEa"/>
                                                         <constraint firstItem="QdS-Dl-5PA" firstAttribute="top" secondItem="gx7-xT-Np2" secondAttribute="top" constant="8" id="4Sa-QS-EFw"/>
                                                         <constraint firstItem="I7m-h2-QKa" firstAttribute="top" secondItem="2ah-5U-szO" secondAttribute="bottom" constant="8" id="7Wz-Qg-uRU"/>
@@ -1038,7 +1038,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="I7m-h2-QKa" secondAttribute="trailing" constant="15" id="gUa-cm-x0X"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="g0d-zN-RQz" secondAttribute="bottom" id="r8x-AM-3VO"/>
                                                         <constraint firstItem="2ah-5U-szO" firstAttribute="top" secondItem="gx7-xT-Np2" secondAttribute="top" constant="8" id="tIG-pc-WZW"/>
-                                                        <constraint firstItem="viu-AY-KF2" firstAttribute="centerY" secondItem="g0d-zN-RQz" secondAttribute="centerY" id="tM4-fA-gP9"/>
+                                                        <constraint firstItem="viu-AY-KF2" firstAttribute="centerY" secondItem="g0d-zN-RQz" secondAttribute="centerY" constant="-2" id="tM4-fA-gP9"/>
                                                         <constraint firstItem="g0d-zN-RQz" firstAttribute="top" secondItem="I7m-h2-QKa" secondAttribute="bottom" constant="8" id="uJ2-r5-SzI"/>
                                                         <constraint firstItem="OGa-oh-XHj" firstAttribute="top" secondItem="QdS-Dl-5PA" secondAttribute="bottom" constant="14" id="vfc-jy-bqz"/>
                                                         <constraint firstItem="2ah-5U-szO" firstAttribute="leading" secondItem="gx7-xT-Np2" secondAttribute="leading" constant="8" id="zEH-gN-sFX"/>
