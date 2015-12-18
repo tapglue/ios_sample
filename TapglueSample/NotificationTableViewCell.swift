@@ -11,6 +11,8 @@ import Tapglue
 
 class NotificationTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var webView: UIWebView!
+    
     @IBOutlet weak var eventTypeImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
     
@@ -44,7 +46,6 @@ class NotificationTableViewCell: UITableViewCell {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         self.dateLabel.text = dateFormatter.stringFromDate(date)
-        
     }
-
+    
 }

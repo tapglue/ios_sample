@@ -122,7 +122,6 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
         cell.configureCellWithEvent(currentUserEvents[indexPath.row])
         
-        
         cell.userImageView.image = nil
         
         if currentUserEvents[indexPath.row].type == "tg_friend" {
