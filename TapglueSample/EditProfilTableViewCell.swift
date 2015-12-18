@@ -27,25 +27,35 @@ class EditProfilTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
+    // Mark: - TextField methods
+    func textFieldDidEndEditing(textField: UITextField) {
+        changeTGUserInformation(textField)
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        switch textField.tag {
-        case 0:
-            TGUser.currentUser().username = textField.text!
-        case 1:
-            TGUser.currentUser().firstName = textField.text!
-        case 2:
-            TGUser.currentUser().lastName = textField.text!
-        case 3:
-            print("not changin about")
-        case 4:
-            TGUser.currentUser().email = textField.text!
-        default: print("More then expected switches")
-        }
+        changeTGUserInformation(textField)
         
         textField.resignFirstResponder()
         
         return false
+    }
+    
+    
+    func changeTGUserInformation(tf: UITextField){
+        switch tf.tag {
+        case 0:
+            TGUser.currentUser().username = tf.text!
+        case 1:
+            TGUser.currentUser().firstName = tf.text!
+        case 2:
+            TGUser.currentUser().lastName = tf.text!
+        case 3:
+            print("not changin about")
+        case 4:
+            TGUser.currentUser().email = tf.text!
+        default: print("More then expected switches")
+        }
     }
     
 }
