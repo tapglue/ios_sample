@@ -8,7 +8,7 @@
 
 import UIKit
 import Tapglue
-import AddressBook
+import Contacts
 
 class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
     
@@ -20,6 +20,11 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     var users: [TGUser] = []
     var resultSearchController: UISearchController!
+    
+    let contactStore = CNContactStore()
+    var contactEmails: [String] = []
+    var facebookEmails: [String] = []
+    var twitterEmails: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +66,10 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             
         case 1:
             print("Contacts")
-            
+            searchForUserByEmail()
+            for email in contactEmails {
+                print(email)
+            }
         case 2:
             print("Facebook")
             
@@ -87,6 +95,10 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             networkButton.hidden = false
             networkButton.setTitle("Contacts", forState: .Normal)
             networkButton.backgroundColor = UIColor.brownColor()
+            
+//            if contactEmails.isEmpty {
+//                searchForUserByEmail()
+//            }
         case 2:
             print("Facebook")
             networkButton.hidden = false
@@ -154,6 +166,47 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             self.friendsTableView.reloadData()
         }
     }
+    
+    
+    // SearchForUserByEmail and reload tableview if user was found
+    func searchForUserByEmail() {
+        readAddressBookByEmail()
+        Tapglue.searchUsersWithEmails(contactEmails) { (users: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil {
+                print("\nError happened")
+                print(error)
+            }
+            else {
+                print("\nSuccess happened")
+                print(users)
+                self.users.removeAll(keepCapacity: false)
+                self.users = users as! [TGUser]
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.networkButton.hidden = true
+                    self.friendsTableView.reloadData()
+                })
+            }
+        }
+    }
+    
+    // ReadAddressBookByEmail and saving contacts in dicionary
+    func readAddressBookByEmail(){
+        do {
+            try contactStore.enumerateContactsWithFetchRequest(CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey])) {
+                (contact, cursor) -> Void in
+                if (!contact.emailAddresses.isEmpty){
+                    
+                    for item in contact.emailAddresses {
+                        self.contactEmails.append(String(item.value))
+                    }
+                }
+            }
+        }
+        catch{
+            print("Handle the error please")
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
