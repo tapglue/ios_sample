@@ -10,7 +10,11 @@ import UIKit
 import Tapglue
 
 class HomeTableViewCell: UITableViewCell {
+    
+    var cellPost = TGPost()
 
+    @IBOutlet weak var likeButton: UIButton!
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var visibilityImageView: UIImageView!
     
@@ -26,7 +30,16 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
-        
+        cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+            if error != nil {
+                print("Error happened\n")
+                print(error)
+            }
+            else {
+                print("Success happened\n")
+                print(success)
+            }
+        }
     }
     @IBAction func commentButtonPressed(sender: UIButton) {
         
@@ -34,11 +47,12 @@ class HomeTableViewCell: UITableViewCell {
     @IBAction func shareButtonPressed(sender: UIButton) {
         
     }
-
     
     
     // Configure Cell with TGPost data
     func configureCellWithPost(post: TGPost!){
+        
+        cellPost = post
         
         // UserText
         self.userNameLabel.text = post.user.username
