@@ -16,6 +16,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     // Tapglue events array
 //    var events: [TGEvent] = []
     var posts: [TGPost] = []
+    var postToPass: TGPost!
     
     var refreshControl: UIRefreshControl!
     
@@ -87,6 +88,15 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Did Select post and can comment now
+        postToPass = posts[indexPath.row]
+        
+        let secondViewController =
+        self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
+            as! PostDetailVC
+        // pass the relevant data to the new sub-ViewController
+        secondViewController.post = posts[indexPath.row]
+        // tell the new controller to present itself
+        self.navigationController!.pushViewController(secondViewController, animated: true)
     }
     
     
@@ -107,14 +117,20 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+
+//        if segue.identifier == "postDetailSegue" {
+//            if let destinationVC = segue.destinationViewController as? PostDetailVC {
+//                destinationVC.post = postToPass
+//            }
+//        }
     }
-    */
 
 }
