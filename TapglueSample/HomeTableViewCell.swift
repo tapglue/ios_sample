@@ -62,6 +62,7 @@ class HomeTableViewCell: UITableViewCell {
             }
         }
     }
+    
     @IBAction func commentButtonPressed(sender: UIButton) {
         let rootViewController = self.window!.rootViewController as! UINavigationController
         let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -112,9 +113,15 @@ class HomeTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "hh:mm"
         self.dateLabel.text = dateFormatter.stringFromDate(date)
         
-        
+        print("Is Liked: \(cellPost.isLiked)")
         if cellPost.isLiked {
-            likeButton.selected = true
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.likeButton.selected = true
+            })
+        } else {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.likeButton.selected = false
+            })
         }
     }
 
