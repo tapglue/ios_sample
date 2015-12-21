@@ -117,7 +117,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     
     
     
-
+    /*
 
     // MARK: - Navigation
 
@@ -125,13 +125,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-
-//        if segue.identifier == "postDetailSegue" {
-//            if let destinationVC = segue.destinationViewController as? PostDetailVC {
-//                destinationVC.post = postToPass
-//            }
-//        }
     }
+    */
 
 }
