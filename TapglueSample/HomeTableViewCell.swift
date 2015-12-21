@@ -111,7 +111,10 @@ class HomeTableViewCell: UITableViewCell {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         self.dateLabel.text = dateFormatter.stringFromDate(date)
-
+        
+        if cellPost.isLiked {
+            likeButton.selected = true
+        }
     }
 
 
