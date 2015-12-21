@@ -19,9 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Black tintColor to change appearence of tabBar image color
 //        UITabBar.appearance().tintColor = UIColor(red:0.23, green:0.23, blue:0.23, alpha:1.0)
         
-        // Initialise the SDK with your app Token and Config
-        Tapglue.setUpWithAppToken("a548ec5adadb773007ab5652f37e71a7")
+        let config = TGConfiguration.defaultConfiguration()
+        config.loggingEnabled = false
         
+        // Initialise the SDK with your app Token and Config
+        // Token 2.3
+        Tapglue.setUpWithAppToken("b27a3e3e9a2747f0138a93794625038f", andConfig: config)
+                
         return true
     }
 }
