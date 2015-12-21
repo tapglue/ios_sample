@@ -26,6 +26,7 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
