@@ -79,7 +79,7 @@ class HomeTableViewCell: UITableViewCell {
         
         // PostText
         let postAttachment = post.attachments
-        self.postTextLabel.text = postAttachment[0].content
+        self.postTextLabel.text = "\" " + postAttachment[0].content + " \""
         
         var userImage = TGImage()
         userImage = post.user.images.valueForKey("avatar") as! TGImage
