@@ -62,7 +62,16 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     @IBAction func commentButtonPressed(sender: UIButton) {
-        
+        let rootViewController = self.window!.rootViewController as! UINavigationController
+        let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let pdVC =
+        main.instantiateViewControllerWithIdentifier("PostDetailViewController")
+            as! PostDetailVC
+        // pass the relevant data to the new sub-ViewController
+        pdVC.post = cellPost
+        pdVC.commentButtonPressedSwitch = true
+        // tell the new controller to present itself
+        rootViewController.pushViewController(pdVC, animated: true)
     }
     @IBAction func shareButtonPressed(sender: UIButton) {
         

@@ -29,6 +29,12 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     
     func configureCellWithPostComment(comment: TGPostComment) {
         print(comment)
+        userNameLabel.text = comment.user.username
+        userCommentLabel.text = comment.content
+        
+        var userImage = TGImage()
+        userImage = comment.user.images.valueForKey("avatar") as! TGImage
+        self.userImageView.image = UIImage(named: userImage.url)
     }
 
 }

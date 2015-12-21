@@ -1208,7 +1208,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IN7-CZ-0Jo">
-                                <rect key="frame" x="0.0" y="168" width="600" height="432"/>
+                                <rect key="frame" x="0.0" y="168" width="600" height="386"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="CVd-bF-TdK">
                                     <rect key="frame" x="0.0" y="88" width="600" height="0.0"/>
@@ -1266,19 +1266,46 @@
                                     <outlet property="delegate" destination="Jws-mY-Oae" id="JpO-Ld-77x"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evQ-cF-nkR" userLabel="message container">
+                                <rect key="frame" x="0.0" y="554" width="600" height="46"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a comment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mQ-a2-Wdg">
+                                        <rect key="frame" x="8" y="8" width="584" height="30"/>
+                                        <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="send"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Jws-mY-Oae" id="i5P-x3-SFs"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="5mQ-a2-Wdg" firstAttribute="leading" secondItem="evQ-cF-nkR" secondAttribute="leading" constant="8" id="0yf-VT-Ixj"/>
+                                    <constraint firstAttribute="centerY" secondItem="5mQ-a2-Wdg" secondAttribute="centerY" id="VkC-al-hUE"/>
+                                    <constraint firstAttribute="height" constant="46" id="dWK-QQ-etE"/>
+                                    <constraint firstAttribute="trailing" secondItem="5mQ-a2-Wdg" secondAttribute="trailing" constant="8" id="s0H-0f-nh7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="evQ-cF-nkR" firstAttribute="leading" secondItem="w1Q-Ch-XN0" secondAttribute="leading" id="4M4-9V-R8Y"/>
                             <constraint firstAttribute="trailing" secondItem="IN7-CZ-0Jo" secondAttribute="trailing" id="6DD-8d-GvA"/>
                             <constraint firstItem="v3O-dO-CQm" firstAttribute="leading" secondItem="w1Q-Ch-XN0" secondAttribute="leading" id="7jx-DP-KIs"/>
                             <constraint firstItem="IN7-CZ-0Jo" firstAttribute="leading" secondItem="w1Q-Ch-XN0" secondAttribute="leading" id="Eql-Tz-mke"/>
+                            <constraint firstItem="evQ-cF-nkR" firstAttribute="top" secondItem="IN7-CZ-0Jo" secondAttribute="bottom" id="HKm-5B-kuq"/>
                             <constraint firstAttribute="trailing" secondItem="v3O-dO-CQm" secondAttribute="trailing" id="MVz-Jw-oGV"/>
-                            <constraint firstItem="qDs-Mf-d40" firstAttribute="top" secondItem="IN7-CZ-0Jo" secondAttribute="bottom" id="O7h-Pf-Dct"/>
                             <constraint firstItem="IN7-CZ-0Jo" firstAttribute="top" secondItem="v3O-dO-CQm" secondAttribute="bottom" constant="8" id="WoF-ej-txZ"/>
                             <constraint firstItem="v3O-dO-CQm" firstAttribute="top" secondItem="8Zq-cl-gXn" secondAttribute="bottom" id="Yyj-hG-a8c"/>
+                            <constraint firstItem="qDs-Mf-d40" firstAttribute="top" secondItem="evQ-cF-nkR" secondAttribute="bottom" id="pEe-x2-0gL"/>
+                            <constraint firstAttribute="trailing" secondItem="evQ-cF-nkR" secondAttribute="trailing" id="s3v-ZA-aNr"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentContainerBottonConstraint" destination="pEe-x2-0gL" id="fYn-l4-Xd4"/>
+                        <outlet property="commentTextField" destination="5mQ-a2-Wdg" id="n5P-q8-uAL"/>
+                        <outlet property="commentsTableView" destination="IN7-CZ-0Jo" id="LGt-5D-7uG"/>
                         <outlet property="dateLabel" destination="fli-s2-aWY" id="Mlt-Yy-RIi"/>
                         <outlet property="postTextLabel" destination="Y5M-pN-TPG" id="Kdo-YK-K8A"/>
                         <outlet property="userImageView" destination="4ia-Wd-Kia" id="bl7-zL-5ot"/>

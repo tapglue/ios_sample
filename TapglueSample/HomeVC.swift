@@ -90,13 +90,14 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
         // Did Select post and can comment now
         postToPass = posts[indexPath.row]
         
-        let secondViewController =
+        let pdVC =
         self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
         // pass the relevant data to the new sub-ViewController
-        secondViewController.post = posts[indexPath.row]
+        pdVC.post = posts[indexPath.row]
+        
         // tell the new controller to present itself
-        self.navigationController!.pushViewController(secondViewController, animated: true)
+        self.navigationController!.pushViewController(pdVC, animated: true)
     }
     
     
