@@ -56,6 +56,17 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("didSelect")
+        
+        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            userProfileViewController.userProfile = self.users[indexPath.row]
+            self.navigationController?.pushViewController(userProfileViewController, animated: true)
+        })
+    }
 
     /*
     // MARK: - Navigation

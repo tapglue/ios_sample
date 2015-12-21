@@ -120,16 +120,15 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
-        cell.configureCellWithEvent(currentUserEvents[indexPath.row])
         
         cell.userImageView.image = nil
         
+        print(currentUserEvents[indexPath.row].type)
+        
         if currentUserEvents[indexPath.row].type == "tg_friend" {
-            cell.eventNameLabel.text = "You are now friends with " + currentUserEvents[indexPath.row].target.user.username
-            
-            var userImage = TGImage()
-            userImage = currentUserEvents[indexPath.row].target.user.images.valueForKey("avatar") as! TGImage
-            cell.userImageView.image = UIImage(named: userImage.url)
+            cell.configureCellForTypeTGFriend(currentUserEvents[indexPath.row])
+        } else {
+            cell.configureCellWithEvent(currentUserEvents[indexPath.row])
         }
         
         return cell

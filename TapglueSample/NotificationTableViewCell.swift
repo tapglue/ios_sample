@@ -11,8 +11,6 @@ import Tapglue
 
 class NotificationTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var webView: UIWebView!
-    
     @IBOutlet weak var eventTypeImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
     
@@ -36,9 +34,7 @@ class NotificationTableViewCell: UITableViewCell {
         
         self.userNameLabel.text = event.user.username
         
-        if event.object != nil {
-            self.eventNameLabel.text = event.object.objectId
-        }
+//        self.eventNameLabel.text = event.object.objectId
         
         self.eventTypeImageView.image = UIImage(named: event.type)
         
@@ -46,6 +42,27 @@ class NotificationTableViewCell: UITableViewCell {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         self.dateLabel.text = dateFormatter.stringFromDate(date)
+    }
+    
+    
+    // Configure Cell with TGEvent data
+    func configureCellForTypeTGFriend(event: TGEvent!){
+        
+        print(event.type)
+        print(event.user.username)
+
+        if event.target.user != nil {
+            eventNameLabel.text = "You are now friends with " + event.target.user.username
+            
+            var userImage = TGImage()
+            userImage = event.target.user.images.valueForKey("avatar") as! TGImage
+            userImageView.image = UIImage(named: userImage.url)
+            
+            let date = event.createdAt
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "hh:mm"
+            self.dateLabel.text = dateFormatter.stringFromDate(date)
+        }
     }
     
 }

@@ -1,58 +1,57 @@
 //
-//  ProfileVC.swift
+//  UserProfileVC.swift
 //  TapglueSample
 //
-//  Created by Onur Akpolat on 23.10.15.
-//  Copyright © 2015 Tapglue. All rights reserved.
+//  Created by Özgür Celebi on 18/12/15.
+//  Copyright © 2015 Özgür Celebi. All rights reserved.
 //
 
 import UIKit
 import Tapglue
 
-class ProfileVC: UIViewController {
+class UserProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var userProfile: TGUser?
+    
+    var events: [TGEvent] = []
+    var posts: [TGPost] = []
+    
+    @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var friendsCountButton: UIButton!
     @IBOutlet weak var followerCountButton: UIButton!
     @IBOutlet weak var followingCountButton: UIButton!
     
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userAboutLabel: UILabel!
-    @IBOutlet weak var userFullnameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     
-    @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var userFullnameLabel: UILabel!
+    @IBOutlet weak var userUsernameLabel: UILabel!
+    @IBOutlet weak var userAboutLabel: UILabel!
     
-    @IBOutlet weak var profileFeedTableView: UITableView!
+    @IBOutlet weak var userProfileFeedTableView: UITableView!
     
-    var events: [TGEvent] = []
-    var posts: [TGPost] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
         
-        
+
     }
-    
     override func viewWillAppear(animated: Bool) {
-        refreshTGUser()
+        showUserInformation(userProfile!)
         
         currentFriendsFollowerFollowingCount()
         
         getEventsAndPostsOfCurrentUser()
         
-        profileFeedTableView.reloadData()
-        
-        
-        let tapglueUser = TGUser.currentUser()
-        
-        let meta = tapglueUser.metadata as AnyObject
-        self.userNameLabel.text = tapglueUser.username
-        self.userFullnameLabel.text = tapglueUser.firstName + " " + tapglueUser.lastName
-        self.userAboutLabel.text = String(meta.valueForKey("about")!)
-        
-        var userImage = TGImage()
-        userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
-        self.userImageView.image = UIImage(named: userImage.url)
+        print(posts.count)
+        print(events.count)
+        userProfileFeedTableView.reloadData()
+    }
+    
+    @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
+        self.userProfileFeedTableView.reloadData()
     }
     
     // Friends, Follower and Following buttons
@@ -90,14 +89,7 @@ class ProfileVC: UIViewController {
         }
     }
     
-    
-    
-    @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
-        self.profileFeedTableView.reloadData()
-    }
-    
-    
-        // MARK: - Table view data source
+    // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -106,20 +98,23 @@ class ProfileVC: UIViewController {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         var numberOfRows = 0
-            switch feedSegmentedControl.selectedSegmentIndex {
-            case 0:
-                numberOfRows = events.count
-                
-            case 1:
-                numberOfRows = posts.count
-                
-            default: print("More then two segments")
-            }
+        
+        switch feedSegmentedControl.selectedSegmentIndex {
+        case 0:
+            numberOfRows = events.count
+            
+        case 1:
+            numberOfRows = posts.count
+            
+        default: print("More then two segments")
+        }
+        
         return numberOfRows
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ProfileFeedTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserProfileTableViewCell
+        
         // Configure the cell...
         
         switch feedSegmentedControl.selectedSegmentIndex {
@@ -130,13 +125,27 @@ class ProfileVC: UIViewController {
         default: print("More then two segments")
         }
         
-    
         return cell
     }
     
     
+    // Fill UserProfileVC with user information
+    func showUserInformation(user: TGUser){
+        userFullnameLabel.text = user.firstName + " " + user.lastName
+        userUsernameLabel.text = user.username
+        
+        let meta = user.metadata as AnyObject
+        userAboutLabel.text = String(meta.valueForKey("about")!)
+        
+        var userImage = TGImage()
+        userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
+        self.userImageView.image = UIImage(named: userImage.url)
+     }
+    
+    // Custom Methods
     func getEventsAndPostsOfCurrentUser() {
-        Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (events: [AnyObject]!,error: NSError!) -> Void in
+
+        Tapglue.retrieveEventsForUser(userProfile) { (events: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("Error happened\n")
                 print(error)
@@ -144,10 +153,12 @@ class ProfileVC: UIViewController {
             else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.events = events as! [TGEvent]
+                    print(self.events)
                 })
             }
         }
-        Tapglue.retrievePostsForCurrentUserWithCompletionBlock { (posts: [AnyObject]!, error: NSError!) -> Void in
+
+        Tapglue.retrievePostsForUser(userProfile) { (posts: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("Error happened\n")
                 print(error)
@@ -155,6 +166,7 @@ class ProfileVC: UIViewController {
             else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.posts = posts as! [TGPost]
+                    print(self.posts)
                 })
             }
         }
@@ -166,8 +178,22 @@ class ProfileVC: UIViewController {
         followingCountButton.setTitle(String(TGUser.currentUser().followingCount) + " Following", forState: .Normal)
     }
     
-    func refreshTGUser() {
-        Tapglue.retrieveCurrentUserWithCompletionBlock { (user: TGUser!,error: NSError!) -> Void in
-        }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
