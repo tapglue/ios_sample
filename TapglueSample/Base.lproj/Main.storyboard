@@ -968,7 +968,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="PF8-wl-CeC" customClass="UserTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="PF8-wl-CeC" customClass="NetworkUserTableViewCell" customModule="TapglueSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PF8-wl-CeC" id="bw7-6G-5wk">
@@ -1003,7 +1003,7 @@
                                                     </state>
                                                     <state key="selected" backgroundImage="RemoveUser"/>
                                                     <connections>
-                                                        <action selector="connectPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="cZT-FP-xgg"/>
+                                                        <action selector="connectPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="WDf-Zn-903"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1017,9 +1017,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="connectButton" destination="I6q-Fx-sVI" id="JOj-KK-iMg"/>
-                                            <outlet property="userImageView" destination="YDH-7Y-NiC" id="f2V-ph-KjL"/>
-                                            <outlet property="usernameLabel" destination="4Ox-IB-fCS" id="HKZ-vY-OHn"/>
+                                            <outlet property="connectButton" destination="I6q-Fx-sVI" id="aID-ud-cVv"/>
+                                            <outlet property="userImageView" destination="YDH-7Y-NiC" id="4jn-wX-xdw"/>
+                                            <outlet property="userNameLabel" destination="4Ox-IB-fCS" id="FsL-sc-1mg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1386,8 +1386,8 @@
                                                                 <action selector="likeButtonPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="aGR-MV-tFY"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-h2-QKa">
-                                                            <rect key="frame" x="15" y="66" width="570" height="100"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-h2-QKa">
+                                                            <rect key="frame" x="15" y="66" width="570" height="109"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                             <color key="textColor" red="0.90196078430000004" green="0.1529411765" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1423,6 +1423,7 @@
                                                         <constraint firstItem="I7m-h2-QKa" firstAttribute="top" secondItem="2ah-5U-szO" secondAttribute="bottom" constant="8" id="7Wz-Qg-uRU"/>
                                                         <constraint firstItem="Pgm-pt-gxD" firstAttribute="leading" secondItem="OGa-oh-XHj" secondAttribute="trailing" constant="8" id="B9J-5l-HZZ"/>
                                                         <constraint firstItem="QdS-Dl-5PA" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="trailing" constant="8" id="C7q-s2-hGB"/>
+                                                        <constraint firstItem="g0d-zN-RQz" firstAttribute="top" secondItem="I7m-h2-QKa" secondAttribute="bottom" constant="8" id="Csl-gk-2Cs"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="bottom" secondItem="g0d-zN-RQz" secondAttribute="bottom" id="FKW-Dc-giW"/>
                                                         <constraint firstItem="I7m-h2-QKa" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="leading" id="FKv-F3-Hkc"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="width" secondItem="viu-AY-KF2" secondAttribute="width" id="Hcn-zW-I0B"/>

@@ -60,7 +60,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
         let user = self.users[indexPath.row]
         cell.configureCellWithUser(user)
         return cell

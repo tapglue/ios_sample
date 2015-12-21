@@ -1,5 +1,5 @@
 //
-//  UserTableViewCell.swift
+//  NetworkUserTableViewCell.swift
 //  TapglueSample
 //
 //  Created by Onur Akpolat on 25/10/15.
@@ -9,12 +9,12 @@
 import UIKit
 import Tapglue
 
-class UserTableViewCell: UITableViewCell {
+class NetworkUserTableViewCell: UITableViewCell {
 
     var cellUser = TGUser()
     
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var connectButton: UIButton!
     
     override func awakeFromNib() {
@@ -27,7 +27,7 @@ class UserTableViewCell: UITableViewCell {
     func configureCellWithUser(user: TGUser!){
         cellUser = user
         
-        self.usernameLabel.text = self.cellUser.username
+        self.userNameLabel.text = self.cellUser.username
         
         var userImage = TGImage()
         userImage = cellUser.images.valueForKey("avatar") as! TGImage
