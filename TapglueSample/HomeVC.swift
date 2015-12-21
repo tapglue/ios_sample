@@ -61,20 +61,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
                 self.refreshControl.endRefreshing()
             }
         }
-        
-//        Tapglue.retrieveNewsFeedForCurrentUserWithCompletionBlock { (posts : [AnyObject]!, feed : [AnyObject]!, error : NSError!) -> Void in
-//            if error != nil {
-//                print("Error happened\n")
-//                print(error)
-//            }
-//            else {
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.events = feed as! [TGEvent]
-//                    self.homeTableView.reloadData()
-//                })
-//                self.refreshControl.endRefreshing()
-//            }
-//        }
     }
     
     /*
@@ -99,8 +85,13 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Did Select post and can comment now
+    }
     
     
+    
+    // Mark: - TextField
     func textFieldDidBeginEditing(textField: UITextField) {
         // Show loginVC if no user
         textField.resignFirstResponder()
