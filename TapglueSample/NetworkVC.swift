@@ -8,6 +8,7 @@
 
 import UIKit
 import Tapglue
+import AddressBook
 
 class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
     
@@ -22,9 +23,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        self.friendsTableView.dataSource = self
-        self.friendsTableView.delegate = self
         
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
@@ -46,6 +46,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     override func viewWillAppear(animated: Bool) {
         self.resultSearchController.searchBar.hidden = false;
+
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -159,8 +160,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-    
-
     /*
     // MARK: - Navigation
 

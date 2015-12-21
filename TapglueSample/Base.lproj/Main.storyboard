@@ -1030,6 +1030,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wqg-Rs-gNK" id="smb-W6-Hq6"/>
+                                    <outlet property="delegate" destination="Wqg-Rs-gNK" id="Uwo-5o-fZj"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAQ-Pd-O08">
                                 <rect key="frame" x="175" y="275" width="250" height="50"/>
