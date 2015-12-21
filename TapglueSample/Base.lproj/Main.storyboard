@@ -940,7 +940,7 @@
         <!--Network-->
         <scene sceneID="mU7-0h-azv">
             <objects>
-                <viewController id="Wqg-Rs-gNK" customClass="SearchVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wqg-Rs-gNK" customClass="NetworkVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qQQ-ed-VHa"/>
                         <viewControllerLayoutGuide type="bottom" id="dZn-r7-unc"/>
