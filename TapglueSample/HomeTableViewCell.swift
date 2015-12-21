@@ -11,7 +11,7 @@ import Tapglue
 
 class HomeTableViewCell: UITableViewCell {
     
-    var cellPost = TGPost()
+    var cellPost: TGPost!
 
     @IBOutlet weak var likeButton: UIButton!
     
@@ -23,21 +23,41 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var postTextLabel: UILabel!
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
-        cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print("Error happened\n")
-                print(error)
+        
+        if likeButton.selected == true {
+            Tapglue.deleteLike(cellPost) { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("Error happened\n")
+                    print(error)
+                }
+                else {
+                    print("Success happened\n")
+                    print(success)
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.likeButton.selected = false
+                    })
+                }
             }
-            else {
-                print("Success happened\n")
-                print(success)
+        } else {
+            cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("Error happened\n")
+                    print(error)
+                }
+                else {
+                    print("Success happened\n")
+                    print(success)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.likeButton.selected = true
+                    })
+                }
             }
         }
     }
