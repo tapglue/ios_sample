@@ -11,8 +11,11 @@ import Tapglue
 
 class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
     
+    @IBOutlet weak var networkButton: UIButton!
     
     @IBOutlet weak var friendsTableView: UITableView!
+    
+    @IBOutlet weak var networkSegmentedControl: UISegmentedControl!
     
     var users: [TGUser] = []
     var resultSearchController: UISearchController!
@@ -36,6 +39,9 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         // Reload the table
         self.friendsTableView.reloadData()
+        
+        // hide button
+        networkButton.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +53,57 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         self.resultSearchController.active = false;
     }
     
+    @IBAction func networkButtonPressed(sender: UIButton) {
+        switch networkSegmentedControl.selectedSegmentIndex {
+        case 0:
+            print("Pending")
+            
+        case 1:
+            print("Contacts")
+            
+        case 2:
+            print("Facebook")
+            
+        case 3:
+            print("Twitter")
+            
+        case 4:
+            print("More")
+            
+        default: print("More segments then expected")
+        }
+    }
+    
+    @IBAction func networkSegmentedChanged(sender: UISegmentedControl) {
+        print(sender.tag)
+        switch networkSegmentedControl.selectedSegmentIndex {
+            
+        case 0:
+            print("Pending")
+            networkButton.hidden = true
+        case 1:
+            print("Contacts")
+            networkButton.hidden = false
+            networkButton.setTitle("Contacts", forState: .Normal)
+            networkButton.backgroundColor = UIColor.brownColor()
+        case 2:
+            print("Facebook")
+            networkButton.hidden = false
+            networkButton.setTitle("Facebook", forState: .Normal)
+            networkButton.backgroundColor = UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1)
+        case 3:
+            print("Twitter")
+            networkButton.hidden = false
+            networkButton.setTitle("Twitter", forState: .Normal)
+            networkButton.backgroundColor = UIColor(red: 0.251, green: 0.6, blue: 1, alpha: 1)
+        case 4:
+            print("More")
+            networkButton.hidden = false
+            networkButton.setTitle("More", forState: .Normal)
+            networkButton.backgroundColor = UIColor(red: 0.227, green: 0.227, blue: 0.227, alpha: 1)
+        default: print("More segments then expected")
+        }
+    }
     
     /*
     * TableView Methods
