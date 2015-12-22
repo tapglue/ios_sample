@@ -9,8 +9,10 @@
 import UIKit
 import Tapglue
 import Contacts
+import TwitterKit
+import FBSDKLoginKit
 
-class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
+class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, FBSDKLoginButtonDelegate  {
     
     @IBOutlet weak var networkButton: UIButton!
     
@@ -25,8 +27,25 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     let contactStore = CNContactStore()
     var contactEmails: [String] = []
-    var facebookEmails: [String] = []
-    var twitterEmails: [String] = []
+//    var facebookEmails: [String] = []
+//    var twitterEmails: [String] = []
+    
+    var facebookID: String!
+    var twitterID: String!
+    
+    // Array of friends to add to your friends
+    var friendThisPeople: [AnyObject]? = []
+    var friendsFromTwitter: [AnyObject]? = []
+    
+    let twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
+        if (session != nil) {
+            print("signed in as \(session!.userName)");
+        } else {
+            print("error: \(error!.localizedDescription)");
+        }
+    })
+    
+    let facebookLogInButton = FBSDKLoginButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +68,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         // hide button
         networkButton.hidden = true
+        
+        configureFacebook()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,6 +83,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     @IBAction func networkButtonPressed(sender: UIButton) {
+        
+        
         switch networkSegmentedControl.selectedSegmentIndex {
         case 0:
             print("Pending")
@@ -78,6 +101,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         case 2:
             print("Facebook")
             
+            
         case 3:
             print("Twitter")
             
@@ -89,35 +113,31 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     @IBAction func networkSegmentedChanged(sender: UISegmentedControl) {
-        print(sender.tag)
+        // Set all buttons to hidden
+        twitterLogInButton.hidden = true
+        facebookLogInButton.hidden = true
+        networkButton.hidden = true
+        
         switch networkSegmentedControl.selectedSegmentIndex {
+            case 0:
+                print("Still needs implementation")
+            case 1:
+                clearUsersArrayAndReloadTableView()
+                contactsSegmentWasPicked()
             
-        case 0:
-            print("Pending")
-            networkButton.hidden = true
-        case 1:
-            print("Contacts")
-            clearUsersArrayAndReloadTableView()
+            case 2:
+                clearUsersArrayAndReloadTableView()
+                facebookSegmentWasPicked()
+            
+            case 3:
+                clearUsersArrayAndReloadTableView()
+                twitterSegmentWasPicked()
+            
+            case 4:
+                clearUsersArrayAndReloadTableView()
+                moreSegmentWasPicked()
 
-            contactsSegmentWasPicked()
-        case 2:
-            print("Facebook")
-            clearUsersArrayAndReloadTableView()
-            
-            facebookSegmentWasPicked()
-        case 3:
-            print("Twitter")
-            clearUsersArrayAndReloadTableView()
-            
-            twitterSegmentWasPicked()
-        case 4:
-            print("More")
-            clearUsersArrayAndReloadTableView()
-            
-            networkButton.hidden = false
-            networkButton.setTitle("More", forState: .Normal)
-            networkButton.backgroundColor = UIColor(red: 0.227, green: 0.227, blue: 0.227, alpha: 1)
-        default: print("Segments index wrong")
+            default: print("Segments index wrong")
         }
     }
     
@@ -190,16 +210,21 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     // Facebook Permission check if granted search for friends and reload TableView
     func facebookSegmentWasPicked(){
         // get default checked array
-        let contactPermission = defaults.objectForKey("facebookPermission") as! Bool
-        print(contactPermission)
+        let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
+        print(facebookPermission)
         
-        if contactPermission {
+        if facebookPermission {
             print("contactPermissionGranted")
-            self.networkButton.hidden = true
+            self.facebookLogInButton.hidden = true
+            self.returnUserFriendsData()
         } else {
-            networkButton.hidden = false
-            networkButton.setTitle("Facebook", forState: .Normal)
-            networkButton.backgroundColor = UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1)
+            
+            // Show twitterLoginButton
+            facebookLogInButton.hidden = false
+            facebookLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+            facebookLogInButton.layer.masksToBounds = true
+            facebookLogInButton.layer.cornerRadius = 4
+            self.view.addSubview(facebookLogInButton)
         }
     }
     
@@ -214,10 +239,18 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             self.networkButton.hidden = true
             
         } else {
-            networkButton.hidden = false
-            networkButton.setTitle("Twitter", forState: .Normal)
-            networkButton.backgroundColor = UIColor(red: 0.251, green: 0.6, blue: 1, alpha: 1)
+            
+            // Show twitterLoginButton
+            twitterLogInButton.hidden = false
+            twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+            self.view.addSubview(twitterLogInButton)
         }
+    }
+    
+    func moreSegmentWasPicked(){
+        networkButton.hidden = false
+        networkButton.setTitle("More", forState: .Normal)
+        networkButton.backgroundColor = UIColor(red: 0.227, green: 0.227, blue: 0.227, alpha: 1)
     }
     
     // SearchForUserByEmail and reload tableview if user was found
@@ -259,6 +292,92 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             print("Handle the error please")
         }
     }
+    
+    func configureFacebook(){
+        facebookLogInButton.readPermissions = ["public_profile", "email", "user_friends"];
+        facebookLogInButton.delegate = self
+    }
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id"]).startWithCompletionHandler { (connection, result, error) -> Void in
+
+            if error != nil{
+                print(error)
+            } else {
+                //            let strFirstName: String = (result.objectForKey("first_name") as? String)!
+                //            let strLastName: String = (result.objectForKey("last_name") as? String)!
+                //            let strPictureURL: String = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
+                //            self.lblName.text = "Welcome, \(strFirstName) \(strLastName)"
+                //            self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)
+                
+                self.facebookID = (result.objectForKey("id") as? String)!
+                print(self.facebookID)
+                self.defaults.setObject(true, forKey: "facebookPermission")
+            }
+            
+        }
+        returnUserFriendsData()
+    }
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logOut()
+//        ivUserProfileImage.image = nil
+//        lblName.text = ""
+    }
+    
+    // start returning facebook friends to tapglue
+    func returnUserFriendsData()
+    {
+        let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
+        friendsRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            if ((error) != nil)
+            {
+                // error
+                print("Error: \(error)")
+            }
+            else
+            {
+                let resultdict = result as! NSDictionary
+                //                print("Result Dict: \(resultdict)")
+                
+                let data: NSArray = resultdict.objectForKey("data") as! NSArray
+                //                print("Result Data: \(data)")
+                for i in 0 ..< data.count
+                {
+                    let valueDict: NSDictionary = data[i] as! NSDictionary
+                    let id = valueDict.objectForKey("id") as! String
+                    print("Friend id value is \(id)")
+                    
+                    // save facebook friend ids inside AnyObject array
+                    self.friendThisPeople?.append(id)
+                }
+                // add tapglue social id from facebook
+                let currentUser = TGUser.currentUser()
+                currentUser.setSocialId(self.facebookID, forKey: "facebook")
+                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+                    print(success)
+                })
+                // add friends that are found
+                Tapglue.searchUsersOnSocialPlatform("facebook", withSocialUsersIds: self.friendThisPeople, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
+                    
+                    if error != nil {
+                        print("\nError happened")
+                        print(error)
+                    }
+                    else {
+                        print("\nSuccess happened")
+                        print(facebookUsers)
+                        self.users.removeAll(keepCapacity: false)
+                        self.users = facebookUsers as! [TGUser]
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.facebookLogInButton.hidden = true
+                            self.friendsTableView.reloadData()
+                        })
+                    }
+                })
+            }
+        })
+    }
+
     
     func clearUsersArrayAndReloadTableView(){
         self.users.removeAll(keepCapacity: false)
