@@ -11,6 +11,7 @@ import Tapglue
 import Contacts
 import TwitterKit
 import FBSDKLoginKit
+import FBSDKCoreKit
 
 class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, FBSDKLoginButtonDelegate  {
     
@@ -37,6 +38,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     var friendThisPeople: [AnyObject]? = []
     var friendsFromTwitter: [AnyObject]? = []
     
+    let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
+    
     let twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
         if (session != nil) {
             print("signed in as \(session!.userName)");
@@ -46,6 +49,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     })
     
     let facebookLogInButton = FBSDKLoginButton()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -214,7 +219,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         print(facebookPermission)
         
         if facebookPermission {
-            print("contactPermissionGranted")
+            print("facebookPermissionGranted")
             self.facebookLogInButton.hidden = true
             self.returnUserFriendsData()
         } else {
@@ -231,11 +236,11 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     // Twitter Permission check if granted search for friends and reload TableView
     func twitterSegmentWasPicked(){
         // get default checked array
-        let contactPermission = defaults.objectForKey("twitterPermission") as! Bool
-        print(contactPermission)
+        let twitterPermission = defaults.objectForKey("twitterPermission") as! Bool
+        print(twitterPermission)
         
-        if contactPermission {
-            print("contactPermissionGranted")
+        if twitterPermission {
+            print("twitterPermissionGranted")
             self.networkButton.hidden = true
             
         } else {
@@ -325,17 +330,14 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     // start returning facebook friends to tapglue
-    func returnUserFriendsData()
-    {
-        let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
+    func returnUserFriendsData(){
+        
         friendsRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil)
-            {
+            if ((error) != nil){
                 // error
                 print("Error: \(error)")
-            }
-            else
-            {
+                print("Connection: \(connection)")
+            } else {
                 let resultdict = result as! NSDictionary
                 //                print("Result Dict: \(resultdict)")
                 
