@@ -10,6 +10,8 @@ import UIKit
 import Tapglue
 
 class NavigationVC: UINavigationController {
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,18 +20,25 @@ class NavigationVC: UINavigationController {
         if TGUser.currentUser() != nil {
             print(TGUser.currentUser())
         } else {
-            setupCheckedForEvents()
-            
+            setupCheckedForEventsDefaults()
+            setupPermissionDefaultBools()
             // Show loginVC if no user
             performSegueWithIdentifier("loginSegue", sender: nil)
         }
     }
     
     // TapglueSample uses 3 event types
-    func setupCheckedForEvents(){
+    func setupCheckedForEventsDefaults(){
         let checked: [Bool] = [true, true, true, true]
-        let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(checked, forKey: "checked")
+        defaults.synchronize()
+    }
+    
+    // Setup permission control for NetworkVC(networkButton)
+    func setupPermissionDefaultBools(){
+        defaults.setObject(false, forKey: "contactsPermission")
+        defaults.setObject(false, forKey: "facebookPermission")
+        defaults.setObject(false, forKey: "twitterPermission")
         defaults.synchronize()
     }
 }
