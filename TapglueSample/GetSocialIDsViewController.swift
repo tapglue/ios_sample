@@ -155,10 +155,16 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
             let strPictureURL: String = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
             self.lblName.text = "Welcome, \(strFirstName) \(strLastName)"
             self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)
+            
             self.facebookID = (result.objectForKey("id") as? String)!
-//            print((result.objectForKey("id") as? String)!)
             }
         returnUserFriendsData()
+    }
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        ivUserProfileImage.image = nil
+        lblName.text = ""
     }
     
     // start returning facebook friends to tapglue
@@ -202,12 +208,7 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
         })
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        ivUserProfileImage.image = nil
-        lblName.text = ""
-    }
+
     
 
     override func didReceiveMemoryWarning() {
