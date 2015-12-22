@@ -8,6 +8,8 @@
 
 import UIKit
 import Tapglue
+import TwitterKit
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,13 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Black tintColor to change appearence of tabBar image color
 //        UITabBar.appearance().tintColor = UIColor(red:0.23, green:0.23, blue:0.23, alpha:1.0)
         
+        // Init the SDK with your app Token and Config
+        // Token 2.3
         let config = TGConfiguration.defaultConfiguration()
         config.loggingEnabled = false
-        
-        // Initialise the SDK with your app Token and Config
-        // Token 2.3
         Tapglue.setUpWithAppToken("b27a3e3e9a2747f0138a93794625038f", andConfig: config)
-                
-        return true
+        
+        // Twitter init
+        Twitter.sharedInstance().startWithConsumerKey("jwcnpghUsKBjD3lMpdoMlSpuK", consumerSecret: "ibzxpfK76SZMNhE5sqWa7devupSCtVWOt1WpYrgOi8yZw7AtnU")
+//        Fabric.with([Twitter.sharedInstance()])
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool
+    {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 }

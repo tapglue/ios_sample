@@ -32,6 +32,7 @@
 		6A70082E1C2862D1003D385E /* NetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082D1C2862D1003D385E /* NetworkVC.swift */; };
 		6A74F6FB1C2008BD006C51C7 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */; };
 		6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */; };
+		6A7EA3F01C296EC0004D43AD /* GetSocialIDsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */; };
 		6A92D4C91C2164AE00BE79C1 /* EventFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92D4C81C2164AE00BE79C1 /* EventFilterTableViewCell.swift */; };
 		6A92D4CB1C2164C100BE79C1 /* EventFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92D4CA1C2164C100BE79C1 /* EventFilterVC.swift */; };
 		6A92D4CD1C21967900BE79C1 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92D4CC1C21967900BE79C1 /* NewsVC.swift */; };
@@ -71,6 +72,8 @@
 		6A70082D1C2862D1003D385E /* NetworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkVC.swift; sourceTree = "<group>"; };
 		6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFeedTableViewCell.swift; sourceTree = "<group>"; };
+		6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSocialIDsViewController.swift; sourceTree = "<group>"; };
+		6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapglueSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		6A92D4C81C2164AE00BE79C1 /* EventFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilterTableViewCell.swift; sourceTree = "<group>"; };
 		6A92D4CA1C2164C100BE79C1 /* EventFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilterVC.swift; sourceTree = "<group>"; };
 		6A92D4CC1C21967900BE79C1 /* NewsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
@@ -253,9 +256,11 @@
 				6A61F34D1BDADBD100EC64DF /* ViewControllers */,
 				6A61F3571BDAEB4B00EC64DF /* CustomCells */,
 				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
+				6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */,
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
 				6A2C88B21C1F269200A4EE96 /* OLD VCS */,
 				6A61F3411BDACCFD00EC64DF /* Info.plist */,
+				6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */,
 			);
 			path = TapglueSample;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 		6A61F32A1BDACCFD00EC64DF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Özgür Celebi";
 				TargetAttributes = {
@@ -437,6 +443,7 @@
 				6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */,
 				6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */,
 				6A61F34A1BDAD2FF00EC64DF /* MeVC.swift in Sources */,
+				6A7EA3F01C296EC0004D43AD /* GetSocialIDsViewController.swift in Sources */,
 				6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */,
 				6A61F3481BDAD2D500EC64DF /* FeedVC.swift in Sources */,
 				6A1A98AD1C20718D00299CD1 /* NotificationVC.swift in Sources */,
@@ -565,6 +572,8 @@
 			baseConfigurationReference = 813F3D3CE6E748A8783EEFCC /* Pods-TapglueSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TapglueSample/Info.plist;
@@ -573,6 +582,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TapglueSample/TapglueSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -582,6 +593,8 @@
 			baseConfigurationReference = A0F954FF310B1F27CA82A7E1 /* Pods-TapglueSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TapglueSample/Info.plist;
@@ -590,6 +603,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tapglue.TapglueSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TapglueSample/TapglueSample-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

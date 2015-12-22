@@ -196,7 +196,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         if contactPermission {
             print("contactPermissionGranted")
             self.networkButton.hidden = true
-            
         } else {
             networkButton.hidden = false
             networkButton.setTitle("Facebook", forState: .Normal)

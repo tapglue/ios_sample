@@ -530,6 +530,78 @@
             </objects>
             <point key="canvasLocation" x="1756" y="1693"/>
         </scene>
+        <!--Get SocialI Ds View Controller-->
+        <scene sceneID="2l1-Xp-G2c">
+            <objects>
+                <viewController id="VA3-M6-vPE" customClass="GetSocialIDsViewController" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yed-7c-PAc"/>
+                        <viewControllerLayoutGuide type="bottom" id="9dK-gc-ZUk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tUg-wC-WCp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqY-Gp-eYj" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="200" y="120" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="OSS-OE-1Wa"/>
+                                    <constraint firstAttribute="height" constant="50" id="cBK-Er-8kv"/>
+                                </constraints>
+                                <state key="normal" title="Facebook"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dmM-4H-QKx">
+                                <rect key="frame" x="200" y="236" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="24h-RJ-xIH"/>
+                                    <constraint firstAttribute="height" constant="200" id="c29-mT-l7b"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waa-xc-hSn">
+                                <rect key="frame" x="200" y="444" width="200" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="6O0-rJ-J9k"/>
+                                    <constraint firstAttribute="height" constant="36" id="Wyk-Ph-Y08"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yv5-rf-nHY" customClass="TWTRLogInButton">
+                                <rect key="frame" x="200" y="178" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T2l-mk-gmw"/>
+                                    <constraint firstAttribute="width" constant="200" id="fV8-2l-znB"/>
+                                </constraints>
+                                <state key="normal" title="Twitter"/>
+                                <connections>
+                                    <action selector="twitterButtonPressed:" destination="VA3-M6-vPE" eventType="touchUpInside" id="SQO-qA-DAx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yv5-rf-nHY" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="78k-au-hWj"/>
+                            <constraint firstItem="waa-xc-hSn" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="D7l-Ea-XX9"/>
+                            <constraint firstItem="dmM-4H-QKx" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="JM7-RF-V86"/>
+                            <constraint firstItem="waa-xc-hSn" firstAttribute="top" secondItem="dmM-4H-QKx" secondAttribute="bottom" constant="8" id="SBn-x7-Hdh"/>
+                            <constraint firstItem="rqY-Gp-eYj" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="Uep-4r-2fq"/>
+                            <constraint firstItem="dmM-4H-QKx" firstAttribute="top" secondItem="yv5-rf-nHY" secondAttribute="bottom" constant="8" id="dWX-Ff-WtW"/>
+                            <constraint firstItem="rqY-Gp-eYj" firstAttribute="top" secondItem="yed-7c-PAc" secondAttribute="bottom" constant="100" id="oyy-J1-JZH"/>
+                            <constraint firstItem="yv5-rf-nHY" firstAttribute="top" secondItem="rqY-Gp-eYj" secondAttribute="bottom" constant="8" id="tt2-vM-5na"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnFacebook" destination="rqY-Gp-eYj" id="ERb-7M-Mwj"/>
+                        <outlet property="btnTwitter" destination="yv5-rf-nHY" id="vDN-GO-J8x"/>
+                        <outlet property="ivUserProfileImage" destination="dmM-4H-QKx" id="DaC-tS-vSl"/>
+                        <outlet property="lblName" destination="waa-xc-hSn" id="fSj-HQ-9HG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TyM-Ii-Qfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="1437"/>
+        </scene>
         <!--Title-->
         <scene sceneID="cES-eN-ieY">
             <objects>
