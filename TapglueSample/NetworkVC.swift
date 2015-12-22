@@ -18,6 +18,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     @IBOutlet weak var networkSegmentedControl: UISegmentedControl!
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     var users: [TGUser] = []
     var resultSearchController: UISearchController!
     
@@ -66,10 +68,13 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             
         case 1:
             print("Contacts")
-            searchForUserByEmail()
+            
             for email in contactEmails {
                 print(email)
             }
+            
+            defaults.setObject(true, forKey: "contactsPermission")
+            searchForUserByEmail()
         case 2:
             print("Facebook")
             
@@ -92,29 +97,27 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             networkButton.hidden = true
         case 1:
             print("Contacts")
-            networkButton.hidden = false
-            networkButton.setTitle("Contacts", forState: .Normal)
-            networkButton.backgroundColor = UIColor.brownColor()
-            
-//            if contactEmails.isEmpty {
-//                searchForUserByEmail()
-//            }
+            clearUsersArrayAndReloadTableView()
+
+            contactsSegmentWasPicked()
         case 2:
             print("Facebook")
-            networkButton.hidden = false
-            networkButton.setTitle("Facebook", forState: .Normal)
-            networkButton.backgroundColor = UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1)
+            clearUsersArrayAndReloadTableView()
+            
+            facebookSegmentWasPicked()
         case 3:
             print("Twitter")
-            networkButton.hidden = false
-            networkButton.setTitle("Twitter", forState: .Normal)
-            networkButton.backgroundColor = UIColor(red: 0.251, green: 0.6, blue: 1, alpha: 1)
+            clearUsersArrayAndReloadTableView()
+            
+            twitterSegmentWasPicked()
         case 4:
             print("More")
+            clearUsersArrayAndReloadTableView()
+            
             networkButton.hidden = false
             networkButton.setTitle("More", forState: .Normal)
             networkButton.backgroundColor = UIColor(red: 0.227, green: 0.227, blue: 0.227, alpha: 1)
-        default: print("More segments then expected")
+        default: print("Segments index wrong")
         }
     }
     
@@ -167,10 +170,61 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
+    // Contacts Permission check if granted search for friends and reload TableView
+    func contactsSegmentWasPicked(){
+        // get default checked array
+        let contactPermission = defaults.objectForKey("contactsPermission") as! Bool
+        print(contactPermission)
+        
+        if contactPermission {
+            print("contactPermissionGranted")
+            self.networkButton.hidden = true
+            self.searchForUserByEmail()
+        } else {
+            self.networkButton.hidden = false
+            self.networkButton.setTitle("Contacts", forState: .Normal)
+            self.networkButton.backgroundColor = UIColor.brownColor()
+        }
+    }
+    
+    // Facebook Permission check if granted search for friends and reload TableView
+    func facebookSegmentWasPicked(){
+        // get default checked array
+        let contactPermission = defaults.objectForKey("facebookPermission") as! Bool
+        print(contactPermission)
+        
+        if contactPermission {
+            print("contactPermissionGranted")
+            self.networkButton.hidden = true
+            
+        } else {
+            networkButton.hidden = false
+            networkButton.setTitle("Facebook", forState: .Normal)
+            networkButton.backgroundColor = UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1)
+        }
+    }
+    
+    // Twitter Permission check if granted search for friends and reload TableView
+    func twitterSegmentWasPicked(){
+        // get default checked array
+        let contactPermission = defaults.objectForKey("twitterPermission") as! Bool
+        print(contactPermission)
+        
+        if contactPermission {
+            print("contactPermissionGranted")
+            self.networkButton.hidden = true
+            
+        } else {
+            networkButton.hidden = false
+            networkButton.setTitle("Twitter", forState: .Normal)
+            networkButton.backgroundColor = UIColor(red: 0.251, green: 0.6, blue: 1, alpha: 1)
+        }
+    }
     
     // SearchForUserByEmail and reload tableview if user was found
     func searchForUserByEmail() {
         readAddressBookByEmail()
+        
         Tapglue.searchUsersWithEmails(contactEmails) { (users: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("\nError happened")
@@ -205,6 +259,11 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         catch{
             print("Handle the error please")
         }
+    }
+    
+    func clearUsersArrayAndReloadTableView(){
+        self.users.removeAll(keepCapacity: false)
+        self.friendsTableView.reloadData()
     }
     
 
