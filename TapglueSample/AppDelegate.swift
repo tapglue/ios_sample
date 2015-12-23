@@ -31,6 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Twitter.sharedInstance().startWithConsumerKey("jwcnpghUsKBjD3lMpdoMlSpuK", consumerSecret: "ibzxpfK76SZMNhE5sqWa7devupSCtVWOt1WpYrgOi8yZw7AtnU")
 //        Fabric.with([Twitter.sharedInstance()])
         
+        
+//        Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
+//            if error != nil {
+//                print("\nError happened")
+//                print(error)
+//            }
+//            else {
+//                print("\nSuccess happened")
+//                var users: [TGUser] = []
+//                
+//                for inc in incoming {
+//                    users.append((inc as! TGConnection).fromUser)
+//                }
+//            }
+//        }
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

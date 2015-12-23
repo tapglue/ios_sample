@@ -32,6 +32,9 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var twitterID: String!
     
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,8 +50,18 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
 //        logInButton.center = self.view.center
 //        self.view.addSubview(logInButton)
         
-        configureFacebook()
+        btnFacebook.readPermissions = ["public_profile", "email", "user_friends"];
+        btnFacebook.delegate = self
     }
+    
+    @IBAction func getTwitterFriendsButtonPressed(sender: UIButton) {
+        getTwitterFriends(-1)
+    }
+    
+    @IBAction func getFacebookFriendsButtonPressed(sender: UIButton) {
+        returnUserFriendsData()
+    }
+    
     @IBAction func twitterButtonPressed(sender: TWTRLogInButton) {
         Twitter.sharedInstance().logInWithCompletion { (session: TWTRSession?, error: NSError?) -> Void in
             if (session != nil) {
@@ -67,7 +80,7 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print(success)
                 })
                 
-                self.getTwitterFriends()
+                self.getTwitterFriends(-1)
                 
             } else {
                 print("error: \(error!.localizedDescription)")
@@ -77,17 +90,17 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
     
 
     
-    func getTwitterFriends(){
+    func getTwitterFriends(nextCursor: Int){
         var clientError:NSError?
         let params: Dictionary = Dictionary<String, String>()
         
-//        let cursorNext: Int = 0
+        var cursorNext: Int!
         
-//        do cursorNext
+        let urlTwitterApi: String = "https://api.twitter.com/1.1/friends/ids.json?cursor=" + String(nextCursor) + "&count=5000"
         
         let request: NSURLRequest! = Twitter.sharedInstance().APIClient.URLRequestWithMethod(
             "GET",
-            URL: "https://api.twitter.com/1.1/friends/ids.json?cursor=1506336551328007053&count=5000",
+            URL: urlTwitterApi,
             parameters: params,
             error: &clientError)
         
@@ -109,12 +122,13 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
                         let resultdict = json as! NSDictionary
                         //                print("Result Dict: \(resultdict)")
                         
-                        let cursorNext = resultdict.objectForKey("next_cursor_str") as! String
+                        cursorNext = resultdict.objectForKey("next_cursor") as! Int
                         
-                        print(cursorNext)
+                        print("NextCursor: \(cursorNext)")
+                        
                         let data: NSArray = resultdict.objectForKey("ids") as! NSArray
                         //                print("Result Data: \(data)")
-//                        print(data)
+                        print(data)
                         for id in data {
                             self.friendsFromTwitter?.append(id)
                         }
@@ -128,6 +142,11 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
 //                                print("error: \(error)")
 //                            }
 //                        })
+                        
+                        if nextCursor != 0 {
+                            self.getTwitterFriends(cursorNext)
+                        }
+
                         
                     } else {
                         print("error loading json data = \(jsonError)")
@@ -143,11 +162,6 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func configureFacebook()
-    {
-        btnFacebook.readPermissions = ["public_profile", "email", "user_friends"];
-        btnFacebook.delegate = self
-    }
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id"]).startWithCompletionHandler { (connection, result, error) -> Void in
             let strFirstName: String = (result.objectForKey("first_name") as? String)!
@@ -157,6 +171,13 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
             self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)
             
             self.facebookID = (result.objectForKey("id") as? String)!
+            
+                // Add facebook social id to TGUser.currentUser
+                let currentUser = TGUser.currentUser()
+                currentUser.setSocialId(self.facebookID, forKey: "facebook")
+                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+                    print(success)
+                })
             }
         returnUserFriendsData()
     }
@@ -170,42 +191,41 @@ class GetSocialIDsViewController: UIViewController, FBSDKLoginButtonDelegate {
     // start returning facebook friends to tapglue
     func returnUserFriendsData()
     {
-        let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
-        friendsRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil)
-            {
-                // error
-                print("Error: \(error)")
-            }
-            else
-            {
-                let resultdict = result as! NSDictionary
-//                print("Result Dict: \(resultdict)")
-                
-                let data: NSArray = resultdict.objectForKey("data") as! NSArray
-//                print("Result Data: \(data)")
-                for i in 0 ..< data.count
+        
+        if (FBSDKAccessToken.currentAccessToken() != nil){
+            let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
+            friendsRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                if ((error) != nil)
                 {
-                    let valueDict: NSDictionary = data[i] as! NSDictionary
-                    let id = valueDict.objectForKey("id") as! String
-                    print("Friend id value is \(id)")
-                    
-                    // save facebook friend ids inside AnyObject array
-                    self.friendThisPeople?.append(id)
-                    self.friends++
+                    // error
+                    print("Error: \(error)")
                 }
-                // add tapglue social id from facebook
-                let currentUser = TGUser.currentUser()
-                currentUser.setSocialId(self.facebookID, forKey: "facebook")
-                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
-                    print(success)
-                })
-                // add friends that are found
-                Tapglue.searchUsersOnSocialPlatform("facebook", withSocialUsersIds: self.friendThisPeople, andCompletionBlock: { (users: [AnyObject]!, error: NSError!) -> Void in
-                    print(users)
-                })
-            }
-        })
+                else
+                {
+                    let resultdict = result as! NSDictionary
+    //                print("Result Dict: \(resultdict)")
+                    
+                    let data: NSArray = resultdict.objectForKey("data") as! NSArray
+    //                print("Result Data: \(data)")
+                    for i in 0 ..< data.count
+                    {
+                        let valueDict: NSDictionary = data[i] as! NSDictionary
+                        let id = valueDict.objectForKey("id") as! String
+                        print("Friend id value is \(id)")
+                        
+                        // save facebook friend ids inside AnyObject array
+                        self.friendThisPeople?.append(id)
+                        self.friends++
+                    }
+                    // add tapglue social id from facebook
+
+                    // add friends that are found
+                    Tapglue.searchUsersOnSocialPlatform("facebook", withSocialUsersIds: self.friendThisPeople, andCompletionBlock: { (users: [AnyObject]!, error: NSError!) -> Void in
+                        print(users)
+                    })
+                }
+            })
+        }
     }
     
 
