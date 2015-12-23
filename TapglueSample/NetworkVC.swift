@@ -512,14 +512,13 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     func clearUsersArrayAndReloadTableView(){
+        self.fromUsers.removeAll(keepCapacity: false)
+        self.toUsers.removeAll(keepCapacity: false)
         self.users.removeAll(keepCapacity: false)
         self.friendsTableView.reloadData()
     }
     
     func checkForPendingConnections(){
-        self.fromUsers.removeAll(keepCapacity: false)
-        self.toUsers.removeAll(keepCapacity: false)
-        
         Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("\nError happened")
@@ -539,8 +538,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                 print("\nFrom: \(self.fromUsers)")
                 print("\nTo: \(self.toUsers)")
                 
-                self.users = self.toUsers
-                print(self.users)
+                self.users = self.fromUsers
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     

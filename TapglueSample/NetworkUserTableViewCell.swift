@@ -70,6 +70,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                     print(error)
                 }
             })
+
         }
     }
     
