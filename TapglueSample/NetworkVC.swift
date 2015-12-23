@@ -38,23 +38,17 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     var friendThisPeople: [AnyObject]? = []
     var friendsFromTwitter: [AnyObject]? = []
     
-    let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
+    var cursorNext: Int!
+    var urlTwitterApi: String = "https://api.twitter.com/1.1/friends/ids.json?cursor=-1&count=5000"
     
-    let twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
-        if (session != nil) {
-            print("signed in as \(session!.userName)");
-        } else {
-            print("error: \(error!.localizedDescription)");
-        }
-    })
+
     
     let facebookLogInButton = FBSDKLoginButton()
     
-    
+    var twitterLogInButton = TWTRLogInButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         
         self.resultSearchController = ({
@@ -75,6 +69,16 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         networkButton.hidden = true
         
         configureFacebook()
+        
+        twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
+            if (session != nil) {
+                print("signed in as \(session!.userName)")
+                self.twitterLogin()
+                
+            } else {
+                print("error: \(error!.localizedDescription)")
+            }
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -110,9 +114,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         case 3:
             print("Twitter")
             
-        case 4:
-            print("More")
-            
         default: print("More segments then expected")
         }
     }
@@ -137,10 +138,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             case 3:
                 clearUsersArrayAndReloadTableView()
                 twitterSegmentWasPicked()
-            
-            case 4:
-                clearUsersArrayAndReloadTableView()
-                moreSegmentWasPicked()
 
             default: print("Segments index wrong")
         }
@@ -242,20 +239,15 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         if twitterPermission {
             print("twitterPermissionGranted")
             self.networkButton.hidden = true
-            
+            self.getTwitterFriends()
         } else {
             
             // Show twitterLoginButton
             twitterLogInButton.hidden = false
             twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
             self.view.addSubview(twitterLogInButton)
+            
         }
-    }
-    
-    func moreSegmentWasPicked(){
-        networkButton.hidden = false
-        networkButton.setTitle("More", forState: .Normal)
-        networkButton.backgroundColor = UIColor(red: 0.227, green: 0.227, blue: 0.227, alpha: 1)
     }
     
     // SearchForUserByEmail and reload tableview if user was found
@@ -298,6 +290,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
+    // Mark: -Facebook Methods
     func configureFacebook(){
         facebookLogInButton.readPermissions = ["public_profile", "email", "user_friends"];
         facebookLogInButton.delegate = self
@@ -317,6 +310,13 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                 self.facebookID = (result.objectForKey("id") as? String)!
                 print(self.facebookID)
                 self.defaults.setObject(true, forKey: "facebookPermission")
+                
+                // Add facebook social id to TGUser.currentUser
+                let currentUser = TGUser.currentUser()
+                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
+                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+                    print(success)
+                })
             }
             
         }
@@ -331,55 +331,159 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     // start returning facebook friends to tapglue
     func returnUserFriendsData(){
-        
-        friendsRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil){
-                // error
-                print("Error: \(error)")
-                print("Connection: \(connection)")
-            } else {
-                let resultdict = result as! NSDictionary
-                //                print("Result Dict: \(resultdict)")
-                
-                let data: NSArray = resultdict.objectForKey("data") as! NSArray
-                //                print("Result Data: \(data)")
-                for i in 0 ..< data.count
-                {
-                    let valueDict: NSDictionary = data[i] as! NSDictionary
-                    let id = valueDict.objectForKey("id") as! String
-                    print("Friend id value is \(id)")
+        if (FBSDKAccessToken.currentAccessToken() != nil){
+            let friendsRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends?fields=id", parameters: nil)
+            friendsRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                if ((error) != nil){
+                    // error
+                    print("Error: \(error)")
+                    print("Connection: \(connection)")
+                } else {
+                    let resultdict = result as! NSDictionary
+                    //                print("Result Dict: \(resultdict)")
                     
-                    // save facebook friend ids inside AnyObject array
-                    self.friendThisPeople?.append(id)
+                    let data: NSArray = resultdict.objectForKey("data") as! NSArray
+                    //                print("Result Data: \(data)")
+                    for i in 0 ..< data.count
+                    {
+                        let valueDict: NSDictionary = data[i] as! NSDictionary
+                        let id = valueDict.objectForKey("id") as! String
+                        print("Friend id value is \(id)")
+                        
+                        // save facebook friend ids inside AnyObject array
+                        self.friendThisPeople?.append(id)
+                    }
+
+                    // add friends that are found
+                    Tapglue.searchUsersOnSocialPlatform("facebook", withSocialUsersIds: self.friendThisPeople, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
+                        
+                        if error != nil {
+                            print("\nError happened")
+                            print(error)
+                        }
+                        else {
+                            print("\nSuccess happened")
+                            print(facebookUsers)
+                            self.users.removeAll(keepCapacity: false)
+                            self.users = facebookUsers as! [TGUser]
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.facebookLogInButton.hidden = true
+                                self.friendsTableView.reloadData()
+                            })
+                        }
+                    })
                 }
+            })
+        }
+    }
+
+    
+    // Mark: -Twitter Methods
+    func twitterLogin(){
+        
+        Twitter.sharedInstance().logInWithCompletion { (session: TWTRSession?, error: NSError?) -> Void in
+            if (session != nil) {
+                print("signed in as: \(session!.userName)")
+                print("signed in as: \(session!.userID)")
+                print("signed in as: \(session!)")
+                self.twitterID = session!.userID
+                //                self.client = TWTRAPIClient(userID: session!.userID)
+                // make requests with client
+                //                    print(self.client.userID)
+                
                 // add tapglue social id from facebook
                 let currentUser = TGUser.currentUser()
-                currentUser.setSocialId(self.facebookID, forKey: "facebook")
+                currentUser.setSocialId(self.twitterID, forKey: TGPlatformKeyTwitter)
                 currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
                     print(success)
                 })
-                // add friends that are found
-                Tapglue.searchUsersOnSocialPlatform("facebook", withSocialUsersIds: self.friendThisPeople, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
-                    
-                    if error != nil {
-                        print("\nError happened")
-                        print(error)
-                    }
-                    else {
-                        print("\nSuccess happened")
-                        print(facebookUsers)
-                        self.users.removeAll(keepCapacity: false)
-                        self.users = facebookUsers as! [TGUser]
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.facebookLogInButton.hidden = true
-                            self.friendsTableView.reloadData()
-                        })
-                    }
-                })
+                
+                // Bool to check if user granted permission for twitter
+//                self.defaults.setObject(true, forKey: "twitterPermission")
+                
+                self.getTwitterFriends()
+                
+            } else {
+                print("error: \(error!.localizedDescription)")
             }
-        })
+        }
     }
-
+    func getTwitterFriends(){
+        var clientError:NSError?
+        let params: Dictionary = Dictionary<String, String>()
+        
+        let request: NSURLRequest! = Twitter.sharedInstance().APIClient.URLRequestWithMethod(
+            "GET",
+            URL: urlTwitterApi,
+            parameters: params,
+            error: &clientError)
+        
+        if request != nil {
+            Twitter.sharedInstance().APIClient.sendTwitterRequest(request!) {
+                (response, data, connectionError) -> Void in
+                if (connectionError == nil) {
+                    var jsonError: NSError?
+                    let json: AnyObject? = try!
+                        NSJSONSerialization.JSONObjectWithData(data!,
+                            options: .MutableContainers)
+                    
+                    // check for json data
+                    if (json != nil) {
+                        //                        print("response = \(json)")
+                        //                        print(json?.valueForKey("ids"))
+                        
+                        
+                        let resultdict = json as! NSDictionary
+                        //                print("Result Dict: \(resultdict)")
+                        
+                        self.cursorNext = resultdict.objectForKey("next_cursor") as! Int
+                        
+                        print("NextCursor: \(self.cursorNext)")
+                        self.urlTwitterApi = "https://api.twitter.com/1.1/friends/ids.json?cursor=" + String(self.cursorNext) + "&count=5000"
+                        let data: NSArray = resultdict.objectForKey("ids") as! NSArray
+                        //                print("Result Data: \(data)")
+                        print(data)
+                        for id in data {
+                            self.friendsFromTwitter?.append(id)
+                        }
+                        
+                        print(self.friendsFromTwitter!.count)
+                        
+                        
+                        if self.cursorNext != 0 {
+                            self.getTwitterFriends()
+                        }
+                        // add friends that are found
+                        Tapglue.searchUsersOnSocialPlatform("twitter", withSocialUsersIds: self.friendsFromTwitter, andCompletionBlock: { (twitterUsers: [AnyObject]!, error: NSError!) -> Void in
+                            if error != nil {
+                                print("\nError happened")
+                                print(error)
+                            }
+                            else {
+                                print("\nSuccess happened")
+                                print(twitterUsers)
+                                self.users.removeAll(keepCapacity: false)
+                                self.users = twitterUsers as! [TGUser]
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.twitterLogInButton.hidden = true
+                                    self.friendsTableView.reloadData()
+                                })
+                            }
+                        })
+                        
+                    } else {
+                        print("error loading json data = \(jsonError)")
+                    }
+                }
+                else {
+                    print("Error: \(connectionError)")
+                }
+            }
+        }
+        else {
+            print("Error: \(clientError)")
+        }
+    }
     
     func clearUsersArrayAndReloadTableView(){
         self.users.removeAll(keepCapacity: false)

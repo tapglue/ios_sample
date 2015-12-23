@@ -578,17 +578,48 @@
                                     <action selector="twitterButtonPressed:" destination="VA3-M6-vPE" eventType="touchUpInside" id="SQO-qA-DAx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2h-6E-8UC">
+                                <rect key="frame" x="408" y="188" width="75" height="30"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="D7j-Nx-wj1"/>
+                                    <constraint firstAttribute="height" constant="30" id="oKg-nM-j5d"/>
+                                </constraints>
+                                <state key="normal" title="get friends">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getTwitterFriendsButtonPressed:" destination="VA3-M6-vPE" eventType="touchUpInside" id="3vf-z8-Jpz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdR-HU-D2t">
+                                <rect key="frame" x="408" y="130" width="75" height="30"/>
+                                <color key="backgroundColor" red="0.1960784314" green="0.25490196079999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="L2e-ah-rhr"/>
+                                </constraints>
+                                <state key="normal" title="get friends">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getFacebookFriendsButtonPressed:" destination="VA3-M6-vPE" eventType="touchUpInside" id="q35-d7-rKg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="x2h-6E-8UC" firstAttribute="leading" secondItem="yv5-rf-nHY" secondAttribute="trailing" constant="8" id="0pz-E9-2Nr"/>
                             <constraint firstItem="yv5-rf-nHY" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="78k-au-hWj"/>
                             <constraint firstItem="waa-xc-hSn" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="D7l-Ea-XX9"/>
                             <constraint firstItem="dmM-4H-QKx" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="JM7-RF-V86"/>
+                            <constraint firstItem="LdR-HU-D2t" firstAttribute="centerY" secondItem="rqY-Gp-eYj" secondAttribute="centerY" id="Pa0-ce-DYn"/>
                             <constraint firstItem="waa-xc-hSn" firstAttribute="top" secondItem="dmM-4H-QKx" secondAttribute="bottom" constant="8" id="SBn-x7-Hdh"/>
                             <constraint firstItem="rqY-Gp-eYj" firstAttribute="centerX" secondItem="tUg-wC-WCp" secondAttribute="centerX" id="Uep-4r-2fq"/>
                             <constraint firstItem="dmM-4H-QKx" firstAttribute="top" secondItem="yv5-rf-nHY" secondAttribute="bottom" constant="8" id="dWX-Ff-WtW"/>
+                            <constraint firstItem="LdR-HU-D2t" firstAttribute="leading" secondItem="rqY-Gp-eYj" secondAttribute="trailing" constant="8" id="era-8Q-7fM"/>
                             <constraint firstItem="rqY-Gp-eYj" firstAttribute="top" secondItem="yed-7c-PAc" secondAttribute="bottom" constant="100" id="oyy-J1-JZH"/>
                             <constraint firstItem="yv5-rf-nHY" firstAttribute="top" secondItem="rqY-Gp-eYj" secondAttribute="bottom" constant="8" id="tt2-vM-5na"/>
+                            <constraint firstItem="x2h-6E-8UC" firstAttribute="centerY" secondItem="yv5-rf-nHY" secondAttribute="centerY" id="xsT-BM-u5C"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1028,7 +1059,6 @@
                                     <segment title="Contacts"/>
                                     <segment title="Facebook"/>
                                     <segment title="Twitter"/>
-                                    <segment title="More"/>
                                 </segments>
                                 <connections>
                                     <action selector="networkSegmentedChanged:" destination="Wqg-Rs-gNK" eventType="valueChanged" id="Ak2-D4-qYw"/>
@@ -1072,15 +1102,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6q-Fx-sVI">
-                                                    <rect key="frame" x="557" y="27" width="35" height="35"/>
+                                                    <rect key="frame" x="492" y="27" width="100" height="35"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="C2H-2U-9Gw"/>
-                                                        <constraint firstAttribute="width" constant="35" id="DQm-3F-lYW"/>
+                                                        <constraint firstAttribute="width" constant="100" id="hHO-I6-8Pf"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="AddUser">
-                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Add"/>
+                                                    <state key="selected" title="Friend">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" backgroundImage="RemoveUser"/>
                                                     <connections>
                                                         <action selector="connectPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="WDf-Zn-903"/>
                                                     </connections>
@@ -1994,7 +2025,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddUser" width="32" height="32"/>
         <image name="BackFilledToolbar" width="22" height="22"/>
         <image name="BookmarkFilledToolbar" width="22" height="22"/>
         <image name="ChatFilled" width="30" height="30"/>
@@ -2014,7 +2044,6 @@
         <image name="ProfileEmpty" width="25" height="25"/>
         <image name="ProfileFilled" width="25" height="25"/>
         <image name="RefreshFilledToolbar" width="22" height="22"/>
-        <image name="RemoveUser" width="32" height="32"/>
         <image name="ShareFilled" width="30" height="30"/>
         <image name="avatar-1" width="103" height="135"/>
         <image name="avatar-3" width="103" height="118"/>
