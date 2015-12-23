@@ -24,6 +24,10 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var users: [TGUser] = []
+    
+    var fromUsers: [TGUser] = []
+    var toUsers: [TGUser] = []
+    
     var resultSearchController: UISearchController!
     
     let contactStore = CNContactStore()
@@ -75,6 +79,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                 print("error: \(error!.localizedDescription)")
             }
         })
+        
+        checkForPendingConnections()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -123,6 +129,9 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         switch networkSegmentedControl.selectedSegmentIndex {
             case 0:
                 print("Still needs implementation")
+                clearUsersArrayAndReloadTableView()
+                checkForPendingConnections()
+            
             case 1:
                 clearUsersArrayAndReloadTableView()
                 contactsSegmentWasPicked()
@@ -186,6 +195,13 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             users.removeAll(keepCapacity: false)
             self.friendsTableView.reloadData()
         }
+    }
+    
+    // Checking for pending connections
+    func pendingSegmentWasPicked(){
+        
+        
+        checkForPendingConnections()
     }
     
     // Contacts Permission check if granted search for friends and reload TableView
@@ -498,6 +514,40 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     func clearUsersArrayAndReloadTableView(){
         self.users.removeAll(keepCapacity: false)
         self.friendsTableView.reloadData()
+    }
+    
+    func checkForPendingConnections(){
+        self.fromUsers.removeAll(keepCapacity: false)
+        self.toUsers.removeAll(keepCapacity: false)
+        
+        Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil {
+                print("\nError happened")
+                print(error)
+            }
+            else {
+                print("\nSuccess happened")
+                print(incoming)
+                print(outgoing)
+
+                for inc in incoming {
+                    self.fromUsers.append((inc as! TGConnection).fromUser)
+                }
+                for out in outgoing {
+                    self.toUsers.append((out as! TGConnection).toUser)
+                }
+                print("\nFrom: \(self.fromUsers)")
+                print("\nTo: \(self.toUsers)")
+                
+                self.users = self.toUsers
+                print(self.users)
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    self.friendsTableView.reloadData()
+                })
+            }
+        }
     }
     
 

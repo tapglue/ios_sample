@@ -63,6 +63,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         sender.selected = true
+                        self.connectButton.setTitle("Pending", forState: .Selected)
                     })
                 } else if error != nil{
                     print("Error happened\n")
