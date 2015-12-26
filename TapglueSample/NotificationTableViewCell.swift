@@ -22,19 +22,12 @@ class NotificationTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    // Configure Cell with TGEvent data
+    // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
-        
         self.userNameLabel.text = event.user.username
         
-//        self.eventNameLabel.text = event.object.objectId
+        self.eventNameLabel.text = event.object.objectId
         
         self.eventTypeImageView.image = UIImage(named: event.type)
         
@@ -45,12 +38,8 @@ class NotificationTableViewCell: UITableViewCell {
     }
     
     
-    // Configure Cell with TGEvent data
+    // Configure Cell with TGEvent
     func configureCellForTypeTGFriend(event: TGEvent!){
-        
-        print(event.type)
-        print(event.user.username)
-
         if event.target.user != nil {
             eventNameLabel.text = "You are now friends with " + event.target.user.username
             
