@@ -1689,7 +1689,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButtonPressed:" destination="WWs-BM-rhj" eventType="touchUpInside" id="5Mp-NS-ruO"/>
                                     <segue destination="JQg-NV-vAO" kind="show" id="ES8-il-BB7"/>
                                 </connections>
                             </button>
@@ -1705,7 +1704,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="signInButtonPressed:" destination="WWs-BM-rhj" eventType="touchUpInside" id="tNG-5Y-DbB"/>
                                     <segue destination="fZR-U3-VUv" kind="show" id="TLy-Yy-E1F"/>
                                 </connections>
                             </button>

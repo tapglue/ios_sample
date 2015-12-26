@@ -9,7 +9,7 @@
 import UIKit
 import Tapglue
 
-class LoginRegisterVC: UIViewController, UITextFieldDelegate {
+class LoginRegisterVC: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -31,11 +31,9 @@ class LoginRegisterVC: UIViewController, UITextFieldDelegate {
         avatarTwoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
         avatarThreeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
     }
-    
-//    override func viewWillAppear(animated: Bool) {
-//        self.navigationController?.navigationBarHidden = true
-//    }
+
     override func viewWillDisappear(animated: Bool) {
+        // Show navigationBar
         self.navigationController?.navigationBarHidden = false
     }
     
@@ -81,7 +79,6 @@ class LoginRegisterVC: UIViewController, UITextFieldDelegate {
         avatarTwoImageView.backgroundColor = UIColor.clearColor()
         avatarThreeImageView.backgroundColor = UIColor.clearColor()
         
-        
         let currentTag = sender.view?.tag
         
         switch currentTag! {
@@ -98,7 +95,9 @@ class LoginRegisterVC: UIViewController, UITextFieldDelegate {
             "No avatar was pressed"
         }
     }
-    
+}
+
+extension LoginRegisterVC: UITextFieldDelegate {
     // Mark: TextField method
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         

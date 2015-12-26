@@ -9,14 +9,12 @@
 import UIKit
 import Tapglue
 
-class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class HomeVC: UIViewController, UITableViewDelegate  {
 
     @IBOutlet weak var homeTableView: UITableView!
     
-    // Tapglue events array
-//    var events: [TGEvent] = []
+    // TGPost array
     var posts: [TGPost] = []
-    var postToPass: TGPost!
     
     var refreshControl: UIRefreshControl!
     
@@ -47,7 +45,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     }
     
     func loadFriendsActivityFeed() {
-        
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
             
             if error != nil {
@@ -55,18 +52,20 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
                 print(error)
             }
             else {
+                self.posts = feed as! [TGPost]
+
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.posts = feed as! [TGPost]
                     self.homeTableView.reloadData()
                 })
+                
                 self.refreshControl.endRefreshing()
             }
         }
     }
-    
-    /*
-    * TableView Methods
-    */
+}
+
+extension HomeVC: UITableViewDataSource {
+    // Mark: -TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -78,54 +77,33 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
         
-        
-        let post = self.posts[indexPath.row]
-        print(post)
-        cell.configureCellWithPost(post)
+        cell.configureCellWithPost(self.posts[indexPath.row])
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Did Select post and can comment now
-        postToPass = posts[indexPath.row]
+//        postToPass = posts[indexPath.row]
         
         let pdVC =
         self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
-        // pass the relevant data to the new sub-ViewController
+        
+        // pass data
         pdVC.post = posts[indexPath.row]
         
         // tell the new controller to present itself
         self.navigationController!.pushViewController(pdVC, animated: true)
     }
-    
-    
-    
+}
+
+extension HomeVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldDidBeginEditing(textField: UITextField) {
-        // Show loginVC if no user
+        // Show PostVC
         textField.resignFirstResponder()
         self.performSegueWithIdentifier("postSegue", sender: nil)
         print("beginEditing")
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-    /*
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

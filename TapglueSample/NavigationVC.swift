@@ -34,7 +34,7 @@ class NavigationVC: UINavigationController {
         defaults.synchronize()
     }
     
-    // Setup permission control for NetworkVC(networkButton)
+    // Setup permission controls for NetworkVC(networkButton)
     func setupPermissionDefaultBools(){
         defaults.setObject(false, forKey: "contactsPermission")
         defaults.setObject(false, forKey: "facebookPermission")

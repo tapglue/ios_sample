@@ -19,6 +19,7 @@ class LoginSignInVC: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        // Show navigationBar
         self.navigationController?.navigationBarHidden = false
     }
     
@@ -43,21 +44,4 @@ class LoginSignInVC: UIViewController {
             print("Please enter all details and select an avatar")
         }
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
