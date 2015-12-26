@@ -12,7 +12,6 @@ import Tapglue
 class PostDetailCommentsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userImageView: UIImageView!
-    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userCommentLabel: UILabel!
 
@@ -20,15 +19,8 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func configureCellWithPostComment(comment: TGPostComment) {
-        print(comment)
         userNameLabel.text = comment.user.username
         userCommentLabel.text = comment.content
         
@@ -36,5 +28,4 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         userImage = comment.user.images.valueForKey("avatar") as! TGImage
         self.userImageView.image = UIImage(named: userImage.url)
     }
-
 }
