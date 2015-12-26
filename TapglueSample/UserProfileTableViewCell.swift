@@ -11,7 +11,7 @@ import Tapglue
 
 class UserProfileTableViewCell: UITableViewCell {
     
-    
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
 
@@ -19,16 +19,10 @@ class UserProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    // Configure Cell with TGEvent data
+    // Configure Cell with TGPost
     func configureCellWithPost(post: TGPost!){
-        
+        // Date to string
         let date = post.createdAt
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
@@ -40,22 +34,30 @@ class UserProfileTableViewCell: UITableViewCell {
         
     }
     
-    // Configure Cell with TGEvent data
+    // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
-        
+        // Date to string
         let date = event.createdAt
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         self.dateLabel.text = dateFormatter.stringFromDate(date)
         
         switch event.type {
-        case "like_event":
-            self.infoLabel.text = "Liked"
-        case "bookmark_event":
-            self.infoLabel.text = "Bookmarked"
-        case "tg_friend":
-            self.infoLabel.text = "Added Friend"
-        default: print("More event types then expected")
+            case "like_event":
+                self.typeLabel.text = "Liked"
+            case "bookmark_event":
+                self.typeLabel.text = "Bookmarked"
+            case "tg_friend":
+                self.typeLabel.text = "Added Friend"
+            case "tg_like":
+                self.typeLabel.text = "Liked Post"
+            default: print("More event types then expected")
+        }
+        
+        self.infoLabel.text = event.tgObjectId
+        
+        if event.object != nil {
+            self.infoLabel.text = event.object.objectId
         }
     }
 
