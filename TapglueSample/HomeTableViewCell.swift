@@ -26,19 +26,17 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
-        
         if likeButton.selected == true {
             Tapglue.deleteLike(cellPost) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n")
+                    print("\nError happened:")
                     print(error)
                 }
                 else {
-                    print("Success happened\n")
+                    print("\nSuccessly deleted like from post:")
                     print(success)
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -49,11 +47,11 @@ class HomeTableViewCell: UITableViewCell {
         } else {
             cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n")
+                    print("\nError happened:")
                     print(error)
                 }
                 else {
-                    print("Success happened\n")
+                    print("\nSuccessly liked a post:")
                     print(success)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.likeButton.selected = true
@@ -69,20 +67,21 @@ class HomeTableViewCell: UITableViewCell {
         let pdVC =
         main.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
+        
         // pass the relevant data to the new sub-ViewController
         pdVC.post = cellPost
         pdVC.commentButtonPressedSwitch = true
+        
         // tell the new controller to present itself
         rootViewController.pushViewController(pdVC, animated: true)
     }
+    
     @IBAction func shareButtonPressed(sender: UIButton) {
         
     }
     
-    
     // Configure Cell with TGPost data
     func configureCellWithPost(post: TGPost!){
-        
         cellPost = post
         
         // UserText
@@ -92,28 +91,30 @@ class HomeTableViewCell: UITableViewCell {
         let postAttachment = post.attachments
         self.postTextLabel.text = "\" " + postAttachment[0].content + " \""
         
+        // UserImage
         var userImage = TGImage()
         userImage = post.user.images.valueForKey("avatar") as! TGImage
         self.userImageView.image = UIImage(named: userImage.url)
 
         // Check visibility
         switch post.visibility {
-        case TGVisibility.Private:
-            self.visibilityImageView.image = UIImage(named: "privateFilled")
-            
-        case TGVisibility.Connection:
-            self.visibilityImageView.image = UIImage(named: "connectionFilled")
-            
-        case TGVisibility.Public:
-            self.visibilityImageView.image = UIImage(named: "publicFilled")
+            case TGVisibility.Private:
+                self.visibilityImageView.image = UIImage(named: "privateFilled")
+                
+            case TGVisibility.Connection:
+                self.visibilityImageView.image = UIImage(named: "connectionFilled")
+                
+            case TGVisibility.Public:
+                self.visibilityImageView.image = UIImage(named: "publicFilled")
         }
         
+        // Date to string
         let date = post.createdAt
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         self.dateLabel.text = dateFormatter.stringFromDate(date)
         
-        print("Is Liked: \(cellPost.isLiked)")
+        // Check if post isLiked already
         if cellPost.isLiked {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.likeButton.selected = true
@@ -124,12 +125,4 @@ class HomeTableViewCell: UITableViewCell {
             })
         }
     }
-
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
