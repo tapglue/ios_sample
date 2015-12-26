@@ -929,19 +929,19 @@
                                     <action selector="followingCountButtonPressed:" destination="ZsM-tM-c1g" eventType="touchUpInside" id="RH0-KJ-xHU"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kI9-qO-YCc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kI9-qO-YCc">
                                 <rect key="frame" x="0.0" y="305" width="600" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="nXi-XY-auB">
-                                    <rect key="frame" x="0.0" y="78" width="600" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="100" width="600" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="50" id="OB6-kB-5uE" customClass="UserProfileTableViewCell" customModule="TapglueSample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="OB6-kB-5uE" customClass="UserProfileTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OB6-kB-5uE" id="kUM-b9-wcv">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VD7-gG-lzG">
@@ -955,16 +955,28 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkK-rg-5TV">
-                                                    <rect key="frame" x="15" y="8" width="511" height="33.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <rect key="frame" x="15" y="34" width="511" height="29.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTp-RE-RuP">
+                                                    <rect key="frame" x="15" y="8" width="200" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="h0q-QO-otk"/>
+                                                        <constraint firstAttribute="width" constant="200" id="j6q-FL-CbC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EkK-rg-5TV" firstAttribute="top" secondItem="kUM-b9-wcv" secondAttribute="top" constant="8" id="FqN-37-VLz"/>
+                                                <constraint firstItem="EkK-rg-5TV" firstAttribute="top" secondItem="CTp-RE-RuP" secondAttribute="bottom" id="N8Y-Gj-bsD"/>
                                                 <constraint firstItem="VD7-gG-lzG" firstAttribute="leading" secondItem="EkK-rg-5TV" secondAttribute="trailing" constant="-4" id="X7d-1q-wpW"/>
+                                                <constraint firstItem="CTp-RE-RuP" firstAttribute="leading" secondItem="kUM-b9-wcv" secondAttribute="leading" constant="15" id="esz-E7-uRn"/>
                                                 <constraint firstAttribute="trailing" secondItem="VD7-gG-lzG" secondAttribute="trailing" constant="8" id="gIR-dx-knA"/>
+                                                <constraint firstItem="CTp-RE-RuP" firstAttribute="top" secondItem="kUM-b9-wcv" secondAttribute="top" constant="8" id="kGT-Mf-itw"/>
                                                 <constraint firstItem="VD7-gG-lzG" firstAttribute="top" secondItem="kUM-b9-wcv" secondAttribute="top" constant="8" id="kQk-tJ-lbr"/>
                                                 <constraint firstAttribute="bottom" secondItem="EkK-rg-5TV" secondAttribute="bottom" constant="8" id="nsF-zK-RBg"/>
                                                 <constraint firstItem="EkK-rg-5TV" firstAttribute="leading" secondItem="kUM-b9-wcv" secondAttribute="leading" constant="15" id="rgZ-XV-47M"/>
@@ -973,6 +985,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="VD7-gG-lzG" id="aXb-KA-miL"/>
                                             <outlet property="infoLabel" destination="EkK-rg-5TV" id="yY9-hw-klU"/>
+                                            <outlet property="typeLabel" destination="CTp-RE-RuP" id="TQU-0e-M3S"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
