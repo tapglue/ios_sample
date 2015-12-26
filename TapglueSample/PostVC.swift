@@ -9,14 +9,11 @@
 import UIKit
 import Tapglue
 
-class PostVC: UIViewController, UITextFieldDelegate {
+class PostVC: UIViewController {
 
     @IBOutlet weak var visibilitySegmentedControl: UISegmentedControl!
-    
     @IBOutlet weak var postTextField: UITextField!
-    
     @IBOutlet weak var userImageView: UIImageView!
-    
     @IBOutlet weak var postUIBarButton: UIBarButtonItem!
     
     var postText: String?
@@ -24,34 +21,32 @@ class PostVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         postTextField.becomeFirstResponder()
         
         var userImage = TGImage()
         userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
-        
         self.userImageView.image = UIImage(named: userImage.url)
         
         postUIBarButton.enabled = false
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
-        
         if postText?.characters.count > 2 {
             let publicPost = TGPost()
             
             switch visibilitySegmentedControl.selectedSegmentIndex {
-            case 0:
-                publicPost.visibility = TGVisibility.Private
-            case 1:
-                publicPost.visibility = TGVisibility.Connection
-            case 2:
-                publicPost.visibility = TGVisibility.Public
-            default: "More options then expected"
+                case 0:
+                    publicPost.visibility = TGVisibility.Private
+                case 1:
+                    publicPost.visibility = TGVisibility.Connection
+                case 2:
+                    publicPost.visibility = TGVisibility.Public
+                default: "More options then expected"
             }
             
             postText = postTextField.text!
+            
+            // Add attachment to TGPost
             publicPost.addAttachment(TGAttachment(text: postText, andName: "status"))
             
             Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
@@ -66,41 +61,12 @@ class PostVC: UIViewController, UITextFieldDelegate {
         } else {
             showAlert()
         }
-        
-        
     }
     
     @IBAction func dismissVC(sender: AnyObject) {
         resignKeyboardAndDismissVC()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    
-    // Mark: - TextField
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        postText = textField.text
-        textField.resignFirstResponder()
-        return false
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        print(range.location)
-        if range.location > 2 {
-            postUIBarButton.enabled = true
-            postText = textField.text
-        }
-        if range.location <= 2{
-            postUIBarButton.enabled = false
-        }
-        
-        return true
-    }
-    
+ 
     func resignKeyboardAndDismissVC(){
         postTextField.resignFirstResponder()
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -121,17 +87,30 @@ class PostVC: UIViewController, UITextFieldDelegate {
         
         // Present UIAlertController
         self.presentViewController(alertController, animated: true) {
-
         }
     }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension PostVC: UITextFieldDelegate {
+    // Mark: - TextField
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        postText = textField.text
+        
+        textField.resignFirstResponder()
+        
+        return false
     }
-    */
-
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if range.location > 2 {
+            postUIBarButton.enabled = true
+            postText = textField.text
+        }
+        
+        if range.location <= 2{
+            postUIBarButton.enabled = false
+        }
+        
+        return true
+    }
 }
