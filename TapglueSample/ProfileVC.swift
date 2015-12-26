@@ -9,7 +9,7 @@
 import UIKit
 import Tapglue
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var friendsCountButton: UIButton!
     @IBOutlet weak var followerCountButton: UIButton!
@@ -18,6 +18,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAboutLabel: UILabel!
     @IBOutlet weak var userFullnameLabel: UILabel!
+    
     @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
@@ -29,8 +30,6 @@ class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,9 +38,6 @@ class ProfileVC: UIViewController {
         currentFriendsFollowerFollowingCount()
         
         getEventsAndPostsOfCurrentUser()
-        
-        profileFeedTableView.reloadData()
-        
         
         let tapglueUser = TGUser.currentUser()
         
@@ -58,82 +54,43 @@ class ProfileVC: UIViewController {
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (friends: [AnyObject]!, error: NSError!) -> Void in
-            
             let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
+            usersViewController.users = friends as! [TGUser]
+            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                usersViewController.users = friends as! [TGUser]
                 self.navigationController?.pushViewController(usersViewController, animated: true)
             })
         }
     }
+    
     @IBAction func followerCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFollowersForCurrentUserWithCompletionBlock { (followers: [AnyObject]!,error: NSError!) -> Void in
-            
             let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
+            usersViewController.users = followers as! [TGUser]
+            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                usersViewController.users = followers as! [TGUser]
                 self.navigationController?.pushViewController(usersViewController, animated: true)
             })
         }
     }
+    
     @IBAction func followingCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFollowsForCurrentUserWithCompletionBlock { (following: [AnyObject]!,error: NSError!) -> Void in
-            
             let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
+            usersViewController.users = following as! [TGUser]
+            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                usersViewController.users = following as! [TGUser]
                 self.navigationController?.pushViewController(usersViewController, animated: true)
             })
         }
     }
-    
-    
     
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
         self.profileFeedTableView.reloadData()
     }
-    
-    
-        // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        var numberOfRows = 0
-            switch feedSegmentedControl.selectedSegmentIndex {
-            case 0:
-                numberOfRows = events.count
-                
-            case 1:
-                numberOfRows = posts.count
-                
-            default: print("More then two segments")
-            }
-        return numberOfRows
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ProfileFeedTableViewCell
-        // Configure the cell...
-        
-        switch feedSegmentedControl.selectedSegmentIndex {
-        case 0:
-            cell.configureCellWithEvent(events[indexPath.row])
-        case 1:
-            cell.configureCellWithPost(posts[indexPath.row])
-        default: print("More then two segments")
-        }
-        
-    
-        return cell
-    }
-    
     
     func getEventsAndPostsOfCurrentUser() {
         Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (events: [AnyObject]!,error: NSError!) -> Void in
@@ -142,8 +99,10 @@ class ProfileVC: UIViewController {
                 print(error)
             }
             else {
+                self.events = events as! [TGEvent]
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.events = events as! [TGEvent]
+                    self.profileFeedTableView.reloadData()
                 })
             }
         }
@@ -153,8 +112,10 @@ class ProfileVC: UIViewController {
                 print(error)
             }
             else {
+                self.posts = posts as! [TGPost]
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.posts = posts as! [TGPost]
+                    self.profileFeedTableView.reloadData()
                 })
             }
         }
@@ -169,5 +130,39 @@ class ProfileVC: UIViewController {
     func refreshTGUser() {
         Tapglue.retrieveCurrentUserWithCompletionBlock { (user: TGUser!,error: NSError!) -> Void in
         }
+    }
+}
+
+extension ProfileVC: UITableViewDataSource {
+    // MARK: -TableView
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numberOfRows = 0
+        
+        switch feedSegmentedControl.selectedSegmentIndex {
+            case 0:
+                numberOfRows = events.count
+            case 1:
+                numberOfRows = posts.count
+            default: print("More then two segments")
+            }
+        return numberOfRows
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ProfileFeedTableViewCell
+        
+        switch feedSegmentedControl.selectedSegmentIndex {
+            case 0:
+                cell.configureCellWithEvent(events[indexPath.row])
+            case 1:
+                cell.configureCellWithPost(posts[indexPath.row])
+            default: print("More then two segments")
+        }
+        
+        return cell
     }
 }
