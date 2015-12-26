@@ -9,8 +9,7 @@
 import UIKit
 import Tapglue
 
-class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
     
@@ -19,7 +18,7 @@ class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     var defaultTGUser = TGUser()
     
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
-    var userUserInfo = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, "edit about", TGUser.currentUser().email]
+    var userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, "edit about", TGUser.currentUser().email]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,34 +29,18 @@ class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
-        
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        defaultTGUser = defaults.objectForKey("tgUser") as! TGUser
-//        
-//        Tapglue.updateUser(TGUser.currentUser().sa) { (success: Bool, error: NSError!) -> Void in
-//            if error != nil {
-//                print("Error happened\n\(error)")
-//            }
-//            else {
-//                print("Successful: \n\(success)")
-//            }
-//        }
-        
         // Update user information
         TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
                     print("Error happened\n\(error)")
-                }
-                else {
+                } else {
                     print("Successful: \n\(success)")
                 }
         }
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func dismissVC(sender: AnyObject) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -71,51 +54,32 @@ class EditProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-
-    // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return userInfoTitle.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EditProfilTableViewCell
-        
-        // Configure the cell...
-        cell.userInfoTitleLabel.text = userInfoTitle[indexPath.row]
-        cell.userInfoEditTextField.text = userUserInfo[indexPath.row]
-        cell.userInfoEditTextField.tag = indexPath.row
-        
-        return cell
-    }
-    
-    // Mark: Keyboard observer methods
+    // Mark: Keyboard methods(update button will enabled, if keyboard is dismissed)
     func keyboardWillShow(notification: NSNotification) {
         updateUIBarButton.enabled = false
     }
     func keyboardWillHide(notification: NSNotification) {
         updateUIBarButton.enabled = true
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension EditProfileVC: UITableViewDataSource {
+    // MARK: -TableView
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userInfoTitle.count
     }
-    */
-
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EditProfilTableViewCell
+        
+        cell.userInfoTitleLabel.text = userInfoTitle[indexPath.row]
+        cell.userInfoEditTextField.text = userInformation[indexPath.row]
+        cell.userInfoEditTextField.tag = indexPath.row
+        
+        return cell
+    }
 }

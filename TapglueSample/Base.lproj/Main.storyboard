@@ -342,8 +342,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="infoLabel" destination="cba-Gb-sal" id="le4-EF-MEk"/>
-                                            <outlet property="typeLabel" destination="I8V-nB-yjh" id="ZfT-L8-eUS"/>
+                                            <outlet property="infoLabel" destination="I8V-nB-yjh" id="G1W-BB-1Vi"/>
+                                            <outlet property="typeLabel" destination="cba-Gb-sal" id="7jW-oD-x3s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
