@@ -140,7 +140,7 @@
         <!--Event FilterVC-->
         <scene sceneID="BRE-Ad-eCL">
             <objects>
-                <viewController id="kIN-cH-8NT" customClass="EventFilterVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFilterViewController" id="kIN-cH-8NT" customClass="EventFilterVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CTD-h8-xDh"/>
                         <viewControllerLayoutGuide type="bottom" id="Qri-qE-OW1"/>
@@ -213,7 +213,7 @@
         <!--News-->
         <scene sceneID="7k9-9P-cjb">
             <objects>
-                <viewController id="rCZ-WW-raX" customClass="NewsVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsViewController" id="rCZ-WW-raX" customClass="NewsVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gmq-0Z-j6S"/>
                         <viewControllerLayoutGuide type="bottom" id="ZWr-Nk-RMX"/>
@@ -290,7 +290,7 @@
         <!--Profile-->
         <scene sceneID="0Ya-LE-1bH">
             <objects>
-                <viewController id="ymy-hm-KRc" customClass="ProfileVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="ymy-hm-KRc" customClass="ProfileVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tm3-Ak-c3W"/>
                         <viewControllerLayoutGuide type="bottom" id="geq-l8-Kb1"/>
@@ -636,7 +636,7 @@
         <!--Title-->
         <scene sceneID="cES-eN-ieY">
             <objects>
-                <viewController id="GQW-Lx-LEk" customClass="EditProfileVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileViewController" id="GQW-Lx-LEk" customClass="EditProfileVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Q0-s7-SuH"/>
                         <viewControllerLayoutGuide type="bottom" id="pCe-Rn-RgK"/>
@@ -1056,7 +1056,7 @@
         <!--Network-->
         <scene sceneID="mU7-0h-azv">
             <objects>
-                <viewController id="Wqg-Rs-gNK" customClass="NetworkVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NetworkViewController" id="Wqg-Rs-gNK" customClass="NetworkVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qQQ-ed-VHa"/>
                         <viewControllerLayoutGuide type="bottom" id="dZn-r7-unc"/>
@@ -1200,7 +1200,7 @@
         <!--PostVC-->
         <scene sceneID="Ai3-p0-569">
             <objects>
-                <viewController id="TP8-Ef-3mc" customClass="PostVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="TP8-Ef-3mc" customClass="PostVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kXf-KH-X13"/>
                         <viewControllerLayoutGuide type="bottom" id="Upn-IY-XUr"/>
@@ -1472,7 +1472,7 @@
         <!--Home-->
         <scene sceneID="P6h-L6-5CB">
             <objects>
-                <viewController id="l2P-hw-7UA" customClass="HomeVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="l2P-hw-7UA" customClass="HomeVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v1e-EB-cEu"/>
                         <viewControllerLayoutGuide type="bottom" id="i0u-p0-XTF"/>
@@ -1681,7 +1681,7 @@
         <!--LoginVC-->
         <scene sceneID="043-gq-lhV">
             <objects>
-                <viewController id="WWs-BM-rhj" customClass="LoginVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="WWs-BM-rhj" customClass="LoginVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yWb-J0-v7v"/>
                         <viewControllerLayoutGuide type="bottom" id="yWc-IQ-idZ"/>
@@ -1750,7 +1750,7 @@
         <!--Login Sign InVC-->
         <scene sceneID="4Nh-8E-TCc">
             <objects>
-                <viewController id="fZR-U3-VUv" customClass="LoginSignInVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginSignInViewController" id="fZR-U3-VUv" customClass="LoginSignInVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fSR-Zj-YPf"/>
                         <viewControllerLayoutGuide type="bottom" id="bOm-U8-god"/>
@@ -1817,7 +1817,7 @@
         <!--Login RegisterVC-->
         <scene sceneID="CXl-W1-i8r">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="JQg-NV-vAO" customClass="LoginRegisterVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginRegisterViewController" id="JQg-NV-vAO" customClass="LoginRegisterVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hR6-Py-vP9"/>
                         <viewControllerLayoutGuide type="bottom" id="4ej-Qe-ee8"/>
@@ -1993,7 +1993,7 @@
         <!--NavigationVC-->
         <scene sceneID="IYE-wS-eCg">
             <objects>
-                <navigationController storyboardIdentifier="navigationVC" automaticallyAdjustsScrollViewInsets="NO" id="4V0-OM-gEz" customClass="NavigationVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="4V0-OM-gEz" customClass="NavigationVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7W8-ps-k7O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2015,7 +2015,7 @@
         <!--Tapglue-->
         <scene sceneID="nWc-Xa-0Fo">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarVC" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Tapglue" id="Kxn-Wx-nBf"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="doY-Bn-bDJ">
