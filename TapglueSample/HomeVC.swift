@@ -48,7 +48,7 @@ class HomeVC: UIViewController, UITableViewDelegate  {
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
             
             if error != nil {
-                print("Error happened\n")
+                print("\nError happened")
                 print(error)
             }
             else {
@@ -104,6 +104,5 @@ extension HomeVC: UITextFieldDelegate {
         // Show PostVC
         textField.resignFirstResponder()
         self.performSegueWithIdentifier("postSegue", sender: nil)
-        print("beginEditing")
     }
 }

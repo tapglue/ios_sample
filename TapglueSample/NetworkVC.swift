@@ -13,7 +13,7 @@ import TwitterKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, FBSDKLoginButtonDelegate  {
+class NetworkVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var networkButton: UIButton!
     
@@ -32,8 +32,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     let contactStore = CNContactStore()
     var contactEmails: [String] = []
-//    var facebookEmails: [String] = []
-//    var twitterEmails: [String] = []
     
     var facebookID: String!
     var twitterID: String!
@@ -50,7 +48,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -62,7 +59,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             return controller
         })()
         
-        // Reload the table
+        // Reload the TableView
         self.friendsTableView.reloadData()
         
         // hide button
@@ -94,29 +91,22 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     @IBAction func networkButtonPressed(sender: UIButton) {
-        
-        
         switch networkSegmentedControl.selectedSegmentIndex {
-        case 0:
-            print("Pending")
+            case 0:
+                print("Pending")
             
-        case 1:
-            print("Contacts")
+            case 1:
+                print("Contacts")
+                defaults.setObject(true, forKey: "contactsPermission")
+                searchForUserByEmail()
             
-            for email in contactEmails {
-                print(email)
-            }
+            case 2:
+                print("Facebook")
             
-            defaults.setObject(true, forKey: "contactsPermission")
-            searchForUserByEmail()
-        case 2:
-            print("Facebook")
+            case 3:
+                print("Twitter")
             
-            
-        case 3:
-            print("Twitter")
-            
-        default: print("More segments then expected")
+            default: print("More segments then expected")
         }
     }
     
@@ -128,7 +118,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         switch networkSegmentedControl.selectedSegmentIndex {
             case 0:
-                print("Still needs implementation")
                 clearUsersArrayAndReloadTableView()
                 checkForPendingConnections()
             
@@ -148,59 +137,8 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
-    /*
-    * TableView Methods
-    */
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
-        let user = self.users[indexPath.row]
-        cell.configureCellWithUser(user)
-        return cell
-        
-    }
-    
-    /*
-    * Searchbar Methods
-    */
-    func updateSearchResultsForSearchController(searchController: UISearchController)
-    {
-        
-        if (searchController.searchBar.text?.characters.count > 2) {
-            Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
-                if users != nil && error == nil {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.users.removeAll(keepCapacity: false)
-                        self.users = users as! [TGUser]
-                        self.friendsTableView.reloadData()
-                    })
-                } else if error != nil{
-                    print("Error happened\n")
-                    print(error)
-                }
-            }
-        } else {
-            users.removeAll(keepCapacity: false)
-            self.friendsTableView.reloadData()
-        }
-        
-        if !searchController.active {
-            users.removeAll(keepCapacity: false)
-            self.friendsTableView.reloadData()
-        }
-    }
-    
     // Checking for pending connections
     func pendingSegmentWasPicked(){
-        
-        
         checkForPendingConnections()
     }
     
@@ -253,12 +191,10 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             self.networkButton.hidden = true
             self.getTwitterFriends(-1)
         } else {
-            
             // Show twitterLoginButton
             twitterLogInButton.hidden = false
             twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
             self.view.addSubview(twitterLogInButton)
-            
         }
     }
     
@@ -302,44 +238,7 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
-    // Mark: -Facebook Methods
-    func configureFacebook(){
-        facebookLogInButton.readPermissions = ["public_profile", "email", "user_friends"];
-        facebookLogInButton.delegate = self
-    }
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id"]).startWithCompletionHandler { (connection, result, error) -> Void in
 
-            if error != nil{
-                print(error)
-            } else {
-                //            let strFirstName: String = (result.objectForKey("first_name") as? String)!
-                //            let strLastName: String = (result.objectForKey("last_name") as? String)!
-                //            let strPictureURL: String = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
-                //            self.lblName.text = "Welcome, \(strFirstName) \(strLastName)"
-                //            self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)
-                
-                self.facebookID = (result.objectForKey("id") as? String)!
-                print(self.facebookID)
-                self.defaults.setObject(true, forKey: "facebookPermission")
-                
-                // Add facebook social id to TGUser.currentUser
-                let currentUser = TGUser.currentUser()
-                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
-                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
-                    print(success)
-                })
-            }
-            
-        }
-        returnUserFriendsData()
-    }
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
-//        ivUserProfileImage.image = nil
-//        lblName.text = ""
-    }
     
     // start returning facebook friends to tapglue
     func returnUserFriendsData(){
@@ -392,7 +291,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     // Mark: -Twitter Methods
     func twitterLogin(){
-        
         Twitter.sharedInstance().logInWithCompletion { (session: TWTRSession?, error: NSError?) -> Void in
             if (session != nil) {
                 print("signed in as: \(session!.userName)")
@@ -414,7 +312,6 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 //                self.defaults.setObject(true, forKey: "twitterPermission")
                 
                 self.getTwitterFriends(-1)
-                
             } else {
                 print("error: \(error!.localizedDescription)")
             }
@@ -547,21 +444,97 @@ class NetworkVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             }
         }
     }
-    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension NetworkVC: UITableViewDataSource {
+    // Mark: -TableView
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.users.count
     }
-    */
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
+        
+        let user = self.users[indexPath.row]
+        
+        cell.configureCellWithUser(user)
+        
+        return cell
+        
+    }
+}
 
+extension NetworkVC: FBSDKLoginButtonDelegate {
+    // Mark: -Facebook Methods
+    func configureFacebook(){
+        facebookLogInButton.readPermissions = ["public_profile", "email", "user_friends"];
+        facebookLogInButton.delegate = self
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id"]).startWithCompletionHandler { (connection, result, error) -> Void in
+            
+            if error != nil{
+                print(error)
+            } else {
+                //            let strFirstName: String = (result.objectForKey("first_name") as? String)!
+                //            let strLastName: String = (result.objectForKey("last_name") as? String)!
+                //            let strPictureURL: String = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
+                //            self.lblName.text = "Welcome, \(strFirstName) \(strLastName)"
+                //            self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)
+                
+                self.facebookID = (result.objectForKey("id") as? String)!
+                print(self.facebookID)
+                self.defaults.setObject(true, forKey: "facebookPermission")
+                
+                // Add facebook social id to TGUser.currentUser
+                let currentUser = TGUser.currentUser()
+                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
+                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+                    print(success)
+                })
+            }
+            
+        }
+        returnUserFriendsData()
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logOut()
+    }
+}
+
+extension NetworkVC: UISearchResultsUpdating {
+    // Mark: -SearchBar
+    func updateSearchResultsForSearchController(searchController: UISearchController)
+    {
+        
+        if (searchController.searchBar.text?.characters.count > 2) {
+            Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
+                if users != nil && error == nil {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.users.removeAll(keepCapacity: false)
+                        self.users = users as! [TGUser]
+                        self.friendsTableView.reloadData()
+                    })
+                } else if error != nil{
+                    print("Error happened\n")
+                    print(error)
+                }
+            }
+        } else {
+            users.removeAll(keepCapacity: false)
+            self.friendsTableView.reloadData()
+        }
+        
+        if !searchController.active {
+            users.removeAll(keepCapacity: false)
+            self.friendsTableView.reloadData()
+        }
+    }
 }
