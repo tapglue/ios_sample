@@ -9,15 +9,14 @@
 import UIKit
 import Tapglue
 
-
-class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotificationVC: UIViewController, UITableViewDelegate {
     
     // TableView outlet
     @IBOutlet weak var notificationsTableView: UITableView!
     
     var checkedEvents: [Bool] = []
     
-    // Tapglue events array
+    // TGEvent Array
     var currentUserEvents: [TGEvent] = []
     
     var refreshControl: UIRefreshControl!
@@ -25,14 +24,10 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewDidLoad")
-        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: "loadNotificationFeed", forControlEvents: UIControlEvents.ValueChanged)
         self.notificationsTableView.addSubview(refreshControl)
         self.notificationsTableView.sendSubviewToBack(refreshControl)
-        
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,16 +41,8 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let filterImage = UIImage(named: "FilterFilled")
         let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: "filterButton:") //Use a selector
-//        filterButtonItem.tintColor = UIColor.darkGrayColor()
+
         tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
-        
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        print("viewDidAppear")
-        
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -98,18 +85,13 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func filterButton(sender:AnyObject){
-        
-        print("BarButtonItemPressed")
-        
-        // Show loginVC if no user
+        // Show filterVC
         self.performSegueWithIdentifier("filterSegue", sender: nil)
     }
+}
 
-    
-    
-    /*
-    * TableView Methods
-    */
+extension NotificationVC: UITableViewDataSource {
+    // Mark: -TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -123,8 +105,6 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.userImageView.image = nil
         
-        print(currentUserEvents[indexPath.row].type)
-        
         if currentUserEvents[indexPath.row].type == "tg_friend" {
             cell.configureCellForTypeTGFriend(currentUserEvents[indexPath.row])
         } else {
@@ -133,21 +113,5 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

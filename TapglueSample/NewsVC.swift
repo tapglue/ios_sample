@@ -15,8 +15,7 @@ class NewsVC: UIViewController {
     
     let url = "https://www.tapglue.com/blog/"
     
-    
-    // Tapglue events array
+    // TGEvent array
     var currentUserEvents: [TGEvent] = []
     
     override func viewDidLoad() {
@@ -40,7 +39,6 @@ class NewsVC: UIViewController {
     }
     
     @IBAction func bookmarkButtonPressed(sender: UIBarButtonItem) {
-        print((webView.request?.URL?.absoluteString)!)
         Tapglue.createEventWithType("bookmark_event", onObjectWithId: (webView.request?.URL?.absoluteString)!)
     }
     @IBAction func likeButtonPressed(sender: UIBarButtonItem) {
@@ -52,21 +50,4 @@ class NewsVC: UIViewController {
         let request = NSURLRequest(URL: requestURL!)
         webView.loadRequest(request)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
