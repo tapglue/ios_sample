@@ -22,10 +22,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
     // Configure Cell with TGPost
     func configureCellWithPost(post: TGPost!){
         // Date to string
-        let date = post.createdAt
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "d MMMM y"
-        self.infoLabel.text = dateFormatter.stringFromDate(date)
+        self.infoLabel.text = post.createdAt.toStringFormatDayMonthYear()
         
         // Post attachment
         let postAttachment = post.attachments

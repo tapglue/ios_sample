@@ -109,10 +109,7 @@ class HomeTableViewCell: UITableViewCell {
         }
         
         // Date to string
-        let date = post.createdAt
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
-        self.dateLabel.text = dateFormatter.stringFromDate(date)
+        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
         
         // Check if post isLiked already
         if cellPost.isLiked {

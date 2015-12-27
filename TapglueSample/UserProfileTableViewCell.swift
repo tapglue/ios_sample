@@ -23,10 +23,7 @@ class UserProfileTableViewCell: UITableViewCell {
     // Configure Cell with TGPost
     func configureCellWithPost(post: TGPost!){
         // Date to string
-        let date = post.createdAt
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
-        self.dateLabel.text = dateFormatter.stringFromDate(date)
+        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
         
         // PostText
         let postAttachment = post.attachments
@@ -37,10 +34,7 @@ class UserProfileTableViewCell: UITableViewCell {
     // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
         // Date to string
-        let date = event.createdAt
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
-        self.dateLabel.text = dateFormatter.stringFromDate(date)
+        self.dateLabel.text = event.createdAt.toStringFormatYearMonthDayHoursMinutesSeconds()
         
         switch event.type {
             case "like_event":

@@ -31,10 +31,8 @@ class NotificationTableViewCell: UITableViewCell {
         
         self.eventTypeImageView.image = UIImage(named: event.type)
         
-        let date = event.createdAt
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
-        self.dateLabel.text = dateFormatter.stringFromDate(date)
+        // Date to string
+        self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes()
     }
     
     
@@ -47,10 +45,8 @@ class NotificationTableViewCell: UITableViewCell {
             userImage = event.target.user.images.valueForKey("avatar") as! TGImage
             userImageView.image = UIImage(named: userImage.url)
             
-            let date = event.createdAt
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "hh:mm"
-            self.dateLabel.text = dateFormatter.stringFromDate(date)
+            // Date to string
+            self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes()
         }
     }
     
