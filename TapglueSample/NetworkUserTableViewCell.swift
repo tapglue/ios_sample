@@ -30,9 +30,8 @@ class NetworkUserTableViewCell: UITableViewCell {
         self.userNameLabel.text = self.cellUser.username
         
         var userImage = TGImage()
-        userImage = cellUser.images.valueForKey("avatar") as! TGImage
-        
-        self.userImageView.image = UIImage(named: userImage.url)
+        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
         
         if self.connectButton != nil {
             if cellUser.isFriend {
