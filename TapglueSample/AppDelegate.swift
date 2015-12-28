@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init the SDK with your app Token and Config // Token version 2.3
         let config = TGConfiguration.defaultConfiguration()
         config.loggingEnabled = false
-        Tapglue.setUpWithAppToken("b27a3e3e9a2747f0138a93794625038f", andConfig: config)
+        Tapglue.setUpWithAppToken("e43d15fd9b71b0938d2c66b27f8c5c2b", andConfig: config)
         
         // Twitter init
         Twitter.sharedInstance().startWithConsumerKey("jwcnpghUsKBjD3lMpdoMlSpuK", consumerSecret: "ibzxpfK76SZMNhE5sqWa7devupSCtVWOt1WpYrgOi8yZw7AtnU")
