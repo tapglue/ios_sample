@@ -18,18 +18,32 @@ class LoginRegisterVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var avatarOneImageView: UIImageView!
-    @IBOutlet weak var avatarTwoImageView: UIImageView!
-    @IBOutlet weak var avatarThreeImageView: UIImageView!
+//    @IBOutlet weak var avatarOneImageView: UIImageView!
+//    @IBOutlet weak var avatarTwoImageView: UIImageView!
+//    @IBOutlet weak var avatarThreeImageView: UIImageView!
     
     var currentAvatar: String?
+    
+    // Free http://uifaces.com/authorized profile pictures
+    let userProfileImageURLs =  ["https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/nedknowles/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/zack415/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/philcoffman/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/nuraika/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/raquelromanp/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/geeftvorm/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/hellgy/128.jpg",
+                                "https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        avatarOneImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
-        avatarTwoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
-        avatarThreeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
+//        avatarOneImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
+//        avatarTwoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
+//        avatarThreeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imagePressed:"))
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -39,7 +53,7 @@ class LoginRegisterVC: UIViewController {
     
     @IBAction func signUpButtonPressed(sender: AnyObject) {
         
-        if userNameTextField.text?.characters.count > 2 && firstNameTextField.text?.characters.count > 2 && lastNameTextField.text?.characters.count > 2 && aboutTextField.text?.characters.count > 2 && emailTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 && currentAvatar != nil {
+        if userNameTextField.text?.characters.count > 2 && firstNameTextField.text?.characters.count > 2 && lastNameTextField.text?.characters.count > 2 && aboutTextField.text?.characters.count > 2 && emailTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 {
             
             let about: [NSObject : AnyObject!] = ["about" : aboutTextField.text]
             
@@ -53,9 +67,9 @@ class LoginRegisterVC: UIViewController {
             
             
             let userImage = TGImage()
-            userImage.url = currentAvatar
-            
-            tapglueUser.images.setValue(userImage, forKey: "avatar")
+            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
+            userImage.url = userProfileImageURLs[randomIndex]
+            tapglueUser.images.setValue(userImage, forKey: "profilePic")
             
             Tapglue.createAndLoginUser(tapglueUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
@@ -74,27 +88,27 @@ class LoginRegisterVC: UIViewController {
         }
     }
     
-    func imagePressed(sender: UITapGestureRecognizer) {
-        avatarOneImageView.backgroundColor = UIColor.clearColor()
-        avatarTwoImageView.backgroundColor = UIColor.clearColor()
-        avatarThreeImageView.backgroundColor = UIColor.clearColor()
-        
-        let currentTag = sender.view?.tag
-        
-        switch currentTag! {
-        case 0:
-            avatarOneImageView.backgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.0)
-            currentAvatar = "avatar-1"
-        case 1:
-            avatarTwoImageView.backgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.0)
-            currentAvatar = "avatar-6"
-        case 2:
-            avatarThreeImageView.backgroundColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
-            currentAvatar = "avatar-3"
-        default:
-            "No avatar was pressed"
-        }
-    }
+//    func imagePressed(sender: UITapGestureRecognizer) {
+//        avatarOneImageView.backgroundColor = UIColor.clearColor()
+//        avatarTwoImageView.backgroundColor = UIColor.clearColor()
+//        avatarThreeImageView.backgroundColor = UIColor.clearColor()
+//        
+//        let currentTag = sender.view?.tag
+//        
+//        switch currentTag! {
+//        case 0:
+//            avatarOneImageView.backgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.0)
+//            currentAvatar = "avatar-1"
+//        case 1:
+//            avatarTwoImageView.backgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.0)
+//            currentAvatar = "avatar-6"
+//        case 2:
+//            avatarThreeImageView.backgroundColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
+//            currentAvatar = "avatar-3"
+//        default:
+//            "No avatar was pressed"
+//        }
+//    }
 }
 
 extension LoginRegisterVC: UITextFieldDelegate {

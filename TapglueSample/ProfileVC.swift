@@ -33,22 +33,31 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        refreshTGUser()
+        // Check for tapglue user
+        if TGUser.currentUser() != nil {
+            print(TGUser.currentUser())
+            
+            refreshTGUser()
+            
+            currentFriendsFollowerFollowingCount()
+            
+            getEventsAndPostsOfCurrentUser()
+            
+            let tapglueUser = TGUser.currentUser()
+            
+            let meta = tapglueUser.metadata as AnyObject
+            self.userNameLabel.text = tapglueUser.username
+            self.userFullnameLabel.text = tapglueUser.firstName + " " + tapglueUser.lastName
+            self.userAboutLabel.text = String(meta.valueForKey("about")!)
+            
+            var userImage = TGImage()
+            userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
+            self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        } else {
+            // Show loginVC if TGUser is nil
+            self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
+        }
         
-        currentFriendsFollowerFollowingCount()
-        
-        getEventsAndPostsOfCurrentUser()
-        
-        let tapglueUser = TGUser.currentUser()
-        
-        let meta = tapglueUser.metadata as AnyObject
-        self.userNameLabel.text = tapglueUser.username
-        self.userFullnameLabel.text = tapglueUser.firstName + " " + tapglueUser.lastName
-        self.userAboutLabel.text = String(meta.valueForKey("about")!)
-        
-        var userImage = TGImage()
-        userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
-        self.userImageView.image = UIImage(named: userImage.url)
     }
     
     // Friends, Follower and Following buttons
