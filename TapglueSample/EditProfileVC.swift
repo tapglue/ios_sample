@@ -50,6 +50,8 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
                 print(error)
             } else {
                 print(success)
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
