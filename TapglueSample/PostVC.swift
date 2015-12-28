@@ -24,8 +24,8 @@ class PostVC: UIViewController {
         postTextField.becomeFirstResponder()
         
         var userImage = TGImage()
-        userImage = TGUser.currentUser().images.valueForKey("avatar") as! TGImage
-        self.userImageView.image = UIImage(named: userImage.url)
+        userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
         
         postUIBarButton.enabled = false
     }

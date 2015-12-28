@@ -443,6 +443,8 @@ extension NetworkVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
         
+        cell.userImageView.image = nil
+        
         let user = self.users[indexPath.row]
         
         cell.configureCellWithUser(user)

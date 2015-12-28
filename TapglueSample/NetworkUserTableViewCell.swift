@@ -29,6 +29,7 @@ class NetworkUserTableViewCell: UITableViewCell {
         
         self.userNameLabel.text = self.cellUser.username
         
+        // UserImage
         var userImage = TGImage()
         userImage = cellUser.images.valueForKey("profilePic") as! TGImage
         self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
@@ -58,11 +59,22 @@ class NetworkUserTableViewCell: UITableViewCell {
                 }
             })
         } else {
-            Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+//                if success {
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        sender.selected = true
+//                        self.connectButton.setTitle("Pending", forState: .Selected)
+//                    })
+//                } else if error != nil{
+//                    print("Error happened\n")
+//                    print(error)
+//                }
+//            })
+            Tapglue.friendUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         sender.selected = true
-                        self.connectButton.setTitle("Pending", forState: .Selected)
+//                        self.connectButton.setTitle("Pending", forState: .Selected)
                     })
                 } else if error != nil{
                     print("Error happened\n")

@@ -21,6 +21,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
+    @IBOutlet weak var likesCountLabel: UILabel!
+    @IBOutlet weak var commentsCountLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -93,8 +95,8 @@ class HomeTableViewCell: UITableViewCell {
         
         // UserImage
         var userImage = TGImage()
-        userImage = post.user.images.valueForKey("avatar") as! TGImage
-        self.userImageView.image = UIImage(named: userImage.url)
+        userImage = post.user.images.valueForKey("profilePic") as! TGImage
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
 
         // Check visibility
         switch post.visibility {

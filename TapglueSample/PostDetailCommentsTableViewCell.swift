@@ -25,7 +25,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         userCommentLabel.text = comment.content
         
         var userImage = TGImage()
-        userImage = comment.user.images.valueForKey("avatar") as! TGImage
-        self.userImageView.image = UIImage(named: userImage.url)
+        userImage = comment.user.images.valueForKey("profilePic") as! TGImage
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
     }
 }

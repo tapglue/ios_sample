@@ -1632,8 +1632,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="commentsCountLabel" destination="zMf-62-S7B" id="50B-D6-NYO"/>
                                             <outlet property="dateLabel" destination="Pgm-pt-gxD" id="nlx-yl-SP9"/>
                                             <outlet property="likeButton" destination="tLV-Od-Tes" id="8JG-IG-Mqx"/>
+                                            <outlet property="likesCountLabel" destination="FAn-5l-RtR" id="qJ2-bY-K72"/>
                                             <outlet property="postTextLabel" destination="I7m-h2-QKa" id="Iud-Qz-YYn"/>
                                             <outlet property="userImageView" destination="2ah-5U-szO" id="osW-az-oDy"/>
                                             <outlet property="userNameLabel" destination="QdS-Dl-5PA" id="O0U-h8-3h4"/>

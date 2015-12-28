@@ -28,6 +28,7 @@ class HomeVC: UIViewController, UITableViewDelegate  {
         self.homeTableView.addSubview(refreshControl)
         self.homeTableView.sendSubviewToBack(refreshControl)
         
+        // UserImage
         var userImage = TGImage()
         userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
         self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
@@ -77,6 +78,7 @@ extension HomeVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
         
+        cell.userImageView.image = nil
         cell.configureCellWithPost(self.posts[indexPath.row])
         
         return cell

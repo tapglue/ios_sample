@@ -110,8 +110,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         
         // User Avatar Image from sample asset
         var userImage = TGImage()
-        userImage = post.user.images.valueForKey("avatar") as! TGImage
-        self.userImageView.image = UIImage(named: userImage.url)
+        userImage = post.user.images.valueForKey("profilePic") as! TGImage
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
         
         // Check visibility
         switch post.visibility {
@@ -139,6 +139,8 @@ extension PostDetailVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PostDetailCommentsTableViewCell
+        
+        cell.userImageView.image = nil
         
         cell.configureCellWithPostComment(postComments[indexPath.row])
         
