@@ -1539,7 +1539,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-h2-QKa">
-                                                            <rect key="frame" x="15" y="66" width="570" height="109"/>
+                                                            <rect key="frame" x="15" y="66" width="570" height="98"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                             <color key="textColor" red="0.90196078430000004" green="0.1529411765" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1568,20 +1568,44 @@
                                                                 <action selector="shareButtonPressed:" destination="V1F-cW-Jqn" eventType="touchUpInside" id="K0C-ih-Fzx"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAn-5l-RtR">
+                                                            <rect key="frame" x="50" y="164" width="100" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="aim-uq-m35"/>
+                                                                <constraint firstAttribute="height" constant="17" id="s7M-hE-sFq"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMf-62-S7B">
+                                                            <rect key="frame" x="250" y="164" width="100" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="17" id="5ie-lf-YvB"/>
+                                                                <constraint firstAttribute="width" constant="100" id="oCz-L0-REM"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="tLV-Od-Tes" firstAttribute="top" secondItem="FAn-5l-RtR" secondAttribute="bottom" constant="2" id="138-fP-KGZ"/>
+                                                        <constraint firstItem="zMf-62-S7B" firstAttribute="centerX" secondItem="g0d-zN-RQz" secondAttribute="centerX" id="1Rh-QT-BeH"/>
                                                         <constraint firstItem="QdS-Dl-5PA" firstAttribute="top" secondItem="gx7-xT-Np2" secondAttribute="top" constant="8" id="4Sa-QS-EFw"/>
                                                         <constraint firstItem="I7m-h2-QKa" firstAttribute="top" secondItem="2ah-5U-szO" secondAttribute="bottom" constant="8" id="7Wz-Qg-uRU"/>
                                                         <constraint firstItem="Pgm-pt-gxD" firstAttribute="leading" secondItem="OGa-oh-XHj" secondAttribute="trailing" constant="8" id="B9J-5l-HZZ"/>
                                                         <constraint firstItem="QdS-Dl-5PA" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="trailing" constant="8" id="C7q-s2-hGB"/>
-                                                        <constraint firstItem="g0d-zN-RQz" firstAttribute="top" secondItem="I7m-h2-QKa" secondAttribute="bottom" constant="8" id="Csl-gk-2Cs"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="bottom" secondItem="g0d-zN-RQz" secondAttribute="bottom" id="FKW-Dc-giW"/>
                                                         <constraint firstItem="I7m-h2-QKa" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="leading" id="FKv-F3-Hkc"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="width" secondItem="viu-AY-KF2" secondAttribute="width" id="Hcn-zW-I0B"/>
                                                         <constraint firstItem="OGa-oh-XHj" firstAttribute="centerY" secondItem="Pgm-pt-gxD" secondAttribute="centerY" id="Hw5-dG-4cW"/>
                                                         <constraint firstItem="viu-AY-KF2" firstAttribute="bottom" secondItem="g0d-zN-RQz" secondAttribute="bottom" id="L1k-9R-tgQ"/>
                                                         <constraint firstItem="Pgm-pt-gxD" firstAttribute="top" secondItem="QdS-Dl-5PA" secondAttribute="bottom" constant="8" id="NfX-La-xxS"/>
+                                                        <constraint firstItem="zMf-62-S7B" firstAttribute="top" secondItem="I7m-h2-QKa" secondAttribute="bottom" id="NhJ-ye-3o4"/>
+                                                        <constraint firstItem="FAn-5l-RtR" firstAttribute="centerX" secondItem="tLV-Od-Tes" secondAttribute="centerX" id="PvV-YO-U5j"/>
+                                                        <constraint firstItem="g0d-zN-RQz" firstAttribute="top" secondItem="zMf-62-S7B" secondAttribute="bottom" constant="2" id="QU5-fE-s29"/>
                                                         <constraint firstItem="OGa-oh-XHj" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="trailing" constant="8" id="SnO-Qw-04F"/>
                                                         <constraint firstItem="g0d-zN-RQz" firstAttribute="leading" secondItem="tLV-Od-Tes" secondAttribute="trailing" id="Tx4-C4-5Ze"/>
                                                         <constraint firstAttribute="bottom" secondItem="g0d-zN-RQz" secondAttribute="bottom" constant="3.5" id="cUb-co-kM1"/>
