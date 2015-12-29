@@ -127,21 +127,23 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 clearUsersArrayAndReloadTableView()
                 checkForPendingConnections()
                 friendsTableView.tableHeaderView = resultSearchController.searchBar
+                self.resultSearchController.active = true
             
             case 1:
+                hideSearchBarAndActiveFalse()
                 clearUsersArrayAndReloadTableView()
                 contactsSegmentWasPicked()
-                friendsTableView.tableHeaderView = nil
             
             case 2:
+                hideSearchBarAndActiveFalse()
                 clearUsersArrayAndReloadTableView()
                 facebookSegmentWasPicked()
-                friendsTableView.tableHeaderView = nil
             
             case 3:
+                hideSearchBarAndActiveFalse()
                 clearUsersArrayAndReloadTableView()
                 twitterSegmentWasPicked()
-                friendsTableView.tableHeaderView = nil
+            
 
             default: print("Segments index wrong")
         }
@@ -439,6 +441,11 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 })
             }
         }
+    }
+    
+    func hideSearchBarAndActiveFalse() {
+        friendsTableView.tableHeaderView = nil
+        self.resultSearchController.active = false
     }
 }
 
