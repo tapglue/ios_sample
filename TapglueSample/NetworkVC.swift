@@ -76,16 +76,24 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         })
         
         checkForPendingConnections()
+        
+        // Setup searchBar
+        resultSearchController.searchResultsUpdater = self
+        resultSearchController.hidesNavigationBarDuringPresentation = false
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.searchBar.sizeToFit()
+        resultSearchController.searchBar.placeholder = "Username search"
+        self.friendsTableView.tableHeaderView = resultSearchController.searchBar
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.resultSearchController.searchBar.hidden = false;
+        self.resultSearchController.searchBar.hidden = false
 
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.resultSearchController.searchBar.hidden = true;
-        self.resultSearchController.active = false;
+        self.resultSearchController.searchBar.hidden = true
+        self.resultSearchController.active = false
     }
     
     @IBAction func networkButtonPressed(sender: UIButton) {
@@ -118,18 +126,22 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             case 0:
                 clearUsersArrayAndReloadTableView()
                 checkForPendingConnections()
+                friendsTableView.tableHeaderView = resultSearchController.searchBar
             
             case 1:
                 clearUsersArrayAndReloadTableView()
                 contactsSegmentWasPicked()
+                friendsTableView.tableHeaderView = nil
             
             case 2:
                 clearUsersArrayAndReloadTableView()
                 facebookSegmentWasPicked()
+                friendsTableView.tableHeaderView = nil
             
             case 3:
                 clearUsersArrayAndReloadTableView()
                 twitterSegmentWasPicked()
+                friendsTableView.tableHeaderView = nil
 
             default: print("Segments index wrong")
         }
