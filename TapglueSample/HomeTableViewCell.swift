@@ -9,7 +9,14 @@
 import UIKit
 import Tapglue
 
+// the name of the protocol you can put any
+protocol CustomCellDataUpdater {
+    func updateTableViewData()
+}
+
 class HomeTableViewCell: UITableViewCell {
+    
+    var delegate: CustomCellDataUpdater?
     
     var cellPost: TGPost!
 
@@ -41,6 +48,8 @@ class HomeTableViewCell: UITableViewCell {
                     print("\nSuccessly deleted like from post:")
                     print(success)
                     
+                    self.delegate?.updateTableViewData()
+                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.likeButton.selected = false
                     })
@@ -55,8 +64,12 @@ class HomeTableViewCell: UITableViewCell {
                 else {
                     print("\nSuccessly liked a post:")
                     print(success)
+                    
+                    self.delegate?.updateTableViewData()
+                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.likeButton.selected = true
+                        
                     })
                 }
             }
@@ -79,12 +92,26 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     @IBAction func shareButtonPressed(sender: UIButton) {
-        
+        // Will be implemented in the future
     }
     
     // Configure Cell with TGPost data
     func configureCellWithPost(post: TGPost!){
         cellPost = post
+        
+        if cellPost.likesCount != 0 {
+            if cellPost.likesCount == 1{
+                self.likesCountLabel.text = String(cellPost.likesCount) + " Like"
+            }
+            self.likesCountLabel.text = String(cellPost.likesCount) + " Likes"
+        }
+        
+        if cellPost.commentsCount != 0 {
+            if cellPost.commentsCount == 1 {
+                self.commentsCountLabel.text = String(cellPost.commentsCount) + " Comment"
+            }
+            self.commentsCountLabel.text = String(cellPost.commentsCount) + " Comments"
+        }
         
         // UserText
         self.userNameLabel.text = post.user.username
@@ -110,8 +137,7 @@ class HomeTableViewCell: UITableViewCell {
                 self.visibilityImageView.image = UIImage(named: "publicFilled")
         }
         
-        // Date to string
-        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
+        self.dateLabel.text = post.createdAt.timeFormatInElapsedTimeToString()
         
         // Check if post isLiked already
         if cellPost.isLiked {

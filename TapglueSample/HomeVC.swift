@@ -9,7 +9,7 @@
 import UIKit
 import Tapglue
 
-class HomeVC: UIViewController, UITableViewDelegate  {
+class HomeVC: UIViewController, UITableViewDelegate{
 
     @IBOutlet weak var homeTableView: UITableView!
     
@@ -63,10 +63,13 @@ class HomeVC: UIViewController, UITableViewDelegate  {
             }
         }
     }
+    
+
 }
 
+
 extension HomeVC: UITableViewDataSource {
-    // Mark: -TableView
+    // Mark: - TableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -78,16 +81,16 @@ extension HomeVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
         
+        
+        print("Current cell number is: \([indexPath.row])")
         cell.userImageView.image = nil
         cell.configureCellWithPost(self.posts[indexPath.row])
+        cell.delegate = self
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Did Select post and can comment now
-//        postToPass = posts[indexPath.row]
-        
         let pdVC =
         self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
@@ -100,11 +103,28 @@ extension HomeVC: UITableViewDataSource {
     }
 }
 
+
 extension HomeVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldDidBeginEditing(textField: UITextField) {
         // Show PostVC
         textField.resignFirstResponder()
         self.performSegueWithIdentifier("postSegue", sender: nil)
+    }
+}
+
+
+extension HomeVC: CustomCellDataUpdater {
+    // Mark: - Custom delegate
+    func updateTableViewData() {
+        Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil {
+                print("\nError happened")
+                print(error)
+            }
+            else {
+                self.posts = feed as! [TGPost]
+            }
+        }
     }
 }
