@@ -14,18 +14,33 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
     
     let tapglueUser = TGUser.currentUser()
-
+    
     var defaultTGUser = TGUser()
     
+    
+    
+    
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
-    var userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, "edit about", TGUser.currentUser().email]
+    var userInformation = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let meta = TGUser.currentUser().metadata as AnyObject
+        let about = String(meta.valueForKey("about")!)
+        
+        userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, about, TGUser.currentUser().email]
 
         // Observer for keyboard
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+        
+        
+//        print(meta.valueForKey("about")!)
+//        let meta = user.metadata as AnyObject
+//        self.userAboutLabel.text = String(meta.valueForKey("about")!)
+//        let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
+//        currentUser.metadata = about
     }
     
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
@@ -79,7 +94,7 @@ extension EditProfileVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EditProfilTableViewCell
         
         cell.userInfoTitleLabel.text = userInfoTitle[indexPath.row]
-        cell.userInfoEditTextField.text = userInformation[indexPath.row]
+        cell.userInfoEditTextField.text = userInformation[indexPath.row] as? String
         cell.userInfoEditTextField.tag = indexPath.row
         
         return cell
