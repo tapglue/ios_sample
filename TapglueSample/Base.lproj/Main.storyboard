@@ -1099,52 +1099,68 @@
                                                         <constraint firstAttribute="width" constant="50" id="rch-Ui-0Bp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="4Ox-IB-fCS">
-                                                    <rect key="frame" x="72" y="20" width="241" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="4Ox-IB-fCS">
+                                                    <rect key="frame" x="72" y="20" width="344" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="241" id="I8s-dH-4EB"/>
                                                         <constraint firstAttribute="height" constant="25" id="OYF-qq-udl"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="23"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6q-Fx-sVI">
-                                                    <rect key="frame" x="492" y="27" width="100" height="35"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="512" y="27" width="80" height="35"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="C2H-2U-9Gw"/>
-                                                        <constraint firstAttribute="width" constant="100" id="hHO-I6-8Pf"/>
+                                                        <constraint firstAttribute="width" constant="80" id="hHO-I6-8Pf"/>
                                                     </constraints>
-                                                    <state key="normal" title="Add"/>
-                                                    <state key="selected" title="Friend">
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="selected">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="connectPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="WDf-Zn-903"/>
+                                                        <action selector="connectRightPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="cpo-j9-gjF"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-sp-Kbg">
-                                                    <rect key="frame" x="72" y="50" width="412" height="21"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-sp-Kbg">
+                                                    <rect key="frame" x="72" y="52" width="344" height="18"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97a-Kx-aAm">
+                                                    <rect key="frame" x="424" y="27" width="80" height="35"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="connectLeftPressed:" destination="PF8-wl-CeC" eventType="touchUpInside" id="JBx-nc-eg5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="YDH-7Y-NiC" firstAttribute="leading" secondItem="bw7-6G-5wk" secondAttribute="leading" constant="14" id="2FJ-7T-gWV"/>
+                                                <constraint firstItem="97a-Kx-aAm" firstAttribute="centerY" secondItem="I6q-Fx-sVI" secondAttribute="centerY" id="6pq-m6-gv9"/>
+                                                <constraint firstItem="97a-Kx-aAm" firstAttribute="leading" secondItem="4Ox-IB-fCS" secondAttribute="trailing" constant="8" id="C2T-da-tww"/>
+                                                <constraint firstItem="97a-Kx-aAm" firstAttribute="height" secondItem="I6q-Fx-sVI" secondAttribute="height" id="CDs-57-Cmo"/>
                                                 <constraint firstAttribute="trailing" secondItem="I6q-Fx-sVI" secondAttribute="trailing" constant="8" id="OYV-VD-2BP"/>
                                                 <constraint firstItem="sQ5-sp-Kbg" firstAttribute="bottom" secondItem="YDH-7Y-NiC" secondAttribute="bottom" id="R1v-Ft-Xxm"/>
-                                                <constraint firstItem="I6q-Fx-sVI" firstAttribute="leading" secondItem="sQ5-sp-Kbg" secondAttribute="trailing" constant="8" id="RVO-to-104"/>
                                                 <constraint firstItem="4Ox-IB-fCS" firstAttribute="leading" secondItem="YDH-7Y-NiC" secondAttribute="trailing" constant="8" id="TTk-3a-abY"/>
                                                 <constraint firstItem="YDH-7Y-NiC" firstAttribute="top" secondItem="bw7-6G-5wk" secondAttribute="top" constant="20" id="XYc-RV-XkO"/>
+                                                <constraint firstItem="97a-Kx-aAm" firstAttribute="width" secondItem="I6q-Fx-sVI" secondAttribute="width" id="kCy-SL-Bmo"/>
                                                 <constraint firstItem="I6q-Fx-sVI" firstAttribute="top" secondItem="bw7-6G-5wk" secondAttribute="top" constant="27" id="pza-95-7Fv"/>
+                                                <constraint firstItem="I6q-Fx-sVI" firstAttribute="leading" secondItem="97a-Kx-aAm" secondAttribute="trailing" constant="8" id="qci-ea-eaQ"/>
                                                 <constraint firstItem="sQ5-sp-Kbg" firstAttribute="leading" secondItem="YDH-7Y-NiC" secondAttribute="trailing" constant="8" id="rkA-1g-Cb6"/>
+                                                <constraint firstItem="97a-Kx-aAm" firstAttribute="leading" secondItem="sQ5-sp-Kbg" secondAttribute="trailing" constant="8" id="xgE-tS-qUC"/>
                                                 <constraint firstItem="4Ox-IB-fCS" firstAttribute="top" secondItem="YDH-7Y-NiC" secondAttribute="top" id="z0T-YL-eVs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="connectButton" destination="I6q-Fx-sVI" id="aID-ud-cVv"/>
+                                            <outlet property="connectLeftButton" destination="97a-Kx-aAm" id="tqy-1e-pjb"/>
+                                            <outlet property="connectRightButton" destination="I6q-Fx-sVI" id="yT3-sp-fTE"/>
                                             <outlet property="userAboutLabel" destination="sQ5-sp-Kbg" id="AUt-Et-9Cr"/>
                                             <outlet property="userImageView" destination="YDH-7Y-NiC" id="4jn-wX-xdw"/>
                                             <outlet property="userNameLabel" destination="4Ox-IB-fCS" id="FsL-sc-1mg"/>
