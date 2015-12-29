@@ -45,9 +45,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             
             let tapglueUser = TGUser.currentUser()
             
-            let meta = tapglueUser.metadata as AnyObject
             self.userNameLabel.text = tapglueUser.username
             self.userFullnameLabel.text = tapglueUser.firstName + " " + tapglueUser.lastName
+            let meta = tapglueUser.metadata as AnyObject
             self.userAboutLabel.text = String(meta.valueForKey("about")!)
             
             // UserImage
