@@ -33,6 +33,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
     
+    var beginEditComment = false
+    var editComment: TGPostComment!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -231,6 +233,13 @@ extension PostDetailVC: UITableViewDataSource {
         
         let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
             print("favorite button tapped")
+            
+            self.beginEditComment = true
+            
+            self.commentTextField.becomeFirstResponder()
+            self.commentTextField.text = self.postComments[indexPath.row].content
+            
+            self.editComment = self.postComments[indexPath.row]
         }
         edit.backgroundColor = UIColor.lightGrayColor()
         
@@ -268,20 +277,43 @@ extension PostDetailVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         print(textField.text!)
-        Tapglue.createCommentWithContent(textField.text!, forPost: post) { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print("Error happened\n")
-                print(error)
-            }
-            else {
-                print(success)
-                self.retrieveAllCommentsForPost()
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.commentsTableView.reloadData()
-                    self.commentTextField.text = nil
-                    self.commentTextField.resignFirstResponder()
-                })
+
+        if beginEditComment {
+            self.editComment.content = textField.text
+            
+            Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("Error happened\n")
+                    print(error)
+                }
+                else {
+                    print("\nSuccessful updated comment: \(success)")
+                    self.retrieveAllCommentsForPost()
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.commentsTableView.reloadData()
+                        self.commentTextField.text = nil
+                        self.commentTextField.resignFirstResponder()
+                        self.beginEditComment = false
+                    })
+                }
+            })
+        } else {
+            Tapglue.createCommentWithContent(textField.text!, forPost: post) { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("Error happened\n")
+                    print(error)
+                }
+                else {
+                    print(success)
+                    self.retrieveAllCommentsForPost()
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.commentsTableView.reloadData()
+                        self.commentTextField.text = nil
+                        self.commentTextField.resignFirstResponder()
+                    })
+                }
             }
         }
         
