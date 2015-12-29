@@ -17,7 +17,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     var commentButtonPressedSwitch: Bool = false
     
     @IBOutlet weak var likeButton: UIButton!
-
+    @IBOutlet weak var userNameButton: UIButton!
+    
     @IBOutlet weak var commentsTableView: UITableView!
     
     @IBOutlet weak var commentTextField: UITextField!
@@ -27,11 +28,11 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var visibilityImageView: UIImageView!
     
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         if commentButtonPressedSwitch {
             commentTextField.becomeFirstResponder()
         }
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,6 +62,16 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    @IBAction func userNameButtonPressed(sender: UIButton) {
+        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+        
+        userProfileViewController.userProfile = post.user
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.navigationController?.pushViewController(userProfileViewController, animated: true)
+        })
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
@@ -140,7 +153,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     // Show postDetails
     func fillPostDetailInformation(){
-        userNameLabel.text = post.user.username
+        userNameButton.contentHorizontalAlignment = .Left
+        userNameButton.setTitle(post.user.username, forState: .Normal)
         
         if post.likesCount != 0 {
             if post.likesCount == 1{
@@ -237,6 +251,16 @@ extension PostDetailVC: UITableViewDataSource {
         delete.backgroundColor = UIColor.redColor()
         
         return [delete, edit]
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+        
+        userProfileViewController.userProfile = postComments[indexPath.row].user
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.navigationController?.pushViewController(userProfileViewController, animated: true)
+        })
     }
 }
 
