@@ -13,6 +13,7 @@ class NetworkUserTableViewCell: UITableViewCell {
 
     var cellUser = TGUser()
     
+    @IBOutlet weak var userAboutLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var connectButton: UIButton!
@@ -27,7 +28,10 @@ class NetworkUserTableViewCell: UITableViewCell {
     func configureCellWithUser(user: TGUser!){
         cellUser = user
         
+        let meta = user.metadata as AnyObject
+        self.userAboutLabel.text = String(meta.valueForKey("about")!)
         self.userNameLabel.text = self.cellUser.username
+        
         
         // UserImage
         var userImage = TGImage()
