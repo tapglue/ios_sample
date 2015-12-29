@@ -20,6 +20,8 @@ class NetworkUserTableViewCell: UITableViewCell {
     @IBOutlet weak var connectLeftButton: UIButton!
     @IBOutlet weak var connectRightButton: UIButton!
     
+    var checkingForPendingConnections = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         userImageView.layer.cornerRadius = userImageView.frame.width / 2
@@ -27,7 +29,7 @@ class NetworkUserTableViewCell: UITableViewCell {
     }
     
     // Configure Cell with TGUser data
-    func configureCellWithUser(user: TGUser!){
+    func configureCellWithUserToFriendOrFollow(user: TGUser!){
         cellUser = user
         
         let meta = user.metadata as AnyObject
@@ -63,6 +65,30 @@ class NetworkUserTableViewCell: UITableViewCell {
         
     }
     
+    // Configure Cell with TGUser data
+    func configureCellWithUserWithPendingConnection(user: TGUser!){
+        cellUser = user
+        
+        let meta = user.metadata as AnyObject
+        self.userAboutLabel.text = String(meta.valueForKey("about")!)
+        self.userNameLabel.text = self.cellUser.username
+        
+        
+        // UserImage
+        var userImage = TGImage()
+        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        
+        if self.connectRightButton != nil {
+            acceptFriendShipCustomizeButton()
+        }
+        
+        if self.connectLeftButton != nil {
+            declineFriendShipCustomizeButton()
+        }
+        
+    }
+    
     @IBAction func connectRightPressed(sender: UIButton) {
         if sender.selected {
             
@@ -79,29 +105,44 @@ class NetworkUserTableViewCell: UITableViewCell {
                 }
             })
         } else {
-//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+            
+            if !checkingForPendingConnections {
+                Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+                    if success {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = true
+                            self.pendingUserCustomizeButton()
+                        })
+                    } else if error != nil{
+                        print("Error happened\n")
+                        print(error)
+                    }
+                })
+            } else {
+                Tapglue.friendUser(cellUser, withState: TGConnectionState.Confirmed, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+                    if success {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = true
+                            self.friendUserCustomizeButton()
+                        })
+                    } else if error != nil{
+                        print("Error happened\n")
+                        print(error)
+                    }
+                })
+            }
+//            Tapglue.friendUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
 //                if success {
 //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
 //                        sender.selected = true
-//                        self.connectButton.setTitle("Pending", forState: .Selected)
+////                        self.connectButton.setTitle("Pending", forState: .Selected)
+//                        self.friendUserCustomizeButton()
 //                    })
 //                } else if error != nil{
 //                    print("Error happened\n")
 //                    print(error)
 //                }
 //            })
-            Tapglue.friendUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if success {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = true
-//                        self.connectButton.setTitle("Pending", forState: .Selected)
-                        self.friendUserCustomizeButton()
-                    })
-                } else if error != nil{
-                    print("Error happened\n")
-                    print(error)
-                }
-            })
 
         }
     }
@@ -121,20 +162,36 @@ class NetworkUserTableViewCell: UITableViewCell {
                 }
             })
         } else {
-            Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if success {
-                    print("User follow successful")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = true
-                        self.followingUserCustomizeButton()
-                    })
-                } else if error != nil{
-                    print("Error happened\n")
-                    print(error)
-                }
-            })
+            if !checkingForPendingConnections {
+                Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                    if success {
+                        print("User follow successful")
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = true
+                            self.followingUserCustomizeButton()
+                        })
+                    } else if error != nil{
+                        print("Error happened\n")
+                        print(error)
+                    }
+                })
+            } else {
+                Tapglue.friendUser(cellUser, withState: TGConnectionState.Rejected, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+                    if success {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = true
+                            self.unfriendUserCustomizeButton()
+                        })
+                    } else if error != nil{
+                        print("Error happened\n")
+                        print(error)
+                    }
+                })
+            }
+
         }
     }
+    
     
     func followingUserCustomizeButton(){
         self.connectLeftButton.setTitle("Following", forState: .Selected)
@@ -153,5 +210,18 @@ class NetworkUserTableViewCell: UITableViewCell {
         self.connectRightButton.setTitle("Add Friend", forState: .Normal)
         self.connectRightButton.backgroundColor = UIColor.lightGrayColor()
     }
-
+    
+    func pendingUserCustomizeButton(){
+        self.connectRightButton.setTitle("Pending", forState: .Selected)
+        self.connectRightButton.backgroundColor = UIColor.orangeColor()
+    }
+    
+    func acceptFriendShipCustomizeButton(){
+        self.connectRightButton.setTitle("Accept", forState: .Normal)
+        self.connectRightButton.backgroundColor = UIColor.orangeColor()
+    }
+    func declineFriendShipCustomizeButton(){
+        self.connectLeftButton.setTitle("Decline", forState: .Normal)
+        self.connectLeftButton.backgroundColor = UIColor.redColor()
+    }
 }

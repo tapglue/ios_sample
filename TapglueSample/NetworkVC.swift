@@ -42,6 +42,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     let facebookLogInButton = FBSDKLoginButton()
     
     var twitterLogInButton = TWTRLogInButton()
+    
+    var checkingForPendingConnections = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,17 +132,17 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 self.resultSearchController.active = true
             
             case 1:
-                hideSearchBarAndActiveFalse()
+                outsidePendingSegment()
                 clearUsersArrayAndReloadTableView()
                 contactsSegmentWasPicked()
             
             case 2:
-                hideSearchBarAndActiveFalse()
+                outsidePendingSegment()
                 clearUsersArrayAndReloadTableView()
                 facebookSegmentWasPicked()
             
             case 3:
-                hideSearchBarAndActiveFalse()
+                outsidePendingSegment()
                 clearUsersArrayAndReloadTableView()
                 twitterSegmentWasPicked()
             
@@ -414,6 +416,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     }
     
     func checkForPendingConnections(){
+        checkingForPendingConnections = true
+        
         Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("\nError happened")
@@ -438,14 +442,17 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     self.friendsTableView.reloadData()
+                    
                 })
             }
         }
     }
     
-    func hideSearchBarAndActiveFalse() {
+    func outsidePendingSegment() {
         friendsTableView.tableHeaderView = nil
         self.resultSearchController.active = false
+        
+        self.checkingForPendingConnections = false
     }
 }
 
@@ -462,11 +469,16 @@ extension NetworkVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
         
-        cell.userImageView.image = nil
-        
         let user = self.users[indexPath.row]
         
-        cell.configureCellWithUser(user)
+        cell.userImageView.image = nil
+        
+        if checkingForPendingConnections {
+            cell.checkingForPendingConnections = true
+            cell.configureCellWithUserWithPendingConnection(user)
+        } else{
+            cell.configureCellWithUserToFriendOrFollow(user)
+        }
         
         return cell
         
