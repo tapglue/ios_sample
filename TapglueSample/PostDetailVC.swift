@@ -15,6 +15,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     var postComments: [TGPostComment] = []
     
     var commentButtonPressedSwitch: Bool = false
+    
+    @IBOutlet weak var likeButton: UIButton!
 
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
@@ -26,6 +28,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
+    @IBOutlet weak var commentsCountLabel: UILabel!
+    @IBOutlet weak var likesCountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +57,41 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    @IBAction func likeButtonPressed(sender: UIButton) {
+            if likeButton.selected == true {
+                Tapglue.deleteLike(post) { (success: Bool, error: NSError!) -> Void in
+                    if error != nil {
+                        print("\nError happened:")
+                        print(error)
+                    }
+                    else {
+                        print("\nSuccessly deleted like from post:")
+                        print(success)
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.likeButton.selected = false
+                        })
+                    }
+                }
+            } else {
+                post.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+                    if error != nil {
+                        print("\nError happened:")
+                        print(error)
+                    }
+                    else {
+                        print("\nSuccessly liked a post:")
+                        print(success)
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.likeButton.selected = true
+                            
+                        })
+                    }
+            }
+        }
     }
     
     
@@ -101,6 +140,20 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     func fillPostDetailInformation(){
         userNameLabel.text = post.user.username
         
+        if post.likesCount != 0 {
+            if post.likesCount == 1{
+                self.likesCountLabel.text = String(post.likesCount) + " Like"
+            }
+            self.likesCountLabel.text = String(post.likesCount) + " Likes"
+        }
+        
+        if post.commentsCount != 0 {
+            if post.commentsCount == 1 {
+                self.commentsCountLabel.text = String(post.commentsCount) + " Comment"
+            }
+            self.commentsCountLabel.text = String(post.commentsCount) + " Comments"
+        }
+        
         // PostText
         let postAttachment = post.attachments
         self.postTextLabel.text = "\" " + postAttachment[0].content + " \""
@@ -123,6 +176,17 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             
         case TGVisibility.Public:
             self.visibilityImageView.image = UIImage(named: "publicFilled")
+        }
+        
+        // Check if post isLiked already
+        if post.isLiked {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.likeButton.selected = true
+            })
+        } else {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.likeButton.selected = false
+            })
         }
     }
 }
