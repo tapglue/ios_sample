@@ -14,6 +14,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userCommentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,8 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     func configureCellWithPostComment(comment: TGPostComment) {
         userNameLabel.text = comment.user.username
         userCommentLabel.text = comment.content
+        
+        dateLabel.text = comment.createdAt.toStringFormatHoursMinutes()
         
         var userImage = TGImage()
         userImage = comment.user.images.valueForKey("profilePic") as! TGImage
