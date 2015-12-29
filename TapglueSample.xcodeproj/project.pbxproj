@@ -101,6 +101,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6A1639A71C33250200891A81 /* Custom Class */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Custom Class";
+			sourceTree = "<group>";
+		};
 		6A1A98A21C20554E00299CD1 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +251,7 @@
 		6A61F3341BDACCFD00EC64DF /* TapglueSample */ = {
 			isa = PBXGroup;
 			children = (
+				6A1639A71C33250200891A81 /* Custom Class */,
 				6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */,
 				6A61F34D1BDADBD100EC64DF /* ViewControllers */,
 				6A1F10811C301C6500C445E0 /* Extensions */,
