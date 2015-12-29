@@ -27,7 +27,7 @@ class NotificationTableViewCell: UITableViewCell {
     func configureCellWithEvent(event: TGEvent!){
         self.userNameLabel.text = event.user.username
         
-        self.eventNameLabel.text = event.object.objectId
+//        self.eventNameLabel.text = event.object.objectId
         
         self.eventTypeImageView.image = UIImage(named: event.type)
         
