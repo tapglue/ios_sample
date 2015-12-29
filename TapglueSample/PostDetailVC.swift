@@ -19,7 +19,9 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var likeButton: UIButton!
 
     @IBOutlet weak var commentsTableView: UITableView!
+    
     @IBOutlet weak var commentTextField: UITextField!
+    
     @IBOutlet weak var commentContainerBottonConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -210,7 +212,32 @@ extension PostDetailVC: UITableViewDataSource {
         
         return cell
     }
-
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
+            print("favorite button tapped")
+        }
+        edit.backgroundColor = UIColor.lightGrayColor()
+        
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
+            print("share button tapped")
+            Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("Error happened\n")
+                    print(error)
+                }
+                else {
+                    print(success)
+                    
+                    self.retrieveAllCommentsForPost()
+                }
+            })
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete, edit]
+    }
 }
 
 extension PostDetailVC: UITextFieldDelegate {
