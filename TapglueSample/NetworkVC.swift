@@ -488,12 +488,12 @@ extension NetworkVC: UITableViewDataSource {
 extension NetworkVC: FBSDKLoginButtonDelegate {
     // Mark: -Facebook Methods
     func configureFacebook(){
-        facebookLogInButton.readPermissions = ["public_profile", "email", "user_friends"];
+        facebookLogInButton.readPermissions = ["public_profile", "email", "user_friends", "user_about_me"];
         facebookLogInButton.delegate = self
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id"]).startWithCompletionHandler { (connection, result, error) -> Void in
+        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id, bio"]).startWithCompletionHandler { (connection, result, error) -> Void in
             
             if error != nil{
                 print(error)
@@ -506,11 +506,26 @@ extension NetworkVC: FBSDKLoginButtonDelegate {
                 
                 self.facebookID = (result.objectForKey("id") as? String)!
                 print(self.facebookID)
+
                 self.defaults.setObject(true, forKey: "facebookPermission")
                 
-                // Add facebook social id to TGUser.currentUser
+                print("https://graph.facebook.com/\(self.facebookID)/picture?type=large")
+              
+                // Init CurrentUser
                 let currentUser = TGUser.currentUser()
+                
+                // Get facebook about and at to currentUserMetadata
+                if result.objectForKey("bio") != nil {
+                    let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
+                    currentUser.metadata = about
+                }
+                // Add Facebook ImageURL to currentUser
+                let userImage = TGImage()
+                userImage.url = "https://graph.facebook.com/\(self.facebookID)/picture?type=large"
+                currentUser.images.setValue(userImage, forKey: "profilePic")
+                // Add socialID to currentUser
                 currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
+                // Update currentUser
                 currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
                     print(success)
                 })
