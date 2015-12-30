@@ -131,19 +131,6 @@ class NetworkUserTableViewCell: UITableViewCell {
                     }
                 })
             }
-//            Tapglue.friendUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if success {
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        sender.selected = true
-////                        self.connectButton.setTitle("Pending", forState: .Selected)
-//                        self.friendUserCustomizeButton()
-//                    })
-//                } else if error != nil{
-//                    print("Error happened\n")
-//                    print(error)
-//                }
-//            })
-
         }
     }
     

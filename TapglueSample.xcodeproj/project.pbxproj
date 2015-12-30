@@ -31,7 +31,6 @@
 		6A70082E1C2862D1003D385E /* NetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082D1C2862D1003D385E /* NetworkVC.swift */; };
 		6A74F6FB1C2008BD006C51C7 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */; };
 		6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */; };
-		6A7EA3F01C296EC0004D43AD /* GetSocialIDsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */; };
 		6A92D4C91C2164AE00BE79C1 /* EventFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92D4C81C2164AE00BE79C1 /* EventFilterTableViewCell.swift */; };
 		6A92D4CB1C2164C100BE79C1 /* EventFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92D4CA1C2164C100BE79C1 /* EventFilterVC.swift */; };
 		6A92D4CD1C21967900BE79C1 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92D4CC1C21967900BE79C1 /* NewsVC.swift */; };
@@ -68,7 +67,6 @@
 		6A70082D1C2862D1003D385E /* NetworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkVC.swift; sourceTree = "<group>"; };
 		6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFeedTableViewCell.swift; sourceTree = "<group>"; };
-		6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSocialIDsViewController.swift; sourceTree = "<group>"; };
 		6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapglueSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		6A92D4C81C2164AE00BE79C1 /* EventFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilterTableViewCell.swift; sourceTree = "<group>"; };
 		6A92D4CA1C2164C100BE79C1 /* EventFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilterVC.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				6A1F10811C301C6500C445E0 /* Extensions */,
 				6A1639A71C33250200891A81 /* Custom Class */,
 				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
-				6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */,
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
 				6A61F3411BDACCFD00EC64DF /* Info.plist */,
 				6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */,
@@ -431,7 +428,6 @@
 				6A1A98A61C20563000299CD1 /* UsersVC.swift in Sources */,
 				6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */,
 				6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */,
-				6A7EA3F01C296EC0004D43AD /* GetSocialIDsViewController.swift in Sources */,
 				6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */,
 				6A1A98AD1C20718D00299CD1 /* NotificationVC.swift in Sources */,
 				6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */,
