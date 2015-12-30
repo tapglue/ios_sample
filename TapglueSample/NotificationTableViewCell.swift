@@ -25,9 +25,8 @@ class NotificationTableViewCell: UITableViewCell {
     
     // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
+        print(event.type)
         self.userNameLabel.text = event.user.username
-        
-//        self.eventNameLabel.text = event.object.objectId
         
         self.eventTypeImageView.image = UIImage(named: event.type)
         
@@ -38,13 +37,13 @@ class NotificationTableViewCell: UITableViewCell {
     
     // Configure Cell with TGEvent
     func configureCellForTypeTGFriend(event: TGEvent!){
+        print(event.type)
         if event.target.user != nil {
             eventNameLabel.text = "You are now friends with " + event.target.user.username
             
             var userImage = TGImage()
             userImage = event.target.user.images.valueForKey("profilePic") as! TGImage
             self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
-            
             
             // Date to string
             self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes()
