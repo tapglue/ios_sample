@@ -22,10 +22,14 @@ class UserProfileTableViewCell: UITableViewCell {
     
     // Configure Cell with TGPost
     func configureCellWithPost(post: TGPost!){
-        // Date to string
-        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
+        clearLabels()
+        //
+        self.typeLabel.text = post.user.username
         
-        // PostText
+        // Date to string
+        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
+        
+        // Post attachment
         let postAttachment = post.attachments
         self.infoLabel.text = postAttachment[0].content
         
@@ -33,26 +37,49 @@ class UserProfileTableViewCell: UITableViewCell {
     
     // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
-        // Date to string
-        self.dateLabel.text = event.createdAt.toStringFormatYearMonthDayHoursMinutesSeconds()
+        clearLabels()
         
         switch event.type {
             case "like_event":
-                self.typeLabel.text = "Liked"
+                self.typeLabel.text = "Likes event"
             case "bookmark_event":
                 self.typeLabel.text = "Bookmarked"
             case "tg_friend":
-                self.typeLabel.text = "Added Friend"
+                if event.target.user != nil {
+                    self.typeLabel.text = "Friends"
+                    self.infoLabel.text = "You are Friends with " + event.target.user.username
+                    print(event.target.user.username)
+                }
             case "tg_like":
-                self.typeLabel.text = "Liked Post"
+                self.typeLabel.text = "Liked " + "'s" + " post"
+                
+                Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
+                    if error != nil {
+                        print("Error happened\n")
+                        print(error)
+                    }
+                    else {
+                        // PostText
+                        print(post)
+                        let postAttachment = post.attachments
+                        self.infoLabel.text = "\" " + postAttachment[0].content + " \""
+                    }
+                })
+            case "tg_follow":
+                if event.target.user != nil {
+                    self.typeLabel.text = "Follow"
+                    self.infoLabel.text = "You started to follow " + event.target.user.username
+                    print(event.target.user.username)
+                }
             default: print("More event types then expected")
         }
         
-        self.infoLabel.text = event.tgObjectId
-        
-        if event.object != nil {
-            self.infoLabel.text = event.object.objectId
-        }
+        self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
     }
 
+    func clearLabels(){
+        self.typeLabel.text = ""
+        self.infoLabel.text = ""
+        self.dateLabel.text = ""
+    }
 }
