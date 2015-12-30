@@ -251,10 +251,10 @@
 		6A61F3341BDACCFD00EC64DF /* TapglueSample */ = {
 			isa = PBXGroup;
 			children = (
-				6A1639A71C33250200891A81 /* Custom Class */,
 				6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */,
 				6A61F34D1BDADBD100EC64DF /* ViewControllers */,
 				6A1F10811C301C6500C445E0 /* Extensions */,
+				6A1639A71C33250200891A81 /* Custom Class */,
 				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
 				6A7EA3EF1C296EC0004D43AD /* GetSocialIDsViewController.swift */,
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
