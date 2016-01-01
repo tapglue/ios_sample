@@ -33,9 +33,7 @@ class HomeVC: UIViewController, UITableViewDelegate{
         // UserImage
         var userImage = TGImage()
         userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
-        })
+        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
         
         self.refreshControl?.beginRefreshing()
         self.loadFriendsActivityFeed()
@@ -49,10 +47,8 @@ class HomeVC: UIViewController, UITableViewDelegate{
     
     func loadFriendsActivityFeed() {
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
-            
             if error != nil {
-                print("\nError happened")
-                print(error)
+                print("\nError: \(error)")
             }
             else {
                 self.posts = feed as! [TGPost]
@@ -65,8 +61,6 @@ class HomeVC: UIViewController, UITableViewDelegate{
             }
         }
     }
-    
-
 }
 
 
@@ -83,10 +77,9 @@ extension HomeVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
         
-        
-        print("Current cell number is: \([indexPath.row])")
-        cell.userImageView.image = nil
         cell.configureCellWithPost(self.posts[indexPath.row])
+        
+        // Self for custom delegate
         cell.delegate = self
         
         return cell
@@ -97,10 +90,8 @@ extension HomeVC: UITableViewDataSource {
         self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
         
-        // pass data
         pdVC.post = posts[indexPath.row]
         
-        // tell the new controller to present itself
         self.navigationController!.pushViewController(pdVC, animated: true)
     }
 }
@@ -109,20 +100,20 @@ extension HomeVC: UITableViewDataSource {
 extension HomeVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldDidBeginEditing(textField: UITextField) {
-        // Show PostVC
         textField.resignFirstResponder()
+        
+        // Go to PostVC
         self.performSegueWithIdentifier("postSegue", sender: nil)
     }
 }
 
 
 extension HomeVC: CustomCellDataUpdater {
-    // Mark: - Custom delegate
+    // Mark: - Custom delegate to update data if cell recieves a like button pressed
     func updateTableViewData() {
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError happened")
-                print(error)
+                print("\nError: \(error)")
             }
             else {
                 self.posts = feed as! [TGPost]

@@ -27,6 +27,7 @@ class PostVC: UIViewController {
         userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
         self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
         
+        // Prepare postUIBarButton
         postUIBarButton.enabled = false
     }
     
@@ -51,12 +52,11 @@ class PostVC: UIViewController {
             
             Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print(error)
+                    print("\nError: \(error)")
                 } else {
-                    print(success)
+                    print("\nSucccess: \(success)")
                 }
             }
-            
             resignKeyboardAndDismissVC()
         } else {
             showAlert()
@@ -73,16 +73,11 @@ class PostVC: UIViewController {
     }
     
     func showAlert() {
-        // Init UIAlertController
         let alertController = UIAlertController(title: "Post Error", message: "You can not post empty or less then two characters of text.", preferredStyle: .Alert)
         
-        // Init UIAlertAction
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            // You can add a action if you like
-            print("OK button was pressed, dissmiss AlertView.")
         }
         
-        // Add UIAlertAction to UIAlertController
         alertController.addAction(OKAction)
         
         // Present UIAlertController
@@ -100,17 +95,16 @@ extension PostVC: UITextFieldDelegate {
         
         return false
     }
-    
+    // If textField has more then 3 characters enable posUIBarbutton
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if range.location > 2 {
+        if range.location >= 3 {
             postUIBarButton.enabled = true
             postText = textField.text
-        }
-        
-        if range.location <= 2{
+        } else {
             postUIBarButton.enabled = false
         }
         
+        // Keep it true
         return true
     }
 }

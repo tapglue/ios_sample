@@ -65,9 +65,9 @@ class LoginRegisterVC: UIViewController {
             
             Tapglue.createAndLoginUser(tapglueUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError happened")
+                    print("\nError: \(error)")
                 } else {
-                    print("\nUser was created")
+                    print("\nUser was created: \(success)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.navigationController?.popToRootViewControllerAnimated(false)
                     })

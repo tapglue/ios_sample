@@ -19,24 +19,24 @@ class LoginSignInVC: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        // Show navigationBar
+        // Show navigationBar again when view disappears
         self.navigationController?.navigationBarHidden = false
     }
     
     @IBAction func signInButtonPressed(sender: UIButton) {
+        // If all textFields have more then 2 characters, begin Tapglue login
         if userNameTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 {
-            
+            1
             let username = userNameTextField.text!
             let password = passwordTextField.text!
             
             Tapglue.loginWithUsernameOrEmail(username, andPasswort: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n:\(error)")
+                    print("\nError: \(error)")
                 } else {
-                    print("User was created\n:\(success)")
+                    print("\nUser loged in: \(success)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.navigationController?.popToRootViewControllerAnimated(false)
-                        
                     })
                 }
             })
