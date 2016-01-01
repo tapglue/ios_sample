@@ -9,14 +9,13 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
-        // Hide navigationBar
+        // Hide navigationBar while in loginVCs
         self.navigationController?.navigationBarHidden = true
     }
 }

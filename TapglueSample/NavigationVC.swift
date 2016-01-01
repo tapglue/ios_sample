@@ -16,9 +16,9 @@ class NavigationVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Check for tapglue user
+        // Send user to app or login screen
         if TGUser.currentUser() != nil {
-            print(TGUser.currentUser())
+            
         } else {
             setupCheckedForEventsDefaults()
             setupPermissionDefaultBools()
@@ -27,14 +27,14 @@ class NavigationVC: UINavigationController {
         }
     }
     
-    // TapglueSample uses 3 event types
+    // Prepare checks to filter Notifications
     func setupCheckedForEventsDefaults(){
         let checked: [Bool] = [true, true, true, true]
         defaults.setObject(checked, forKey: "checked")
         defaults.synchronize()
     }
     
-    // Setup permission controls for NetworkVC(networkButton)
+    // Prepare permissions for NetworkVC(networkButton)
     func setupPermissionDefaultBools(){
         defaults.setObject(false, forKey: "contactsPermission")
         defaults.setObject(false, forKey: "facebookPermission")
