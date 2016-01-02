@@ -34,8 +34,8 @@ class NetworkUserTableViewCell: UITableViewCell {
         
         let meta = user.metadata as AnyObject
         self.userAboutLabel.text = String(meta.valueForKey("about")!)
-        self.userNameLabel.text = self.cellUser.username
         
+        self.userNameLabel.text = self.cellUser.username
         
         // UserImage
         var userImage = TGImage()
@@ -59,10 +59,8 @@ class NetworkUserTableViewCell: UITableViewCell {
             } else {
                 unfollowingUserCustomizeButton()
                 self.connectLeftButton.selected = false
-                
             }
         }
-        
     }
     
     // Configure Cell with TGUser data
@@ -70,6 +68,7 @@ class NetworkUserTableViewCell: UITableViewCell {
         cellUser = user
         
         let meta = user.metadata as AnyObject
+        
         self.userAboutLabel.text = String(meta.valueForKey("about")!)
         self.userNameLabel.text = self.cellUser.username
         
@@ -86,12 +85,10 @@ class NetworkUserTableViewCell: UITableViewCell {
         if self.connectLeftButton != nil {
             declineFriendShipCustomizeButton()
         }
-        
     }
     
     @IBAction func connectRightPressed(sender: UIButton) {
         if sender.selected {
-            
             Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
                 if success {
                     print("User unfriend successful")
@@ -100,12 +97,10 @@ class NetworkUserTableViewCell: UITableViewCell {
                         self.unfriendUserCustomizeButton()
                     })
                 } else if error != nil{
-                    print("Error happened\n")
-                    print(error)
+                    print("\nError: \(error)")
                 }
             })
         } else {
-            
             if !checkingForPendingConnections {
                 Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
                     if success {
@@ -114,8 +109,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.pendingUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("Error happened\n")
-                        print(error)
+                        print("\nError: \(error)")
                     }
                 })
             } else {
@@ -126,8 +120,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.friendUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("Error happened\n")
-                        print(error)
+                        print("\nError: \(error)")
                     }
                 })
             }
@@ -144,22 +137,20 @@ class NetworkUserTableViewCell: UITableViewCell {
                         self.unfollowingUserCustomizeButton()
                     })
                 } else if error != nil{
-                    print("Error happened\n")
-                    print(error)
+                    print("\nError: \(error)")
                 }
             })
         } else {
             if !checkingForPendingConnections {
                 Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                     if success {
-                        print("User follow successful")
+                        print("User follow successful: \(success)")
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             sender.selected = true
                             self.followingUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("Error happened\n")
-                        print(error)
+                        print("\nError: \(error)")
                     }
                 })
             } else {
@@ -170,8 +161,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.unfriendUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("Error happened\n")
-                        print(error)
+                        print("\nError: \(error)")
                     }
                 })
             }
