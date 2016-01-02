@@ -51,7 +51,7 @@ class UserProfileTableViewCell: UITableViewCell {
                 
                 Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError: \(error)")
+                        print("\nError retrievePostWithId: \(error)")
                     } else {
                         // PostText
                         print(post)

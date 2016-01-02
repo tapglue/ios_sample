@@ -32,7 +32,7 @@ class LoginSignInVC: UIViewController {
             
             Tapglue.loginWithUsernameOrEmail(username, andPasswort: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError loginWithUsernameOrEmail: \(error)")
                 } else {
                     print("\nUser loged in: \(success)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in

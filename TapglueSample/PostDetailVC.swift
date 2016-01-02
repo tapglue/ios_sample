@@ -76,7 +76,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             if likeButton.selected == true {
                 Tapglue.deleteLike(post) { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError: \(error)")
+                        print("\nError deleteLike: \(error)")
                     }
                     else {
                         print("\nSuccessly deleted like to post: \(success)")
@@ -89,7 +89,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             } else {
                 post.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError: \(error)")
+                        print("\nError like: \(error)")
                     }
                     else {
                         print("\nSuccessly liked a post: \(success)")
@@ -132,7 +132,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     func retrieveAllCommentsForPost(){
         Tapglue.retrieveCommentsForPost(post) { (comments: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError: \(error)")
+                print("\nError retrieveCommentsForPost: \(error)")
             }
             else {
                 print("\nComments: \(comments)")
@@ -237,7 +237,7 @@ extension PostDetailVC: UITableViewDataSource {
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
             Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError deleteComment: \(error)")
                 }
                 else {
                     print("\nSuccess: \(error)")
@@ -272,7 +272,7 @@ extension PostDetailVC: UITextFieldDelegate {
             
             Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError updateComment: \(error)")
                 }
                 else {
                     print("\nSuccess update comment: \(success)")
@@ -289,7 +289,7 @@ extension PostDetailVC: UITextFieldDelegate {
         } else {
             Tapglue.createCommentWithContent(textField.text!, forPost: post) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError createCommentWithContent: \(error)")
                 } else {
                     print("\nSuccess create comment: \(success)")
                     self.retrieveAllCommentsForPost()

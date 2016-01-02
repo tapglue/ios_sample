@@ -32,7 +32,7 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         // Update user information
         TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError currentUser: \(error)")
                 } else {
                     print("Success: \(success)")
                 }

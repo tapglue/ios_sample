@@ -48,7 +48,7 @@ class HomeVC: UIViewController, UITableViewDelegate{
     func loadFriendsActivityFeed() {
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError: \(error)")
+                print("\nError retrievePostsFeedForCurrentUser: \(error)")
             }
             else {
                 self.posts = feed as! [TGPost]
@@ -113,7 +113,7 @@ extension HomeVC: CustomCellDataUpdater {
     func updateTableViewData() {
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError: \(error)")
+                print("\nError retrievePostsFeedForCurrentUser: \(error)")
             }
             else {
                 self.posts = feed as! [TGPost]

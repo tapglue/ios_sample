@@ -97,7 +97,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                         self.unfriendUserCustomizeButton()
                     })
                 } else if error != nil{
-                    print("\nError: \(error)")
+                    print("\nError unfriendUser: \(error)")
                 }
             })
         } else {
@@ -109,7 +109,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.pendingUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("\nError: \(error)")
+                        print("\nError friendUser: \(error)")
                     }
                 })
             } else {
@@ -120,7 +120,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.friendUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("\nError: \(error)")
+                        print("\nError friendUser: \(error)")
                     }
                 })
             }
@@ -137,7 +137,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                         self.unfollowingUserCustomizeButton()
                     })
                 } else if error != nil{
-                    print("\nError: \(error)")
+                    print("\nError unfollowUser: \(error)")
                 }
             })
         } else {
@@ -150,7 +150,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.followingUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("\nError: \(error)")
+                        print("\nError followUser: \(error)")
                     }
                 })
             } else {
@@ -161,7 +161,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.unfriendUserCustomizeButton()
                         })
                     } else if error != nil{
-                        print("\nError: \(error)")
+                        print("\nError friendUser: \(error)")
                     }
                 })
             }

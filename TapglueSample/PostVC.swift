@@ -52,7 +52,7 @@ class PostVC: UIViewController {
             
             Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError createPost: \(error)")
                 } else {
                     print("\nSucccess: \(success)")
                 }

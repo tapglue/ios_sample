@@ -101,7 +101,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     func getEventsAndPostsOfCurrentUser() {
         Tapglue.retrieveEventsForUser(userProfile) { (events: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError: \(error)")
+                print("\nError retrieveEventsForUser: \(error)")
             } else {
                 self.events = events as! [TGEvent]
                 
@@ -113,7 +113,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
 
         Tapglue.retrievePostsForUser(userProfile) { (posts: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError: \(error)")
+                print("\nError retrievePostsForUser: \(error)")
             }
             else {
                 self.posts = posts as! [TGPost]

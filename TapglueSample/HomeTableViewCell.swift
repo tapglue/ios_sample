@@ -41,7 +41,7 @@ class HomeTableViewCell: UITableViewCell {
         if likeButton.selected == true {
             Tapglue.deleteLike(cellPost) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError deleteLike: \(error)")
                 }
                 else {
                     print("\nSuccessly deleted like from post: \(success)")
@@ -56,7 +56,7 @@ class HomeTableViewCell: UITableViewCell {
         } else {
             cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError: \(error)")
+                    print("\nError like: \(error)")
                 }
                 else {
                     print("\nSuccessly liked a post: \(success)")
