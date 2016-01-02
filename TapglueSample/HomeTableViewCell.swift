@@ -41,12 +41,10 @@ class HomeTableViewCell: UITableViewCell {
         if likeButton.selected == true {
             Tapglue.deleteLike(cellPost) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError happened:")
-                    print(error)
+                    print("\nError: \(error)")
                 }
                 else {
-                    print("\nSuccessly deleted like from post:")
-                    print(success)
+                    print("\nSuccessly deleted like from post: \(success)")
                     
                     self.delegate?.updateTableViewData()
                     
@@ -58,18 +56,15 @@ class HomeTableViewCell: UITableViewCell {
         } else {
             cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError happened:")
-                    print(error)
+                    print("\nError: \(error)")
                 }
                 else {
-                    print("\nSuccessly liked a post:")
-                    print(success)
+                    print("\nSuccessly liked a post: \(success)")
                     
                     self.delegate?.updateTableViewData()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.likeButton.selected = true
-                        
                     })
                 }
             }
@@ -137,9 +132,10 @@ class HomeTableViewCell: UITableViewCell {
                 self.visibilityImageView.image = UIImage(named: "publicFilled")
         }
         
+        // Date text
         self.dateLabel.text = post.createdAt.timeFormatInElapsedTimeToString()
         
-        // Check if post isLiked already
+        // Check if post was liked before
         if cellPost.isLiked {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.likeButton.selected = true
