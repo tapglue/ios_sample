@@ -40,7 +40,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
 
         if post != nil {
-           print("PostDetail: \(post)")
+            print("PostDetail: \(post)")
             fillPostDetailInformation()
         }
 
@@ -48,14 +48,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         if commentButtonPressedSwitch {
             commentTextField.becomeFirstResponder()
         }
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         retrieveAllCommentsForPost()
-        print(postComments.count)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
@@ -80,12 +76,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             if likeButton.selected == true {
                 Tapglue.deleteLike(post) { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError happened:")
-                        print(error)
+                        print("\nError happened: \(error)")
                     }
                     else {
-                        print("\nSuccessly deleted like from post:")
-                        print(success)
+                        print("\nSuccessly deleted like to post: \(success)")
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.likeButton.selected = false
@@ -95,12 +89,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             } else {
                 post.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError happened:")
-                        print(error)
+                        print("\nError happened: \(error)")
                     }
                     else {
-                        print("\nSuccessly liked a post:")
-                        print(success)
+                        print("\nSuccessly liked a post: \(success)")
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.likeButton.selected = true
@@ -140,10 +132,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     func retrieveAllCommentsForPost(){
         Tapglue.retrieveCommentsForPost(post) { (comments: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("Error happened\n")
-                print(error)
+                print("\nError: \(error)")
             }
             else {
+                print("\nComments: \(comments)")
                 self.postComments = (comments as! [TGPostComment]).reverse()
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -222,8 +214,6 @@ extension PostDetailVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PostDetailCommentsTableViewCell
         
-        cell.userImageView.image = nil
-        
         cell.configureCellWithPostComment(postComments[indexPath.row])
         
         return cell
@@ -241,17 +231,16 @@ extension PostDetailVC: UITableViewDataSource {
             
             self.editComment = self.postComments[indexPath.row]
         }
+        
         edit.backgroundColor = UIColor.lightGrayColor()
         
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
-            print("share button tapped")
             Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n")
-                    print(error)
+                    print("\nError: \(error)")
                 }
                 else {
-                    print(success)
+                    print("\nSuccess: \(error)")
                     
                     self.retrieveAllCommentsForPost()
                 }
@@ -283,11 +272,10 @@ extension PostDetailVC: UITextFieldDelegate {
             
             Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n")
-                    print(error)
+                    print("\nError happened: \(error)")
                 }
                 else {
-                    print("\nSuccessful updated comment: \(success)")
+                    print("\nSuccess update comment: \(success)")
                     self.retrieveAllCommentsForPost()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -301,11 +289,9 @@ extension PostDetailVC: UITextFieldDelegate {
         } else {
             Tapglue.createCommentWithContent(textField.text!, forPost: post) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n")
-                    print(error)
-                }
-                else {
-                    print(success)
+                    print("\nError happened: \(error)")
+                } else {
+                    print("\nSuccess create comment: \(success)")
                     self.retrieveAllCommentsForPost()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -316,7 +302,6 @@ extension PostDetailVC: UITextFieldDelegate {
                 }
             }
         }
-        
         
         return true
     }

@@ -109,7 +109,7 @@ extension HomeVC: UITextFieldDelegate {
 
 
 extension HomeVC: CustomCellDataUpdater {
-    // Mark: - Custom delegate to update data if cell recieves a like button pressed
+    // Mark: - Custom delegate to update data, if cell recieves like button pressed
     func updateTableViewData() {
         Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
