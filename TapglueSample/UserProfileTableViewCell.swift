@@ -20,22 +20,18 @@ class UserProfileTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    // Configure Cell with TGPost
     func configureCellWithPost(post: TGPost!){
         clearLabels()
-        //
+        
         self.typeLabel.text = post.user.username
         
-        // Date to string
         self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
         
         // Post attachment
         let postAttachment = post.attachments
         self.infoLabel.text = postAttachment[0].content
-        
     }
     
-    // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
         clearLabels()
         
@@ -55,10 +51,8 @@ class UserProfileTableViewCell: UITableViewCell {
                 
                 Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
                     if error != nil {
-                        print("Error happened\n")
-                        print(error)
-                    }
-                    else {
+                        print("\nError: \(error)")
+                    } else {
                         // PostText
                         print(post)
                         let postAttachment = post.attachments

@@ -68,8 +68,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         
         Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("Error happened\n")
-                print(error)
+                print("\nError: \(error)")
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.currentUserEvents = feed as! [TGEvent]

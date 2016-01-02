@@ -47,7 +47,6 @@ extension NSDate {
         let strMinutes = minutes > 9 ? String(minutes) : "" + String(minutes)
         let strSeconds = seconds > 9 ? String(seconds) : "" + String(seconds)
         
-        
         if weeks > 1 {
             return "\(strWeeks) weeks"
         }

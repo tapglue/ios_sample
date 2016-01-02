@@ -101,10 +101,8 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     func getEventsAndPostsOfCurrentUser() {
         Tapglue.retrieveEventsForUser(userProfile) { (events: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("Error happened\n")
-                print(error)
-            }
-            else {
+                print("\nError: \(error)")
+            } else {
                 self.events = events as! [TGEvent]
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -115,8 +113,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
 
         Tapglue.retrievePostsForUser(userProfile) { (posts: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("Error happened\n")
-                print(error)
+                print("\nError: \(error)")
             }
             else {
                 self.posts = posts as! [TGPost]
@@ -174,7 +171,7 @@ extension UserProfileVC: UITableViewDataSource {
         self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
         
-        // pass data
+        // pass data to sub-viewcontroller
         pdVC.post = posts[indexPath.row]
         
         // tell the new controller to present itself

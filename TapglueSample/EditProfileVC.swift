@@ -12,14 +12,7 @@ import Tapglue
 class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
-    
-    let tapglueUser = TGUser.currentUser()
-    
-    var defaultTGUser = TGUser()
-    
-    
-    
-    
+        
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
     var userInformation = []
 
@@ -31,25 +24,17 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         
         userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, about, TGUser.currentUser().email]
 
-        // Observer for keyboard
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
-        
-        
-//        print(meta.valueForKey("about")!)
-//        let meta = user.metadata as AnyObject
-//        self.userAboutLabel.text = String(meta.valueForKey("about")!)
-//        let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
-//        currentUser.metadata = about
     }
     
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
         // Update user information
         TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("Error happened\n\(error)")
+                    print("\nError: \(error)")
                 } else {
-                    print("Successful: \n\(success)")
+                    print("Success: \(success)")
                 }
         }
         self.dismissViewControllerAnimated(true, completion: nil)

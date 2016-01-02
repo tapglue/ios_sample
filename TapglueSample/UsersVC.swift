@@ -39,8 +39,8 @@ extension UsersVC: UITableViewDataSource {
         if meta != nil {
             cell.userAboutLabel.text = String(meta!.valueForKey("about")!)
         }
-        cell.userNameLabel.text = users[indexPath.row].username
         
+        cell.userNameLabel.text = users[indexPath.row].username
         
         // User image
         var userImage = TGImage()

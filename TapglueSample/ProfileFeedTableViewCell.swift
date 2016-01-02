@@ -19,15 +19,12 @@ class ProfileFeedTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    // Configure Cell with TGPost
+
     func configureCellWithPost(post: TGPost!){
         clearLabels()
         
-        //
         self.typeLabel.text = post.user.username
         
-        // Date to string
         self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
         
         // Post attachment
@@ -35,9 +32,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
         self.infoLabel.text = postAttachment[0].content
     }
 
-    // Configure Cell with TGEvent
     func configureCellWithEvent(event: TGEvent!){
-        print(event.type)
         clearLabels()
         
         switch event.type {
@@ -56,10 +51,8 @@ class ProfileFeedTableViewCell: UITableViewCell {
                 
                 Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
                         if error != nil {
-                            print("Error happened\n")
-                            print(error)
-                        }
-                        else {
+                            print("\nError: \(error)")
+                        } else {
                             // PostText
                             print(post)
                             let postAttachment = post.attachments
@@ -76,12 +69,6 @@ class ProfileFeedTableViewCell: UITableViewCell {
         }
         
         self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
-        
-//        self.infoLabel.text = event.tgObjectId
-        
-        if event.object != nil {
-            self.infoLabel.text = event.object.objectId
-        }
     }
 
     func clearLabels(){

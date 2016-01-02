@@ -76,7 +76,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             if likeButton.selected == true {
                 Tapglue.deleteLike(post) { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError happened: \(error)")
+                        print("\nError: \(error)")
                     }
                     else {
                         print("\nSuccessly deleted like to post: \(success)")
@@ -89,7 +89,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             } else {
                 post.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
-                        print("\nError happened: \(error)")
+                        print("\nError: \(error)")
                     }
                     else {
                         print("\nSuccessly liked a post: \(success)")
@@ -272,7 +272,7 @@ extension PostDetailVC: UITextFieldDelegate {
             
             Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError happened: \(error)")
+                    print("\nError: \(error)")
                 }
                 else {
                     print("\nSuccess update comment: \(success)")
@@ -289,7 +289,7 @@ extension PostDetailVC: UITextFieldDelegate {
         } else {
             Tapglue.createCommentWithContent(textField.text!, forPost: post) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
-                    print("\nError happened: \(error)")
+                    print("\nError: \(error)")
                 } else {
                     print("\nSuccess create comment: \(success)")
                     self.retrieveAllCommentsForPost()

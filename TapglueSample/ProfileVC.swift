@@ -35,8 +35,6 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     override func viewWillAppear(animated: Bool) {
         // Check for tapglue user
         if TGUser.currentUser() != nil {
-            print(TGUser.currentUser())
-            
             refreshTGUser()
             
             currentFriendsFollowerFollowingCount()
@@ -105,8 +103,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     func getEventsAndPostsOfCurrentUser() {
         Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (events: [AnyObject]!,error: NSError!) -> Void in
             if error != nil {
-                print("Error happened\n")
-                print(error)
+                print("\nError: \(error)")
             }
             else {
                 self.events = events as! [TGEvent]
@@ -118,8 +115,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         }
         Tapglue.retrievePostsForCurrentUserWithCompletionBlock { (posts: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("Error happened\n")
-                print(error)
+                print("\nError: \(error)")
             }
             else {
                 self.posts = posts as! [TGPost]

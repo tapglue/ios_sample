@@ -216,7 +216,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
 
         Tapglue.searchUsersWithEmails(contactEmails) { (users: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError happened: \(error)")
+                print("\nError: \(error)")
             }
             else {
                 print("\nSuccessful: \(users)")
@@ -274,7 +274,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                     // add friends that are found
                     Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyFacebook, withSocialUsersIds: self.friendsFromFacebook, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
                         if error != nil {
-                            print("\nError happened:\(error)")
+                            print("\nError: \(error)")
                         }
                         else {
                             print("\nSuccessful-facebook friends: \(facebookUsers)")
@@ -373,7 +373,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                             // Check if twitterFriends are availabe in your App
                             Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyTwitter, withSocialUsersIds: followsFromTwitter, andCompletionBlock: { (twitterUsers: [AnyObject]!, error: NSError!) -> Void in
                                 if error != nil {
-                                    print("\nError happened: \(error)")
+                                    print("\nError: \(error)")
                                 }
                                 else {
                                     print("\nSuccessful - twitterFriends: \(twitterUsers)")
@@ -420,11 +420,9 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         
         Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                print("\nError happened")
-                print(error)
-            }
-            else {
-                print("\nSuccess happened")
+                print("\nError: \(error)")
+            } else {
+                print("\nSuccess")
                 print(incoming)
                 print(outgoing)
 
@@ -553,8 +551,7 @@ extension NetworkVC: UISearchResultsUpdating {
                         self.friendsTableView.reloadData()
                     })
                 } else if error != nil{
-                    print("Error happened\n")
-                    print(error)
+                    print("\nError: \(error)")
                 }
             }
         } else {
