@@ -11,12 +11,11 @@ import Tapglue
 
 class NotificationVC: UIViewController, UITableViewDelegate {
     
-    // TableView outlet
     @IBOutlet weak var notificationsTableView: UITableView!
     
     var checkedEvents: [Bool] = []
     
-    // TGEvent Array
+    // TGEvent arr
     var currentUserEvents: [TGEvent] = []
     
     var refreshControl: UIRefreshControl!
@@ -31,7 +30,6 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("viewWillAppear")
 
         let defaults = NSUserDefaults.standardUserDefaults()
         checkedEvents = defaults.objectForKey("checked") as! [Bool]
@@ -50,7 +48,6 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     }
     
     func refresh(sender:AnyObject){
-        
         self.loadNotificationFeed()
     }
     
@@ -73,8 +70,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
             if error != nil {
                 print("Error happened\n")
                 print(error)
-            }
-            else {
+            } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.currentUserEvents = feed as! [TGEvent]
                     self.notificationsTableView.reloadData()

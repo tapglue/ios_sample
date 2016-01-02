@@ -15,7 +15,7 @@ class NewsVC: UIViewController {
     
     let url = "https://www.tapglue.com/blog/"
     
-    // TGEvent array
+    // TGEvent arr
     var currentUserEvents: [TGEvent] = []
     
     override func viewDidLoad() {
@@ -31,9 +31,11 @@ class NewsVC: UIViewController {
     @IBAction func doRefresh(sender: UIBarButtonItem) {
         webView.reload()
     }
+    
     @IBAction func goBack(sender: UIBarButtonItem) {
         webView.goBack()
     }
+    
     @IBAction func goForward(sender: UIBarButtonItem) {
         webView.goForward()
     }
@@ -41,6 +43,7 @@ class NewsVC: UIViewController {
     @IBAction func bookmarkButtonPressed(sender: UIBarButtonItem) {
         Tapglue.createEventWithType("bookmark_event", onObjectWithId: (webView.request?.URL?.absoluteString)!)
     }
+    
     @IBAction func likeButtonPressed(sender: UIBarButtonItem) {
         Tapglue.createEventWithType("like_event", onObjectWithId: (webView.request?.URL?.absoluteString)!)
     }

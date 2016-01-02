@@ -27,15 +27,15 @@ class EventFilterVC: UIViewController, UITableViewDelegate {
     }
     
     func readChecked()  {
-        // get default checked array
+        // get default checked arr
         let defaults = NSUserDefaults.standardUserDefaults()
         checked = defaults.objectForKey("checked") as! [Bool]
         print(checked)
     }
     
+    // Back button pressed
     override func willMoveToParentViewController(parent: UIViewController?) {
         if parent == nil {
-            // Back button was pressed
             
             // Save checked to defaults
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -62,8 +62,7 @@ extension EventFilterVC: UITableViewDataSource {
         
         if checked[indexPath.row] == false {
             cell.accessoryType = .None
-        }
-        else if checked[indexPath.row] == true {
+        } else if checked[indexPath.row] == true {
             cell.accessoryType = .Checkmark
         }
         
@@ -75,8 +74,7 @@ extension EventFilterVC: UITableViewDataSource {
             if cell.accessoryType == .Checkmark{
                 cell.accessoryType = .None
                 checked[indexPath.row] = false
-            }
-            else{
+            } else{
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
             }
