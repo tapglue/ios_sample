@@ -46,8 +46,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     
     var checkingForPendingConnections = false
     
-    var checkingForContacts = false
-    
     var currentSegmentedControl = "pending"
 
     override func viewDidLoad() {
@@ -129,7 +127,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         switch networkSegmentedControl.selectedSegmentIndex {
             case 0:
                 currentSegmentedControl = "pending"
-//                self.checkingForContacts = false
                 clearUsersArrayAndReloadTableView()
                 checkForPendingConnections()
                 friendsTableView.tableHeaderView = resultSearchController.searchBar
@@ -137,24 +134,18 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             
             case 1:
                 currentSegmentedControl = "contacts"
-//                self.checkingForPendingConnections = false
-//                self.checkingForContacts = true
                 clearUsersArrayAndReloadTableView()
                 outsidePendingSegment()
                 contactsSegmentWasPicked()
             
             case 2:
                 currentSegmentedControl = "facebook"
-//                self.checkingForPendingConnections = false
-//                self.checkingForContacts = false
                 clearUsersArrayAndReloadTableView()
                 outsidePendingSegment()
                 facebookSegmentWasPicked()
             
             case 3:
                 currentSegmentedControl = "twitter"
-//                self.checkingForPendingConnections = false
-//                self.checkingForContacts = false
                 clearUsersArrayAndReloadTableView()
                 outsidePendingSegment()
                 twitterSegmentWasPicked()
@@ -257,6 +248,11 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                         }
                     }
                 }
+                
+                // Sort Contacts by GivenName
+                self.contacts.sortInPlace({ (contact1, contact2) -> Bool in
+                    return contact1["givenName"] < contact2["givenName"]
+                })
             }
         }
         catch{
@@ -298,6 +294,10 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                             
                             self.users.removeAll(keepCapacity: false)
                             self.users = facebookUsers as! [TGUser]
+                            
+                            self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                                return contact1.username < contact2.username
+                            })
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.facebookLogInButton.hidden = true
@@ -397,6 +397,10 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                                     self.users.removeAll(keepCapacity: false)
                                     self.users = twitterUsers as! [TGUser]
                                     
+                                    self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                                        return contact1.username < contact2.username
+                                    })
+                                    
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         self.twitterLogInButton.hidden = true
                                         self.friendsTableView.reloadData()
@@ -430,7 +434,10 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         self.users.removeAll(keepCapacity: false)
         self.contacts.removeAll(keepCapacity: false)
         self.contactEmails.removeAll(keepCapacity: false)
-        self.friendsTableView.reloadData()
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.friendsTableView.reloadData()
+        })
     }
     
     func checkForPendingConnections(){
@@ -455,6 +462,10 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 
                 self.users = self.fromUsers
                 
+                self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                    return contact1.username < contact2.username
+                })
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     self.friendsTableView.reloadData()
@@ -465,6 +476,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     }
     
     func outsidePendingSegment() {
+        self.checkingForPendingConnections = false
         friendsTableView.tableHeaderView = nil
         self.resultSearchController.active = false
     }
