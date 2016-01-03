@@ -89,7 +89,7 @@ class NetworkUserTableViewCell: UITableViewCell {
     
     // Configure Cell with Contacts that use the app
     func configureCellWithUserFromContactsThatUsesApp(contact: [String:String], user: TGUser){
-        print(contact)
+        cellUser = user
         
         self.userAboutLabel.text = ""
         self.userNameLabel.text = contact["givenName"]
@@ -110,16 +110,12 @@ class NetworkUserTableViewCell: UITableViewCell {
     
     // Configure Cell with Contacts that need to be invited
     func configureCellWithUserFromContacts(contact: [String:String]){
-        print(contact)
-        
         self.userAboutLabel.text = ""
         self.userNameLabel.text = contact["givenName"]
         
-
         self.connectRightButton.hidden = true
-        self.connectLeftButton.setTitle("Invite", forState: .Normal)
-        self.connectLeftButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
-
+        
+        inviteCustomizeButton()
     }
     
     @IBAction func connectRightPressed(sender: UIButton) {
@@ -153,6 +149,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             sender.selected = true
                             self.friendUserCustomizeButton()
+                            self.connectLeftButton.hidden = true
                         })
                     } else if error != nil{
                         print("\nError friendUser: \(error)")
@@ -235,5 +232,10 @@ class NetworkUserTableViewCell: UITableViewCell {
     func declineFriendShipCustomizeButton(){
         self.connectLeftButton.setTitle("Decline", forState: .Normal)
         self.connectLeftButton.backgroundColor = UIColor.redColor()
+    }
+    
+    func inviteCustomizeButton(){
+        self.connectLeftButton.setTitle("Invite", forState: .Normal)
+        self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
     }
 }
