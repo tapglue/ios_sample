@@ -32,11 +32,12 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     
     let contactStore = CNContactStore()
     var contactEmails: [String] = []
+    var contacts: [[String:String]] = [[:]]
     
     var facebookID: String!
     var twitterID: String!
     
-    // Array of FacebookFriends
+    // Arr of FacebookFriends
     var friendsFromFacebook: [AnyObject]? = []
     
     let facebookLogInButton = FBSDKLoginButton()
@@ -44,9 +45,15 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     var twitterLogInButton = TWTRLogInButton()
     
     var checkingForPendingConnections = false
+    
+    var checkingForContacts = false
+    
+    var currentSegmentedControl = "pending"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkForPendingConnections()
+        configureFacebook()
 
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
@@ -62,22 +69,17 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         // Reload the TableView
         self.friendsTableView.reloadData()
         
-        // hide button
+        // hide Newtwork button
         networkButton.hidden = true
-        
-        configureFacebook()
         
         twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
                 print("signed in as \(session!.userName)")
                 self.twitterLogin()
-                
             } else {
                 print("error: \(error!.localizedDescription)")
             }
         })
-        
-        checkForPendingConnections()
         
         // Setup searchBar
         resultSearchController.searchResultsUpdater = self
@@ -105,7 +107,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             
             case 1:
                 print("Contacts")
-                defaults.setObject(true, forKey: "contactsPermission")
+//                defaults.setObject(true, forKey: "contactsPermission")
                 searchForUserByEmail()
             
             case 2:
@@ -126,24 +128,35 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         
         switch networkSegmentedControl.selectedSegmentIndex {
             case 0:
+                currentSegmentedControl = "pending"
+//                self.checkingForContacts = false
                 clearUsersArrayAndReloadTableView()
                 checkForPendingConnections()
                 friendsTableView.tableHeaderView = resultSearchController.searchBar
                 self.resultSearchController.active = true
             
             case 1:
-                outsidePendingSegment()
+                currentSegmentedControl = "contacts"
+//                self.checkingForPendingConnections = false
+//                self.checkingForContacts = true
                 clearUsersArrayAndReloadTableView()
+                outsidePendingSegment()
                 contactsSegmentWasPicked()
             
             case 2:
-                outsidePendingSegment()
+                currentSegmentedControl = "facebook"
+//                self.checkingForPendingConnections = false
+//                self.checkingForContacts = false
                 clearUsersArrayAndReloadTableView()
+                outsidePendingSegment()
                 facebookSegmentWasPicked()
             
             case 3:
-                outsidePendingSegment()
+                currentSegmentedControl = "twitter"
+//                self.checkingForPendingConnections = false
+//                self.checkingForContacts = false
                 clearUsersArrayAndReloadTableView()
+                outsidePendingSegment()
                 twitterSegmentWasPicked()
             
 
@@ -219,11 +232,10 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 print("\nError searchUsersWithEmails: \(error)")
             }
             else {
-                print("\nSuccessful: \(users)")
-                self.users.removeAll(keepCapacity: false)
+                print("\nSuccessful searchUsersWithEmails: \(users)")
                 self.users = users as! [TGUser]
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.networkButton.hidden = true
+//                    self.networkButton.hidden = true
                     self.friendsTableView.reloadData()
                 })
             }
@@ -236,8 +248,13 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             try contactStore.enumerateContactsWithFetchRequest(CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey])) {
                 (contact, cursor) -> Void in
                 if (!contact.emailAddresses.isEmpty){
+                    var itemCount = 0
                     for item in contact.emailAddresses {
-                        self.contactEmails.append(String(item.value))
+                        itemCount++
+                        if itemCount <= 1 {
+                            self.contacts.append(["givenName": contact.givenName, "email" : String(item.value)])
+                            self.contactEmails.append(String(item.value))
+                        }
                     }
                 }
             }
@@ -324,7 +341,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         }
     }
     
-    var countTwitter = 0
     func getTwitterFriends(nextCursor: Int){
         var clientError:NSError?
         let params: Dictionary = Dictionary<String, String>()
@@ -412,6 +428,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         self.fromUsers.removeAll(keepCapacity: false)
         self.toUsers.removeAll(keepCapacity: false)
         self.users.removeAll(keepCapacity: false)
+        self.contacts.removeAll(keepCapacity: false)
+        self.contactEmails.removeAll(keepCapacity: false)
         self.friendsTableView.reloadData()
     }
     
@@ -449,8 +467,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     func outsidePendingSegment() {
         friendsTableView.tableHeaderView = nil
         self.resultSearchController.active = false
-        
-        self.checkingForPendingConnections = false
     }
 }
 
@@ -461,21 +477,51 @@ extension NetworkVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        switch currentSegmentedControl {
+        case "pending":
+            return self.users.count
+        case "contacts":
+            return self.contacts.count
+        case "facebook":
+            return self.users.count
+        case "twitter":
+            return self.users.count
+        default: return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
         
-        let user = self.users[indexPath.row]
-        
         cell.userImageView.image = nil
         
-        if checkingForPendingConnections {
-            cell.checkingForPendingConnections = true
-            cell.configureCellWithUserWithPendingConnection(user)
-        } else{
-            cell.configureCellWithUserToFriendOrFollow(user)
+        switch currentSegmentedControl {
+            case "pending":
+                let user = self.users[indexPath.row]
+                cell.checkingForPendingConnections = true
+                cell.configureCellWithUserWithPendingConnection(user)
+            
+            case "contacts":
+                print("checkingForContacts")
+                for usr in users {
+                    let tempContact = contacts[indexPath.row]
+                    if usr.email == tempContact["email"] {
+                        print("true")
+                        cell.configureCellWithUserFromContactsThatUsesApp(contacts[indexPath.row], user: usr)
+                    } else {
+                        cell.configureCellWithUserFromContacts(contacts[indexPath.row])
+                    }
+                }
+            
+            case "facebook":
+                let user = self.users[indexPath.row]
+                cell.configureCellWithUserToFriendOrFollow(user)
+            
+            case "twitter":
+                let user = self.users[indexPath.row]
+                cell.configureCellWithUserToFriendOrFollow(user)
+            
+        default: print("more then expected segments")
         }
         
         return cell
@@ -496,12 +542,6 @@ extension NetworkVC: FBSDKLoginButtonDelegate {
             if error != nil{
                 print(error)
             } else {
-                //            let strFirstName: String = (result.objectForKey("first_name") as? String)!
-                //            let strLastName: String = (result.objectForKey("last_name") as? String)!
-                //            let strPictureURL: String = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
-                //            self.lblName.text = "Welcome, \(strFirstName) \(strLastName)"
-                //            self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)
-                
                 self.facebookID = (result.objectForKey("id") as? String)!
                 print(self.facebookID)
 

@@ -87,6 +87,41 @@ class NetworkUserTableViewCell: UITableViewCell {
         }
     }
     
+    // Configure Cell with Contacts that use the app
+    func configureCellWithUserFromContactsThatUsesApp(contact: [String:String], user: TGUser){
+        print(contact)
+        
+        self.userAboutLabel.text = ""
+        self.userNameLabel.text = contact["givenName"]
+        
+        self.connectRightButton.hidden = false
+        self.connectLeftButton.hidden = true
+        
+        if self.connectRightButton != nil {
+            if user.isFriend {
+                self.friendUserCustomizeButton()
+                self.connectRightButton.selected = true
+            } else {
+                self.unfriendUserCustomizeButton()
+                self.connectRightButton.selected = false
+            }
+        }
+    }
+    
+    // Configure Cell with Contacts that need to be invited
+    func configureCellWithUserFromContacts(contact: [String:String]){
+        print(contact)
+        
+        self.userAboutLabel.text = ""
+        self.userNameLabel.text = contact["givenName"]
+        
+
+        self.connectRightButton.hidden = true
+        self.connectLeftButton.setTitle("Invite", forState: .Normal)
+        self.connectLeftButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
+
+    }
+    
     @IBAction func connectRightPressed(sender: UIButton) {
         if sender.selected {
             Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
