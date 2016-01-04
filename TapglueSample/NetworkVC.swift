@@ -47,6 +47,9 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     var checkingForPendingConnections = false
     
     var currentSegmentedControl = "pending"
+    
+//    var sections = ["Find Friends", "My Pending", "Outside Pending"]
+    var networks = ["Contacts", "Facebook", "Twitter"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +68,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         })()
         
         // Reload the TableView
-        self.friendsTableView.reloadData()
+        reloadTableViewWithAnimation()
         
         // hide Newtwork button
         networkButton.hidden = true
@@ -105,7 +108,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             
             case 1:
                 print("Contacts")
-//                defaults.setObject(true, forKey: "contactsPermission")
+                defaults.setObject(true, forKey: "contactsPermission")
                 searchForUserByEmail()
             
             case 2:
@@ -226,8 +229,9 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 print("\nSuccessful searchUsersWithEmails: \(users)")
                 self.users = users as! [TGUser]
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.networkButton.hidden = true
-                    self.friendsTableView.reloadData()
+                    self.networkButton.hidden = true
+                    
+                    self.reloadTableViewWithAnimation()
                 })
             }
         }
@@ -301,7 +305,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.facebookLogInButton.hidden = true
-                                self.friendsTableView.reloadData()
+                                
+                                self.reloadTableViewWithAnimation()
                             })
                         }
                     })
@@ -403,7 +408,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                                     
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         self.twitterLogInButton.hidden = true
-                                        self.friendsTableView.reloadData()
+                                        
+                                       self.reloadTableViewWithAnimation()
                                     })
                                 }
                             })
@@ -467,9 +473,9 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 })
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.facebookLogInButton.hidden = true
                     
-                    self.friendsTableView.reloadData()
-                    
+                    self.reloadTableViewWithAnimation()
                 })
             }
         }
@@ -539,6 +545,19 @@ extension NetworkVC: UITableViewDataSource {
         return cell
         
     }
+    
+    func reloadTableViewWithAnimation() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            UIView.transitionWithView(self.friendsTableView,
+                duration:0.1,
+                options:.TransitionCrossDissolve,
+                animations:
+                { () -> Void in
+                    self.friendsTableView.reloadData()
+                },
+                completion: nil);
+        })
+    }
 }
 
 extension NetworkVC: FBSDKLoginButtonDelegate {
@@ -600,7 +619,8 @@ extension NetworkVC: UISearchResultsUpdating {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.users.removeAll(keepCapacity: false)
                         self.users = users as! [TGUser]
-                        self.friendsTableView.reloadData()
+                        
+                        self.reloadTableViewWithAnimation()
                     })
                 } else if error != nil{
                     print("\nError searchUsersWithTerm: \(error)")

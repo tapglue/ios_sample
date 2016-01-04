@@ -113,8 +113,6 @@ class NetworkUserTableViewCell: UITableViewCell {
         self.userAboutLabel.text = ""
         self.userNameLabel.text = contact["givenName"]
         
-        self.connectRightButton.hidden = true
-        
         inviteCustomizeButton()
     }
     
@@ -197,7 +195,6 @@ class NetworkUserTableViewCell: UITableViewCell {
                     }
                 })
             }
-
         }
     }
     
@@ -237,5 +234,7 @@ class NetworkUserTableViewCell: UITableViewCell {
     func inviteCustomizeButton(){
         self.connectLeftButton.setTitle("Invite", forState: .Normal)
         self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
+        
+        self.connectRightButton.hidden = true
     }
 }
