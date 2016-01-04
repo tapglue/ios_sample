@@ -8,6 +8,7 @@
 
 import UIKit
 import Tapglue
+import Kingfisher
 
 // the name of the protocol you can put any
 protocol CustomCellDataUpdater {
@@ -118,7 +119,7 @@ class HomeTableViewCell: UITableViewCell {
         // UserImage
         var userImage = TGImage()
         userImage = post.user.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
 
         // Check visibility
         switch post.visibility {

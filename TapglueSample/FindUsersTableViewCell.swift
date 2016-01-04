@@ -40,7 +40,7 @@ class FindUsersTableViewCell: UITableViewCell {
         // UserImage
         var userImage = TGImage()
         userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         if self.connectRightButton != nil {
             if cellUser.isFriend {
@@ -76,7 +76,7 @@ class FindUsersTableViewCell: UITableViewCell {
         // UserImage
         var userImage = TGImage()
         userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         if self.connectRightButton != nil {
             acceptFriendShipCustomizeButton()

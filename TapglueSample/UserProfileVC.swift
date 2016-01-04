@@ -94,7 +94,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         
         var userImage = TGImage()
         userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
      }
     
     // Get events and posts for current user

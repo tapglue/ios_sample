@@ -20,7 +20,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var users: [TGUser] = []
-    
     var fromUsers: [TGUser] = []
     var toUsers: [TGUser] = []
     
@@ -28,21 +27,9 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     
     let contactStore = CNContactStore()
     var contactEmails: [String] = []
-    var contacts: [[String:String]] = [[:]]
+    var contacts: [[String:String]] = []
     
-    var facebookID: String!
-    var twitterID: String!
-    
-    // Arr of FacebookFriends
-    var friendsFromFacebook: [AnyObject]? = []
-    
-    let facebookLogInButton = FBSDKLoginButton()
-    
-    var twitterLogInButton = TWTRLogInButton()
-    
-    var checkingForPendingConnections = false
-    
-    var currentSegmentedControl = "pending"
+    var searchingForUser = false
     
     var sections = ["Find Friends", "Pending Requests"]
     var networks = ["Contacts", "Facebook", "Twitter"]
@@ -100,7 +87,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     }
     
     func checkForPendingConnections(){
-        checkingForPendingConnections = true
         
         Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
@@ -126,8 +112,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 })
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.facebookLogInButton.hidden = true
-                    
                     self.reloadTableViewWithAnimation()
                 })
             }
@@ -147,7 +131,11 @@ extension NetworkVC: UITableViewDataSource {
         case 0:
             sectionStr = self.sections[section]
         case 1:
-            sectionStr = self.sections[section]
+            if searchingForUser {
+                sectionStr = "Search results"
+            } else {
+                sectionStr = self.sections[section]
+            }
         default: "to many sections"
         }
         
@@ -172,15 +160,23 @@ extension NetworkVC: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
+            cell.userImageView.contentMode = .Center
             cell.userImageView.image = UIImage(named: self.networkImages[indexPath.row])
             cell.userNameLabel.text = self.networks[indexPath.row]
             self.friendsTableView.rowHeight = 60.0
+            
         case 1:
-            cell.selectionStyle = .None
-            cell.userNameLabel.text = self.users[indexPath.row].firstName
-            self.friendsTableView.rowHeight = 90.0
-            let user = self.users[indexPath.row]
-            cell.configureCellWithUserWithPendingConnection(user)
+            if searchingForUser {
+                self.friendsTableView.rowHeight = 90.0
+                cell.searchingForUser = true
+                cell.configureCellWithUserToFriendOrFollow(self.users[indexPath.row])
+            } else {
+                cell.selectionStyle = .None
+                cell.userNameLabel.text = self.users[indexPath.row].firstName
+                self.friendsTableView.rowHeight = 90.0
+                let user = self.users[indexPath.row]
+                cell.configureCellWithUserWithPendingConnection(user)
+            }
         default: "to many sections in creation"
         }
 
@@ -190,7 +186,6 @@ extension NetworkVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
         if indexPath.section == 0 {
             let fuVC =
             self.storyboard!.instantiateViewControllerWithIdentifier("FindUsersViewController")
@@ -205,7 +200,7 @@ extension NetworkVC: UITableViewDataSource {
     func reloadTableViewWithAnimation() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             UIView.transitionWithView(self.friendsTableView,
-                duration:0.1,
+                duration:0.3,
                 options:.TransitionCrossDissolve,
                 animations:
                 { () -> Void in
@@ -222,6 +217,7 @@ extension NetworkVC: UISearchResultsUpdating {
         if (searchController.searchBar.text?.characters.count > 2) {
             Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
                 if users != nil && error == nil {
+                    self.searchingForUser = true
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.users.removeAll(keepCapacity: false)
                         self.users = users as! [TGUser]
@@ -233,13 +229,16 @@ extension NetworkVC: UISearchResultsUpdating {
                 }
             }
         } else {
+            // Clear tableView aslong a user was not found
+            searchingForUser = true
             users.removeAll(keepCapacity: false)
             self.friendsTableView.reloadData()
         }
         
         if !searchController.active {
-            users.removeAll(keepCapacity: false)
-            self.friendsTableView.reloadData()
+            clearUsersArrayAndReloadTableView()
+            checkForPendingConnections()
+            searchingForUser = false
         }
     }
 }

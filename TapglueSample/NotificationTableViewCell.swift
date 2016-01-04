@@ -37,7 +37,7 @@ class NotificationTableViewCell: UITableViewCell {
             
             var userImage = TGImage()
             userImage = event.target.user.images.valueForKey("profilePic") as! TGImage
-            self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
             
             self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes()
         }

@@ -45,7 +45,7 @@ extension UsersVC: UITableViewDataSource {
         // User image
         var userImage = TGImage()
         userImage = users[indexPath.row].images.valueForKey("profilePic") as! TGImage
-        cell.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        cell.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         return cell
     }

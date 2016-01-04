@@ -174,7 +174,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         // User Avatar Image from sample asset
         var userImage = TGImage()
         userImage = post.user.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         // Check visibility
         switch post.visibility {

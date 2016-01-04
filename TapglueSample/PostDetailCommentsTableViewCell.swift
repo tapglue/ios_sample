@@ -29,6 +29,6 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         
         var userImage = TGImage()
         userImage = comment.user.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
     }
 }

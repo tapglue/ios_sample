@@ -33,7 +33,7 @@ class HomeVC: UIViewController, UITableViewDelegate{
         // UserImage
         var userImage = TGImage()
         userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-        self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         self.refreshControl?.beginRefreshing()
         self.loadFriendsActivityFeed()

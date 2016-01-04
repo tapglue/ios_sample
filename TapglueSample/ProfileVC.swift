@@ -51,7 +51,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             // UserImage
             var userImage = TGImage()
             userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-            self.userImageView.downloadedFrom(link: userImage.url, contentMode: .ScaleAspectFill)
+            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         } else {
             // Show loginVC if TGUser is nil
             self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
