@@ -30,10 +30,8 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-
         let defaults = NSUserDefaults.standardUserDefaults()
         checkedEvents = defaults.objectForKey("checked") as! [Bool]
-        print(checkedEvents)
         
         self.loadNotificationFeed()
         

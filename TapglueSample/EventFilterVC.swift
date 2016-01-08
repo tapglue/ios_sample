@@ -30,7 +30,6 @@ class EventFilterVC: UIViewController, UITableViewDelegate {
         // get default checked arr
         let defaults = NSUserDefaults.standardUserDefaults()
         checked = defaults.objectForKey("checked") as! [Bool]
-        print(checked)
     }
     
     // Back button pressed

@@ -265,8 +265,6 @@ extension PostDetailVC: UITableViewDataSource {
 extension PostDetailVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print(textField.text!)
-
         if beginEditComment {
             self.editComment.content = textField.text
             
@@ -302,7 +300,6 @@ extension PostDetailVC: UITextFieldDelegate {
                 }
             }
         }
-        
         return true
     }
 }

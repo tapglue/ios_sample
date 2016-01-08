@@ -45,11 +45,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureFacebook()
-
-        // Do any additional setup after loading the view.
-        print(currentSelectedNetwork)
-        
+        configureFacebook()        
         prepareCorrectNetworkTableView()
         
         twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
@@ -69,20 +65,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             defaults.setObject(true, forKey: "contactsPermission")
             searchForUserByEmail()
         }
-//        switch currentSelectedNetwork {
-//        case "Contacts":
-//            print("Contacts")
-//                            defaults.setObject(true, forKey: "contactsPermission")
-//            searchForUserByEmail()
-//            
-//        case 2:
-//            print("Facebook")
-//            
-//        case 3:
-//            print("Twitter")
-//            
-//        default: print("More segments then expected")
-//        }
     }
     
     
@@ -125,7 +107,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
     func facebookSegmentWasPicked(){
         // get default checked array
         let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
-        print(facebookPermission)
         
         if facebookPermission {
             print("facebookPermissionGranted")
@@ -261,9 +242,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 print("signed in as: \(session!)")
                 
                 self.twitterID = session!.userID
-                //                self.client = TWTRAPIClient(userID: session!.userID)
-                // make requests with client
-                //                    print(self.client.userID)
                 
                 // update TGUser social id from twitter
                 let currentUser = TGUser.currentUser()
@@ -310,11 +288,8 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                     
                     // check for json data
                     if (json != nil) {
-                        // print("response = \(json)")
-                        // print(json?.valueForKey("ids"))
                         
                         let resultdict = json as! NSDictionary
-                        // print("Result Dict: \(resultdict)")
                         
                         cursorNext = resultdict.objectForKey("next_cursor") as! Int
                         print("NextCursor: \(cursorNext)")

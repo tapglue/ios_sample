@@ -92,10 +92,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             if error != nil {
                 print("\nError retrievePendingConncetionsForCurrentUser: \(error)")
             } else {
-                print("\nSuccess")
-                print(incoming)
-                print(outgoing)
-
                 for inc in incoming {
                     self.fromUsers.append((inc as! TGConnection).fromUser)
                 }

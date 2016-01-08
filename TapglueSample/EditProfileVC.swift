@@ -49,8 +49,6 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
             if error != nil {
                 print(error)
             } else {
-                print(success)
-                
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
