@@ -38,24 +38,18 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
     // Arr of FacebookFriends
     var friendsFromFacebook: [AnyObject]? = []
     
+    var followsFromTwitter: [String]? = []
+    
     let facebookLogInButton = FBSDKLoginButton()
     
     var twitterLogInButton = TWTRLogInButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("find friends")
         
         configureFacebook()        
         prepareCorrectNetworkTableView()
-        
-        twitterLogInButton = TWTRLogInButton(logInCompletion: { session, error in
-            if (session != nil) {
-                print("signed in as \(session!.userName)")
-                self.twitterLogin()
-            } else {
-                print("error: \(error!.localizedDescription)")
-            }
-        })
     }
 
     @IBAction func networkButtonPressed(sender: UIButton) {
@@ -65,6 +59,10 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             defaults.setObject(true, forKey: "contactsPermission")
             searchForUserByEmail()
         }
+    }
+    
+    func twitterLoginPressed(sender: TWTRLogInButton!) {
+        self.twitterLogin()
     }
     
     
@@ -131,6 +129,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         } else {
             // Show twitterLoginButton
             twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+            twitterLogInButton.addTarget(self, action: "twitterLoginPressed:", forControlEvents: .TouchUpInside)
             self.view.addSubview(twitterLogInButton)
         }
     }
@@ -250,9 +249,8 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                     print(success)
                 })
                 
-                // TO-DO: uncomment
                 // Bool to check if user granted permission for twitter
-                //                self.defaults.setObject(true, forKey: "twitterPermission")
+                self.defaults.setObject(true, forKey: "twitterPermission")
                 
                 self.getTwitterFriends(-1)
             } else {
@@ -267,15 +265,13 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         
         var cursorNext = nextCursor
         
-        let urlTwitterApi: String = "https://api.twitter.com/1.1/friends/ids.json?cursor=" + String(nextCursor) + "&count=499"
+        let urlTwitterApi: String = "https://api.twitter.com/1.1/friends/ids.json?cursor=" + String(nextCursor) + "&count=5000"
         
         let request: NSURLRequest! = Twitter.sharedInstance().APIClient.URLRequestWithMethod(
             "GET",
             URL: urlTwitterApi,
             parameters: params,
             error: &clientError)
-        
-        var followsFromTwitter: [String]? = []
         
         if request != nil {
             Twitter.sharedInstance().APIClient.sendTwitterRequest(request!) {
@@ -288,7 +284,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                     
                     // check for json data
                     if (json != nil) {
-                        
                         let resultdict = json as! NSDictionary
                         
                         cursorNext = resultdict.objectForKey("next_cursor") as! Int
@@ -298,39 +293,14 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                         print("Result Data: \(data)")
                         
                         for id in data {
-                            followsFromTwitter?.append(String(id))
+                            self.followsFromTwitter?.append(String(id))
                         }
-                        
-                        // Check and add twitterFriends
-                        if followsFromTwitter != nil {
-                            // Check if twitterFriends are availabe in your App
-                            Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyTwitter, withSocialUsersIds: followsFromTwitter, andCompletionBlock: { (twitterUsers: [AnyObject]!, error: NSError!) -> Void in
-                                if error != nil {
-                                    print("\nError searchUsersOnSocialPlatform: \(error)")
-                                }
-                                else {
-                                    print("\nSuccessful - twitterFriends: \(twitterUsers)")
-                                    
-                                    self.users.removeAll(keepCapacity: false)
-                                    self.users = twitterUsers as! [TGUser]
-                                    
-                                    self.users.sortInPlace({ (contact1, contact2) -> Bool in
-                                        return contact1.username < contact2.username
-                                    })
-                                    
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        self.twitterLogInButton.hidden = true
-                                        
-                                        self.reloadTableViewWithAnimation()
-                                    })
-                                }
-                            })
-                        }
-                        
-                        print(followsFromTwitter!.count)
                         
                         if cursorNext != 0 {
                             self.getTwitterFriends(cursorNext)
+                        } else {
+                            // Handle all follower twitter ids at once
+                            self.twitterFollowersSliceAndCheckWithTapglue(self.followsFromTwitter!)
                         }
                     } else {
                         print("error loading json data = \(jsonError)")
@@ -343,6 +313,60 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         }
         else {
             print("Error: \(clientError)")
+        }
+    }
+    
+    func twitterFollowersSliceAndCheckWithTapglue(arr: [String]) {
+        // Split all followers in 495 array pieces and Check if twitterFriends are availabe in your App
+        var followers = arr
+        var tempArrOfFollowers = [[String]]()
+        
+        while followers.count > 495 {
+            let sliceArr = followers[0...495]
+            let tempArray: [String] = Array(sliceArr)
+            tempArrOfFollowers.append(tempArray)
+            followers.removeRange(0...495)
+        }
+        
+        let sliceArr = self.followsFromTwitter![0...(followers.count - 1)]
+        let tempArray: [String] = Array(sliceArr)
+        tempArrOfFollowers.append(tempArray)
+        followers.removeRange(0...(followers.count - 1))
+        
+        print("Sliced Arr: \(tempArrOfFollowers.count)")
+        
+        // Check and add twitterFriends
+        if self.followsFromTwitter != nil {
+            var twitterUsersArr = [TGUser]()
+            for followerIDs in tempArrOfFollowers {
+                // Check if twitterFriends are availabe in your App
+                Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyTwitter, withSocialUsersIds: followerIDs, andCompletionBlock: { (twitterUsers: [AnyObject]!, error: NSError!) -> Void in
+                    if error != nil {
+                        print("\nError searchUsersOnSocialPlatform: \(error)")
+                    }
+                    else {
+                        print("\nSuccessful - twitterFriends: \(twitterUsers)")
+                        
+                        for user in twitterUsers {
+                            twitterUsersArr.append(user as! TGUser)
+                        }
+                        
+                        self.users = twitterUsersArr
+                        
+                        self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                            return contact1.username < contact2.username
+                        })
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.twitterLogInButton.hidden = true
+                            
+                            self.reloadTableViewWithAnimation()
+                        })
+                    }
+                })
+            }
+            
+
         }
     }
 }
