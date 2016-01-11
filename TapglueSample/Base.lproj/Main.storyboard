@@ -562,7 +562,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Edit profile" id="Rhd-w5-iCz">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="AJF-So-87e">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AJF-So-87e">
                                             <color key="tintColor" red="0.94901960780000005" green="0.3294117647" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="dismissVC:" destination="GQW-Lx-LEk" id="Cdf-Aj-FRf"/>

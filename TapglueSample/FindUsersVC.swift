@@ -277,7 +277,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             Twitter.sharedInstance().APIClient.sendTwitterRequest(request!) {
                 (response, data, connectionError) -> Void in
                 if (connectionError == nil) {
-                    var jsonError: NSError?
                     let json: AnyObject? = try!
                         NSJSONSerialization.JSONObjectWithData(data!,
                             options: .MutableContainers)
@@ -303,7 +302,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                             self.twitterFollowersSliceAndCheckWithTapglue(self.followsFromTwitter!)
                         }
                     } else {
-                        print("error loading json data = \(jsonError)")
+                        print("error loading json data")
                     }
                 }
                 else {
