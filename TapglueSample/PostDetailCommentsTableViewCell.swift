@@ -25,7 +25,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         userNameLabel.text = comment.user.username
         userCommentLabel.text = comment.content
         
-        dateLabel.text = comment.createdAt.toStringFormatHoursMinutes()
+        dateLabel.text = comment.createdAt.toTimeFormatInElapsedTimeToString()
         
         var userImage = TGImage()
         userImage = comment.user.images.valueForKey("profilePic") as! TGImage

@@ -29,7 +29,7 @@ class NavigationVC: UINavigationController {
     
     // Prepare checks to filter Notifications
     func setupCheckedForEventsDefaults(){
-        let checked: [Bool] = [true, true, true, true]
+        let checked: [Bool] = [true, true, true, true, true]
         defaults.setObject(checked, forKey: "checked")
         defaults.synchronize()
     }

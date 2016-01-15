@@ -52,7 +52,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        let allTypes = ["like_event", "bookmark_event", "tg_friend", "tg_follow"]
+        let allTypes = ["like_event", "bookmark_event", "tg_friend", "tg_follow", "tg_like"]
         
         var types = [String]()
         var count = 0
@@ -95,14 +95,8 @@ extension NotificationVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
-        
-        cell.userImageView.image = nil
-        
-        if currentUserEvents[indexPath.row].type == "tg_friend" {
-            cell.configureCellForTypeTGFriend(currentUserEvents[indexPath.row])
-        } else {
-            cell.configureCellWithEvent(currentUserEvents[indexPath.row])
-        }
+                
+        cell.configureCellWithEvent(currentUserEvents[indexPath.row])
         
         return cell
     }

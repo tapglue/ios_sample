@@ -166,7 +166,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         
         // PostText
         let postAttachment = post.attachments
-        self.postTextLabel.text = "\" " + postAttachment[0].content + " \""
+        self.postTextLabel.text = postAttachment[0].content
         
         // Date to string
         self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
@@ -220,35 +220,38 @@ extension PostDetailVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
-        let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
-            print("favorite button tapped")
+        if self.postComments[indexPath.row].user.isCurrentUser {
+            let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
+                print("favorite button tapped")
+                
+                self.beginEditComment = true
+                
+                self.commentTextField.becomeFirstResponder()
+                self.commentTextField.text = self.postComments[indexPath.row].content
+                
+                self.editComment = self.postComments[indexPath.row]
+            }
+            edit.backgroundColor = UIColor.lightGrayColor()
             
-            self.beginEditComment = true
-            
-            self.commentTextField.becomeFirstResponder()
-            self.commentTextField.text = self.postComments[indexPath.row].content
-            
-            self.editComment = self.postComments[indexPath.row]
+            let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
+                Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                    if error != nil {
+                        print("\nError deleteComment: \(error)")
+                    }
+                    else {
+                        print("\nSuccess: \(error)")
+                        
+                        self.retrieveAllCommentsForPost()
+                    }
+                })
+            }
+            delete.backgroundColor = UIColor.redColor()
+            return [delete, edit]
+        } else {
+            // TODO: disable edit
+            return nil
         }
         
-        edit.backgroundColor = UIColor.lightGrayColor()
-        
-        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
-            Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError deleteComment: \(error)")
-                }
-                else {
-                    print("\nSuccess: \(error)")
-                    
-                    self.retrieveAllCommentsForPost()
-                }
-            })
-        }
-        delete.backgroundColor = UIColor.redColor()
-        
-        return [delete, edit]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

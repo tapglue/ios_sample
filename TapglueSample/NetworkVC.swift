@@ -103,6 +103,7 @@ class NetworkVC: UIViewController, UITableViewDelegate {
                 
                 self.users = self.fromUsers
                 
+                
                 self.users.sortInPlace({ (contact1, contact2) -> Bool in
                     return contact1.username < contact2.username
                 })

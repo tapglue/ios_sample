@@ -114,7 +114,7 @@ class HomeTableViewCell: UITableViewCell {
         
         // PostText
         let postAttachment = post.attachments
-        self.postTextLabel.text = "\" " + postAttachment[0].content + " \""
+        self.postTextLabel.text = postAttachment[0].content
         
         // UserImage
         var userImage = TGImage()
@@ -134,7 +134,7 @@ class HomeTableViewCell: UITableViewCell {
         }
         
         // Date text
-        self.dateLabel.text = post.createdAt.timeFormatInElapsedTimeToString()
+        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
         
         // Check if post was liked before
         if cellPost.isLiked {

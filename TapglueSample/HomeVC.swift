@@ -27,20 +27,21 @@ class HomeVC: UIViewController, UITableViewDelegate{
         self.refreshControl.addTarget(self, action: "loadFriendsActivityFeed", forControlEvents: UIControlEvents.ValueChanged)
         self.homeTableView.addSubview(refreshControl)
         self.homeTableView.sendSubviewToBack(refreshControl)
+        
+        self.refreshControl?.beginRefreshing()
     }
     
     override func viewWillAppear(animated: Bool) {
         // UserImage
-        var userImage = TGImage()
-        userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+
+        if let userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage? {
+            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        }
         
-        self.refreshControl?.beginRefreshing()
         self.loadFriendsActivityFeed()
     }
     
-    func refresh(sender:AnyObject)
-    {
+    func refresh(sender:AnyObject){
         self.refreshControl?.beginRefreshing()
         self.loadFriendsActivityFeed()
     }

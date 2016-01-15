@@ -29,7 +29,7 @@ extension NSDate {
         return formatter.stringFromDate(self)
     }
     
-    func timeFormatInElapsedTimeToString() -> String {
+    func toTimeFormatInElapsedTimeToString() -> String {
         // Get the time of event creation
         let elapsedTime = NSDate().timeIntervalSinceDate(self)
         // Save elapsedTime as Int

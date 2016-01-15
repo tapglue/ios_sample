@@ -250,7 +250,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 })
                 
                 // Bool to check if user granted permission for twitter
-                self.defaults.setObject(true, forKey: "twitterPermission")
+//                self.defaults.setObject(tr ue, forKey: "twitterPermission")
                 
                 self.getTwitterFriends(-1)
             } else {
