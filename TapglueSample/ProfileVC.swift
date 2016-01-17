@@ -27,6 +27,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     
     var events: [TGEvent] = []
     var posts: [TGPost] = []
+    
+    var postEditingText: String?
+    var postTGPost: TGPost?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +140,12 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         Tapglue.retrieveCurrentUserWithCompletionBlock { (user: TGUser!,error: NSError!) -> Void in
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let pVC: PostVC = segue.destinationViewController as! PostVC
+        pVC.postBeginEditing = true
+        pVC.postTGPost = self.postTGPost
+    }
 }
 
 extension ProfileVC: UITableViewDataSource {
@@ -202,14 +211,13 @@ extension ProfileVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
-            print("favorite button tapped")
+            // Passing TGPost
+            self.postTGPost = self.posts[indexPath.row]
             
-//            self.beginEditComment = true
-//            
-//            self.commentTextField.becomeFirstResponder()
-//            self.commentTextField.text = self.postComments[indexPath.row].content
-//            
-//            self.editComment = self.postComments[indexPath.row]
+            // Go to PostVC
+            self.performSegueWithIdentifier("postEditSegue", sender: nil)
+
+            // Pass data in prepareForSegue
         }
         edit.backgroundColor = UIColor.lightGrayColor()
         

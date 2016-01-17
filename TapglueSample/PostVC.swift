@@ -18,8 +18,13 @@ class PostVC: UIViewController {
     
     var postText: String?
     
+    var postBeginEditing = false
+    var postTGPost: TGPost!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Prepare postUIBarButton
+        postUIBarButton.enabled = false
 
         postTextField.becomeFirstResponder()
         
@@ -27,36 +32,72 @@ class PostVC: UIViewController {
         userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
         self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
-        // Prepare postUIBarButton
-        postUIBarButton.enabled = false
+        // Old post will be edited
+        if postBeginEditing {
+            postTextField.text = postTGPost.attachments[0].content
+            switch postTGPost.visibility.rawValue {
+                case 10:
+                    visibilitySegmentedControl.selectedSegmentIndex = 0
+                case 20:
+                    visibilitySegmentedControl.selectedSegmentIndex = 1
+                case 30:
+                    visibilitySegmentedControl.selectedSegmentIndex = 2
+            default: print("More then expected switches")
+            }
+        }
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
+        let post = TGPost()
+        
         if postText?.characters.count > 2 {
-            let publicPost = TGPost()
-            
-            switch visibilitySegmentedControl.selectedSegmentIndex {
-                case 0:
-                    publicPost.visibility = TGVisibility.Private
-                case 1:
-                    publicPost.visibility = TGVisibility.Connection
-                case 2:
-                    publicPost.visibility = TGVisibility.Public
-                default: "More options then expected"
-            }
-            
             postText = postTextField.text!
             
-            // Add attachment to TGPost
-            publicPost.addAttachment(TGAttachment(text: postText, andName: "status"))
-            
-            Tapglue.createPost(publicPost) { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError createPost: \(error)")
-                } else {
-                    print("\nSucccess: \(success)")
+            if postBeginEditing {
+                // Prepare TGPost Edit
+                // TODO: If content cann be changed, uncomment
+//                postTGPost!.attachments[0].content = postText
+                
+                switch visibilitySegmentedControl.selectedSegmentIndex {
+                    case 0:
+                        postTGPost!.visibility = TGVisibility.Private
+                    case 1:
+                        postTGPost!.visibility = TGVisibility.Connection
+                    case 2:
+                        postTGPost!.visibility = TGVisibility.Public
+                    default: "More options then expected"
+                }
+                
+                Tapglue.updatePost(postTGPost, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                    if error != nil {
+                        print("\nError createPost: \(error)")
+                    } else {
+                        print("\nSucccess: \(success)")
+                    }
+                })
+            } else {
+                // Prepare TGPost
+                post.addAttachment(TGAttachment(text: postText, andName: "status"))
+                
+                switch visibilitySegmentedControl.selectedSegmentIndex {
+                    case 0:
+                        post.visibility = TGVisibility.Private
+                    case 1:
+                        post.visibility = TGVisibility.Connection
+                    case 2:
+                        post.visibility = TGVisibility.Public
+                    default: "More options then expected"
+                }
+                
+                Tapglue.createPost(post) { (success: Bool, error: NSError!) -> Void in
+                    if error != nil {
+                        print("\nError createPost: \(error)")
+                    } else {
+                        print("\nSucccess: \(success)")
+                    }
                 }
             }
+
             resignKeyboardAndDismissVC()
         } else {
             showAlert()
