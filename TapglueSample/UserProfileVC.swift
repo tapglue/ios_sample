@@ -49,7 +49,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
-        Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (friends: [AnyObject]!, error: NSError!) -> Void in
+        Tapglue.retrieveFriendsForUser(userProfile) { (friends: [AnyObject]!, error: NSError!) -> Void in
             let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             usersViewController.users = friends as! [TGUser]
@@ -61,7 +61,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
-        Tapglue.retrieveFollowersForCurrentUserWithCompletionBlock { (followers: [AnyObject]!,error: NSError!) -> Void in
+        Tapglue.retrieveFollowersForUser(userProfile) { (followers: [AnyObject]!, error: NSError!) -> Void in
             let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             usersViewController.users = followers as! [TGUser]
@@ -73,7 +73,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
-        Tapglue.retrieveFollowsForCurrentUserWithCompletionBlock { (following: [AnyObject]!,error: NSError!) -> Void in
+        Tapglue.retrieveFollowsForUser(userProfile) { (following: [AnyObject]!, error: NSError!) -> Void in
             let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             usersViewController.users = following as! [TGUser]
@@ -126,9 +126,13 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     }
     
     func currentFriendsFollowerFollowingCount() {
-        friendsCountButton.setTitle(String(TGUser.currentUser().friendsCount) + " Friends", forState: .Normal)
-        followerCountButton.setTitle(String(TGUser.currentUser().followersCount) + " Follower", forState: .Normal)
-        followingCountButton.setTitle(String(TGUser.currentUser().followingCount) + " Following", forState: .Normal)
+        let friendsCount = String(userProfile!.friendsCount)
+        let followersCount = String(userProfile!.followersCount)
+        let followingCount = String(userProfile!.followingCount)
+        
+        friendsCountButton.setTitle(friendsCount + " Friends", forState: .Normal)
+        followerCountButton.setTitle(followersCount + " Follower", forState: .Normal)
+        followingCountButton.setTitle(followingCount + " Following", forState: .Normal)
     }
 }
 
