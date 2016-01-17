@@ -246,7 +246,7 @@ extension PostDetailVC: UITableViewDataSource {
                         print("\nError deleteComment: \(error)")
                     }
                     else {
-                        print("\nSuccess: \(error)")
+                        print("\nSuccess: \(success)")
                         
                         self.retrieveAllCommentsForPost()
                     }
