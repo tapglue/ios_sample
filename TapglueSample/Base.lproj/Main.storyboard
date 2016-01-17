@@ -43,21 +43,8 @@
                                                                 <constraint firstAttribute="height" constant="50" id="QFR-an-TUD"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eni-dk-SrY">
-                                                            <rect key="frame" x="8" y="8" width="143" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="143" id="Jn3-lh-jSQ"/>
-                                                                <constraint firstAttribute="height" constant="30" id="asU-wT-7mT"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="event_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ybX-av-cYD">
-                                                            <rect key="frame" x="8" y="38" width="510" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="ZZh-Wv-SFM"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="8" y="8" width="510" height="75"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -77,11 +64,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Wir-8P-Niu" secondAttribute="bottom" constant="8" id="0fh-FA-kb4"/>
                                                         <constraint firstItem="VlN-L8-LzM" firstAttribute="leading" secondItem="ybX-av-cYD" secondAttribute="trailing" constant="24" id="9iu-jl-aT3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ybX-av-cYD" secondAttribute="bottom" constant="8" id="B6P-eS-jV8"/>
                                                         <constraint firstAttribute="trailing" secondItem="VlN-L8-LzM" secondAttribute="trailing" constant="8" id="WKa-yf-4KI"/>
-                                                        <constraint firstItem="Eni-dk-SrY" firstAttribute="leading" secondItem="4Ol-wF-AyQ" secondAttribute="leading" constant="8" id="bbs-XV-H3x"/>
-                                                        <constraint firstItem="ybX-av-cYD" firstAttribute="top" secondItem="Eni-dk-SrY" secondAttribute="bottom" id="fkr-yY-Sfq"/>
+                                                        <constraint firstItem="ybX-av-cYD" firstAttribute="top" secondItem="4Ol-wF-AyQ" secondAttribute="top" constant="8" id="hU3-pw-eUo"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wir-8P-Niu" secondAttribute="trailing" constant="8" id="p0A-E6-kbb"/>
-                                                        <constraint firstItem="Eni-dk-SrY" firstAttribute="top" secondItem="4Ol-wF-AyQ" secondAttribute="top" constant="8" id="rj1-2E-JDQ"/>
                                                         <constraint firstItem="ybX-av-cYD" firstAttribute="leading" secondItem="4Ol-wF-AyQ" secondAttribute="leading" constant="8" id="swP-qQ-p23"/>
                                                         <constraint firstItem="VlN-L8-LzM" firstAttribute="top" secondItem="4Ol-wF-AyQ" secondAttribute="top" constant="8" id="xpM-hU-Xhk"/>
                                                     </constraints>
@@ -99,7 +85,6 @@
                                             <outlet property="dateLabel" destination="Wir-8P-Niu" id="1iI-Ne-C4n"/>
                                             <outlet property="eventNameLabel" destination="ybX-av-cYD" id="hCs-On-8V4"/>
                                             <outlet property="eventTypeImageView" destination="VlN-L8-LzM" id="jZu-t4-o7n"/>
-                                            <outlet property="userNameLabel" destination="Eni-dk-SrY" id="zhe-uh-kWl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
