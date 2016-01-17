@@ -25,7 +25,6 @@ class NotificationTableViewCell: UITableViewCell {
     func configureCellWithEvent(event: TGEvent!){
         let eventUser = event.user.username
         
-        self.userNameLabel.text = eventUser
         self.dateLabel.text = event.createdAt.toTimeFormatInElapsedTimeToString()
         
         switch event.type {
