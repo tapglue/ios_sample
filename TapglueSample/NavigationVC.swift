@@ -34,9 +34,8 @@ class NavigationVC: UINavigationController {
         defaults.synchronize()
     }
     
-    // Prepare permissions for NetworkVC(networkButton)
+    // Prepare permissions for FindUsersVC
     func setupPermissionDefaultBools(){
-        defaults.setObject(false, forKey: "contactsPermission")
         defaults.setObject(false, forKey: "facebookPermission")
         defaults.setObject(false, forKey: "twitterPermission")
         defaults.synchronize()
