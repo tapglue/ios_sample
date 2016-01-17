@@ -25,7 +25,7 @@ class UserProfileTableViewCell: UITableViewCell {
         
         self.typeLabel.text = post.user.username
         
-        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
+        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
         
         // Post attachment
         let postAttachment = post.attachments
@@ -34,6 +34,8 @@ class UserProfileTableViewCell: UITableViewCell {
     
     func configureCellWithEvent(event: TGEvent!){
         clearLabels()
+        
+        self.dateLabel.text = event.createdAt.toTimeFormatInElapsedTimeToString()
         
         switch event.type {
             case "like_event":
@@ -67,8 +69,6 @@ class UserProfileTableViewCell: UITableViewCell {
                 }
             default: print("More event types then expected")
         }
-        
-        self.dateLabel.text = event.createdAt.toStringFormatHoursMinutes("dd/M/yyyy, H:mm")
     }
 
     func clearLabels(){
