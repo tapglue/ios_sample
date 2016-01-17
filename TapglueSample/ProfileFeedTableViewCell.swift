@@ -58,7 +58,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
                             // PostText
                             print(post)
                             let postAttachment = post.attachments
-                            self.infoLabel.text = "\" " + postAttachment[0].content + " \""
+                            self.infoLabel.text = postAttachment[0].content
                         }
                 })
             case "tg_follow":
