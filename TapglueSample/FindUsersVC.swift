@@ -14,8 +14,6 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 
 class FindUsersVC: UIViewController, UITableViewDelegate {
-
-    @IBOutlet weak var networkButton: UIButton!
     
     @IBOutlet weak var friendsTableView: UITableView!
     
@@ -48,92 +46,45 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         print("find friends")
         
-        configureFacebook()        
-        prepareCorrectNetworkTableView()
-    }
-
-    @IBAction func networkButtonPressed(sender: UIButton) {
+        configureFacebook()
         
-        if currentSelectedNetwork == "Contacts" {
-            print("Contacts")
-            defaults.setObject(true, forKey: "contactsPermission")
-            searchForUserByEmail()
+        switch currentSelectedNetwork {
+            case "Contacts":
+                self.searchForUserByEmail()
+            case "Facebook":
+                let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
+                
+                if facebookPermission {
+                    print("facebookPermissionGranted")
+                    self.returnUserFriendsData()
+                } else {
+                    // Show facebookLoginButton
+                    facebookLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+                    facebookLogInButton.layer.masksToBounds = true
+                    facebookLogInButton.layer.cornerRadius = 4
+                    self.view.addSubview(facebookLogInButton)
+                }
+            case "Twitter":
+                // get default checked array
+                let twitterPermission = defaults.objectForKey("twitterPermission") as! Bool
+                
+                if twitterPermission {
+                    print("twitterPermissionGranted")
+                    self.getTwitterFriends(-1)
+                } else {
+                    // Show twitterLoginButton
+                    twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+                    twitterLogInButton.addTarget(self, action: "twitterLoginPressed:", forControlEvents: .TouchUpInside)
+                    self.view.addSubview(twitterLogInButton)
+                }
+            default: print("More then expected switches")
         }
     }
     
     func twitterLoginPressed(sender: TWTRLogInButton!) {
         self.twitterLogin()
     }
-    
-    
-    func prepareCorrectNetworkTableView(){
-        switch currentSelectedNetwork {
-            
-        case "Contacts":
-            contactsSegmentWasPicked()
-            
-        case "Facebook":
-            facebookSegmentWasPicked()
-            
-        case "Twitter":
-            twitterSegmentWasPicked()
-            
-            
-        default: print("more then expected networks")
-        }
-    }
-    
-    // Contacts Permission check if granted search for friends and reload TableView
-    func contactsSegmentWasPicked(){
-        // get default checked array
-        let contactPermission = defaults.objectForKey("contactsPermission") as! Bool
-        print(contactPermission)
-        
-        if contactPermission {
-            print("contactPermissionGranted")
-            self.searchForUserByEmail()
-        } else {
-            print("else networkbutton")
-            self.networkButton.setTitle("Contacts", forState: .Normal)
-            self.networkButton.backgroundColor = UIColor.brownColor()
-            self.networkButton.layer.masksToBounds = true
-            self.networkButton.layer.cornerRadius = 4
-        }
-    }
-    
-    // Facebook Permission check if granted search for friends and reload TableView
-    func facebookSegmentWasPicked(){
-        // get default checked array
-        let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
-        
-        if facebookPermission {
-            print("facebookPermissionGranted")
-            self.returnUserFriendsData()
-        } else {
-            // Show facebookLoginButton
-            facebookLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
-            facebookLogInButton.layer.masksToBounds = true
-            facebookLogInButton.layer.cornerRadius = 4
-            self.view.addSubview(facebookLogInButton)
-        }
-    }
-    
-    // Twitter Permission check if granted search for friends and reload TableView
-    func twitterSegmentWasPicked(){
-        // get default checked array
-        let twitterPermission = defaults.objectForKey("twitterPermission") as! Bool
-        
-        if twitterPermission {
-            print("twitterPermissionGranted")
-            self.getTwitterFriends(-1)
-        } else {
-            // Show twitterLoginButton
-            twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
-            twitterLogInButton.addTarget(self, action: "twitterLoginPressed:", forControlEvents: .TouchUpInside)
-            self.view.addSubview(twitterLogInButton)
-        }
-    }
-    
+ 
     // SearchForUserByEmail and reload tableview if user was found
     func searchForUserByEmail() {
         readAddressBookByEmail()
@@ -146,8 +97,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 print("\nSuccessful searchUsersWithEmails: \(users)")
                 self.users = users as! [TGUser]
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.networkButton.hidden = true
-                    
                     self.reloadTableViewWithAnimation()
                 })
             }
@@ -250,7 +199,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 })
                 
                 // Bool to check if user granted permission for twitter
-//                self.defaults.setObject(tr ue, forKey: "twitterPermission")
+                self.defaults.setObject(true, forKey: "twitterPermission")
                 
                 self.getTwitterFriends(-1)
             } else {
