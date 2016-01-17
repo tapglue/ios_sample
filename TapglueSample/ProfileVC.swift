@@ -142,9 +142,13 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let pVC: PostVC = segue.destinationViewController as! PostVC
-        pVC.postBeginEditing = true
-        pVC.postTGPost = self.postTGPost
+        
+        if segue.identifier == "postEditSegue" {
+            let pVC: PostVC = segue.destinationViewController as! PostVC
+            pVC.postBeginEditing = true
+            pVC.postTGPost = self.postTGPost
+        }
+
     }
 }
 
