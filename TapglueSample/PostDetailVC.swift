@@ -219,8 +219,15 @@ extension PostDetailVC: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         if self.postComments[indexPath.row].user.isCurrentUser {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
             let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
                 print("favorite button tapped")
                 
@@ -247,11 +254,6 @@ extension PostDetailVC: UITableViewDataSource {
             }
             delete.backgroundColor = UIColor.redColor()
             return [delete, edit]
-        } else {
-            // TODO: disable edit
-            return nil
-        }
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
