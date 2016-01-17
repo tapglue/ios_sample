@@ -173,14 +173,20 @@ extension ProfileVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let pdVC =
-        self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
-            as! PostDetailVC
-        
-        // pass data
-        pdVC.post = posts[indexPath.row]
-        
-        // tell the new controller to present itself
-        self.navigationController!.pushViewController(pdVC, animated: true)
+        switch feedSegmentedControl.selectedSegmentIndex {
+            case 0:
+                print("Activity segment")
+            case 1:
+                let pdVC =
+                self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
+                    as! PostDetailVC
+                
+                // pass data
+                pdVC.post = posts[indexPath.row]
+                
+                // tell the new controller to present itself
+                self.navigationController!.pushViewController(pdVC, animated: true)
+            default: print("More then two segments")
+        }
     }
 }
