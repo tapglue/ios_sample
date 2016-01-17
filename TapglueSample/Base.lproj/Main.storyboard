@@ -512,6 +512,9 @@
                         <outlet property="userFullnameLabel" destination="7w5-gk-HKe" id="Ta7-od-eYR"/>
                         <outlet property="userImageView" destination="6xL-v8-c98" id="OD2-XY-LyI"/>
                         <outlet property="userNameLabel" destination="nRa-7v-q90" id="7De-Ne-8cU"/>
+                        <segue destination="TP8-Ef-3mc" kind="popoverPresentation" identifier="postEditSegue" popoverAnchorView="EVJ-zy-K6A" id="abk-VM-bH5">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PJ-7Q-tOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2116,4 +2119,7 @@
         <image name="RefreshFilledToolbar" width="22" height="22"/>
         <image name="ShareFilled" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="abk-VM-bH5"/>
+    </inferredMetricsTieBreakers>
 </document>
