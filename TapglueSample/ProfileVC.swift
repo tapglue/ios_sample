@@ -189,4 +189,46 @@ extension ProfileVC: UITableViewDataSource {
             default: print("More then two segments")
         }
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        switch feedSegmentedControl.selectedSegmentIndex {
+            case 0:
+                return false
+            case 1:
+                return true
+            default: return false
+        }
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
+            print("favorite button tapped")
+            
+//            self.beginEditComment = true
+//            
+//            self.commentTextField.becomeFirstResponder()
+//            self.commentTextField.text = self.postComments[indexPath.row].content
+//            
+//            self.editComment = self.postComments[indexPath.row]
+        }
+        edit.backgroundColor = UIColor.lightGrayColor()
+        
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
+            Tapglue.deletePostWithId(self.posts[indexPath.row].objectId, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                if error != nil {
+                    print("\nError deleteComment: \(error)")
+                }
+                else {
+                    print("\nSuccess: \(success)")
+                    self.posts.removeAtIndex(indexPath.row)
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.profileFeedTableView.reloadData()
+                    })
+                }
+            })
+        }
+        delete.backgroundColor = UIColor.redColor()
+        return [delete, edit]
+    }
 }
