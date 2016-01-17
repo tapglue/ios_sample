@@ -56,9 +56,10 @@ class HomeVC: UIViewController, UITableViewDelegate{
 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.homeTableView.reloadData()
+                    self.refreshControl.endRefreshing()
                 })
                 
-                self.refreshControl.endRefreshing()
+                
             }
         }
     }
