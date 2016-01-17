@@ -110,6 +110,7 @@ class FindUsersTableViewCell: UITableViewCell {
     
     // Configure Cell with Contacts that need to be invited
     func configureCellWithUserFromContacts(contact: [String:String]){
+        // TODO: Add invite process
         self.userAboutLabel.text = ""
         self.userNameLabel.text = contact["givenName"]
         
