@@ -112,6 +112,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 print("\nError retrieveUserRecommendations: \(error)")
             }
             else {
+                print(users)
                 print("\nSuccessful retrieveUserRecommendations: \(users)")
                 self.users = users as! [TGUser]
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -351,6 +352,8 @@ extension FindUsersVC: UITableViewDataSource {
                 return users.count
             case "Twitter":
                 return users.count
+            case "Recommendations":
+                return users.count
             default: return 0
         }
     }
@@ -377,6 +380,10 @@ extension FindUsersVC: UITableViewDataSource {
                 cell.configureCellWithUserToFriendOrFollow(user)
 
             case "Twitter":
+                let user = self.users[indexPath.row]
+                cell.configureCellWithUserToFriendOrFollow(user)
+            
+            case "Recommendations":
                 let user = self.users[indexPath.row]
                 cell.configureCellWithUserToFriendOrFollow(user)
             
