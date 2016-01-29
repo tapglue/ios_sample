@@ -51,6 +51,8 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         switch currentSelectedNetwork {
             case "Contacts":
                 self.searchForUserByEmail()
+            case "Recommendations":
+                self.getRecommendedUsers()
             case "Facebook":
                 let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
                 
@@ -95,6 +97,23 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             }
             else {
                 print("\nSuccessful searchUsersWithEmails: \(users)")
+                self.users = users as! [TGUser]
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.reloadTableViewWithAnimation()
+                })
+            }
+        }
+    }
+    
+    // Retrieve User Recommendations
+    func getRecommendedUsers() {
+        Tapglue.retrieveUserRecommendationsWithCompletionBlock { (users: [AnyObject]!, error : NSError!) -> Void in
+            if error != nil {
+                print("\nError retrieveUserRecommendations: \(error)")
+            }
+            else {
+                print(users)
+                print("\nSuccessful retrieveUserRecommendations: \(users)")
                 self.users = users as! [TGUser]
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.reloadTableViewWithAnimation()
@@ -333,6 +352,8 @@ extension FindUsersVC: UITableViewDataSource {
                 return users.count
             case "Twitter":
                 return users.count
+            case "Recommendations":
+                return users.count
             default: return 0
         }
     }
@@ -359,6 +380,10 @@ extension FindUsersVC: UITableViewDataSource {
                 cell.configureCellWithUserToFriendOrFollow(user)
 
             case "Twitter":
+                let user = self.users[indexPath.row]
+                cell.configureCellWithUserToFriendOrFollow(user)
+            
+            case "Recommendations":
                 let user = self.users[indexPath.row]
                 cell.configureCellWithUserToFriendOrFollow(user)
             
