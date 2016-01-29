@@ -32,8 +32,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     var searchingForUser = false
     
     var sections = ["Find Friends", "Pending Requests"]
-    var networks = ["Contacts", "Facebook", "Twitter"]
-    let networkImages = ["AddressBookFilled", "FacebookFilled", "TwitterFilled"]
+    var networks = ["Contacts", "Facebook", "Twitter", "Recommendations"]
+    let networkImages = ["AddressBookFilled", "FacebookFilled", "TwitterFilled","UnicornFilled"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
