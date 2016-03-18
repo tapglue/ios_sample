@@ -49,7 +49,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
                     print(event.target.user.username)
                 }
             case "tg_like":
-                self.typeLabel.text = "Liked " + "'s" + " post"
+                self.typeLabel.text = "Liked " + event.post.user.username + "'s" + " post"
                 
                 Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
                         if error != nil {
