@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'TapglueSample' do
 
-pod 'Tapglue', :git => 'https://github.com/tapglue/ios_sdk.git', :commit => 'c01deecc9d4ac17cca2ff3b4aa8b318b280988ba'
+pod 'Tapglue', :git => 'https://github.com/tapglue/ios_sdk.git', :commit => '877ed8ddcedbfe287b8a5c8a8362be9cb1bc0b0e'
 pod 'FBSDKCoreKit', '4.9.0-beta2'
 pod 'FBSDKLoginKit', '4.9.0-beta2'
 pod 'Kingfisher', '~> 1.9'

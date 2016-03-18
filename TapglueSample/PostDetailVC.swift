@@ -12,7 +12,7 @@ import Tapglue
 class PostDetailVC: UIViewController, UITableViewDelegate {
     
     var post: TGPost!
-    var postComments: [TGPostComment] = []
+    var postComments: [TGComment] = []
     
     var commentButtonPressedSwitch: Bool = false
     
@@ -34,7 +34,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var likesCountLabel: UILabel!
     
     var beginEditComment = false
-    var editComment: TGPostComment!
+    var editComment: TGComment!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,7 +136,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             }
             else {
                 print("\nComments: \(comments)")
-                self.postComments = (comments as! [TGPostComment]).reverse()
+                self.postComments = (comments as! [TGComment]).reverse()
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.commentsTableView.reloadData()

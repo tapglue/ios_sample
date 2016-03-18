@@ -21,7 +21,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCellWithPostComment(comment: TGPostComment) {
+    func configureCellWithPostComment(comment: TGComment) {
         userNameLabel.text = comment.user.username
         userCommentLabel.text = comment.content
         

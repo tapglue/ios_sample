@@ -30,7 +30,7 @@ class LoginSignInVC: UIViewController {
             let username = userNameTextField.text!
             let password = passwordTextField.text!
             
-            Tapglue.loginWithUsernameOrEmail(username, andPasswort: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+            Tapglue.loginWithUsernameOrEmail(username, andPassword: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
                     print("\nError loginWithUsernameOrEmail: \(error)")
                 } else {
