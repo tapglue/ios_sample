@@ -2,3 +2,5 @@
 /Pods
 *.xcworkspace
 *.lock
+
+/externals
