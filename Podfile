@@ -1,12 +1,15 @@
-platform :ios, '8.0'
-use_frameworks!
+platform :ios, '9.0'
+
 
 target 'TapglueSample' do
 
-pod 'Tapglue', :git => 'https://github.com/tapglue/ios_sdk.git', :commit => 'adf318b9aae7d9cacf14c15e4b52a4d84b2db7be'
-pod 'FBSDKCoreKit', '4.9.0-beta2'
-pod 'FBSDKLoginKit', '4.9.0-beta2'
-pod 'Kingfisher', '~> 1.9'
-pod 'TwitterKit', '~> 1.14'
+use_frameworks!
+
+pod 'Tapglue', :git => 'https://github.com/tapglue/ios_sdk.git', :commit => 'd9ec68462d90db0c5aeb39a9fb0a907160693d46'
+pod 'FBSDKCoreKit', '~> 4.14'
+pod 'FBSDKLoginKit', '~> 4.14'
+pod 'Kingfisher', '~> 2.4'
+pod 'TwitterKit', '~> 2.3'
+pod 'TapglueSims', :path => '/Users/tristan/Desktop/ios_sample/externals/sims'
 
 end
