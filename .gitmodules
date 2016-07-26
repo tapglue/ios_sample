@@ -1,4 +1,0 @@
-[submodule "externals/sims"]
-	path = externals/sims
-	url = git@github.com:tapglue/sims-ios.git
-	ignore = dirty
