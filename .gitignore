@@ -3,4 +3,4 @@
 *.xcworkspace
 *.lock
 
-/externals
+externals/
