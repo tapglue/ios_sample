@@ -187,7 +187,7 @@ extension NetworkVC: UITableViewDataSource {
             let fuVC =
             self.storyboard!.instantiateViewControllerWithIdentifier("FindUsersViewController")
                 as! FindUsersVC
-            
+            //TO-DO
             fuVC.currentSelectedNetwork = networks[indexPath.row]
             
             self.navigationController!.pushViewController(fuVC, animated: true)

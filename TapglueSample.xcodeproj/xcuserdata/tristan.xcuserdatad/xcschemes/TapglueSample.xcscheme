@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1EF884CD5C097800C7FD3BC8FDA6CD85"
+               BlueprintIdentifier = "97C9BEED172C6FDE0691695B9D8FBACA"
                BuildableName = "Pods_TapglueSample.framework"
                BlueprintName = "Pods-TapglueSample"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

@@ -24,7 +24,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: "loadNotificationFeed", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(NotificationVC.loadNotificationFeed), forControlEvents: UIControlEvents.ValueChanged)
         self.notificationsTableView.addSubview(refreshControl)
         self.notificationsTableView.sendSubviewToBack(refreshControl)
     }
@@ -36,7 +36,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         self.loadNotificationFeed()
         
         let filterImage = UIImage(named: "FilterFilled")
-        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: "filterButton:") //Use a selector
+        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:))) //Use a selector
 
         tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
     }
@@ -61,7 +61,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
                 types.append(allTypes[count])
                
             }
-            count++
+            count += 1
         }
         
         Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in

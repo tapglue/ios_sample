@@ -70,11 +70,11 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 
                 if twitterPermission {
                     print("twitterPermissionGranted")
-                    self.getTwitterFriends(-1)
+//                    self.getTwitterFriends(-1)
                 } else {
                     // Show twitterLoginButton
                     twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
-                    twitterLogInButton.addTarget(self, action: "twitterLoginPressed:", forControlEvents: .TouchUpInside)
+                    twitterLogInButton.addTarget(self, action: #selector(FindUsersVC.twitterLoginPressed(_:)), forControlEvents: .TouchUpInside)
                     self.view.addSubview(twitterLogInButton)
                 }
             default: print("More then expected switches")
@@ -96,9 +96,9 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             else {
                 print("\nSuccessful searchUsersWithEmails: \(users)")
                 self.users = users as! [TGUser]
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
                     self.reloadTableViewWithAnimation()
-                })
+                }
             }
         }
     }
@@ -109,9 +109,10 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             try contactStore.enumerateContactsWithFetchRequest(CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey])) {
                 (contact, cursor) -> Void in
                 if (!contact.emailAddresses.isEmpty){
+                    print(contact)
                     var itemCount = 0
                     for item in contact.emailAddresses {
-                        itemCount++
+                        itemCount += 1
                         if itemCount <= 1 {
                             self.contacts.append(["givenName": contact.givenName, "email" : String(item.value)])
                             self.contactEmails.append(String(item.value))
@@ -201,68 +202,68 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 // Bool to check if user granted permission for twitter
                 self.defaults.setObject(true, forKey: "twitterPermission")
                 
-                self.getTwitterFriends(-1)
+//                self.getTwitterFriends(-1)
             } else {
                 print("error: \(error!.localizedDescription)")
             }
         }
     }
     
-    func getTwitterFriends(nextCursor: Int){
-        var clientError:NSError?
-        let params: Dictionary = Dictionary<String, String>()
-        
-        var cursorNext = nextCursor
-        
-        let urlTwitterApi: String = "https://api.twitter.com/1.1/friends/ids.json?cursor=" + String(nextCursor) + "&count=5000"
-        
-        let request: NSURLRequest! = Twitter.sharedInstance().APIClient.URLRequestWithMethod(
-            "GET",
-            URL: urlTwitterApi,
-            parameters: params,
-            error: &clientError)
-        
-        if request != nil {
-            Twitter.sharedInstance().APIClient.sendTwitterRequest(request!) {
-                (response, data, connectionError) -> Void in
-                if (connectionError == nil) {
-                    let json: AnyObject? = try!
-                        NSJSONSerialization.JSONObjectWithData(data!,
-                            options: .MutableContainers)
-                    
-                    // check for json data
-                    if (json != nil) {
-                        let resultdict = json as! NSDictionary
-                        
-                        cursorNext = resultdict.objectForKey("next_cursor") as! Int
-                        print("NextCursor: \(cursorNext)")
-                        
-                        let data: NSArray = resultdict.objectForKey("ids") as! NSArray
-                        print("Result Data: \(data)")
-                        
-                        for id in data {
-                            self.followsFromTwitter?.append(String(id))
-                        }
-                        
-                        if cursorNext != 0 {
-                            self.getTwitterFriends(cursorNext)
-                        } else {
-                            // Handle all follower twitter ids at once
-                            self.twitterFollowersSliceAndCheckWithTapglue(self.followsFromTwitter!)
-                        }
-                    } else {
-                        print("error loading json data")
-                    }
-                }
-                else {
-                    print("Error: \(connectionError)")
-                }
-            }
-        }
-        else {
-            print("Error: \(clientError)")
-        }
-    }
+//    func getTwitterFriends(nextCursor: Int){
+//        var clientError:NSError?
+//        let params: Dictionary = Dictionary<String, String>()
+//        
+//        var cursorNext = nextCursor
+//        
+//        let urlTwitterApi: String = "https://api.twitter.com/1.1/friends/ids.json?cursor=" + String(nextCursor) + "&count=5000"
+//        
+//        let request: NSURLRequest! = Twitter.sharedInstance().APIClient.URLRequestWithMethod(
+//            "GET",
+//            URL: urlTwitterApi,
+//            parameters: params,
+//            error: &clientError)
+//        
+//        if request != nil {
+//            Twitter.sharedInstance().APIClient.sendTwitterRequest(request!) {
+//                (response, data, connectionError) -> Void in
+//                if (connectionError == nil) {
+//                    let json: AnyObject? = try!
+//                        NSJSONSerialization.JSONObjectWithData(data!,
+//                            options: .MutableContainers)
+//                    
+//                    // check for json data
+//                    if (json != nil) {
+//                        let resultdict = json as! NSDictionary
+//                        
+//                        cursorNext = resultdict.objectForKey("next_cursor") as! Int
+//                        print("NextCursor: \(cursorNext)")
+//                        
+//                        let data: NSArray = resultdict.objectForKey("ids") as! NSArray
+//                        print("Result Data: \(data)")
+//                        
+//                        for id in data {
+//                            self.followsFromTwitter?.append(String(id))
+//                        }
+//                        
+//                        if cursorNext != 0 {
+//                            self.getTwitterFriends(cursorNext)
+//                        } else {
+//                            // Handle all follower twitter ids at once
+//                            self.twitterFollowersSliceAndCheckWithTapglue(self.followsFromTwitter!)
+//                        }
+//                    } else {
+//                        print("error loading json data")
+//                    }
+//                }
+//                else {
+//                    print("Error: \(connectionError)")
+//                }
+//            }
+//        }
+//        else {
+//            print("Error: \(clientError)")
+//        }
+//    }
     
     func twitterFollowersSliceAndCheckWithTapglue(arr: [String]) {
         // Split all followers in 495 array pieces and Check if twitterFriends are availabe in your App

@@ -31,6 +31,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var postTextLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var commentsCountLabel: UILabel!
+    @IBOutlet weak var tagLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -89,24 +90,37 @@ class HomeTableViewCell: UITableViewCell {
     
     @IBAction func shareButtonPressed(sender: UIButton) {
         // Will be implemented in the future
+        print("Not implemented yet")
     }
     
     // Configure Cell with TGPost data
     func configureCellWithPost(post: TGPost!){
         cellPost = post
         
-        if cellPost.likesCount != 0 {
-            if cellPost.likesCount == 1{
-                self.likesCountLabel.text = String(cellPost.likesCount) + " Like"
-            }
-            self.likesCountLabel.text = String(cellPost.likesCount) + " Likes"
+        if let cellPostTags = cellPost.tags {
+            print(cellPostTags)
         }
         
-        if cellPost.commentsCount != 0 {
-            if cellPost.commentsCount == 1 {
-                self.commentsCountLabel.text = String(cellPost.commentsCount) + " Comment"
-            }
+        switch cellPost.likesCount {
+        case 0:
+            self.likesCountLabel.text = ""
+        case 1:
+            self.likesCountLabel.text = String(cellPost.likesCount) + " Like"
+        case 2...100000:
+            self.likesCountLabel.text = String(cellPost.likesCount) + " Likes"
+        default:
+            print("switch default likesCount")
+        }
+        
+        switch cellPost.commentsCount {
+        case 0:
+            self.commentsCountLabel.text = ""
+        case 1:
+            self.commentsCountLabel.text = String(cellPost.commentsCount) + " Comment"
+        case 2...100000:
             self.commentsCountLabel.text = String(cellPost.commentsCount) + " Comments"
+        default:
+            print("switch default commentsCount")
         }
         
         // UserText
@@ -114,7 +128,31 @@ class HomeTableViewCell: UITableViewCell {
         
         // PostText
         let postAttachment = post.attachments
-        self.postTextLabel.text = postAttachment[0].content
+        self.postTextLabel.text = postAttachment[0].contents!["en"] as? String
+        
+        // TagsText
+        if let tags = post.tags {
+            var tagLabelText = ""
+            
+            switch tags.count {
+            case 0:
+                self.tagLabel.text = ""
+            case 1:
+                for tag in tags {
+                    self.tagLabel.text = "Tag: " + (tag as! String)
+                }
+            case 2...5:
+                for tag in tags {
+                    tagLabelText = tagLabelText + " " + (tag as! String)
+                }
+                self.tagLabel.text = "Tags:" + tagLabelText
+            default:
+                print("switch default tags")
+            }
+            
+        }
+
+        
         
         // UserImage
         var userImage = TGImage()

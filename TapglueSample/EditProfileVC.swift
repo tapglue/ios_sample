@@ -24,8 +24,8 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         
         userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, about, TGUser.currentUser().email]
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
     
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {

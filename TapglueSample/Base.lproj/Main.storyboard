@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1104,7 +1104,7 @@
                                     <constraint firstAttribute="height" constant="39" id="E9F-PU-x5D"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-sW-wLi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to? Maybe add tags #cool #happy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-sW-wLi">
                                 <rect key="frame" x="67" y="122" width="513" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="tU4-Uo-xTl"/>
@@ -1585,7 +1585,10 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-h2-QKa">
-                                                            <rect key="frame" x="15" y="66" width="570" height="98"/>
+                                                            <rect key="frame" x="15" y="66" width="570" height="74"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="74" id="oD7-V2-r5r"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1633,9 +1636,16 @@
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaL-P2-UKL">
+                                                            <rect key="frame" x="15" y="143.5" width="570" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="XaL-P2-UKL" secondAttribute="trailing" constant="15" id="0DT-5i-QGm"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="top" secondItem="FAn-5l-RtR" secondAttribute="bottom" constant="2" id="138-fP-KGZ"/>
                                                         <constraint firstItem="zMf-62-S7B" firstAttribute="centerX" secondItem="g0d-zN-RQz" secondAttribute="centerX" id="1Rh-QT-BeH"/>
                                                         <constraint firstItem="QdS-Dl-5PA" firstAttribute="top" secondItem="gx7-xT-Np2" secondAttribute="top" constant="8" id="4Sa-QS-EFw"/>
@@ -1648,17 +1658,19 @@
                                                         <constraint firstItem="OGa-oh-XHj" firstAttribute="centerY" secondItem="Pgm-pt-gxD" secondAttribute="centerY" id="Hw5-dG-4cW"/>
                                                         <constraint firstItem="viu-AY-KF2" firstAttribute="bottom" secondItem="g0d-zN-RQz" secondAttribute="bottom" id="L1k-9R-tgQ"/>
                                                         <constraint firstItem="Pgm-pt-gxD" firstAttribute="top" secondItem="QdS-Dl-5PA" secondAttribute="bottom" constant="8" id="NfX-La-xxS"/>
-                                                        <constraint firstItem="zMf-62-S7B" firstAttribute="top" secondItem="I7m-h2-QKa" secondAttribute="bottom" id="NhJ-ye-3o4"/>
                                                         <constraint firstItem="FAn-5l-RtR" firstAttribute="centerX" secondItem="tLV-Od-Tes" secondAttribute="centerX" id="PvV-YO-U5j"/>
                                                         <constraint firstItem="g0d-zN-RQz" firstAttribute="top" secondItem="zMf-62-S7B" secondAttribute="bottom" constant="2" id="QU5-fE-s29"/>
                                                         <constraint firstItem="OGa-oh-XHj" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="trailing" constant="8" id="SnO-Qw-04F"/>
                                                         <constraint firstItem="g0d-zN-RQz" firstAttribute="leading" secondItem="tLV-Od-Tes" secondAttribute="trailing" id="Tx4-C4-5Ze"/>
+                                                        <constraint firstItem="XaL-P2-UKL" firstAttribute="top" secondItem="I7m-h2-QKa" secondAttribute="bottom" constant="3.5" id="XAf-7E-XQW"/>
                                                         <constraint firstAttribute="bottom" secondItem="g0d-zN-RQz" secondAttribute="bottom" constant="3.5" id="cUb-co-kM1"/>
+                                                        <constraint firstItem="XaL-P2-UKL" firstAttribute="leading" secondItem="2ah-5U-szO" secondAttribute="leading" id="dMb-My-VKA"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gx7-xT-Np2" secondAttribute="leading" id="dZ5-2z-T1P"/>
                                                         <constraint firstItem="viu-AY-KF2" firstAttribute="leading" secondItem="g0d-zN-RQz" secondAttribute="trailing" id="dy1-te-aUw"/>
                                                         <constraint firstItem="g0d-zN-RQz" firstAttribute="width" secondItem="viu-AY-KF2" secondAttribute="width" id="enN-Il-uKm"/>
                                                         <constraint firstAttribute="trailing" secondItem="I7m-h2-QKa" secondAttribute="trailing" constant="15" id="gUa-cm-x0X"/>
                                                         <constraint firstItem="tLV-Od-Tes" firstAttribute="height" secondItem="g0d-zN-RQz" secondAttribute="height" id="gzE-PA-h5Y"/>
+                                                        <constraint firstItem="zMf-62-S7B" firstAttribute="top" secondItem="XaL-P2-UKL" secondAttribute="bottom" id="iNQ-dl-YUd"/>
                                                         <constraint firstItem="g0d-zN-RQz" firstAttribute="centerX" secondItem="gx7-xT-Np2" secondAttribute="centerX" id="iq0-NH-zTT"/>
                                                         <constraint firstItem="2ah-5U-szO" firstAttribute="top" secondItem="gx7-xT-Np2" secondAttribute="top" constant="8" id="tIG-pc-WZW"/>
                                                         <constraint firstAttribute="trailing" secondItem="viu-AY-KF2" secondAttribute="trailing" id="uVN-Yw-W3A"/>
@@ -1682,6 +1694,7 @@
                                             <outlet property="likeButton" destination="tLV-Od-Tes" id="8JG-IG-Mqx"/>
                                             <outlet property="likesCountLabel" destination="FAn-5l-RtR" id="qJ2-bY-K72"/>
                                             <outlet property="postTextLabel" destination="I7m-h2-QKa" id="Iud-Qz-YYn"/>
+                                            <outlet property="tagLabel" destination="XaL-P2-UKL" id="alt-2f-rx0"/>
                                             <outlet property="userImageView" destination="2ah-5U-szO" id="osW-az-oDy"/>
                                             <outlet property="userNameLabel" destination="QdS-Dl-5PA" id="O0U-h8-3h4"/>
                                             <outlet property="visibilityImageView" destination="OGa-oh-XHj" id="g8P-27-dYG"/>
@@ -2103,6 +2116,6 @@
         <image name="ShareFilled" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="abk-VM-bH5"/>
+        <segue reference="cay-Qe-gLx"/>
     </inferredMetricsTieBreakers>
 </document>

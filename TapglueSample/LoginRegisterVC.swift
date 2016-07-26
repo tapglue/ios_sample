@@ -74,7 +74,7 @@ class LoginRegisterVC: UIViewController {
                 }
             })
         } else {
-            print("Please enter all details and select an avatar")
+            print("Not enough characters")
         }
     }
 }

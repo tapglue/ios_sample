@@ -23,7 +23,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     
     func configureCellWithPostComment(comment: TGComment) {
         userNameLabel.text = comment.user.username
-        userCommentLabel.text = comment.content
+        userCommentLabel.text = comment.contents["en"] as? String
         
         dateLabel.text = comment.createdAt.toTimeFormatInElapsedTimeToString()
         

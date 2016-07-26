@@ -100,7 +100,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
-        self.profileFeedTableView.reloadData()
+        dispatch_async(dispatch_get_main_queue()) {
+            self.profileFeedTableView.reloadData()
+        }
     }
     
     func getEventsAndPostsOfCurrentUser() {
@@ -111,9 +113,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             else {
                 self.events = events as! [TGEvent]
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
                     self.profileFeedTableView.reloadData()
-                })
+                }
             }
         }
         Tapglue.retrievePostsForCurrentUserWithCompletionBlock { (posts: [AnyObject]!, error: NSError!) -> Void in
@@ -123,9 +125,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             else {
                 self.posts = posts as! [TGPost]
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
                     self.profileFeedTableView.reloadData()
-                })
+                }
             }
         }
     }

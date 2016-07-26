@@ -29,7 +29,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
         
         // Post attachment
         let postAttachment = post.attachments
-        self.infoLabel.text = postAttachment[0].content
+        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
     }
 
     func configureCellWithEvent(event: TGEvent!){
@@ -50,17 +50,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
                 }
             case "tg_like":
                 self.typeLabel.text = "Liked " + event.post.user.username + "'s" + " post"
-                
-                Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
-                        if error != nil {
-                            print("\nError retrievePostWithId: \(error)")
-                        } else {
-                            // PostText
-                            print(post)
-                            let postAttachment = post.attachments
-                            self.infoLabel.text = postAttachment[0].content
-                        }
-                })
+                self.infoLabel.text = event.post.attachments[0].contents!["en"] as? String
             case "tg_follow":
                 if event.target.user != nil {
                     self.typeLabel.text = "Follow"

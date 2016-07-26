@@ -24,7 +24,7 @@ class HomeVC: UIViewController, UITableViewDelegate{
         super.viewDidLoad()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: "loadFriendsActivityFeed", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(HomeVC.loadFriendsActivityFeed), forControlEvents: UIControlEvents.ValueChanged)
         self.homeTableView.addSubview(refreshControl)
         self.homeTableView.sendSubviewToBack(refreshControl)
         
@@ -119,6 +119,10 @@ extension HomeVC: CustomCellDataUpdater {
             }
             else {
                 self.posts = feed as! [TGPost]
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.homeTableView.reloadData()
+                }
             }
         }
     }

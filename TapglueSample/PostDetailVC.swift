@@ -53,8 +53,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     override func viewWillAppear(animated: Bool) {
         retrieveAllCommentsForPost()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PostDetailVC.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PostDetailVC.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -136,6 +136,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             }
             else {
                 print("\nComments: \(comments)")
+                
                 self.postComments = (comments as! [TGComment]).reverse()
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -166,7 +167,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         
         // PostText
         let postAttachment = post.attachments
-        self.postTextLabel.text = postAttachment[0].content
+        self.postTextLabel.text = postAttachment[0].contents!["en"] as? String
         
         // Date to string
         self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
@@ -234,7 +235,9 @@ extension PostDetailVC: UITableViewDataSource {
                 self.beginEditComment = true
                 
                 self.commentTextField.becomeFirstResponder()
-                self.commentTextField.text = self.postComments[indexPath.row].content
+                
+                let commentText: String = self.postComments[indexPath.row].contents["en"] as! String
+                self.commentTextField.text = commentText
                 
                 self.editComment = self.postComments[indexPath.row]
             }
@@ -270,8 +273,11 @@ extension PostDetailVC: UITableViewDataSource {
 extension PostDetailVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let comment = ["en": textField.text!]
+        
         if beginEditComment {
-            self.editComment.content = textField.text
+            self.editComment.contents = comment
             
             Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
@@ -289,8 +295,27 @@ extension PostDetailVC: UITextFieldDelegate {
                     })
                 }
             })
+            
+            
+//            Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+//                if error != nil {
+//                    print("\nError updateComment: \(error)")
+//                }
+//                else {
+//                    print("\nSuccess update comment: \(success)")
+//                    self.retrieveAllCommentsForPost()
+//                    
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        self.commentsTableView.reloadData()
+//                        self.commentTextField.text = nil
+//                        self.commentTextField.resignFirstResponder()
+//                        self.beginEditComment = false
+//                    })
+//                }
+//            })
+            
         } else {
-            Tapglue.createCommentWithContent(textField.text!, forPost: post) { (success: Bool, error: NSError!) -> Void in
+            Tapglue.createCommentWithContent(comment, forPost: post) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
                     print("\nError createCommentWithContent: \(error)")
                 } else {

@@ -29,7 +29,7 @@ class UserProfileTableViewCell: UITableViewCell {
         
         // Post attachment
         let postAttachment = post.attachments
-        self.infoLabel.text = postAttachment[0].content
+        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
     }
     
     func configureCellWithEvent(event: TGEvent!){
@@ -58,7 +58,7 @@ class UserProfileTableViewCell: UITableViewCell {
                         // PostText
                         print(post)
                         let postAttachment = post.attachments
-                        self.infoLabel.text = "\" " + postAttachment[0].content + " \""
+                        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
                     }
                 })
             case "tg_follow":

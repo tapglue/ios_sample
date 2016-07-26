@@ -18,6 +18,8 @@ class PostVC: UIViewController {
     
     var postText: String?
     
+    var tagArr: [String]?
+    
     var postBeginEditing = false
     var postTGPost: TGPost!
     
@@ -34,7 +36,7 @@ class PostVC: UIViewController {
         
         // Old post will be edited
         if postBeginEditing {
-            postTextField.text = postTGPost.attachments[0].content
+            postTextField.text = postTGPost.attachments[0].contents!["en"] as? String
             switch postTGPost.visibility.rawValue {
                 case 10:
                     visibilitySegmentedControl.selectedSegmentIndex = 0
@@ -50,13 +52,18 @@ class PostVC: UIViewController {
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
         let post = TGPost()
         
+        
         if postText?.characters.count > 2 {
-            postText = postTextField.text!
+            let tempStr = postTextField.text!
+            
+            postText = tempStr.withoutTags(tempStr)
+            tagArr = tempStr.filterTagsAsStrings(tempStr)
+            post.tags = tagArr
             
             if postBeginEditing {
                 // Prepare TGPost Edit
                 // TODO: If content cann be changed, uncomment
-//                postTGPost!.attachments[0].content = postText
+//                postTGPost!.attachments[0].contents = postText
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
                     case 0:
@@ -77,7 +84,8 @@ class PostVC: UIViewController {
                 })
             } else {
                 // Prepare TGPost
-                post.addAttachment(TGAttachment(text: postText, andName: "status"))
+                post.addAttachment(TGAttachment.init(text: ["en": postText!], andName: "status"))
+                post.tags = tagArr
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
                     case 0:
@@ -88,6 +96,8 @@ class PostVC: UIViewController {
                         post.visibility = TGVisibility.Public
                     default: "More options then expected"
                 }
+                
+                
                 
                 Tapglue.createPost(post) { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
@@ -130,7 +140,12 @@ class PostVC: UIViewController {
 extension PostVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        postText = textField.text
+        let textFieldText = textField.text
+        
+        postText = textFieldText?.withoutTags(textFieldText!)
+        tagArr = textFieldText?.filterTagsAsStrings(textFieldText!)
+        
+        print(postText)
         
         textField.resignFirstResponder()
         
