@@ -10,6 +10,6 @@ pod 'FBSDKCoreKit', '~> 4.14'
 pod 'FBSDKLoginKit', '~> 4.14'
 pod 'Kingfisher', '~> 2.4'
 pod 'TwitterKit', '~> 2.3'
-pod 'TapglueSims', :path => '/Users/tristan/Desktop/ios_sample/externals/sims'
+pod 'TapglueSims', :path => '/[PATH]/ios_sample/externals/sims'
 
 end
