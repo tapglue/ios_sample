@@ -75,9 +75,9 @@ class HomeTableViewCell: UITableViewCell {
     
     @IBAction func commentButtonPressed(sender: UIButton) {
         let rootViewController = self.window!.rootViewController as! UINavigationController
-        let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
         let pdVC =
-        main.instantiateViewControllerWithIdentifier("PostDetailViewController")
+        storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
         
         // pass the relevant data to the new sub-ViewController
