@@ -77,3 +77,4 @@ class UserProfileTableViewCell: UITableViewCell {
         self.dateLabel.text = ""
     }
 }
+
