@@ -32,3 +32,4 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
     }
 }
+
