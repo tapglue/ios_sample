@@ -88,8 +88,9 @@ extension HomeVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
         let pdVC =
-        self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
+            storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
         
         pdVC.post = posts[indexPath.row]
