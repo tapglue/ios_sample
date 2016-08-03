@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Aar-Xa-7dh">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--PostVC-->
+        <scene sceneID="cAS-uX-iKt">
+            <objects>
+                <viewController storyboardIdentifier="PostViewController" id="Aar-Xa-7dh" customClass="PostVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gd4-dp-hyC"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Bn-QM-oPQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uxD-eU-s7r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPp-Fe-GLr">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Update Status" id="gCy-hy-Pdq">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Pv1-2H-Pdu">
+                                            <color key="tintColor" red="0.94901960780000005" green="0.3294117647" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="dismissVC:" destination="Aar-Xa-7dh" id="8uh-MP-QcL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Post" id="aB3-FN-Z4O">
+                                            <connections>
+                                                <action selector="postButtonPressed:" destination="Aar-Xa-7dh" id="gTI-va-4Xa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="NG6-nU-ge3">
+                                <rect key="frame" x="150" y="79" width="300" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6yT-OC-YuS"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="private"/>
+                                    <segment title="connection"/>
+                                    <segment title="public"/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiM-Pg-qli">
+                                <rect key="frame" x="20" y="122" width="39" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="VWC-V1-741"/>
+                                    <constraint firstAttribute="height" constant="39" id="p9h-bW-Xya"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to? Maybe add tags #cool #happy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-gP-aOQ">
+                                <rect key="frame" x="67" y="122" width="513" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="syO-C3-Z96"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Aar-Xa-7dh" id="aY0-yD-hYP"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NG6-nU-ge3" firstAttribute="centerX" secondItem="uxD-eU-s7r" secondAttribute="centerX" id="61h-pf-IYU"/>
+                            <constraint firstItem="KPp-Fe-GLr" firstAttribute="leading" secondItem="uxD-eU-s7r" secondAttribute="leading" id="VaN-bV-uif"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BiM-Pg-qli" secondAttribute="leading" id="cCM-hG-yI8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yLn-gP-aOQ" secondAttribute="trailing" id="hcj-mC-DS7"/>
+                            <constraint firstItem="BiM-Pg-qli" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="kvZ-4C-Ofq"/>
+                            <constraint firstItem="yLn-gP-aOQ" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="mgh-dn-csT"/>
+                            <constraint firstItem="KPp-Fe-GLr" firstAttribute="top" secondItem="gd4-dp-hyC" secondAttribute="bottom" id="n1X-Ks-Y01"/>
+                            <constraint firstAttribute="trailing" secondItem="KPp-Fe-GLr" secondAttribute="trailing" id="uVE-mR-Jas"/>
+                            <constraint firstItem="yLn-gP-aOQ" firstAttribute="leading" secondItem="BiM-Pg-qli" secondAttribute="trailing" constant="8" id="yQP-My-Xu6"/>
+                            <constraint firstItem="NG6-nU-ge3" firstAttribute="top" secondItem="KPp-Fe-GLr" secondAttribute="bottom" constant="15" id="zBX-ue-SQp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="postTextField" destination="yLn-gP-aOQ" id="biy-eS-V8Z"/>
+                        <outlet property="postUIBarButton" destination="aB3-FN-Z4O" id="XRb-Cv-4bN"/>
+                        <outlet property="userImageView" destination="BiM-Pg-qli" id="4qV-bO-YEM"/>
+                        <outlet property="visibilitySegmentedControl" destination="NG6-nU-ge3" id="8hZ-4l-uCX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jcp-zL-9sD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2345" y="-1544"/>
+        </scene>
+    </scenes>
+</document>
