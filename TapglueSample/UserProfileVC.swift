@@ -50,7 +50,8 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFriendsForUser(userProfile) { (friends: [AnyObject]!, error: NSError!) -> Void in
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
+            let storyboard = UIStoryboard(name: "Users", bundle: nil)
+            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             usersViewController.users = friends as! [TGUser]
             
@@ -62,7 +63,8 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFollowersForUser(userProfile) { (followers: [AnyObject]!, error: NSError!) -> Void in
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
+            let storyboard = UIStoryboard(name: "Users", bundle: nil)
+            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             usersViewController.users = followers as! [TGUser]
             
@@ -74,7 +76,8 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
         Tapglue.retrieveFollowsForUser(userProfile) { (following: [AnyObject]!, error: NSError!) -> Void in
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
+            let storyboard = UIStoryboard(name: "Users", bundle: nil)
+            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
             
             usersViewController.users = following as! [TGUser]
             
@@ -175,8 +178,9 @@ extension UserProfileVC: UITableViewDataSource {
             case 0:
                 print("Activity segment")
             case 1:
+                let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
                 let pdVC =
-                self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
+                    storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
                     as! PostDetailVC
                 
                 // pass data to sub-viewcontroller
