@@ -184,8 +184,8 @@ extension NetworkVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            let fuVC =
-            self.storyboard!.instantiateViewControllerWithIdentifier("FindUsersViewController")
+            let storyboard = UIStoryboard(name: "FindUsers", bundle: nil)
+            let fuVC = storyboard.instantiateViewControllerWithIdentifier("FindUsersViewController")
                 as! FindUsersVC
             //TO-DO
             fuVC.currentSelectedNetwork = networks[indexPath.row]
