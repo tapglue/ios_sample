@@ -63,7 +63,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func userNameButtonPressed(sender: UIButton) {
-        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+        let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+        let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
         userProfileViewController.userProfile = post.user
         
@@ -260,7 +261,8 @@ extension PostDetailVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+        let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+        let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
         userProfileViewController.userProfile = postComments[indexPath.row].user
         
