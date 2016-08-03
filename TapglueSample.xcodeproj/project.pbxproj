@@ -22,6 +22,7 @@
 		6A2216251D520F1B00D27B7C /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216241D520F1B00D27B7C /* Network.storyboard */; };
 		6A2216271D520F6800D27B7C /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216261D520F6800D27B7C /* Notification.storyboard */; };
 		6A22162A1D520FA700D27B7C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216291D520FA700D27B7C /* Profile.storyboard */; };
+		6A22162C1D52174D00D27B7C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A22162B1D52174D00D27B7C /* Login.storyboard */; };
 		6A2C88AA1C1EDA3800A4EE96 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88A91C1EDA3800A4EE96 /* LoginVC.swift */; };
 		6A2C88AC1C1EDA4C00A4EE96 /* LoginSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */; };
 		6A2C88AE1C1F105800A4EE96 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88AD1C1F105800A4EE96 /* EditProfileVC.swift */; };
@@ -72,6 +73,7 @@
 		6A2216241D520F1B00D27B7C /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
 		6A2216261D520F6800D27B7C /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		6A2216291D520FA700D27B7C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6A22162B1D52174D00D27B7C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		6A2C88A91C1EDA3800A4EE96 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignInVC.swift; sourceTree = "<group>"; };
 		6A2C88AD1C1F105800A4EE96 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		6A2C88A71C1EDA0D00A4EE96 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				6A22162B1D52174D00D27B7C /* Login.storyboard */,
 				6A2C88A91C1EDA3800A4EE96 /* LoginVC.swift */,
 				6A509A401BDCEF6B00CC8A82 /* LoginRegisterVC.swift */,
 				6A2C88AB1C1EDA4C00A4EE96 /* LoginSignInVC.swift */,
@@ -470,6 +473,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A22162C1D52174D00D27B7C /* Login.storyboard in Resources */,
 				6A22161F1D520CC700D27B7C /* PostDetail.storyboard in Resources */,
 				6AAEB8EA1D520246002124AB /* EditProfile.storyboard in Resources */,
 				6A2216131D52075E00D27B7C /* Users.storyboard in Resources */,
