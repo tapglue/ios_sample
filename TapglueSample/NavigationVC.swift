@@ -16,12 +16,17 @@ class NavigationVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         // Send user to app or login screen
         if TGUser.currentUser() != nil {
             
         } else {
             setupCheckedForEventsDefaults()
             setupPermissionDefaultBools()
+            
             // Show loginVC if no user
             performSegueWithIdentifier("loginSegue", sender: nil)
         }
