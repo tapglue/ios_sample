@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Cz-Dc-dRk" userLabel="Home Table View">
-                                <rect key="frame" x="0.0" y="131" width="600" height="420"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Cz-Dc-dRk" userLabel="Home Table View">
+                                <rect key="frame" x="0.0" y="87" width="600" height="513"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="OLL-Vh-9Kh" userLabel="EmptyFooterView">
@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fua-cT-a0o" userLabel="CardView">
-                                                    <rect key="frame" x="0.0" y="4" width="600" height="221.5"/>
+                                                    <rect key="frame" x="0.0" y="4" width="600" height="222"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NnX-mN-mHk">
                                                             <rect key="frame" x="15" y="8" width="50" height="50"/>
@@ -127,7 +127,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp4-ju-7dL">
-                                                            <rect key="frame" x="15" y="143.5" width="570" height="20.5"/>
+                                                            <rect key="frame" x="15" y="144" width="570" height="20"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -196,8 +196,8 @@
                                     <outlet property="delegate" destination="O2l-Gi-ucs" id="UlP-1G-6Xg"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-Oo-3yK">
-                                <rect key="frame" x="0.0" y="72" width="600" height="55"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-Oo-3yK">
+                                <rect key="frame" x="0.0" y="28" width="600" height="55"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOZ-Uo-Kwt">
                                         <rect key="frame" x="64" y="8" width="528" height="39"/>
