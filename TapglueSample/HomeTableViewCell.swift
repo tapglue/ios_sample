@@ -186,3 +186,4 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
 }
+
