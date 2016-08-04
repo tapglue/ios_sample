@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "97C9BEED172C6FDE0691695B9D8FBACA"
+               BlueprintIdentifier = "F3D39028952A328B5593BCAA53E32DDB"
                BuildableName = "Pods_TapglueSample.framework"
                BlueprintName = "Pods-TapglueSample"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
