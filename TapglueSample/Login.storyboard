@@ -102,26 +102,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PsS-av-PzZ">
-                                <rect key="frame" x="150" y="215" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="NvH-Zr-8QA"/>
-                                    <constraint firstAttribute="width" constant="300" id="yWW-pW-GGp"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BpO-5a-1Pt">
-                                <rect key="frame" x="150" y="163" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="26s-67-8G9"/>
-                                    <constraint firstAttribute="width" constant="300" id="eeG-Nf-0bK"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bd-Wj-0Qq">
                                 <rect key="frame" x="150" y="275" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,13 +123,39 @@
                                     <action selector="signInButtonPressed:" destination="csY-fb-Ia1" eventType="touchUpInside" id="xhk-0s-ke3"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="iGH-R7-dhv">
+                                <rect key="frame" x="150" y="163" width="300" height="92"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BpO-5a-1Pt">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="26s-67-8G9"/>
+                                            <constraint firstAttribute="width" constant="300" id="eeG-Nf-0bK"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PsS-av-PzZ">
+                                        <rect key="frame" x="0.0" y="52" width="300" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="NvH-Zr-8QA"/>
+                                            <constraint firstAttribute="width" constant="300" id="yWW-pW-GGp"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="VXm-hc-nUy"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PsS-av-PzZ" firstAttribute="centerX" secondItem="MSw-ct-VPl" secondAttribute="centerX" id="NLg-A8-uU5"/>
-                            <constraint firstItem="BpO-5a-1Pt" firstAttribute="centerX" secondItem="MSw-ct-VPl" secondAttribute="centerX" id="WxN-ov-IbG"/>
-                            <constraint firstItem="7bd-Wj-0Qq" firstAttribute="top" secondItem="PsS-av-PzZ" secondAttribute="bottom" constant="20" id="vNk-lM-JuM"/>
-                            <constraint firstItem="PsS-av-PzZ" firstAttribute="top" secondItem="BpO-5a-1Pt" secondAttribute="bottom" constant="12" id="vWP-ix-J71"/>
+                            <constraint firstItem="7bd-Wj-0Qq" firstAttribute="top" secondItem="iGH-R7-dhv" secondAttribute="bottom" constant="20" id="NuT-HL-HMi"/>
+                            <constraint firstItem="iGH-R7-dhv" firstAttribute="centerX" secondItem="MSw-ct-VPl" secondAttribute="centerX" id="omX-Nl-sWY"/>
                             <constraint firstItem="7bd-Wj-0Qq" firstAttribute="centerX" secondItem="MSw-ct-VPl" secondAttribute="centerX" id="xU7-0z-0EE"/>
                             <constraint firstItem="7bd-Wj-0Qq" firstAttribute="centerY" secondItem="MSw-ct-VPl" secondAttribute="centerY" id="xYq-bU-zkZ"/>
                         </constraints>
@@ -175,134 +181,110 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="lastname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aJl-6e-dOA">
-                                <rect key="frame" x="150" y="198" width="300" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sIW-oo-zMM">
+                                <rect key="frame" x="150" y="34" width="300" height="410"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-LF-igI">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="uhR-a6-Nj8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="una-cA-cWy">
+                                        <rect key="frame" x="0.0" y="55" width="300" height="290"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIe-5l-oVc">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="ApJ-qQ-3pw"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="nBx-QQ-ycq"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="firstname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Hl-k2f">
+                                                <rect key="frame" x="0.0" y="50" width="300" height="40"/>
+                                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="JAn-t7-HST"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="lastname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aJl-6e-dOA">
+                                                <rect key="frame" x="0.0" y="100" width="300" height="40"/>
+                                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="00H-NN-dKG"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="about" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="raI-zT-Dwp">
+                                                <rect key="frame" x="0.0" y="150" width="300" height="40"/>
+                                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="999-h6-tmh"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-ZW-zxP">
+                                                <rect key="frame" x="0.0" y="200" width="300" height="40"/>
+                                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="EEb-a6-ez7"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-TI-Bwz">
+                                                <rect key="frame" x="0.0" y="250" width="300" height="40"/>
+                                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="aGM-xu-BcA"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7K-Uz-P90">
+                                        <rect key="frame" x="0.0" y="360" width="300" height="50"/>
+                                        <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7Ei-29-xln"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Register">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signUpButtonPressed:" destination="0Jd-c9-kwi" eventType="touchUpInside" id="kWu-y9-eKk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="IhW-wf-JXn"/>
-                                    <constraint firstAttribute="width" constant="300" id="iVC-kR-fht"/>
+                                    <constraint firstAttribute="width" constant="300" id="JwI-9o-ZWb"/>
                                 </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="00H-NN-dKG"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="about" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="raI-zT-Dwp">
-                                <rect key="frame" x="150" y="246" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="4NE-4T-tDy"/>
-                                    <constraint firstAttribute="width" constant="300" id="c00-Kh-w7h"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="999-h6-tmh"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-ZW-zxP">
-                                <rect key="frame" x="150" y="294" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="mG8-Q8-SIU"/>
-                                    <constraint firstAttribute="width" constant="300" id="ySJ-ym-ziT"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="EEb-a6-ez7"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-TI-Bwz">
-                                <rect key="frame" x="150" y="342" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="AGj-oG-Ra4"/>
-                                    <constraint firstAttribute="width" constant="300" id="xa6-oL-Kn8"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="aGM-xu-BcA"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIe-5l-oVc">
-                                <rect key="frame" x="150" y="102" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="eH2-gO-w1j"/>
-                                    <constraint firstAttribute="width" constant="300" id="ewl-uF-Yqy"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="nBx-QQ-ycq"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-LF-igI">
-                                <rect key="frame" x="150" y="42" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="uYs-Ha-WJT"/>
-                                    <constraint firstAttribute="width" constant="300" id="vhi-3j-Pn3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7K-Uz-P90">
-                                <rect key="frame" x="150" y="398" width="300" height="50"/>
-                                <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="4bk-sz-yHu"/>
-                                    <constraint firstAttribute="width" constant="300" id="xaW-wO-lzb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="Register">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="signUpButtonPressed:" destination="0Jd-c9-kwi" eventType="touchUpInside" id="kWu-y9-eKk"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="firstname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Hl-k2f">
-                                <rect key="frame" x="150" y="150" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="o8V-Jv-7hE"/>
-                                    <constraint firstAttribute="width" constant="300" id="raM-1d-rPZ"/>
-                                </constraints>
-                                <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0Jd-c9-kwi" id="JAn-t7-HST"/>
-                                </connections>
-                            </textField>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aJl-6e-dOA" firstAttribute="top" secondItem="aUQ-Hl-k2f" secondAttribute="bottom" constant="8" id="2JE-ZX-spo"/>
-                            <constraint firstItem="tB3-ZW-zxP" firstAttribute="top" secondItem="raI-zT-Dwp" secondAttribute="bottom" constant="8" id="6ra-5c-tuy"/>
-                            <constraint firstItem="fIe-5l-oVc" firstAttribute="top" secondItem="TNd-LF-igI" secondAttribute="bottom" constant="20" id="83H-oU-4Ba"/>
-                            <constraint firstItem="aUQ-Hl-k2f" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="8Mb-8j-wY8"/>
-                            <constraint firstItem="fIe-5l-oVc" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="CqW-BL-E1q"/>
-                            <constraint firstItem="TNd-LF-igI" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="Ea9-QW-ilW"/>
-                            <constraint firstItem="raI-zT-Dwp" firstAttribute="top" secondItem="aJl-6e-dOA" secondAttribute="bottom" constant="8" id="Ekm-j4-nBN"/>
-                            <constraint firstItem="tB3-ZW-zxP" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="F4J-bL-LeO"/>
-                            <constraint firstItem="aUQ-Hl-k2f" firstAttribute="top" secondItem="fIe-5l-oVc" secondAttribute="bottom" constant="8" id="F6s-iG-p9k"/>
-                            <constraint firstItem="p7K-Uz-P90" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="ZgD-VC-czo"/>
-                            <constraint firstItem="0V2-TI-Bwz" firstAttribute="top" secondItem="tB3-ZW-zxP" secondAttribute="bottom" constant="8" id="dWb-Wv-rUe"/>
-                            <constraint firstItem="0V2-TI-Bwz" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="fTN-Sm-ROi"/>
-                            <constraint firstItem="p7K-Uz-P90" firstAttribute="top" secondItem="0V2-TI-Bwz" secondAttribute="bottom" constant="16" id="gCs-kx-X4N"/>
-                            <constraint firstItem="TNd-LF-igI" firstAttribute="top" secondItem="SOx-7M-qlh" secondAttribute="bottom" constant="22" id="hIM-OZ-Rkx"/>
-                            <constraint firstItem="raI-zT-Dwp" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="k65-AV-2Uh"/>
-                            <constraint firstItem="aJl-6e-dOA" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="r54-FV-0ww"/>
+                            <constraint firstItem="sIW-oo-zMM" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="A8i-oz-Xgg"/>
+                            <constraint firstItem="sIW-oo-zMM" firstAttribute="top" secondItem="SOx-7M-qlh" secondAttribute="bottom" constant="14" id="uDH-PO-U7l"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="200-5A-H1h"/>
