@@ -90,7 +90,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     // Fill user profile
     func showUserInformation(user: TGUser){
         userFullnameLabel.text = user.firstName + " " + user.lastName
-        userUsernameLabel.text = user.username
+        userUsernameLabel.text = "@" + user.username
         
         let meta = user.metadata as AnyObject
         userAboutLabel.text = String(meta.valueForKey("about")!)
