@@ -30,7 +30,6 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
-    @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
     
     var beginEditComment = false
@@ -157,13 +156,6 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 self.likesCountLabel.text = String(post.likesCount) + " Like"
             }
             self.likesCountLabel.text = String(post.likesCount) + " Likes"
-        }
-        
-        if post.commentsCount != 0 {
-            if post.commentsCount == 1 {
-                self.commentsCountLabel.text = String(post.commentsCount) + " Comment"
-            }
-            self.commentsCountLabel.text = String(post.commentsCount) + " Comments"
         }
         
         // PostText
