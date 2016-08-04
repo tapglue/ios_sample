@@ -19,15 +19,21 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNK-V6-CEJ">
                                 <rect key="frame" x="150" y="275" width="300" height="50"/>
-                                <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="fD1-xb-Jy9"/>
                                     <constraint firstAttribute="height" constant="50" id="lrU-Xp-1jB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="REGISTER">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.1764705882352941" green="0.27843137254901962" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="0Jd-c9-kwi" kind="show" id="OIL-lj-PKX">
                                         <nil key="action"/>
@@ -45,6 +51,12 @@
                                 <state key="normal" title="SIGN IN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="csY-fb-Ia1" kind="show" id="awL-Ot-DCR">
                                         <nil key="action"/>
@@ -57,11 +69,11 @@
                                     <constraint firstAttribute="height" constant="100" id="YGy-GJ-9UZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.015686274509803921" green="0.85882352941176465" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Za-Yf-zgJ" firstAttribute="centerX" secondItem="LRh-XR-UmB" secondAttribute="centerX" id="3Cd-C4-sNp"/>
                             <constraint firstAttribute="leadingMargin" secondItem="pZ2-5V-PCI" secondAttribute="leading" id="6G1-Z7-QnL"/>
@@ -90,7 +102,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PsS-av-PzZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PsS-av-PzZ">
                                 <rect key="frame" x="150" y="215" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NvH-Zr-8QA"/>
@@ -100,7 +112,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BpO-5a-1Pt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BpO-5a-1Pt">
                                 <rect key="frame" x="150" y="163" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="26s-67-8G9"/>
@@ -121,6 +133,12 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInButtonPressed:" destination="csY-fb-Ia1" eventType="touchUpInside" id="xhk-0s-ke3"/>
                                 </connections>
@@ -157,7 +175,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aJl-6e-dOA">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="lastname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aJl-6e-dOA">
                                 <rect key="frame" x="150" y="198" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IhW-wf-JXn"/>
@@ -170,7 +188,7 @@
                                     <outlet property="delegate" destination="0Jd-c9-kwi" id="00H-NN-dKG"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="About" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="raI-zT-Dwp">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="about" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="raI-zT-Dwp">
                                 <rect key="frame" x="150" y="246" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4NE-4T-tDy"/>
@@ -183,7 +201,7 @@
                                     <outlet property="delegate" destination="0Jd-c9-kwi" id="999-h6-tmh"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-ZW-zxP">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-ZW-zxP">
                                 <rect key="frame" x="150" y="294" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mG8-Q8-SIU"/>
@@ -196,7 +214,7 @@
                                     <outlet property="delegate" destination="0Jd-c9-kwi" id="EEb-a6-ez7"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-TI-Bwz">
+                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-TI-Bwz">
                                 <rect key="frame" x="150" y="342" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AGj-oG-Ra4"/>
@@ -209,7 +227,7 @@
                                     <outlet property="delegate" destination="0Jd-c9-kwi" id="aGM-xu-BcA"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIe-5l-oVc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIe-5l-oVc">
                                 <rect key="frame" x="150" y="102" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eH2-gO-w1j"/>
@@ -223,12 +241,12 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-LF-igI">
-                                <rect key="frame" x="150" y="52" width="300" height="30"/>
+                                <rect key="frame" x="150" y="42" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uYs-Ha-WJT"/>
+                                    <constraint firstAttribute="height" constant="40" id="uYs-Ha-WJT"/>
                                     <constraint firstAttribute="width" constant="300" id="vhi-3j-Pn3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -243,11 +261,17 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="0Jd-c9-kwi" eventType="touchUpInside" id="kWu-y9-eKk"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Hl-k2f">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="firstname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Hl-k2f">
                                 <rect key="frame" x="150" y="150" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="o8V-Jv-7hE"/>
@@ -276,7 +300,7 @@
                             <constraint firstItem="0V2-TI-Bwz" firstAttribute="top" secondItem="tB3-ZW-zxP" secondAttribute="bottom" constant="8" id="dWb-Wv-rUe"/>
                             <constraint firstItem="0V2-TI-Bwz" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="fTN-Sm-ROi"/>
                             <constraint firstItem="p7K-Uz-P90" firstAttribute="top" secondItem="0V2-TI-Bwz" secondAttribute="bottom" constant="16" id="gCs-kx-X4N"/>
-                            <constraint firstItem="TNd-LF-igI" firstAttribute="top" secondItem="SOx-7M-qlh" secondAttribute="bottom" constant="32" id="hIM-OZ-Rkx"/>
+                            <constraint firstItem="TNd-LF-igI" firstAttribute="top" secondItem="SOx-7M-qlh" secondAttribute="bottom" constant="22" id="hIM-OZ-Rkx"/>
                             <constraint firstItem="raI-zT-Dwp" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="k65-AV-2Uh"/>
                             <constraint firstItem="aJl-6e-dOA" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="r54-FV-0ww"/>
                         </constraints>

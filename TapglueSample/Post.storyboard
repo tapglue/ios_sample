@@ -22,16 +22,18 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Update Status" id="gCy-hy-Pdq">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Pv1-2H-Pdu">
-                                            <color key="tintColor" red="0.94901960780000005" green="0.3294117647" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.94117647059999998" green="0.23529411759999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="dismissVC:" destination="Aar-Xa-7dh" id="8uh-MP-QcL"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Post" id="aB3-FN-Z4O">
+                                            <color key="tintColor" red="0.015686274510000001" green="0.76078431369999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="postButtonPressed:" destination="Aar-Xa-7dh" id="gTI-va-4Xa"/>
                                             </connections>
@@ -49,6 +51,7 @@
                                     <segment title="connection"/>
                                     <segment title="public"/>
                                 </segments>
+                                <color key="tintColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiM-Pg-qli">
                                 <rect key="frame" x="20" y="122" width="39" height="39"/>
@@ -62,6 +65,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="syO-C3-Z96"/>
                                 </constraints>
+                                <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
