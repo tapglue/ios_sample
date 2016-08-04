@@ -64,7 +64,7 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
 }
 
 extension EditProfileVC: UITableViewDataSource {
-    // MARK: -TableView
+    // MARK: - TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
