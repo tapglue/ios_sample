@@ -80,12 +80,6 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9o-nD-j8k">
-                                        <rect key="frame" x="116" y="118" width="100" height="17"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddq-ss-Z1y">
                                         <rect key="frame" x="66" y="8" width="526" height="25"/>
                                         <constraints>
@@ -106,18 +100,14 @@
                                     <constraint firstItem="gYC-os-HzJ" firstAttribute="top" secondItem="wfi-49-NO9" secondAttribute="top" constant="8" id="0qE-hI-CcA"/>
                                     <constraint firstAttribute="trailing" secondItem="e9D-AF-Y1b" secondAttribute="trailing" constant="8" id="3BH-18-IWf"/>
                                     <constraint firstAttribute="bottom" secondItem="FTL-rk-15Q" secondAttribute="bottom" constant="8" id="9mO-TD-2IY"/>
-                                    <constraint firstItem="M9o-nD-j8k" firstAttribute="centerY" secondItem="Otf-A8-Y7h" secondAttribute="centerY" id="9nu-yk-s57"/>
-                                    <constraint firstItem="M9o-nD-j8k" firstAttribute="height" secondItem="Otf-A8-Y7h" secondAttribute="height" id="CaH-lC-ICX"/>
                                     <constraint firstItem="Otf-A8-Y7h" firstAttribute="top" secondItem="e9D-AF-Y1b" secondAttribute="bottom" id="CnB-1u-TlZ"/>
                                     <constraint firstItem="rNM-V1-6Sk" firstAttribute="leading" secondItem="gYC-os-HzJ" secondAttribute="trailing" constant="8" id="HQJ-5s-Ymc"/>
                                     <constraint firstItem="gYC-os-HzJ" firstAttribute="leading" secondItem="wfi-49-NO9" secondAttribute="leading" constant="8" id="Jid-2z-gjK"/>
                                     <constraint firstItem="e9D-AF-Y1b" firstAttribute="top" secondItem="KXM-WA-v84" secondAttribute="bottom" constant="4" id="JlK-qy-cMC"/>
                                     <constraint firstAttribute="bottom" secondItem="UFo-v7-Z8C" secondAttribute="bottom" constant="8" id="K0U-Eh-499"/>
                                     <constraint firstItem="Otf-A8-Y7h" firstAttribute="centerX" secondItem="UFo-v7-Z8C" secondAttribute="centerX" id="LbY-Wt-Jwd"/>
-                                    <constraint firstItem="M9o-nD-j8k" firstAttribute="leading" secondItem="Otf-A8-Y7h" secondAttribute="trailing" constant="8" id="SQK-p6-adf"/>
                                     <constraint firstItem="e9D-AF-Y1b" firstAttribute="leading" secondItem="wfi-49-NO9" secondAttribute="leading" constant="8" id="csx-XB-Oc9"/>
                                     <constraint firstAttribute="trailing" secondItem="FTL-rk-15Q" secondAttribute="trailing" constant="8" id="csy-L9-XVd"/>
-                                    <constraint firstItem="M9o-nD-j8k" firstAttribute="width" secondItem="Otf-A8-Y7h" secondAttribute="width" id="eIW-b6-1Z8"/>
                                     <constraint firstItem="UFo-v7-Z8C" firstAttribute="top" secondItem="Otf-A8-Y7h" secondAttribute="bottom" constant="2" id="nb3-eV-Tqb"/>
                                     <constraint firstAttribute="trailing" secondItem="ddq-ss-Z1y" secondAttribute="trailing" constant="8" id="rLf-Ng-9D1"/>
                                     <constraint firstItem="ddq-ss-Z1y" firstAttribute="leading" secondItem="gYC-os-HzJ" secondAttribute="trailing" constant="8" id="sdm-VF-p8o"/>
@@ -140,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qfE-cT-2iw" id="oG2-t5-qF8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eFL-VZ-Xp4">
@@ -242,7 +232,6 @@
                     <connections>
                         <outlet property="commentContainerBottonConstraint" destination="7rR-gA-iCT" id="vV2-wO-ZEv"/>
                         <outlet property="commentTextField" destination="pBw-Qp-hJQ" id="poH-ej-ari"/>
-                        <outlet property="commentsCountLabel" destination="M9o-nD-j8k" id="foe-Mq-eUL"/>
                         <outlet property="commentsTableView" destination="gxi-yK-S0P" id="5Uc-nP-mmv"/>
                         <outlet property="dateLabel" destination="KXM-WA-v84" id="Dcv-oh-iZh"/>
                         <outlet property="likeButton" destination="UFo-v7-Z8C" id="ISP-Yv-i3B"/>
