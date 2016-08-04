@@ -24,8 +24,9 @@ class LoginSignInVC: UIViewController {
     }
     
     @IBAction func signInButtonPressed(sender: UIButton) {
-        // If all textFields have more then 2 characters, begin Tapglue login
-        if userNameTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 {
+        // If textFields have more then 2 characters, begin Tapglue login
+        if userNameTextField.text?.characters.count > 2 &&
+            passwordTextField.text?.characters.count > 2 {
             1
             let username = userNameTextField.text!
             let password = passwordTextField.text!
