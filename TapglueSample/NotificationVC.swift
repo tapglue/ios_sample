@@ -35,7 +35,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         
         self.loadNotificationFeed()
         
-        let filterImage = UIImage(named: "FilterFilled")
+        let filterImage = UIImage(named: "SortFilled")
         let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:))) //Use a selector
 
         tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
