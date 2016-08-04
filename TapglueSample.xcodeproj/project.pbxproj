@@ -161,14 +161,6 @@
 			name = CustomCell;
 			sourceTree = "<group>";
 		};
-		6A1A98A91C20568C00299CD1 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
-			);
-			name = CustomCell;
-			sourceTree = "<group>";
-		};
 		6A1A98AE1C20722500299CD1 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,9 +277,9 @@
 			children = (
 				6AAEB8E21D51FEC6002124AB /* Home.storyboard */,
 				6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */,
+				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
 				6AAEB8E81D5201FE002124AB /* Post */,
 				6A22161B1D520CA900D27B7C /* PostDetailVC */,
-				6A1A98A91C20568C00299CD1 /* CustomCell */,
 			);
 			name = Home;
 			sourceTree = "<group>";
