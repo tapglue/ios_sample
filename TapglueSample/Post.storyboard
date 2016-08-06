@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Aar-Xa-7dh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--PostVC-->
@@ -41,7 +42,7 @@
                                 </items>
                             </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="NG6-nU-ge3">
-                                <rect key="frame" x="150" y="84" width="300" height="29"/>
+                                <rect key="frame" x="150" y="79" width="300" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="6yT-OC-YuS"/>
                                 </constraints>
@@ -52,41 +53,38 @@
                                 </segments>
                                 <color key="tintColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qJ6-TT-h9n">
-                                <rect key="frame" x="15" y="132" width="570" height="39"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiM-Pg-qli">
-                                        <rect key="frame" x="0.0" y="0.0" width="39" height="39"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="39" id="WwN-cS-Mzs"/>
-                                            <constraint firstAttribute="height" constant="39" id="Zfg-Ec-mBv"/>
-                                        </constraints>
-                                    </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to? Maybe add tags #cool #happy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-gP-aOQ">
-                                        <rect key="frame" x="47" y="0.0" width="523" height="39"/>
-                                        <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="Aar-Xa-7dh" id="aY0-yD-hYP"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiM-Pg-qli">
+                                <rect key="frame" x="20" y="122" width="39" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="C6W-Te-ujA"/>
+                                    <constraint firstAttribute="width" constant="39" id="VWC-V1-741"/>
+                                    <constraint firstAttribute="height" constant="39" id="p9h-bW-Xya"/>
                                 </constraints>
-                            </stackView>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to? Maybe add tags #cool #happy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-gP-aOQ">
+                                <rect key="frame" x="67" y="122" width="513" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="syO-C3-Z96"/>
+                                </constraints>
+                                <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Aar-Xa-7dh" id="aY0-yD-hYP"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NG6-nU-ge3" firstAttribute="centerX" secondItem="uxD-eU-s7r" secondAttribute="centerX" id="61h-pf-IYU"/>
-                            <constraint firstItem="qJ6-TT-h9n" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="20" id="LU5-a7-fSA"/>
                             <constraint firstItem="KPp-Fe-GLr" firstAttribute="leading" secondItem="uxD-eU-s7r" secondAttribute="leading" id="VaN-bV-uif"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BiM-Pg-qli" secondAttribute="leading" id="cCM-hG-yI8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yLn-gP-aOQ" secondAttribute="trailing" id="hcj-mC-DS7"/>
+                            <constraint firstItem="BiM-Pg-qli" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="kvZ-4C-Ofq"/>
+                            <constraint firstItem="yLn-gP-aOQ" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="mgh-dn-csT"/>
                             <constraint firstItem="KPp-Fe-GLr" firstAttribute="top" secondItem="gd4-dp-hyC" secondAttribute="bottom" id="n1X-Ks-Y01"/>
-                            <constraint firstItem="qJ6-TT-h9n" firstAttribute="leading" secondItem="uxD-eU-s7r" secondAttribute="leading" constant="15" id="pyD-1K-VBh"/>
                             <constraint firstAttribute="trailing" secondItem="KPp-Fe-GLr" secondAttribute="trailing" id="uVE-mR-Jas"/>
-                            <constraint firstAttribute="trailing" secondItem="qJ6-TT-h9n" secondAttribute="trailing" constant="15" id="uvs-OM-tzq"/>
-                            <constraint firstItem="NG6-nU-ge3" firstAttribute="top" secondItem="KPp-Fe-GLr" secondAttribute="bottom" constant="20" id="zBX-ue-SQp"/>
+                            <constraint firstItem="yLn-gP-aOQ" firstAttribute="leading" secondItem="BiM-Pg-qli" secondAttribute="trailing" constant="8" id="yQP-My-Xu6"/>
+                            <constraint firstItem="NG6-nU-ge3" firstAttribute="top" secondItem="KPp-Fe-GLr" secondAttribute="bottom" constant="15" id="zBX-ue-SQp"/>
                         </constraints>
                     </view>
                     <connections>
