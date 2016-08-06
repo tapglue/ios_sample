@@ -133,41 +133,69 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6A02F6C41D561E8A003D8945 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		6A02F6C51D561ED5003D8945 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6A1A98AA1C2056C900299CD1 /* UsersTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		6A02F6C61D561F06003D8945 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		6A02F6C71D561F2E003D8945 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6A1A98AF1C20724B00299CD1 /* NotificationTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		6A02F6C81D561F33003D8945 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6A92D4C81C2164AE00BE79C1 /* EventFilterTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		6A1A98A21C20554E00299CD1 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
 				6A2216151D52092B00D27B7C /* UserProfile */,
 				6A2216141D52076600D27B7C /* Users */,
-				6A1A98A71C20566300299CD1 /* CustomCell */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
 		};
-		6A1A98A71C20566300299CD1 /* CustomCell */ = {
+		6A1A98A71C20566300299CD1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6A1A98AA1C2056C900299CD1 /* UsersTableViewCell.swift */,
 				6AF69F581C241E8700376B54 /* UserProfileTableViewCell.swift */,
 			);
-			name = CustomCell;
+			name = Cell;
 			sourceTree = "<group>";
 		};
-		6A1A98A81C20567900299CD1 /* CustomCell */ = {
+		6A1A98A81C20567900299CD1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */,
 				6A2C88B01C1F193000A4EE96 /* EditProfilTableViewCell.swift */,
 			);
-			name = CustomCell;
-			sourceTree = "<group>";
-		};
-		6A1A98AE1C20722500299CD1 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				6A1A98AF1C20724B00299CD1 /* NotificationTableViewCell.swift */,
-				6A92D4C81C2164AE00BE79C1 /* EventFilterTableViewCell.swift */,
-			);
-			name = CustomCell;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		6A1F10811C301C6500C445E0 /* Extensions */ = {
@@ -184,6 +212,7 @@
 			children = (
 				6A22160F1D5205CB00D27B7C /* EventFilter.storyboard */,
 				6A92D4CA1C2164C100BE79C1 /* EventFilterVC.swift */,
+				6A02F6C81D561F33003D8945 /* Cell */,
 			);
 			name = EventFilter;
 			sourceTree = "<group>";
@@ -193,6 +222,7 @@
 			children = (
 				6A2216121D52075E00D27B7C /* Users.storyboard */,
 				6A1A98A51C20563000299CD1 /* UsersVC.swift */,
+				6A02F6C51D561ED5003D8945 /* Cell */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -202,6 +232,7 @@
 			children = (
 				6A2216161D52094300D27B7C /* UserProfile.storyboard */,
 				6AF69F561C2412ED00376B54 /* UserProfileVC.swift */,
+				6A1A98A71C20566300299CD1 /* Cell */,
 			);
 			name = UserProfile;
 			sourceTree = "<group>";
@@ -266,8 +297,8 @@
 			children = (
 				6A2216291D520FA700D27B7C /* Profile.storyboard */,
 				6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */,
+				6A02F6C61D561F06003D8945 /* Cell */,
 				6AAEB8EB1D520269002124AB /* EditProfile */,
-				6A1A98A81C20567900299CD1 /* CustomCell */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -308,8 +339,8 @@
 			children = (
 				6A2216261D520F6800D27B7C /* Notification.storyboard */,
 				6A1A98AC1C20718D00299CD1 /* NotificationVC.swift */,
+				6A02F6C71D561F2E003D8945 /* Cell */,
 				6A2216111D5205D400D27B7C /* EventFilter */,
-				6A1A98AE1C20722500299CD1 /* CustomCell */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -337,7 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */,
-				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
+				6A02F6C41D561E8A003D8945 /* Main */,
 				6A61F34D1BDADBD100EC64DF /* ViewControllers */,
 				6A1F10811C301C6500C445E0 /* Extensions */,
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
@@ -385,6 +416,7 @@
 			children = (
 				6AAEB8E91D520246002124AB /* EditProfile.storyboard */,
 				6A2C88AD1C1F105800A4EE96 /* EditProfileVC.swift */,
+				6A1A98A81C20567900299CD1 /* Cell */,
 			);
 			name = EditProfile;
 			sourceTree = "<group>";
