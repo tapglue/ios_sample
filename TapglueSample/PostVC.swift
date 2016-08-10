@@ -21,7 +21,7 @@ class PostVC: UIViewController {
     var tagArr: [String]?
     
     var postBeginEditing = false
-    var postTGPost: TGPost!
+    var tempPost: TGPost!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,8 @@ class PostVC: UIViewController {
         
         // Old post will be edited
         if postBeginEditing {
-            postTextField.text = postTGPost.attachments[0].contents!["en"] as? String
-            switch postTGPost.visibility.rawValue {
+            postTextField.text = tempPost.attachments[0].contents!["en"] as? String
+            switch tempPost.visibility.rawValue {
                 case 10:
                     visibilitySegmentedControl.selectedSegmentIndex = 0
                 case 20:
@@ -58,29 +58,29 @@ class PostVC: UIViewController {
             
             postText = tempStr.withoutTags(tempStr)
             tagArr = tempStr.filterTagsAsStrings(tempStr)
-            post.tags = tagArr
             
             if postBeginEditing {
                 // Prepare TGPost Edit
-                // TODO: If content cann be changed, uncomment
-//                postTGPost!.attachments[0].contents = postText
+                
+                // TODO: Currently unable to update attachments, no editing post possible atm
+//                tempPost.addAttachment(TGAttachment.init(text: ["en": postText!], andName: "status"))
+//                tempPost.tags = tagArr
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
                     case 0:
-                        postTGPost!.visibility = TGVisibility.Private
+                        tempPost!.visibility = TGVisibility.Private
                     case 1:
-                        postTGPost!.visibility = TGVisibility.Connection
+                        tempPost!.visibility = TGVisibility.Connection
                     case 2:
-                        postTGPost!.visibility = TGVisibility.Public
+                        tempPost!.visibility = TGVisibility.Public
                     default: "More options then expected"
                 }
                 
-                Tapglue.updatePost(postTGPost, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+                Tapglue.updatePost(tempPost, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
                     if error != nil {
                         print("\nError createPost: \(error)")
                     } else {
-                        print("\nSucccess: \(success)")
-                    }
+                        print("\nSucccess: \(success)")                    }
                 })
             } else {
                 // Prepare TGPost
@@ -96,7 +96,6 @@ class PostVC: UIViewController {
                         post.visibility = TGVisibility.Public
                     default: "More options then expected"
                 }
-                
                 
                 
                 Tapglue.createPost(post) { (success: Bool, error: NSError!) -> Void in
