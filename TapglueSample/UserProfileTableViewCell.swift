@@ -23,13 +23,14 @@ class UserProfileTableViewCell: UITableViewCell {
     func configureCellWithPost(post: TGPost!){
         clearLabels()
         
-        self.typeLabel.text = post.user.username
-        
-        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
-        
         // Post attachment
         let postAttachment = post.attachments
+        
         self.infoLabel.text = postAttachment[0].contents!["en"] as? String
+        
+        self.typeLabel.text = String(postAttachment[0].name).capitalizeFirst
+        
+        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
     }
     
     func configureCellWithEvent(event: TGEvent!){
@@ -49,18 +50,8 @@ class UserProfileTableViewCell: UITableViewCell {
                     print(event.target.user.username)
                 }
             case "tg_like":
-                self.typeLabel.text = "Liked " + "'s" + " post"
-                
-                Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError retrievePostWithId: \(error)")
-                    } else {
-                        // PostText
-                        print(post)
-                        let postAttachment = post.attachments
-                        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
-                    }
-                })
+                self.typeLabel.text = "Liked " + event.post.user.username + "'s" + " post"
+                self.infoLabel.text = event.post.attachments[0].contents!["en"] as? String
             case "tg_follow":
                 if event.target.user != nil {
                     self.typeLabel.text = "Follow"
