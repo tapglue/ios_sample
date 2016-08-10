@@ -13,7 +13,6 @@ class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventTypeImageView: UIImageView!
     
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
 
@@ -56,7 +55,5 @@ class NotificationTableViewCell: UITableViewCell {
             
             default: print("Unkown event type")
         }
-        
-        
     }
 }
