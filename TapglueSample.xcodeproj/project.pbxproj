@@ -242,6 +242,7 @@
 			children = (
 				6A2216181D520B3100D27B7C /* FindUsers.storyboard */,
 				6AE4169E1C3AA3D600DEBEC0 /* FindUsersVC.swift */,
+				6A9F0DB01D5B79E200A8B41C /* Cell */,
 			);
 			name = FindUsers;
 			sourceTree = "<group>";
@@ -269,6 +270,7 @@
 			children = (
 				6A2216241D520F1B00D27B7C /* Network.storyboard */,
 				6A70082D1C2862D1003D385E /* NetworkVC.swift */,
+				6A9F0DAF1D5B79D700A8B41C /* Cell */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -320,7 +322,6 @@
 			children = (
 				6A2216231D520F0C00D27B7C /* Network */,
 				6A22161A1D520B3800D27B7C /* FindUsers */,
-				6A70082F1C2862D6003D385E /* CustomCell */,
 			);
 			name = NetworkVC;
 			sourceTree = "<group>";
@@ -393,13 +394,20 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		6A70082F1C2862D6003D385E /* CustomCell */ = {
+		6A9F0DAF1D5B79D700A8B41C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				970E6E591BDD6E9D00BCE1C0 /* NetworkUserTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		6A9F0DB01D5B79E200A8B41C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
 				6AE416A01C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift */,
 			);
-			name = CustomCell;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		6AAEB8E81D5201FE002124AB /* Post */ = {
