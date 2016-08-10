@@ -26,11 +26,11 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="4aD-Kx-wS3" customClass="ProfileFeedTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="4aD-Kx-wS3" customClass="ProfileFeedTableViewCell" customModule="TapglueSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4aD-Kx-wS3" id="Agq-jx-ELz">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type_label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njs-7c-ZoO">
@@ -258,11 +258,14 @@
                         <outlet property="userFullnameLabel" destination="Udc-VP-Ogi" id="yaz-Km-msf"/>
                         <outlet property="userImageView" destination="Ie4-wl-Ngd" id="Mer-Y6-duP"/>
                         <outlet property="userNameLabel" destination="bdU-nP-026" id="cQG-8i-ejR"/>
+                        <segue destination="Yww-g0-uco" kind="popoverPresentation" identifier="postEditSegue" popoverAnchorView="ZZi-oZ-dux" id="SWK-fU-aAT">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eyo-CZ-s3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="1699"/>
+            <point key="canvasLocation" x="1566" y="1737"/>
         </scene>
         <!--EditProfile-->
         <scene sceneID="7DR-lr-oCU">
@@ -270,7 +273,15 @@
                 <viewControllerPlaceholder storyboardName="EditProfile" id="UlX-ej-rg6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExU-1b-gmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2106.5" y="1699"/>
+            <point key="canvasLocation" x="2106" y="1681"/>
+        </scene>
+        <!--Post-->
+        <scene sceneID="hTf-VG-2Eh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" id="Yww-g0-uco" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ny8-pf-iXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2088" y="1799"/>
         </scene>
     </scenes>
     <resources>
