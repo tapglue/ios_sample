@@ -29,7 +29,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     var posts: [TGPost] = []
     
     var postEditingText: String?
-    var postTGPost: TGPost?
+    var tempPost: TGPost?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         if TGUser.currentUser() != nil {
             refreshTGUser()
             
-            currentFriendsFollowerFollowingCount()
+            countFriendsFollowersAndFollowings()
             
             getEventsAndPostsOfCurrentUser()
             
@@ -135,7 +135,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         }
     }
     
-    func currentFriendsFollowerFollowingCount() {
+    func countFriendsFollowersAndFollowings() {
         friendsCountButton.setTitle(String(TGUser.currentUser().friendsCount) + " Friends", forState: .Normal)
         followerCountButton.setTitle(String(TGUser.currentUser().followersCount) + " Follower", forState: .Normal)
         followingCountButton.setTitle(String(TGUser.currentUser().followingCount) + " Following", forState: .Normal)
@@ -151,7 +151,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         if segue.identifier == "postEditSegue" {
             let pVC: PostVC = segue.destinationViewController as! PostVC
             pVC.postBeginEditing = true
-            pVC.postTGPost = self.postTGPost
+            pVC.tempPost = self.tempPost
         }
 
     }
@@ -222,12 +222,10 @@ extension ProfileVC: UITableViewDataSource {
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
             // Passing TGPost
-            self.postTGPost = self.posts[indexPath.row]
+            self.tempPost = self.posts[indexPath.row]
             
             // Go to PostVC
             self.performSegueWithIdentifier("postEditSegue", sender: nil)
-
-            // Pass data in prepareForSegue
         }
         edit.backgroundColor = UIColor.lightGrayColor()
         
