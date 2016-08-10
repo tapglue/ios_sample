@@ -33,12 +33,10 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+        
         showUserInformation(userProfile!)
         
-        currentFriendsFollowerFollowingCount()
+        coutFriendsFollowsAndFollowings()
         
         getEventsAndPostsOfCurrentUser()
     }
@@ -128,7 +126,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         }
     }
     
-    func currentFriendsFollowerFollowingCount() {
+    func coutFriendsFollowsAndFollowings() {
         let friendsCount = String(userProfile!.friendsCount)
         let followersCount = String(userProfile!.followersCount)
         let followingCount = String(userProfile!.followingCount)
