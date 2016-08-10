@@ -33,7 +33,6 @@ class HomeVC: UIViewController, UITableViewDelegate{
     
     override func viewWillAppear(animated: Bool) {
         // UserImage
-
         if let userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage? {
             self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         }
