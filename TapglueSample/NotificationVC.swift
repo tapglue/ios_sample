@@ -13,10 +13,10 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var notificationsTableView: UITableView!
     
-    var checkedEvents: [Bool] = []
+    var checkmarkedEvents: [Bool] = []
     
     // TGEvent arr
-    var currentUserEvents: [TGEvent] = []
+    var filteredEvents: [TGEvent] = []
     
     var refreshControl: UIRefreshControl!
     
@@ -31,13 +31,12 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        checkedEvents = defaults.objectForKey("checked") as! [Bool]
+        checkmarkedEvents = defaults.objectForKey("filterCheckmarks") as! [Bool]
         
         self.loadNotificationFeed()
         
         let filterImage = UIImage(named: "SortFilled")
-        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:))) //Use a selector
-
+        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:)))
         tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
     }
     
@@ -56,7 +55,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         
         var types = [String]()
         var count = 0
-        for checked in checkedEvents {
+        for checked in checkmarkedEvents {
             if checked {
                 types.append(allTypes[count])
                
@@ -64,12 +63,15 @@ class NotificationVC: UIViewController, UITableViewDelegate {
             count += 1
         }
         
+        // Issue: Retrieve event types are not working proparly, if I use my custom types I get still tg_friend and tg_follow as my feed back
+        
         Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
                 print("\nError retrieveEventsFeedForCurrentUserForEventTypes: \(error)")
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.currentUserEvents = feed as! [TGEvent]
+                    print(feed)
+                    self.filteredEvents = feed as! [TGEvent]
                     self.notificationsTableView.reloadData()
                 })
                 self.refreshControl.endRefreshing()
@@ -90,13 +92,14 @@ extension NotificationVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentUserEvents.count
+        print(filteredEvents.count)
+        return filteredEvents.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
                 
-        cell.configureCellWithEvent(currentUserEvents[indexPath.row])
+        cell.configureCellWithEvent(filteredEvents[indexPath.row])
         
         return cell
     }
