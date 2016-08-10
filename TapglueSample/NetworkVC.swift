@@ -55,7 +55,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         resultSearchController.hidesNavigationBarDuringPresentation = false
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.sizeToFit()
-        resultSearchController.searchBar.placeholder = "Username search"
+        resultSearchController.searchBar.searchBarStyle = .Minimal
+        resultSearchController.searchBar.placeholder = "search"
         self.friendsTableView.tableHeaderView = resultSearchController.searchBar
     }
     
@@ -118,64 +119,22 @@ class NetworkVC: UIViewController, UITableViewDelegate {
 
 extension NetworkVC: UITableViewDataSource {
     // Mark: -TableView
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.sections.count
-    }
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var sectionStr: String?
-        
-        switch section {
-        case 0:
-            sectionStr = self.sections[section]
-        case 1:
-            if searchingForUser {
-                sectionStr = "Search results"
-            } else {
-                sectionStr = self.sections[section]
-            }
-        default: "to many sections"
-        }
-        
-        return sectionStr
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                 return self.networks.count
-            case 1:
-                return self.users.count
-            default: return 0
-        }
+        return self.users.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
         
-//        cell.userImageView.image = nil
-        print("Section \(indexPath.section), Row \(indexPath.row)")
-        
-        switch indexPath.section {
-        case 0:
-            cell.userImageView.contentMode = .Center
-            cell.userImageView.image = UIImage(named: self.networkImages[indexPath.row])
-            cell.userNameLabel.text = self.networks[indexPath.row]
-            self.friendsTableView.rowHeight = 60.0
-            
-        case 1:
             if searchingForUser {
-                self.friendsTableView.rowHeight = 90.0
                 cell.searchingForUser = true
                 cell.configureCellWithUserToFriendOrFollow(self.users[indexPath.row])
             } else {
                 cell.selectionStyle = .None
                 cell.userNameLabel.text = self.users[indexPath.row].firstName
-                self.friendsTableView.rowHeight = 90.0
                 let user = self.users[indexPath.row]
                 cell.configureCellWithUserWithPendingConnection(user)
             }
-        default: "to many sections in creation"
-        }
 
         
         return cell
