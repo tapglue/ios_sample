@@ -290,24 +290,6 @@ extension PostDetailVC: UITextFieldDelegate {
                 }
             })
             
-            
-//            Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError updateComment: \(error)")
-//                }
-//                else {
-//                    print("\nSuccess update comment: \(success)")
-//                    self.retrieveAllCommentsForPost()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.commentsTableView.reloadData()
-//                        self.commentTextField.text = nil
-//                        self.commentTextField.resignFirstResponder()
-//                        self.beginEditComment = false
-//                    })
-//                }
-//            })
-            
         } else {
             Tapglue.createCommentWithContent(comment, forPost: post) { (success: Bool, error: NSError!) -> Void in
                 if error != nil {
