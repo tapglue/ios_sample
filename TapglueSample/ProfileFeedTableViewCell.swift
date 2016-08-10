@@ -23,13 +23,14 @@ class ProfileFeedTableViewCell: UITableViewCell {
     func configureCellWithPost(post: TGPost!){
         clearLabels()
         
-        self.typeLabel.text = post.user.username
-        
-        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
-        
         // Post attachment
         let postAttachment = post.attachments
+        
         self.infoLabel.text = postAttachment[0].contents!["en"] as? String
+        
+        self.typeLabel.text = String(postAttachment[0].name).capitalizeFirst
+    
+        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
     }
 
     func configureCellWithEvent(event: TGEvent!){
@@ -40,8 +41,10 @@ class ProfileFeedTableViewCell: UITableViewCell {
         switch event.type {
             case "like_event":
                 self.typeLabel.text = "Likes Event"
+                self.infoLabel.text = event.object.objectId
             case "bookmark_event":
                 self.typeLabel.text = "Bookmarked"
+                self.infoLabel.text = event.object.objectId
             case "tg_friend":
                 if event.target.user != nil {
                     self.typeLabel.text = "Friends"
