@@ -24,8 +24,8 @@ class NavigationVC: UINavigationController {
         if TGUser.currentUser() != nil {
             
         } else {
-            setupCheckedForEventsDefaults()
-            setupPermissionDefaultBools()
+            setupFilterCheckmarkDefaults()
+            setupSocialPermissionDefaults()
             
             // Show loginVC if no user
             performSegueWithIdentifier("loginSegue", sender: nil)
@@ -33,14 +33,14 @@ class NavigationVC: UINavigationController {
     }
     
     // Prepare checks to filter Notifications
-    func setupCheckedForEventsDefaults(){
-        let checked: [Bool] = [true, true, true, true, true]
-        defaults.setObject(checked, forKey: "checked")
+    func setupFilterCheckmarkDefaults(){
+        let filterCheckmarks: [Bool] = [true, true, true, true, true]
+        defaults.setObject(filterCheckmarks, forKey: "filterCheckmarks")
         defaults.synchronize()
     }
     
     // Prepare permissions for FindUsersVC
-    func setupPermissionDefaultBools(){
+    func setupSocialPermissionDefaults(){
         defaults.setObject(false, forKey: "facebookPermission")
         defaults.setObject(false, forKey: "twitterPermission")
         defaults.synchronize()
