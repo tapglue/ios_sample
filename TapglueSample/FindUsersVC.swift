@@ -50,8 +50,10 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         
         switch currentSelectedNetwork {
             case "Contacts":
+                print("contacts selected")
                 self.searchForUserByEmail()
             case "Facebook":
+                print("facebook selected")
                 let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
                 
                 if facebookPermission {
@@ -65,6 +67,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                     self.view.addSubview(facebookLogInButton)
                 }
             case "Twitter":
+                print("twitter selected")
                 // get default checked array
                 let twitterPermission = defaults.objectForKey("twitterPermission") as! Bool
                 
@@ -97,7 +100,9 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 print("\nSuccessful searchUsersWithEmails: \(users)")
                 self.users = users as! [TGUser]
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.reloadTableViewWithAnimation()
+                    // TO-DO delete animation if not needed
+//                    self.reloadTableViewWithAnimation()
+                    self.friendsTableView.reloadData()
                 }
             }
         }
@@ -343,13 +348,14 @@ extension FindUsersVC: UITableViewDataSource {
         
         switch currentSelectedNetwork {
             case "Contacts":
-                print("checkingForContacts")
                 
+                // Show users that use the app in the right cell
                 for usr in users {
                     let tempContact = contacts[indexPath.row]
+                    
                     if usr.email == tempContact["email"] {
-                        print("true")
                         cell.configureCellWithUserFromContactsThatUsesApp(contacts[indexPath.row], user: usr)
+                        break
                     } else {
                         cell.configureCellWithUserFromContacts(contacts[indexPath.row])
                     }
