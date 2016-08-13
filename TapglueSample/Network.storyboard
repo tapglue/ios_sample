@@ -45,6 +45,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="conctactsBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="Wcz-dX-6BU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzd-9g-vYy">
                                         <rect key="frame" x="195" y="0.0" width="180" height="40"/>
@@ -59,6 +62,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="facebookBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="2bU-xe-HHm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aY-g7-A8z">
                                         <rect key="frame" x="390" y="0.0" width="180" height="40"/>
@@ -73,6 +79,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="twitterBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="LUy-0l-7Ku"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -87,17 +96,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="dQL-Ev-E13">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="dQL-Ev-E13">
                                                     <rect key="frame" x="73" y="15" width="336" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="KxA-7i-LdL"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-yb-3Ay">
-                                                    <rect key="frame" x="505" y="22.5" width="80" height="35"/>
+                                                    <rect key="frame" x="505" y="23" width="80" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="p6c-vC-XUc"/>
                                                         <constraint firstAttribute="width" constant="80" id="uJ4-h9-lAM"/>
@@ -117,7 +126,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BG-Qm-w1l">
-                                                    <rect key="frame" x="417" y="22" width="80" height="35"/>
+                                                    <rect key="frame" x="417" y="23" width="80" height="35"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <state key="normal">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
