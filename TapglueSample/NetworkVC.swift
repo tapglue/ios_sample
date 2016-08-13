@@ -75,6 +75,22 @@ class NetworkVC: UIViewController, UITableViewDelegate {
         self.resultSearchController.searchBar.hidden = true
         self.resultSearchController.active = false
     }
+    
+    @IBAction func conctactsBtnPressed(sender: UIButton) {
+        let storyboard = UIStoryboard(name: "FindUsers", bundle: nil)
+        let fuVC = storyboard.instantiateViewControllerWithIdentifier("FindUsersViewController")
+                as! FindUsersVC
+        //TO-DO
+        fuVC.currentSelectedNetwork = "Contacts"
+        self.navigationController!.pushViewController(fuVC, animated: true)
+    }
+    
+    @IBAction func facebookBtnPressed(sender: UIButton) {
+        
+    }
+    
+    @IBAction func twitterBtnPressed(sender: UIButton) {
+    }
 
     
     func clearUsersArrayAndReloadTableView(){
