@@ -90,29 +90,29 @@ class FindUsersTableViewCell: UITableViewCell {
         
         showUserImage(cellUser)
         
-        if self.connectRightButton != nil {
-            self.connectRightButton.hidden = false
-            
+//        if self.connectRightButton != nil {
+//            self.connectRightButton.hidden = false
+        
             if user.isFriend {
-                customizeBtn(.Unfriend)
+                customizeBtn(.Friend)
                 self.connectRightButton.selected = true
             } else {
-                customizeBtn(.Friend)
+                customizeBtn(.Unfriend)
                 self.connectRightButton.selected = false
             }
-        }
-        if self.connectLeftButton != nil {
-            self.connectLeftButton.hidden = false
-            
+//        }
+//        if self.connectLeftButton != nil {
+//            self.connectLeftButton.hidden = false
+        
             if user.isFollower {
 //                self.followingUserCustomizeButton()
-                customizeBtn(.Unfollow)
+                customizeBtn(.Follow)
                 self.connectLeftButton.selected = true
             } else {
-                customizeBtn(.Follow)
+                customizeBtn(.Unfollow)
                 self.connectLeftButton.selected = false
             }
-        }
+//        }
     }
     
     // Configure Cell with Contacts that need to be invited
@@ -185,23 +185,23 @@ class FindUsersTableViewCell: UITableViewCell {
             self.connectLeftButton.setTitle("Invite", forState: .Normal)
             self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
             self.connectLeftButton.tag = BtnState.Invite.rawValue
-            self.connectRightButton.hidden = true
+//            self.connectRightButton.hidden = true
         case .Follow:
             self.connectLeftButton.setTitle("Following", forState: .Selected)
             self.connectLeftButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
-            self.connectLeftButton.tag = BtnState.Follow.rawValue
+            self.connectLeftButton.tag = BtnState.Unfollow.rawValue
         case .Unfollow:
             self.connectLeftButton.setTitle("Follow", forState: .Normal)
             self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
-            self.connectLeftButton.tag = BtnState.Unfollow.rawValue
+            self.connectLeftButton.tag = BtnState.Follow.rawValue
         case .Friend:
-            self.connectRightButton.setTitle("Add Friend", forState: .Normal)
-            self.connectRightButton.backgroundColor = UIColor.lightGrayColor()
-            self.connectRightButton.tag = BtnState.Friend.rawValue
-        case .Unfriend:
-            self.connectRightButton.setTitle("Friend", forState: .Selected)
+            self.connectRightButton.setTitle("Add Friend", forState: .Selected)
             self.connectRightButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
             self.connectRightButton.tag = BtnState.Unfriend.rawValue
+        case .Unfriend:
+            self.connectRightButton.setTitle("Friend", forState: .Normal)
+            self.connectRightButton.backgroundColor = UIColor.lightGrayColor()
+            self.connectRightButton.tag = BtnState.Friend.rawValue
         case .Pending:
             self.connectRightButton.setTitle("Pending", forState: .Selected)
             self.connectRightButton.backgroundColor = UIColor.orangeColor()
