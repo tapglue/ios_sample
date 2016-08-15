@@ -1,0 +1,4599 @@
+BCSymbolMap Version: 1.0
+-[FBSDKSendButton shareContent]
+-[FBSDKSendButton setShareContent:]
+-[FBSDKSendButton analyticsParameters]
+-[FBSDKSendButton impressionTrackingEventName]
+-[FBSDKSendButton impressionTrackingIdentifier]
+-[FBSDKSendButton configureButton]
+-[FBSDKSendButton isImplicitlyDisabled]
+-[FBSDKSendButton _share:]
+-[FBSDKSendButton .cxx_destruct]
+OBJC_IVAR_$_FBSDKSendButton._dialog
+OBJC_METH_VAR_NAME_
+OBJC_SELECTOR_REFERENCES_
+OBJC_METH_VAR_NAME_.1
+OBJC_SELECTOR_REFERENCES_.2
+OBJC_METH_VAR_NAME_.3
+OBJC_SELECTOR_REFERENCES_.4
+.str
+_unnamed_cfstring_
+OBJC_CLASSLIST_REFERENCES_$_
+OBJC_METH_VAR_NAME_.5
+OBJC_SELECTOR_REFERENCES_.6
+.str.7
+_unnamed_cfstring_.8
+.str.9
+_unnamed_cfstring_.10
+.str.11
+_unnamed_cfstring_.12
+OBJC_METH_VAR_NAME_.13
+OBJC_SELECTOR_REFERENCES_.14
+OBJC_CLASSLIST_REFERENCES_$_.15
+OBJC_METH_VAR_NAME_.16
+OBJC_SELECTOR_REFERENCES_.17
+OBJC_CLASSLIST_REFERENCES_$_.18
+OBJC_METH_VAR_NAME_.19
+OBJC_SELECTOR_REFERENCES_.20
+OBJC_METH_VAR_NAME_.21
+OBJC_SELECTOR_REFERENCES_.22
+OBJC_METH_VAR_NAME_.23
+OBJC_SELECTOR_REFERENCES_.24
+OBJC_METH_VAR_NAME_.25
+OBJC_SELECTOR_REFERENCES_.26
+OBJC_METH_VAR_NAME_.27
+OBJC_SELECTOR_REFERENCES_.28
+OBJC_CLASSLIST_REFERENCES_$_.29
+OBJC_METH_VAR_NAME_.30
+OBJC_SELECTOR_REFERENCES_.31
+OBJC_METH_VAR_NAME_.32
+OBJC_SELECTOR_REFERENCES_.33
+OBJC_METH_VAR_NAME_.34
+OBJC_SELECTOR_REFERENCES_.35
+OBJC_METH_VAR_NAME_.36
+OBJC_SELECTOR_REFERENCES_.37
+OBJC_METH_VAR_NAME_.38
+OBJC_SELECTOR_REFERENCES_.39
+OBJC_CLASS_NAME_
+OBJC_METH_VAR_TYPE_
+OBJC_METH_VAR_TYPE_.40
+OBJC_METH_VAR_NAME_.41
+OBJC_METH_VAR_TYPE_.42
+OBJC_METH_VAR_NAME_.43
+OBJC_CLASS_NAME_.44
+OBJC_METH_VAR_NAME_.45
+OBJC_METH_VAR_TYPE_.46
+OBJC_METH_VAR_NAME_.47
+OBJC_METH_VAR_TYPE_.48
+OBJC_METH_VAR_NAME_.49
+OBJC_METH_VAR_NAME_.50
+OBJC_METH_VAR_TYPE_.51
+OBJC_METH_VAR_NAME_.52
+OBJC_METH_VAR_TYPE_.53
+OBJC_METH_VAR_NAME_.54
+OBJC_METH_VAR_TYPE_.55
+OBJC_METH_VAR_NAME_.56
+OBJC_METH_VAR_TYPE_.57
+OBJC_METH_VAR_NAME_.58
+OBJC_METH_VAR_TYPE_.59
+OBJC_METH_VAR_NAME_.60
+OBJC_METH_VAR_NAME_.61
+OBJC_METH_VAR_TYPE_.62
+OBJC_METH_VAR_NAME_.63
+OBJC_METH_VAR_TYPE_.64
+OBJC_METH_VAR_NAME_.65
+OBJC_METH_VAR_NAME_.66
+OBJC_METH_VAR_TYPE_.67
+OBJC_METH_VAR_NAME_.68
+OBJC_METH_VAR_NAME_.69
+OBJC_METH_VAR_TYPE_.70
+OBJC_METH_VAR_NAME_.71
+OBJC_METH_VAR_TYPE_.72
+OBJC_METH_VAR_NAME_.73
+OBJC_METH_VAR_NAME_.74
+OBJC_METH_VAR_NAME_.75
+OBJC_METH_VAR_NAME_.76
+OBJC_CLASS_NAME_.77
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+OBJC_PROP_NAME_ATTR_
+OBJC_PROP_NAME_ATTR_.78
+OBJC_PROP_NAME_ATTR_.79
+OBJC_PROP_NAME_ATTR_.80
+OBJC_PROP_NAME_ATTR_.81
+OBJC_PROP_NAME_ATTR_.82
+OBJC_PROP_NAME_ATTR_.83
+l_OBJC_$_PROP_LIST_NSObject
+l_OBJC_$_PROTOCOL_METHOD_TYPES_NSObject
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_$_PROTOCOL_REFS_FBSDKButtonImpressionTracking
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKButtonImpressionTracking
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKButtonImpressionTracking
+l_OBJC_PROTOCOL_$_FBSDKButtonImpressionTracking
+l_OBJC_LABEL_PROTOCOL_$_FBSDKButtonImpressionTracking
+OBJC_METH_VAR_TYPE_.84
+OBJC_METH_VAR_TYPE_.85
+OBJC_METH_VAR_TYPE_.86
+OBJC_CLASS_NAME_.87
+l_OBJC_$_PROTOCOL_REFS_FBSDKSharingButton
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKSharingButton
+OBJC_PROP_NAME_ATTR_.88
+OBJC_PROP_NAME_ATTR_.89
+l_OBJC_$_PROP_LIST_FBSDKSharingButton
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKSharingButton
+l_OBJC_PROTOCOL_$_FBSDKSharingButton
+l_OBJC_LABEL_PROTOCOL_$_FBSDKSharingButton
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKSendButton
+l_OBJC_METACLASS_RO_$_FBSDKSendButton
+OBJC_CLASS_NAME_.90
+OBJC_METH_VAR_NAME_.91
+OBJC_METH_VAR_TYPE_.92
+OBJC_METH_VAR_NAME_.93
+OBJC_METH_VAR_NAME_.94
+l_OBJC_$_INSTANCE_METHODS_FBSDKSendButton
+OBJC_METH_VAR_NAME_.95
+OBJC_METH_VAR_TYPE_.96
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKSendButton
+l_OBJC_$_PROP_LIST_FBSDKSendButton
+l_OBJC_CLASS_RO_$_FBSDKSendButton
+OBJC_LABEL_CLASS_$
+Apple LLVM version 7.3.0 (clang-703.0.31)
+-[FBSDKSendButton .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSendButton.m
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit
+-[FBSDKSendButton _share:]
+-[FBSDKSendButton isImplicitlyDisabled]
+-[FBSDKSendButton configureButton]
+-[FBSDKSendButton impressionTrackingIdentifier]
+-[FBSDKSendButton impressionTrackingEventName]
+-[FBSDKSendButton analyticsParameters]
+-[FBSDKSendButton setShareContent:]
+-[FBSDKSendButton shareContent]
+-[FBSDKLikeBoxView initWithFrame:]
+-[FBSDKLikeBoxView initWithCoder:]
+-[FBSDKLikeBoxView setCaretPosition:]
+-[FBSDKLikeBoxView text]
+-[FBSDKLikeBoxView setText:]
+-[FBSDKLikeBoxView intrinsicContentSize]
+-[FBSDKLikeBoxView layoutSubviews]
+-[FBSDKLikeBoxView sizeThatFits:]
+-[FBSDKLikeBoxView _initializeContent]
+-[FBSDKLikeBoxView caretPosition]
+-[FBSDKLikeBoxView .cxx_destruct]
+OBJC_CLASSLIST_SUP_REFS_$_
+OBJC_IVAR_$_FBSDKLikeBoxView._caretPosition
+OBJC_IVAR_$_FBSDKLikeBoxView._borderView
+OBJC_METH_VAR_NAME_.7
+OBJC_SELECTOR_REFERENCES_.8
+OBJC_METH_VAR_NAME_.9
+OBJC_SELECTOR_REFERENCES_.10
+OBJC_IVAR_$_FBSDKLikeBoxView._likeCountLabel
+OBJC_METH_VAR_NAME_.11
+OBJC_SELECTOR_REFERENCES_.12
+OBJC_METH_VAR_NAME_.15
+OBJC_SELECTOR_REFERENCES_.16
+OBJC_METH_VAR_NAME_.17
+OBJC_SELECTOR_REFERENCES_.18
+OBJC_METH_VAR_NAME_.29
+OBJC_SELECTOR_REFERENCES_.30
+OBJC_CLASSLIST_REFERENCES_$_.31
+OBJC_CLASSLIST_REFERENCES_$_.32
+OBJC_METH_VAR_NAME_.33
+OBJC_SELECTOR_REFERENCES_.34
+OBJC_METH_VAR_NAME_.35
+OBJC_SELECTOR_REFERENCES_.36
+OBJC_METH_VAR_NAME_.37
+OBJC_SELECTOR_REFERENCES_.38
+OBJC_METH_VAR_NAME_.39
+OBJC_SELECTOR_REFERENCES_.40
+OBJC_SELECTOR_REFERENCES_.42
+l_OBJC_METACLASS_RO_$_FBSDKLikeBoxView
+OBJC_CLASS_NAME_.43
+OBJC_METH_VAR_TYPE_.44
+OBJC_METH_VAR_TYPE_.45
+OBJC_METH_VAR_TYPE_.47
+OBJC_METH_VAR_TYPE_.49
+OBJC_METH_VAR_TYPE_.50
+OBJC_METH_VAR_NAME_.51
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeBoxView
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeBoxView
+OBJC_PROP_NAME_ATTR_.60
+OBJC_PROP_NAME_ATTR_.61
+OBJC_PROP_NAME_ATTR_.62
+l_OBJC_$_PROP_LIST_FBSDKLikeBoxView
+l_OBJC_CLASS_RO_$_FBSDKLikeBoxView
+-[FBSDKLikeBoxView .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeBoxView.m
+-[FBSDKLikeBoxView caretPosition]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeBoxView.h
+-[FBSDKLikeBoxView _initializeContent]
+-[FBSDKLikeBoxView sizeThatFits:]
+-[FBSDKLikeBoxView layoutSubviews]
+-[FBSDKLikeBoxView intrinsicContentSize]
+-[FBSDKLikeBoxView setText:]
+-[FBSDKLikeBoxView text]
+-[FBSDKLikeBoxView setCaretPosition:]
+-[FBSDKLikeBoxView initWithCoder:]
+-[FBSDKLikeBoxView initWithFrame:]
+-[FBSDKShareButton shareContent]
+-[FBSDKShareButton setShareContent:]
+-[FBSDKShareButton analyticsParameters]
+-[FBSDKShareButton impressionTrackingEventName]
+-[FBSDKShareButton impressionTrackingIdentifier]
+-[FBSDKShareButton configureButton]
+-[FBSDKShareButton isImplicitlyDisabled]
+-[FBSDKShareButton _share:]
+-[FBSDKShareButton .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareButton._dialog
+OBJC_CLASSLIST_REFERENCES_$_.21
+OBJC_METH_VAR_NAME_.22
+OBJC_SELECTOR_REFERENCES_.23
+OBJC_METH_VAR_NAME_.24
+OBJC_SELECTOR_REFERENCES_.25
+OBJC_METH_VAR_NAME_.26
+OBJC_SELECTOR_REFERENCES_.27
+OBJC_METH_VAR_NAME_.28
+OBJC_SELECTOR_REFERENCES_.29
+OBJC_METH_VAR_TYPE_.36
+OBJC_METH_VAR_TYPE_.37
+OBJC_METH_VAR_TYPE_.38
+OBJC_CLASS_NAME_.39
+OBJC_METH_VAR_NAME_.40
+OBJC_METH_VAR_TYPE_.41
+OBJC_METH_VAR_NAME_.42
+OBJC_METH_VAR_TYPE_.43
+OBJC_METH_VAR_NAME_.44
+OBJC_METH_VAR_TYPE_.52
+OBJC_METH_VAR_NAME_.53
+OBJC_METH_VAR_TYPE_.54
+OBJC_METH_VAR_NAME_.55
+OBJC_METH_VAR_NAME_.64
+OBJC_METH_VAR_TYPE_.65
+OBJC_METH_VAR_NAME_.70
+OBJC_METH_VAR_TYPE_.71
+OBJC_METH_VAR_NAME_.72
+OBJC_CLASS_NAME_.73
+OBJC_PROP_NAME_ATTR_.74
+OBJC_PROP_NAME_ATTR_.75
+OBJC_PROP_NAME_ATTR_.76
+OBJC_PROP_NAME_ATTR_.77
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareButton
+l_OBJC_METACLASS_RO_$_FBSDKShareButton
+OBJC_CLASS_NAME_.82
+OBJC_METH_VAR_NAME_.83
+OBJC_METH_VAR_NAME_.84
+OBJC_METH_VAR_NAME_.85
+OBJC_METH_VAR_NAME_.87
+OBJC_METH_VAR_NAME_.88
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareButton
+OBJC_METH_VAR_NAME_.89
+OBJC_METH_VAR_TYPE_.90
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareButton
+l_OBJC_$_PROP_LIST_FBSDKShareButton
+l_OBJC_CLASS_RO_$_FBSDKShareButton
+-[FBSDKShareButton .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareButton.m
+-[FBSDKShareButton _share:]
+-[FBSDKShareButton isImplicitlyDisabled]
+-[FBSDKShareButton configureButton]
+-[FBSDKShareButton impressionTrackingIdentifier]
+-[FBSDKShareButton impressionTrackingEventName]
+-[FBSDKShareButton analyticsParameters]
+-[FBSDKShareButton setShareContent:]
+-[FBSDKShareButton shareContent]
++[FBSDKShareVideo videoWithVideoURL:]
++[FBSDKShareVideo videoWithVideoURL:previewPhoto:]
+-[FBSDKShareVideo hash]
+-[FBSDKShareVideo isEqual:]
+-[FBSDKShareVideo isEqualToShareVideo:]
++[FBSDKShareVideo supportsSecureCoding]
+-[FBSDKShareVideo initWithCoder:]
+-[FBSDKShareVideo encodeWithCoder:]
+-[FBSDKShareVideo copyWithZone:]
+-[FBSDKShareVideo videoURL]
+-[FBSDKShareVideo setVideoURL:]
+-[FBSDKShareVideo previewPhoto]
+-[FBSDKShareVideo setPreviewPhoto:]
+-[FBSDKShareVideo .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareVideo._videoURL
+OBJC_IVAR_$_FBSDKShareVideo._previewPhoto
+OBJC_CLASSLIST_REFERENCES_$_.9
+OBJC_METH_VAR_NAME_.10
+OBJC_SELECTOR_REFERENCES_.11
+OBJC_METH_VAR_NAME_.12
+OBJC_SELECTOR_REFERENCES_.13
+OBJC_METH_VAR_NAME_.14
+OBJC_SELECTOR_REFERENCES_.15
+OBJC_CLASSLIST_REFERENCES_$_.25
+OBJC_CLASSLIST_REFERENCES_$_.28
+.str.29
+_unnamed_cfstring_.30
+OBJC_METH_VAR_NAME_.31
+OBJC_SELECTOR_REFERENCES_.32
+OBJC_METH_VAR_TYPE_.39
+l_OBJC_$_CLASS_METHODS_FBSDKShareVideo
+OBJC_CLASS_NAME_.41
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_NSCopying
+l_OBJC_$_PROTOCOL_METHOD_TYPES_NSCopying
+l_OBJC_PROTOCOL_$_NSCopying
+l_OBJC_LABEL_PROTOCOL_$_NSCopying
+OBJC_METH_VAR_NAME_.48
+OBJC_METH_VAR_TYPE_.56
+OBJC_METH_VAR_NAME_.57
+OBJC_METH_VAR_TYPE_.61
+OBJC_METH_VAR_NAME_.62
+OBJC_METH_VAR_TYPE_.69
+OBJC_CLASS_NAME_.74
+l_OBJC_$_PROTOCOL_REFS_FBSDKCopying
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKCopying
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKCopying
+l_OBJC_PROTOCOL_$_FBSDKCopying
+l_OBJC_LABEL_PROTOCOL_$_FBSDKCopying
+OBJC_CLASS_NAME_.81
+OBJC_METH_VAR_NAME_.82
+OBJC_METH_VAR_TYPE_.83
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_NSCoding
+l_OBJC_$_PROTOCOL_METHOD_TYPES_NSCoding
+l_OBJC_PROTOCOL_$_NSCoding
+l_OBJC_LABEL_PROTOCOL_$_NSCoding
+l_OBJC_$_PROTOCOL_REFS_NSSecureCoding
+l_OBJC_$_PROTOCOL_CLASS_METHODS_NSSecureCoding
+l_OBJC_$_PROTOCOL_METHOD_TYPES_NSSecureCoding
+l_OBJC_PROTOCOL_$_NSSecureCoding
+l_OBJC_LABEL_PROTOCOL_$_NSSecureCoding
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareVideo
+l_OBJC_METACLASS_RO_$_FBSDKShareVideo
+OBJC_CLASS_NAME_.88
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareVideo
+OBJC_METH_VAR_TYPE_.94
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareVideo
+OBJC_PROP_NAME_ATTR_.95
+OBJC_PROP_NAME_ATTR_.96
+OBJC_PROP_NAME_ATTR_.97
+OBJC_PROP_NAME_ATTR_.98
+l_OBJC_$_PROP_LIST_FBSDKShareVideo
+l_OBJC_CLASS_RO_$_FBSDKShareVideo
+-[FBSDKShareVideo .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareVideo.m
+-[FBSDKShareVideo setPreviewPhoto:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareVideo.h
+-[FBSDKShareVideo previewPhoto]
+-[FBSDKShareVideo setVideoURL:]
+-[FBSDKShareVideo videoURL]
+-[FBSDKShareVideo copyWithZone:]
+-[FBSDKShareVideo encodeWithCoder:]
+-[FBSDKShareVideo initWithCoder:]
++[FBSDKShareVideo supportsSecureCoding]
+-[FBSDKShareVideo isEqualToShareVideo:]
+-[FBSDKShareVideo isEqual:]
+-[FBSDKShareVideo hash]
++[FBSDKShareVideo videoWithVideoURL:previewPhoto:]
++[FBSDKShareVideo videoWithVideoURL:]
++[FBSDKMessageDialog initialize]
++[FBSDKMessageDialog showWithContent:delegate:]
+-[FBSDKMessageDialog canShow]
+-[FBSDKMessageDialog show]
+__26-[FBSDKMessageDialog show]_block_invoke
+__copy_helper_block_
+__destroy_helper_block_
+-[FBSDKMessageDialog validateWithError:]
+-[FBSDKMessageDialog _canShowNative]
+-[FBSDKMessageDialog _handleCompletionWithDialogResults:response:]
+-[FBSDKMessageDialog _invokeDelegateDidCancel]
+-[FBSDKMessageDialog _invokeDelegateDidCompleteWithResults:]
+-[FBSDKMessageDialog _invokeDelegateDidFailWithError:]
+-[FBSDKMessageDialog _logDialogShow]
+-[FBSDKMessageDialog delegate]
+-[FBSDKMessageDialog setDelegate:]
+-[FBSDKMessageDialog shareContent]
+-[FBSDKMessageDialog setShareContent:]
+-[FBSDKMessageDialog shouldFailOnDataError]
+-[FBSDKMessageDialog setShouldFailOnDataError:]
+-[FBSDKMessageDialog .cxx_destruct]
+OBJC_CLASSLIST_REFERENCES_$_.1
+OBJC_METH_VAR_NAME_.2
+OBJC_SELECTOR_REFERENCES_.3
+OBJC_CLASSLIST_REFERENCES_$_.4
+.str.22
+_unnamed_cfstring_.23
+OBJC_CLASSLIST_REFERENCES_$_.37
+.str.40
+_unnamed_cfstring_.41
+.str.42
+_unnamed_cfstring_.43
+OBJC_CLASSLIST_REFERENCES_$_.44
+.str.45
+_unnamed_cfstring_.46
+OBJC_SELECTOR_REFERENCES_.48
+OBJC_SELECTOR_REFERENCES_.50
+OBJC_SELECTOR_REFERENCES_.52
+OBJC_SELECTOR_REFERENCES_.54
+OBJC_SELECTOR_REFERENCES_.56
+OBJC_SELECTOR_REFERENCES_.58
+.str.59
+__block_descriptor_tmp
+OBJC_CLASSLIST_REFERENCES_$_.60
+OBJC_SELECTOR_REFERENCES_.62
+OBJC_SELECTOR_REFERENCES_.64
+OBJC_SELECTOR_REFERENCES_.66
+OBJC_METH_VAR_NAME_.67
+OBJC_SELECTOR_REFERENCES_.68
+.str.69
+_unnamed_cfstring_.70
+OBJC_SELECTOR_REFERENCES_.72
+OBJC_CLASSLIST_REFERENCES_$_.73
+.str.74
+_unnamed_cfstring_.75
+OBJC_SELECTOR_REFERENCES_.77
+OBJC_METH_VAR_NAME_.78
+OBJC_SELECTOR_REFERENCES_.79
+OBJC_METH_VAR_NAME_.80
+OBJC_SELECTOR_REFERENCES_.81
+OBJC_SELECTOR_REFERENCES_.83
+.str.84
+_unnamed_cfstring_.85
+OBJC_METH_VAR_NAME_.86
+OBJC_SELECTOR_REFERENCES_.87
+.str.88
+_unnamed_cfstring_.89
+OBJC_METH_VAR_NAME_.90
+OBJC_SELECTOR_REFERENCES_.91
+OBJC_METH_VAR_NAME_.92
+OBJC_SELECTOR_REFERENCES_.93
+OBJC_SELECTOR_REFERENCES_.95
+OBJC_METH_VAR_NAME_.96
+OBJC_SELECTOR_REFERENCES_.97
+OBJC_METH_VAR_NAME_.98
+OBJC_SELECTOR_REFERENCES_.99
+OBJC_CLASSLIST_REFERENCES_$_.100
+OBJC_METH_VAR_NAME_.101
+OBJC_SELECTOR_REFERENCES_.102
+OBJC_CLASSLIST_REFERENCES_$_.103
+OBJC_CLASSLIST_REFERENCES_$_.104
+OBJC_METH_VAR_NAME_.105
+OBJC_SELECTOR_REFERENCES_.106
+OBJC_METH_VAR_NAME_.107
+OBJC_SELECTOR_REFERENCES_.108
+OBJC_IVAR_$_FBSDKMessageDialog._delegate
+OBJC_METH_VAR_NAME_.109
+OBJC_SELECTOR_REFERENCES_.110
+OBJC_METH_VAR_NAME_.111
+OBJC_SELECTOR_REFERENCES_.112
+OBJC_METH_VAR_NAME_.113
+OBJC_SELECTOR_REFERENCES_.114
+OBJC_CLASSLIST_REFERENCES_$_.115
+OBJC_METH_VAR_NAME_.116
+OBJC_SELECTOR_REFERENCES_.117
+OBJC_CLASSLIST_REFERENCES_$_.118
+.str.119
+_unnamed_cfstring_.120
+OBJC_METH_VAR_NAME_.121
+OBJC_SELECTOR_REFERENCES_.122
+OBJC_METH_VAR_NAME_.123
+OBJC_SELECTOR_REFERENCES_.124
+OBJC_METH_VAR_NAME_.125
+OBJC_SELECTOR_REFERENCES_.126
+OBJC_CLASSLIST_REFERENCES_$_.127
+OBJC_CLASSLIST_REFERENCES_$_.128
+OBJC_IVAR_$_FBSDKMessageDialog._shareContent
+OBJC_IVAR_$_FBSDKMessageDialog._shouldFailOnDataError
+OBJC_METH_VAR_NAME_.129
+OBJC_METH_VAR_NAME_.130
+OBJC_METH_VAR_TYPE_.131
+l_OBJC_$_CLASS_METHODS_FBSDKMessageDialog
+OBJC_METH_VAR_TYPE_.132
+OBJC_CLASS_NAME_.133
+OBJC_METH_VAR_TYPE_.134
+OBJC_METH_VAR_NAME_.135
+OBJC_METH_VAR_TYPE_.136
+OBJC_METH_VAR_TYPE_.137
+OBJC_METH_VAR_TYPE_.138
+OBJC_METH_VAR_TYPE_.139
+OBJC_METH_VAR_TYPE_.140
+OBJC_METH_VAR_TYPE_.141
+OBJC_METH_VAR_NAME_.142
+OBJC_METH_VAR_TYPE_.143
+OBJC_CLASS_NAME_.144
+OBJC_METH_VAR_NAME_.145
+OBJC_METH_VAR_TYPE_.146
+OBJC_METH_VAR_TYPE_.147
+OBJC_METH_VAR_NAME_.148
+OBJC_METH_VAR_NAME_.149
+OBJC_METH_VAR_TYPE_.150
+OBJC_METH_VAR_NAME_.151
+OBJC_METH_VAR_TYPE_.152
+OBJC_METH_VAR_NAME_.153
+OBJC_METH_VAR_TYPE_.154
+OBJC_METH_VAR_NAME_.155
+OBJC_METH_VAR_TYPE_.156
+OBJC_METH_VAR_NAME_.157
+OBJC_METH_VAR_NAME_.158
+OBJC_METH_VAR_TYPE_.159
+OBJC_METH_VAR_NAME_.160
+OBJC_METH_VAR_TYPE_.161
+OBJC_METH_VAR_NAME_.162
+OBJC_METH_VAR_NAME_.163
+OBJC_METH_VAR_TYPE_.164
+OBJC_METH_VAR_NAME_.165
+OBJC_METH_VAR_NAME_.166
+OBJC_METH_VAR_TYPE_.167
+OBJC_METH_VAR_NAME_.168
+OBJC_METH_VAR_TYPE_.169
+OBJC_METH_VAR_NAME_.170
+OBJC_METH_VAR_NAME_.171
+OBJC_METH_VAR_NAME_.172
+OBJC_METH_VAR_TYPE_.173
+OBJC_METH_VAR_NAME_.174
+OBJC_CLASS_NAME_.175
+OBJC_PROP_NAME_ATTR_.176
+OBJC_PROP_NAME_ATTR_.177
+OBJC_PROP_NAME_ATTR_.178
+OBJC_PROP_NAME_ATTR_.179
+OBJC_PROP_NAME_ATTR_.180
+OBJC_PROP_NAME_ATTR_.181
+l_OBJC_$_PROTOCOL_REFS_FBSDKSharing
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKSharing
+OBJC_PROP_NAME_ATTR_.182
+OBJC_PROP_NAME_ATTR_.183
+OBJC_PROP_NAME_ATTR_.184
+OBJC_PROP_NAME_ATTR_.185
+OBJC_PROP_NAME_ATTR_.186
+OBJC_PROP_NAME_ATTR_.187
+l_OBJC_$_PROP_LIST_FBSDKSharing
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKSharing
+l_OBJC_PROTOCOL_$_FBSDKSharing
+l_OBJC_LABEL_PROTOCOL_$_FBSDKSharing
+l_OBJC_$_PROTOCOL_REFS_FBSDKSharingDialog
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKSharingDialog
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKSharingDialog
+l_OBJC_PROTOCOL_$_FBSDKSharingDialog
+l_OBJC_LABEL_PROTOCOL_$_FBSDKSharingDialog
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKMessageDialog
+l_OBJC_METACLASS_RO_$_FBSDKMessageDialog
+OBJC_CLASS_NAME_.188
+OBJC_METH_VAR_TYPE_.189
+OBJC_METH_VAR_NAME_.190
+l_OBJC_$_INSTANCE_METHODS_FBSDKMessageDialog
+OBJC_METH_VAR_NAME_.191
+OBJC_METH_VAR_TYPE_.192
+OBJC_METH_VAR_NAME_.193
+OBJC_METH_VAR_TYPE_.194
+OBJC_METH_VAR_NAME_.195
+OBJC_METH_VAR_TYPE_.196
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKMessageDialog
+OBJC_CLASS_NAME_.197
+OBJC_PROP_NAME_ATTR_.198
+OBJC_PROP_NAME_ATTR_.199
+OBJC_PROP_NAME_ATTR_.200
+l_OBJC_$_PROP_LIST_FBSDKMessageDialog
+l_OBJC_CLASS_RO_$_FBSDKMessageDialog
+-[FBSDKMessageDialog .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKMessageDialog.m
+-[FBSDKMessageDialog setShouldFailOnDataError:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSharing.h
+-[FBSDKMessageDialog shouldFailOnDataError]
+-[FBSDKMessageDialog setShareContent:]
+-[FBSDKMessageDialog shareContent]
+-[FBSDKMessageDialog setDelegate:]
+-[FBSDKMessageDialog delegate]
+-[FBSDKMessageDialog _logDialogShow]
+-[FBSDKMessageDialog _invokeDelegateDidFailWithError:]
+-[FBSDKMessageDialog _invokeDelegateDidCompleteWithResults:]
+-[FBSDKMessageDialog _invokeDelegateDidCancel]
+-[FBSDKMessageDialog _handleCompletionWithDialogResults:response:]
+-[FBSDKMessageDialog _canShowNative]
+-[FBSDKMessageDialog validateWithError:]
+-[FBSDKMessageDialog show]
+-[FBSDKMessageDialog canShow]
++[FBSDKMessageDialog showWithContent:delegate:]
++[FBSDKMessageDialog initialize]
+.str.1
+_unnamed_cfstring_.2
+.str.3
+_unnamed_cfstring_.4
+NSStringFromFBSDKLikeObjectType
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKLikeObjectType.m
+-[FBSDKShareLinkContent setPeopleIDs:]
+-[FBSDKShareLinkContent setFeedParameters:]
+-[FBSDKShareLinkContent hash]
+-[FBSDKShareLinkContent isEqual:]
+-[FBSDKShareLinkContent isEqualToShareLinkContent:]
++[FBSDKShareLinkContent supportsSecureCoding]
+-[FBSDKShareLinkContent initWithCoder:]
+-[FBSDKShareLinkContent encodeWithCoder:]
+-[FBSDKShareLinkContent copyWithZone:]
+-[FBSDKShareLinkContent contentURL]
+-[FBSDKShareLinkContent setContentURL:]
+-[FBSDKShareLinkContent hashtag]
+-[FBSDKShareLinkContent setHashtag:]
+-[FBSDKShareLinkContent peopleIDs]
+-[FBSDKShareLinkContent placeID]
+-[FBSDKShareLinkContent setPlaceID:]
+-[FBSDKShareLinkContent ref]
+-[FBSDKShareLinkContent setRef:]
+-[FBSDKShareLinkContent feedParameters]
+-[FBSDKShareLinkContent quote]
+-[FBSDKShareLinkContent setQuote:]
+-[FBSDKShareLinkContent contentDescription]
+-[FBSDKShareLinkContent setContentDescription:]
+-[FBSDKShareLinkContent contentTitle]
+-[FBSDKShareLinkContent setContentTitle:]
+-[FBSDKShareLinkContent imageURL]
+-[FBSDKShareLinkContent setImageURL:]
+-[FBSDKShareLinkContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareLinkContent._peopleIDs
+OBJC_IVAR_$_FBSDKShareLinkContent._feedParameters
+OBJC_IVAR_$_FBSDKShareLinkContent._contentDescription
+OBJC_IVAR_$_FBSDKShareLinkContent._contentURL
+OBJC_IVAR_$_FBSDKShareLinkContent._hashtag
+OBJC_IVAR_$_FBSDKShareLinkContent._imageURL
+OBJC_IVAR_$_FBSDKShareLinkContent._placeID
+OBJC_IVAR_$_FBSDKShareLinkContent._ref
+OBJC_IVAR_$_FBSDKShareLinkContent._contentTitle
+OBJC_IVAR_$_FBSDKShareLinkContent._quote
+OBJC_CLASSLIST_REFERENCES_$_.13
+OBJC_CLASSLIST_REFERENCES_$_.16
+.str.43
+_unnamed_cfstring_.44
+OBJC_SELECTOR_REFERENCES_.46
+.str.47
+_unnamed_cfstring_.48
+OBJC_CLASSLIST_REFERENCES_$_.49
+.str.50
+_unnamed_cfstring_.51
+OBJC_CLASSLIST_REFERENCES_$_.52
+.str.53
+_unnamed_cfstring_.54
+OBJC_CLASSLIST_REFERENCES_$_.55
+.str.56
+_unnamed_cfstring_.57
+.str.58
+_unnamed_cfstring_.59
+.str.61
+_unnamed_cfstring_.62
+.str.63
+_unnamed_cfstring_.64
+.str.65
+_unnamed_cfstring_.66
+OBJC_SELECTOR_REFERENCES_.70
+l_OBJC_$_CLASS_METHODS_FBSDKShareLinkContent
+OBJC_METH_VAR_TYPE_.73
+OBJC_METH_VAR_TYPE_.75
+OBJC_METH_VAR_TYPE_.76
+OBJC_METH_VAR_TYPE_.77
+OBJC_METH_VAR_TYPE_.79
+OBJC_METH_VAR_TYPE_.80
+OBJC_METH_VAR_NAME_.81
+OBJC_METH_VAR_TYPE_.82
+OBJC_CLASS_NAME_.91
+OBJC_METH_VAR_TYPE_.93
+OBJC_METH_VAR_TYPE_.97
+OBJC_METH_VAR_TYPE_.99
+OBJC_METH_VAR_NAME_.100
+OBJC_METH_VAR_TYPE_.101
+OBJC_METH_VAR_NAME_.102
+OBJC_METH_VAR_TYPE_.103
+OBJC_METH_VAR_NAME_.104
+OBJC_METH_VAR_TYPE_.106
+OBJC_METH_VAR_TYPE_.108
+OBJC_METH_VAR_NAME_.110
+OBJC_METH_VAR_TYPE_.111
+OBJC_METH_VAR_NAME_.112
+OBJC_METH_VAR_TYPE_.114
+OBJC_METH_VAR_NAME_.115
+OBJC_METH_VAR_TYPE_.116
+OBJC_METH_VAR_NAME_.117
+OBJC_METH_VAR_NAME_.118
+OBJC_METH_VAR_NAME_.119
+OBJC_CLASS_NAME_.120
+OBJC_PROP_NAME_ATTR_.121
+OBJC_PROP_NAME_ATTR_.122
+OBJC_PROP_NAME_ATTR_.123
+OBJC_PROP_NAME_ATTR_.124
+OBJC_PROP_NAME_ATTR_.125
+OBJC_PROP_NAME_ATTR_.126
+OBJC_CLASS_NAME_.127
+OBJC_METH_VAR_NAME_.128
+OBJC_METH_VAR_TYPE_.129
+l_OBJC_$_PROTOCOL_REFS_FBSDKSharingContent
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKSharingContent
+OBJC_PROP_NAME_ATTR_.134
+OBJC_PROP_NAME_ATTR_.135
+OBJC_PROP_NAME_ATTR_.136
+OBJC_PROP_NAME_ATTR_.137
+OBJC_PROP_NAME_ATTR_.138
+OBJC_PROP_NAME_ATTR_.139
+OBJC_PROP_NAME_ATTR_.140
+OBJC_PROP_NAME_ATTR_.141
+OBJC_PROP_NAME_ATTR_.142
+l_OBJC_$_PROP_LIST_FBSDKSharingContent
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKSharingContent
+l_OBJC_PROTOCOL_$_FBSDKSharingContent
+l_OBJC_LABEL_PROTOCOL_$_FBSDKSharingContent
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareLinkContent
+l_OBJC_METACLASS_RO_$_FBSDKShareLinkContent
+OBJC_CLASS_NAME_.143
+OBJC_METH_VAR_NAME_.144
+OBJC_METH_VAR_NAME_.147
+OBJC_METH_VAR_NAME_.150
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareLinkContent
+OBJC_METH_VAR_TYPE_.158
+OBJC_METH_VAR_NAME_.159
+OBJC_METH_VAR_NAME_.164
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareLinkContent
+OBJC_PROP_NAME_ATTR_.166
+OBJC_PROP_NAME_ATTR_.167
+OBJC_PROP_NAME_ATTR_.168
+OBJC_PROP_NAME_ATTR_.169
+OBJC_PROP_NAME_ATTR_.170
+OBJC_PROP_NAME_ATTR_.171
+OBJC_PROP_NAME_ATTR_.172
+OBJC_PROP_NAME_ATTR_.173
+OBJC_PROP_NAME_ATTR_.174
+OBJC_PROP_NAME_ATTR_.175
+l_OBJC_$_PROP_LIST_FBSDKShareLinkContent
+l_OBJC_CLASS_RO_$_FBSDKShareLinkContent
+-[FBSDKShareLinkContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareLinkContent.m
+-[FBSDKShareLinkContent setImageURL:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareLinkContent.h
+-[FBSDKShareLinkContent imageURL]
+-[FBSDKShareLinkContent setContentTitle:]
+-[FBSDKShareLinkContent contentTitle]
+-[FBSDKShareLinkContent setContentDescription:]
+-[FBSDKShareLinkContent contentDescription]
+-[FBSDKShareLinkContent setQuote:]
+-[FBSDKShareLinkContent quote]
+-[FBSDKShareLinkContent feedParameters]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKShareLinkContent+Internal.h
+-[FBSDKShareLinkContent setRef:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSharingContent.h
+-[FBSDKShareLinkContent ref]
+-[FBSDKShareLinkContent setPlaceID:]
+-[FBSDKShareLinkContent placeID]
+-[FBSDKShareLinkContent peopleIDs]
+-[FBSDKShareLinkContent setHashtag:]
+-[FBSDKShareLinkContent hashtag]
+-[FBSDKShareLinkContent setContentURL:]
+-[FBSDKShareLinkContent contentURL]
+-[FBSDKShareLinkContent copyWithZone:]
+-[FBSDKShareLinkContent encodeWithCoder:]
+-[FBSDKShareLinkContent initWithCoder:]
++[FBSDKShareLinkContent supportsSecureCoding]
+-[FBSDKShareLinkContent isEqualToShareLinkContent:]
+-[FBSDKShareLinkContent isEqual:]
+-[FBSDKShareLinkContent hash]
+-[FBSDKShareLinkContent setFeedParameters:]
+-[FBSDKShareLinkContent setPeopleIDs:]
+-[FBSDKSharePhotoContent setPeopleIDs:]
+-[FBSDKSharePhotoContent setPhotos:]
+-[FBSDKSharePhotoContent hash]
+-[FBSDKSharePhotoContent isEqual:]
+-[FBSDKSharePhotoContent isEqualToSharePhotoContent:]
++[FBSDKSharePhotoContent supportsSecureCoding]
+-[FBSDKSharePhotoContent initWithCoder:]
+-[FBSDKSharePhotoContent encodeWithCoder:]
+-[FBSDKSharePhotoContent copyWithZone:]
+-[FBSDKSharePhotoContent contentURL]
+-[FBSDKSharePhotoContent setContentURL:]
+-[FBSDKSharePhotoContent hashtag]
+-[FBSDKSharePhotoContent setHashtag:]
+-[FBSDKSharePhotoContent peopleIDs]
+-[FBSDKSharePhotoContent placeID]
+-[FBSDKSharePhotoContent setPlaceID:]
+-[FBSDKSharePhotoContent ref]
+-[FBSDKSharePhotoContent setRef:]
+-[FBSDKSharePhotoContent photos]
+-[FBSDKSharePhotoContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKSharePhotoContent._peopleIDs
+.str.10
+_unnamed_cfstring_.11
+OBJC_IVAR_$_FBSDKSharePhotoContent._photos
+OBJC_IVAR_$_FBSDKSharePhotoContent._contentURL
+OBJC_IVAR_$_FBSDKSharePhotoContent._hashtag
+OBJC_IVAR_$_FBSDKSharePhotoContent._placeID
+OBJC_IVAR_$_FBSDKSharePhotoContent._ref
+OBJC_CLASSLIST_REFERENCES_$_.14
+OBJC_CLASSLIST_REFERENCES_$_.17
+OBJC_METH_VAR_NAME_.18
+OBJC_SELECTOR_REFERENCES_.19
+OBJC_METH_VAR_NAME_.20
+OBJC_SELECTOR_REFERENCES_.21
+OBJC_CLASSLIST_REFERENCES_$_.36
+.str.37
+_unnamed_cfstring_.38
+OBJC_CLASSLIST_REFERENCES_$_.41
+OBJC_CLASSLIST_REFERENCES_$_.45
+OBJC_METH_VAR_NAME_.46
+OBJC_SELECTOR_REFERENCES_.47
+OBJC_SELECTOR_REFERENCES_.49
+.str.52
+_unnamed_cfstring_.53
+OBJC_SELECTOR_REFERENCES_.55
+OBJC_SELECTOR_REFERENCES_.57
+l_OBJC_$_CLASS_METHODS_FBSDKSharePhotoContent
+OBJC_METH_VAR_TYPE_.60
+OBJC_METH_VAR_TYPE_.63
+OBJC_METH_VAR_TYPE_.66
+OBJC_CLASS_NAME_.75
+OBJC_CLASS_NAME_.78
+OBJC_METH_VAR_NAME_.79
+OBJC_METH_VAR_TYPE_.81
+OBJC_METH_VAR_TYPE_.88
+OBJC_METH_VAR_TYPE_.95
+OBJC_METH_VAR_NAME_.97
+OBJC_METH_VAR_TYPE_.98
+OBJC_METH_VAR_NAME_.99
+OBJC_METH_VAR_NAME_.106
+OBJC_CLASS_NAME_.107
+OBJC_PROP_NAME_ATTR_.108
+OBJC_PROP_NAME_ATTR_.109
+OBJC_PROP_NAME_ATTR_.110
+OBJC_PROP_NAME_ATTR_.111
+OBJC_PROP_NAME_ATTR_.112
+OBJC_PROP_NAME_ATTR_.113
+OBJC_CLASS_NAME_.114
+OBJC_METH_VAR_TYPE_.118
+OBJC_METH_VAR_TYPE_.119
+OBJC_PROP_NAME_ATTR_.127
+OBJC_PROP_NAME_ATTR_.128
+OBJC_PROP_NAME_ATTR_.129
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKSharePhotoContent
+l_OBJC_METACLASS_RO_$_FBSDKSharePhotoContent
+OBJC_CLASS_NAME_.130
+OBJC_METH_VAR_NAME_.131
+OBJC_METH_VAR_NAME_.132
+OBJC_METH_VAR_TYPE_.133
+l_OBJC_$_INSTANCE_METHODS_FBSDKSharePhotoContent
+OBJC_METH_VAR_NAME_.134
+OBJC_METH_VAR_TYPE_.135
+OBJC_METH_VAR_NAME_.136
+OBJC_METH_VAR_NAME_.138
+OBJC_METH_VAR_NAME_.140
+OBJC_METH_VAR_NAME_.143
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKSharePhotoContent
+OBJC_PROP_NAME_ATTR_.144
+OBJC_PROP_NAME_ATTR_.145
+OBJC_PROP_NAME_ATTR_.146
+OBJC_PROP_NAME_ATTR_.147
+OBJC_PROP_NAME_ATTR_.148
+OBJC_PROP_NAME_ATTR_.149
+OBJC_PROP_NAME_ATTR_.150
+l_OBJC_$_PROP_LIST_FBSDKSharePhotoContent
+l_OBJC_CLASS_RO_$_FBSDKSharePhotoContent
+-[FBSDKSharePhotoContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSharePhotoContent.m
+-[FBSDKSharePhotoContent photos]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSharePhotoContent.h
+-[FBSDKSharePhotoContent setRef:]
+-[FBSDKSharePhotoContent ref]
+-[FBSDKSharePhotoContent setPlaceID:]
+-[FBSDKSharePhotoContent placeID]
+-[FBSDKSharePhotoContent peopleIDs]
+-[FBSDKSharePhotoContent setHashtag:]
+-[FBSDKSharePhotoContent hashtag]
+-[FBSDKSharePhotoContent setContentURL:]
+-[FBSDKSharePhotoContent contentURL]
+-[FBSDKSharePhotoContent copyWithZone:]
+-[FBSDKSharePhotoContent encodeWithCoder:]
+-[FBSDKSharePhotoContent initWithCoder:]
++[FBSDKSharePhotoContent supportsSecureCoding]
+-[FBSDKSharePhotoContent isEqualToSharePhotoContent:]
+-[FBSDKSharePhotoContent isEqual:]
+-[FBSDKSharePhotoContent hash]
+-[FBSDKSharePhotoContent setPhotos:]
+-[FBSDKSharePhotoContent setPeopleIDs:]
++[FBSDKLikeButtonPopWAV name]
++[FBSDKLikeButtonPopWAV data]
+data.bytes
+l_OBJC_$_CLASS_METHODS_FBSDKLikeButtonPopWAV
+l_OBJC_METACLASS_RO_$_FBSDKLikeButtonPopWAV
+l_OBJC_CLASS_RO_$_FBSDKLikeButtonPopWAV
++[FBSDKLikeButtonPopWAV data]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeButtonPopWAV.m
++[FBSDKLikeButtonPopWAV name]
++[FBSDKShareDialog initialize]
++[FBSDKShareDialog showFromViewController:withContent:delegate:]
+-[FBSDKShareDialog dealloc]
+-[FBSDKShareDialog canShow]
+-[FBSDKShareDialog show]
+-[FBSDKShareDialog validateWithError:]
+-[FBSDKShareDialog webDialog:didCompleteWithResults:]
+-[FBSDKShareDialog webDialog:didFailWithError:]
+-[FBSDKShareDialog webDialogDidCancel:]
+-[FBSDKShareDialog _isDefaultToShareSheet]
+-[FBSDKShareDialog _isOpenGraphURLShare:]
+__41-[FBSDKShareDialog _isOpenGraphURLShare:]_block_invoke
+-[FBSDKShareDialog _showAutomatic:]
+-[FBSDKShareDialog _loadNativeMethodName:methodVersion:]
+-[FBSDKShareDialog _canShowNative]
+-[FBSDKShareDialog _canShowShareSheet]
+-[FBSDKShareDialog _canAttributeThroughShareSheet]
+-[FBSDKShareDialog _canUseFBShareSheet]
+-[FBSDKShareDialog _canUseQuoteInShareSheet]
+-[FBSDKShareDialog _canUseMMPInShareSheet]
+-[FBSDKShareDialog _supportsShareSheetMinimumVersion:]
+-[FBSDKShareDialog _cleanUpWebDialog]
+-[FBSDKShareDialog _contentImages]
+-[FBSDKShareDialog _contentVideoURLs]
+-[FBSDKShareDialog _contentURLs]
+-[FBSDKShareDialog _handleWebResponseParameters:error:]
+-[FBSDKShareDialog _showBrowser:]
+__33-[FBSDKShareDialog _showBrowser:]_block_invoke
+__copy_helper_block_.194
+__destroy_helper_block_.195
+-[FBSDKShareDialog _showFeedBrowser:]
+__37-[FBSDKShareDialog _showFeedBrowser:]_block_invoke
+__copy_helper_block_.216
+__destroy_helper_block_.217
+-[FBSDKShareDialog _showFeedWeb:]
+-[FBSDKShareDialog _showNativeWithCanShowError:validationError:]
+__64-[FBSDKShareDialog _showNativeWithCanShowError:validationError:]_block_invoke
+__copy_helper_block_.241
+__destroy_helper_block_.242
+-[FBSDKShareDialog _showShareSheetWithCanShowError:validationError:]
+__68-[FBSDKShareDialog _showShareSheetWithCanShowError:validationError:]_block_invoke
+__68-[FBSDKShareDialog _showShareSheetWithCanShowError:validationError:]_block_invoke_2
+__copy_helper_block_.275
+__destroy_helper_block_.276
+__copy_helper_block_.279
+__destroy_helper_block_.280
+-[FBSDKShareDialog _showWeb:]
+-[FBSDKShareDialog _useNativeDialog]
+-[FBSDKShareDialog _useSafariViewController]
+-[FBSDKShareDialog _validateWithError:]
+-[FBSDKShareDialog _validateFullyCompatibleWithError:]
+-[FBSDKShareDialog _validateShareContentForBrowser:]
+-[FBSDKShareDialog _validateShareContentForFeed:]
+-[FBSDKShareDialog _validateShareContentForNative:]
+-[FBSDKShareDialog _validateShareContentForShareSheet:]
+-[FBSDKShareDialog _validateVideoURL:error:]
+-[FBSDKShareDialog _invokeDelegateDidCancel]
+-[FBSDKShareDialog _invokeDelegateDidCompleteWithResults:]
+-[FBSDKShareDialog _invokeDelegateDidFailWithError:]
+-[FBSDKShareDialog _logDialogShow]
+-[FBSDKShareDialog _calculateInitialText]
+-[FBSDKShareDialog _calculatePreJSONInitialTextWithHashtag:]
+-[FBSDKShareDialog delegate]
+-[FBSDKShareDialog setDelegate:]
+-[FBSDKShareDialog shareContent]
+-[FBSDKShareDialog setShareContent:]
+-[FBSDKShareDialog shouldFailOnDataError]
+-[FBSDKShareDialog setShouldFailOnDataError:]
+-[FBSDKShareDialog fromViewController]
+-[FBSDKShareDialog setFromViewController:]
+-[FBSDKShareDialog mode]
+-[FBSDKShareDialog setMode:]
+-[FBSDKShareDialog .cxx_destruct]
+__FBSDKShareDialogValidateAPISchemeRegisteredForCanOpenUrl_block_invoke
+__FBSDKShareDialogValidateShareExtensionSchemeRegisteredForCanOpenUrl_block_invoke
+OBJC_IVAR_$_FBSDKShareDialog._webDialog
+OBJC_SELECTOR_REFERENCES_.44
+OBJC_METH_VAR_NAME_.59
+OBJC_SELECTOR_REFERENCES_.60
+OBJC_SELECTOR_REFERENCES_.74
+OBJC_CLASSLIST_REFERENCES_$_.75
+.str.78
+OBJC_SELECTOR_REFERENCES_.80
+OBJC_SELECTOR_REFERENCES_.82
+OBJC_SELECTOR_REFERENCES_.84
+OBJC_SELECTOR_REFERENCES_.86
+OBJC_CLASSLIST_REFERENCES_$_.87
+OBJC_CLASSLIST_REFERENCES_$_.90
+OBJC_SELECTOR_REFERENCES_.92
+.str.93
+_unnamed_cfstring_.94
+.str.95
+_unnamed_cfstring_.96
+.str.97
+_unnamed_cfstring_.98
+OBJC_CLASSLIST_REFERENCES_$_.99
+.str.100
+_unnamed_cfstring_.101
+OBJC_CLASSLIST_REFERENCES_$_.102
+.str.103
+_unnamed_cfstring_.104
+.str.111
+_unnamed_cfstring_.112
+.str.113
+_unnamed_cfstring_.114
+OBJC_SELECTOR_REFERENCES_.119
+.str.120
+_unnamed_cfstring_.121
+OBJC_METH_VAR_NAME_.122
+OBJC_SELECTOR_REFERENCES_.123
+OBJC_CLASSLIST_REFERENCES_$_.124
+OBJC_METH_VAR_NAME_.127
+OBJC_SELECTOR_REFERENCES_.128
+OBJC_SELECTOR_REFERENCES_.130
+OBJC_SELECTOR_REFERENCES_.132
+.str.133
+_unnamed_cfstring_.134
+.str.135
+_unnamed_cfstring_.136
+OBJC_METH_VAR_NAME_.137
+OBJC_SELECTOR_REFERENCES_.138
+OBJC_CLASSLIST_REFERENCES_$_.139
+OBJC_SELECTOR_REFERENCES_.141
+OBJC_SELECTOR_REFERENCES_.143
+.str.144
+_unnamed_cfstring_.145
+OBJC_METH_VAR_NAME_.146
+OBJC_SELECTOR_REFERENCES_.147
+OBJC_SELECTOR_REFERENCES_.149
+OBJC_CLASSLIST_REFERENCES_$_.150
+OBJC_SELECTOR_REFERENCES_.152
+OBJC_SELECTOR_REFERENCES_.154
+OBJC_CLASSLIST_REFERENCES_$_.155
+OBJC_METH_VAR_NAME_.156
+OBJC_SELECTOR_REFERENCES_.157
+OBJC_SELECTOR_REFERENCES_.159
+OBJC_SELECTOR_REFERENCES_.161
+OBJC_SELECTOR_REFERENCES_.163
+OBJC_SELECTOR_REFERENCES_.165
+OBJC_CLASSLIST_REFERENCES_$_.166
+OBJC_CLASSLIST_REFERENCES_$_.167
+OBJC_SELECTOR_REFERENCES_.169
+OBJC_CLASSLIST_REFERENCES_$_.170
+OBJC_SELECTOR_REFERENCES_.172
+.str.173
+_unnamed_cfstring_.174
+.str.175
+_unnamed_cfstring_.176
+OBJC_CLASSLIST_REFERENCES_$_.177
+.str.178
+_unnamed_cfstring_.179
+.str.180
+_unnamed_cfstring_.181
+OBJC_METH_VAR_NAME_.182
+OBJC_SELECTOR_REFERENCES_.183
+OBJC_METH_VAR_NAME_.184
+OBJC_SELECTOR_REFERENCES_.185
+OBJC_METH_VAR_NAME_.186
+OBJC_SELECTOR_REFERENCES_.187
+OBJC_METH_VAR_NAME_.188
+OBJC_SELECTOR_REFERENCES_.189
+OBJC_SELECTOR_REFERENCES_.191
+OBJC_METH_VAR_NAME_.192
+OBJC_SELECTOR_REFERENCES_.193
+.str.196
+__block_descriptor_tmp.197
+OBJC_CLASSLIST_REFERENCES_$_.198
+.str.199
+_unnamed_cfstring_.200
+OBJC_METH_VAR_NAME_.201
+OBJC_SELECTOR_REFERENCES_.202
+OBJC_CLASSLIST_REFERENCES_$_.203
+OBJC_METH_VAR_NAME_.204
+OBJC_SELECTOR_REFERENCES_.205
+OBJC_METH_VAR_NAME_.206
+OBJC_SELECTOR_REFERENCES_.207
+OBJC_METH_VAR_NAME_.208
+OBJC_SELECTOR_REFERENCES_.209
+OBJC_METH_VAR_NAME_.210
+OBJC_SELECTOR_REFERENCES_.211
+OBJC_METH_VAR_NAME_.212
+OBJC_SELECTOR_REFERENCES_.213
+OBJC_METH_VAR_NAME_.214
+OBJC_SELECTOR_REFERENCES_.215
+__block_descriptor_tmp.218
+.str.219
+_unnamed_cfstring_.220
+OBJC_CLASSLIST_REFERENCES_$_.221
+OBJC_METH_VAR_NAME_.222
+OBJC_SELECTOR_REFERENCES_.223
+OBJC_CLASSLIST_REFERENCES_$_.224
+.str.225
+_unnamed_cfstring_.226
+OBJC_METH_VAR_NAME_.227
+OBJC_SELECTOR_REFERENCES_.228
+OBJC_METH_VAR_NAME_.229
+OBJC_SELECTOR_REFERENCES_.230
+OBJC_METH_VAR_NAME_.231
+OBJC_SELECTOR_REFERENCES_.232
+OBJC_METH_VAR_NAME_.233
+OBJC_SELECTOR_REFERENCES_.234
+OBJC_METH_VAR_NAME_.235
+OBJC_SELECTOR_REFERENCES_.236
+OBJC_METH_VAR_NAME_.237
+OBJC_SELECTOR_REFERENCES_.238
+OBJC_METH_VAR_NAME_.239
+OBJC_SELECTOR_REFERENCES_.240
+__block_descriptor_tmp.243
+.str.244
+_unnamed_cfstring_.245
+OBJC_METH_VAR_NAME_.246
+OBJC_SELECTOR_REFERENCES_.247
+.str.248
+_unnamed_cfstring_.249
+OBJC_METH_VAR_NAME_.250
+OBJC_SELECTOR_REFERENCES_.251
+OBJC_METH_VAR_NAME_.252
+OBJC_SELECTOR_REFERENCES_.253
+OBJC_METH_VAR_NAME_.254
+OBJC_SELECTOR_REFERENCES_.255
+OBJC_METH_VAR_NAME_.256
+OBJC_SELECTOR_REFERENCES_.257
+OBJC_METH_VAR_NAME_.258
+OBJC_SELECTOR_REFERENCES_.259
+.str.260
+_unnamed_cfstring_.261
+OBJC_METH_VAR_NAME_.262
+OBJC_SELECTOR_REFERENCES_.263
+OBJC_METH_VAR_NAME_.264
+OBJC_SELECTOR_REFERENCES_.265
+OBJC_METH_VAR_NAME_.266
+OBJC_SELECTOR_REFERENCES_.267
+OBJC_METH_VAR_NAME_.268
+OBJC_SELECTOR_REFERENCES_.269
+OBJC_METH_VAR_NAME_.270
+OBJC_SELECTOR_REFERENCES_.271
+OBJC_CLASSLIST_REFERENCES_$_.272
+OBJC_METH_VAR_NAME_.273
+OBJC_SELECTOR_REFERENCES_.274
+.str.277
+__block_descriptor_tmp.278
+.str.281
+__block_descriptor_tmp.282
+OBJC_METH_VAR_NAME_.283
+OBJC_SELECTOR_REFERENCES_.284
+OBJC_METH_VAR_NAME_.285
+OBJC_SELECTOR_REFERENCES_.286
+OBJC_METH_VAR_NAME_.287
+OBJC_SELECTOR_REFERENCES_.288
+OBJC_METH_VAR_NAME_.289
+OBJC_SELECTOR_REFERENCES_.290
+.str.291
+_unnamed_cfstring_.292
+OBJC_METH_VAR_NAME_.293
+OBJC_SELECTOR_REFERENCES_.294
+.str.295
+_unnamed_cfstring_.296
+OBJC_METH_VAR_NAME_.297
+OBJC_SELECTOR_REFERENCES_.298
+.str.299
+_unnamed_cfstring_.300
+OBJC_METH_VAR_NAME_.301
+OBJC_SELECTOR_REFERENCES_.302
+OBJC_METH_VAR_NAME_.303
+OBJC_SELECTOR_REFERENCES_.304
+OBJC_METH_VAR_NAME_.305
+OBJC_SELECTOR_REFERENCES_.306
+.str.307
+_unnamed_cfstring_.308
+OBJC_METH_VAR_NAME_.309
+OBJC_SELECTOR_REFERENCES_.310
+OBJC_METH_VAR_NAME_.311
+OBJC_SELECTOR_REFERENCES_.312
+OBJC_METH_VAR_NAME_.313
+OBJC_SELECTOR_REFERENCES_.314
+.str.315
+_unnamed_cfstring_.316
+.str.317
+_unnamed_cfstring_.318
+.str.319
+_unnamed_cfstring_.320
+.str.321
+_unnamed_cfstring_.322
+.str.323
+_unnamed_cfstring_.324
+OBJC_METH_VAR_NAME_.325
+OBJC_SELECTOR_REFERENCES_.326
+OBJC_METH_VAR_NAME_.327
+OBJC_SELECTOR_REFERENCES_.328
+.str.329
+_unnamed_cfstring_.330
+OBJC_METH_VAR_NAME_.331
+OBJC_SELECTOR_REFERENCES_.332
+OBJC_METH_VAR_NAME_.333
+OBJC_SELECTOR_REFERENCES_.334
+OBJC_METH_VAR_NAME_.335
+OBJC_SELECTOR_REFERENCES_.336
+OBJC_METH_VAR_NAME_.337
+OBJC_SELECTOR_REFERENCES_.338
+.str.339
+_unnamed_cfstring_.340
+.str.341
+_unnamed_cfstring_.342
+OBJC_METH_VAR_NAME_.343
+OBJC_SELECTOR_REFERENCES_.344
+.str.345
+_unnamed_cfstring_.346
+OBJC_CLASSLIST_REFERENCES_$_.347
+OBJC_CLASSLIST_REFERENCES_$_.348
+OBJC_METH_VAR_NAME_.349
+OBJC_SELECTOR_REFERENCES_.350
+OBJC_METH_VAR_NAME_.351
+OBJC_SELECTOR_REFERENCES_.352
+OBJC_IVAR_$_FBSDKShareDialog._delegate
+OBJC_METH_VAR_NAME_.353
+OBJC_SELECTOR_REFERENCES_.354
+OBJC_METH_VAR_NAME_.355
+OBJC_SELECTOR_REFERENCES_.356
+OBJC_CLASSLIST_REFERENCES_$_.357
+.str.358
+_unnamed_cfstring_.359
+OBJC_METH_VAR_NAME_.360
+OBJC_SELECTOR_REFERENCES_.361
+OBJC_METH_VAR_NAME_.362
+OBJC_SELECTOR_REFERENCES_.363
+OBJC_METH_VAR_NAME_.364
+OBJC_SELECTOR_REFERENCES_.365
+.str.366
+_unnamed_cfstring_.367
+OBJC_CLASSLIST_REFERENCES_$_.368
+OBJC_METH_VAR_NAME_.369
+OBJC_SELECTOR_REFERENCES_.370
+OBJC_METH_VAR_NAME_.371
+OBJC_SELECTOR_REFERENCES_.372
+OBJC_METH_VAR_NAME_.373
+OBJC_SELECTOR_REFERENCES_.374
+OBJC_METH_VAR_NAME_.375
+OBJC_SELECTOR_REFERENCES_.376
+.str.377
+_unnamed_cfstring_.378
+.str.379
+_unnamed_cfstring_.380
+.str.381
+_unnamed_cfstring_.382
+OBJC_METH_VAR_NAME_.383
+OBJC_SELECTOR_REFERENCES_.384
+.str.385
+_unnamed_cfstring_.386
+.str.387
+_unnamed_cfstring_.388
+OBJC_METH_VAR_NAME_.389
+OBJC_SELECTOR_REFERENCES_.390
+OBJC_CLASSLIST_REFERENCES_$_.391
+.str.392
+_unnamed_cfstring_.393
+OBJC_METH_VAR_NAME_.394
+OBJC_SELECTOR_REFERENCES_.395
+.str.396
+_unnamed_cfstring_.397
+OBJC_IVAR_$_FBSDKShareDialog._shareContent
+OBJC_IVAR_$_FBSDKShareDialog._shouldFailOnDataError
+OBJC_IVAR_$_FBSDKShareDialog._fromViewController
+OBJC_IVAR_$_FBSDKShareDialog._mode
+OBJC_METH_VAR_NAME_.398
+OBJC_METH_VAR_NAME_.399
+OBJC_METH_VAR_TYPE_.400
+l_OBJC_$_CLASS_METHODS_FBSDKShareDialog
+OBJC_METH_VAR_NAME_.401
+OBJC_METH_VAR_TYPE_.402
+OBJC_METH_VAR_TYPE_.403
+OBJC_METH_VAR_NAME_.404
+OBJC_METH_VAR_TYPE_.405
+OBJC_METH_VAR_NAME_.406
+OBJC_METH_VAR_TYPE_.407
+OBJC_METH_VAR_TYPE_.408
+OBJC_CLASS_NAME_.409
+OBJC_METH_VAR_NAME_.410
+OBJC_METH_VAR_TYPE_.411
+OBJC_METH_VAR_TYPE_.412
+OBJC_METH_VAR_NAME_.413
+OBJC_METH_VAR_TYPE_.414
+OBJC_METH_VAR_NAME_.415
+OBJC_METH_VAR_TYPE_.416
+OBJC_METH_VAR_NAME_.417
+OBJC_METH_VAR_TYPE_.418
+OBJC_METH_VAR_NAME_.419
+OBJC_METH_VAR_TYPE_.420
+OBJC_METH_VAR_NAME_.421
+OBJC_METH_VAR_TYPE_.422
+OBJC_METH_VAR_TYPE_.423
+OBJC_METH_VAR_NAME_.424
+OBJC_METH_VAR_NAME_.425
+OBJC_METH_VAR_TYPE_.426
+OBJC_METH_VAR_NAME_.427
+OBJC_METH_VAR_TYPE_.428
+OBJC_METH_VAR_NAME_.429
+OBJC_METH_VAR_NAME_.430
+OBJC_METH_VAR_TYPE_.431
+OBJC_METH_VAR_NAME_.432
+OBJC_METH_VAR_NAME_.433
+OBJC_METH_VAR_TYPE_.434
+OBJC_METH_VAR_NAME_.435
+OBJC_METH_VAR_TYPE_.436
+OBJC_METH_VAR_NAME_.437
+OBJC_METH_VAR_NAME_.438
+OBJC_METH_VAR_NAME_.439
+OBJC_METH_VAR_TYPE_.440
+OBJC_METH_VAR_NAME_.441
+OBJC_CLASS_NAME_.442
+OBJC_PROP_NAME_ATTR_.443
+OBJC_PROP_NAME_ATTR_.444
+OBJC_PROP_NAME_ATTR_.445
+OBJC_PROP_NAME_ATTR_.446
+OBJC_PROP_NAME_ATTR_.447
+OBJC_PROP_NAME_ATTR_.448
+l_OBJC_$_PROTOCOL_REFS_FBSDKWebDialogDelegate
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKWebDialogDelegate
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKWebDialogDelegate
+l_OBJC_PROTOCOL_$_FBSDKWebDialogDelegate
+l_OBJC_LABEL_PROTOCOL_$_FBSDKWebDialogDelegate
+OBJC_METH_VAR_NAME_.449
+OBJC_CLASS_NAME_.450
+OBJC_METH_VAR_NAME_.451
+OBJC_METH_VAR_TYPE_.452
+OBJC_METH_VAR_NAME_.453
+OBJC_METH_VAR_TYPE_.454
+OBJC_METH_VAR_TYPE_.455
+OBJC_METH_VAR_TYPE_.456
+OBJC_METH_VAR_TYPE_.457
+OBJC_METH_VAR_NAME_.458
+OBJC_METH_VAR_TYPE_.459
+OBJC_CLASS_NAME_.460
+OBJC_PROP_NAME_ATTR_.461
+OBJC_PROP_NAME_ATTR_.462
+OBJC_PROP_NAME_ATTR_.463
+OBJC_PROP_NAME_ATTR_.464
+OBJC_PROP_NAME_ATTR_.465
+OBJC_PROP_NAME_ATTR_.466
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareDialog
+l_OBJC_METACLASS_RO_$_FBSDKShareDialog
+OBJC_CLASS_NAME_.467
+OBJC_METH_VAR_TYPE_.468
+OBJC_METH_VAR_TYPE_.469
+OBJC_METH_VAR_TYPE_.470
+OBJC_METH_VAR_TYPE_.471
+OBJC_METH_VAR_NAME_.472
+OBJC_METH_VAR_NAME_.473
+OBJC_METH_VAR_TYPE_.474
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareDialog
+OBJC_METH_VAR_NAME_.475
+OBJC_METH_VAR_TYPE_.476
+OBJC_METH_VAR_NAME_.477
+OBJC_METH_VAR_TYPE_.478
+OBJC_METH_VAR_NAME_.479
+OBJC_METH_VAR_TYPE_.480
+OBJC_METH_VAR_NAME_.481
+OBJC_METH_VAR_TYPE_.482
+OBJC_METH_VAR_NAME_.483
+OBJC_METH_VAR_TYPE_.484
+OBJC_METH_VAR_NAME_.485
+OBJC_METH_VAR_TYPE_.486
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareDialog
+OBJC_CLASS_NAME_.487
+OBJC_PROP_NAME_ATTR_.488
+OBJC_PROP_NAME_ATTR_.489
+OBJC_PROP_NAME_ATTR_.490
+OBJC_PROP_NAME_ATTR_.491
+OBJC_PROP_NAME_ATTR_.492
+OBJC_PROP_NAME_ATTR_.493
+OBJC_PROP_NAME_ATTR_.494
+l_OBJC_$_PROP_LIST_FBSDKShareDialog
+l_OBJC_CLASS_RO_$_FBSDKShareDialog
+FBSDKShareDialogValidateAPISchemeRegisteredForCanOpenUrl.onceToken
+__block_descriptor_tmp.495
+__block_literal_global
+FBSDKShareDialogValidateShareExtensionSchemeRegisteredForCanOpenUrl.onceToken
+__block_descriptor_tmp.496
+__block_literal_global.497
+dispatch_get_main_queue
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/dispatch/queue.h
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareDialog.m
+FBSDKShareDialogValidateShareExtensionSchemeRegisteredForCanOpenUrl
+_dispatch_once
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/dispatch/once.h
+FBSDKShareDialogValidateAPISchemeRegisteredForCanOpenUrl
+-[FBSDKShareDialog .cxx_destruct]
+-[FBSDKShareDialog setMode:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareDialog.h
+-[FBSDKShareDialog mode]
+-[FBSDKShareDialog setFromViewController:]
+-[FBSDKShareDialog fromViewController]
+-[FBSDKShareDialog setShouldFailOnDataError:]
+-[FBSDKShareDialog shouldFailOnDataError]
+-[FBSDKShareDialog setShareContent:]
+-[FBSDKShareDialog shareContent]
+-[FBSDKShareDialog setDelegate:]
+-[FBSDKShareDialog delegate]
+-[FBSDKShareDialog _calculatePreJSONInitialTextWithHashtag:]
+-[FBSDKShareDialog _calculateInitialText]
+-[FBSDKShareDialog _logDialogShow]
+-[FBSDKShareDialog _invokeDelegateDidFailWithError:]
+-[FBSDKShareDialog _invokeDelegateDidCompleteWithResults:]
+-[FBSDKShareDialog _invokeDelegateDidCancel]
+-[FBSDKShareDialog _validateVideoURL:error:]
+-[FBSDKShareDialog _validateShareContentForShareSheet:]
+-[FBSDKShareDialog _validateShareContentForNative:]
+-[FBSDKShareDialog _validateShareContentForFeed:]
+-[FBSDKShareDialog _validateShareContentForBrowser:]
+-[FBSDKShareDialog _validateFullyCompatibleWithError:]
+-[FBSDKShareDialog _validateWithError:]
+-[FBSDKShareDialog _useSafariViewController]
+-[FBSDKShareDialog _useNativeDialog]
+-[FBSDKShareDialog _showWeb:]
+-[FBSDKShareDialog _showShareSheetWithCanShowError:validationError:]
+-[FBSDKShareDialog _showNativeWithCanShowError:validationError:]
+-[FBSDKShareDialog _showFeedWeb:]
+-[FBSDKShareDialog _showFeedBrowser:]
+-[FBSDKShareDialog _showBrowser:]
+-[FBSDKShareDialog _handleWebResponseParameters:error:]
+-[FBSDKShareDialog _contentURLs]
+-[FBSDKShareDialog _contentVideoURLs]
+-[FBSDKShareDialog _contentImages]
+-[FBSDKShareDialog _cleanUpWebDialog]
+-[FBSDKShareDialog _supportsShareSheetMinimumVersion:]
+-[FBSDKShareDialog _canUseMMPInShareSheet]
+-[FBSDKShareDialog _canUseQuoteInShareSheet]
+-[FBSDKShareDialog _canUseFBShareSheet]
+-[FBSDKShareDialog _canAttributeThroughShareSheet]
+-[FBSDKShareDialog _canShowShareSheet]
+-[FBSDKShareDialog _canShowNative]
+-[FBSDKShareDialog _loadNativeMethodName:methodVersion:]
+-[FBSDKShareDialog _showAutomatic:]
+-[FBSDKShareDialog _isOpenGraphURLShare:]
+-[FBSDKShareDialog _isDefaultToShareSheet]
+-[FBSDKShareDialog webDialogDidCancel:]
+-[FBSDKShareDialog webDialog:didFailWithError:]
+-[FBSDKShareDialog webDialog:didCompleteWithResults:]
+-[FBSDKShareDialog validateWithError:]
+-[FBSDKShareDialog show]
+-[FBSDKShareDialog canShow]
+-[FBSDKShareDialog dealloc]
++[FBSDKShareDialog showFromViewController:withContent:delegate:]
++[FBSDKShareDialog initialize]
++[FBSDKLikeDialog initialize]
++[FBSDKLikeDialog likeWithObjectID:objectType:delegate:]
+-[FBSDKLikeDialog canLike]
+-[FBSDKLikeDialog like]
+__23-[FBSDKLikeDialog like]_block_invoke
+__23-[FBSDKLikeDialog like]_block_invoke.61
+__copy_helper_block_.71
+__destroy_helper_block_.72
+-[FBSDKLikeDialog validateWithError:]
+-[FBSDKLikeDialog _canLikeNative]
+-[FBSDKLikeDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKLikeDialog delegate]
+-[FBSDKLikeDialog setDelegate:]
+-[FBSDKLikeDialog objectID]
+-[FBSDKLikeDialog setObjectID:]
+-[FBSDKLikeDialog objectType]
+-[FBSDKLikeDialog setObjectType:]
+-[FBSDKLikeDialog shouldFailOnDataError]
+-[FBSDKLikeDialog setShouldFailOnDataError:]
+-[FBSDKLikeDialog fromViewController]
+-[FBSDKLikeDialog setFromViewController:]
+-[FBSDKLikeDialog .cxx_destruct]
+OBJC_METH_VAR_NAME_.4
+OBJC_SELECTOR_REFERENCES_.5
+OBJC_METH_VAR_NAME_.6
+OBJC_SELECTOR_REFERENCES_.7
+OBJC_METH_VAR_NAME_.8
+OBJC_SELECTOR_REFERENCES_.9
+OBJC_IVAR_$_FBSDKLikeDialog._delegate
+OBJC_CLASSLIST_REFERENCES_$_.26
+.str.35
+_unnamed_cfstring_.36
+.str.38
+_unnamed_cfstring_.39
+OBJC_SELECTOR_REFERENCES_.43
+OBJC_SELECTOR_REFERENCES_.45
+.str.57
+_unnamed_cfstring_.58
+_unnamed_cfstring_.60
+OBJC_SELECTOR_REFERENCES_.63
+OBJC_CLASSLIST_REFERENCES_$_.64
+__block_descriptor_tmp.73
+OBJC_SELECTOR_REFERENCES_.75
+.str.76
+_unnamed_cfstring_.77
+OBJC_SELECTOR_REFERENCES_.89
+OBJC_IVAR_$_FBSDKLikeDialog._objectID
+OBJC_IVAR_$_FBSDKLikeDialog._objectType
+OBJC_IVAR_$_FBSDKLikeDialog._shouldFailOnDataError
+OBJC_IVAR_$_FBSDKLikeDialog._fromViewController
+l_OBJC_$_CLASS_METHODS_FBSDKLikeDialog
+l_OBJC_METACLASS_RO_$_FBSDKLikeDialog
+OBJC_CLASS_NAME_.95
+OBJC_METH_VAR_TYPE_.102
+OBJC_METH_VAR_TYPE_.104
+OBJC_METH_VAR_TYPE_.107
+OBJC_METH_VAR_NAME_.108
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeDialog
+OBJC_METH_VAR_TYPE_.110
+OBJC_METH_VAR_TYPE_.112
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeDialog
+OBJC_CLASS_NAME_.119
+OBJC_PROP_NAME_ATTR_.120
+l_OBJC_$_PROP_LIST_FBSDKLikeDialog
+l_OBJC_CLASS_RO_$_FBSDKLikeDialog
+-[FBSDKLikeDialog .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeDialog.m
+-[FBSDKLikeDialog setFromViewController:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeDialog.h
+-[FBSDKLikeDialog fromViewController]
+-[FBSDKLikeDialog setShouldFailOnDataError:]
+-[FBSDKLikeDialog shouldFailOnDataError]
+-[FBSDKLikeDialog setObjectType:]
+-[FBSDKLikeDialog objectType]
+-[FBSDKLikeDialog setObjectID:]
+-[FBSDKLikeDialog objectID]
+-[FBSDKLikeDialog setDelegate:]
+-[FBSDKLikeDialog delegate]
+-[FBSDKLikeDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKLikeDialog _canLikeNative]
+-[FBSDKLikeDialog validateWithError:]
+-[FBSDKLikeDialog like]
+-[FBSDKLikeDialog canLike]
++[FBSDKLikeDialog likeWithObjectID:objectType:delegate:]
++[FBSDKLikeDialog initialize]
+-[FBSDKCheckmarkIcon pathWithSize:]
+l_OBJC_METACLASS_RO_$_FBSDKCheckmarkIcon
+l_OBJC_$_INSTANCE_METHODS_FBSDKCheckmarkIcon
+l_OBJC_CLASS_RO_$_FBSDKCheckmarkIcon
+CGPointMake
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+-[FBSDKCheckmarkIcon pathWithSize:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKCheckmarkIcon.m
+-[FBSDKGameRequestContent setRecipients:]
+-[FBSDKGameRequestContent setRecipientSuggestions:]
+-[FBSDKGameRequestContent suggestions]
+-[FBSDKGameRequestContent setSuggestions:]
+-[FBSDKGameRequestContent to]
+-[FBSDKGameRequestContent setTo:]
+-[FBSDKGameRequestContent hash]
+-[FBSDKGameRequestContent isEqual:]
+-[FBSDKGameRequestContent isEqualToGameRequestContent:]
++[FBSDKGameRequestContent supportsSecureCoding]
+-[FBSDKGameRequestContent initWithCoder:]
+-[FBSDKGameRequestContent encodeWithCoder:]
+-[FBSDKGameRequestContent copyWithZone:]
+-[FBSDKGameRequestContent actionType]
+-[FBSDKGameRequestContent setActionType:]
+-[FBSDKGameRequestContent data]
+-[FBSDKGameRequestContent setData:]
+-[FBSDKGameRequestContent filters]
+-[FBSDKGameRequestContent setFilters:]
+-[FBSDKGameRequestContent message]
+-[FBSDKGameRequestContent setMessage:]
+-[FBSDKGameRequestContent objectID]
+-[FBSDKGameRequestContent setObjectID:]
+-[FBSDKGameRequestContent recipients]
+-[FBSDKGameRequestContent recipientSuggestions]
+-[FBSDKGameRequestContent title]
+-[FBSDKGameRequestContent setTitle:]
+-[FBSDKGameRequestContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKGameRequestContent._recipients
+.str.8
+_unnamed_cfstring_.9
+OBJC_IVAR_$_FBSDKGameRequestContent._recipientSuggestions
+OBJC_IVAR_$_FBSDKGameRequestContent._actionType
+OBJC_IVAR_$_FBSDKGameRequestContent._data
+OBJC_IVAR_$_FBSDKGameRequestContent._filters
+OBJC_IVAR_$_FBSDKGameRequestContent._message
+OBJC_IVAR_$_FBSDKGameRequestContent._objectID
+OBJC_IVAR_$_FBSDKGameRequestContent._title
+OBJC_CLASSLIST_REFERENCES_$_.34
+.str.51
+_unnamed_cfstring_.52
+.str.55
+_unnamed_cfstring_.56
+OBJC_CLASSLIST_REFERENCES_$_.61
+.str.62
+_unnamed_cfstring_.63
+.str.64
+_unnamed_cfstring_.65
+.str.66
+_unnamed_cfstring_.67
+OBJC_SELECTOR_REFERENCES_.69
+OBJC_SELECTOR_REFERENCES_.71
+OBJC_SELECTOR_REFERENCES_.73
+l_OBJC_$_CLASS_METHODS_FBSDKGameRequestContent
+OBJC_CLASS_NAME_.76
+OBJC_METH_VAR_NAME_.77
+OBJC_METH_VAR_TYPE_.78
+OBJC_CLASS_NAME_.79
+OBJC_CLASS_NAME_.108
+OBJC_PROP_NAME_ATTR_.114
+OBJC_CLASS_NAME_.115
+OBJC_METH_VAR_TYPE_.117
+OBJC_METH_VAR_TYPE_.120
+OBJC_METH_VAR_TYPE_.121
+OBJC_CLASS_NAME_.122
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKGameRequestContent
+l_OBJC_METACLASS_RO_$_FBSDKGameRequestContent
+OBJC_CLASS_NAME_.123
+OBJC_METH_VAR_NAME_.124
+OBJC_METH_VAR_NAME_.126
+OBJC_METH_VAR_NAME_.133
+l_OBJC_$_INSTANCE_METHODS_FBSDKGameRequestContent
+OBJC_METH_VAR_NAME_.139
+OBJC_METH_VAR_NAME_.141
+OBJC_METH_VAR_TYPE_.145
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKGameRequestContent
+OBJC_PROP_NAME_ATTR_.151
+OBJC_PROP_NAME_ATTR_.152
+OBJC_PROP_NAME_ATTR_.153
+OBJC_PROP_NAME_ATTR_.154
+OBJC_PROP_NAME_ATTR_.155
+OBJC_PROP_NAME_ATTR_.156
+OBJC_PROP_NAME_ATTR_.157
+OBJC_PROP_NAME_ATTR_.158
+OBJC_PROP_NAME_ATTR_.159
+OBJC_PROP_NAME_ATTR_.160
+OBJC_PROP_NAME_ATTR_.161
+OBJC_PROP_NAME_ATTR_.162
+OBJC_PROP_NAME_ATTR_.163
+OBJC_PROP_NAME_ATTR_.164
+OBJC_PROP_NAME_ATTR_.165
+l_OBJC_$_PROP_LIST_FBSDKGameRequestContent
+l_OBJC_CLASS_RO_$_FBSDKGameRequestContent
+-[FBSDKGameRequestContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKGameRequestContent.m
+-[FBSDKGameRequestContent setTitle:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKGameRequestContent.h
+-[FBSDKGameRequestContent title]
+-[FBSDKGameRequestContent recipientSuggestions]
+-[FBSDKGameRequestContent recipients]
+-[FBSDKGameRequestContent setObjectID:]
+-[FBSDKGameRequestContent objectID]
+-[FBSDKGameRequestContent setMessage:]
+-[FBSDKGameRequestContent message]
+-[FBSDKGameRequestContent setFilters:]
+-[FBSDKGameRequestContent filters]
+-[FBSDKGameRequestContent setData:]
+-[FBSDKGameRequestContent data]
+-[FBSDKGameRequestContent setActionType:]
+-[FBSDKGameRequestContent actionType]
+-[FBSDKGameRequestContent copyWithZone:]
+-[FBSDKGameRequestContent encodeWithCoder:]
+-[FBSDKGameRequestContent initWithCoder:]
++[FBSDKGameRequestContent supportsSecureCoding]
+-[FBSDKGameRequestContent isEqualToGameRequestContent:]
+-[FBSDKGameRequestContent isEqual:]
+-[FBSDKGameRequestContent hash]
+-[FBSDKGameRequestContent setTo:]
+-[FBSDKGameRequestContent to]
+-[FBSDKGameRequestContent setSuggestions:]
+-[FBSDKGameRequestContent suggestions]
+-[FBSDKGameRequestContent setRecipientSuggestions:]
+-[FBSDKGameRequestContent setRecipients:]
+-[FBSDKShareOpenGraphValueContainer init]
+-[FBSDKShareOpenGraphValueContainer allData]
+-[FBSDKShareOpenGraphValueContainer arrayForKey:]
+-[FBSDKShareOpenGraphValueContainer enumerateKeysAndObjectsUsingBlock:]
+-[FBSDKShareOpenGraphValueContainer keyEnumerator]
+-[FBSDKShareOpenGraphValueContainer numberForKey:]
+-[FBSDKShareOpenGraphValueContainer objectEnumerator]
+-[FBSDKShareOpenGraphValueContainer objectForKey:]
+-[FBSDKShareOpenGraphValueContainer objectForKeyedSubscript:]
+-[FBSDKShareOpenGraphValueContainer parseProperties:]
+-[FBSDKShareOpenGraphValueContainer photoForKey:]
+-[FBSDKShareOpenGraphValueContainer removeObjectForKey:]
+-[FBSDKShareOpenGraphValueContainer setArray:forKey:]
+-[FBSDKShareOpenGraphValueContainer setNumber:forKey:]
+-[FBSDKShareOpenGraphValueContainer setObject:forKey:]
+-[FBSDKShareOpenGraphValueContainer setPhoto:forKey:]
+-[FBSDKShareOpenGraphValueContainer setString:forKey:]
+-[FBSDKShareOpenGraphValueContainer setURL:forKey:]
+-[FBSDKShareOpenGraphValueContainer stringForKey:]
+-[FBSDKShareOpenGraphValueContainer URLForKey:]
+-[FBSDKShareOpenGraphValueContainer valueForKey:]
+-[FBSDKShareOpenGraphValueContainer allProperties]
+-[FBSDKShareOpenGraphValueContainer requireKeyNamespace]
+-[FBSDKShareOpenGraphValueContainer hash]
+-[FBSDKShareOpenGraphValueContainer isEqual:]
+-[FBSDKShareOpenGraphValueContainer isEqualToShareOpenGraphValueContainer:]
++[FBSDKShareOpenGraphValueContainer supportsSecureCoding]
+-[FBSDKShareOpenGraphValueContainer initWithCoder:]
+-[FBSDKShareOpenGraphValueContainer encodeWithCoder:]
+-[FBSDKShareOpenGraphValueContainer _setValue:forKey:]
+-[FBSDKShareOpenGraphValueContainer _valueForKey:]
+-[FBSDKShareOpenGraphValueContainer _valueOfClass:forKey:]
+-[FBSDKShareOpenGraphValueContainer .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareOpenGraphValueContainer._properties
+OBJC_CLASSLIST_REFERENCES_$_.5
+OBJC_CLASSLIST_REFERENCES_$_.20
+OBJC_CLASSLIST_REFERENCES_$_.35
+OBJC_CLASSLIST_REFERENCES_$_.40
+OBJC_CLASSLIST_REFERENCES_$_.50
+OBJC_CLASSLIST_REFERENCES_$_.51
+OBJC_SELECTOR_REFERENCES_.53
+OBJC_SELECTOR_REFERENCES_.59
+OBJC_SELECTOR_REFERENCES_.61
+OBJC_SELECTOR_REFERENCES_.65
+OBJC_SELECTOR_REFERENCES_.67
+OBJC_CLASSLIST_REFERENCES_$_.68
+l_OBJC_$_CLASS_METHODS_FBSDKShareOpenGraphValueContainer
+OBJC_METH_VAR_TYPE_.87
+OBJC_METH_VAR_TYPE_.89
+OBJC_METH_VAR_TYPE_.91
+OBJC_METH_VAR_TYPE_.105
+OBJC_METH_VAR_TYPE_.109
+OBJC_CLASS_NAME_.110
+OBJC_METH_VAR_TYPE_.113
+OBJC_METH_VAR_NAME_.114
+OBJC_METH_VAR_TYPE_.122
+OBJC_METH_VAR_TYPE_.125
+OBJC_METH_VAR_TYPE_.127
+OBJC_METH_VAR_TYPE_.130
+OBJC_CLASS_NAME_.140
+OBJC_PROP_NAME_ATTR_.143
+OBJC_CLASS_NAME_.147
+OBJC_METH_VAR_TYPE_.149
+OBJC_METH_VAR_TYPE_.151
+OBJC_CLASS_NAME_.152
+l_OBJC_$_PROTOCOL_REFS_FBSDKShareOpenGraphValueContaining
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKShareOpenGraphValueContaining
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKShareOpenGraphValueContaining
+l_OBJC_PROTOCOL_$_FBSDKShareOpenGraphValueContaining
+l_OBJC_LABEL_PROTOCOL_$_FBSDKShareOpenGraphValueContaining
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareOpenGraphValueContainer
+l_OBJC_METACLASS_RO_$_FBSDKShareOpenGraphValueContainer
+OBJC_CLASS_NAME_.153
+OBJC_METH_VAR_NAME_.154
+OBJC_METH_VAR_TYPE_.155
+OBJC_METH_VAR_TYPE_.157
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareOpenGraphValueContainer
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareOpenGraphValueContainer
+l_OBJC_$_PROP_LIST_FBSDKShareOpenGraphValueContainer
+l_OBJC_CLASS_RO_$_FBSDKShareOpenGraphValueContainer
+-[FBSDKShareOpenGraphValueContainer .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphValueContainer.m
+-[FBSDKShareOpenGraphValueContainer _valueOfClass:forKey:]
+-[FBSDKShareOpenGraphValueContainer _valueForKey:]
+-[FBSDKShareOpenGraphValueContainer _setValue:forKey:]
+-[FBSDKShareOpenGraphValueContainer encodeWithCoder:]
+-[FBSDKShareOpenGraphValueContainer initWithCoder:]
++[FBSDKShareOpenGraphValueContainer supportsSecureCoding]
+-[FBSDKShareOpenGraphValueContainer isEqualToShareOpenGraphValueContainer:]
+-[FBSDKShareOpenGraphValueContainer isEqual:]
+-[FBSDKShareOpenGraphValueContainer hash]
+-[FBSDKShareOpenGraphValueContainer requireKeyNamespace]
+-[FBSDKShareOpenGraphValueContainer allProperties]
+-[FBSDKShareOpenGraphValueContainer valueForKey:]
+-[FBSDKShareOpenGraphValueContainer URLForKey:]
+-[FBSDKShareOpenGraphValueContainer stringForKey:]
+-[FBSDKShareOpenGraphValueContainer setURL:forKey:]
+-[FBSDKShareOpenGraphValueContainer setString:forKey:]
+-[FBSDKShareOpenGraphValueContainer setPhoto:forKey:]
+-[FBSDKShareOpenGraphValueContainer setObject:forKey:]
+-[FBSDKShareOpenGraphValueContainer setNumber:forKey:]
+-[FBSDKShareOpenGraphValueContainer setArray:forKey:]
+-[FBSDKShareOpenGraphValueContainer removeObjectForKey:]
+-[FBSDKShareOpenGraphValueContainer photoForKey:]
+-[FBSDKShareOpenGraphValueContainer parseProperties:]
+-[FBSDKShareOpenGraphValueContainer objectForKeyedSubscript:]
+-[FBSDKShareOpenGraphValueContainer objectForKey:]
+-[FBSDKShareOpenGraphValueContainer objectEnumerator]
+-[FBSDKShareOpenGraphValueContainer numberForKey:]
+-[FBSDKShareOpenGraphValueContainer keyEnumerator]
+-[FBSDKShareOpenGraphValueContainer enumerateKeysAndObjectsUsingBlock:]
+-[FBSDKShareOpenGraphValueContainer arrayForKey:]
+-[FBSDKShareOpenGraphValueContainer allData]
+-[FBSDKShareOpenGraphValueContainer init]
+-[FBSDKLikeActionControllerCache initWithAccessTokenString:]
+-[FBSDKLikeActionControllerCache init]
++[FBSDKLikeActionControllerCache supportsSecureCoding]
+-[FBSDKLikeActionControllerCache initWithCoder:]
+-[FBSDKLikeActionControllerCache encodeWithCoder:]
+-[FBSDKLikeActionControllerCache objectForKeyedSubscript:]
+-[FBSDKLikeActionControllerCache resetForAccessTokenString:]
+-[FBSDKLikeActionControllerCache setObject:forKeyedSubscript:]
+-[FBSDKLikeActionControllerCache _prune]
+__40-[FBSDKLikeActionControllerCache _prune]_block_invoke
+-[FBSDKLikeActionControllerCache accessTokenString]
+-[FBSDKLikeActionControllerCache .cxx_destruct]
+OBJC_IVAR_$_FBSDKLikeActionControllerCache._accessTokenString
+OBJC_IVAR_$_FBSDKLikeActionControllerCache._items
+OBJC_CLASSLIST_REFERENCES_$_.6
+.str.15
+_unnamed_cfstring_.16
+OBJC_CLASSLIST_REFERENCES_$_.19
+.str.24
+_unnamed_cfstring_.25
+OBJC_CLASSLIST_REFERENCES_$_.43
+l_OBJC_$_CLASS_METHODS_FBSDKLikeActionControllerCache
+OBJC_CLASS_NAME_.56
+OBJC_METH_VAR_TYPE_.58
+OBJC_CLASS_NAME_.63
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKLikeActionControllerCache
+l_OBJC_METACLASS_RO_$_FBSDKLikeActionControllerCache
+OBJC_CLASS_NAME_.64
+OBJC_METH_VAR_TYPE_.68
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeActionControllerCache
+OBJC_METH_VAR_TYPE_.74
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeActionControllerCache
+l_OBJC_$_PROP_LIST_FBSDKLikeActionControllerCache
+l_OBJC_CLASS_RO_$_FBSDKLikeActionControllerCache
+-[FBSDKLikeActionControllerCache .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionControllerCache.m
+-[FBSDKLikeActionControllerCache accessTokenString]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionControllerCache.h
+-[FBSDKLikeActionControllerCache _prune]
+-[FBSDKLikeActionControllerCache setObject:forKeyedSubscript:]
+-[FBSDKLikeActionControllerCache resetForAccessTokenString:]
+-[FBSDKLikeActionControllerCache objectForKeyedSubscript:]
+-[FBSDKLikeActionControllerCache encodeWithCoder:]
+-[FBSDKLikeActionControllerCache initWithCoder:]
++[FBSDKLikeActionControllerCache supportsSecureCoding]
+-[FBSDKLikeActionControllerCache init]
+-[FBSDKLikeActionControllerCache initWithAccessTokenString:]
++[FBSDKGameRequestDialog initialize]
++[FBSDKGameRequestDialog showWithContent:delegate:]
+-[FBSDKGameRequestDialog init]
+-[FBSDKGameRequestDialog dealloc]
+-[FBSDKGameRequestDialog canShow]
+-[FBSDKGameRequestDialog show]
+-[FBSDKGameRequestDialog validateWithError:]
+-[FBSDKGameRequestDialog webDialog:didCompleteWithResults:]
+-[FBSDKGameRequestDialog webDialog:didFailWithError:]
+-[FBSDKGameRequestDialog webDialogDidCancel:]
+-[FBSDKGameRequestDialog _cleanUp]
+-[FBSDKGameRequestDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKGameRequestDialog _actionTypeNameForActionType:]
+-[FBSDKGameRequestDialog _filtersNameForFilters:]
+-[FBSDKGameRequestDialog delegate]
+-[FBSDKGameRequestDialog setDelegate:]
+-[FBSDKGameRequestDialog content]
+-[FBSDKGameRequestDialog setContent:]
+-[FBSDKGameRequestDialog frictionlessRequestsEnabled]
+-[FBSDKGameRequestDialog setFrictionlessRequestsEnabled:]
+-[FBSDKGameRequestDialog .cxx_destruct]
+_recipientCache
+OBJC_CLASSLIST_REFERENCES_$_.12
+OBJC_IVAR_$_FBSDKGameRequestDialog._webDialog
+.str.20
+_unnamed_cfstring_.21
+OBJC_IVAR_$_FBSDKGameRequestDialog._delegate
+OBJC_CLASSLIST_REFERENCES_$_.30
+.str.34
+_unnamed_cfstring_.35
+OBJC_SELECTOR_REFERENCES_.41
+.str.44
+_unnamed_cfstring_.45
+.str.54
+_unnamed_cfstring_.55
+.str.60
+_unnamed_cfstring_.61
+.str.68
+_unnamed_cfstring_.69
+.str.72
+_unnamed_cfstring_.73
+OBJC_IVAR_$_FBSDKGameRequestDialog._frictionlessRequestsEnabled
+OBJC_CLASSLIST_REFERENCES_$_.78
+.str.83
+_unnamed_cfstring_.84
+OBJC_IVAR_$_FBSDKGameRequestDialog._dialogIsFrictionless
+OBJC_SELECTOR_REFERENCES_.88
+OBJC_SELECTOR_REFERENCES_.90
+OBJC_CLASSLIST_REFERENCES_$_.91
+OBJC_CLASSLIST_REFERENCES_$_.98
+.str.99
+_unnamed_cfstring_.100
+OBJC_METH_VAR_NAME_.103
+OBJC_SELECTOR_REFERENCES_.104
+.str.105
+_unnamed_cfstring_.106
+OBJC_CLASSLIST_REFERENCES_$_.111
+OBJC_SELECTOR_REFERENCES_.113
+OBJC_CLASSLIST_REFERENCES_$_.114
+.str.115
+_unnamed_cfstring_.116
+OBJC_SELECTOR_REFERENCES_.118
+OBJC_SELECTOR_REFERENCES_.120
+.str.137
+_unnamed_cfstring_.138
+.str.139
+_unnamed_cfstring_.140
+.str.141
+_unnamed_cfstring_.142
+OBJC_IVAR_$_FBSDKGameRequestDialog._content
+l_OBJC_$_CLASS_METHODS_FBSDKGameRequestDialog
+OBJC_METH_VAR_TYPE_.148
+OBJC_METH_VAR_TYPE_.153
+OBJC_CLASS_NAME_.154
+OBJC_METH_VAR_TYPE_.163
+OBJC_METH_VAR_TYPE_.165
+OBJC_METH_VAR_TYPE_.172
+OBJC_METH_VAR_NAME_.173
+OBJC_METH_VAR_TYPE_.174
+OBJC_METH_VAR_NAME_.175
+OBJC_METH_VAR_NAME_.176
+OBJC_METH_VAR_TYPE_.177
+OBJC_METH_VAR_NAME_.178
+OBJC_METH_VAR_NAME_.179
+OBJC_METH_VAR_TYPE_.180
+OBJC_METH_VAR_NAME_.181
+OBJC_METH_VAR_TYPE_.182
+OBJC_METH_VAR_NAME_.183
+OBJC_METH_VAR_NAME_.185
+OBJC_METH_VAR_TYPE_.186
+OBJC_METH_VAR_NAME_.187
+OBJC_PROP_NAME_ATTR_.189
+OBJC_PROP_NAME_ATTR_.190
+OBJC_PROP_NAME_ATTR_.191
+OBJC_PROP_NAME_ATTR_.192
+OBJC_PROP_NAME_ATTR_.193
+OBJC_PROP_NAME_ATTR_.194
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKGameRequestDialog
+l_OBJC_METACLASS_RO_$_FBSDKGameRequestDialog
+OBJC_CLASS_NAME_.195
+OBJC_METH_VAR_TYPE_.197
+OBJC_METH_VAR_NAME_.198
+OBJC_METH_VAR_NAME_.199
+OBJC_METH_VAR_NAME_.200
+OBJC_METH_VAR_TYPE_.202
+l_OBJC_$_INSTANCE_METHODS_FBSDKGameRequestDialog
+OBJC_METH_VAR_NAME_.203
+OBJC_METH_VAR_TYPE_.204
+OBJC_METH_VAR_NAME_.205
+OBJC_METH_VAR_TYPE_.206
+OBJC_METH_VAR_NAME_.207
+OBJC_METH_VAR_TYPE_.209
+OBJC_METH_VAR_TYPE_.211
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKGameRequestDialog
+OBJC_CLASS_NAME_.212
+OBJC_PROP_NAME_ATTR_.213
+OBJC_PROP_NAME_ATTR_.214
+OBJC_PROP_NAME_ATTR_.215
+OBJC_PROP_NAME_ATTR_.216
+OBJC_PROP_NAME_ATTR_.217
+OBJC_PROP_NAME_ATTR_.218
+l_OBJC_$_PROP_LIST_FBSDKGameRequestDialog
+l_OBJC_CLASS_RO_$_FBSDKGameRequestDialog
+-[FBSDKGameRequestDialog .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKGameRequestDialog.m
+-[FBSDKGameRequestDialog setFrictionlessRequestsEnabled:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKGameRequestDialog.h
+-[FBSDKGameRequestDialog frictionlessRequestsEnabled]
+-[FBSDKGameRequestDialog setContent:]
+-[FBSDKGameRequestDialog content]
+-[FBSDKGameRequestDialog setDelegate:]
+-[FBSDKGameRequestDialog delegate]
+-[FBSDKGameRequestDialog _filtersNameForFilters:]
+-[FBSDKGameRequestDialog _actionTypeNameForActionType:]
+-[FBSDKGameRequestDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKGameRequestDialog _cleanUp]
+-[FBSDKGameRequestDialog webDialogDidCancel:]
+-[FBSDKGameRequestDialog webDialog:didFailWithError:]
+-[FBSDKGameRequestDialog webDialog:didCompleteWithResults:]
+-[FBSDKGameRequestDialog validateWithError:]
+-[FBSDKGameRequestDialog show]
+-[FBSDKGameRequestDialog canShow]
+-[FBSDKGameRequestDialog dealloc]
+-[FBSDKGameRequestDialog init]
++[FBSDKGameRequestDialog showWithContent:delegate:]
++[FBSDKGameRequestDialog initialize]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareConstants.m
+-[FBSDKMessengerIcon pathWithSize:]
+l_OBJC_METACLASS_RO_$_FBSDKMessengerIcon
+l_OBJC_$_INSTANCE_METHODS_FBSDKMessengerIcon
+l_OBJC_CLASS_RO_$_FBSDKMessengerIcon
+-[FBSDKMessengerIcon pathWithSize:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKMessengerIcon.m
++[FBSDKShareError errorDomain]
+l_OBJC_$_CLASS_METHODS_FBSDKShareError
+l_OBJC_METACLASS_RO_$_FBSDKShareError
+l_OBJC_CLASS_RO_$_FBSDKShareError
++[FBSDKShareError errorDomain]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKShareError.m
++[FBSDKShareUtility assertCollection:ofClassStrings:name:]
++[FBSDKShareUtility assertCollection:ofClass:name:]
++[FBSDKShareUtility assertOpenGraphKey:requireNamespace:]
++[FBSDKShareUtility assertOpenGraphValue:]
++[FBSDKShareUtility assertOpenGraphValues:requireKeyNamespace:]
+__63+[FBSDKShareUtility assertOpenGraphValues:requireKeyNamespace:]_block_invoke
++[FBSDKShareUtility buildWebShareContent:methodName:parameters:error:]
++[FBSDKShareUtility convertOpenGraphValue:]
++[FBSDKShareUtility convertOpenGraphValues:]
+__44+[FBSDKShareUtility convertOpenGraphValues:]_block_invoke
+__copy_helper_block_.111
+__destroy_helper_block_.112
++[FBSDKShareUtility feedShareDictionaryForContent:]
++[FBSDKShareUtility hashtagStringFromHashtag:]
++[FBSDKShareUtility parametersForShareContent:shouldFailOnDataError:]
++[FBSDKShareUtility testShareContent:containsMedia:containsPhotos:containsVideos:]
++[FBSDKShareUtility validateAppInviteContent:error:]
++[FBSDKShareUtility validatePromoCodeWithError:error:]
++[FBSDKShareUtility validateAssetLibraryURLWithShareVideoContent:name:error:]
++[FBSDKShareUtility validateAssetLibraryURLsWithShareMediaContent:name:error:]
++[FBSDKShareUtility validateGameRequestContent:error:]
++[FBSDKShareUtility validateShareContent:error:]
++[FBSDKShareUtility validateShareOpenGraphContent:error:]
++[FBSDKShareUtility validateSharePhotoContent:error:]
++[FBSDKShareUtility validateShareMediaContent:error:]
++[FBSDKShareUtility validateShareLinkContent:error:]
++[FBSDKShareUtility validateShareVideoContent:error:]
++[FBSDKShareUtility shareMediaContentContainsPhotosAndVideos:]
+-[FBSDKShareUtility init]
++[FBSDKShareUtility _addToParameters:forShareContent:]
++[FBSDKShareUtility _addToParameters:forShareOpenGraphContent:]
++[FBSDKShareUtility _addToParameters:forSharePhotoContent:]
++[FBSDKShareUtility _addToParameters:forShareLinkContent:]
++[FBSDKShareUtility _addToParameters:forShareVideoContent:]
++[FBSDKShareUtility _convertObject:]
++[FBSDKShareUtility _convertOpenGraphValueContainer:requireNamespace:]
+__70+[FBSDKShareUtility _convertOpenGraphValueContainer:requireNamespace:]_block_invoke
+__copy_helper_block_.361
+__destroy_helper_block_.362
++[FBSDKShareUtility getOpenGraphNameAndNamespaceFromFullName:namespace:]
++[FBSDKShareUtility _convertPhoto:]
++[FBSDKShareUtility _isOpenGraphValue:]
++[FBSDKShareUtility _testObject:containsMedia:containsPhotos:containsVideos:]
++[FBSDKShareUtility _testOpenGraphValueContainer:containsMedia:containsPhotos:containsVideos:]
+__94+[FBSDKShareUtility _testOpenGraphValueContainer:containsMedia:containsPhotos:containsVideos:]_block_invoke
+__copy_helper_block_.380
+__destroy_helper_block_.381
++[FBSDKShareUtility _validateArray:minCount:maxCount:name:error:]
++[FBSDKShareUtility _validateFileURL:name:error:]
++[FBSDKShareUtility _validateNetworkURL:name:error:]
++[FBSDKShareUtility _validateRequiredValue:name:error:]
++[FBSDKShareUtility _validateArgumentWithName:value:isIn:error:]
++[FBSDKShareUtility _validateAssetLibraryVideoURL:name:error:]
+OBJC_CLASSLIST_REFERENCES_$_.7
+.str.12
+_unnamed_cfstring_.13
+.str.14
+_unnamed_cfstring_.15
+.str.32
+_unnamed_cfstring_.33
+.str.36
+OBJC_CLASSLIST_REFERENCES_$_.39
+OBJC_CLASSLIST_REFERENCES_$_.46
+.str.49
+_unnamed_cfstring_.50
+OBJC_CLASSLIST_REFERENCES_$_.57
+.str.79
+_unnamed_cfstring_.80
+OBJC_CLASSLIST_REFERENCES_$_.85
+OBJC_CLASSLIST_REFERENCES_$_.92
+OBJC_SELECTOR_REFERENCES_.96
+OBJC_SELECTOR_REFERENCES_.98
+OBJC_SELECTOR_REFERENCES_.105
+OBJC_SELECTOR_REFERENCES_.107
+OBJC_SELECTOR_REFERENCES_.109
+OBJC_CLASSLIST_REFERENCES_$_.110
+__block_descriptor_tmp.113
+OBJC_SELECTOR_REFERENCES_.115
+.str.122
+_unnamed_cfstring_.123
+OBJC_SELECTOR_REFERENCES_.125
+.str.126
+_unnamed_cfstring_.127
+OBJC_SELECTOR_REFERENCES_.129
+.str.130
+_unnamed_cfstring_.131
+OBJC_SELECTOR_REFERENCES_.133
+.str.134
+_unnamed_cfstring_.135
+OBJC_SELECTOR_REFERENCES_.137
+.str.138
+_unnamed_cfstring_.139
+OBJC_CLASSLIST_REFERENCES_$_.144
+.str.145
+_unnamed_cfstring_.146
+OBJC_SELECTOR_REFERENCES_.148
+OBJC_SELECTOR_REFERENCES_.150
+.str.151
+_unnamed_cfstring_.152
+OBJC_CLASSLIST_REFERENCES_$_.153
+OBJC_SELECTOR_REFERENCES_.155
+OBJC_CLASSLIST_REFERENCES_$_.160
+OBJC_METH_VAR_NAME_.161
+OBJC_SELECTOR_REFERENCES_.162
+OBJC_CLASSLIST_REFERENCES_$_.163
+OBJC_SELECTOR_REFERENCES_.167
+OBJC_SELECTOR_REFERENCES_.171
+OBJC_CLASSLIST_REFERENCES_$_.172
+OBJC_SELECTOR_REFERENCES_.174
+OBJC_SELECTOR_REFERENCES_.176
+.str.177
+_unnamed_cfstring_.178
+OBJC_SELECTOR_REFERENCES_.180
+OBJC_SELECTOR_REFERENCES_.182
+.str.183
+_unnamed_cfstring_.184
+OBJC_SELECTOR_REFERENCES_.186
+OBJC_SELECTOR_REFERENCES_.188
+.str.189
+_unnamed_cfstring_.190
+OBJC_SELECTOR_REFERENCES_.192
+OBJC_SELECTOR_REFERENCES_.194
+OBJC_SELECTOR_REFERENCES_.196
+OBJC_CLASSLIST_REFERENCES_$_.197
+OBJC_SELECTOR_REFERENCES_.199
+OBJC_CLASSLIST_REFERENCES_$_.200
+OBJC_SELECTOR_REFERENCES_.204
+OBJC_CLASSLIST_REFERENCES_$_.205
+.str.206
+_unnamed_cfstring_.207
+.str.208
+_unnamed_cfstring_.209
+.str.212
+_unnamed_cfstring_.213
+.str.214
+_unnamed_cfstring_.215
+OBJC_METH_VAR_NAME_.216
+OBJC_SELECTOR_REFERENCES_.217
+OBJC_METH_VAR_NAME_.218
+OBJC_SELECTOR_REFERENCES_.219
+.str.220
+_unnamed_cfstring_.221
+.str.222
+_unnamed_cfstring_.223
+OBJC_METH_VAR_NAME_.224
+OBJC_SELECTOR_REFERENCES_.225
+OBJC_METH_VAR_NAME_.226
+OBJC_SELECTOR_REFERENCES_.227
+OBJC_METH_VAR_NAME_.228
+OBJC_SELECTOR_REFERENCES_.229
+OBJC_CLASSLIST_REFERENCES_$_.230
+.str.233
+_unnamed_cfstring_.234
+.str.237
+_unnamed_cfstring_.238
+OBJC_CLASSLIST_REFERENCES_$_.239
+.str.240
+_unnamed_cfstring_.241
+OBJC_METH_VAR_NAME_.242
+OBJC_SELECTOR_REFERENCES_.243
+OBJC_METH_VAR_NAME_.244
+OBJC_SELECTOR_REFERENCES_.245
+OBJC_METH_VAR_NAME_.248
+OBJC_SELECTOR_REFERENCES_.249
+.str.250
+_unnamed_cfstring_.251
+.str.252
+_unnamed_cfstring_.253
+.str.254
+_unnamed_cfstring_.255
+.str.256
+_unnamed_cfstring_.257
+.str.258
+_unnamed_cfstring_.259
+OBJC_METH_VAR_NAME_.260
+OBJC_SELECTOR_REFERENCES_.261
+.str.262
+_unnamed_cfstring_.263
+.str.264
+_unnamed_cfstring_.265
+.str.266
+_unnamed_cfstring_.267
+OBJC_METH_VAR_NAME_.272
+OBJC_SELECTOR_REFERENCES_.273
+.str.274
+_unnamed_cfstring_.275
+.str.276
+_unnamed_cfstring_.277
+OBJC_METH_VAR_NAME_.278
+OBJC_SELECTOR_REFERENCES_.279
+OBJC_METH_VAR_NAME_.280
+OBJC_SELECTOR_REFERENCES_.281
+OBJC_METH_VAR_NAME_.282
+OBJC_SELECTOR_REFERENCES_.283
+OBJC_METH_VAR_NAME_.284
+OBJC_SELECTOR_REFERENCES_.285
+OBJC_METH_VAR_NAME_.286
+OBJC_SELECTOR_REFERENCES_.287
+OBJC_METH_VAR_NAME_.288
+OBJC_SELECTOR_REFERENCES_.289
+.str.290
+_unnamed_cfstring_.291
+.str.292
+_unnamed_cfstring_.293
+.str.294
+_unnamed_cfstring_.295
+OBJC_METH_VAR_NAME_.296
+OBJC_SELECTOR_REFERENCES_.297
+OBJC_METH_VAR_NAME_.298
+OBJC_SELECTOR_REFERENCES_.299
+.str.300
+_unnamed_cfstring_.301
+.str.302
+_unnamed_cfstring_.303
+.str.304
+_unnamed_cfstring_.305
+.str.306
+_unnamed_cfstring_.307
+.str.308
+_unnamed_cfstring_.309
+.str.310
+_unnamed_cfstring_.311
+.str.312
+_unnamed_cfstring_.313
+.str.314
+_unnamed_cfstring_.315
+OBJC_METH_VAR_NAME_.316
+OBJC_SELECTOR_REFERENCES_.317
+.str.318
+_unnamed_cfstring_.319
+OBJC_METH_VAR_NAME_.320
+OBJC_SELECTOR_REFERENCES_.321
+.str.322
+_unnamed_cfstring_.323
+OBJC_METH_VAR_NAME_.324
+OBJC_SELECTOR_REFERENCES_.325
+.str.326
+_unnamed_cfstring_.327
+OBJC_METH_VAR_NAME_.328
+OBJC_SELECTOR_REFERENCES_.329
+OBJC_METH_VAR_NAME_.330
+OBJC_SELECTOR_REFERENCES_.331
+.str.332
+_unnamed_cfstring_.333
+OBJC_METH_VAR_NAME_.334
+OBJC_SELECTOR_REFERENCES_.335
+OBJC_METH_VAR_NAME_.336
+OBJC_SELECTOR_REFERENCES_.337
+.str.338
+_unnamed_cfstring_.339
+OBJC_METH_VAR_NAME_.340
+OBJC_SELECTOR_REFERENCES_.341
+.str.342
+_unnamed_cfstring_.343
+OBJC_METH_VAR_NAME_.344
+OBJC_SELECTOR_REFERENCES_.345
+OBJC_METH_VAR_NAME_.346
+OBJC_SELECTOR_REFERENCES_.347
+.str.348
+_unnamed_cfstring_.349
+OBJC_CLASSLIST_REFERENCES_$_.350
+.str.353
+_unnamed_cfstring_.354
+.str.357
+_unnamed_cfstring_.358
+.str.359
+_unnamed_cfstring_.360
+.str.363
+OBJC_CLASS_NAME_.364
+__block_descriptor_tmp.365
+OBJC_METH_VAR_NAME_.368
+OBJC_SELECTOR_REFERENCES_.369
+OBJC_METH_VAR_NAME_.370
+OBJC_SELECTOR_REFERENCES_.371
+OBJC_METH_VAR_NAME_.372
+OBJC_SELECTOR_REFERENCES_.373
+OBJC_METH_VAR_NAME_.374
+OBJC_SELECTOR_REFERENCES_.375
+OBJC_METH_VAR_NAME_.376
+OBJC_SELECTOR_REFERENCES_.377
+OBJC_CLASSLIST_REFERENCES_$_.378
+OBJC_CLASSLIST_REFERENCES_$_.379
+OBJC_CLASS_NAME_.382
+__block_descriptor_tmp.383
+.str.384
+_unnamed_cfstring_.385
+OBJC_METH_VAR_NAME_.386
+OBJC_SELECTOR_REFERENCES_.387
+OBJC_CLASSLIST_REFERENCES_$_.388
+.str.391
+_unnamed_cfstring_.392
+OBJC_METH_VAR_NAME_.393
+OBJC_SELECTOR_REFERENCES_.394
+OBJC_METH_VAR_NAME_.395
+OBJC_SELECTOR_REFERENCES_.396
+OBJC_METH_VAR_NAME_.397
+OBJC_SELECTOR_REFERENCES_.398
+OBJC_SELECTOR_REFERENCES_.400
+OBJC_SELECTOR_REFERENCES_.402
+.str.403
+_unnamed_cfstring_.404
+OBJC_CLASS_NAME_.405
+OBJC_METH_VAR_NAME_.407
+OBJC_METH_VAR_TYPE_.409
+OBJC_METH_VAR_NAME_.414
+OBJC_METH_VAR_TYPE_.417
+OBJC_METH_VAR_NAME_.418
+OBJC_METH_VAR_TYPE_.419
+OBJC_METH_VAR_NAME_.420
+OBJC_METH_VAR_TYPE_.421
+OBJC_METH_VAR_NAME_.422
+OBJC_METH_VAR_NAME_.423
+OBJC_METH_VAR_TYPE_.427
+OBJC_METH_VAR_TYPE_.429
+l_OBJC_$_CLASS_METHODS_FBSDKShareUtility
+l_OBJC_METACLASS_RO_$_FBSDKShareUtility
+OBJC_METH_VAR_TYPE_.432
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareUtility
+l_OBJC_CLASS_RO_$_FBSDKShareUtility
++[FBSDKShareUtility _validateAssetLibraryVideoURL:name:error:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKShareUtility.m
++[FBSDKShareUtility _validateArgumentWithName:value:isIn:error:]
++[FBSDKShareUtility _validateRequiredValue:name:error:]
++[FBSDKShareUtility _validateNetworkURL:name:error:]
++[FBSDKShareUtility _validateFileURL:name:error:]
++[FBSDKShareUtility _validateArray:minCount:maxCount:name:error:]
++[FBSDKShareUtility _testOpenGraphValueContainer:containsMedia:containsPhotos:containsVideos:]
++[FBSDKShareUtility _testObject:containsMedia:containsPhotos:containsVideos:]
++[FBSDKShareUtility _isOpenGraphValue:]
++[FBSDKShareUtility _convertPhoto:]
++[FBSDKShareUtility getOpenGraphNameAndNamespaceFromFullName:namespace:]
++[FBSDKShareUtility _convertOpenGraphValueContainer:requireNamespace:]
++[FBSDKShareUtility _convertObject:]
++[FBSDKShareUtility _addToParameters:forShareVideoContent:]
++[FBSDKShareUtility _addToParameters:forShareLinkContent:]
++[FBSDKShareUtility _addToParameters:forSharePhotoContent:]
++[FBSDKShareUtility _addToParameters:forShareOpenGraphContent:]
++[FBSDKShareUtility _addToParameters:forShareContent:]
+-[FBSDKShareUtility init]
++[FBSDKShareUtility shareMediaContentContainsPhotosAndVideos:]
++[FBSDKShareUtility validateShareVideoContent:error:]
++[FBSDKShareUtility validateShareLinkContent:error:]
++[FBSDKShareUtility validateShareMediaContent:error:]
++[FBSDKShareUtility validateSharePhotoContent:error:]
++[FBSDKShareUtility validateShareOpenGraphContent:error:]
++[FBSDKShareUtility validateShareContent:error:]
++[FBSDKShareUtility validateGameRequestContent:error:]
++[FBSDKShareUtility validateAssetLibraryURLsWithShareMediaContent:name:error:]
++[FBSDKShareUtility validateAssetLibraryURLWithShareVideoContent:name:error:]
++[FBSDKShareUtility validatePromoCodeWithError:error:]
++[FBSDKShareUtility validateAppInviteContent:error:]
++[FBSDKShareUtility testShareContent:containsMedia:containsPhotos:containsVideos:]
++[FBSDKShareUtility parametersForShareContent:shouldFailOnDataError:]
++[FBSDKShareUtility hashtagStringFromHashtag:]
++[FBSDKShareUtility feedShareDictionaryForContent:]
++[FBSDKShareUtility convertOpenGraphValues:]
++[FBSDKShareUtility convertOpenGraphValue:]
++[FBSDKShareUtility buildWebShareContent:methodName:parameters:error:]
++[FBSDKShareUtility assertOpenGraphValues:requireKeyNamespace:]
++[FBSDKShareUtility assertOpenGraphValue:]
++[FBSDKShareUtility assertOpenGraphKey:requireNamespace:]
++[FBSDKShareUtility assertCollection:ofClass:name:]
++[FBSDKShareUtility assertCollection:ofClassStrings:name:]
++[FBSDKAppGroupJoinDialog showWithGroupID:delegate:]
+-[FBSDKAppGroupJoinDialog init]
+-[FBSDKAppGroupJoinDialog dealloc]
+-[FBSDKAppGroupJoinDialog canShow]
+-[FBSDKAppGroupJoinDialog show]
+-[FBSDKAppGroupJoinDialog validateWithError:]
+-[FBSDKAppGroupJoinDialog webDialog:didCompleteWithResults:]
+-[FBSDKAppGroupJoinDialog webDialog:didFailWithError:]
+-[FBSDKAppGroupJoinDialog webDialogDidCancel:]
+-[FBSDKAppGroupJoinDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKAppGroupJoinDialog delegate]
+-[FBSDKAppGroupJoinDialog setDelegate:]
+-[FBSDKAppGroupJoinDialog groupID]
+-[FBSDKAppGroupJoinDialog setGroupID:]
+-[FBSDKAppGroupJoinDialog .cxx_destruct]
+OBJC_IVAR_$_FBSDKAppGroupJoinDialog._webDialog
+.str.16
+_unnamed_cfstring_.17
+OBJC_IVAR_$_FBSDKAppGroupJoinDialog._delegate
+OBJC_CLASSLIST_REFERENCES_$_.24
+.str.28
+_unnamed_cfstring_.29
+OBJC_CLASSLIST_REFERENCES_$_.42
+OBJC_IVAR_$_FBSDKAppGroupJoinDialog._groupID
+l_OBJC_$_CLASS_METHODS_FBSDKAppGroupJoinDialog
+OBJC_CLASS_NAME_.72
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKAppGroupJoinDialog
+l_OBJC_METACLASS_RO_$_FBSDKAppGroupJoinDialog
+OBJC_METH_VAR_TYPE_.115
+l_OBJC_$_INSTANCE_METHODS_FBSDKAppGroupJoinDialog
+OBJC_METH_VAR_TYPE_.124
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKAppGroupJoinDialog
+OBJC_CLASS_NAME_.125
+l_OBJC_$_PROP_LIST_FBSDKAppGroupJoinDialog
+l_OBJC_CLASS_RO_$_FBSDKAppGroupJoinDialog
+-[FBSDKAppGroupJoinDialog .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppGroupJoinDialog.m
+-[FBSDKAppGroupJoinDialog setGroupID:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppGroupJoinDialog.h
+-[FBSDKAppGroupJoinDialog groupID]
+-[FBSDKAppGroupJoinDialog setDelegate:]
+-[FBSDKAppGroupJoinDialog delegate]
+-[FBSDKAppGroupJoinDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKAppGroupJoinDialog webDialogDidCancel:]
+-[FBSDKAppGroupJoinDialog webDialog:didFailWithError:]
+-[FBSDKAppGroupJoinDialog webDialog:didCompleteWithResults:]
+-[FBSDKAppGroupJoinDialog validateWithError:]
+-[FBSDKAppGroupJoinDialog show]
+-[FBSDKAppGroupJoinDialog canShow]
+-[FBSDKAppGroupJoinDialog dealloc]
+-[FBSDKAppGroupJoinDialog init]
++[FBSDKAppGroupJoinDialog showWithGroupID:delegate:]
++[FBSDKShareOpenGraphAction actionWithType:object:key:]
++[FBSDKShareOpenGraphAction actionWithType:objectID:key:]
++[FBSDKShareOpenGraphAction actionWithType:objectURL:key:]
+-[FBSDKShareOpenGraphAction hash]
+-[FBSDKShareOpenGraphAction isEqual:]
+-[FBSDKShareOpenGraphAction isEqualToShareOpenGraphAction:]
++[FBSDKShareOpenGraphAction supportsSecureCoding]
+-[FBSDKShareOpenGraphAction initWithCoder:]
+-[FBSDKShareOpenGraphAction encodeWithCoder:]
+-[FBSDKShareOpenGraphAction copyWithZone:]
+-[FBSDKShareOpenGraphAction requireKeyNamespace]
+-[FBSDKShareOpenGraphAction actionType]
+-[FBSDKShareOpenGraphAction setActionType:]
+-[FBSDKShareOpenGraphAction .cxx_destruct]
+OBJC_CLASSLIST_REFERENCES_$_.11
+OBJC_IVAR_$_FBSDKShareOpenGraphAction._actionType
+OBJC_CLASSLIST_REFERENCES_$_.22
+l_OBJC_$_CLASS_METHODS_FBSDKShareOpenGraphAction
+OBJC_CLASS_NAME_.50
+OBJC_CLASS_NAME_.53
+OBJC_CLASS_NAME_.83
+OBJC_PROP_NAME_ATTR_.84
+OBJC_PROP_NAME_ATTR_.85
+OBJC_PROP_NAME_ATTR_.86
+OBJC_PROP_NAME_ATTR_.87
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareOpenGraphAction
+l_OBJC_METACLASS_RO_$_FBSDKShareOpenGraphAction
+OBJC_CLASS_NAME_.96
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareOpenGraphAction
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareOpenGraphAction
+OBJC_PROP_NAME_ATTR_.102
+OBJC_PROP_NAME_ATTR_.103
+l_OBJC_$_PROP_LIST_FBSDKShareOpenGraphAction
+l_OBJC_CLASS_RO_$_FBSDKShareOpenGraphAction
+-[FBSDKShareOpenGraphAction .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphAction.m
+-[FBSDKShareOpenGraphAction setActionType:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphAction.h
+-[FBSDKShareOpenGraphAction actionType]
+-[FBSDKShareOpenGraphAction requireKeyNamespace]
+-[FBSDKShareOpenGraphAction copyWithZone:]
+-[FBSDKShareOpenGraphAction encodeWithCoder:]
+-[FBSDKShareOpenGraphAction initWithCoder:]
++[FBSDKShareOpenGraphAction supportsSecureCoding]
+-[FBSDKShareOpenGraphAction isEqualToShareOpenGraphAction:]
+-[FBSDKShareOpenGraphAction isEqual:]
+-[FBSDKShareOpenGraphAction hash]
++[FBSDKShareOpenGraphAction actionWithType:objectURL:key:]
++[FBSDKShareOpenGraphAction actionWithType:objectID:key:]
++[FBSDKShareOpenGraphAction actionWithType:object:key:]
+-[FBSDKShareVideoContent setPeopleIDs:]
+-[FBSDKShareVideoContent hash]
+-[FBSDKShareVideoContent isEqual:]
+-[FBSDKShareVideoContent isEqualToShareVideoContent:]
++[FBSDKShareVideoContent supportsSecureCoding]
+-[FBSDKShareVideoContent initWithCoder:]
+-[FBSDKShareVideoContent encodeWithCoder:]
+-[FBSDKShareVideoContent copyWithZone:]
+-[FBSDKShareVideoContent contentURL]
+-[FBSDKShareVideoContent setContentURL:]
+-[FBSDKShareVideoContent hashtag]
+-[FBSDKShareVideoContent setHashtag:]
+-[FBSDKShareVideoContent peopleIDs]
+-[FBSDKShareVideoContent placeID]
+-[FBSDKShareVideoContent setPlaceID:]
+-[FBSDKShareVideoContent ref]
+-[FBSDKShareVideoContent setRef:]
+-[FBSDKShareVideoContent previewPhoto]
+-[FBSDKShareVideoContent setPreviewPhoto:]
+-[FBSDKShareVideoContent video]
+-[FBSDKShareVideoContent setVideo:]
+-[FBSDKShareVideoContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareVideoContent._peopleIDs
+OBJC_IVAR_$_FBSDKShareVideoContent._contentURL
+OBJC_IVAR_$_FBSDKShareVideoContent._hashtag
+OBJC_IVAR_$_FBSDKShareVideoContent._placeID
+OBJC_IVAR_$_FBSDKShareVideoContent._previewPhoto
+OBJC_IVAR_$_FBSDKShareVideoContent._ref
+OBJC_IVAR_$_FBSDKShareVideoContent._video
+_unnamed_cfstring_.37
+.str.41
+_unnamed_cfstring_.42
+l_OBJC_$_CLASS_METHODS_FBSDKShareVideoContent
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareVideoContent
+l_OBJC_METACLASS_RO_$_FBSDKShareVideoContent
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareVideoContent
+OBJC_METH_VAR_TYPE_.142
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareVideoContent
+l_OBJC_$_PROP_LIST_FBSDKShareVideoContent
+l_OBJC_CLASS_RO_$_FBSDKShareVideoContent
+-[FBSDKShareVideoContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareVideoContent.m
+-[FBSDKShareVideoContent setVideo:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareVideoContent.h
+-[FBSDKShareVideoContent video]
+-[FBSDKShareVideoContent setPreviewPhoto:]
+-[FBSDKShareVideoContent previewPhoto]
+-[FBSDKShareVideoContent setRef:]
+-[FBSDKShareVideoContent ref]
+-[FBSDKShareVideoContent setPlaceID:]
+-[FBSDKShareVideoContent placeID]
+-[FBSDKShareVideoContent peopleIDs]
+-[FBSDKShareVideoContent setHashtag:]
+-[FBSDKShareVideoContent hashtag]
+-[FBSDKShareVideoContent setContentURL:]
+-[FBSDKShareVideoContent contentURL]
+-[FBSDKShareVideoContent copyWithZone:]
+-[FBSDKShareVideoContent encodeWithCoder:]
+-[FBSDKShareVideoContent initWithCoder:]
++[FBSDKShareVideoContent supportsSecureCoding]
+-[FBSDKShareVideoContent isEqualToShareVideoContent:]
+-[FBSDKShareVideoContent isEqual:]
+-[FBSDKShareVideoContent hash]
+-[FBSDKShareVideoContent setPeopleIDs:]
++[FBSDKShareAPI shareWithContent:delegate:]
++[FBSDKShareAPI defaultAssetsLibrary]
+__37+[FBSDKShareAPI defaultAssetsLibrary]_block_invoke
++[FBSDKShareAPI initialize]
+-[FBSDKShareAPI init]
+-[FBSDKShareAPI canShare]
+-[FBSDKShareAPI createOpenGraphObject:]
+__39-[FBSDKShareAPI createOpenGraphObject:]_block_invoke
+-[FBSDKShareAPI share]
+-[FBSDKShareAPI validateWithError:]
+-[FBSDKShareAPI accessToken]
+-[FBSDKShareAPI _graphPathWithSuffix:]
+-[FBSDKShareAPI _addCommonParameters:content:]
+-[FBSDKShareAPI _hasPublishActions]
+-[FBSDKShareAPI _shareLinkContent:]
+__35-[FBSDKShareAPI _shareLinkContent:]_block_invoke
+__copy_helper_block_.153
+__destroy_helper_block_.154
+-[FBSDKShareAPI _shareOpenGraphContent:]
+__40-[FBSDKShareAPI _shareOpenGraphContent:]_block_invoke
+__40-[FBSDKShareAPI _shareOpenGraphContent:]_block_invoke_2
+__copy_helper_block_.200
+__destroy_helper_block_.201
+__copy_helper_block_.210
+__destroy_helper_block_.211
+-[FBSDKShareAPI _sharePhotoContent:]
+__36-[FBSDKShareAPI _sharePhotoContent:]_block_invoke
+__copy_helper_block_.238
+__destroy_helper_block_.239
+-[FBSDKShareAPI _shareVideoContent:]
+__36-[FBSDKShareAPI _shareVideoContent:]_block_invoke
+__copy_helper_block_.271
+__destroy_helper_block_.272
+__36-[FBSDKShareAPI _shareVideoContent:]_block_invoke.275
+__copy_helper_block_.276
+__destroy_helper_block_.277
+-[FBSDKShareAPI _addEncodedParametersToDictionary:key:value:error:]
+__67-[FBSDKShareAPI _addEncodedParametersToDictionary:key:value:error:]_block_invoke
+__copy_helper_block_.291
+__destroy_helper_block_.292
+__67-[FBSDKShareAPI _addEncodedParametersToDictionary:key:value:error:]_block_invoke.297
+__copy_helper_block_.300
+__destroy_helper_block_.301
+-[FBSDKShareAPI _stageArray:connection:stagingHandler:]
+__55-[FBSDKShareAPI _stageArray:connection:stagingHandler:]_block_invoke
+__copy_helper_block_.308
+__destroy_helper_block_.309
+__55-[FBSDKShareAPI _stageArray:connection:stagingHandler:]_block_invoke.311
+__copy_helper_block_.312
+__destroy_helper_block_.313
+__55-[FBSDKShareAPI _stageArray:connection:stagingHandler:]_block_invoke.315
+__55-[FBSDKShareAPI _stageArray:connection:stagingHandler:]_block_invoke_2
+__copy_helper_block_.322
+__destroy_helper_block_.323
+__copy_helper_block_.328
+__destroy_helper_block_.329
+-[FBSDKShareAPI _stageOpenGraphObject:connection:stagingHandler:completionHandler:]
+__83-[FBSDKShareAPI _stageOpenGraphObject:connection:stagingHandler:completionHandler:]_block_invoke
+__83-[FBSDKShareAPI _stageOpenGraphObject:connection:stagingHandler:completionHandler:]_block_invoke_2
+__copy_helper_block_.345
+__destroy_helper_block_.346
+__copy_helper_block_.350
+__destroy_helper_block_.351
+-[FBSDKShareAPI _stageOpenGraphValueContainer:connection:stagingHandler:]
+__73-[FBSDKShareAPI _stageOpenGraphValueContainer:connection:stagingHandler:]_block_invoke
+__copy_helper_block_.353
+__destroy_helper_block_.354
+__73-[FBSDKShareAPI _stageOpenGraphValueContainer:connection:stagingHandler:]_block_invoke.356
+__copy_helper_block_.357
+__destroy_helper_block_.358
+__73-[FBSDKShareAPI _stageOpenGraphValueContainer:connection:stagingHandler:]_block_invoke.361
+__73-[FBSDKShareAPI _stageOpenGraphValueContainer:connection:stagingHandler:]_block_invoke_2
+__copy_helper_block_.364
+__destroy_helper_block_.365
+__copy_helper_block_.367
+__destroy_helper_block_.368
+-[FBSDKShareAPI _stagePhoto:connection:stagingHandler:]
+__55-[FBSDKShareAPI _stagePhoto:connection:stagingHandler:]_block_invoke
+__copy_helper_block_.391
+__destroy_helper_block_.392
+-[FBSDKShareAPI _stageValue:connection:stagingHandler:]
+-[FBSDKShareAPI _connection:addRequest:completionHandler:]
+-[FBSDKShareAPI _addToPendingShareAPI]
+-[FBSDKShareAPI _removeFromPendingShareAPI]
+-[FBSDKShareAPI videoChunkDataForVideoUploader:startOffset:endOffset:]
+-[FBSDKShareAPI videoUploader:didCompleteWithResults:]
+-[FBSDKShareAPI videoUploader:didFailWithError:]
+-[FBSDKShareAPI delegate]
+-[FBSDKShareAPI setDelegate:]
+-[FBSDKShareAPI shareContent]
+-[FBSDKShareAPI setShareContent:]
+-[FBSDKShareAPI shouldFailOnDataError]
+-[FBSDKShareAPI setShouldFailOnDataError:]
+-[FBSDKShareAPI setAccessToken:]
+-[FBSDKShareAPI message]
+-[FBSDKShareAPI setMessage:]
+-[FBSDKShareAPI graphNode]
+-[FBSDKShareAPI setGraphNode:]
+-[FBSDKShareAPI .cxx_destruct]
+defaultAssetsLibrary.pred
+defaultAssetsLibrary.library
+.str.13
+g_pendingFBSDKShareAPI
+OBJC_IVAR_$_FBSDKShareAPI._graphNode
+.str.19
+_unnamed_cfstring_.20
+OBJC_IVAR_$_FBSDKShareAPI._delegate
+.str.33
+_unnamed_cfstring_.34
+__block_descriptor_tmp.41
+OBJC_CLASSLIST_REFERENCES_$_.58
+.str.80
+_unnamed_cfstring_.81
+.str.82
+_unnamed_cfstring_.83
+OBJC_CLASSLIST_REFERENCES_$_.84
+OBJC_IVAR_$_FBSDKShareAPI._accessToken
+OBJC_SELECTOR_REFERENCES_.94
+OBJC_SELECTOR_REFERENCES_.100
+.str.101
+_unnamed_cfstring_.102
+OBJC_CLASSLIST_REFERENCES_$_.108
+.str.114
+_unnamed_cfstring_.115
+.str.123
+_unnamed_cfstring_.124
+.str.127
+_unnamed_cfstring_.128
+OBJC_SELECTOR_REFERENCES_.136
+OBJC_CLASSLIST_REFERENCES_$_.137
+OBJC_SELECTOR_REFERENCES_.139
+OBJC_CLASSLIST_REFERENCES_$_.140
+.str.143
+_unnamed_cfstring_.144
+.str.155
+__block_descriptor_tmp.156
+OBJC_SELECTOR_REFERENCES_.158
+OBJC_SELECTOR_REFERENCES_.160
+.str.161
+_unnamed_cfstring_.162
+OBJC_SELECTOR_REFERENCES_.164
+.str.165
+_unnamed_cfstring_.166
+OBJC_METH_VAR_NAME_.167
+OBJC_SELECTOR_REFERENCES_.168
+.str.169
+_unnamed_cfstring_.170
+OBJC_CLASSLIST_REFERENCES_$_.179
+.str.186
+_unnamed_cfstring_.187
+OBJC_METH_VAR_NAME_.194
+OBJC_SELECTOR_REFERENCES_.195
+_unnamed_cfstring_.197
+__block_descriptor_tmp.202
+__block_descriptor_tmp.212
+OBJC_METH_VAR_NAME_.213
+OBJC_SELECTOR_REFERENCES_.214
+OBJC_METH_VAR_NAME_.215
+OBJC_SELECTOR_REFERENCES_.216
+OBJC_METH_VAR_NAME_.217
+OBJC_SELECTOR_REFERENCES_.218
+OBJC_METH_VAR_NAME_.219
+OBJC_SELECTOR_REFERENCES_.220
+.str.228
+_unnamed_cfstring_.229
+OBJC_METH_VAR_NAME_.230
+OBJC_SELECTOR_REFERENCES_.231
+OBJC_METH_VAR_NAME_.232
+OBJC_SELECTOR_REFERENCES_.233
+OBJC_METH_VAR_NAME_.234
+OBJC_SELECTOR_REFERENCES_.235
+.str.236
+_unnamed_cfstring_.237
+__block_descriptor_tmp.240
+.str.241
+_unnamed_cfstring_.242
+OBJC_METH_VAR_NAME_.243
+OBJC_SELECTOR_REFERENCES_.244
+.str.245
+_unnamed_cfstring_.246
+OBJC_METH_VAR_NAME_.247
+OBJC_SELECTOR_REFERENCES_.248
+OBJC_METH_VAR_NAME_.249
+OBJC_SELECTOR_REFERENCES_.250
+OBJC_CLASSLIST_REFERENCES_$_.251
+OBJC_IVAR_$_FBSDKShareAPI._fileHandle
+OBJC_CLASSLIST_REFERENCES_$_.256
+OBJC_METH_VAR_NAME_.257
+OBJC_SELECTOR_REFERENCES_.258
+OBJC_METH_VAR_NAME_.259
+OBJC_SELECTOR_REFERENCES_.260
+OBJC_METH_VAR_NAME_.261
+OBJC_SELECTOR_REFERENCES_.262
+OBJC_METH_VAR_NAME_.263
+OBJC_SELECTOR_REFERENCES_.264
+OBJC_METH_VAR_NAME_.265
+OBJC_SELECTOR_REFERENCES_.266
+OBJC_METH_VAR_NAME_.267
+OBJC_SELECTOR_REFERENCES_.268
+OBJC_IVAR_$_FBSDKShareAPI._assetRepresentation
+OBJC_METH_VAR_NAME_.269
+OBJC_SELECTOR_REFERENCES_.270
+.str.273
+__block_descriptor_tmp.274
+.str.278
+__block_descriptor_tmp.279
+OBJC_CLASSLIST_REFERENCES_$_.282
+OBJC_CLASSLIST_REFERENCES_$_.283
+OBJC_CLASSLIST_REFERENCES_$_.284
+.str.285
+_unnamed_cfstring_.286
+.str.293
+__block_descriptor_tmp.294
+OBJC_METH_VAR_NAME_.295
+OBJC_SELECTOR_REFERENCES_.296
+.str.298
+_unnamed_cfstring_.299
+__block_descriptor_tmp.303
+OBJC_METH_VAR_NAME_.304
+OBJC_SELECTOR_REFERENCES_.305
+OBJC_METH_VAR_NAME_.306
+OBJC_SELECTOR_REFERENCES_.307
+__block_descriptor_tmp.310
+__block_descriptor_tmp.314
+.str.320
+_unnamed_cfstring_.321
+.str.324
+__block_descriptor_tmp.325
+OBJC_METH_VAR_NAME_.326
+OBJC_SELECTOR_REFERENCES_.327
+__block_descriptor_tmp.330
+.str.331
+_unnamed_cfstring_.332
+.str.333
+_unnamed_cfstring_.334
+.str.337
+_unnamed_cfstring_.338
+__block_descriptor_tmp.347
+__block_descriptor_tmp.352
+__block_descriptor_tmp.355
+__block_descriptor_tmp.359
+OBJC_CLASSLIST_REFERENCES_$_.360
+__block_descriptor_tmp.366
+.str.369
+__block_descriptor_tmp.370
+.str.371
+_unnamed_cfstring_.372
+.str.375
+_unnamed_cfstring_.376
+OBJC_METH_VAR_NAME_.377
+OBJC_SELECTOR_REFERENCES_.378
+OBJC_METH_VAR_NAME_.379
+OBJC_SELECTOR_REFERENCES_.380
+OBJC_METH_VAR_NAME_.381
+OBJC_SELECTOR_REFERENCES_.382
+.str.383
+_unnamed_cfstring_.384
+.str.389
+_unnamed_cfstring_.390
+__block_descriptor_tmp.393
+.str.394
+_unnamed_cfstring_.395
+OBJC_CLASSLIST_REFERENCES_$_.398
+OBJC_CLASSLIST_REFERENCES_$_.399
+OBJC_METH_VAR_NAME_.400
+OBJC_SELECTOR_REFERENCES_.401
+OBJC_CLASSLIST_REFERENCES_$_.402
+OBJC_METH_VAR_NAME_.403
+OBJC_SELECTOR_REFERENCES_.404
+.str.405
+_unnamed_cfstring_.406
+OBJC_SELECTOR_REFERENCES_.408
+.str.409
+_unnamed_cfstring_.410
+OBJC_METH_VAR_NAME_.411
+OBJC_SELECTOR_REFERENCES_.412
+.str.413
+_unnamed_cfstring_.414
+OBJC_SELECTOR_REFERENCES_.416
+OBJC_SELECTOR_REFERENCES_.418
+OBJC_SELECTOR_REFERENCES_.420
+OBJC_SELECTOR_REFERENCES_.422
+OBJC_CLASSLIST_REFERENCES_$_.423
+OBJC_SELECTOR_REFERENCES_.425
+OBJC_METH_VAR_NAME_.426
+OBJC_SELECTOR_REFERENCES_.427
+OBJC_METH_VAR_NAME_.428
+OBJC_SELECTOR_REFERENCES_.429
+.str.430
+_unnamed_cfstring_.431
+OBJC_SELECTOR_REFERENCES_.433
+OBJC_IVAR_$_FBSDKShareAPI._shareContent
+OBJC_IVAR_$_FBSDKShareAPI._shouldFailOnDataError
+OBJC_IVAR_$_FBSDKShareAPI._message
+OBJC_METH_VAR_NAME_.434
+OBJC_METH_VAR_TYPE_.435
+OBJC_METH_VAR_NAME_.436
+OBJC_METH_VAR_TYPE_.437
+l_OBJC_$_CLASS_METHODS_FBSDKShareAPI
+OBJC_METH_VAR_TYPE_.439
+OBJC_METH_VAR_TYPE_.442
+OBJC_METH_VAR_TYPE_.443
+OBJC_METH_VAR_NAME_.444
+OBJC_METH_VAR_TYPE_.445
+OBJC_CLASS_NAME_.446
+OBJC_METH_VAR_NAME_.447
+OBJC_METH_VAR_TYPE_.448
+OBJC_METH_VAR_TYPE_.449
+OBJC_METH_VAR_NAME_.450
+OBJC_METH_VAR_NAME_.455
+OBJC_METH_VAR_NAME_.457
+OBJC_METH_VAR_TYPE_.458
+OBJC_METH_VAR_NAME_.460
+OBJC_METH_VAR_NAME_.461
+OBJC_METH_VAR_TYPE_.462
+OBJC_METH_VAR_NAME_.463
+OBJC_METH_VAR_TYPE_.464
+OBJC_METH_VAR_NAME_.465
+OBJC_METH_VAR_NAME_.466
+OBJC_METH_VAR_TYPE_.467
+OBJC_METH_VAR_NAME_.468
+OBJC_METH_VAR_NAME_.469
+OBJC_METH_VAR_NAME_.471
+OBJC_METH_VAR_TYPE_.472
+OBJC_METH_VAR_NAME_.474
+OBJC_METH_VAR_TYPE_.475
+OBJC_METH_VAR_NAME_.476
+OBJC_CLASS_NAME_.477
+OBJC_PROP_NAME_ATTR_.478
+OBJC_PROP_NAME_ATTR_.479
+OBJC_PROP_NAME_ATTR_.480
+OBJC_PROP_NAME_ATTR_.481
+OBJC_PROP_NAME_ATTR_.482
+OBJC_PROP_NAME_ATTR_.483
+l_OBJC_$_PROTOCOL_REFS_FBSDKVideoUploaderDelegate
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKVideoUploaderDelegate
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKVideoUploaderDelegate
+l_OBJC_PROTOCOL_$_FBSDKVideoUploaderDelegate
+l_OBJC_LABEL_PROTOCOL_$_FBSDKVideoUploaderDelegate
+OBJC_METH_VAR_TYPE_.487
+OBJC_METH_VAR_TYPE_.488
+OBJC_METH_VAR_TYPE_.489
+OBJC_METH_VAR_TYPE_.490
+OBJC_METH_VAR_NAME_.491
+OBJC_METH_VAR_NAME_.492
+OBJC_METH_VAR_TYPE_.493
+OBJC_CLASS_NAME_.494
+OBJC_PROP_NAME_ATTR_.495
+OBJC_PROP_NAME_ATTR_.496
+OBJC_PROP_NAME_ATTR_.497
+OBJC_PROP_NAME_ATTR_.498
+OBJC_PROP_NAME_ATTR_.499
+OBJC_PROP_NAME_ATTR_.500
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareAPI
+l_OBJC_METACLASS_RO_$_FBSDKShareAPI
+OBJC_CLASS_NAME_.501
+OBJC_METH_VAR_NAME_.502
+OBJC_METH_VAR_TYPE_.503
+OBJC_METH_VAR_TYPE_.504
+OBJC_METH_VAR_TYPE_.505
+OBJC_METH_VAR_TYPE_.506
+OBJC_METH_VAR_TYPE_.507
+OBJC_METH_VAR_NAME_.508
+OBJC_METH_VAR_NAME_.509
+OBJC_METH_VAR_NAME_.510
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareAPI
+OBJC_METH_VAR_NAME_.511
+OBJC_METH_VAR_TYPE_.512
+OBJC_METH_VAR_NAME_.513
+OBJC_METH_VAR_TYPE_.514
+OBJC_METH_VAR_NAME_.515
+OBJC_METH_VAR_TYPE_.516
+OBJC_METH_VAR_NAME_.517
+OBJC_METH_VAR_TYPE_.518
+OBJC_METH_VAR_NAME_.519
+OBJC_METH_VAR_TYPE_.520
+OBJC_METH_VAR_NAME_.521
+OBJC_METH_VAR_TYPE_.522
+OBJC_METH_VAR_NAME_.523
+OBJC_METH_VAR_TYPE_.524
+OBJC_METH_VAR_NAME_.525
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareAPI
+OBJC_CLASS_NAME_.526
+OBJC_PROP_NAME_ATTR_.527
+OBJC_PROP_NAME_ATTR_.528
+OBJC_PROP_NAME_ATTR_.529
+OBJC_PROP_NAME_ATTR_.530
+OBJC_PROP_NAME_ATTR_.531
+OBJC_PROP_NAME_ATTR_.532
+OBJC_PROP_NAME_ATTR_.533
+OBJC_PROP_NAME_ATTR_.534
+OBJC_PROP_NAME_ATTR_.535
+l_OBJC_$_PROP_LIST_FBSDKShareAPI
+l_OBJC_CLASS_RO_$_FBSDKShareAPI
+-[FBSDKShareAPI .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareAPI.m
+-[FBSDKShareAPI setGraphNode:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareAPI.h
+-[FBSDKShareAPI graphNode]
+-[FBSDKShareAPI setMessage:]
+-[FBSDKShareAPI message]
+-[FBSDKShareAPI setAccessToken:]
+-[FBSDKShareAPI setShouldFailOnDataError:]
+-[FBSDKShareAPI shouldFailOnDataError]
+-[FBSDKShareAPI setShareContent:]
+-[FBSDKShareAPI shareContent]
+-[FBSDKShareAPI setDelegate:]
+-[FBSDKShareAPI delegate]
+-[FBSDKShareAPI videoUploader:didFailWithError:]
+-[FBSDKShareAPI videoUploader:didCompleteWithResults:]
+-[FBSDKShareAPI videoChunkDataForVideoUploader:startOffset:endOffset:]
+-[FBSDKShareAPI _removeFromPendingShareAPI]
+-[FBSDKShareAPI _addToPendingShareAPI]
+-[FBSDKShareAPI _connection:addRequest:completionHandler:]
+-[FBSDKShareAPI _stageValue:connection:stagingHandler:]
+-[FBSDKShareAPI _stagePhoto:connection:stagingHandler:]
+-[FBSDKShareAPI _stageOpenGraphValueContainer:connection:stagingHandler:]
+-[FBSDKShareAPI _stageOpenGraphObject:connection:stagingHandler:completionHandler:]
+-[FBSDKShareAPI _stageArray:connection:stagingHandler:]
+-[FBSDKShareAPI _addEncodedParametersToDictionary:key:value:error:]
+-[FBSDKShareAPI _shareVideoContent:]
+-[FBSDKShareAPI _sharePhotoContent:]
+-[FBSDKShareAPI _shareOpenGraphContent:]
+-[FBSDKShareAPI _shareLinkContent:]
+-[FBSDKShareAPI _hasPublishActions]
+-[FBSDKShareAPI _addCommonParameters:content:]
+-[FBSDKShareAPI _graphPathWithSuffix:]
+-[FBSDKShareAPI accessToken]
+-[FBSDKShareAPI validateWithError:]
+-[FBSDKShareAPI share]
+-[FBSDKShareAPI createOpenGraphObject:]
+-[FBSDKShareAPI canShare]
+-[FBSDKShareAPI init]
++[FBSDKShareAPI initialize]
++[FBSDKShareAPI defaultAssetsLibrary]
++[FBSDKShareAPI shareWithContent:delegate:]
+-[FBSDKVideoUploader init]
+-[FBSDKVideoUploader initWithVideoName:videoSize:parameters:delegate:]
+-[FBSDKVideoUploader start]
+-[FBSDKVideoUploader _postStartRequest]
+__39-[FBSDKVideoUploader _postStartRequest]_block_invoke
+-[FBSDKVideoUploader _startTransferRequestWithOffsetDictionary:]
+__64-[FBSDKVideoUploader _startTransferRequestWithOffsetDictionary:]_block_invoke
+__64-[FBSDKVideoUploader _startTransferRequestWithOffsetDictionary:]_block_invoke_2
+__64-[FBSDKVideoUploader _startTransferRequestWithOffsetDictionary:]_block_invoke_3
+__copy_helper_block_.86
+__destroy_helper_block_.87
+__copy_helper_block_.89
+__destroy_helper_block_.90
+__copy_helper_block_.93
+__destroy_helper_block_.94
+-[FBSDKVideoUploader _postFinishRequest]
+__40-[FBSDKVideoUploader _postFinishRequest]_block_invoke
+__copy_helper_block_.115
+__destroy_helper_block_.116
+-[FBSDKVideoUploader _extractOffsetsFromResultDictionary:]
+-[FBSDKVideoUploader numberFormatter]
+-[FBSDKVideoUploader _graphPathWithSuffix:]
+-[FBSDKVideoUploader video]
+-[FBSDKVideoUploader parameters]
+-[FBSDKVideoUploader setParameters:]
+-[FBSDKVideoUploader graphNode]
+-[FBSDKVideoUploader setGraphNode:]
+-[FBSDKVideoUploader delegate]
+-[FBSDKVideoUploader setDelegate:]
+-[FBSDKVideoUploader .cxx_destruct]
+__func__.-[FBSDKVideoUploader init]
+.str.4
+OBJC_IVAR_$_FBSDKVideoUploader._parameters
+OBJC_IVAR_$_FBSDKVideoUploader._delegate
+OBJC_IVAR_$_FBSDKVideoUploader._graphNode
+OBJC_IVAR_$_FBSDKVideoUploader._videoName
+OBJC_IVAR_$_FBSDKVideoUploader._videoSize
+OBJC_IVAR_$_FBSDKVideoUploader._graphPath
+.str.25
+_unnamed_cfstring_.26
+.str.30
+_unnamed_cfstring_.31
+OBJC_IVAR_$_FBSDKVideoUploader._uploadSessionID
+OBJC_IVAR_$_FBSDKVideoUploader._videoID
+OBJC_CLASSLIST_REFERENCES_$_.53
+OBJC_CLASSLIST_REFERENCES_$_.62
+OBJC_SELECTOR_REFERENCES_.76
+.str.77
+_unnamed_cfstring_.78
+OBJC_CLASSLIST_REFERENCES_$_.79
+__block_descriptor_tmp.88
+.str.91
+__block_descriptor_tmp.92
+__block_descriptor_tmp.95
+OBJC_CLASSLIST_REFERENCES_$_.96
+.str.107
+_unnamed_cfstring_.108
+.str.109
+_unnamed_cfstring_.110
+__block_descriptor_tmp.117
+.str.118
+_unnamed_cfstring_.119
+OBJC_METH_VAR_NAME_.120
+OBJC_SELECTOR_REFERENCES_.121
+OBJC_IVAR_$_FBSDKVideoUploader._numberFormatter
+OBJC_SELECTOR_REFERENCES_.131
+.str.132
+_unnamed_cfstring_.133
+OBJC_SELECTOR_REFERENCES_.135
+OBJC_IVAR_$_FBSDKVideoUploader._video
+l_OBJC_METACLASS_RO_$_FBSDKVideoUploader
+OBJC_CLASS_NAME_.136
+l_OBJC_$_INSTANCE_METHODS_FBSDKVideoUploader
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKVideoUploader
+OBJC_CLASS_NAME_.165
+l_OBJC_$_PROP_LIST_FBSDKVideoUploader
+l_OBJC_CLASS_RO_$_FBSDKVideoUploader
+-[FBSDKVideoUploader .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKVideoUploader.m
+-[FBSDKVideoUploader setDelegate:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKVideoUploader.h
+-[FBSDKVideoUploader delegate]
+-[FBSDKVideoUploader setGraphNode:]
+-[FBSDKVideoUploader graphNode]
+-[FBSDKVideoUploader setParameters:]
+-[FBSDKVideoUploader parameters]
+-[FBSDKVideoUploader video]
+-[FBSDKVideoUploader _graphPathWithSuffix:]
+-[FBSDKVideoUploader numberFormatter]
+-[FBSDKVideoUploader _extractOffsetsFromResultDictionary:]
+-[FBSDKVideoUploader _postFinishRequest]
+-[FBSDKVideoUploader _startTransferRequestWithOffsetDictionary:]
+-[FBSDKVideoUploader _postStartRequest]
+-[FBSDKVideoUploader start]
+-[FBSDKVideoUploader initWithVideoName:videoSize:parameters:delegate:]
+-[FBSDKVideoUploader init]
+NSStringFromFBSDKShareDialogMode
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareDialogMode.m
++[FBSDKLikeActionController isDisabled]
++[FBSDKLikeActionController initialize]
++[FBSDKLikeActionController _accessTokenDidChangeNotification:]
++[FBSDKLikeActionController _applicationWillResignActiveNotification:]
++[FBSDKLikeActionController _cacheFileURL]
++[FBSDKLikeActionController likeActionControllerForObjectID:objectType:]
+-[FBSDKLikeActionController initWithObjectID:objectType:accessToken:]
+-[FBSDKLikeActionController init]
++[FBSDKLikeActionController supportsSecureCoding]
+-[FBSDKLikeActionController initWithCoder:]
+-[FBSDKLikeActionController encodeWithCoder:]
+-[FBSDKLikeActionController likeCountString]
+-[FBSDKLikeActionController socialSentence]
+-[FBSDKLikeActionController refresh]
+-[FBSDKLikeActionController toggleLikeWithSoundEnabled:analyticsParameters:fromViewController:]
+__95-[FBSDKLikeActionController toggleLikeWithSoundEnabled:analyticsParameters:fromViewController:]_block_invoke
+-[FBSDKLikeActionController beginContentAccess]
+-[FBSDKLikeActionController endContentAccess]
+-[FBSDKLikeActionController discardContentIfPossible]
+-[FBSDKLikeActionController isContentDiscarded]
+-[FBSDKLikeActionController likeDialog:didCompleteWithResults:]
+-[FBSDKLikeActionController likeDialog:didFailWithError:]
+FBSDKLikeActionControllerLogError
+-[FBSDKLikeActionController _configure]
+-[FBSDKLikeActionController _ensureVerifiedObjectID:]
+__53-[FBSDKLikeActionController _ensureVerifiedObjectID:]_block_invoke
+__copy_helper_block_.170
+__destroy_helper_block_.171
+__53-[FBSDKLikeActionController _ensureVerifiedObjectID:]_block_invoke.174
+__copy_helper_block_.175
+__destroy_helper_block_.176
+-[FBSDKLikeActionController _presentLikeDialogWithUpdateBlock:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController _publishIfNeededWithUpdateBlock:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController _publishLikeWithUpdateBlock:analyticsParameters:fromViewController:]
+__96-[FBSDKLikeActionController _publishLikeWithUpdateBlock:analyticsParameters:fromViewController:]_block_invoke
+__96-[FBSDKLikeActionController _publishLikeWithUpdateBlock:analyticsParameters:fromViewController:]_block_invoke_2
+__copy_helper_block_.197
+__destroy_helper_block_.198
+__copy_helper_block_.201
+__destroy_helper_block_.202
+-[FBSDKLikeActionController _publishUnlikeWithUpdateBlock:analyticsParameters:fromViewController:]
+__98-[FBSDKLikeActionController _publishUnlikeWithUpdateBlock:analyticsParameters:fromViewController:]_block_invoke
+__copy_helper_block_.207
+__destroy_helper_block_.208
+-[FBSDKLikeActionController _refreshWithMode:]
+__46-[FBSDKLikeActionController _refreshWithMode:]_block_invoke
+__46-[FBSDKLikeActionController _refreshWithMode:]_block_invoke_2
+__copy_helper_block_.213
+__destroy_helper_block_.214
+-[FBSDKLikeActionController _setExecuting:forKey:]
+__50-[FBSDKLikeActionController _setExecuting:forKey:]_block_invoke
+-[FBSDKLikeActionController _updateWithObjectIsLiked:likeCountStringWithLike:likeCountStringWithoutLike:socialSentenceWithLike:socialSentenceWithoutLike:unlikeToken:soundEnabled:animated:deferred:]
+__197-[FBSDKLikeActionController _updateWithObjectIsLiked:likeCountStringWithLike:likeCountStringWithoutLike:socialSentenceWithLike:socialSentenceWithoutLike:unlikeToken:soundEnabled:animated:deferred:]_block_invoke
+__197-[FBSDKLikeActionController _updateWithObjectIsLiked:likeCountStringWithLike:likeCountStringWithoutLike:socialSentenceWithLike:socialSentenceWithoutLike:unlikeToken:soundEnabled:animated:deferred:]_block_invoke_2
+__197-[FBSDKLikeActionController _updateWithObjectIsLiked:likeCountStringWithLike:likeCountStringWithoutLike:socialSentenceWithLike:socialSentenceWithoutLike:unlikeToken:soundEnabled:animated:deferred:]_block_invoke_3
+__copy_helper_block_.239
+__destroy_helper_block_.240
+__copy_helper_block_.248
+__destroy_helper_block_.249
+__copy_helper_block_.251
+__destroy_helper_block_.252
+-[FBSDKLikeActionController _useOGLike]
+-[FBSDKLikeActionController lastUpdateTime]
+-[FBSDKLikeActionController objectID]
+-[FBSDKLikeActionController objectType]
+-[FBSDKLikeActionController objectIsLiked]
+-[FBSDKLikeActionController .cxx_destruct]
+__FBSDKLikeActionControllerAddGetObjectIDWithObjectURLRequest_block_invoke
+__copy_helper_block_.412
+__destroy_helper_block_.413
+__FBSDKLikeActionControllerAddGetObjectIDRequest_block_invoke
+__copy_helper_block_.430
+__destroy_helper_block_.431
+__FBSDKLikeActionControllerAddPublishLikeRequest_block_invoke
+__copy_helper_block_.445
+__destroy_helper_block_.446
+__FBSDKLikeActionControllerAddPublishUnlikeRequest_block_invoke
+__copy_helper_block_.454
+__destroy_helper_block_.455
+__Block_byref_object_copy_
+__Block_byref_object_dispose_
+__FBSDKLikeActionControllerAddRefreshRequests_block_invoke
+__copy_helper_block_.457
+__destroy_helper_block_.458
+__FBSDKLikeActionControllerAddRefreshRequests_block_invoke.460
+__copy_helper_block_.461
+__destroy_helper_block_.462
+__FBSDKLikeActionControllerAddRefreshRequests_block_invoke.465
+__copy_helper_block_.466
+__destroy_helper_block_.467
+__FBSDKLikeActionControllerAddGetOGObjectLikeRequest_block_invoke
+__copy_helper_block_.486
+__destroy_helper_block_.487
+__FBSDKLikeActionControllerAddGetEngagementRequest_block_invoke
+__copy_helper_block_.503
+__destroy_helper_block_.504
+.str.5
+_unnamed_cfstring_.6
+_fbsdkLikeActionControllerDisabled
+_cache
+OBJC_CLASSLIST_REFERENCES_$_.33
+OBJC_IVAR_$_FBSDKLikeActionController._objectID
+OBJC_IVAR_$_FBSDKLikeActionController._objectType
+OBJC_IVAR_$_FBSDKLikeActionController._accessToken
+OBJC_CLASSLIST_REFERENCES_$_.80
+.str.81
+_unnamed_cfstring_.82
+OBJC_CLASSLIST_REFERENCES_$_.83
+OBJC_IVAR_$_FBSDKLikeActionController._lastUpdateTime
+.str.86
+_unnamed_cfstring_.87
+OBJC_IVAR_$_FBSDKLikeActionController._likeCountStringWithLike
+OBJC_IVAR_$_FBSDKLikeActionController._likeCountStringWithoutLike
+.str.90
+_unnamed_cfstring_.91
+OBJC_IVAR_$_FBSDKLikeActionController._objectIsLiked
+.str.94
+_unnamed_cfstring_.95
+.str.96
+_unnamed_cfstring_.97
+OBJC_IVAR_$_FBSDKLikeActionController._socialSentenceWithLike
+.str.98
+_unnamed_cfstring_.99
+OBJC_IVAR_$_FBSDKLikeActionController._socialSentenceWithoutLike
+OBJC_IVAR_$_FBSDKLikeActionController._unlikeToken
+OBJC_SELECTOR_REFERENCES_.103
+OBJC_SELECTOR_REFERENCES_.116
+OBJC_IVAR_$_FBSDKLikeActionController._objectIsLikedIsPending
+OBJC_IVAR_$_FBSDKLikeActionController._contentDiscarded
+OBJC_IVAR_$_FBSDKLikeActionController._contentAccessCount
+.str.129
+_unnamed_cfstring_.130
+OBJC_IVAR_$_FBSDKLikeActionController._dialogToUpdateBlockMap
+OBJC_SELECTOR_REFERENCES_.142
+OBJC_CLASSLIST_REFERENCES_$_.143
+.str.150
+_unnamed_cfstring_.151
+.str.152
+_unnamed_cfstring_.153
+OBJC_IVAR_$_FBSDKLikeActionController._dialogToAnalyticsParametersMap
+.str.156
+_unnamed_cfstring_.157
+OBJC_CLASSLIST_REFERENCES_$_.158
+OBJC_CLASSLIST_REFERENCES_$_.161
+.str.162
+_unnamed_cfstring_.163
+.str.166
+_unnamed_cfstring_.167
+OBJC_IVAR_$_FBSDKLikeActionController._verifiedObjectID
+OBJC_IVAR_$_FBSDKLikeActionController._objectIsPage
+.str.172
+__block_descriptor_tmp.173
+__block_descriptor_tmp.177
+OBJC_SELECTOR_REFERENCES_.179
+OBJC_CLASSLIST_REFERENCES_$_.180
+OBJC_SELECTOR_REFERENCES_.184
+OBJC_METH_VAR_NAME_.189
+OBJC_SELECTOR_REFERENCES_.190
+OBJC_IVAR_$_FBSDKLikeActionController._objectIsLikedOnServer
+__block_descriptor_tmp.200
+.str.203
+__block_descriptor_tmp.204
+OBJC_SELECTOR_REFERENCES_.206
+.str.209
+__block_descriptor_tmp.210
+OBJC_IVAR_$_FBSDKLikeActionController._refreshState
+.str.211
+_unnamed_cfstring_.212
+__block_descriptor_tmp.215
+_setExecuting:forKey:._executing
+_setExecuting:forKey:.onceToken
+__block_descriptor_tmp.220
+.str.221
+_unnamed_cfstring_.222
+OBJC_METH_VAR_NAME_.223
+OBJC_SELECTOR_REFERENCES_.224
+OBJC_METH_VAR_NAME_.225
+OBJC_SELECTOR_REFERENCES_.226
+OBJC_CLASSLIST_REFERENCES_$_.231
+OBJC_CLASSLIST_REFERENCES_$_.234
+__block_descriptor_tmp.241
+OBJC_CLASSLIST_REFERENCES_$_.242
+OBJC_CLASSLIST_REFERENCES_$_.245
+__block_descriptor_tmp.250
+__block_descriptor_tmp.253
+OBJC_METH_VAR_TYPE_.262
+OBJC_METH_VAR_TYPE_.263
+OBJC_METH_VAR_TYPE_.264
+OBJC_METH_VAR_TYPE_.266
+l_OBJC_$_CLASS_METHODS_FBSDKLikeActionController
+OBJC_METH_VAR_TYPE_.269
+OBJC_METH_VAR_TYPE_.270
+OBJC_METH_VAR_NAME_.271
+OBJC_METH_VAR_TYPE_.272
+OBJC_CLASS_NAME_.273
+OBJC_METH_VAR_NAME_.274
+OBJC_METH_VAR_TYPE_.275
+OBJC_METH_VAR_TYPE_.276
+OBJC_METH_VAR_NAME_.277
+OBJC_METH_VAR_TYPE_.279
+OBJC_METH_VAR_TYPE_.281
+OBJC_METH_VAR_TYPE_.283
+OBJC_METH_VAR_TYPE_.286
+OBJC_METH_VAR_TYPE_.289
+OBJC_METH_VAR_NAME_.290
+OBJC_METH_VAR_TYPE_.291
+OBJC_METH_VAR_NAME_.292
+OBJC_METH_VAR_TYPE_.294
+OBJC_METH_VAR_TYPE_.297
+OBJC_METH_VAR_TYPE_.299
+OBJC_METH_VAR_NAME_.300
+OBJC_METH_VAR_NAME_.302
+OBJC_METH_VAR_TYPE_.303
+OBJC_CLASS_NAME_.305
+OBJC_PROP_NAME_ATTR_.306
+OBJC_PROP_NAME_ATTR_.307
+OBJC_PROP_NAME_ATTR_.308
+OBJC_PROP_NAME_ATTR_.309
+OBJC_PROP_NAME_ATTR_.310
+OBJC_PROP_NAME_ATTR_.311
+l_OBJC_$_PROTOCOL_REFS_FBSDKLikeDialogDelegate
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKLikeDialogDelegate
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKLikeDialogDelegate
+l_OBJC_PROTOCOL_$_FBSDKLikeDialogDelegate
+l_OBJC_LABEL_PROTOCOL_$_FBSDKLikeDialogDelegate
+OBJC_METH_VAR_NAME_.312
+OBJC_CLASS_NAME_.314
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_NSDiscardableContent
+l_OBJC_$_PROTOCOL_METHOD_TYPES_NSDiscardableContent
+l_OBJC_PROTOCOL_$_NSDiscardableContent
+l_OBJC_LABEL_PROTOCOL_$_NSDiscardableContent
+OBJC_CLASS_NAME_.315
+OBJC_METH_VAR_TYPE_.317
+OBJC_METH_VAR_NAME_.318
+OBJC_METH_VAR_TYPE_.319
+OBJC_METH_VAR_TYPE_.320
+OBJC_CLASS_NAME_.321
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKLikeActionController
+l_OBJC_METACLASS_RO_$_FBSDKLikeActionController
+OBJC_CLASS_NAME_.322
+OBJC_METH_VAR_TYPE_.323
+OBJC_METH_VAR_TYPE_.328
+OBJC_METH_VAR_TYPE_.329
+OBJC_METH_VAR_TYPE_.330
+OBJC_METH_VAR_TYPE_.331
+OBJC_METH_VAR_TYPE_.332
+OBJC_METH_VAR_TYPE_.333
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeActionController
+OBJC_METH_VAR_NAME_.338
+OBJC_METH_VAR_TYPE_.339
+OBJC_METH_VAR_TYPE_.341
+OBJC_METH_VAR_NAME_.342
+OBJC_METH_VAR_TYPE_.343
+OBJC_METH_VAR_TYPE_.345
+OBJC_METH_VAR_NAME_.347
+OBJC_METH_VAR_TYPE_.348
+OBJC_METH_VAR_NAME_.350
+OBJC_METH_VAR_NAME_.352
+OBJC_METH_VAR_NAME_.354
+OBJC_METH_VAR_NAME_.356
+OBJC_METH_VAR_NAME_.357
+OBJC_METH_VAR_NAME_.358
+OBJC_METH_VAR_NAME_.359
+OBJC_METH_VAR_TYPE_.360
+OBJC_METH_VAR_NAME_.361
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeActionController
+OBJC_PROP_NAME_ATTR_.363
+OBJC_PROP_NAME_ATTR_.364
+OBJC_PROP_NAME_ATTR_.365
+OBJC_PROP_NAME_ATTR_.366
+OBJC_PROP_NAME_ATTR_.367
+OBJC_PROP_NAME_ATTR_.368
+OBJC_PROP_NAME_ATTR_.369
+OBJC_PROP_NAME_ATTR_.370
+OBJC_PROP_NAME_ATTR_.371
+OBJC_PROP_NAME_ATTR_.372
+OBJC_PROP_NAME_ATTR_.373
+l_OBJC_$_PROP_LIST_FBSDKLikeActionController
+l_OBJC_CLASS_RO_$_FBSDKLikeActionController
+.str.374
+_unnamed_cfstring_.375
+.str.376
+_unnamed_cfstring_.377
+.str.378
+_unnamed_cfstring_.379
+.str.380
+_unnamed_cfstring_.381
+OBJC_CLASSLIST_REFERENCES_$_.385
+.str.393
+_unnamed_cfstring_.394
+.str.395
+_unnamed_cfstring_.396
+OBJC_CLASSLIST_REFERENCES_$_.397
+OBJC_SELECTOR_REFERENCES_.399
+.str.402
+_unnamed_cfstring_.403
+OBJC_SELECTOR_REFERENCES_.405
+OBJC_SELECTOR_REFERENCES_.407
+.str.408
+_unnamed_cfstring_.409
+OBJC_SELECTOR_REFERENCES_.411
+.str.414
+__block_descriptor_tmp.415
+OBJC_METH_VAR_NAME_.416
+OBJC_SELECTOR_REFERENCES_.417
+.str.418
+_unnamed_cfstring_.419
+.str.420
+_unnamed_cfstring_.421
+.str.422
+_unnamed_cfstring_.423
+.str.424
+_unnamed_cfstring_.425
+.str.426
+_unnamed_cfstring_.427
+__block_descriptor_tmp.432
+.str.433
+_unnamed_cfstring_.434
+.str.435
+_unnamed_cfstring_.436
+.str.437
+_unnamed_cfstring_.438
+OBJC_SELECTOR_REFERENCES_.440
+.str.441
+_unnamed_cfstring_.442
+.str.443
+_unnamed_cfstring_.444
+__block_descriptor_tmp.447
+.str.448
+_unnamed_cfstring_.449
+.str.450
+_unnamed_cfstring_.451
+.str.452
+_unnamed_cfstring_.453
+__block_descriptor_tmp.456
+__block_descriptor_tmp.459
+.str.463
+__block_descriptor_tmp.464
+.str.468
+__block_descriptor_tmp.469
+.str.470
+_unnamed_cfstring_.471
+.str.472
+_unnamed_cfstring_.473
+.str.474
+_unnamed_cfstring_.475
+.str.476
+_unnamed_cfstring_.477
+OBJC_METH_VAR_NAME_.478
+OBJC_SELECTOR_REFERENCES_.479
+OBJC_METH_VAR_NAME_.480
+OBJC_SELECTOR_REFERENCES_.481
+.str.482
+_unnamed_cfstring_.483
+OBJC_METH_VAR_NAME_.484
+OBJC_SELECTOR_REFERENCES_.485
+__block_descriptor_tmp.488
+.str.489
+_unnamed_cfstring_.490
+.str.491
+_unnamed_cfstring_.492
+.str.493
+_unnamed_cfstring_.494
+.str.495
+_unnamed_cfstring_.496
+.str.497
+_unnamed_cfstring_.498
+.str.499
+_unnamed_cfstring_.500
+.str.501
+_unnamed_cfstring_.502
+__block_descriptor_tmp.505
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionController.m
+FBSDKLikeActionControllerAddGetEngagementRequest
+FBSDKLikeActionControllerAddGetOGObjectLikeRequest
+FBSDKLikeActionControllerAddRefreshRequests
+FBSDKLikeActionControllerAddPublishUnlikeRequest
+FBSDKLikeActionControllerAddPublishLikeRequest
+FBSDKLikeActionControllerAddGetObjectIDRequest
+FBSDKLikeActionControllerAddGetObjectIDWithObjectURLRequest
+-[FBSDKLikeActionController .cxx_destruct]
+-[FBSDKLikeActionController objectIsLiked]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionController.h
+-[FBSDKLikeActionController objectType]
+-[FBSDKLikeActionController objectID]
+-[FBSDKLikeActionController lastUpdateTime]
+-[FBSDKLikeActionController _useOGLike]
+-[FBSDKLikeActionController _updateWithObjectIsLiked:likeCountStringWithLike:likeCountStringWithoutLike:socialSentenceWithLike:socialSentenceWithoutLike:unlikeToken:soundEnabled:animated:deferred:]
+-[FBSDKLikeActionController _setExecuting:forKey:]
+-[FBSDKLikeActionController _refreshWithMode:]
+-[FBSDKLikeActionController _publishUnlikeWithUpdateBlock:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController _publishLikeWithUpdateBlock:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController _publishIfNeededWithUpdateBlock:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController _presentLikeDialogWithUpdateBlock:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController _ensureVerifiedObjectID:]
+-[FBSDKLikeActionController _configure]
+-[FBSDKLikeActionController likeDialog:didFailWithError:]
+-[FBSDKLikeActionController likeDialog:didCompleteWithResults:]
+-[FBSDKLikeActionController isContentDiscarded]
+-[FBSDKLikeActionController discardContentIfPossible]
+-[FBSDKLikeActionController endContentAccess]
+-[FBSDKLikeActionController beginContentAccess]
+-[FBSDKLikeActionController toggleLikeWithSoundEnabled:analyticsParameters:fromViewController:]
+-[FBSDKLikeActionController refresh]
+-[FBSDKLikeActionController socialSentence]
+-[FBSDKLikeActionController likeCountString]
+-[FBSDKLikeActionController encodeWithCoder:]
+-[FBSDKLikeActionController initWithCoder:]
++[FBSDKLikeActionController supportsSecureCoding]
+-[FBSDKLikeActionController init]
+-[FBSDKLikeActionController initWithObjectID:objectType:accessToken:]
++[FBSDKLikeActionController likeActionControllerForObjectID:objectType:]
++[FBSDKLikeActionController _cacheFileURL]
++[FBSDKLikeActionController _applicationWillResignActiveNotification:]
++[FBSDKLikeActionController _accessTokenDidChangeNotification:]
++[FBSDKLikeActionController initialize]
++[FBSDKLikeActionController isDisabled]
+-[FBSDKShareMediaContent setPeopleIDs:]
+-[FBSDKShareMediaContent setMedia:]
+-[FBSDKShareMediaContent hash]
+-[FBSDKShareMediaContent isEqual:]
+-[FBSDKShareMediaContent isEqualToShareMediaContent:]
++[FBSDKShareMediaContent supportsSecureCoding]
+-[FBSDKShareMediaContent initWithCoder:]
+-[FBSDKShareMediaContent encodeWithCoder:]
+-[FBSDKShareMediaContent copyWithZone:]
+-[FBSDKShareMediaContent contentURL]
+-[FBSDKShareMediaContent setContentURL:]
+-[FBSDKShareMediaContent hashtag]
+-[FBSDKShareMediaContent setHashtag:]
+-[FBSDKShareMediaContent peopleIDs]
+-[FBSDKShareMediaContent placeID]
+-[FBSDKShareMediaContent setPlaceID:]
+-[FBSDKShareMediaContent ref]
+-[FBSDKShareMediaContent setRef:]
+-[FBSDKShareMediaContent media]
+-[FBSDKShareMediaContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareMediaContent._peopleIDs
+OBJC_CLASSLIST_REFERENCES_$_.10
+OBJC_IVAR_$_FBSDKShareMediaContent._media
+OBJC_IVAR_$_FBSDKShareMediaContent._contentURL
+OBJC_IVAR_$_FBSDKShareMediaContent._hashtag
+OBJC_IVAR_$_FBSDKShareMediaContent._placeID
+OBJC_IVAR_$_FBSDKShareMediaContent._ref
+OBJC_CLASSLIST_REFERENCES_$_.23
+OBJC_CLASSLIST_REFERENCES_$_.47
+.str.48
+_unnamed_cfstring_.49
+l_OBJC_$_CLASS_METHODS_FBSDKShareMediaContent
+OBJC_CLASS_NAME_.80
+OBJC_METH_VAR_TYPE_.100
+OBJC_CLASS_NAME_.112
+OBJC_PROP_NAME_ATTR_.115
+OBJC_PROP_NAME_ATTR_.116
+OBJC_PROP_NAME_ATTR_.117
+OBJC_PROP_NAME_ATTR_.118
+OBJC_METH_VAR_TYPE_.123
+OBJC_PROP_NAME_ATTR_.130
+OBJC_PROP_NAME_ATTR_.131
+OBJC_PROP_NAME_ATTR_.132
+OBJC_PROP_NAME_ATTR_.133
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareMediaContent
+l_OBJC_METACLASS_RO_$_FBSDKShareMediaContent
+OBJC_CLASS_NAME_.135
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareMediaContent
+OBJC_METH_VAR_TYPE_.144
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareMediaContent
+l_OBJC_$_PROP_LIST_FBSDKShareMediaContent
+l_OBJC_CLASS_RO_$_FBSDKShareMediaContent
+-[FBSDKShareMediaContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareMediaContent.m
+-[FBSDKShareMediaContent media]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareMediaContent.h
+-[FBSDKShareMediaContent setRef:]
+-[FBSDKShareMediaContent ref]
+-[FBSDKShareMediaContent setPlaceID:]
+-[FBSDKShareMediaContent placeID]
+-[FBSDKShareMediaContent peopleIDs]
+-[FBSDKShareMediaContent setHashtag:]
+-[FBSDKShareMediaContent hashtag]
+-[FBSDKShareMediaContent setContentURL:]
+-[FBSDKShareMediaContent contentURL]
+-[FBSDKShareMediaContent copyWithZone:]
+-[FBSDKShareMediaContent encodeWithCoder:]
+-[FBSDKShareMediaContent initWithCoder:]
++[FBSDKShareMediaContent supportsSecureCoding]
+-[FBSDKShareMediaContent isEqualToShareMediaContent:]
+-[FBSDKShareMediaContent isEqual:]
+-[FBSDKShareMediaContent hash]
+-[FBSDKShareMediaContent setMedia:]
+-[FBSDKShareMediaContent setPeopleIDs:]
++[FBSDKAppInviteDialog initialize]
++[FBSDKAppInviteDialog showWithContent:delegate:]
++[FBSDKAppInviteDialog showFromViewController:withContent:delegate:]
+-[FBSDKAppInviteDialog canShow]
+-[FBSDKAppInviteDialog show]
+__28-[FBSDKAppInviteDialog show]_block_invoke
+__28-[FBSDKAppInviteDialog show]_block_invoke.99
+__copy_helper_block_.109
+__destroy_helper_block_.110
+-[FBSDKAppInviteDialog validateWithError:]
+-[FBSDKAppInviteDialog _canShowNative]
+-[FBSDKAppInviteDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKAppInviteDialog _invokeDelegateDidCompleteWithResults:]
+-[FBSDKAppInviteDialog _invokeDelegateDidFailWithError:]
+-[FBSDKAppInviteDialog _logDialogShow]
+-[FBSDKAppInviteDialog fromViewController]
+-[FBSDKAppInviteDialog setFromViewController:]
+-[FBSDKAppInviteDialog delegate]
+-[FBSDKAppInviteDialog setDelegate:]
+-[FBSDKAppInviteDialog content]
+-[FBSDKAppInviteDialog setContent:]
+-[FBSDKAppInviteDialog .cxx_destruct]
+OBJC_CLASSLIST_REFERENCES_$_.63
+OBJC_CLASSLIST_REFERENCES_$_.70
+.str.71
+_unnamed_cfstring_.72
+_unnamed_cfstring_.79
+OBJC_SELECTOR_REFERENCES_.85
+OBJC_SELECTOR_REFERENCES_.101
+__block_descriptor_tmp.111
+OBJC_CLASSLIST_REFERENCES_$_.112
+OBJC_CLASSLIST_REFERENCES_$_.121
+OBJC_CLASSLIST_REFERENCES_$_.122
+OBJC_IVAR_$_FBSDKAppInviteDialog._delegate
+OBJC_CLASSLIST_REFERENCES_$_.131
+OBJC_IVAR_$_FBSDKAppInviteDialog._fromViewController
+OBJC_IVAR_$_FBSDKAppInviteDialog._content
+l_OBJC_$_CLASS_METHODS_FBSDKAppInviteDialog
+l_OBJC_METACLASS_RO_$_FBSDKAppInviteDialog
+OBJC_CLASS_NAME_.142
+l_OBJC_$_INSTANCE_METHODS_FBSDKAppInviteDialog
+OBJC_METH_VAR_NAME_.152
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKAppInviteDialog
+OBJC_CLASS_NAME_.156
+l_OBJC_$_PROP_LIST_FBSDKAppInviteDialog
+l_OBJC_CLASS_RO_$_FBSDKAppInviteDialog
+-[FBSDKAppInviteDialog .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppInviteDialog.m
+-[FBSDKAppInviteDialog setContent:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppInviteDialog.h
+-[FBSDKAppInviteDialog content]
+-[FBSDKAppInviteDialog setDelegate:]
+-[FBSDKAppInviteDialog delegate]
+-[FBSDKAppInviteDialog setFromViewController:]
+-[FBSDKAppInviteDialog fromViewController]
+-[FBSDKAppInviteDialog _logDialogShow]
+-[FBSDKAppInviteDialog _invokeDelegateDidFailWithError:]
+-[FBSDKAppInviteDialog _invokeDelegateDidCompleteWithResults:]
+-[FBSDKAppInviteDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKAppInviteDialog _canShowNative]
+-[FBSDKAppInviteDialog validateWithError:]
+-[FBSDKAppInviteDialog show]
+-[FBSDKAppInviteDialog canShow]
++[FBSDKAppInviteDialog showFromViewController:withContent:delegate:]
++[FBSDKAppInviteDialog showWithContent:delegate:]
++[FBSDKAppInviteDialog initialize]
+-[FBSDKLikeBoxBorderView initWithFrame:]
+-[FBSDKLikeBoxBorderView initWithCoder:]
+-[FBSDKLikeBoxBorderView setBackgroundColor:]
+-[FBSDKLikeBoxBorderView setBorderCornerRadius:]
+-[FBSDKLikeBoxBorderView setBorderWidth:]
+-[FBSDKLikeBoxBorderView setCaretPosition:]
+-[FBSDKLikeBoxBorderView contentInsets]
+-[FBSDKLikeBoxBorderView setContentView:]
+-[FBSDKLikeBoxBorderView setFillColor:]
+-[FBSDKLikeBoxBorderView setForegroundColor:]
+-[FBSDKLikeBoxBorderView intrinsicContentSize]
+-[FBSDKLikeBoxBorderView layoutSubviews]
+-[FBSDKLikeBoxBorderView sizeThatFits:]
+-[FBSDKLikeBoxBorderView drawRect:]
+-[FBSDKLikeBoxBorderView _borderInsets]
+-[FBSDKLikeBoxBorderView _initializeContent]
+-[FBSDKLikeBoxBorderView borderCornerRadius]
+-[FBSDKLikeBoxBorderView borderWidth]
+-[FBSDKLikeBoxBorderView caretPosition]
+-[FBSDKLikeBoxBorderView contentView]
+-[FBSDKLikeBoxBorderView fillColor]
+-[FBSDKLikeBoxBorderView foregroundColor]
+-[FBSDKLikeBoxBorderView .cxx_destruct]
+OBJC_IVAR_$_FBSDKLikeBoxBorderView._borderCornerRadius
+OBJC_IVAR_$_FBSDKLikeBoxBorderView._borderWidth
+OBJC_IVAR_$_FBSDKLikeBoxBorderView._caretPosition
+OBJC_IVAR_$_FBSDKLikeBoxBorderView._contentView
+OBJC_IVAR_$_FBSDKLikeBoxBorderView._fillColor
+OBJC_IVAR_$_FBSDKLikeBoxBorderView._foregroundColor
+l_OBJC_METACLASS_RO_$_FBSDKLikeBoxBorderView
+OBJC_CLASS_NAME_.69
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeBoxBorderView
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeBoxBorderView
+OBJC_PROP_NAME_ATTR_.99
+OBJC_PROP_NAME_ATTR_.100
+OBJC_PROP_NAME_ATTR_.101
+OBJC_PROP_NAME_ATTR_.104
+OBJC_PROP_NAME_ATTR_.105
+OBJC_PROP_NAME_ATTR_.106
+OBJC_PROP_NAME_ATTR_.107
+l_OBJC_$_PROP_LIST_FBSDKLikeBoxBorderView
+l_OBJC_CLASS_RO_$_FBSDKLikeBoxBorderView
+FBSDKPointsForScreenPixels
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKUIUtility.h
+FBSDKEdgeInsetsInsetSize
+UIEdgeInsetsInsetRect
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIGeometry.h
+CGSizeMake
+FBSDKEdgeInsetsOutsetSize
+UIEdgeInsetsMake
+-[FBSDKLikeBoxBorderView .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeBoxBorderView.m
+-[FBSDKLikeBoxBorderView foregroundColor]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeBoxBorderView.h
+-[FBSDKLikeBoxBorderView fillColor]
+-[FBSDKLikeBoxBorderView contentView]
+-[FBSDKLikeBoxBorderView caretPosition]
+-[FBSDKLikeBoxBorderView borderWidth]
+-[FBSDKLikeBoxBorderView borderCornerRadius]
+-[FBSDKLikeBoxBorderView _initializeContent]
+-[FBSDKLikeBoxBorderView _borderInsets]
+-[FBSDKLikeBoxBorderView drawRect:]
+-[FBSDKLikeBoxBorderView sizeThatFits:]
+-[FBSDKLikeBoxBorderView layoutSubviews]
+-[FBSDKLikeBoxBorderView intrinsicContentSize]
+-[FBSDKLikeBoxBorderView setForegroundColor:]
+-[FBSDKLikeBoxBorderView setFillColor:]
+-[FBSDKLikeBoxBorderView setContentView:]
+-[FBSDKLikeBoxBorderView contentInsets]
+-[FBSDKLikeBoxBorderView setCaretPosition:]
+-[FBSDKLikeBoxBorderView setBorderWidth:]
+-[FBSDKLikeBoxBorderView setBorderCornerRadius:]
+-[FBSDKLikeBoxBorderView setBackgroundColor:]
+-[FBSDKLikeBoxBorderView initWithCoder:]
+-[FBSDKLikeBoxBorderView initWithFrame:]
++[FBSDKAppGroupAddDialog showWithContent:delegate:]
+-[FBSDKAppGroupAddDialog init]
+-[FBSDKAppGroupAddDialog dealloc]
+-[FBSDKAppGroupAddDialog canShow]
+-[FBSDKAppGroupAddDialog show]
+-[FBSDKAppGroupAddDialog validateWithError:]
+-[FBSDKAppGroupAddDialog webDialog:didCompleteWithResults:]
+-[FBSDKAppGroupAddDialog webDialog:didFailWithError:]
+-[FBSDKAppGroupAddDialog webDialogDidCancel:]
+-[FBSDKAppGroupAddDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKAppGroupAddDialog delegate]
+-[FBSDKAppGroupAddDialog setDelegate:]
+-[FBSDKAppGroupAddDialog content]
+-[FBSDKAppGroupAddDialog setContent:]
+-[FBSDKAppGroupAddDialog .cxx_destruct]
+OBJC_IVAR_$_FBSDKAppGroupAddDialog._webDialog
+OBJC_IVAR_$_FBSDKAppGroupAddDialog._delegate
+OBJC_CLASSLIST_REFERENCES_$_.27
+.str.46
+_unnamed_cfstring_.47
+OBJC_SELECTOR_REFERENCES_.51
+OBJC_CLASSLIST_REFERENCES_$_.54
+OBJC_IVAR_$_FBSDKAppGroupAddDialog._content
+l_OBJC_$_CLASS_METHODS_FBSDKAppGroupAddDialog
+OBJC_CLASS_NAME_.84
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKAppGroupAddDialog
+l_OBJC_METACLASS_RO_$_FBSDKAppGroupAddDialog
+OBJC_CLASS_NAME_.126
+OBJC_METH_VAR_TYPE_.128
+l_OBJC_$_INSTANCE_METHODS_FBSDKAppGroupAddDialog
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKAppGroupAddDialog
+OBJC_CLASS_NAME_.137
+l_OBJC_$_PROP_LIST_FBSDKAppGroupAddDialog
+l_OBJC_CLASS_RO_$_FBSDKAppGroupAddDialog
+-[FBSDKAppGroupAddDialog .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppGroupAddDialog.m
+-[FBSDKAppGroupAddDialog setContent:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppGroupAddDialog.h
+-[FBSDKAppGroupAddDialog content]
+-[FBSDKAppGroupAddDialog setDelegate:]
+-[FBSDKAppGroupAddDialog delegate]
+-[FBSDKAppGroupAddDialog _handleCompletionWithDialogResults:error:]
+-[FBSDKAppGroupAddDialog webDialogDidCancel:]
+-[FBSDKAppGroupAddDialog webDialog:didFailWithError:]
+-[FBSDKAppGroupAddDialog webDialog:didCompleteWithResults:]
+-[FBSDKAppGroupAddDialog validateWithError:]
+-[FBSDKAppGroupAddDialog show]
+-[FBSDKAppGroupAddDialog canShow]
+-[FBSDKAppGroupAddDialog dealloc]
+-[FBSDKAppGroupAddDialog init]
++[FBSDKAppGroupAddDialog showWithContent:delegate:]
++[FBSDKShareOpenGraphObject objectWithProperties:]
+-[FBSDKShareOpenGraphObject isEqual:]
+-[FBSDKShareOpenGraphObject isEqualToShareOpenGraphObject:]
+-[FBSDKShareOpenGraphObject copyWithZone:]
+l_OBJC_$_CLASS_METHODS_FBSDKShareOpenGraphObject
+OBJC_METH_VAR_TYPE_.17
+OBJC_CLASS_NAME_.18
+OBJC_METH_VAR_TYPE_.20
+OBJC_CLASS_NAME_.21
+OBJC_METH_VAR_TYPE_.23
+OBJC_METH_VAR_TYPE_.24
+OBJC_METH_VAR_TYPE_.27
+OBJC_METH_VAR_TYPE_.29
+OBJC_METH_VAR_TYPE_.31
+OBJC_METH_VAR_TYPE_.33
+OBJC_METH_VAR_TYPE_.34
+OBJC_PROP_NAME_ATTR_.54
+OBJC_PROP_NAME_ATTR_.55
+OBJC_PROP_NAME_ATTR_.56
+OBJC_PROP_NAME_ATTR_.57
+OBJC_PROP_NAME_ATTR_.58
+OBJC_PROP_NAME_ATTR_.59
+OBJC_CLASS_NAME_.61
+OBJC_CLASS_NAME_.67
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareOpenGraphObject
+l_OBJC_METACLASS_RO_$_FBSDKShareOpenGraphObject
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareOpenGraphObject
+l_OBJC_$_PROP_LIST_FBSDKShareOpenGraphObject
+l_OBJC_CLASS_RO_$_FBSDKShareOpenGraphObject
+-[FBSDKShareOpenGraphObject copyWithZone:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphObject.m
+-[FBSDKShareOpenGraphObject isEqualToShareOpenGraphObject:]
+-[FBSDKShareOpenGraphObject isEqual:]
++[FBSDKShareOpenGraphObject objectWithProperties:]
++[FBSDKSharePhoto photoWithImage:userGenerated:]
++[FBSDKSharePhoto photoWithImageURL:userGenerated:]
+-[FBSDKSharePhoto hash]
+-[FBSDKSharePhoto isEqual:]
+-[FBSDKSharePhoto isEqualToSharePhoto:]
++[FBSDKSharePhoto supportsSecureCoding]
+-[FBSDKSharePhoto initWithCoder:]
+-[FBSDKSharePhoto encodeWithCoder:]
+-[FBSDKSharePhoto copyWithZone:]
+-[FBSDKSharePhoto image]
+-[FBSDKSharePhoto setImage:]
+-[FBSDKSharePhoto imageURL]
+-[FBSDKSharePhoto setImageURL:]
+-[FBSDKSharePhoto isUserGenerated]
+-[FBSDKSharePhoto setUserGenerated:]
+-[FBSDKSharePhoto caption]
+-[FBSDKSharePhoto setCaption:]
+-[FBSDKSharePhoto .cxx_destruct]
+OBJC_IVAR_$_FBSDKSharePhoto._image
+OBJC_IVAR_$_FBSDKSharePhoto._imageURL
+OBJC_IVAR_$_FBSDKSharePhoto._caption
+OBJC_IVAR_$_FBSDKSharePhoto._userGenerated
+l_OBJC_$_CLASS_METHODS_FBSDKSharePhoto
+OBJC_CLASS_NAME_.55
+OBJC_CLASS_NAME_.58
+OBJC_PROP_NAME_ATTR_.90
+OBJC_PROP_NAME_ATTR_.91
+OBJC_PROP_NAME_ATTR_.92
+OBJC_PROP_NAME_ATTR_.93
+OBJC_PROP_NAME_ATTR_.94
+OBJC_CLASS_NAME_.102
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKSharePhoto
+l_OBJC_METACLASS_RO_$_FBSDKSharePhoto
+OBJC_CLASS_NAME_.103
+l_OBJC_$_INSTANCE_METHODS_FBSDKSharePhoto
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKSharePhoto
+OBJC_PROP_NAME_ATTR_.119
+l_OBJC_$_PROP_LIST_FBSDKSharePhoto
+l_OBJC_CLASS_RO_$_FBSDKSharePhoto
+-[FBSDKSharePhoto .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSharePhoto.m
+-[FBSDKSharePhoto setCaption:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKSharePhoto.h
+-[FBSDKSharePhoto caption]
+-[FBSDKSharePhoto setUserGenerated:]
+-[FBSDKSharePhoto isUserGenerated]
+-[FBSDKSharePhoto setImageURL:]
+-[FBSDKSharePhoto imageURL]
+-[FBSDKSharePhoto setImage:]
+-[FBSDKSharePhoto image]
+-[FBSDKSharePhoto copyWithZone:]
+-[FBSDKSharePhoto encodeWithCoder:]
+-[FBSDKSharePhoto initWithCoder:]
++[FBSDKSharePhoto supportsSecureCoding]
+-[FBSDKSharePhoto isEqualToSharePhoto:]
+-[FBSDKSharePhoto isEqual:]
+-[FBSDKSharePhoto hash]
++[FBSDKSharePhoto photoWithImageURL:userGenerated:]
++[FBSDKSharePhoto photoWithImage:userGenerated:]
+-[FBSDKAppGroupContent hash]
+-[FBSDKAppGroupContent isEqual:]
+-[FBSDKAppGroupContent isEqualToAppGroupContent:]
++[FBSDKAppGroupContent supportsSecureCoding]
+-[FBSDKAppGroupContent initWithCoder:]
+-[FBSDKAppGroupContent encodeWithCoder:]
+-[FBSDKAppGroupContent copyWithZone:]
+-[FBSDKAppGroupContent groupDescription]
+-[FBSDKAppGroupContent setGroupDescription:]
+-[FBSDKAppGroupContent name]
+-[FBSDKAppGroupContent setName:]
+-[FBSDKAppGroupContent privacy]
+-[FBSDKAppGroupContent setPrivacy:]
+-[FBSDKAppGroupContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKAppGroupContent._groupDescription
+OBJC_IVAR_$_FBSDKAppGroupContent._name
+OBJC_IVAR_$_FBSDKAppGroupContent._privacy
+l_OBJC_$_CLASS_METHODS_FBSDKAppGroupContent
+OBJC_CLASS_NAME_.47
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKAppGroupContent
+l_OBJC_METACLASS_RO_$_FBSDKAppGroupContent
+OBJC_CLASS_NAME_.92
+l_OBJC_$_INSTANCE_METHODS_FBSDKAppGroupContent
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKAppGroupContent
+l_OBJC_$_PROP_LIST_FBSDKAppGroupContent
+l_OBJC_CLASS_RO_$_FBSDKAppGroupContent
+-[FBSDKAppGroupContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppGroupContent.m
+-[FBSDKAppGroupContent setPrivacy:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppGroupContent.h
+-[FBSDKAppGroupContent privacy]
+-[FBSDKAppGroupContent setName:]
+-[FBSDKAppGroupContent name]
+-[FBSDKAppGroupContent setGroupDescription:]
+-[FBSDKAppGroupContent groupDescription]
+-[FBSDKAppGroupContent copyWithZone:]
+-[FBSDKAppGroupContent encodeWithCoder:]
+-[FBSDKAppGroupContent initWithCoder:]
++[FBSDKAppGroupContent supportsSecureCoding]
+-[FBSDKAppGroupContent isEqualToAppGroupContent:]
+-[FBSDKAppGroupContent isEqual:]
+-[FBSDKAppGroupContent hash]
+NSStringFromFBSDKAppGroupPrivacy
++[FBSDKLikeControl initialize]
+-[FBSDKLikeControl initWithFrame:]
+-[FBSDKLikeControl initWithCoder:]
+-[FBSDKLikeControl dealloc]
+-[FBSDKLikeControl setBackgroundColor:]
+-[FBSDKLikeControl setForegroundColor:]
+-[FBSDKLikeControl setEnabled:]
+-[FBSDKLikeControl setLikeControlAuxiliaryPosition:]
+-[FBSDKLikeControl setLikeControlHorizontalAlignment:]
+-[FBSDKLikeControl setLikeControlStyle:]
+-[FBSDKLikeControl objectID]
+-[FBSDKLikeControl setObjectID:]
+-[FBSDKLikeControl objectType]
+-[FBSDKLikeControl setObjectType:]
+-[FBSDKLikeControl setOpaque:]
+-[FBSDKLikeControl isSoundEnabled]
+-[FBSDKLikeControl setSoundEnabled:]
+-[FBSDKLikeControl intrinsicContentSize]
+__40-[FBSDKLikeControl intrinsicContentSize]_block_invoke
+-[FBSDKLikeControl layoutSubviews]
+__34-[FBSDKLikeControl layoutSubviews]_block_invoke
+-[FBSDKLikeControl sizeThatFits:]
+__33-[FBSDKLikeControl sizeThatFits:]_block_invoke
+-[FBSDKLikeControl analyticsParameters]
+-[FBSDKLikeControl _auxiliaryView]
+-[FBSDKLikeControl _auxiliaryViewPadding]
+-[FBSDKLikeControl _ensureLikeActionController]
+-[FBSDKLikeControl _handleLikeButtonTap:]
+-[FBSDKLikeControl _initializeContent]
+-[FBSDKLikeControl observeValueForKeyPath:ofObject:change:context:]
+-[FBSDKLikeControl _layoutWithBounds:subviewSizingBlock:]
+FBSDKLikeControlApplyHorizontalAlignment
+FBSDKLikeControlCalculateContentSize
+-[FBSDKLikeControl _likeActionControllerDidDisableNotification:]
+-[FBSDKLikeControl _likeActionControllerDidUpdateNotification:]
+-[FBSDKLikeControl _likeActionControllerDidUpdateWithAnimated:]
+__63-[FBSDKLikeControl _likeActionControllerDidUpdateWithAnimated:]_block_invoke
+__63-[FBSDKLikeControl _likeActionControllerDidUpdateWithAnimated:]_block_invoke_2
+__63-[FBSDKLikeControl _likeActionControllerDidUpdateWithAnimated:]_block_invoke.209
+__63-[FBSDKLikeControl _likeActionControllerDidUpdateWithAnimated:]_block_invoke_2.212
+__copy_helper_block_.218
+__destroy_helper_block_.219
+-[FBSDKLikeControl _updateEnabled]
+-[FBSDKLikeControl _updateLikeBoxCaretPosition]
+-[FBSDKLikeControl foregroundColor]
+-[FBSDKLikeControl likeControlAuxiliaryPosition]
+-[FBSDKLikeControl likeControlHorizontalAlignment]
+-[FBSDKLikeControl likeControlStyle]
+-[FBSDKLikeControl preferredMaxLayoutWidth]
+-[FBSDKLikeControl setPreferredMaxLayoutWidth:]
+-[FBSDKLikeControl .cxx_destruct]
+_unnamed_cfstring_.14
+OBJC_IVAR_$_FBSDKLikeControl._likeButton
+.str.31
+_unnamed_cfstring_.32
+OBJC_IVAR_$_FBSDKLikeControl._likeButtonContainer
+OBJC_IVAR_$_FBSDKLikeControl._foregroundColor
+OBJC_IVAR_$_FBSDKLikeControl._socialSentenceLabel
+OBJC_IVAR_$_FBSDKLikeControl._isExplicitlyDisabled
+OBJC_IVAR_$_FBSDKLikeControl._likeControlAuxiliaryPosition
+OBJC_IVAR_$_FBSDKLikeControl._likeControlHorizontalAlignment
+OBJC_IVAR_$_FBSDKLikeControl._likeControlStyle
+__block_descriptor_tmp.100
+__block_literal_global.101
+OBJC_IVAR_$_FBSDKLikeControl._likeBoxView
+__block_descriptor_tmp.110
+__block_literal_global.111
+.str.112
+_unnamed_cfstring_.113
+OBJC_CLASSLIST_REFERENCES_$_.120
+.str.125
+_unnamed_cfstring_.126
+OBJC_CLASSLIST_REFERENCES_$_.134
+OBJC_SELECTOR_REFERENCES_.140
+OBJC_SELECTOR_REFERENCES_.144
+OBJC_SELECTOR_REFERENCES_.146
+OBJC_CLASSLIST_REFERENCES_$_.164
+OBJC_SELECTOR_REFERENCES_.166
+OBJC_CLASSLIST_REFERENCES_$_.169
+FBSDKLikeControlKVOLikeActionControllerContext
+OBJC_METH_VAR_NAME_.180
+OBJC_SELECTOR_REFERENCES_.181
+OBJC_METH_VAR_NAME_.196
+OBJC_SELECTOR_REFERENCES_.197
+OBJC_SELECTOR_REFERENCES_.201
+OBJC_METH_VAR_NAME_.202
+OBJC_SELECTOR_REFERENCES_.203
+.str.204
+__block_descriptor_tmp.205
+__block_literal_global.206
+.str.207
+__block_descriptor_tmp.208
+__block_descriptor_tmp.221
+OBJC_IVAR_$_FBSDKLikeControl._preferredMaxLayoutWidth
+l_OBJC_$_CLASS_METHODS_FBSDKLikeControl
+OBJC_METH_VAR_TYPE_.234
+OBJC_METH_VAR_TYPE_.235
+OBJC_METH_VAR_TYPE_.236
+OBJC_METH_VAR_TYPE_.237
+OBJC_METH_VAR_TYPE_.238
+OBJC_METH_VAR_TYPE_.239
+OBJC_CLASS_NAME_.240
+OBJC_METH_VAR_TYPE_.241
+OBJC_METH_VAR_TYPE_.242
+OBJC_METH_VAR_TYPE_.245
+OBJC_METH_VAR_TYPE_.247
+OBJC_METH_VAR_TYPE_.249
+OBJC_METH_VAR_TYPE_.251
+OBJC_METH_VAR_TYPE_.253
+OBJC_METH_VAR_NAME_.255
+OBJC_METH_VAR_TYPE_.256
+OBJC_METH_VAR_TYPE_.257
+OBJC_METH_VAR_TYPE_.260
+OBJC_CLASS_NAME_.269
+OBJC_PROP_NAME_ATTR_.270
+OBJC_PROP_NAME_ATTR_.271
+OBJC_PROP_NAME_ATTR_.272
+OBJC_PROP_NAME_ATTR_.273
+OBJC_PROP_NAME_ATTR_.274
+OBJC_PROP_NAME_ATTR_.275
+l_OBJC_$_PROTOCOL_REFS_FBSDKLiking
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS_FBSDKLiking
+OBJC_PROP_NAME_ATTR_.276
+OBJC_PROP_NAME_ATTR_.277
+OBJC_PROP_NAME_ATTR_.278
+OBJC_PROP_NAME_ATTR_.279
+l_OBJC_$_PROP_LIST_FBSDKLiking
+l_OBJC_$_PROTOCOL_METHOD_TYPES_FBSDKLiking
+l_OBJC_PROTOCOL_$_FBSDKLiking
+l_OBJC_LABEL_PROTOCOL_$_FBSDKLiking
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKLikeControl
+l_OBJC_METACLASS_RO_$_FBSDKLikeControl
+OBJC_CLASS_NAME_.280
+OBJC_METH_VAR_TYPE_.282
+OBJC_METH_VAR_TYPE_.284
+OBJC_METH_VAR_TYPE_.288
+OBJC_METH_VAR_TYPE_.290
+OBJC_METH_VAR_TYPE_.292
+OBJC_METH_VAR_NAME_.294
+OBJC_METH_VAR_TYPE_.295
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeControl
+OBJC_METH_VAR_TYPE_.301
+OBJC_METH_VAR_TYPE_.305
+OBJC_METH_VAR_TYPE_.307
+OBJC_METH_VAR_NAME_.308
+OBJC_METH_VAR_TYPE_.309
+OBJC_METH_VAR_NAME_.310
+OBJC_METH_VAR_TYPE_.313
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeControl
+OBJC_PROP_NAME_ATTR_.314
+OBJC_PROP_NAME_ATTR_.315
+OBJC_PROP_NAME_ATTR_.316
+OBJC_PROP_NAME_ATTR_.317
+OBJC_PROP_NAME_ATTR_.318
+OBJC_PROP_NAME_ATTR_.319
+OBJC_PROP_NAME_ATTR_.320
+OBJC_PROP_NAME_ATTR_.321
+OBJC_PROP_NAME_ATTR_.322
+OBJC_PROP_NAME_ATTR_.323
+OBJC_PROP_NAME_ATTR_.324
+OBJC_PROP_NAME_ATTR_.325
+l_OBJC_$_PROP_LIST_FBSDKLikeControl
+l_OBJC_CLASS_RO_$_FBSDKLikeControl
+FBSDKLikeControlPaddedDistance
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKLikeControl.m
+CGRectMake
+-[FBSDKLikeControl .cxx_destruct]
+-[FBSDKLikeControl setPreferredMaxLayoutWidth:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKLikeControl.h
+-[FBSDKLikeControl preferredMaxLayoutWidth]
+-[FBSDKLikeControl likeControlStyle]
+-[FBSDKLikeControl likeControlHorizontalAlignment]
+-[FBSDKLikeControl likeControlAuxiliaryPosition]
+-[FBSDKLikeControl foregroundColor]
+-[FBSDKLikeControl _updateLikeBoxCaretPosition]
+-[FBSDKLikeControl _updateEnabled]
+-[FBSDKLikeControl _likeActionControllerDidUpdateWithAnimated:]
+-[FBSDKLikeControl _likeActionControllerDidUpdateNotification:]
+-[FBSDKLikeControl _likeActionControllerDidDisableNotification:]
+-[FBSDKLikeControl _layoutWithBounds:subviewSizingBlock:]
+-[FBSDKLikeControl observeValueForKeyPath:ofObject:change:context:]
+-[FBSDKLikeControl _initializeContent]
+-[FBSDKLikeControl _handleLikeButtonTap:]
+-[FBSDKLikeControl _ensureLikeActionController]
+-[FBSDKLikeControl _auxiliaryViewPadding]
+-[FBSDKLikeControl _auxiliaryView]
+-[FBSDKLikeControl analyticsParameters]
+-[FBSDKLikeControl sizeThatFits:]
+-[FBSDKLikeControl layoutSubviews]
+-[FBSDKLikeControl intrinsicContentSize]
+-[FBSDKLikeControl setSoundEnabled:]
+-[FBSDKLikeControl isSoundEnabled]
+-[FBSDKLikeControl setOpaque:]
+-[FBSDKLikeControl setObjectType:]
+-[FBSDKLikeControl objectType]
+-[FBSDKLikeControl setObjectID:]
+-[FBSDKLikeControl objectID]
+-[FBSDKLikeControl setLikeControlStyle:]
+-[FBSDKLikeControl setLikeControlHorizontalAlignment:]
+-[FBSDKLikeControl setLikeControlAuxiliaryPosition:]
+-[FBSDKLikeControl setEnabled:]
+-[FBSDKLikeControl setForegroundColor:]
+-[FBSDKLikeControl setBackgroundColor:]
+-[FBSDKLikeControl dealloc]
+-[FBSDKLikeControl initWithCoder:]
+-[FBSDKLikeControl initWithFrame:]
++[FBSDKLikeControl initialize]
+NSStringFromFBSDKLikeControlStyle
+NSStringFromFBSDKLikeControlHorizontalAlignment
+NSStringFromFBSDKLikeControlAuxiliaryPosition
+-[FBSDKGameRequestFrictionlessRecipientCache init]
+-[FBSDKGameRequestFrictionlessRecipientCache dealloc]
+-[FBSDKGameRequestFrictionlessRecipientCache recipientsAreFrictionless:]
+-[FBSDKGameRequestFrictionlessRecipientCache updateWithResults:]
+-[FBSDKGameRequestFrictionlessRecipientCache _accessTokenDidChangeNotification:]
+-[FBSDKGameRequestFrictionlessRecipientCache _updateCache]
+__58-[FBSDKGameRequestFrictionlessRecipientCache _updateCache]_block_invoke
+-[FBSDKGameRequestFrictionlessRecipientCache .cxx_destruct]
+OBJC_IVAR_$_FBSDKGameRequestFrictionlessRecipientCache._recipientIDs
+l_OBJC_METACLASS_RO_$_FBSDKGameRequestFrictionlessRecipientCache
+l_OBJC_$_INSTANCE_METHODS_FBSDKGameRequestFrictionlessRecipientCache
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKGameRequestFrictionlessRecipientCache
+l_OBJC_CLASS_RO_$_FBSDKGameRequestFrictionlessRecipientCache
+-[FBSDKGameRequestFrictionlessRecipientCache .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKGameRequestFrictionlessRecipientCache.m
+-[FBSDKGameRequestFrictionlessRecipientCache _updateCache]
+-[FBSDKGameRequestFrictionlessRecipientCache _accessTokenDidChangeNotification:]
+-[FBSDKGameRequestFrictionlessRecipientCache updateWithResults:]
+-[FBSDKGameRequestFrictionlessRecipientCache recipientsAreFrictionless:]
+-[FBSDKGameRequestFrictionlessRecipientCache dealloc]
+-[FBSDKGameRequestFrictionlessRecipientCache init]
+-[FBSDKShareOpenGraphContent setPeopleIDs:]
+-[FBSDKShareOpenGraphContent hash]
+-[FBSDKShareOpenGraphContent isEqual:]
+-[FBSDKShareOpenGraphContent isEqualToShareOpenGraphContent:]
++[FBSDKShareOpenGraphContent supportsSecureCoding]
+-[FBSDKShareOpenGraphContent initWithCoder:]
+-[FBSDKShareOpenGraphContent encodeWithCoder:]
+-[FBSDKShareOpenGraphContent copyWithZone:]
+-[FBSDKShareOpenGraphContent contentURL]
+-[FBSDKShareOpenGraphContent setContentURL:]
+-[FBSDKShareOpenGraphContent hashtag]
+-[FBSDKShareOpenGraphContent setHashtag:]
+-[FBSDKShareOpenGraphContent peopleIDs]
+-[FBSDKShareOpenGraphContent placeID]
+-[FBSDKShareOpenGraphContent setPlaceID:]
+-[FBSDKShareOpenGraphContent ref]
+-[FBSDKShareOpenGraphContent setRef:]
+-[FBSDKShareOpenGraphContent action]
+-[FBSDKShareOpenGraphContent setAction:]
+-[FBSDKShareOpenGraphContent previewPropertyName]
+-[FBSDKShareOpenGraphContent setPreviewPropertyName:]
+-[FBSDKShareOpenGraphContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._peopleIDs
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._action
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._contentURL
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._hashtag
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._placeID
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._previewPropertyName
+OBJC_IVAR_$_FBSDKShareOpenGraphContent._ref
+l_OBJC_$_CLASS_METHODS_FBSDKShareOpenGraphContent
+OBJC_CLASS_NAME_.106
+OBJC_CLASS_NAME_.113
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKShareOpenGraphContent
+l_OBJC_METACLASS_RO_$_FBSDKShareOpenGraphContent
+OBJC_CLASS_NAME_.129
+l_OBJC_$_INSTANCE_METHODS_FBSDKShareOpenGraphContent
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKShareOpenGraphContent
+l_OBJC_$_PROP_LIST_FBSDKShareOpenGraphContent
+l_OBJC_CLASS_RO_$_FBSDKShareOpenGraphContent
+-[FBSDKShareOpenGraphContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphContent.m
+-[FBSDKShareOpenGraphContent setPreviewPropertyName:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphContent.h
+-[FBSDKShareOpenGraphContent previewPropertyName]
+-[FBSDKShareOpenGraphContent setAction:]
+-[FBSDKShareOpenGraphContent action]
+-[FBSDKShareOpenGraphContent setRef:]
+-[FBSDKShareOpenGraphContent ref]
+-[FBSDKShareOpenGraphContent setPlaceID:]
+-[FBSDKShareOpenGraphContent placeID]
+-[FBSDKShareOpenGraphContent peopleIDs]
+-[FBSDKShareOpenGraphContent setHashtag:]
+-[FBSDKShareOpenGraphContent hashtag]
+-[FBSDKShareOpenGraphContent setContentURL:]
+-[FBSDKShareOpenGraphContent contentURL]
+-[FBSDKShareOpenGraphContent copyWithZone:]
+-[FBSDKShareOpenGraphContent encodeWithCoder:]
+-[FBSDKShareOpenGraphContent initWithCoder:]
++[FBSDKShareOpenGraphContent supportsSecureCoding]
+-[FBSDKShareOpenGraphContent isEqualToShareOpenGraphContent:]
+-[FBSDKShareOpenGraphContent isEqual:]
+-[FBSDKShareOpenGraphContent hash]
+-[FBSDKShareOpenGraphContent setPeopleIDs:]
++[FBSDKHashtag hashtagWithString:]
+-[FBSDKHashtag description]
+-[FBSDKHashtag isValid]
+-[FBSDKHashtag hash]
+-[FBSDKHashtag isEqual:]
+-[FBSDKHashtag isEqualToHashtag:]
++[FBSDKHashtag supportsSecureCoding]
+-[FBSDKHashtag initWithCoder:]
+-[FBSDKHashtag encodeWithCoder:]
+-[FBSDKHashtag copyWithZone:]
+-[FBSDKHashtag stringRepresentation]
+-[FBSDKHashtag setStringRepresentation:]
+-[FBSDKHashtag .cxx_destruct]
+__HashtagRegularExpression_block_invoke
+OBJC_IVAR_$_FBSDKHashtag._stringRepresentation
+.str.27
+_unnamed_cfstring_.28
+l_OBJC_$_CLASS_METHODS_FBSDKHashtag
+OBJC_CLASS_NAME_.42
+OBJC_PROP_NAME_ATTR_.73
+OBJC_CLASS_NAME_.85
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKHashtag
+l_OBJC_METACLASS_RO_$_FBSDKHashtag
+OBJC_CLASS_NAME_.86
+l_OBJC_$_INSTANCE_METHODS_FBSDKHashtag
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKHashtag
+l_OBJC_$_PROP_LIST_FBSDKHashtag
+l_OBJC_CLASS_RO_$_FBSDKHashtag
+HashtagRegularExpression.hashtagRegularExpression
+HashtagRegularExpression.onceToken
+OBJC_CLASSLIST_REFERENCES_$_.95
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKHashtag.m
+HashtagRegularExpression
+NSMakeRange
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
+-[FBSDKHashtag .cxx_destruct]
+-[FBSDKHashtag setStringRepresentation:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKHashtag.h
+-[FBSDKHashtag stringRepresentation]
+-[FBSDKHashtag copyWithZone:]
+-[FBSDKHashtag encodeWithCoder:]
+-[FBSDKHashtag initWithCoder:]
++[FBSDKHashtag supportsSecureCoding]
+-[FBSDKHashtag isEqualToHashtag:]
+-[FBSDKHashtag isEqual:]
+-[FBSDKHashtag hash]
+-[FBSDKHashtag isValid]
+-[FBSDKHashtag description]
++[FBSDKHashtag hashtagWithString:]
++[FBSDKLikeButton initialize]
+-[FBSDKLikeButton dealloc]
+-[FBSDKLikeButton likeActionController]
+-[FBSDKLikeButton setLikeActionController:]
+-[FBSDKLikeButton objectID]
+-[FBSDKLikeButton setObjectID:]
+-[FBSDKLikeButton objectType]
+-[FBSDKLikeButton setObjectType:]
+-[FBSDKLikeButton layoutSubviews]
+-[FBSDKLikeButton analyticsParameters]
+-[FBSDKLikeButton impressionTrackingEventName]
+-[FBSDKLikeButton impressionTrackingIdentifier]
+-[FBSDKLikeButton configureButton]
+-[FBSDKLikeButton isImplicitlyDisabled]
+-[FBSDKLikeButton _ensureLikeActionController:]
+-[FBSDKLikeButton _handleTap:]
+-[FBSDKLikeButton _like:]
+-[FBSDKLikeButton _likeActionControllerDidDisableNotification:]
+-[FBSDKLikeButton _likeActionControllerDidResetNotification:]
+-[FBSDKLikeButton _likeActionControllerDidUpdateNotification:]
+-[FBSDKLikeButton _resetLikeActionController]
+-[FBSDKLikeButton _setLikeActionController:]
+-[FBSDKLikeButton _setSelected:animated:]
+__41-[FBSDKLikeButton _setSelected:animated:]_block_invoke
+__41-[FBSDKLikeButton _setSelected:animated:]_block_invoke.143
+__41-[FBSDKLikeButton _setSelected:animated:]_block_invoke_2
+__copy_helper_block_.144
+__destroy_helper_block_.145
+-[FBSDKLikeButton isSoundEnabled]
+-[FBSDKLikeButton setSoundEnabled:]
+-[FBSDKLikeButton .cxx_destruct]
+OBJC_IVAR_$_FBSDKLikeButton._likeActionController
+OBJC_IVAR_$_FBSDKLikeButton._objectID
+OBJC_IVAR_$_FBSDKLikeButton._objectType
+OBJC_CLASSLIST_REFERENCES_$_.48
+OBJC_CLASSLIST_REFERENCES_$_.74
+OBJC_CLASSLIST_REFERENCES_$_.77
+OBJC_IVAR_$_FBSDKLikeButton._soundEnabled
+OBJC_SELECTOR_REFERENCES_.134
+.str.142
+__block_descriptor_tmp.146
+OBJC_CLASS_NAME_.157
+l_OBJC_$_CLASS_METHODS_FBSDKLikeButton
+OBJC_METH_VAR_TYPE_.160
+OBJC_METH_VAR_TYPE_.162
+OBJC_CLASS_NAME_.164
+OBJC_METH_VAR_TYPE_.166
+OBJC_METH_VAR_NAME_.169
+OBJC_METH_VAR_TYPE_.170
+OBJC_METH_VAR_TYPE_.176
+OBJC_METH_VAR_TYPE_.181
+OBJC_METH_VAR_TYPE_.184
+OBJC_METH_VAR_TYPE_.187
+OBJC_CLASS_NAME_.194
+OBJC_PROP_NAME_ATTR_.195
+OBJC_PROP_NAME_ATTR_.196
+OBJC_PROP_NAME_ATTR_.197
+OBJC_METH_VAR_TYPE_.203
+OBJC_METH_VAR_TYPE_.205
+OBJC_CLASS_NAME_.206
+OBJC_PROP_NAME_ATTR_.207
+OBJC_PROP_NAME_ATTR_.208
+OBJC_PROP_NAME_ATTR_.209
+OBJC_PROP_NAME_ATTR_.210
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKLikeButton
+l_OBJC_METACLASS_RO_$_FBSDKLikeButton
+OBJC_CLASS_NAME_.211
+OBJC_METH_VAR_TYPE_.215
+OBJC_METH_VAR_TYPE_.217
+l_OBJC_$_INSTANCE_METHODS_FBSDKLikeButton
+OBJC_IVAR_$_FBSDKLikeButton._isExplicitlyDisabled
+OBJC_METH_VAR_TYPE_.220
+OBJC_METH_VAR_NAME_.221
+OBJC_METH_VAR_TYPE_.222
+OBJC_METH_VAR_TYPE_.224
+OBJC_METH_VAR_TYPE_.226
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKLikeButton
+OBJC_PROP_NAME_ATTR_.228
+OBJC_PROP_NAME_ATTR_.229
+OBJC_PROP_NAME_ATTR_.230
+OBJC_PROP_NAME_ATTR_.231
+l_OBJC_$_PROP_LIST_FBSDKLikeButton
+l_OBJC_CLASS_RO_$_FBSDKLikeButton
+-[FBSDKLikeButton .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKLikeButton.m
+-[FBSDKLikeButton setSoundEnabled:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKLikeButton.h
+-[FBSDKLikeButton isSoundEnabled]
+-[FBSDKLikeButton _setSelected:animated:]
+-[FBSDKLikeButton _setLikeActionController:]
+-[FBSDKLikeButton _resetLikeActionController]
+-[FBSDKLikeButton _likeActionControllerDidUpdateNotification:]
+-[FBSDKLikeButton _likeActionControllerDidResetNotification:]
+-[FBSDKLikeButton _likeActionControllerDidDisableNotification:]
+-[FBSDKLikeButton _like:]
+-[FBSDKLikeButton _handleTap:]
+-[FBSDKLikeButton _ensureLikeActionController:]
+-[FBSDKLikeButton isImplicitlyDisabled]
+-[FBSDKLikeButton configureButton]
+-[FBSDKLikeButton impressionTrackingIdentifier]
+-[FBSDKLikeButton impressionTrackingEventName]
+-[FBSDKLikeButton analyticsParameters]
+-[FBSDKLikeButton layoutSubviews]
+-[FBSDKLikeButton setObjectType:]
+-[FBSDKLikeButton objectType]
+-[FBSDKLikeButton setObjectID:]
+-[FBSDKLikeButton objectID]
+-[FBSDKLikeButton setLikeActionController:]
+-[FBSDKLikeButton likeActionController]
+-[FBSDKLikeButton dealloc]
++[FBSDKLikeButton initialize]
+-[FBSDKAppInviteContent previewImageURL]
+-[FBSDKAppInviteContent setPreviewImageURL:]
+-[FBSDKAppInviteContent hash]
+-[FBSDKAppInviteContent isEqual:]
+-[FBSDKAppInviteContent isEqualToAppInviteContent:]
++[FBSDKAppInviteContent supportsSecureCoding]
+-[FBSDKAppInviteContent initWithCoder:]
+-[FBSDKAppInviteContent encodeWithCoder:]
+-[FBSDKAppInviteContent copyWithZone:]
+-[FBSDKAppInviteContent appInvitePreviewImageURL]
+-[FBSDKAppInviteContent setAppInvitePreviewImageURL:]
+-[FBSDKAppInviteContent appLinkURL]
+-[FBSDKAppInviteContent setAppLinkURL:]
+-[FBSDKAppInviteContent promotionCode]
+-[FBSDKAppInviteContent setPromotionCode:]
+-[FBSDKAppInviteContent promotionText]
+-[FBSDKAppInviteContent setPromotionText:]
+-[FBSDKAppInviteContent destination]
+-[FBSDKAppInviteContent setDestination:]
+-[FBSDKAppInviteContent .cxx_destruct]
+OBJC_IVAR_$_FBSDKAppInviteContent._appLinkURL
+OBJC_IVAR_$_FBSDKAppInviteContent._appInvitePreviewImageURL
+OBJC_IVAR_$_FBSDKAppInviteContent._promotionCode
+OBJC_IVAR_$_FBSDKAppInviteContent._promotionText
+OBJC_IVAR_$_FBSDKAppInviteContent._destination
+l_OBJC_$_CLASS_METHODS_FBSDKAppInviteContent
+OBJC_CLASS_NAME_.49
+OBJC_CLASS_NAME_.52
+OBJC_CLASS_NAME_.89
+l_OBJC_CLASS_PROTOCOLS_$_FBSDKAppInviteContent
+l_OBJC_METACLASS_RO_$_FBSDKAppInviteContent
+OBJC_CLASS_NAME_.97
+l_OBJC_$_INSTANCE_METHODS_FBSDKAppInviteContent
+l_OBJC_$_INSTANCE_VARIABLES_FBSDKAppInviteContent
+l_OBJC_$_PROP_LIST_FBSDKAppInviteContent
+l_OBJC_CLASS_RO_$_FBSDKAppInviteContent
+-[FBSDKAppInviteContent .cxx_destruct]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppInviteContent.m
+-[FBSDKAppInviteContent setDestination:]
+/Users/tristan/Desktop/ios_sample/Carthage/Checkouts/facebook-ios-sdk/FBSDKShareKit/FBSDKShareKit/FBSDKAppInviteContent.h
+-[FBSDKAppInviteContent destination]
+-[FBSDKAppInviteContent setPromotionText:]
+-[FBSDKAppInviteContent promotionText]
+-[FBSDKAppInviteContent setPromotionCode:]
+-[FBSDKAppInviteContent promotionCode]
+-[FBSDKAppInviteContent setAppLinkURL:]
+-[FBSDKAppInviteContent appLinkURL]
+-[FBSDKAppInviteContent setAppInvitePreviewImageURL:]
+-[FBSDKAppInviteContent appInvitePreviewImageURL]
+-[FBSDKAppInviteContent copyWithZone:]
+-[FBSDKAppInviteContent encodeWithCoder:]
+-[FBSDKAppInviteContent initWithCoder:]
++[FBSDKAppInviteContent supportsSecureCoding]
+-[FBSDKAppInviteContent isEqualToAppInviteContent:]
+-[FBSDKAppInviteContent isEqual:]
+-[FBSDKAppInviteContent hash]
+-[FBSDKAppInviteContent setPreviewImageURL:]
+-[FBSDKAppInviteContent previewImageURL]
+_ZL15__ARCLite__loadv
+_ZL30add_image_hook_autoreleasepoolPK11mach_headerl
+_ZL34__arclite_objc_autoreleasePoolPushv
+_ZL33__arclite_objc_autoreleasePoolPopPv
+_ZL19patch_lazy_pointersPK11mach_headerP7patch_tm
+_ZL42__arclite_NSArray_objectAtIndexedSubscriptP7NSArrayP13objc_selectorj
+_ZL53__arclite_NSMutableArray_setObject_atIndexedSubscriptP14NSMutableArrayP13objc_selectorP11objc_objectj
+_ZL46__arclite_NSDictionary_objectForKeyedSubscriptP12NSDictionaryP13objc_selectorP11objc_object
+_ZL47__arclite_NSOrderedSet_objectAtIndexedSubscriptP12NSOrderedSetP13objc_selectorj
+_ZL58__arclite_NSMutableOrderedSet_setObject_atIndexedSubscriptP19NSMutableOrderedSetP13objc_selectorP11objc_objectj
+_ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+_ZL18add_image_hook_ARCPK11mach_headerl
+_ZL36__arclite_object_setInstanceVariableP11objc_objectPKcPv
+_ZL24__arclite_object_setIvarP11objc_objectP9objc_ivarS0_
+_ZL21__arclite_object_copyP11objc_objectm
+_ZL21__arclite_objc_retainP11objc_object
+_ZL26__arclite_objc_retainBlockP11objc_object
+_ZL22__arclite_objc_releaseP11objc_object
+_ZL26__arclite_objc_autoreleaseP11objc_object
+_ZL32__arclite_objc_retainAutoreleaseP11objc_object
+_ZL37__arclite_objc_autoreleaseReturnValueP11objc_object
+_ZL43__arclite_objc_retainAutoreleaseReturnValueP11objc_object
+_ZL44__arclite_objc_retainAutoreleasedReturnValueP11objc_object
+_ZL26__arclite_objc_storeStrongPP11objc_objectS0_
+_ZL22add_image_hook_swiftV1PK11mach_headerl
+_ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
+_ZL13replaceMethodP10objc_classP13objc_selectorPFP11objc_objectS4_S2_zEPS6_
+_ZL30__arclite_NSManagedObject_initP11objc_objectP13objc_selector
+_ZL41__arclite_NSManagedObject_allocWithEntityP11objc_objectP13objc_selectorS0_
+_ZL36__arclite_NSManagedObject_allocBatchP11objc_objectP13objc_selectorPS0_S0_j
+_ZL37__arclite_NSKKMS_fastIndexForKnownKeyP11objc_objectP13objc_selectorS0_
+_ZL28__arclite_NSKKMS_indexForKeyP11objc_objectP13objc_selectorS0_
+_ZL29__arclite_NSKKsD_objectForKeyP11objc_objectP13objc_selectorS0_
+_ZL35__arclite_NSKKsD_removeObjectForKeyP11objc_objectP13objc_selectorS0_
+_ZL33__arclite_NSKKsD_setObject_forKeyP11objc_objectP13objc_selectorS0_S0_
+_ZL41__arclite_NSKKsD_addEntriesFromDictionaryP11objc_objectP13objc_selectorP12NSDictionary
+_ZL28__arclite_objc_readClassPairP10objc_classPK15objc_image_info
+_ZL32__arclite_objc_allocateClassPairP10objc_classPKcm
+_ZL32__arclite_object_getIndexedIvarsP11objc_object
+_ZL23__arclite_objc_getClassPKc
+_ZL27__arclite_objc_getMetaClassPKc
+_ZL31__arclite_objc_getRequiredClassPKc
+_ZL26__arclite_objc_lookUpClassPKc
+_ZL26__arclite_objc_getProtocolPKc
+_ZL23__arclite_class_getNameP10objc_class
+_ZL26__arclite_protocol_getNameP8Protocol
+_ZL37__arclite_objc_copyClassNamesForImagePKcPj
+_ZL17transcribeMethodsP10objc_classP15glue_class_ro_t
+_ZL19transcribeProtocolsP10objc_classP15glue_class_ro_t
+_ZL20transcribePropertiesP10objc_classP15glue_class_ro_t
+_ZL14initialize_impP11objc_objectP13objc_selector
+_ZL18allocateMaybeSwiftP18glue_swift_class_tm
+_ZL22copySwiftV1MangledNamePKcb
+_ZL13demangledNamePKcb
+_ZL16scanMangledFieldRPKcS0_S1_Ri
+_ZL30arclite_uninitialized_functionv
+_ZL12cxxConstructP11objc_object
+_ZL20fixStringForCoreDataP11objc_object
+OBJC_METACLASS_$___ARCLite__
+_ZL24OBJC_CLASS_$___ARCLite__
+_ZL31OBJC_METACLASS_RO_$___ARCLite__
+_non_lazy_classes
+_ZL27OBJC_CLASS_RO_$___ARCLite__
+_ZL11_class_name
+_ZL32OBJC_$_CLASS_METHODS___ARCLite__
+_ZL17_load_method_name
+_ZL17_load_method_type
+_ZL23NSAutoreleasePool_class
+_ZZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+_ZGVZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+.str.2
+.str.6
+.str.17
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS___ARCLiteIndexedSubscripting__
+l_OBJC_$_PROTOCOL_METHOD_TYPES___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteIndexedSubscripting__
+OBJC_CLASS_NAME_.32
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS___ARCLiteKeyedSubscripting__
+l_OBJC_$_PROTOCOL_METHOD_TYPES___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+_ZZL18add_image_hook_ARCPK11mach_headerlE7patches
+_ZGVZL18add_image_hook_ARCPK11mach_headerlE7patches
+_ZL30NSUndoManagerProxy_targetClass
+_ZL29original_NSManagedObject_init
+_ZL40original_NSManagedObject_allocWithEntity
+_ZL35original_NSManagedObject_allocBatch
+_ZL25NSMutableDictionary_class
+_ZL22NSConstantString_class
+_ZL14NSString_class
+.str.73
+_ZL36original_NSKKMS_fastIndexForKnownKey
+_ZL27original_NSKKMS_indexForKey
+_ZL28original_NSKKsD_objectForKey
+_ZL34original_NSKKsD_removeObjectForKey
+_ZL32original_NSKKsD_setObject_forKey
+_ZL40original_NSKKsD_addEntriesFromDictionary
+_ZZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+_ZGVZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+_ZL31original_objc_allocateClassPair
+_ZL31original_object_getIndexedIvars
+_ZL22original_objc_getClass
+.str.85
+_ZL26original_objc_getMetaClass
+_ZL30original_objc_getRequiredClass
+.str.87
+_ZL25original_objc_lookUpClass
+_ZL25original_objc_getProtocol
+.str.89
+_ZL22original_class_getName
+_ZL25original_protocol_getName
+_ZL36original_objc_copyClassNamesForImage
+.str.102
+_ZL12demangleLock
+_ZL9Demangled
+.str.104
+OBJC_SELECTOR_REFERENCES_.111
+Apple LLVM version 7.3.0 (clang-703.0.21)
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -fembed-bitcode -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/Symbols/BuiltProducts -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -fgnu-inline-asm -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~248/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -mlinker-version=264.3 -march=armv7a
+__arclite_NSKKsD_addEntriesFromDictionary
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65
+__arclite_NSKKsD_setObject_forKey
+__arclite_NSKKsD_removeObjectForKey
+__arclite_NSKKsD_objectForKey
+__arclite_NSKKMS_indexForKey
+fixStringForCoreData
+__arclite_NSKKMS_fastIndexForKnownKey
+__arclite_NSManagedObject_allocBatch
+__arclite_NSManagedObject_allocWithEntity
+cxxConstruct
+__arclite_NSManagedObject_init
+arclite_uninitialized_function
+replaceMethod
+__arclite_NSUndoManagerProxy_isKindOfClass
+patch_t<const char **(const char *, unsigned int *)>
+__arclite_objc_copyClassNamesForImage
+patch_t<const char *(Protocol *)>
+__arclite_protocol_getName
+patch_t<const char *(Class)>
+__isctype
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.Internal.sdk/usr/include/ctype.h
+isdigit
+scanMangledField
+copySwiftV1DemangledName
+demangledName
+__arclite_class_getName
+patch_t<Protocol *(const char *)>
+__arclite_objc_getProtocol
+__arclite_objc_lookUpClass
+__arclite_objc_getRequiredClass
+__arclite_objc_getMetaClass
+patch_t<Class (const char *)>
+copySwiftV1MangledName
+__arclite_objc_getClass
+patch_t<void *(id)>
+word_align
+__arclite_object_getIndexedIvars
+patch_t<Class (Class, const char *, unsigned long)>
+allocateMaybeSwift
+isSwift
+metaclass
+__arclite_objc_allocateClassPair
+patch_t<Class (Class, const objc_image_info *)>
+initialize_imp
+property_list_nth
+transcribeProperties
+transcribeProtocols
+method_list_nth
+transcribeMethods
+alignment
+max
+ivar_list_nth
+transcribeIvars
+fastFlags
+ro
+__arclite_objc_readClassPair
+add_image_hook_swiftV1
+install_swiftV1
+patch_t<void (id *, id)>
+__arclite_objc_storeStrong
+__arclite_objc_retainAutoreleasedReturnValue
+__arclite_objc_retainAutoreleaseReturnValue
+__arclite_objc_autoreleaseReturnValue
+__arclite_objc_retainAutorelease
+__arclite_objc_autorelease
+patch_t<void (id)>
+__arclite_objc_release
+__arclite_objc_retainBlock
+patch_t<id (id)>
+__arclite_objc_retain
+patch_t<id (id, unsigned long)>
+fixupCopiedReferences
+classOrSuperClassesUseARR
+__arclite_object_copy
+patch_t<void (id, objc_ivar *, id)>
+isScannedOffset
+alignedInstanceStart
+_class_getInstanceStart
+data
+__arclite_class_usesAutomaticRetainRelease
+_ivar_getClass
+__arclite_object_setIvar
+patch_t<objc_ivar *(id, const char *, void *)>
+__arclite_object_setInstanceVariable
+add_image_hook_ARC
+install_ARC
+objc_collectingEnabled
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.Internal.sdk/usr/include/objc/objc-auto.h
+__arclite_NSMutableDictionary__setObject_forKeyedSubscript
+addOrReplaceMethod
+install_dict_nil_value
+__arclite_NSMutableOrderedSet_setObject_atIndexedSubscript
+__arclite_NSOrderedSet_objectAtIndexedSubscript
+keyedGetter
+__arclite_NSDictionary_objectForKeyedSubscript
+__arclite_NSMutableArray_setObject_atIndexedSubscript
+indexedGetter
+__arclite_NSArray_objectAtIndexedSubscript
+addMethod
+install_subscripting
+patch_lazy_pointers
+patch_t<void (void *)>
+__arclite_objc_autoreleasePoolPop
+patch_t<void *()>
+__arclite_objc_autoreleasePoolPush
+add_image_hook_autoreleasepool
+install_autoreleasepool
+__ARCLite__load

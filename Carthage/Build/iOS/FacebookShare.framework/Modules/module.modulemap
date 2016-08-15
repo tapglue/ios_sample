@@ -1,0 +1,3 @@
+framework module FacebookShare {
+    header "FacebookShare-Swift.h"
+}

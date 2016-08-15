@@ -1,0 +1,10 @@
+framework module WSTagsField {
+  umbrella header "WSTagsField.h"
+
+  export *
+  module * { export * }
+}
+
+module WSTagsField.Swift {
+    header "WSTagsField-Swift.h"
+}

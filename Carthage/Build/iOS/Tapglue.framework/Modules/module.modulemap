@@ -1,0 +1,10 @@
+framework module Tapglue {
+  umbrella header "Tapglue.h"
+
+  export *
+  module * { export * }
+}
+
+module Tapglue.Swift {
+    header "Tapglue-Swift.h"
+}
