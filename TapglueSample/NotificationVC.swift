@@ -11,12 +11,15 @@ import Tapglue
 
 class NotificationVC: UIViewController, UITableViewDelegate {
     
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     @IBOutlet weak var notificationsTableView: UITableView!
     
-    var checkmarkedEvents: [Bool] = []
+    var checkmarkedActivities: [Bool] = []
     
-    // TGEvent arr
-    var filteredEvents: [TGEvent] = []
+    // Event arr
+    var filteredActivity: [Activity] = []
     
     var refreshControl: UIRefreshControl!
     
@@ -31,7 +34,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        checkmarkedEvents = defaults.objectForKey("filterCheckmarks") as! [Bool]
+        checkmarkedActivities = defaults.objectForKey("filterCheckmarks") as! [Bool]
         
         self.loadNotificationFeed()
         
@@ -55,7 +58,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         
         var types = [String]()
         var count = 0
-        for checked in checkmarkedEvents {
+        for checked in checkmarkedActivities {
             if checked {
                 types.append(allTypes[count])
                
@@ -65,18 +68,19 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         
         // Issue: Retrieve event types are not working proparly, if I use my custom types I get still tg_friend and tg_follow as my feed back
         
-        Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrieveEventsFeedForCurrentUserForEventTypes: \(error)")
-            } else {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    print(feed)
-                    self.filteredEvents = feed as! [TGEvent]
-                    self.notificationsTableView.reloadData()
-                })
-                self.refreshControl.endRefreshing()
-            }
-        }
+        // OldSDK TODO: Does retrieves types excist?
+//        Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in
+//            if error != nil {
+//                print("\nError retrieveEventsFeedForCurrentUserForEventTypes: \(error)")
+//            } else {
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    print(feed)
+//                    self.filteredEvents = feed as! [TGEvent]
+//                    self.notificationsTableView.reloadData()
+//                })
+//                self.refreshControl.endRefreshing()
+//            }
+//        }
     }
     
     func filterButton(sender:AnyObject){
@@ -92,14 +96,14 @@ extension NotificationVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(filteredEvents.count)
-        return filteredEvents.count
+        print(filteredActivity.count)
+        return filteredActivity.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
                 
-        cell.configureCellWithEvent(filteredEvents[indexPath.row])
+        cell.configureCellWithEvent(filteredActivity[indexPath.row])
         
         return cell
     }

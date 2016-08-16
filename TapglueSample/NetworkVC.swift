@@ -9,19 +9,22 @@
 import UIKit
 import Tapglue
 import Contacts
-import TwitterKit
+//import TwitterKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 
 class NetworkVC: UIViewController, UITableViewDelegate {
     
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     @IBOutlet weak var friendsTableView: UITableView!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
-    var users: [TGUser] = []
-    var fromUsers: [TGUser] = []
-    var toUsers: [TGUser] = []
+    var users: [User] = []
+    var fromUsers: [User] = []
+    var toUsers: [User] = []
     
     var resultSearchController: UISearchController!
     
@@ -105,31 +108,32 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     
     func checkForPendingConnections(){
         
-        Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrievePendingConncetionsForCurrentUser: \(error)")
-            } else {
-                for inc in incoming {
-                    self.fromUsers.append((inc as! TGConnection).fromUser)
-                }
-                for out in outgoing {
-                    self.toUsers.append((out as! TGConnection).toUser)
-                }
-                print("\nFrom: \(self.fromUsers)")
-                print("\nTo: \(self.toUsers)")
-                
-                self.users = self.fromUsers
-                
-                
-                self.users.sortInPlace({ (contact1, contact2) -> Bool in
-                    return contact1.username < contact2.username
-                })
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.reloadTableViewWithAnimation()
-                })
-            }
-        }
+        // OldSDK TODO: update pending request to new sdk
+//        Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
+//            if error != nil {
+//                print("\nError retrievePendingConncetionsForCurrentUser: \(error)")
+//            } else {
+//                for inc in incoming {
+//                    self.fromUsers.append((inc as! TGConnection).fromUser)
+//                }
+//                for out in outgoing {
+//                    self.toUsers.append((out as! TGConnection).toUser)
+//                }
+//                print("\nFrom: \(self.fromUsers)")
+//                print("\nTo: \(self.toUsers)")
+//                
+//                self.users = self.fromUsers
+//                
+//                
+//                self.users.sortInPlace({ (contact1, contact2) -> Bool in
+//                    return contact1.username < contact2.username
+//                })
+//                
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.reloadTableViewWithAnimation()
+//                })
+//            }
+//        }
     }
 }
 
@@ -187,19 +191,40 @@ extension NetworkVC: UISearchResultsUpdating {
     // Mark: -SearchBar
     func updateSearchResultsForSearchController(searchController: UISearchController){
         if (searchController.searchBar.text?.characters.count > 2) {
-            Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
-                if users != nil && error == nil {
+            // NewSDK
+            appDel.rxTapglue.searchUsersForSearchTerm(searchController.searchBar.text!).subscribe({ (event) in
+                switch event {
+                case .Next(let usr):
+                    print("Next")
                     self.searchingForUser = true
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.users.removeAll(keepCapacity: false)
-                        self.users = users as! [TGUser]
+                        self.users = usr
                         
                         self.reloadTableViewWithAnimation()
                     })
-                } else if error != nil{
-                    print("\nError searchUsersWithTerm: \(error)")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Do the action")
                 }
-            }
+                
+            }).addDisposableTo(self.appDel.disposeBag)
+            
+            // OldSDK
+//            Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
+//                if users != nil && error == nil {
+//                    self.searchingForUser = true
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        self.users.removeAll(keepCapacity: false)
+//                        self.users = users as! [TGUser]
+//                        
+//                        self.reloadTableViewWithAnimation()
+//                    })
+//                } else if error != nil{
+//                    print("\nError searchUsersWithTerm: \(error)")
+//                }
+//            }
         } else {
             // Clear tableView aslong a user was not found
             searchingForUser = true

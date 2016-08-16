@@ -10,29 +10,38 @@ import UIKit
 import Tapglue
 
 class EditProfilTableViewCell: UITableViewCell {
+    
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
 
     @IBOutlet weak var userInfoTitleLabel: UILabel!
     @IBOutlet weak var userInfoEditTextField: UITextField!
+    
+    var currentUser: User!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         userInfoEditTextField.delegate = self
+        
+        currentUser = appDel.rxTapglue.currentUser!
     }
     
-    func changeTGUserInformation(tf: UITextField){
+    func changeUserInformation(tf: UITextField){
         switch tf.tag {
             case 0:
-                TGUser.currentUser().username = tf.text!
+                currentUser.username = tf.text!
             case 1:
-                TGUser.currentUser().firstName = tf.text!
+                currentUser.firstName = tf.text!
             case 2:
-                TGUser.currentUser().lastName = tf.text!
+                currentUser.lastName = tf.text!
             case 3:
-                let about: [NSObject : AnyObject!] = ["about" : tf.text!]
-                TGUser.currentUser().metadata = about
+                // OldSDK
+                print("Fix if about available")
+//                let about: [NSObject : AnyObject!] = ["about" : tf.text!]
+//                TGUser.currentUser().metadata = about
             case 4:
-                TGUser.currentUser().email = tf.text!
+                currentUser.email = tf.text!
             default: print("More then expected switches")
         }
     }
@@ -41,11 +50,11 @@ class EditProfilTableViewCell: UITableViewCell {
 extension EditProfilTableViewCell: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldDidEndEditing(textField: UITextField) {
-        changeTGUserInformation(textField)
+        changeUserInformation(textField)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        changeTGUserInformation(textField)
+        changeUserInformation(textField)
         
         textField.resignFirstResponder()
         

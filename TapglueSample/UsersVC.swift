@@ -11,7 +11,7 @@ import Tapglue
 
 class UsersVC: UIViewController, UITableViewDelegate {
     
-    var users: [TGUser] = []
+    var users: [User] = []
     
     var meta: AnyObject?
 
@@ -35,17 +35,19 @@ extension UsersVC: UITableViewDataSource {
         
         cell.userImageView.image = nil
         
-        meta = users[indexPath.row].metadata as AnyObject
-        if meta != nil {
-            cell.userAboutLabel.text = String(meta!.valueForKey("about")!)
-        }
+        // OldSDK TODO: Fix if about is available
+//        meta = users[indexPath.row].metadata as AnyObject
+//        if meta != nil {
+//            cell.userAboutLabel.text = String(meta!.valueForKey("about")!)
+//        }
         
         cell.userNameLabel.text = users[indexPath.row].username
         
-        // User image
-        var userImage = TGImage()
-        userImage = users[indexPath.row].images.valueForKey("profilePic") as! TGImage
-        cell.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // OldSDK TODO: Fix image
+//        // User image
+//        var userImage = TGImage()
+//        userImage = users[indexPath.row].images.valueForKey("profilePic") as! TGImage
+//        cell.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         return cell
     }

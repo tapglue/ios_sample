@@ -20,46 +20,46 @@ class UserProfileTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCellWithPost(post: TGPost!){
+    func configureCellWithPost(post: Post!){
         clearLabels()
         
-        // Post attachment
-        let postAttachment = post.attachments
+        // OldSDK TODO: Fix if attachments are available
+//        // Post attachment
+//        let postAttachment = post.attachments
+//        
+//        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
+//        
+//        self.typeLabel.text = String(postAttachment[0].name).capitalizeFirst
         
-        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
-        
-        self.typeLabel.text = String(postAttachment[0].name).capitalizeFirst
-        
-        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
+        // OldSDK TODO: show elapsed time
+        self.dateLabel.text = "show elapsed time"
     }
     
-    func configureCellWithEvent(event: TGEvent!){
+    func configureCellWithActivity(activity: Activity!){
         clearLabels()
         
-        self.dateLabel.text = event.createdAt.toTimeFormatInElapsedTimeToString()
+        // OldSDK TODO: show elapsed time
+        self.dateLabel.text = "elapsed time soon"
         
-        switch event.type {
-            case "like_event":
-                self.typeLabel.text = "Likes event"
-            case "bookmark_event":
-                self.typeLabel.text = "Bookmarked"
-            case "tg_friend":
-                if event.target.user != nil {
-                    self.typeLabel.text = "Friends"
-                    self.infoLabel.text = "You are Friends with " + event.target.user.username
-                    print(event.target.user.username)
-                }
-            case "tg_like":
-                self.typeLabel.text = "Liked " + event.post.user.username + "'s" + " post"
-                self.infoLabel.text = event.post.attachments[0].contents!["en"] as? String
-            case "tg_follow":
-                if event.target.user != nil {
-                    self.typeLabel.text = "Follow"
-                    self.infoLabel.text = "You started to follow " + event.target.user.username
-                    print(event.target.user.username)
-                }
-            default: print("More event types then expected")
-        }
+        // OldSDK TODO: fix if event target is available in new sdk
+//        switch activity.type! {
+//            case "tg_friend":
+//                if activity.target.user != nil {
+//                    self.typeLabel.text = "Friends"
+//                    self.infoLabel.text = "You are Friends with " + activity.target.user.username
+//                    print(activity.target.user.username)
+//                }
+//            case "tg_like":
+//                self.typeLabel.text = "Liked " + activity.post.user.username + "'s" + " post"
+//                self.infoLabel.text = activity.post.attachments[0].contents!["en"] as? String
+//            case "tg_follow":
+//                if activity.target.user != nil {
+//                    self.typeLabel.text = "Follow"
+//                    self.infoLabel.text = "You started to follow " + event.target.user.username
+//                    print(activity.target.user.username)
+//                }
+//            default: print("More event types then expected")
+//        }
     }
 
     func clearLabels(){

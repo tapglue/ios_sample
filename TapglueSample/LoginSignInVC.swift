@@ -14,6 +14,9 @@ class LoginSignInVC: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    // AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -31,16 +34,31 @@ class LoginSignInVC: UIViewController {
             let username = userNameTextField.text!
             let password = passwordTextField.text!
             
-            Tapglue.loginWithUsernameOrEmail(username, andPassword: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError loginWithUsernameOrEmail: \(error)")
-                } else {
-                    print("\nUser loged in: \(success)")
+            // NewSDK
+            appDel.rxTapglue.loginUser(username, password: password).subscribe({ (event) in
+                switch event {
+                case .Next(let user):
+                    print("User logged in: \(user)")
+                    
+                case .Error(let error):
+                    print("Login error: \(error)")
+                case .Completed:
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.navigationController?.popToRootViewControllerAnimated(false)
                     })
                 }
-            })
+            }).addDisposableTo(self.appDel.disposeBag)
+            // OldSDK
+//            Tapglue.loginWithUsernameOrEmail(username, andPassword: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+//                if error != nil {
+//                    print("\nError loginWithUsernameOrEmail: \(error)")
+//                } else {
+//                    print("\nUser loged in: \(success)")
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        self.navigationController?.popToRootViewControllerAnimated(false)
+//                    })
+//                }
+//            })
         } else {
             print("Please enter all details and select an avatar")
         }

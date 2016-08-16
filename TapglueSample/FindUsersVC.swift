@@ -9,11 +9,14 @@
 import UIKit
 import Tapglue
 import Contacts
-import TwitterKit
+//import TwitterKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 
 class FindUsersVC: UIViewController, UITableViewDelegate {
+    
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     @IBOutlet weak var friendsTableView: UITableView!
     
@@ -26,21 +29,21 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
     var contacts: [[String:String]] = []
     
     var facebookID: String!
-    var twitterID: String!
+//    var twitterID: String!
     
-    var users: [TGUser] = []
+    var users: [User] = []
     
-    var fromUsers: [TGUser] = []
-    var toUsers: [TGUser] = []
+    var fromUsers: [User] = []
+    var toUsers: [User] = []
     
     // Arr of FacebookFriends
     var friendsFromFacebook: [AnyObject]? = []
     
-    var followsFromTwitter: [String]? = []
+//    var followsFromTwitter: [String]? = []
     
     let facebookLogInButton = FBSDKLoginButton()
     
-    var twitterLogInButton = TWTRLogInButton()
+//    var twitterLogInButton = TWTRLogInButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,37 +78,58 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                     print("twitterPermissionGranted")
 //                    self.getTwitterFriends(-1)
                 } else {
+                    
+                    //OldSDK - TODO: TwitterTODO
                     // Show twitterLoginButton
-                    twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
-                    twitterLogInButton.addTarget(self, action: #selector(FindUsersVC.twitterLoginPressed(_:)), forControlEvents: .TouchUpInside)
-                    self.view.addSubview(twitterLogInButton)
+//                    twitterLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+//                    twitterLogInButton.addTarget(self, action: #selector(FindUsersVC.twitterLoginPressed(_:)), forControlEvents: .TouchUpInside)
+//                    self.view.addSubview(twitterLogInButton)
                 }
             default: print("More then expected switches")
         }
     }
     
-    func twitterLoginPressed(sender: TWTRLogInButton!) {
-        self.twitterLogin()
-    }
+    // OldSDK - TODO: TwitterTODO
+//    func twitterLoginPressed(sender: TWTRLogInButton!) {
+//        self.twitterLogin()
+//    }
  
     // SearchForUserByEmail and reload tableview if user was found
     func searchForUserByEmail() {
         readAddressBookByEmail()
         
-        Tapglue.searchUsersWithEmails(contactEmails) { (users: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError searchUsersWithEmails: \(error)")
-            }
-            else {
-                print("\nSuccessful searchUsersWithEmails: \(users)")
-                self.users = users as! [TGUser]
+        appDel.rxTapglue.searchEmails(contactEmails).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                self.users = usr
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
                 dispatch_async(dispatch_get_main_queue()) {
                     // TO-DO delete animation if not needed
-//                    self.reloadTableViewWithAnimation()
+                    //                    self.reloadTableViewWithAnimation()
                     self.friendsTableView.reloadData()
                 }
             }
-        }
+        }.addDisposableTo(self.appDel.disposeBag)
+        
+        // OldSDK
+//        Tapglue.searchUsersWithEmails(contactEmails) { (users: [AnyObject]!, error: NSError!) -> Void in
+//            if error != nil {
+//                print("\nError searchUsersWithEmails: \(error)")
+//            }
+//            else {
+//                print("\nSuccessful searchUsersWithEmails: \(users)")
+//                self.users = users as! [TGUser]
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    // TO-DO delete animation if not needed
+////                    self.reloadTableViewWithAnimation()
+//                    self.friendsTableView.reloadData()
+//                }
+//            }
+//        }
     }
     
     // ReadAddressBookByEmail and saving contacts in dicionary
@@ -160,28 +184,29 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                         self.friendsFromFacebook?.append(id)
                     }
                     
+                    // OldSDK - TODO: FacebookTODO and TapglueFindFriends
                     // add friends that are found
-                    Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyFacebook, withSocialUsersIds: self.friendsFromFacebook, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
-                        if error != nil {
-                            print("\nError searchUsersOnSocialPlatform: \(error)")
-                        }
-                        else {
-                            print("\nSuccessful-facebook friends: \(facebookUsers)")
-                            
-                            self.users.removeAll(keepCapacity: false)
-                            self.users = facebookUsers as! [TGUser]
-                            
-                            self.users.sortInPlace({ (contact1, contact2) -> Bool in
-                                return contact1.username < contact2.username
-                            })
-                            
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.facebookLogInButton.hidden = true
-                                
-                                self.reloadTableViewWithAnimation()
-                            })
-                        }
-                    })
+//                    Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyFacebook, withSocialUsersIds: self.friendsFromFacebook, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
+//                        if error != nil {
+//                            print("\nError searchUsersOnSocialPlatform: \(error)")
+//                        }
+//                        else {
+//                            print("\nSuccessful-facebook friends: \(facebookUsers)")
+//                            
+//                            self.users.removeAll(keepCapacity: false)
+//                            self.users = facebookUsers as! [TGUser]
+//                            
+//                            self.users.sortInPlace({ (contact1, contact2) -> Bool in
+//                                return contact1.username < contact2.username
+//                            })
+//                            
+//                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                                self.facebookLogInButton.hidden = true
+//                                
+//                                self.reloadTableViewWithAnimation()
+//                            })
+//                        }
+//                    })
                 }
             })
         }
@@ -189,29 +214,30 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
     
     // Mark: -Twitter Methods
     func twitterLogin(){
-        Twitter.sharedInstance().logInWithCompletion { (session: TWTRSession?, error: NSError?) -> Void in
-            if (session != nil) {
-                print("signed in as: \(session!.userName)")
-                print("signed in as: \(session!.userID)")
-                print("signed in as: \(session!)")
-                
-                self.twitterID = session!.userID
-                
-                // update TGUser social id from twitter
-                let currentUser = TGUser.currentUser()
-                currentUser.setSocialId(self.twitterID, forKey: TGPlatformKeyTwitter)
-                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
-                    print(success)
-                })
-                
-                // Bool to check if user granted permission for twitter
-                self.defaults.setObject(true, forKey: "twitterPermission")
-                
-//                self.getTwitterFriends(-1)
-            } else {
-                print("error: \(error!.localizedDescription)")
-            }
-        }
+        // OldSDK TODO: TwitterTODO
+//        Twitter.sharedInstance().logInWithCompletion { (session: TWTRSession?, error: NSError?) -> Void in
+//            if (session != nil) {
+//                print("signed in as: \(session!.userName)")
+//                print("signed in as: \(session!.userID)")
+//                print("signed in as: \(session!)")
+//                
+//                self.twitterID = session!.userID
+//                
+//                // update TGUser social id from twitter
+//                let currentUser = TGUser.currentUser()
+//                currentUser.setSocialId(self.twitterID, forKey: TGPlatformKeyTwitter)
+//                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+//                    print(success)
+//                })
+//                
+//                // Bool to check if user granted permission for twitter
+//                self.defaults.setObject(true, forKey: "twitterPermission")
+//                
+////                self.getTwitterFriends(-1)
+//            } else {
+//                print("error: \(error!.localizedDescription)")
+//            }
+//        }
     }
     
 //    func getTwitterFriends(nextCursor: Int){
@@ -270,59 +296,60 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
 //        }
 //    }
     
-    func twitterFollowersSliceAndCheckWithTapglue(arr: [String]) {
-        // Split all followers in 495 array pieces and Check if twitterFriends are availabe in your App
-        var followers = arr
-        var tempArrOfFollowers = [[String]]()
-        
-        while followers.count > 495 {
-            let sliceArr = followers[0...495]
-            let tempArray: [String] = Array(sliceArr)
-            tempArrOfFollowers.append(tempArray)
-            followers.removeRange(0...495)
-        }
-        
-        let sliceArr = self.followsFromTwitter![0...(followers.count - 1)]
-        let tempArray: [String] = Array(sliceArr)
-        tempArrOfFollowers.append(tempArray)
-        followers.removeRange(0...(followers.count - 1))
-        
-        print("Sliced Arr: \(tempArrOfFollowers.count)")
-        
-        // Check and add twitterFriends
-        if self.followsFromTwitter != nil {
-            var twitterUsersArr = [TGUser]()
-            for followerIDs in tempArrOfFollowers {
-                // Check if twitterFriends are availabe in your App
-                Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyTwitter, withSocialUsersIds: followerIDs, andCompletionBlock: { (twitterUsers: [AnyObject]!, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError searchUsersOnSocialPlatform: \(error)")
-                    }
-                    else {
-                        print("\nSuccessful - twitterFriends: \(twitterUsers)")
-                        
-                        for user in twitterUsers {
-                            twitterUsersArr.append(user as! TGUser)
-                        }
-                        
-                        self.users = twitterUsersArr
-                        
-                        self.users.sortInPlace({ (contact1, contact2) -> Bool in
-                            return contact1.username < contact2.username
-                        })
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.twitterLogInButton.hidden = true
-                            
-                            self.reloadTableViewWithAnimation()
-                        })
-                    }
-                })
-            }
-            
-
-        }
-    }
+//    func twitterFollowersSliceAndCheckWithTapglue(arr: [String]) {
+//        // Split all followers in 495 array pieces and Check if twitterFriends are availabe in your App
+//        var followers = arr
+//        var tempArrOfFollowers = [[String]]()
+//        
+//        while followers.count > 495 {
+//            let sliceArr = followers[0...495]
+//            let tempArray: [String] = Array(sliceArr)
+//            tempArrOfFollowers.append(tempArray)
+//            followers.removeRange(0...495)
+//        }
+//        
+//        let sliceArr = self.followsFromTwitter![0...(followers.count - 1)]
+//        let tempArray: [String] = Array(sliceArr)
+//        tempArrOfFollowers.append(tempArray)
+//        followers.removeRange(0...(followers.count - 1))
+//        
+//        print("Sliced Arr: \(tempArrOfFollowers.count)")
+//        
+//        // Check and add twitterFriends
+//        if self.followsFromTwitter != nil {
+//            var twitterUsersArr = [TGUser]()
+//            for followerIDs in tempArrOfFollowers {
+//                // Check if twitterFriends are availabe in your App
+//                Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyTwitter, withSocialUsersIds: followerIDs, andCompletionBlock: { (twitterUsers: [AnyObject]!, error: NSError!) -> Void in
+//                    if error != nil {
+//                        print("\nError searchUsersOnSocialPlatform: \(error)")
+//                    }
+//                    else {
+//                        print("\nSuccessful - twitterFriends: \(twitterUsers)")
+//                        
+//                        for user in twitterUsers {
+//                            twitterUsersArr.append(user as! TGUser)
+//                        }
+//                        
+//                        self.users = twitterUsersArr
+//                        
+//                        self.users.sortInPlace({ (contact1, contact2) -> Bool in
+//                            return contact1.username < contact2.username
+//                        })
+//                        
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            self.twitterLogInButton.hidden = true
+//                            
+//                            self.reloadTableViewWithAnimation()
+//                        })
+//                    }
+//                })
+//            }
+//            
+//
+//        }
+//    }
+    
 }
 
 extension FindUsersVC: UITableViewDataSource {
@@ -410,23 +437,25 @@ extension FindUsersVC: FBSDKLoginButtonDelegate {
                 print("https://graph.facebook.com/\(self.facebookID)/picture?type=large")
                 
                 // Init CurrentUser
-                let currentUser = TGUser.currentUser()
+                let currentUser = self.appDel.rxTapglue.currentUser!
                 
-                // Get facebook about and at to currentUserMetadata
-                if result.objectForKey("bio") != nil {
-                    let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
-                    currentUser.metadata = about
-                }
-                // Add Facebook ImageURL to currentUser
-                let userImage = TGImage()
-                userImage.url = "https://graph.facebook.com/\(self.facebookID)/picture?type=large"
-                currentUser.images.setValue(userImage, forKey: "profilePic")
-                // Add socialID to currentUser
-                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
-                // Update currentUser
-                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
-                    print(success)
-                })
+                
+                // OldSDK - TODO: FacebookTODO
+//                // Get facebook about and at to currentUserMetadata
+//                if result.objectForKey("bio") != nil {
+//                    let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
+//                    currentUser.metadata = about
+//                }
+//                // Add Facebook ImageURL to currentUser
+//                let userImage = TGImage()
+//                userImage.url = "https://graph.facebook.com/\(self.facebookID)/picture?type=large"
+//                currentUser.images.setValue(userImage, forKey: "profilePic")
+//                // Add socialID to currentUser
+//                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
+//                // Update currentUser
+//                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+//                    print(success)
+//                })
             }
             
         }

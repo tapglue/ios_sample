@@ -14,11 +14,14 @@ class HomeVC: UIViewController, UITableViewDelegate{
     @IBOutlet weak var homeTableView: UITableView!
     
     // TGPost array
-    var posts: [TGPost] = []
+    var posts: [Post] = []
     
     var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var userImageView: UIImageView!
+    
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +35,12 @@ class HomeVC: UIViewController, UITableViewDelegate{
     }
     
     override func viewWillAppear(animated: Bool) {
-        // UserImage
-        if let userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage? {
-            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-        }
+        
+        // TO-DO Change to new sdk
+//        // UserImage
+//        if let userImage = User.currentUser().images.valueForKey("profilePic") as! TGImage? {
+//            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+//        }
         
         self.loadFriendsActivityFeed()
     }
@@ -46,21 +51,37 @@ class HomeVC: UIViewController, UITableViewDelegate{
     }
     
     func loadFriendsActivityFeed() {
-        Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrievePostsFeedForCurrentUser: \(error)")
-            }
-            else {
-                self.posts = feed as! [TGPost]
-
+        // Load All Posts from your connections
+        appDel.rxTapglue.retrieveAllPosts().subscribe { (event) in
+            switch event {
+            case .Next(let posts):
+                self.posts = posts
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.homeTableView.reloadData()
                     self.refreshControl.endRefreshing()
                 })
-                
-                
             }
-        }
+        }.addDisposableTo(self.appDel.disposeBag)
+        
+        // OldSDK
+//        Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
+//            if error != nil {
+//                print("\nError retrievePostsFeedForCurrentUser: \(error)")
+//            }
+//            else {
+//                self.posts = feed as! [TGPost]
+//
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.homeTableView.reloadData()
+//                    self.refreshControl.endRefreshing()
+//                })
+//                
+//                
+//            }
+//        }
     }
 }
 
@@ -113,18 +134,20 @@ extension HomeVC: UITextFieldDelegate {
 extension HomeVC: CustomCellDataUpdater {
     // Mark: - Custom delegate to update data, if cell recieves like button pressed
     func updateTableViewData() {
-        Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrievePostsFeedForCurrentUser: \(error)")
-            }
-            else {
-                self.posts = feed as! [TGPost]
-                
-                dispatch_async(dispatch_get_main_queue()) {
+        // Load All Posts from your connections
+        appDel.rxTapglue.retrieveAllPosts().subscribe { (event) in
+            switch event {
+            case .Next(let posts):
+                self.posts = posts
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.homeTableView.reloadData()
-                }
+                    self.refreshControl.endRefreshing()
+                })
             }
-        }
+        }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 

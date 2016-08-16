@@ -21,37 +21,34 @@ class NotificationTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCellWithEvent(event: TGEvent!){
-        let eventUser = event.user.username
+    // TO-DO
+    // Clean out custom events
+    func configureCellWithEvent(activity: Activity!){
+        let activityUser = activity.user?.username
         
-        self.dateLabel.text = event.createdAt.toTimeFormatInElapsedTimeToString()
+        // Fix: elapsed times
+        self.dateLabel.text = "Fix: Elapsed time"
         
-        switch event.type {
+        switch activity.type! {
             case "tg_friend":
-                eventNameLabel.text = eventUser + " is now friends with " + event.target.user.username
-                
-                if let userImage = event.target.user.images.valueForKey("profilePic") as! TGImage? {
-                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-                }
+                eventNameLabel.text = activityUser! + " is now friends with " + " fix activity.target.user.username"
+            
+                //Old SDK
+//                if let userImage = activity.target.user.images.valueForKey("profilePic") as! TGImage? {
+//                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+//                }
             
             case "tg_follow":
-                eventNameLabel.text = eventUser + " is now following " + event.target.user.username
-                
-                if let userImage = event.target.user.images.valueForKey("profilePic") as! TGImage? {
-                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-                }
+                eventNameLabel.text = activityUser! + " is now following " + " fix activity.target.user.username"
+            
+                //Old SDK
+//                if let userImage = activity.target.user.images.valueForKey("profilePic") as! TGImage? {
+//                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+//                }
             
             case "tg_like":
-                self.eventNameLabel.text = eventUser + " liked a Post"
+                self.eventNameLabel.text = activityUser! + " liked a Post"
                 self.eventTypeImageView.image = UIImage(named: "LikeFilledRed")
-            
-            case "like_event":
-                self.eventNameLabel.text = eventUser + " liked an Article"
-                self.eventTypeImageView.image = UIImage(named: event.type)
-            
-            case "bookmark_event":
-                self.eventNameLabel.text = eventUser + " bookmarked an Article"
-                self.eventTypeImageView.image = UIImage(named: event.type)
             
             default: print("Unkown event type")
         }

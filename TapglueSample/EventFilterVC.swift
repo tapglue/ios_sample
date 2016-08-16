@@ -13,8 +13,8 @@ import UIKit
 
 class EventFilterVC: UIViewController, UITableViewDelegate {
     
-    let events: [String] = ["Likes", "Bookmarked", "Friend", "Follow", "Liked"]
-    let eventType: [String] = ["like_event", "bookmark_event", "tg_friend", "tg_follow", "tg_like"]
+    let events: [String] = ["Friend", "Follow", "Liked"]
+    let eventType: [String] = ["tg_friend", "tg_follow", "tg_like"]
     
     var filterCheckmarks: [Bool] = []
     

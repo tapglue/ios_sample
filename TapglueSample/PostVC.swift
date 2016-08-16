@@ -21,7 +21,10 @@ class PostVC: UIViewController {
     var tagArr: [String]?
     
     var postBeginEditing = false
-    var tempPost: TGPost!
+    var tempPost: Post!
+    
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,27 +33,28 @@ class PostVC: UIViewController {
 
         postTextField.becomeFirstResponder()
         
-        var userImage = TGImage()
-        userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TO-DO: Change to new sdk
+//        var userImage = TGImage()
+//        userImage = User.currentUser().images.valueForKey("profilePic") as! TGImage
+//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         // Old post will be edited
-        if postBeginEditing {
-            postTextField.text = tempPost.attachments[0].contents!["en"] as? String
-            switch tempPost.visibility.rawValue {
-                case 10:
-                    visibilitySegmentedControl.selectedSegmentIndex = 0
-                case 20:
-                    visibilitySegmentedControl.selectedSegmentIndex = 1
-                case 30:
-                    visibilitySegmentedControl.selectedSegmentIndex = 2
-            default: print("More then expected switches")
-            }
-        }
+//        if postBeginEditing {
+//            postTextField.text = tempPost.attachments[0].contents!["en"] as? String
+//            switch tempPost.visibility.rawValue {
+//                case 10:
+//                    visibilitySegmentedControl.selectedSegmentIndex = 0
+//                case 20:
+//                    visibilitySegmentedControl.selectedSegmentIndex = 1
+//                case 30:
+//                    visibilitySegmentedControl.selectedSegmentIndex = 2
+//            default: print("More then expected switches")
+//            }
+//        }
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
-        let post = TGPost()
+//        let post = Post()
         
         
         if postText?.characters.count > 2 {
@@ -68,43 +72,68 @@ class PostVC: UIViewController {
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
                     case 0:
-                        tempPost!.visibility = TGVisibility.Private
+                        tempPost!.visibility = Visibility.Private
                     case 1:
-                        tempPost!.visibility = TGVisibility.Connection
+                        tempPost!.visibility = Visibility.Connections
                     case 2:
-                        tempPost!.visibility = TGVisibility.Public
+                        tempPost!.visibility = Visibility.Public
                     default: "More options then expected"
                 }
                 
-                Tapglue.updatePost(tempPost, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError createPost: \(error)")
-                    } else {
-                        print("\nSucccess: \(success)")                    }
-                })
+                // NewSDK
+                appDel.rxTapglue.updatePost(tempPost.id!, post: tempPost).subscribe({ (event) in
+                    switch event {
+                    case .Next(let post):
+                        print(post)
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        break
+                    }
+                }).addDisposableTo(self.appDel.disposeBag)
+                
+                // OldSDK
+//                Tapglue.updatePost(tempPost, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+//                    if error != nil {
+//                        print("\nError createPost: \(error)")
+//                    } else {
+//                        print("\nSucccess: \(success)")                    }
+//                })
             } else {
+                // OldSDK
                 // Prepare TGPost
-                post.addAttachment(TGAttachment.init(text: ["en": postText!], andName: "status"))
-                post.tags = tagArr
+//                post.addAttachment(Attachment.init(text: ["en": postText!], andName: "status"))
+//                post.tags = tagArr
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
                     case 0:
-                        post.visibility = TGVisibility.Private
+                        tempPost.visibility = Visibility.Private
                     case 1:
-                        post.visibility = TGVisibility.Connection
+                        tempPost.visibility = Visibility.Connections
                     case 2:
-                        post.visibility = TGVisibility.Public
+                        tempPost.visibility = Visibility.Public
                     default: "More options then expected"
                 }
                 
-                
-                Tapglue.createPost(post) { (success: Bool, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError createPost: \(error)")
-                    } else {
-                        print("\nSucccess: \(success)")
+                // NewSDK
+                appDel.rxTapglue.updatePost(tempPost.id!, post: tempPost).subscribe({ (event) in
+                    switch event {
+                    case .Next(let post):
+                        print(post)
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        break
                     }
-                }
+                }).addDisposableTo(self.appDel.disposeBag)
+                
+//                Tapglue.createPost(post) { (success: Bool, error: NSError!) -> Void in
+//                    if error != nil {
+//                        print("\nError createPost: \(error)")
+//                    } else {
+//                        print("\nSucccess: \(success)")
+//                    }
+//                }
             }
 
             resignKeyboardAndDismissVC()

@@ -21,15 +21,18 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCellWithPostComment(comment: TGComment) {
-        userNameLabel.text = comment.user.username
-        userCommentLabel.text = comment.contents["en"] as? String
+    func configureCellWithPostComment(comment: Comment) {
+        userNameLabel.text = comment.user?.username
+        // OldSDK TODO: Fix comments text
+//        userCommentLabel.text = comment.contents["en"] as? String
         
-        dateLabel.text = comment.createdAt.toTimeFormatInElapsedTimeToString()
+        // OldSDK TODO: Fix to elapsed time
+        dateLabel.text = "elapsed time"
         
-        var userImage = TGImage()
-        userImage = comment.user.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // OldSDK TODO: Update to new sdk
+//        var userImage = TGImage()
+//        userImage = comment.user.images.valueForKey("profilePic") as! TGImage
+//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
     }
 }
 

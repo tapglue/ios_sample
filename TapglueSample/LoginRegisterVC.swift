@@ -20,6 +20,9 @@ class LoginRegisterVC: UIViewController {
     
     var currentAvatar: String?
     
+    // AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     // Free http://uifaces.com/authorized profile pictures
     let userProfileImageURLs =  ["https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg",
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/nedknowles/128.jpg",
@@ -47,32 +50,57 @@ class LoginRegisterVC: UIViewController {
         // If all textFields have more than 2 charcaters, begin Tapglue login
         if userNameTextField.text?.characters.count > 2 && firstNameTextField.text?.characters.count > 2 && lastNameTextField.text?.characters.count > 2 && aboutTextField.text?.characters.count > 2 && emailTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 {
             
-            let tapglueUser = TGUser()
+            let usr = User()
             
-            let about: [NSObject : AnyObject!] = ["about" : aboutTextField.text]
-            tapglueUser.metadata = about
+            usr.username = userNameTextField.text!
+            usr.firstName = firstNameTextField.text!
+            usr.lastName = lastNameTextField.text!
+            usr.email = emailTextField.text!
+            usr.password = passwordTextField.text
             
-            tapglueUser.username = userNameTextField.text!
-            tapglueUser.firstName = firstNameTextField.text!
-            tapglueUser.lastName = lastNameTextField.text!
-            tapglueUser.email = emailTextField.text!
-            tapglueUser.setPassword(passwordTextField.text!)
+            // TO-DO Add user image url with new SDK
+//            let userImage = Image()
+//            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
+//            userImage.url = userProfileImageURLs[randomIndex]
+//            tapglueUser.images.setValue(userImage, forKey: "profilePic")
             
-            let userImage = TGImage()
-            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
-            userImage.url = userProfileImageURLs[randomIndex]
-            tapglueUser.images.setValue(userImage, forKey: "profilePic")
-            
-            Tapglue.createAndLoginUser(tapglueUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError createAndLoginUser: \(error)")
-                } else {
-                    print("\nUser was created: \(success)")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.navigationController?.popToRootViewControllerAnimated(false)
-                    })
+            // Create New User
+            appDel.rxTapglue.createUser(usr).subscribe { (event) in
+                switch event {
+                case .Next(let newUser):
+                    print(newUser.email)
+                    // Login new User
+                    self.appDel.rxTapglue.loginUser(usr.username!, password: usr.password!).subscribe({ (event) in
+                        switch event {
+                        case .Next(let newUser):
+                            print(newUser.email)
+                            print("Go to next screen")
+                        case .Error(let error):
+                            self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                        case .Completed:
+                            print("Completed Login")
+                        }
+                    }).addDisposableTo(self.appDel.disposeBag)
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    break
                 }
-            })
+            }.addDisposableTo(self.appDel.disposeBag)
+            
+            
+        
+            // OldSDK
+//            Tapglue.createAndLoginUser(tapglueUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+//                if error != nil {
+//                    print("\nError createAndLoginUser: \(error)")
+//                } else {
+//                    print("\nUser was created: \(success)")
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        self.navigationController?.popToRootViewControllerAnimated(false)
+//                    })
+//                }
+//            })
         } else {
             print("Not enough characters")
         }

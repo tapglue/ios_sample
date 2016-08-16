@@ -11,6 +11,9 @@ import Tapglue
 
 class NavigationVC: UINavigationController {
     
+    // AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     let defaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
@@ -21,7 +24,7 @@ class NavigationVC: UINavigationController {
     
     override func viewWillAppear(animated: Bool) {
         // Send user to app or login screen
-        if TGUser.currentUser() != nil {
+        if self.appDel.rxTapglue.currentUser != nil {
             
         } else {
             setupFilterCheckmarkDefaults()
@@ -34,7 +37,7 @@ class NavigationVC: UINavigationController {
     
     // Prepare checks to filter Notifications
     func setupFilterCheckmarkDefaults(){
-        let filterCheckmarks: [Bool] = [true, true, true, true, true]
+        let filterCheckmarks: [Bool] = [true, true, true]
         defaults.setObject(filterCheckmarks, forKey: "filterCheckmarks")
         defaults.synchronize()
     }

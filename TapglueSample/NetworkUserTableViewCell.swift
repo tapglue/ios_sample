@@ -11,7 +11,7 @@ import Tapglue
 
 class NetworkUserTableViewCell: UITableViewCell {
 
-    var cellUser = TGUser()
+    var cellUser = User()
     
     var searchingForUser = false
     
@@ -28,16 +28,16 @@ class NetworkUserTableViewCell: UITableViewCell {
     }
     
     // Configure Cell with TGUser data
-    func configureCellWithUserWithPendingConnection(user: TGUser!){
+    func configureCellWithUserWithPendingConnection(user: User!){
         cellUser = user
         
         self.userNameLabel.text = self.cellUser.username
         
-        
-        // UserImage
-        var userImage = TGImage()
-        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // OldSDk TODO: Update to new sdk
+//        // UserImage
+//        var userImage = TGImage()
+//        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
+//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         if self.connectRightButton != nil {
             acceptFriendShipCustomizeButton()
@@ -49,18 +49,19 @@ class NetworkUserTableViewCell: UITableViewCell {
     }
     
     // Configure Cell with TGUser data when search is active
-    func configureCellWithUserToFriendOrFollow(user: TGUser!){
+    func configureCellWithUserToFriendOrFollow(user: User!){
         cellUser = user
         
         self.userNameLabel.text = self.cellUser.username
         
-        // UserImage
-        var userImage = TGImage()
-        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // OldSDk TODO: Update to new sdk
+//        // UserImage
+//        var userImage = TGImage()
+//        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
+//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
         
         if self.connectRightButton != nil {
-            if cellUser.isFriend {
+            if cellUser.isFriend! {
                 friendUserCustomizeButton()
                 self.connectRightButton.selected = true
             } else {
@@ -70,7 +71,7 @@ class NetworkUserTableViewCell: UITableViewCell {
         }
         
         if self.connectLeftButton != nil {
-            if cellUser.isFollowed {
+            if cellUser.isFollowed! {
                 followingUserCustomizeButton()
                 self.connectLeftButton.selected = true
             } else {
@@ -82,78 +83,80 @@ class NetworkUserTableViewCell: UITableViewCell {
 
     
     @IBAction func connectRightPressed(sender: UIButton) {
-        if searchingForUser {
-            if sender.selected {
-                Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
-                    if success {
-                        print("User unfriend successful")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = false
-                            self.unfriendUserCustomizeButton()
-                        })
-                    } else if error != nil{
-                        print("\nError unfriendUser: \(error)")
-                    }
-                })
-            } else {
-                Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
-                    if success {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = true
-                            self.pendingUserCustomizeButton()
-                        })
-                    } else if error != nil{
-                        print("\nError friendUser: \(error)")
-                    }
-                })
-            }
-        } else {
-            Tapglue.friendUser(cellUser, withState: TGConnectionState.Confirmed, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
-                if success {
-                    print(success)
-                } else if error != nil{
-                    print("\nError friendUser: \(error)")
-                }
-            })
-        }
+        // OldSDK TODO: Turn on with new sdk
+//        if searchingForUser {
+//            if sender.selected {
+//                Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
+//                    if success {
+//                        print("User unfriend successful")
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            sender.selected = false
+//                            self.unfriendUserCustomizeButton()
+//                        })
+//                    } else if error != nil{
+//                        print("\nError unfriendUser: \(error)")
+//                    }
+//                })
+//            } else {
+//                Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+//                    if success {
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            sender.selected = true
+//                            self.pendingUserCustomizeButton()
+//                        })
+//                    } else if error != nil{
+//                        print("\nError friendUser: \(error)")
+//                    }
+//                })
+//            }
+//        } else {
+//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Confirmed, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+//                if success {
+//                    print(success)
+//                } else if error != nil{
+//                    print("\nError friendUser: \(error)")
+//                }
+//            })
+//        }
     }
     
     @IBAction func connectLeftPressed(sender: UIButton) {
-        if searchingForUser {
-            if sender.selected {
-                Tapglue.unfollowUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                    if success {
-                        print("User unfollow successful")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = false
-                            self.unfollowingUserCustomizeButton()
-                        })
-                    } else if error != nil{
-                        print("\nError unfollowUser: \(error)")
-                    }
-                })
-            } else {
-                Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                    if success {
-                        print("User follow successful: \(success)")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = true
-                            self.followingUserCustomizeButton()
-                        })
-                    } else if error != nil{
-                        print("\nError followUser: \(error)")
-                    }
-                })
-            }
-        } else {
-            Tapglue.friendUser(cellUser, withState: TGConnectionState.Rejected, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
-                if success {
-                    print(success)
-                } else if error != nil{
-                    print("\nError friendUser: \(error)")
-                }
-            })
-        }
+        //OldSDK TODO: Turn on with new sdk
+//        if searchingForUser {
+//            if sender.selected {
+//                Tapglue.unfollowUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+//                    if success {
+//                        print("User unfollow successful")
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            sender.selected = false
+//                            self.unfollowingUserCustomizeButton()
+//                        })
+//                    } else if error != nil{
+//                        print("\nError unfollowUser: \(error)")
+//                    }
+//                })
+//            } else {
+//                Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
+//                    if success {
+//                        print("User follow successful: \(success)")
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            sender.selected = true
+//                            self.followingUserCustomizeButton()
+//                        })
+//                    } else if error != nil{
+//                        print("\nError followUser: \(error)")
+//                    }
+//                })
+//            }
+//        } else {
+//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Rejected, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
+//                if success {
+//                    print(success)
+//                } else if error != nil{
+//                    print("\nError friendUser: \(error)")
+//                }
+//            })
+//        }
     }
         
     

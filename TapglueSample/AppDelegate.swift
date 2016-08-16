@@ -8,9 +8,10 @@
 
 import UIKit
 import Tapglue
-import TwitterKit
-import Fabric
-import TapglueSims
+//import TwitterKit
+//import Fabric
+//import TapglueSims
+import RxSwift
 
 
 @UIApplicationMain
@@ -21,24 +22,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let appToken = "1ecd50ce4700e0c8f501dee1fb271344"
     let url = "https://api.tapglue.com"
     var sims: TapglueSims!
+    var rxTapglue: RxTapglue!
+    
+    let disposeBag = DisposeBag()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
         // Init TapglueSims and Tapglue with your appToken and Config plus environment
-        sims = TapglueSims(appToken: appToken, url: url, environment: .Sandbox)
-        registerForPushNotifications(application)
-        let config = TGConfiguration.defaultConfiguration()
-        config.loggingEnabled = false
-        Tapglue.setUpWithAppToken(appToken, andConfig: config)
-        Tapglue.setSessionTokenNotifier(sims)
+//        sims = TapglueSims(appToken: appToken, url: url, environment: .Sandbox)
+//        registerForPushNotifications(application)
+//        let config = TGConfiguration.defaultConfiguration()
+//        config.loggingEnabled = false
+//        Tapglue.setUpWithAppToken(appToken, andConfig: config)
+//        Tapglue.setSessionTokenNotifier(sims)
         
+        let config = Configuration()
+        config.baseUrl = url
+        config.appToken = appToken
+        // setting this to true makes the sdk print http requests and responses
+        config.log = true
+        rxTapglue = RxTapglue(configuration: config)
+        
+        sims = TapglueSims(withConfiguration: config, environment: .Sandbox)
+        
+//        let tapglue = Tapglue(configuration: config)
+        
+//
+//        TapglueSims
+//        
         
         // Init Twitter
-        Twitter.sharedInstance().startWithConsumerKey("jwcnpghUsKBjD3lMpdoMlSpuK", consumerSecret: "ibzxpfK76SZMNhE5sqWa7devupSCtVWOt1WpYrgOi8yZw7AtnU")
+//        Twitter.sharedInstance().startWithConsumerKey("jwcnpghUsKBjD3lMpdoMlSpuK", consumerSecret: "ibzxpfK76SZMNhE5sqWa7devupSCtVWOt1WpYrgOi8yZw7AtnU")
         
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
     }
+    
+    
     
     // Push Notifications related methods
     func registerForPushNotifications(application: UIApplication) {
@@ -59,9 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(notificationSettings)
     }
     
-    
+    // Custom TapglueError method
+    func printOutErrorMessageAndCode(err: TapglueError?) {
+        print(err?.code)
+        print(err?.message)
+    }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        // TODO: FacebookTODO
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 }

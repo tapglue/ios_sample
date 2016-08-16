@@ -11,18 +11,25 @@ import Tapglue
 
 class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
         
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
     var userInformation = []
+    var currentUser: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let meta = TGUser.currentUser().metadata as AnyObject
-        let about = String(meta.valueForKey("about")!)
+        currentUser = appDel.rxTapglue.currentUser
         
-        userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, about, TGUser.currentUser().email]
+        // OldSDK TODO: if about available
+//        let meta = TGUser.currentUser().metadata as AnyObject
+//        let about = String(meta.valueForKey("about")!)
+        
+        userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, "about", currentUser.email!]
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
@@ -30,13 +37,26 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
         // Update user information
-        TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError currentUser: \(error)")
-                } else {
-                    print("Success: \(success)")
-                }
-        }
+        // NewSDK
+        appDel.rxTapglue.updateCurrentUser(currentUser).subscribe { (event) in
+            switch event {
+            case .Next( _):
+                print("Next")
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
+        
+        // OldSDK
+//        TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+//                if error != nil {
+//                    print("\nError currentUser: \(error)")
+//                } else {
+//                    print("Success: \(success)")
+//                }
+//        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -45,13 +65,26 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     }
     
     @IBAction func logoutButtonPressed(sender: UIButton) {
-        Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print(error)
-            } else {
+        appDel.rxTapglue.logout().subscribe { (event) in
+            switch event {
+            case .Next(let element):
+                print(element)
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-        }
+        }.addDisposableTo(self.appDel.disposeBag)
+        
+        // OldSDK
+//        Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
+//            if error != nil {
+//                print(error)
+//            } else {
+//                self.dismissViewControllerAnimated(true, completion: nil)
+//            }
+//        }
     }
     
     // Mark: Keyboard methods(update button will enabled, if keyboard is dismissed)
