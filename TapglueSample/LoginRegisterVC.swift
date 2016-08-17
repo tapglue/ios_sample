@@ -64,6 +64,13 @@ class LoginRegisterVC: UIViewController {
 //            userImage.url = userProfileImageURLs[randomIndex]
 //            tapglueUser.images.setValue(userImage, forKey: "profilePic")
             
+            // TODO: After it is fixed
+//            let userImage = Image()
+//            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
+//            let imageURL = userProfileImageURLs[randomIndex]
+//            
+//            usr.images = ["profile": userImage]
+            
             // Create New User
             appDel.rxTapglue.createUser(usr).subscribe { (event) in
                 switch event {
@@ -79,6 +86,9 @@ class LoginRegisterVC: UIViewController {
                             self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                         case .Completed:
                             print("Completed Login")
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.navigationController?.popToRootViewControllerAnimated(false)
+                            })
                         }
                     }).addDisposableTo(self.appDel.disposeBag)
                 case .Error(let error):
@@ -88,19 +98,6 @@ class LoginRegisterVC: UIViewController {
                 }
             }.addDisposableTo(self.appDel.disposeBag)
             
-            
-        
-            // OldSDK
-//            Tapglue.createAndLoginUser(tapglueUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError createAndLoginUser: \(error)")
-//                } else {
-//                    print("\nUser was created: \(success)")
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.navigationController?.popToRootViewControllerAnimated(false)
-//                    })
-//                }
-//            })
         } else {
             print("Not enough characters")
         }

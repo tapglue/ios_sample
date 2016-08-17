@@ -108,6 +108,47 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     
     func checkForPendingConnections(){
         
+        appDel.rxTapglue.retrievePendingConnections().subscribe { (event) in
+            switch event {
+            case .Next(let connections):
+                print("Next")
+                print("Incoming: \(connections.incoming!)")
+                print("Outgoing: \(connections.outgoing!)")
+                
+                for conc in connections.outgoing! {
+                    print("Connections out")
+                    print("User from: \(conc.userFrom?.username)")
+                    print("User to: \(conc.userTo?.username)")
+                    print("User to: \(conc.state)")
+                    print("User to: \(conc.type)")
+                }
+//                for inc in connections {
+//                    self.fromUsers.append((inc as! Connection).fromUser)
+//                }
+//                for out in connections {
+//                    self.toUsers.append((out as! Connection).toUser)
+//                }
+//                print("\nFrom: \(self.fromUsers)")
+//                print("\nTo: \(self.toUsers)")
+//                
+//                self.users = self.fromUsers
+//                
+//                
+//                self.users.sortInPlace({ (contact1, contact2) -> Bool in
+//                    return contact1.username < contact2.username
+//                })
+//                
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.reloadTableViewWithAnimation()
+//                })
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
+        
         // OldSDK TODO: update pending request to new sdk
 //        Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
 //            if error != nil {
@@ -211,20 +252,6 @@ extension NetworkVC: UISearchResultsUpdating {
                 
             }).addDisposableTo(self.appDel.disposeBag)
             
-            // OldSDK
-//            Tapglue.searchUsersWithTerm(searchController.searchBar.text) { (users: [AnyObject]!, error: NSError!) -> Void in
-//                if users != nil && error == nil {
-//                    self.searchingForUser = true
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.users.removeAll(keepCapacity: false)
-//                        self.users = users as! [TGUser]
-//                        
-//                        self.reloadTableViewWithAnimation()
-//                    })
-//                } else if error != nil{
-//                    print("\nError searchUsersWithTerm: \(error)")
-//                }
-//            }
         } else {
             // Clear tableView aslong a user was not found
             searchingForUser = true

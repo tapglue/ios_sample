@@ -48,17 +48,7 @@ class LoginSignInVC: UIViewController {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            // OldSDK
-//            Tapglue.loginWithUsernameOrEmail(username, andPassword: password, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError loginWithUsernameOrEmail: \(error)")
-//                } else {
-//                    print("\nUser loged in: \(success)")
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.navigationController?.popToRootViewControllerAnimated(false)
-//                    })
-//                }
-//            })
+
         } else {
             print("Please enter all details and select an avatar")
         }

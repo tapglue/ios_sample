@@ -10,6 +10,9 @@ import UIKit
 import Tapglue
 
 class NetworkUserTableViewCell: UITableViewCell {
+    
+    // Get the AppDelegate
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
 
     var cellUser = User()
     
@@ -84,8 +87,25 @@ class NetworkUserTableViewCell: UITableViewCell {
     
     @IBAction func connectRightPressed(sender: UIButton) {
         // OldSDK TODO: Turn on with new sdk
-//        if searchingForUser {
-//            if sender.selected {
+        if searchingForUser {
+            if sender.selected {
+                // NewSDK
+                appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Friend).subscribe({ (event) in
+                    switch event {
+                    case .Next(let connect):
+                        print("Next")
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        print("Do the action")
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = false
+                            self.unfriendUserCustomizeButton()
+                        })
+                    }
+                })
+                
+                // OldSDK
 //                Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
 //                    if success {
 //                        print("User unfriend successful")
@@ -97,7 +117,25 @@ class NetworkUserTableViewCell: UITableViewCell {
 //                        print("\nError unfriendUser: \(error)")
 //                    }
 //                })
-//            } else {
+            } else {
+                print("Start connecting as friend")
+                let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Pending)
+                appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
+                    switch event {
+                    case .Next(let connect):
+                        print("Next")
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        print("Do the action")
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = true
+                            self.pendingUserCustomizeButton()
+                        })
+                    }
+                })
+                
+                // OldSDK
 //                Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
 //                    if success {
 //                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -108,8 +146,9 @@ class NetworkUserTableViewCell: UITableViewCell {
 //                        print("\nError friendUser: \(error)")
 //                    }
 //                })
-//            }
-//        } else {
+            }
+        } else {
+            // OldSDK TODO: Find out how to handle friendship conformation
 //            Tapglue.friendUser(cellUser, withState: TGConnectionState.Confirmed, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
 //                if success {
 //                    print(success)
@@ -117,38 +156,49 @@ class NetworkUserTableViewCell: UITableViewCell {
 //                    print("\nError friendUser: \(error)")
 //                }
 //            })
-//        }
+        }
     }
     
     @IBAction func connectLeftPressed(sender: UIButton) {
         //OldSDK TODO: Turn on with new sdk
-//        if searchingForUser {
-//            if sender.selected {
-//                Tapglue.unfollowUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                    if success {
-//                        print("User unfollow successful")
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            sender.selected = false
-//                            self.unfollowingUserCustomizeButton()
-//                        })
-//                    } else if error != nil{
-//                        print("\nError unfollowUser: \(error)")
-//                    }
-//                })
-//            } else {
-//                Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                    if success {
-//                        print("User follow successful: \(success)")
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            sender.selected = true
-//                            self.followingUserCustomizeButton()
-//                        })
-//                    } else if error != nil{
-//                        print("\nError followUser: \(error)")
-//                    }
-//                })
-//            }
-//        } else {
+        if searchingForUser {
+            if sender.selected {
+                
+                // NewSDK
+                appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Follow).subscribe({ (event) in
+                    switch event {
+                    case .Next(let connect):
+                        print("Next")
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        print("Do the action")
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = false
+                            self.unfollowingUserCustomizeButton()
+                        })
+                    }
+                }).addDisposableTo(self.appDel.disposeBag)
+
+            } else {
+                let connection = Connection(toUserId: cellUser.id!, type: .Follow, state: .Confirmed)
+                appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
+                    switch event {
+                    case .Next(let connect):
+                        print("Next")
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        print("Do the action")
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            sender.selected = true
+                            self.followingUserCustomizeButton()
+                        })
+                    }
+                }).addDisposableTo(self.appDel.disposeBag)
+            }
+        } else {
+            //OldSDK TODO: how to handle rejected connection?
 //            Tapglue.friendUser(cellUser, withState: TGConnectionState.Rejected, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
 //                if success {
 //                    print(success)
@@ -156,7 +206,7 @@ class NetworkUserTableViewCell: UITableViewCell {
 //                    print("\nError friendUser: \(error)")
 //                }
 //            })
-//        }
+        }
     }
         
     

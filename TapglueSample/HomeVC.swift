@@ -52,7 +52,7 @@ class HomeVC: UIViewController, UITableViewDelegate{
     
     func loadFriendsActivityFeed() {
         // Load All Posts from your connections
-        appDel.rxTapglue.retrieveAllPosts().subscribe { (event) in
+        appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
             switch event {
             case .Next(let posts):
                 self.posts = posts
@@ -135,7 +135,7 @@ extension HomeVC: CustomCellDataUpdater {
     // Mark: - Custom delegate to update data, if cell recieves like button pressed
     func updateTableViewData() {
         // Load All Posts from your connections
-        appDel.rxTapglue.retrieveAllPosts().subscribe { (event) in
+        appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
             switch event {
             case .Next(let posts):
                 self.posts = posts

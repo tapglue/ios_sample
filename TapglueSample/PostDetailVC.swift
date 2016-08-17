@@ -91,20 +91,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                         })
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
-                
-                // OldSDK
-//                Tapglue.deleteLike(post) { (success: Bool, error: NSError!) -> Void in
-//                    if error != nil {
-//                        print("\nError deleteLike: \(error)")
-//                    }
-//                    else {
-//                        print("\nSuccessly deleted like to post: \(success)")
-//                        
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            self.likeButton.selected = false
-//                        })
-//                    }
-//                }
+
             } else {
                 // NewSDK
                 appDel.rxTapglue.createLike(forPostId: post.id!).subscribe({ (event) in
@@ -121,22 +108,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                         })
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
-                
-                //OldSDK
-//                post.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-//                    if error != nil {
-//                        print("\nError like: \(error)")
-//                    }
-//                    else {
-//                        print("\nSuccessly liked a post: \(success)")
-//                        
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            self.likeButton.selected = true
-//                            
-//                        })
-//                    }
-//                }
-        }
+            }
     }
     
     
@@ -179,22 +151,6 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                     })
                 }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrieveCommentsForPost(post) { (comments: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrieveCommentsForPost: \(error)")
-//            }
-//            else {
-//                print("\nComments: \(comments)")
-//                
-//                self.postComments = (comments as! [TGComment]).reverse()
-//                
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.commentsTableView.reloadData()
-//                })
-//            }
-//        }
     }
     
     // Show postDetails
@@ -202,7 +158,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         userNameButton.contentHorizontalAlignment = .Left
         userNameButton.setTitle(post.user!.username, forState: .Normal)
         
-        let likeCountForPost = post.counts!["likes"]
+        let likeCountForPost = post.counts!["likes"]!
         
         if likeCountForPost != 0 {
             if likeCountForPost == 1{
@@ -211,13 +167,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             self.likesCountLabel.text = String(likeCountForPost) + " Likes"
         }
         
-        // OldSDK
-//        // PostText
-//        let postAttachment = post.attachments
-//        self.postTextLabel.text = postAttachment[0].contents!["en"] as? String
-        
+        // PostText
+        let postAttachment = post.attachments
+        self.postTextLabel.text = postAttachment![0].contents!["en"]
         // OldSDK : needs to show elpased time
-        // Date text
         self.dateLabel.text = post.createdAt
 
         //OldSDK
@@ -299,18 +252,6 @@ extension PostDetailVC: UITableViewDataSource {
                 self.appDel.rxTapglue.deleteComment(forPostId: self.post.id!, commentId: self.postComments[indexPath.row].id!).subscribeCompleted({ 
                     self.retrieveAllCommentsForPost()
                 }).addDisposableTo(self.appDel.disposeBag)
-                
-                // OldSDK
-//                Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                    if error != nil {
-//                        print("\nError deleteComment: \(error)")
-//                    }
-//                    else {
-//                        print("\nSuccess: \(success)")
-//                        
-//                        self.retrieveAllCommentsForPost()
-//                    }
-//                })
             }
             delete.backgroundColor = UIColor.redColor()
             return [delete, edit]
@@ -332,9 +273,8 @@ extension PostDetailVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        let contents = ["en": textField.text!]
-        
         if beginEditComment {
+            let contents = ["en": textField.text!]
             self.editComment.contents = contents
             
             //NewSDK
@@ -353,28 +293,13 @@ extension PostDetailVC: UITextFieldDelegate {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError updateComment: \(error)")
-//                }
-//                else {
-//                    print("\nSuccess update comment: \(success)")
-//                    self.retrieveAllCommentsForPost()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.commentsTableView.reloadData()
-//                        self.commentTextField.text = nil
-//                        self.commentTextField.resignFirstResponder()
-//                        self.beginEditComment = false
-//                    })
-//                }
-//            })
-            
+
         } else {
+            
+            let comment = Comment(contents: ["en":textField.text!], postId: post.id!)
+            
             //NewSDK
-            appDel.rxTapglue.createComment(editComment).subscribe({ (event) in
+            appDel.rxTapglue.createComment(comment).subscribe({ (event) in
                 switch event {
                 case .Next( _):
                     self.retrieveAllCommentsForPost()
@@ -389,22 +314,6 @@ extension PostDetailVC: UITextFieldDelegate {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            Tapglue.createCommentWithContent(comment, forPost: post) { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError createCommentWithContent: \(error)")
-//                } else {
-//                    print("\nSuccess create comment: \(success)")
-//                    self.retrieveAllCommentsForPost()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.commentsTableView.reloadData()
-//                        self.commentTextField.text = nil
-//                        self.commentTextField.resignFirstResponder()
-//                    })
-//                }
-//            }
         }
         return true
     }

@@ -167,32 +167,32 @@ class HomeTableViewCell: UITableViewCell {
         // UserText
         self.userNameLabel.text = cellPost.user?.username
         
-        // OldSDK
-//        // PostText
-//        let postAttachment = post.attachments
-//        self.postTextLabel.text = postAttachment[0].contents!["en"] as? String
-//        
-//        // TagsText
-//        if let tags = post.tags {
-//            var tagLabelText = ""
-//            
-//            switch tags.count {
-//            case 0:
-//                self.tagLabel.text = ""
-//            case 1:
-//                for tag in tags {
-//                    self.tagLabel.text = "Tag: " + (tag as! String)
-//                }
-//            case 2...5:
-//                for tag in tags {
-//                    tagLabelText = tagLabelText + " " + (tag as! String)
-//                }
-//                self.tagLabel.text = "Tags:" + tagLabelText
-//            default:
-//                print("switch default tags")
-//            }
-//            
-//        }
+        // PostText
+        let postAttachment = post.attachments
+        self.postTextLabel.text = postAttachment![0].contents!["en"]
+        
+        
+        // TagsText
+        if let tags = post.tags {
+            var tagLabelText = ""
+            
+            switch tags.count {
+            case 1:
+                for tag in tags {
+                    self.tagLabel.text = "Tag: " + tag
+                }
+            case 2...5:
+                for tag in tags {
+                    tagLabelText = tagLabelText + " " + tag
+                }
+                self.tagLabel.text = "Tags:" + tagLabelText
+            default:
+                print("switch default tags")
+            }
+            
+        } else {
+            self.tagLabel.text = ""
+        }
 
         
         // OldSDK

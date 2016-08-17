@@ -23,11 +23,10 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     
     func configureCellWithPostComment(comment: Comment) {
         userNameLabel.text = comment.user?.username
-        // OldSDK TODO: Fix comments text
-//        userCommentLabel.text = comment.contents["en"] as? String
+        userCommentLabel.text = comment.contents!["en"]
         
         // OldSDK TODO: Fix to elapsed time
-        dateLabel.text = "elapsed time"
+        dateLabel.text = comment.createdAt
         
         // OldSDK TODO: Update to new sdk
 //        var userImage = TGImage()

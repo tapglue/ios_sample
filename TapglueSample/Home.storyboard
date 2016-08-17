@@ -44,9 +44,8 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user_name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVq-8t-oBc">
-                                                            <rect key="frame" x="73" y="8" width="100" height="21"/>
+                                                            <rect key="frame" x="73" y="8" width="512" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="0Ia-cI-vwz"/>
                                                                 <constraint firstAttribute="height" constant="21" id="0c2-8N-C63"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -54,9 +53,8 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeC-gf-qLl">
-                                                            <rect key="frame" x="96" y="37" width="77" height="21"/>
+                                                            <rect key="frame" x="96" y="37" width="489" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="77" id="Koi-VF-Sco"/>
                                                                 <constraint firstAttribute="height" constant="21" id="N6A-V0-hQs"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
@@ -157,10 +155,12 @@
                                                         <constraint firstItem="z3t-gh-9aS" firstAttribute="leading" secondItem="NnX-mN-mHk" secondAttribute="leading" id="f28-Bc-pqr"/>
                                                         <constraint firstItem="B0D-0C-qTb" firstAttribute="top" secondItem="Hp4-ju-7dL" secondAttribute="bottom" id="h9P-uX-qo1"/>
                                                         <constraint firstAttribute="trailing" secondItem="Hp4-ju-7dL" secondAttribute="trailing" constant="15" id="hT1-Y3-waj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zVq-8t-oBc" secondAttribute="trailing" constant="15" id="iMA-Qb-Vzn"/>
                                                         <constraint firstItem="tO0-AT-LN7" firstAttribute="top" secondItem="B0D-0C-qTb" secondAttribute="bottom" id="nQJ-2M-NUM"/>
                                                         <constraint firstAttribute="trailing" secondItem="z3t-gh-9aS" secondAttribute="trailing" constant="15" id="y5c-1v-aZI"/>
                                                         <constraint firstItem="z3t-gh-9aS" firstAttribute="top" secondItem="NnX-mN-mHk" secondAttribute="bottom" constant="8" id="yYG-iR-OYr"/>
                                                         <constraint firstItem="FeC-gf-qLl" firstAttribute="top" secondItem="zVq-8t-oBc" secondAttribute="bottom" constant="8" id="yj2-Qh-ytH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FeC-gf-qLl" secondAttribute="trailing" constant="15" id="zo7-pr-DpJ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
