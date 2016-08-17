@@ -92,7 +92,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                 // NewSDK
                 appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Friend).subscribe({ (event) in
                     switch event {
-                    case .Next(let connect):
+                    case .Next( _):
                         print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -103,7 +103,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.unfriendUserCustomizeButton()
                         })
                     }
-                })
+                }).addDisposableTo(self.appDel.disposeBag)
                 
                 // OldSDK
 //                Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
@@ -122,7 +122,8 @@ class NetworkUserTableViewCell: UITableViewCell {
                 let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Pending)
                 appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
                     switch event {
-                    case .Next(let connect):
+                    case .Next( _):
+                        print("Cell USER ID to friend\(self.cellUser.id!)")
                         print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -133,7 +134,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                             self.pendingUserCustomizeButton()
                         })
                     }
-                })
+                }).addDisposableTo(self.appDel.disposeBag)
                 
                 // OldSDK
 //                Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
@@ -148,6 +149,18 @@ class NetworkUserTableViewCell: UITableViewCell {
 //                })
             }
         } else {
+            let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Confirmed)
+            appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
+                switch event {
+                case .Next(let connect):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Do the action")
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+            
             // OldSDK TODO: Find out how to handle friendship conformation
 //            Tapglue.friendUser(cellUser, withState: TGConnectionState.Confirmed, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
 //                if success {
@@ -167,7 +180,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                 // NewSDK
                 appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Follow).subscribe({ (event) in
                     switch event {
-                    case .Next(let connect):
+                    case .Next( _):
                         print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -184,7 +197,7 @@ class NetworkUserTableViewCell: UITableViewCell {
                 let connection = Connection(toUserId: cellUser.id!, type: .Follow, state: .Confirmed)
                 appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
                     switch event {
-                    case .Next(let connect):
+                    case .Next( _):
                         print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -198,6 +211,18 @@ class NetworkUserTableViewCell: UITableViewCell {
                 }).addDisposableTo(self.appDel.disposeBag)
             }
         } else {
+            let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Rejected)
+            appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
+                switch event {
+                case .Next(let connect):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Do the action")
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+            
             //OldSDK TODO: how to handle rejected connection?
 //            Tapglue.friendUser(cellUser, withState: TGConnectionState.Rejected, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
 //                if success {

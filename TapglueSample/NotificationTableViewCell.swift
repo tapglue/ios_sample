@@ -26,8 +26,8 @@ class NotificationTableViewCell: UITableViewCell {
     func configureCellWithEvent(activity: Activity!){
         let activityUser = activity.user?.username
         
-        // Fix: elapsed times
-        self.dateLabel.text = "Fix: Elapsed time"
+        // TODO: Fix to elapsed times
+        self.dateLabel.text = "activity createdAt needed"
         
         switch activity.type! {
             case "tg_friend":

@@ -38,9 +38,10 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         
         self.loadNotificationFeed()
         
-        let filterImage = UIImage(named: "SortFilled")
-        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:)))
-        tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
+        // TODO: Turned off filterNotifcationsByTypeButton
+//        let filterImage = UIImage(named: "SortFilled")
+//        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:)))
+//        tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -66,21 +67,26 @@ class NotificationVC: UIViewController, UITableViewDelegate {
             count += 1
         }
         
-        // Issue: Retrieve event types are not working proparly, if I use my custom types I get still tg_friend and tg_follow as my feed back
+        // Issue: Retrieve event types are not working proparly, if I use my custom types I get still tg_friend and tg_follow as my feed back???
         
-        // OldSDK TODO: Does retrieves types excist?
-//        Tapglue.retrieveEventsFeedForCurrentUserForEventTypes(types) { (feed: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrieveEventsFeedForCurrentUserForEventTypes: \(error)")
-//            } else {
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    print(feed)
-//                    self.filteredEvents = feed as! [TGEvent]
-//                    self.notificationsTableView.reloadData()
-//                })
-//                self.refreshControl.endRefreshing()
-//            }
-//        }
+        // TODO: To use filtered activities you need first retrieveActivityWithType that is coming soon
+        // Get all activities
+        appDel.rxTapglue.retrieveActivityFeed().subscribe { (event) in
+            switch event {
+            case .Next(let activities):
+                print("Next")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    print(activities)
+                    self.filteredActivity = activities
+                    self.notificationsTableView.reloadData()
+                })
+                self.refreshControl.endRefreshing()
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
     }
     
     func filterButton(sender:AnyObject){

@@ -436,8 +436,8 @@ extension FindUsersVC: FBSDKLoginButtonDelegate {
                 
                 print("https://graph.facebook.com/\(self.facebookID)/picture?type=large")
                 
-                // Init CurrentUser
-                let currentUser = self.appDel.rxTapglue.currentUser!
+//                // Init CurrentUser
+//                let currentUser = self.appDel.rxTapglue.currentUser!
                 
                 
                 // OldSDK - TODO: FacebookTODO

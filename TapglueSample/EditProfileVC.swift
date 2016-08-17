@@ -76,15 +76,6 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-//            if error != nil {
-//                print(error)
-//            } else {
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//            }
-//        }
     }
     
     // Mark: Keyboard methods(update button will enabled, if keyboard is dismissed)

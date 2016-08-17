@@ -253,7 +253,7 @@ class FindUsersTableViewCell: UITableViewCell {
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
                 switch event {
-                case .Next(let connect):
+                case .Next( _):
                     print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -316,7 +316,7 @@ class FindUsersTableViewCell: UITableViewCell {
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
                 switch event {
-                case .Next(let connect):
+                case .Next( _):
                     print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -352,7 +352,7 @@ class FindUsersTableViewCell: UITableViewCell {
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
                 switch event {
-                case .Next(let connect):
+                case .Next( _):
                     print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -418,7 +418,7 @@ class FindUsersTableViewCell: UITableViewCell {
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
                 switch event {
-                case .Next(let connect):
+                case .Next( _):
                     print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)

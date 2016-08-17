@@ -112,35 +112,29 @@ class NetworkVC: UIViewController, UITableViewDelegate {
             switch event {
             case .Next(let connections):
                 print("Next")
-                print("Incoming: \(connections.incoming!)")
-                print("Outgoing: \(connections.outgoing!)")
                 
-                for conc in connections.outgoing! {
-                    print("Connections out")
-                    print("User from: \(conc.userFrom?.username)")
-                    print("User to: \(conc.userTo?.username)")
-                    print("User to: \(conc.state)")
-                    print("User to: \(conc.type)")
+                for inc in connections.incoming! {
+                    print("incomging user: \(inc.userFrom)")
+                    self.fromUsers.append(inc.userFrom!)
                 }
-//                for inc in connections {
-//                    self.fromUsers.append((inc as! Connection).fromUser)
-//                }
-//                for out in connections {
-//                    self.toUsers.append((out as! Connection).toUser)
-//                }
-//                print("\nFrom: \(self.fromUsers)")
-//                print("\nTo: \(self.toUsers)")
-//                
-//                self.users = self.fromUsers
-//                
-//                
-//                self.users.sortInPlace({ (contact1, contact2) -> Bool in
-//                    return contact1.username < contact2.username
-//                })
-//                
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.reloadTableViewWithAnimation()
-//                })
+                
+                for out in connections.outgoing! {
+                    self.toUsers.append(out.userTo!)
+                }
+                
+                print("From user: \(self.fromUsers)")
+                print("To user: \(self.toUsers)")
+                
+                // As an example we are just showing inbound friends request
+                self.users = self.fromUsers
+                
+                self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                    return contact1.username < contact2.username
+                })
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.reloadTableViewWithAnimation()
+                })
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:

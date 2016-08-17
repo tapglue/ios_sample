@@ -21,7 +21,7 @@ class EditProfilTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         userInfoEditTextField.delegate = self
         
         currentUser = appDel.rxTapglue.currentUser!

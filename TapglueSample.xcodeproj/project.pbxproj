@@ -352,7 +352,7 @@
 			children = (
 				6AAEB8E21D51FEC6002124AB /* Home.storyboard */,
 				6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */,
-				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
+				6AEAA4C51D649FE200436F6C /* HomeCell */,
 				6AAEB8E81D5201FE002124AB /* Post */,
 				6A22161B1D520CA900D27B7C /* PostDetailVC */,
 			);
@@ -458,6 +458,14 @@
 				6A1A98A81C20567900299CD1 /* Cell */,
 			);
 			name = EditProfile;
+			sourceTree = "<group>";
+		};
+		6AEAA4C51D649FE200436F6C /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
+			);
+			name = HomeCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

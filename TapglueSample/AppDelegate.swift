@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let appToken = "1ecd50ce4700e0c8f501dee1fb271344"
+    let appToken = "1d414c9d245108b75ed5bc887a1a9686"
     let url = "https://api.tapglue.com"
     var sims: TapglueSims!
     var rxTapglue: RxTapglue!
