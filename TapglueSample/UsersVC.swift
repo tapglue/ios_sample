@@ -12,8 +12,6 @@ import Tapglue
 class UsersVC: UIViewController, UITableViewDelegate {
     
     var users: [User] = []
-    
-    var meta: AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()

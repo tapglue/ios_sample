@@ -30,7 +30,7 @@ class NetworkUserTableViewCell: UITableViewCell {
         userImageView.layer.masksToBounds = true
     }
     
-    // Configure Cell with TGUser data
+    // Configure Cell with User data
     func configureCellWithUserWithPendingConnection(user: User!){
         cellUser = user
         
@@ -50,7 +50,7 @@ class NetworkUserTableViewCell: UITableViewCell {
         }
     }
     
-    // Configure Cell with TGUser data when search is active
+    // Configure Cell with User data when search is active
     func configureCellWithUserToFriendOrFollow(user: User!){
         cellUser = user
         

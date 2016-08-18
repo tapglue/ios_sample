@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         config.baseUrl = url
         config.appToken = appToken
         // setting this to true makes the sdk print http requests and responses
-        config.log = true
+        config.log = false
         rxTapglue = RxTapglue(configuration: config)
         
         sims = TapglueSims(withConfiguration: config, environment: .Sandbox)

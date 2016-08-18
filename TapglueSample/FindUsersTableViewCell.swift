@@ -63,7 +63,7 @@ class FindUsersTableViewCell: UITableViewCell {
         }
     }
     
-    // Configure Cell with TGUser data
+    // Configure Cell with User data
     func configureCellWithUserWithPendingConnection(user: User!){
         cellUser = user
         

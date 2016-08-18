@@ -33,34 +33,17 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     
     var postEditingText: String?
     var tempPost: Post?
-    
-    var currentUser: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        refreshTGUser()
     }
     
     override func viewWillAppear(animated: Bool) {
         // Check for tapglue user
-        if currentUser != nil {
-            refreshTGUser()
+        if appDel.rxTapglue.currentUser != nil {
+            showUserInfos()
             
-            countFriendsFollowersAndFollowings()
-            
-            getEventsAndPostsOfCurrentUser()
-            
-            let usr = currentUser
-            
-            self.userNameLabel.text = usr.username
-            self.userFullnameLabel.text = usr.firstName! + " " + usr.lastName!
-            self.userAboutLabel.text = usr.about!
-            
-            // TO-DO: Check nil
-            // UserImage
-            let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
-            self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+            refreshCurrentUser()
         } else {
             // Show loginVC if User is nil
             self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
@@ -147,6 +130,18 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         }
     }
     
+    func showUserInfos() {
+        let usr = appDel.rxTapglue.currentUser!
+        self.userNameLabel.text = usr.username
+        self.userFullnameLabel.text = usr.firstName! + " " + usr.lastName!
+        self.userAboutLabel.text = usr.about!
+        
+        // TO-DO: Check nil
+        // UserImage
+        let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+    }
+    
     func getEventsAndPostsOfCurrentUser() {
         let currentUserID = appDel.rxTapglue.currentUser?.id!
         
@@ -187,27 +182,29 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     func countFriendsFollowersAndFollowings() {
-        friendsCountButton.setTitle(String(currentUser.friendCount!) + " Friends", forState: .Normal)
-        followerCountButton.setTitle(String(currentUser.followerCount!) + " Follower", forState: .Normal)
-        followingCountButton.setTitle(String(currentUser.followedCount!) + " Following", forState: .Normal)
+        friendsCountButton.setTitle(String(appDel.rxTapglue.currentUser!.friendCount!) + " Friends", forState: .Normal)
+        followerCountButton.setTitle(String(appDel.rxTapglue.currentUser!.followerCount!) + " Follower", forState: .Normal)
+        followingCountButton.setTitle(String(appDel.rxTapglue.currentUser!.followedCount!) + " Following", forState: .Normal)
     }
     
-    func refreshTGUser() {
-        currentUser = appDel.rxTapglue.currentUser
-        
-        appDel.rxTapglue.retrieveUser(currentUser.id!).subscribe { (event) in
+    func refreshCurrentUser() {
+        appDel.rxTapglue.refreshCurrentUser().subscribe { (event) in
             switch event {
             case .Next(let usr):
                 print("Next")
-                print("retrieve user information of currentuser")
-//                self.currentUser = usr
+                print("referesh \(usr) information of currentuser")
+                
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
                 print("Do the action")
+                self.countFriendsFollowersAndFollowings()
+                
+                self.getEventsAndPostsOfCurrentUser()
             }
         }.addDisposableTo(self.appDel.disposeBag)
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -298,7 +295,8 @@ extension ProfileVC: UITableViewDataSource {
             self.appDel.rxTapglue.deletePost(self.posts[indexPath.row].id!).subscribe({ (event) in
                 switch event {
                 case .Next(let element):
-                    print(element)
+//                    print(element)
+                    print("element")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:

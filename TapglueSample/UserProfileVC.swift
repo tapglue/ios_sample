@@ -37,9 +37,9 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showUserInformation(userProfile!)
+        showUserInfos(userProfile!)
         
-        coutFriendsFollowsAndFollowings()
+        countFriendsFollowsAndFollowings()
         
         getEventsAndPostsOfCurrentUser()
     }
@@ -52,7 +52,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
         
         //NewSDK
-        appDel.rxTapglue.retrieveFriends().subscribe { (event) in
+        appDel.rxTapglue.retrieveFriendsForUserId(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let usr):
                 print("Next")
@@ -76,7 +76,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     @IBAction func followerCountButtonPressed(sender: UIButton) {
         
         //NewSDK
-        appDel.rxTapglue.retrieveFollowers().subscribe { (event) in
+        appDel.rxTapglue.retrieveFollowersForUserId(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let usr):
                 print("Next")
@@ -99,14 +99,15 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
         //NewSDK
-        appDel.rxTapglue.retrieveFollowings().subscribe { (event) in
+        appDel.rxTapglue.retrieveFollowingsForUserId(userProfile!.id!).subscribe { (event) in
             switch event {
-            case .Next(let usr):
+            case .Next(let usrs):
                 print("Next")
+                print("FollowingCount: \(usrs.count)")
                 let storyboard = UIStoryboard(name: "Users", bundle: nil)
                 let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
                 
-                usersViewController.users = usr
+                usersViewController.users = usrs
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.navigationController?.pushViewController(usersViewController, animated: true)
                 })
@@ -121,7 +122,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     }
     
     // Fill user profile
-    func showUserInformation(user: User){
+    func showUserInfos(user: User){
         userFullnameLabel.text = user.firstName! + " " + user.lastName!
         userUsernameLabel.text = "@" + user.username!
         userAboutLabel.text = user.about!
@@ -163,6 +164,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             case .Completed:
                 print("Do the action")
                 
+                
                 dispatch_async(dispatch_get_main_queue()) {
                     self.userProfileFeedTableView.reloadData()
                 }
@@ -170,7 +172,10 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         }.addDisposableTo(self.appDel.disposeBag)
     }
     
-    func coutFriendsFollowsAndFollowings() {
+    func countFriendsFollowsAndFollowings() {
+        print("Friends: \(userProfile!.friendCount!)")
+        print("Friends: \(userProfile!.followerCount!)")
+        print("Friends: \(userProfile!.followedCount!)")
         friendsCountButton.setTitle(String(userProfile!.friendCount!) + " Friends", forState: .Normal)
         followerCountButton.setTitle(String(userProfile!.followerCount!) + " Follower", forState: .Normal)
         followingCountButton.setTitle(String(userProfile!.followedCount!) + " Following", forState: .Normal)
