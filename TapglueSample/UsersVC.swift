@@ -34,20 +34,13 @@ extension UsersVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UsersTableViewCell
         
         cell.userImageView.image = nil
-        
-        // OldSDK TODO: Fix if about is available
-//        meta = users[indexPath.row].metadata as AnyObject
-//        if meta != nil {
-//            cell.userAboutLabel.text = String(meta!.valueForKey("about")!)
-//        }
-        
+        cell.userAboutLabel.text = users[indexPath.row].about!
         cell.userNameLabel.text = users[indexPath.row].username
         
-        // OldSDK TODO: Fix image
-//        // User image
-//        var userImage = TGImage()
-//        userImage = users[indexPath.row].images.valueForKey("profilePic") as! TGImage
-//        cell.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TODO: Check nil
+        // UserImage
+        let profileImage = users[indexPath.row].images!["profile"]
+        cell.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         
         return cell
     }

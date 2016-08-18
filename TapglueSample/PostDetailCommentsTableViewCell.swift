@@ -27,11 +27,11 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         
         // OldSDK TODO: Fix to elapsed time
         dateLabel.text = comment.createdAt
-        
-        // OldSDK TODO: Update to new sdk
-//        var userImage = TGImage()
-//        userImage = comment.user.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+       
+        // TODO: Check nil
+        // UserImage
+        let profileImage = comment.user?.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
     }
 }
 

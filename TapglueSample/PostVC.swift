@@ -33,10 +33,10 @@ class PostVC: UIViewController {
 
         postTextField.becomeFirstResponder()
         
-        // TO-DO: Change to new sdk
-//        var userImage = TGImage()
-//        userImage = User.currentUser().images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TO-DO: Check nil
+        // UserImage
+        let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         
         // Old post will be edited
 //        if postBeginEditing {

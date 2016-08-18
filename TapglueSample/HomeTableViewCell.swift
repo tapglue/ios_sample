@@ -138,7 +138,7 @@ class HomeTableViewCell: UITableViewCell {
         if let cellPostTags = cellPost.tags {
             print(cellPostTags)
         }
-        let cellPostLikeCount = cellPost.counts!["likes"]!
+        let cellPostLikeCount = cellPost.likeCount!
         
         switch cellPostLikeCount {
         case 0:
@@ -151,7 +151,7 @@ class HomeTableViewCell: UITableViewCell {
             print("switch default likesCount")
         }
         
-        let cellPostCommentCount = cellPost.counts!["comments"]!
+        let cellPostCommentCount = cellPost.commentCount!
         
         switch cellPostCommentCount {
         case 0:
@@ -195,11 +195,10 @@ class HomeTableViewCell: UITableViewCell {
         }
 
         
-        // OldSDK
-//        // UserImage
-//        var userImage = TGImage()
-//        userImage = post.user.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TODO: Check nil
+        // UserImage
+        let profileImage = post.user?.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
 
         // Check visibility
         switch post.visibility! {

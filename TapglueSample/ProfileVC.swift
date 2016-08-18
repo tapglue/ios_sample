@@ -39,7 +39,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentUser = appDel.rxTapglue.currentUser
+        refreshTGUser()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,18 +55,14 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             
             self.userNameLabel.text = usr.username
             self.userFullnameLabel.text = usr.firstName! + " " + usr.lastName!
+            self.userAboutLabel.text = usr.about!
             
-            // OldSDK TODO: Fix if about available
-//            let meta = tapglueUser.metadata as AnyObject
-//            self.userAboutLabel.text = String(meta.valueForKey("about")!)
-            
-            // OldSDK
-//            // UserImage
-//            var userImage = TGImage()
-//            userImage = TGUser.currentUser().images.valueForKey("profilePic") as! TGImage
-//            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+            // TO-DO: Check nil
+            // UserImage
+            let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         } else {
-            // Show loginVC if TGUser is nil
+            // Show loginVC if User is nil
             self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
         }
         
@@ -94,18 +90,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrieveFriendsForCurrentUserWithCompletionBlock { (friends: [AnyObject]!, error: NSError!) -> Void in
-//            let storyboard = UIStoryboard(name: "Users", bundle: nil)
-//            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-//            
-//            usersViewController.users = friends as! [TGUser]
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.navigationController?.pushViewController(usersViewController, animated: true)
-//            })
-//        }
+
     }
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
@@ -129,18 +114,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        //OldSDK
-//        Tapglue.retrieveFollowersForCurrentUserWithCompletionBlock { (followers: [AnyObject]!,error: NSError!) -> Void in
-//            let storyboard = UIStoryboard(name: "Users", bundle: nil)
-//            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-//            
-//            usersViewController.users = followers as! [TGUser]
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.navigationController?.pushViewController(usersViewController, animated: true)
-//            })
-//        }
+
     }
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
@@ -164,18 +138,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrieveFollowsForCurrentUserWithCompletionBlock { (following: [AnyObject]!,error: NSError!) -> Void in
-//            let storyboard = UIStoryboard(name: "Users", bundle: nil)
-//            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-//            
-//            usersViewController.users = following as! [TGUser]
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.navigationController?.pushViewController(usersViewController, animated: true)
-//            })
-//        }
+
     }
     
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
@@ -185,8 +148,10 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     func getEventsAndPostsOfCurrentUser() {
+        let currentUserID = appDel.rxTapglue.currentUser?.id!
+        
         // NewSDK
-        appDel.rxTapglue.retrieveActivityFeed().subscribe { (event) in
+        appDel.rxTapglue.retrieveActivitiesByUser(currentUserID!).subscribe { (event) in
             switch event {
             case .Next(let activi):
                 print("Next")
@@ -201,22 +166,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
                 }
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        // OldSDK
-//        Tapglue.retrieveEventsForCurrentUserWithCompletionBlock { (events: [AnyObject]!,error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrieveEventsForCurrentUser: \(error)")
-//            }
-//            else {
-//                self.events = events as! [TGEvent]
-//                
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.profileFeedTableView.reloadData()
-//                }
-//            }
-//        }
         
         // NewSDK
-        appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
+        appDel.rxTapglue.retrievePostsByUser(currentUserID!).subscribe { (event) in
             switch event {
             case .Next(let posts):
                 print("Next")
@@ -232,33 +184,29 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             }
         }.addDisposableTo(self.appDel.disposeBag)
         
-        // OldSDK
-//        Tapglue.retrievePostsForCurrentUserWithCompletionBlock { (posts: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrievePostsForCurrentUser: \(error)")
-//            }
-//            else {
-//                self.posts = posts as! [TGPost]
-//                
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.profileFeedTableView.reloadData()
-//                }
-//            }
-//        }
     }
     
     func countFriendsFollowersAndFollowings() {
-        friendsCountButton.setTitle(String(currentUser.friendCount) + " Friends", forState: .Normal)
-        followerCountButton.setTitle(String(currentUser.followedCount) + " Follower", forState: .Normal)
-        followingCountButton.setTitle(String(currentUser.followerCount) + " Following", forState: .Normal)
+        friendsCountButton.setTitle(String(currentUser.friendCount!) + " Friends", forState: .Normal)
+        followerCountButton.setTitle(String(currentUser.followerCount!) + " Follower", forState: .Normal)
+        followingCountButton.setTitle(String(currentUser.followedCount!) + " Following", forState: .Normal)
     }
     
     func refreshTGUser() {
         currentUser = appDel.rxTapglue.currentUser
         
-        // OldSDK
-//        Tapglue.retrieveCurrentUserWithCompletionBlock { (user: TGUser!,error: NSError!) -> Void in
-//        }
+        appDel.rxTapglue.retrieveUser(currentUser.id!).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                print("retrieve user information of currentuser")
+//                self.currentUser = usr
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -362,21 +310,7 @@ extension ProfileVC: UITableViewDataSource {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            Tapglue.deletePostWithId(self.posts[indexPath.row].objectId, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError deleteComment: \(error)")
-//                }
-//                else {
-//                    print("\nSuccess: \(success)")
-//                    self.posts.removeAtIndex(indexPath.row)
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.profileFeedTableView.reloadData()
-//                    })
-//                }
-//            })
+
         }
         delete.backgroundColor = UIColor.redColor()
         return [delete, edit]

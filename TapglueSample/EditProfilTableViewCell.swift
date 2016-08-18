@@ -36,10 +36,7 @@ class EditProfilTableViewCell: UITableViewCell {
             case 2:
                 currentUser.lastName = tf.text!
             case 3:
-                // OldSDK
-                print("Fix if about available")
-//                let about: [NSObject : AnyObject!] = ["about" : tf.text!]
-//                TGUser.currentUser().metadata = about
+                currentUser.about = tf.text!
             case 4:
                 currentUser.email = tf.text!
             default: print("More then expected switches")

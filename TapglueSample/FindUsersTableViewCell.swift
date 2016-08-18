@@ -33,18 +33,14 @@ class FindUsersTableViewCell: UITableViewCell {
         userImageView.layer.masksToBounds = true
     }
     
-    // Configure Cell with TGUser data
+    // Configure Cell with User data
     func configureCellWithUserToFriendOrFollow(user: User!){
         cellUser = user
         
-        // OldSDK
-//        let meta = user.metadata as AnyObject
-//        self.userAboutLabel.text = String(meta.valueForKey("about")!)
-        
+        self.userAboutLabel.text = self.cellUser.about!
         self.userNameLabel.text = self.cellUser.username
         
-        // OldSDK
-//        showUserImage(cellUser)
+        showUserImage(cellUser)
         
         if self.connectRightButton != nil {
             if cellUser.isFriend! {
@@ -70,14 +66,11 @@ class FindUsersTableViewCell: UITableViewCell {
     // Configure Cell with TGUser data
     func configureCellWithUserWithPendingConnection(user: User!){
         cellUser = user
-        // OldSDK
-//        let meta = user.metadata as AnyObject
-//        self.userAboutLabel.text = String(meta.valueForKey("about")!)
         
+        self.userAboutLabel.text = self.cellUser.about!
         self.userNameLabel.text = self.cellUser.username
         
-        // OldSDK
-//        showUserImage(cellUser)
+        showUserImage(cellUser)
         
         if self.connectRightButton != nil {
             customizeBtn(.Accept)
@@ -91,14 +84,12 @@ class FindUsersTableViewCell: UITableViewCell {
     // Configure Cell with Contacts that use the app
     func configureCellWithUserFromContactsThatUsesApp(contact: [String:String], user: User){
         cellUser = user
-        // OldSDK
-//        let meta = cellUser.metadata as AnyObject
-//        self.userAboutLabel.text = String(meta.valueForKey("about")!)
         
+        self.userAboutLabel.text = self.cellUser.about!
         self.userNameLabel.text = contact["givenName"]
         
         // OldSDK
-//        showUserImage(cellUser)
+        showUserImage(cellUser)
         
 //        if self.connectRightButton != nil {
 //            self.connectRightButton.hidden = false
@@ -234,12 +225,12 @@ class FindUsersTableViewCell: UITableViewCell {
     }
 
     // OldSDK
-//    func showUserImage(cellUser: TGUser) {
-//        // UserImage
-//        var userImage = TGImage()
-//        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-//    }
+    func showUserImage(cellUser: User) {
+        // TODO: Check nil
+        // UserImage
+        let profileImage = cellUser.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+    }
     
     func connectLeftBtnState(sender: UIButton){
         switch sender.tag {

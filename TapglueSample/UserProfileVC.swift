@@ -70,18 +70,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrieveFriendsForUser(userProfile) { (friends: [AnyObject]!, error: NSError!) -> Void in
-//            let storyboard = UIStoryboard(name: "Users", bundle: nil)
-//            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-//            
-//            usersViewController.users = friends as! [TGUser]
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.navigationController?.pushViewController(usersViewController, animated: true)
-//            })
-//        }
+
     }
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
@@ -106,17 +95,6 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             }
         }.addDisposableTo(self.appDel.disposeBag)
         
-        // OldSDK
-//        Tapglue.retrieveFollowersForUser(userProfile) { (followers: [AnyObject]!, error: NSError!) -> Void in
-//            let storyboard = UIStoryboard(name: "Users", bundle: nil)
-//            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-//            
-//            usersViewController.users = followers as! [TGUser]
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.navigationController?.pushViewController(usersViewController, animated: true)
-//            })
-//        }
     }
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
@@ -139,38 +117,26 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrieveFollowsForUser(userProfile) { (following: [AnyObject]!, error: NSError!) -> Void in
-//            let storyboard = UIStoryboard(name: "Users", bundle: nil)
-//            let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-//            
-//            usersViewController.users = following as! [TGUser]
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.navigationController?.pushViewController(usersViewController, animated: true)
-//            })
-//        }
+
     }
     
     // Fill user profile
     func showUserInformation(user: User){
         userFullnameLabel.text = user.firstName! + " " + user.lastName!
         userUsernameLabel.text = "@" + user.username!
+        userAboutLabel.text = user.about!
         
-        //OldSDK
-//        let meta = user.metadata as AnyObject
-//        userAboutLabel.text = String(meta.valueForKey("about")!)
-//        
-//        var userImage = TGImage()
-//        userImage = self.userProfile!.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        
+        // TODO: Check nil
+        // UserImage
+        let profileImage = user.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
      }
     
     // Get events and posts for current user
     func getEventsAndPostsOfCurrentUser() {
         // NewSDK
-        appDel.rxTapglue.retrieveActivityFeed().subscribe { (event) in
+        appDel.rxTapglue.retrieveActivitiesByUser(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let activi):
                 print("Next")
@@ -185,21 +151,9 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 }
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        //Old SDK
-//        Tapglue.retrieveEventsForUser(userProfile) { (events: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrieveEventsForUser: \(error)")
-//            } else {
-//                self.events = events as! [TGEvent]
-//                
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.userProfileFeedTableView.reloadData()
-//                })
-//            }
-//        }
+
         // NewSDK
-        appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
+        appDel.rxTapglue.retrievePostsByUser(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let posts):
                 print("Next")
@@ -214,30 +168,12 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 }
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrievePostsForUser(userProfile) { (posts: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrievePostsForUser: \(error)")
-//            }
-//            else {
-//                self.posts = posts as! [TGPost]
-//    
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.userProfileFeedTableView.reloadData()
-//                })
-//            }
-//        }
     }
     
     func coutFriendsFollowsAndFollowings() {
-        let friendsCount = String(userProfile?.friendCount)
-        let followersCount = String(userProfile?.followerCount)
-        let followingCount = String(userProfile?.followedCount)
-        
-        friendsCountButton.setTitle(friendsCount + " Friends", forState: .Normal)
-        followerCountButton.setTitle(followersCount + " Follower", forState: .Normal)
-        followingCountButton.setTitle(followingCount + " Following", forState: .Normal)
+        friendsCountButton.setTitle(String(userProfile!.friendCount!) + " Friends", forState: .Normal)
+        followerCountButton.setTitle(String(userProfile!.followerCount!) + " Follower", forState: .Normal)
+        followingCountButton.setTitle(String(userProfile!.followedCount!) + " Following", forState: .Normal)
     }
 }
 

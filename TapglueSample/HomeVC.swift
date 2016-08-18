@@ -36,11 +36,10 @@ class HomeVC: UIViewController, UITableViewDelegate{
     
     override func viewWillAppear(animated: Bool) {
         
-        // TO-DO Change to new sdk
-//        // UserImage
-//        if let userImage = User.currentUser().images.valueForKey("profilePic") as! TGImage? {
-//            self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-//        }
+        // TODO Nil checker
+        // UserImage
+        let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         
         self.loadFriendsActivityFeed()
     }

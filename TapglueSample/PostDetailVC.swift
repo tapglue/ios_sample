@@ -158,7 +158,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         userNameButton.contentHorizontalAlignment = .Left
         userNameButton.setTitle(post.user!.username, forState: .Normal)
         
-        let likeCountForPost = post.counts!["likes"]!
+        let likeCountForPost = post.likeCount!
         
         if likeCountForPost != 0 {
             if likeCountForPost == 1{
@@ -173,11 +173,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         // OldSDK : needs to show elpased time
         self.dateLabel.text = post.createdAt
 
-        //OldSDK
-//        // User Avatar Image from sample asset
-//        var userImage = TGImage()
-//        userImage = post.user.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TODO: Check nil
+        // UserImage
+        let profileImage = post.user?.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         
         // Check visibility
         switch post.visibility! {

@@ -26,13 +26,9 @@ class ProfileFeedTableViewCell: UITableViewCell {
     func configureCellWithPost(post: Post!){
         clearLabels()
         
-        // OldSDK dies
-//        // Post attachment
-//        let postAttachment = post.attachments
-//        
-//        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
-//        
-//        self.typeLabel.text = String(postAttachment[0].name).capitalizeFirst
+        let attachments = post.attachments
+        self.infoLabel.text = attachments![0].contents!["en"]
+        self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
     
         // TODO: Fix to elapsed time
         self.dateLabel.text = post.createdAt!
@@ -42,7 +38,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
         clearLabels()
         
         // OldSDK TODO: Fix to elapsed time
-        self.dateLabel.text = "elapsed time coming"
+        self.dateLabel.text = activity.createdAt
         
         // OldSDK TODO: Fix after old event target user is available in the new sdk
 //        switch activity.type! {

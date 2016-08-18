@@ -36,11 +36,10 @@ class NetworkUserTableViewCell: UITableViewCell {
         
         self.userNameLabel.text = self.cellUser.username
         
-        // OldSDk TODO: Update to new sdk
-//        // UserImage
-//        var userImage = TGImage()
-//        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TODO: Check nil
+        // UserImage
+        let profileImage = cellUser.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         
         if self.connectRightButton != nil {
             acceptFriendShipCustomizeButton()
@@ -57,11 +56,10 @@ class NetworkUserTableViewCell: UITableViewCell {
         
         self.userNameLabel.text = self.cellUser.username
         
-        // OldSDk TODO: Update to new sdk
-//        // UserImage
-//        var userImage = TGImage()
-//        userImage = cellUser.images.valueForKey("profilePic") as! TGImage
-//        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TODO: Check nil
+        // UserImage
+        let profileImage = cellUser.images!["profile"]
+        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
         
         if self.connectRightButton != nil {
             if cellUser.isFriend! {
@@ -152,7 +150,7 @@ class NetworkUserTableViewCell: UITableViewCell {
             let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Confirmed)
             appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
                 switch event {
-                case .Next(let connect):
+                case .Next( _):
                     print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -214,7 +212,7 @@ class NetworkUserTableViewCell: UITableViewCell {
             let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Rejected)
             appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
                 switch event {
-                case .Next(let connect):
+                case .Next( _):
                     print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -237,7 +235,7 @@ class NetworkUserTableViewCell: UITableViewCell {
     
     func acceptFriendShipCustomizeButton(){
         self.connectRightButton.setTitle("Accept", forState: .Normal)
-        self.connectRightButton.backgroundColor = UIColor.orangeColor()
+        self.connectRightButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
     }
     func declineFriendShipCustomizeButton(){
         self.connectLeftButton.setTitle("Decline", forState: .Normal)
@@ -262,7 +260,6 @@ class NetworkUserTableViewCell: UITableViewCell {
         self.connectRightButton.setTitle("Add Friend", forState: .Normal)
         self.connectRightButton.backgroundColor = UIColor.lightGrayColor()
     }
-    
     
     func pendingUserCustomizeButton(){
         self.connectRightButton.setTitle("Pending", forState: .Selected)

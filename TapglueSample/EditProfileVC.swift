@@ -25,11 +25,7 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         
         currentUser = appDel.rxTapglue.currentUser
         
-        // OldSDK TODO: if about available
-//        let meta = TGUser.currentUser().metadata as AnyObject
-//        let about = String(meta.valueForKey("about")!)
-        
-        userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, "about", currentUser.email!]
+        userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, currentUser.about!, currentUser.email!]
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)

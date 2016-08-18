@@ -27,24 +27,24 @@ class NotificationTableViewCell: UITableViewCell {
         let activityUser = activity.user?.username
         
         // TODO: Fix to elapsed times
-        self.dateLabel.text = "activity createdAt needed"
+        self.dateLabel.text = activity.createdAt
         
         switch activity.type! {
             case "tg_friend":
                 eventNameLabel.text = activityUser! + " is now friends with " + " fix activity.target.user.username"
             
-                //Old SDK
-//                if let userImage = activity.target.user.images.valueForKey("profilePic") as! TGImage? {
-//                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-//                }
+                // TODO: Check nil
+                // UserImage
+                let profileImage = activity.user!.images!["profile"]
+                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
             
             case "tg_follow":
                 eventNameLabel.text = activityUser! + " is now following " + " fix activity.target.user.username"
-            
-                //Old SDK
-//                if let userImage = activity.target.user.images.valueForKey("profilePic") as! TGImage? {
-//                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-//                }
+                
+                // TODO: Check nil
+                // UserImage
+                let profileImage = activity.user!.images!["profile"]
+                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
             
             case "tg_like":
                 self.eventNameLabel.text = activityUser! + " liked a Post"

@@ -57,19 +57,13 @@ class LoginRegisterVC: UIViewController {
             usr.lastName = lastNameTextField.text!
             usr.email = emailTextField.text!
             usr.password = passwordTextField.text
+            usr.about = aboutTextField.text!
             
-            // TO-DO Add user image url with new SDK
-//            let userImage = Image()
-//            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
-//            userImage.url = userProfileImageURLs[randomIndex]
-//            tapglueUser.images.setValue(userImage, forKey: "profilePic")
-            
-            // TODO: After it is fixed
-//            let userImage = Image()
-//            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
-//            let imageURL = userProfileImageURLs[randomIndex]
-//            
-//            usr.images = ["profile": userImage]
+            // New SDK
+            let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
+            let imageURL = userProfileImageURLs[randomIndex]
+            let userImage = Image(url: imageURL)
+            usr.images = ["profile": userImage]
             
             // Create New User
             appDel.rxTapglue.createUser(usr).subscribe { (event) in

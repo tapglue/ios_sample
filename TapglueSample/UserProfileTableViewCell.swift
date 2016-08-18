@@ -23,23 +23,19 @@ class UserProfileTableViewCell: UITableViewCell {
     func configureCellWithPost(post: Post!){
         clearLabels()
         
-        // OldSDK TODO: Fix if attachments are available
-//        // Post attachment
-//        let postAttachment = post.attachments
-//        
-//        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
-//        
-//        self.typeLabel.text = String(postAttachment[0].name).capitalizeFirst
+        let attachments = post.attachments
+        self.infoLabel.text = attachments![0].contents!["en"]
+        self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
         
         // OldSDK TODO: show elapsed time
-        self.dateLabel.text = "show elapsed time"
+        self.dateLabel.text = post.createdAt
     }
     
     func configureCellWithActivity(activity: Activity!){
         clearLabels()
         
         // OldSDK TODO: show elapsed time
-        self.dateLabel.text = "elapsed time soon"
+        self.dateLabel.text = activity.createdAt
         
         // OldSDK TODO: fix if event target is available in new sdk
 //        switch activity.type! {
