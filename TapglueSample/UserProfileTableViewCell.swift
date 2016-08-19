@@ -28,14 +28,14 @@ class UserProfileTableViewCell: UITableViewCell {
         self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
         
         // OldSDK TODO: show elapsed time
-        self.dateLabel.text = post.createdAt
+        self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
     }
     
     func configureCellWithActivity(activity: Activity!){
         clearLabels()
         
         // OldSDK TODO: show elapsed time
-        self.dateLabel.text = activity.createdAt
+        self.dateLabel.text = activity.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
         
         // OldSDK TODO: fix if event target is available in new sdk
 //        switch activity.type! {

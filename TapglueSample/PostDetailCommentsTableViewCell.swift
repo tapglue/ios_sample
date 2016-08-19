@@ -26,7 +26,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         userCommentLabel.text = comment.contents!["en"]
         
         // OldSDK TODO: Fix to elapsed time
-        dateLabel.text = comment.createdAt
+        dateLabel.text = comment.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
        
         // TODO: Check nil
         // UserImage

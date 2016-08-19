@@ -30,7 +30,7 @@
                                 <rect key="frame" x="15" y="70" width="570" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-t2-yjf">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="278" height="40"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.76078431369999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="dxe-rg-iJU"/>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzd-9g-vYy">
-                                        <rect key="frame" x="195" y="0.0" width="180" height="40"/>
+                                        <rect key="frame" x="292" y="0.0" width="278" height="40"/>
                                         <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="Facebook">
@@ -64,23 +64,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="facebookBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="2bU-xe-HHm"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aY-g7-A8z">
-                                        <rect key="frame" x="390" y="0.0" width="180" height="40"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                        <state key="normal" title="Twitter">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="twitterBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="LUy-0l-7Ku"/>
                                         </connections>
                                     </button>
                                 </subviews>

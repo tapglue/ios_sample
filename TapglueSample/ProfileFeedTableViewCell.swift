@@ -31,14 +31,14 @@ class ProfileFeedTableViewCell: UITableViewCell {
         self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
     
         // TODO: Fix to elapsed time
-        self.dateLabel.text = post.createdAt!
+        self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
     }
 
     func configureCellWithEvent(activity: Activity!){
         clearLabels()
         
         // OldSDK TODO: Fix to elapsed time
-        self.dateLabel.text = activity.createdAt
+        self.dateLabel.text = activity.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
         
         // OldSDK TODO: Fix after old event target user is available in the new sdk
 //        switch activity.type! {

@@ -93,6 +93,7 @@ class HomeTableViewCell: UITableViewCell {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
+            
             // OldSDK
 //            cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
 //                if error != nil {
@@ -212,9 +213,8 @@ class HomeTableViewCell: UITableViewCell {
                 self.visibilityImageView.image = UIImage(named: "publicFilled")
         }
         
-        // OldSDK : needs to show elpased time
-        // Date text
-        self.dateLabel.text = cellPost.createdAt
+        // StringDate to elapsedTimeString
+        self.dateLabel.text = cellPost.createdAt!.toNSDateTime().toTimeFormatInElapsedTimeToString()
         
         // Check if post was liked before
         if cellPost.isLiked! {

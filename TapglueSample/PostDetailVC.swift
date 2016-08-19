@@ -171,7 +171,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         let postAttachment = post.attachments
         self.postTextLabel.text = postAttachment![0].contents!["en"]
         // OldSDK : needs to show elpased time
-        self.dateLabel.text = post.createdAt
+        self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
 
         // TODO: Check nil
         // UserImage

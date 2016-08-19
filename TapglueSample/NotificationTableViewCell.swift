@@ -27,7 +27,7 @@ class NotificationTableViewCell: UITableViewCell {
         let activityUser = activity.user?.username
         
         // TODO: Fix to elapsed times
-        self.dateLabel.text = activity.createdAt
+        self.dateLabel.text = activity.createdAt!.toNSDateTime().toTimeFormatInElapsedTimeToString()
         
         switch activity.type! {
             case "tg_friend":

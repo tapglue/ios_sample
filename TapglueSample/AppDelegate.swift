@@ -8,9 +8,6 @@
 
 import UIKit
 import Tapglue
-//import TwitterKit
-//import Fabric
-//import TapglueSims
 import RxSwift
 
 
@@ -28,15 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        
-        // Init TapglueSims and Tapglue with your appToken and Config plus environment
-//        sims = TapglueSims(appToken: appToken, url: url, environment: .Sandbox)
-//        registerForPushNotifications(application)
-//        let config = TGConfiguration.defaultConfiguration()
-//        config.loggingEnabled = false
-//        Tapglue.setUpWithAppToken(appToken, andConfig: config)
-//        Tapglue.setSessionTokenNotifier(sims)
-        
         let config = Configuration()
         config.baseUrl = url
         config.appToken = appToken
@@ -45,15 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rxTapglue = RxTapglue(configuration: config)
         
         sims = TapglueSims(withConfiguration: config, environment: .Sandbox)
-        
-//        let tapglue = Tapglue(configuration: config)
-        
-//
-//        TapglueSims
-//        
-        
-        // Init Twitter
-//        Twitter.sharedInstance().startWithConsumerKey("jwcnpghUsKBjD3lMpdoMlSpuK", consumerSecret: "ibzxpfK76SZMNhE5sqWa7devupSCtVWOt1WpYrgOi8yZw7AtnU")
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

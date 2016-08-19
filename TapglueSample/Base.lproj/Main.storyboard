@@ -39,7 +39,7 @@
         <!--Tapglue-->
         <scene sceneID="nWc-Xa-0Fo">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" customClass="TabBarVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Tapglue" id="Kxn-Wx-nBf"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="doY-Bn-bDJ">
@@ -76,7 +76,7 @@
         <scene sceneID="Jno-0l-LIT">
             <objects>
                 <viewControllerPlaceholder storyboardName="Network" id="zMc-Xk-eeZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Network" image="NewsEmpty" id="wPE-7x-JyY"/>
+                    <tabBarItem key="tabBarItem" title="Network" image="SearchFilled" id="wPE-7x-JyY"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBc-Fu-vAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,8 +105,8 @@
     </scenes>
     <resources>
         <image name="HomeEmpty" width="25" height="25"/>
-        <image name="NewsEmpty" width="25" height="25"/>
         <image name="NotificationEmpty" width="25" height="25"/>
         <image name="ProfileEmpty" width="25" height="25"/>
+        <image name="SearchFilled" width="25" height="25"/>
     </resources>
 </document>

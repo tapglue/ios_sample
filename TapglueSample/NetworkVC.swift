@@ -9,7 +9,6 @@
 import UIKit
 import Tapglue
 import Contacts
-//import TwitterKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 
@@ -35,8 +34,8 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     var searchingForUser = false
     
     var sections = ["Find Friends", "Pending Requests"]
-    var networks = ["Contacts", "Facebook", "Twitter"]
-    let networkImages = ["AddressBookFilled", "FacebookFilled", "TwitterFilled"]
+    var networks = ["Contacts", "Facebook"]
+    let networkImages = ["AddressBookFilled", "FacebookFilled"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,10 +90,6 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     @IBAction func facebookBtnPressed(sender: UIButton) {
         
     }
-    
-    @IBAction func twitterBtnPressed(sender: UIButton) {
-    }
-
     
     func clearUsersArrayAndReloadTableView(){
         self.fromUsers.removeAll(keepCapacity: false)

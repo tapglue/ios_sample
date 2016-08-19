@@ -294,7 +294,7 @@ extension ProfileVC: UITableViewDataSource {
             // NewSDK
             self.appDel.rxTapglue.deletePost(self.posts[indexPath.row].id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
+                case .Next( _):
 //                    print(element)
                     print("element")
                 case .Error(let error):

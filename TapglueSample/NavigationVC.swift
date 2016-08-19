@@ -45,7 +45,6 @@ class NavigationVC: UINavigationController {
     // Prepare permissions for FindUsersVC
     func setupSocialPermissionDefaults(){
         defaults.setObject(false, forKey: "facebookPermission")
-        defaults.setObject(false, forKey: "twitterPermission")
         defaults.synchronize()
     }
 }
