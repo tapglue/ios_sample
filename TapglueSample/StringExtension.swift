@@ -46,5 +46,21 @@ extension String {
         result.replaceRange(startIndex...startIndex, with: String(self[startIndex]).uppercaseString)
         return result
     }
+    
+    func toNSDateTime() -> NSDate {
+        //Create Date Formatter
+        let dateFormatter = NSDateFormatter()
+        
+        //Specify Format of String to Parse
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        
+        //Parse into NSDate
+        let dateFromString: NSDate = dateFormatter.dateFromString(self)!
+        
+        //Return Parsed Date
+        return dateFromString
+    }
 }
 
