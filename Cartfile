@@ -3,5 +3,5 @@
 
 github "onevcat/Kingfisher" ~> 2.4
 github "facebook/Facebook-SDK-Swift"
-github "Tapglue/ios_sdk" "4892ddc4d89d431357561f623b06e5c63ea95746"
+github "Tapglue/ios_sdk" "37ca5b81fdfcfc4a7f06600d062102194ecc9357"
 github "whitesmith/WSTagsField"

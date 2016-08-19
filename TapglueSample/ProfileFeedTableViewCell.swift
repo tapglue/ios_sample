@@ -43,6 +43,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
         print(targetUsername)
         print("Type: \(activity.type!)")
         print(activity.user?.id!)
+        print(activity.post?.user?.username)
         
         switch activity.type! {
         case "tg_friend":

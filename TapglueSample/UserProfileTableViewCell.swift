@@ -39,7 +39,7 @@ class UserProfileTableViewCell: UITableViewCell {
         let targetUsername = activity.targetUser
         print(targetUsername)
         print("Type: \(activity.type!)")
-        print(activity.user?.id!)
+        print(activity.post?.user?.username)
         
         switch activity.type! {
         case "tg_friend":
