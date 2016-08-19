@@ -19,7 +19,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     var checkmarkedActivities: [Bool] = []
     
     // Event arr
-    var filteredActivity: [Activity] = []
+    var activityFeed: [Activity] = []
     
     var refreshControl: UIRefreshControl!
     
@@ -33,15 +33,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        checkmarkedActivities = defaults.objectForKey("filterCheckmarks") as! [Bool]
-        
         self.loadNotificationFeed()
-        
-        // TODO: Turned off filterNotifcationsByTypeButton
-//        let filterImage = UIImage(named: "SortFilled")
-//        let filterButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(NotificationVC.filterButton(_:)))
-//        tabBarController?.navigationItem.rightBarButtonItem = filterButtonItem
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -55,29 +47,15 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        let allTypes = ["like_event", "bookmark_event", "tg_friend", "tg_follow", "tg_like"]
-        
-        var types = [String]()
-        var count = 0
-        for checked in checkmarkedActivities {
-            if checked {
-                types.append(allTypes[count])
-               
-            }
-            count += 1
-        }
-        
-        // Issue: Retrieve event types are not working proparly, if I use my custom types I get still tg_friend and tg_follow as my feed back???
-        
         // TODO: To use filtered activities you need first retrieveActivityWithType that is coming soon
         // Get all activities
-        appDel.rxTapglue.retrieveActivityFeed().subscribe { (event) in
+        appDel.rxTapglue.retrieveMeFeed().subscribe { (event) in
             switch event {
             case .Next(let activities):
                 print("Next")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     print(activities)
-                    self.filteredActivity = activities
+                    self.activityFeed = activities
                     self.notificationsTableView.reloadData()
                 })
                 self.refreshControl.endRefreshing()
@@ -88,11 +66,6 @@ class NotificationVC: UIViewController, UITableViewDelegate {
             }
         }.addDisposableTo(self.appDel.disposeBag)
     }
-    
-    func filterButton(sender:AnyObject){
-        // Show filterVC
-        self.performSegueWithIdentifier("filterSegue", sender: nil)
-    }
 }
 
 extension NotificationVC: UITableViewDataSource {
@@ -102,17 +75,77 @@ extension NotificationVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(filteredActivity.count)
-        return filteredActivity.count
+        print(activityFeed.count)
+        return activityFeed.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
                 
-        cell.configureCellWithEvent(filteredActivity[indexPath.row])
+        cell.configureCellWithEvent(activityFeed[indexPath.row])
         
         return cell
     }
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        switch activityFeed[indexPath.row].type! {
+        case "tg_friend":
+            goToUserByID(activityFeed[indexPath.row].userId!)
+        case "tg_follow":
+            goToUserByID(activityFeed[indexPath.row].userId!)
+        case "tg_like":
+            goToPostByID(activityFeed[indexPath.row].postId!)
+        case "tg_comment":
+            goToPostByID(activityFeed[indexPath.row].postId!)
+        default:
+            print("rest")
+            
+        }
+        
+    }
+    
+    func goToPostByID(id: String) {
+        let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
+        let pdVC =
+            storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
+                as! PostDetailVC
+        
+        appDel.rxTapglue.retrievePost(id).subscribe { (event) in
+            switch event {
+            case .Next(let post):
+                print("Next")
+                pdVC.post = post
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.navigationController!.pushViewController(pdVC, animated: true)
+                })
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func goToUserByID(id: String) {
+        let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+        let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+        
+        appDel.rxTapglue.retrieveUser(id).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                userProfileViewController.userProfile = usr
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.navigationController?.pushViewController(userProfileViewController, animated: true)
+                })
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
+    }
 }
 

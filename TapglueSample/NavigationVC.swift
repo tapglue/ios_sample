@@ -27,19 +27,11 @@ class NavigationVC: UINavigationController {
         if self.appDel.rxTapglue.currentUser != nil {
             
         } else {
-            setupFilterCheckmarkDefaults()
             setupSocialPermissionDefaults()
             
             // Show loginVC if no user
             performSegueWithIdentifier("loginSegue", sender: nil)
         }
-    }
-    
-    // Prepare checks to filter Notifications
-    func setupFilterCheckmarkDefaults(){
-        let filterCheckmarks: [Bool] = [true, true, true]
-        defaults.setObject(filterCheckmarks, forKey: "filterCheckmarks")
-        defaults.synchronize()
     }
     
     // Prepare permissions for FindUsersVC

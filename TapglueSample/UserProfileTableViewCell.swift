@@ -34,8 +34,39 @@ class UserProfileTableViewCell: UITableViewCell {
     func configureCellWithActivity(activity: Activity!){
         clearLabels()
         
-        // OldSDK TODO: show elapsed time
         self.dateLabel.text = activity.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
+        
+        let targetUsername = activity.targetUser
+        print(targetUsername)
+        print("Type: \(activity.type!)")
+        print(activity.user?.id!)
+        
+        switch activity.type! {
+        case "tg_friend":
+            if activity.targetUser != nil {
+                self.typeLabel.text = "Friends"
+                self.infoLabel.text = "You are Friends with " + (activity.targetUser?.username!)!
+            }
+        case "tg_like":
+            if activity.post?.user != nil {
+                self.typeLabel.text = "Liked " + (activity.post?.user?.username!)! + "'s" + " post"
+                self.infoLabel.text = activity.post?.attachments![0].contents!["en"]
+            }
+        case "tg_follow":
+            if activity.targetUser != nil {
+                self.typeLabel.text = "Follow"
+                self.infoLabel.text = "You started to follow " + (activity.targetUser?.username!)!
+            }
+        case "tg_comment":
+            if activity.post?.user != nil {
+                self.typeLabel.text = "Commented"
+                self.infoLabel.text = "You commented on " + (activity.post?.user?.username!)! + "'s post"
+            }
+        default: print("More event types then expected")
+        }
+        
+        
+        
         
         // OldSDK TODO: fix if event target is available in new sdk
 //        switch activity.type! {

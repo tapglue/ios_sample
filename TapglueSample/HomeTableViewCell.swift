@@ -13,6 +13,7 @@ import Kingfisher
 // the name of the protocol you can put any
 protocol CustomCellDataUpdater {
     func updateTableViewData()
+    func showShareOptions(post: Post)
 }
 
 class HomeTableViewCell: UITableViewCell {
@@ -61,21 +62,6 @@ class HomeTableViewCell: UITableViewCell {
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
-            // OldSDK
-//            Tapglue.deleteLike(cellPost) { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError deleteLike: \(error)")
-//                }
-//                else {
-//                    print("\nSuccessly deleted like from post: \(success)")
-//                    
-//                    self.delegate?.updateTableViewData()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.likeButton.selected = false
-//                    })
-//                }
-//            }
         } else {
             // NewSDK
             appDel.rxTapglue.createLike(forPostId: cellPost.id!).subscribe({ (event) in
@@ -93,22 +79,6 @@ class HomeTableViewCell: UITableViewCell {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            cellPost.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError like: \(error)")
-//                }
-//                else {
-//                    print("\nSuccessly liked a post: \(success)")
-//                    
-//                    self.delegate?.updateTableViewData()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.likeButton.selected = true
-//                    })
-//                }
-//            }
         }
     }
     
@@ -130,15 +100,13 @@ class HomeTableViewCell: UITableViewCell {
     @IBAction func shareButtonPressed(sender: UIButton) {
         // Will be implemented in the future
         print("Not implemented yet")
+        delegate?.showShareOptions(cellPost)
     }
     
     // Configure Cell with TGPost data
     func configureCellWithPost(post: Post!){
         cellPost = post
         
-        if let cellPostTags = cellPost.tags {
-            print(cellPostTags)
-        }
         let cellPostLikeCount = cellPost.likeCount!
         
         switch cellPostLikeCount {
@@ -184,9 +152,9 @@ class HomeTableViewCell: UITableViewCell {
                 }
             case 2...5:
                 for tag in tags {
-                    tagLabelText = tagLabelText + " " + tag
+                    tagLabelText = tagLabelText + "\(tag) "
                 }
-                self.tagLabel.text = "Tags:" + tagLabelText
+                self.tagLabel.text = "Tags: " + tagLabelText
             default:
                 print("switch default tags")
             }

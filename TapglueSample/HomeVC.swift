@@ -131,7 +131,7 @@ extension HomeVC: UITextFieldDelegate {
 
 
 extension HomeVC: CustomCellDataUpdater {
-    // Mark: - Custom delegate to update data, if cell recieves like button pressed
+    // Mark: - Custom delegate to update data, if cell recieves like button or share button pressed
     func updateTableViewData() {
         // Load All Posts from your connections
         appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
@@ -147,6 +147,29 @@ extension HomeVC: CustomCellDataUpdater {
                 })
             }
         }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func showShareOptions(post: Post) {
+        let postAttachment = post.attachments
+        let postText = postAttachment![0].contents!["en"]
+        let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(
+            activityItems: [postActivityItem], applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [
+            UIActivityTypePostToWeibo,
+            UIActivityTypePrint,
+            UIActivityTypeAssignToContact,
+            UIActivityTypeSaveToCameraRoll,
+            UIActivityTypeAddToReadingList,
+            UIActivityTypePostToFlickr,
+            UIActivityTypePostToVimeo,
+            UIActivityTypePostToTencentWeibo,
+            UIActivityTypeMail
+        ]
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
 }
 

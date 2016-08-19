@@ -16,7 +16,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     var userProfile: User?
     
-    var activities: [Activity] = []
+    var activityFeed: [Activity] = []
     var posts: [Post] = []
     
     @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
@@ -139,9 +139,9 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         // NewSDK
         appDel.rxTapglue.retrieveActivitiesByUser(userProfile!.id!).subscribe { (event) in
             switch event {
-            case .Next(let activi):
+            case .Next(let activities):
                 print("Next")
-                self.activities = activi
+                self.activityFeed = activities
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
@@ -193,7 +193,7 @@ extension UserProfileVC: UITableViewDataSource {
         
         switch feedSegmentedControl.selectedSegmentIndex {
             case 0:
-                numberOfRows = activities.count
+                numberOfRows = activityFeed.count
             case 1:
                 numberOfRows = posts.count
             default: print("More then two segments")
@@ -207,7 +207,7 @@ extension UserProfileVC: UITableViewDataSource {
         
         switch feedSegmentedControl.selectedSegmentIndex {
             case 0:
-                cell.configureCellWithActivity(activities[indexPath.row])
+                cell.configureCellWithActivity(activityFeed[indexPath.row])
             case 1:
                 cell.configureCellWithPost(posts[indexPath.row])
             default: print("More then two segments")

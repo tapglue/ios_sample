@@ -54,16 +54,16 @@
                                 <color key="tintColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiM-Pg-qli">
-                                <rect key="frame" x="20" y="122" width="39" height="39"/>
+                                <rect key="frame" x="20" y="122" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="VWC-V1-741"/>
-                                    <constraint firstAttribute="height" constant="39" id="p9h-bW-Xya"/>
+                                    <constraint firstAttribute="width" constant="40" id="VWC-V1-741"/>
+                                    <constraint firstAttribute="height" constant="40" id="p9h-bW-Xya"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to? Maybe add tags #cool #happy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-gP-aOQ">
-                                <rect key="frame" x="67" y="122" width="513" height="39"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-gP-aOQ">
+                                <rect key="frame" x="68" y="122" width="512" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="syO-C3-Z96"/>
+                                    <constraint firstAttribute="height" constant="40" id="syO-C3-Z96"/>
                                 </constraints>
                                 <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
@@ -72,6 +72,12 @@
                                     <outlet property="delegate" destination="Aar-Xa-7dh" id="aY0-yD-hYP"/>
                                 </connections>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-xu-zif">
+                                <rect key="frame" x="68" y="170" width="512" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3dU-Fr-fi4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -79,9 +85,12 @@
                             <constraint firstItem="KPp-Fe-GLr" firstAttribute="leading" secondItem="uxD-eU-s7r" secondAttribute="leading" id="VaN-bV-uif"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BiM-Pg-qli" secondAttribute="leading" id="cCM-hG-yI8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yLn-gP-aOQ" secondAttribute="trailing" id="hcj-mC-DS7"/>
+                            <constraint firstItem="Ip1-xu-zif" firstAttribute="top" secondItem="yLn-gP-aOQ" secondAttribute="bottom" constant="8" id="jPZ-SM-K4a"/>
                             <constraint firstItem="BiM-Pg-qli" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="kvZ-4C-Ofq"/>
                             <constraint firstItem="yLn-gP-aOQ" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="mgh-dn-csT"/>
                             <constraint firstItem="KPp-Fe-GLr" firstAttribute="top" secondItem="gd4-dp-hyC" secondAttribute="bottom" id="n1X-Ks-Y01"/>
+                            <constraint firstItem="Ip1-xu-zif" firstAttribute="leading" secondItem="yLn-gP-aOQ" secondAttribute="leading" id="q7v-wv-YXb"/>
+                            <constraint firstItem="Ip1-xu-zif" firstAttribute="trailing" secondItem="yLn-gP-aOQ" secondAttribute="trailing" id="sso-l0-crf"/>
                             <constraint firstAttribute="trailing" secondItem="KPp-Fe-GLr" secondAttribute="trailing" id="uVE-mR-Jas"/>
                             <constraint firstItem="yLn-gP-aOQ" firstAttribute="leading" secondItem="BiM-Pg-qli" secondAttribute="trailing" constant="8" id="yQP-My-Xu6"/>
                             <constraint firstItem="NG6-nU-ge3" firstAttribute="top" secondItem="KPp-Fe-GLr" secondAttribute="bottom" constant="15" id="zBX-ue-SQp"/>
@@ -92,11 +101,12 @@
                         <outlet property="postUIBarButton" destination="aB3-FN-Z4O" id="XRb-Cv-4bN"/>
                         <outlet property="userImageView" destination="BiM-Pg-qli" id="4qV-bO-YEM"/>
                         <outlet property="visibilitySegmentedControl" destination="NG6-nU-ge3" id="8hZ-4l-uCX"/>
+                        <outlet property="wsTagsFieldView" destination="Ip1-xu-zif" id="faf-SF-JZm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jcp-zL-9sD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2345" y="-1544"/>
+            <point key="canvasLocation" x="1421" y="-1334"/>
         </scene>
     </scenes>
 </document>

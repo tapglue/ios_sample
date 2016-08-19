@@ -34,6 +34,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
     
     var beginEditComment = false
     var editComment: Comment!
@@ -111,6 +112,10 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             }
     }
     
+    @IBAction func shareButtonPressed(sender: UIButton) {
+        
+        showShareOptions()
+    }
     
     // MARK: - Keyboard Notification
     func keyboardWillShowNotification(notification:NSNotification){
@@ -156,15 +161,22 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     // Show postDetails
     func fillPostDetailInformation(){
         userNameButton.contentHorizontalAlignment = .Left
-        userNameButton.setTitle(post.user!.username, forState: .Normal)
+        if let postUser = post.user {
+            userNameButton.setTitle(postUser.username, forState: .Normal)
+            
+            // UserImage
+            let profileImage = postUser.images!["profile"]
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        }
         
         let likeCountForPost = post.likeCount!
         
         if likeCountForPost != 0 {
             if likeCountForPost == 1{
                 self.likesCountLabel.text = String(likeCountForPost) + " Like"
+            } else {
+                self.likesCountLabel.text = String(likeCountForPost) + " Likes"
             }
-            self.likesCountLabel.text = String(likeCountForPost) + " Likes"
         }
         
         // PostText
@@ -172,11 +184,28 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         self.postTextLabel.text = postAttachment![0].contents!["en"]
         // OldSDK : needs to show elpased time
         self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
-
-        // TODO: Check nil
-        // UserImage
-        let profileImage = post.user?.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        
+        // TagsText
+        if let tags = post.tags {
+            var tagLabelText = ""
+            
+            switch tags.count {
+            case 1:
+                for tag in tags {
+                    self.tagsLabel.text = "Tag: " + tag
+                }
+            case 2...5:
+                for tag in tags {
+                    tagLabelText = tagLabelText + "\(tag) "
+                }
+                self.tagsLabel.text = "Tags: " + tagLabelText
+            default:
+                print("switch default tags")
+            }
+            
+        } else {
+            self.tagsLabel.text = ""
+        }
         
         // Check visibility
         switch post.visibility! {
@@ -200,6 +229,29 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 self.likeButton.selected = false
             })
         }
+    }
+    
+    func showShareOptions() {
+        let postAttachment = post.attachments
+        let postText = postAttachment![0].contents!["en"]
+        let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(
+            activityItems: [postActivityItem], applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [
+            UIActivityTypePostToWeibo,
+            UIActivityTypePrint,
+            UIActivityTypeAssignToContact,
+            UIActivityTypeSaveToCameraRoll,
+            UIActivityTypeAddToReadingList,
+            UIActivityTypePostToFlickr,
+            UIActivityTypePostToVimeo,
+            UIActivityTypePostToTencentWeibo,
+            UIActivityTypeMail
+        ]
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
 }
 

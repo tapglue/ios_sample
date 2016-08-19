@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-Sv-jis">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-Sv-jis">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="SBM-ci-wJv" userLabel="EmptyFooterView">
@@ -103,20 +103,11 @@
                     <tabBarItem key="tabBarItem" title="Notifications" image="NotificationEmpty" selectedImage="NotificationFilled" id="Kvv-hI-GOo"/>
                     <connections>
                         <outlet property="notificationsTableView" destination="FiD-Sv-jis" id="VeN-g0-mnp"/>
-                        <segue destination="YVk-66-X7o" kind="show" identifier="filterSegue" id="dUc-gl-1qT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejG-br-gef" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1614" y="844"/>
-        </scene>
-        <!--EventFilter-->
-        <scene sceneID="kCW-Ot-T0S">
-            <objects>
-                <viewControllerPlaceholder storyboardName="EventFilter" id="YVk-66-X7o" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vij-GB-DST" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2111" y="844"/>
         </scene>
     </scenes>
     <resources>

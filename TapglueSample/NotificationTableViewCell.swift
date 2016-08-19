@@ -30,25 +30,29 @@ class NotificationTableViewCell: UITableViewCell {
         self.dateLabel.text = activity.createdAt!.toNSDateTime().toTimeFormatInElapsedTimeToString()
         
         switch activity.type! {
-            case "tg_friend":
-                eventNameLabel.text = activityUser! + " is now friends with " + " fix activity.target.user.username"
+        case "tg_friend":
+            eventNameLabel.text = activityUser! + " is now friends with " + (activity.targetUser?.username)!
+        
+            // TODO: Check nil
+            // UserImage
+            let profileImage = activity.user!.images!["profile"]
+            self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        
+        case "tg_follow":
+            eventNameLabel.text = activityUser! + " is now following " + (activity.targetUser?.username)!
             
-                // TODO: Check nil
-                // UserImage
-                let profileImage = activity.user!.images!["profile"]
-                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+            // TODO: Check nil
+            // UserImage
+            let profileImage = activity.user!.images!["profile"]
+            self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        
+        case "tg_like":
+            self.eventNameLabel.text = activityUser! + " liked a Post"
+            self.eventTypeImageView.image = UIImage(named: "LikeFilledRed")
             
-            case "tg_follow":
-                eventNameLabel.text = activityUser! + " is now following " + " fix activity.target.user.username"
-                
-                // TODO: Check nil
-                // UserImage
-                let profileImage = activity.user!.images!["profile"]
-                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
-            
-            case "tg_like":
-                self.eventNameLabel.text = activityUser! + " liked a Post"
-                self.eventTypeImageView.image = UIImage(named: "LikeFilledRed")
+        case "tg_comment":
+            self.eventNameLabel.text = activityUser! + " commented on your Post"
+            self.eventTypeImageView.image = UIImage(named: "ChatFilled")
             
             default: print("Unkown event type")
         }

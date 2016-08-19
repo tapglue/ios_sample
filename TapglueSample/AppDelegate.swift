@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rxTapglue = RxTapglue(configuration: config)
         
         sims = TapglueSims(withConfiguration: config, environment: .Sandbox)
+        registerForPushNotifications(application)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

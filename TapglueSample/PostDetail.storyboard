@@ -28,7 +28,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXM-WA-v84">
-                                        <rect key="frame" x="89" y="33" width="503" height="25"/>
+                                        <rect key="frame" x="89" y="33" width="445" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="WOj-HI-DAy"/>
                                         </constraints>
@@ -37,7 +37,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9D-AF-Y1b">
-                                        <rect key="frame" x="8" y="62" width="584" height="56"/>
+                                        <rect key="frame" x="8" y="62" width="584" height="50"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -50,10 +50,10 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFo-v7-Z8C">
-                                        <rect key="frame" x="8" y="137" width="100" height="35"/>
+                                        <rect key="frame" x="8" y="137" width="70" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="CV2-zu-Ne1"/>
-                                            <constraint firstAttribute="width" constant="100" id="YrB-Sh-V5h"/>
+                                            <constraint firstAttribute="width" constant="70" id="YrB-Sh-V5h"/>
                                         </constraints>
                                         <state key="normal" image="LikeFilled"/>
                                         <state key="selected" image="LikeFilledRed"/>
@@ -61,25 +61,17 @@
                                             <action selector="likeButtonPressed:" destination="RF1-dH-fGT" eventType="touchUpInside" id="mK8-9A-eKO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-rk-15Q">
-                                        <rect key="frame" x="522" y="137" width="70" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="MNT-Br-6QE"/>
-                                            <constraint firstAttribute="width" constant="70" id="VtO-BJ-BOs"/>
-                                        </constraints>
-                                        <state key="normal" image="ShareFilled"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-A8-Y7h">
-                                        <rect key="frame" x="8" y="118" width="100" height="17"/>
+                                        <rect key="frame" x="8" y="114" width="70" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="JjH-ao-v3E"/>
+                                            <constraint firstAttribute="height" constant="21" id="JjH-ao-v3E"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddq-ss-Z1y">
-                                        <rect key="frame" x="66" y="8" width="526" height="25"/>
+                                        <rect key="frame" x="66" y="8" width="468" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="hat-Je-AYX"/>
                                         </constraints>
@@ -91,28 +83,51 @@
                                             <action selector="userNameButtonPressed:" destination="RF1-dH-fGT" eventType="touchUpInside" id="cCf-qS-ccY"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIP-tB-5VY">
+                                        <rect key="frame" x="86" y="137" width="506" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="qwI-Zk-2vU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-rk-15Q">
+                                        <rect key="frame" x="542" y="8" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Pkj-7v-fuZ"/>
+                                            <constraint firstAttribute="height" constant="50" id="kIr-fw-frk"/>
+                                        </constraints>
+                                        <state key="normal" image="ShareFilled"/>
+                                        <connections>
+                                            <action selector="shareButtonPressed:" destination="RF1-dH-fGT" eventType="touchUpInside" id="zmi-Vm-WIL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="KXM-WA-v84" secondAttribute="trailing" constant="8" id="09k-D5-56d"/>
                                     <constraint firstItem="KXM-WA-v84" firstAttribute="leading" secondItem="rNM-V1-6Sk" secondAttribute="trailing" constant="8" id="0Ub-8r-ryC"/>
                                     <constraint firstItem="gYC-os-HzJ" firstAttribute="top" secondItem="wfi-49-NO9" secondAttribute="top" constant="8" id="0qE-hI-CcA"/>
                                     <constraint firstAttribute="trailing" secondItem="e9D-AF-Y1b" secondAttribute="trailing" constant="8" id="3BH-18-IWf"/>
-                                    <constraint firstAttribute="bottom" secondItem="FTL-rk-15Q" secondAttribute="bottom" constant="8" id="9mO-TD-2IY"/>
-                                    <constraint firstItem="Otf-A8-Y7h" firstAttribute="top" secondItem="e9D-AF-Y1b" secondAttribute="bottom" id="CnB-1u-TlZ"/>
+                                    <constraint firstItem="Otf-A8-Y7h" firstAttribute="top" secondItem="e9D-AF-Y1b" secondAttribute="bottom" constant="2" id="CnB-1u-TlZ"/>
                                     <constraint firstItem="rNM-V1-6Sk" firstAttribute="leading" secondItem="gYC-os-HzJ" secondAttribute="trailing" constant="8" id="HQJ-5s-Ymc"/>
+                                    <constraint firstItem="FTL-rk-15Q" firstAttribute="top" secondItem="wfi-49-NO9" secondAttribute="top" constant="8" id="J2V-hh-Vf7"/>
+                                    <constraint firstAttribute="trailing" secondItem="FTL-rk-15Q" secondAttribute="trailing" constant="8" id="JNb-9H-cxM"/>
                                     <constraint firstItem="gYC-os-HzJ" firstAttribute="leading" secondItem="wfi-49-NO9" secondAttribute="leading" constant="8" id="Jid-2z-gjK"/>
                                     <constraint firstItem="e9D-AF-Y1b" firstAttribute="top" secondItem="KXM-WA-v84" secondAttribute="bottom" constant="4" id="JlK-qy-cMC"/>
                                     <constraint firstAttribute="bottom" secondItem="UFo-v7-Z8C" secondAttribute="bottom" constant="8" id="K0U-Eh-499"/>
                                     <constraint firstItem="e9D-AF-Y1b" firstAttribute="leading" secondItem="wfi-49-NO9" secondAttribute="leading" constant="8" id="csx-XB-Oc9"/>
-                                    <constraint firstAttribute="trailing" secondItem="FTL-rk-15Q" secondAttribute="trailing" constant="8" id="csy-L9-XVd"/>
                                     <constraint firstItem="Otf-A8-Y7h" firstAttribute="leading" secondItem="UFo-v7-Z8C" secondAttribute="leading" id="dmj-ZL-ltg"/>
+                                    <constraint firstAttribute="bottom" secondItem="FIP-tB-5VY" secondAttribute="bottom" constant="8" id="gFw-xE-Eki"/>
+                                    <constraint firstAttribute="trailing" secondItem="FIP-tB-5VY" secondAttribute="trailing" constant="8" id="hjC-c1-33a"/>
                                     <constraint firstItem="UFo-v7-Z8C" firstAttribute="top" secondItem="Otf-A8-Y7h" secondAttribute="bottom" constant="2" id="nb3-eV-Tqb"/>
-                                    <constraint firstAttribute="trailing" secondItem="ddq-ss-Z1y" secondAttribute="trailing" constant="8" id="rLf-Ng-9D1"/>
+                                    <constraint firstItem="FIP-tB-5VY" firstAttribute="leading" secondItem="UFo-v7-Z8C" secondAttribute="trailing" constant="8" id="qgp-KP-o0X"/>
                                     <constraint firstItem="ddq-ss-Z1y" firstAttribute="leading" secondItem="gYC-os-HzJ" secondAttribute="trailing" constant="8" id="sdm-VF-p8o"/>
                                     <constraint firstItem="Otf-A8-Y7h" firstAttribute="trailing" secondItem="UFo-v7-Z8C" secondAttribute="trailing" id="st7-BU-Bon"/>
+                                    <constraint firstItem="FTL-rk-15Q" firstAttribute="leading" secondItem="ddq-ss-Z1y" secondAttribute="trailing" constant="8" id="tGO-hh-gIt"/>
                                     <constraint firstAttribute="height" constant="180" id="uWO-bR-01D"/>
                                     <constraint firstItem="rNM-V1-6Sk" firstAttribute="centerY" secondItem="KXM-WA-v84" secondAttribute="centerY" id="umT-SJ-IPR"/>
+                                    <constraint firstItem="FTL-rk-15Q" firstAttribute="leading" secondItem="KXM-WA-v84" secondAttribute="trailing" constant="8" id="vJM-qd-VB9"/>
                                     <constraint firstItem="UFo-v7-Z8C" firstAttribute="leading" secondItem="wfi-49-NO9" secondAttribute="leading" constant="8" id="xPh-0d-RwM"/>
                                     <constraint firstItem="KXM-WA-v84" firstAttribute="bottom" secondItem="gYC-os-HzJ" secondAttribute="bottom" id="yAC-Nd-Iiu"/>
                                     <constraint firstItem="ddq-ss-Z1y" firstAttribute="top" secondItem="wfi-49-NO9" secondAttribute="top" constant="8" id="zgL-N7-aEk"/>
@@ -200,7 +215,7 @@
                                         <rect key="frame" x="8" y="8" width="584" height="30"/>
                                         <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="send"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                         <connections>
                                             <outlet property="delegate" destination="RF1-dH-fGT" id="qFI-2e-vbM"/>
                                         </connections>
@@ -237,6 +252,7 @@
                         <outlet property="likeButton" destination="UFo-v7-Z8C" id="ISP-Yv-i3B"/>
                         <outlet property="likesCountLabel" destination="Otf-A8-Y7h" id="7Ab-lr-QeD"/>
                         <outlet property="postTextLabel" destination="e9D-AF-Y1b" id="THF-66-VKV"/>
+                        <outlet property="tagsLabel" destination="FIP-tB-5VY" id="NVc-Mm-mTW"/>
                         <outlet property="userImageView" destination="gYC-os-HzJ" id="xTc-q9-7U7"/>
                         <outlet property="userNameButton" destination="ddq-ss-Z1y" id="gFJ-yb-HTY"/>
                         <outlet property="visibilityImageView" destination="rNM-V1-6Sk" id="Q9j-ez-JwZ"/>

@@ -29,7 +29,6 @@ class LoginRegisterVC: UIViewController {
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg",
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/zack415/128.jpg",
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/philcoffman/128.jpg",
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg",
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/nuraika/128.jpg",
                                 "https://s3.amazonaws.com/uifaces/faces/twitter/raquelromanp/128.jpg",

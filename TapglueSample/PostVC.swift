@@ -8,6 +8,7 @@
 
 import UIKit
 import Tapglue
+import WSTagsField
 
 class PostVC: UIViewController {
     
@@ -21,10 +22,13 @@ class PostVC: UIViewController {
     
     var postText: String?
     
-    var tagArr: [String]?
+    var tagArr: [String] = []
     
     var postBeginEditing = false
     var tempPost: Post!
+    
+    @IBOutlet weak var wsTagsFieldView: UIView!
+    let tagsField = WSTagsField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,17 +55,21 @@ class PostVC: UIViewController {
 //            default: print("More then expected switches")
 //            }
 //        }
+        
+        addWSTagsField()
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
         
-        
-        
         if postText?.characters.count > 2 {
-            let tempStr = postTextField.text!
             
-            postText = tempStr.withoutTags(tempStr)
-            tagArr = tempStr.filterTagsAsStrings(tempStr)
+            if tagsField.tags.count != 0 {
+                for tag in tagsField.tags {
+                    tagArr.append(tag.text)
+                    print(tagArr.count)
+                }
+            }
+            
             
             if postBeginEditing {
                 // Prepare TGPost Edit
@@ -149,6 +157,20 @@ class PostVC: UIViewController {
         self.presentViewController(alertController, animated: true) {
         }
     }
+    
+    func addWSTagsField() {
+        tagsField.placeholder = "#Hashtags"
+        tagsField.font = UIFont(name:"HelveticaNeue-Light", size: 14.0)
+        tagsField.tintColor = UIColor(red:0.18, green:0.28, blue:0.3, alpha:1.0)
+        tagsField.textColor = .whiteColor()
+        tagsField.selectedColor = .lightGrayColor()
+        tagsField.selectedTextColor = .whiteColor()
+        tagsField.spaceBetweenTags = 4.0
+        tagsField.padding.left = 0
+        tagsField.frame = CGRect(x: 0, y: 0, width: wsTagsFieldView.frame.width, height: wsTagsFieldView.frame.height)
+        
+        wsTagsFieldView.addSubview(tagsField)
+    }
 }
 
 extension PostVC: UITextFieldDelegate {
@@ -156,9 +178,8 @@ extension PostVC: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let textFieldText = textField.text
         
-        postText = textFieldText?.withoutTags(textFieldText!)
-        tagArr = textFieldText?.filterTagsAsStrings(textFieldText!)
-        
+        postText = textFieldText!
+                
         print(postText)
         
         textField.resignFirstResponder()

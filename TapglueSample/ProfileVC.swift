@@ -28,7 +28,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var profileFeedTableView: UITableView!
     
-    var activities: [Activity] = []
+    var activityFeed: [Activity] = []
     var posts: [Post] = []
     
     var postEditingText: String?
@@ -143,39 +143,39 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     func getEventsAndPostsOfCurrentUser() {
-        let currentUserID = appDel.rxTapglue.currentUser?.id!
-        
+        let currentUser = appDel.rxTapglue.currentUser!
+        print(currentUser.id!)
         // NewSDK
-        appDel.rxTapglue.retrieveActivitiesByUser(currentUserID!).subscribe { (event) in
+        appDel.rxTapglue.retrieveActivitiesByUser(currentUser.id!).subscribe { (event) in
             switch event {
-            case .Next(let activi):
+            case .Next(let activities):
                 print("Next")
-                self.activities = activi
+                print(activities)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.activityFeed = activities
+                    self.profileFeedTableView.reloadData()
+                }
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
                 print("Do the action")
-
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.profileFeedTableView.reloadData()
-                }
             }
         }.addDisposableTo(self.appDel.disposeBag)
         
         // NewSDK
-        appDel.rxTapglue.retrievePostsByUser(currentUserID!).subscribe { (event) in
+        appDel.rxTapglue.retrievePostsByUser(currentUser.id!).subscribe { (event) in
             switch event {
             case .Next(let posts):
                 print("Next")
-                self.posts = posts
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.posts = posts
+                    self.profileFeedTableView.reloadData()
+                }
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
                 print("Do the action")
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.profileFeedTableView.reloadData()
-                }
             }
         }.addDisposableTo(self.appDel.disposeBag)
         
@@ -228,7 +228,7 @@ extension ProfileVC: UITableViewDataSource {
         
         switch feedSegmentedControl.selectedSegmentIndex {
             case 0:
-                numberOfRows = activities.count
+                numberOfRows = activityFeed.count
             case 1:
                 numberOfRows = posts.count
             default: print("More then two segments")
@@ -241,7 +241,7 @@ extension ProfileVC: UITableViewDataSource {
         
         switch feedSegmentedControl.selectedSegmentIndex {
             case 0:
-                cell.configureCellWithEvent(activities[indexPath.row])
+                cell.configureCellWithEvent(activityFeed[indexPath.row])
             case 1:
                 cell.configureCellWithPost(posts[indexPath.row])
             default: print("More then two segments")

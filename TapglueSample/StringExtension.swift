@@ -10,13 +10,13 @@ import Foundation
 
 extension String {
 
+    // If you like to get tags out from a textfield
     func withoutTags(txt: String) -> String{
         let text = txt
         let withoutHashtags = text.componentsSeparatedByString(" ").filter { !$0.containsString("#") }.joinWithSeparator(" ")
         
         return withoutHashtags
     }
-    
     func filterTagsAsStrings(txt: String) -> [String]{
         var wordArr: [String] = []
         var tagArr: [String] = []
