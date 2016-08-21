@@ -1,5 +1,5 @@
 //
-//  NetworkUserTableViewCell.swift
+//  ConnectionUserTableViewCell.swift
 //  TapglueSample
 //
 //  Created by Onur Akpolat on 25/10/15.
@@ -9,7 +9,7 @@
 import UIKit
 import Tapglue
 
-class NetworkUserTableViewCell: UITableViewCell {
+class ConnectionUserTableViewCell: UITableViewCell {
     
     // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
@@ -38,8 +38,9 @@ class NetworkUserTableViewCell: UITableViewCell {
         
         // TODO: Check nil
         // UserImage
-        let profileImage = cellUser.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = cellUser.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
         
         if self.connectRightButton != nil {
             acceptFriendShipCustomizeButton()
@@ -58,8 +59,9 @@ class NetworkUserTableViewCell: UITableViewCell {
         
         // TODO: Check nil
         // UserImage
-        let profileImage = cellUser.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = cellUser.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
         
         if self.connectRightButton != nil {
             if cellUser.isFriend! {

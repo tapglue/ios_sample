@@ -9,36 +9,40 @@
 import UIKit
 import Tapglue
 
+// the name of the protocol you can put any
+protocol UpdateUserDelegate {
+    func updateUsername(tf: UITextField)
+    func updateFirstname(tf: UITextField)
+    func updateLastname(tf: UITextField)
+    func updateAbout(tf: UITextField)
+    func updateEmail(tf: UITextField)
+}
+
 class EditProfilTableViewCell: UITableViewCell {
-    
-    // Get the AppDelegate
-    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
 
     @IBOutlet weak var userInfoTitleLabel: UILabel!
     @IBOutlet weak var userInfoEditTextField: UITextField!
     
-    var currentUser: User!
+    var delegate: UpdateUserDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         userInfoEditTextField.delegate = self
-        
-        currentUser = appDel.rxTapglue.currentUser!
     }
     
     func changeUserInformation(tf: UITextField){
         switch tf.tag {
             case 0:
-                currentUser.username = tf.text!
+                delegate?.updateUsername(tf)
             case 1:
-                currentUser.firstName = tf.text!
+                delegate?.updateFirstname(tf)
             case 2:
-                currentUser.lastName = tf.text!
+                delegate?.updateLastname(tf)
             case 3:
-                currentUser.about = tf.text!
+                delegate?.updateAbout(tf)
             case 4:
-                currentUser.email = tf.text!
+                delegate?.updateEmail(tf)
             default: print("More then expected switches")
         }
     }

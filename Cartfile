@@ -1,6 +1,4 @@
 
-
-
 github "onevcat/Kingfisher" ~> 2.4
 github "facebook/Facebook-SDK-Swift"
 github "Tapglue/ios_sdk" "37ca5b81fdfcfc4a7f06600d062102194ecc9357"

@@ -166,8 +166,9 @@ class HomeTableViewCell: UITableViewCell {
         
         // TODO: Check nil
         // UserImage
-        let profileImage = post.user?.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = post.user?.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
 
         // Check visibility
         switch post.visibility! {

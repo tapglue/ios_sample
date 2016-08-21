@@ -28,7 +28,7 @@ class PostVC: UIViewController {
     var tempPost: Post!
     
     @IBOutlet weak var wsTagsFieldView: UIView!
-    let tagsField = WSTagsField()
+    let tagsField = WSTagsField
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,26 +37,33 @@ class PostVC: UIViewController {
 
         postTextField.becomeFirstResponder()
         
+        addWSTagsField()
+        
         // TO-DO: Check nil
         // UserImage
-        let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = appDel.rxTapglue.currentUser?.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
         
         // Old post will be edited
-//        if postBeginEditing {
-//            postTextField.text = tempPost.attachments[0].contents!["en"] as? String
-//            switch tempPost.visibility.rawValue {
-//                case 10:
-//                    visibilitySegmentedControl.selectedSegmentIndex = 0
-//                case 20:
-//                    visibilitySegmentedControl.selectedSegmentIndex = 1
-//                case 30:
-//                    visibilitySegmentedControl.selectedSegmentIndex = 2
-//            default: print("More then expected switches")
-//            }
-//        }
-        
-        addWSTagsField()
+        if postBeginEditing {
+            postTextField.text = tempPost.attachments![0].contents!["en"]
+            switch tempPost.visibility!.rawValue {
+                case 10:
+                    visibilitySegmentedControl.selectedSegmentIndex = 0
+                case 20:
+                    visibilitySegmentedControl.selectedSegmentIndex = 1
+                case 30:
+                    visibilitySegmentedControl.selectedSegmentIndex = 2
+            default: print("More then expected switches")
+            }
+            var wsTagArr: [WSTag] = []
+            for tag in tempPost.tags! {
+                let wsTag = WSTag(tag)
+                wsTagArr.append(wsTag)
+            }
+            tagsField.addTags(wsTagArr)
+        }
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
@@ -77,7 +84,7 @@ class PostVC: UIViewController {
                 // TODO: Currently unable to update attachments, no editing post possible atm
                 let attachment = Attachment(contents: ["en":postText!], name: "status", type: .Text)
                 tempPost.tags = tagArr
-                tempPost.attachments?.append(attachment)
+                tempPost.attachments = [attachment]
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
                     case 0:

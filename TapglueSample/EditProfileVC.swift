@@ -19,11 +19,14 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
     var userInformation = []
     var currentUser: User!
+    var updatedUser: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         currentUser = appDel.rxTapglue.currentUser
+        updatedUser = currentUser
+        
+        print("Current Username: \(currentUser.username)")
         
         userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, currentUser.about!, currentUser.email!]
 
@@ -31,13 +34,26 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
     
+//    func updateUser(currentUser: User) -> User {
+//        let usr = appDel.rxTapglue.currentUser!
+//        
+//        s.username = currentUser.username
+//        currentUser.firstName = currentUser.firstName
+//        currentUser.lastName = currentUser.lastName
+//        currentUser.about = "new text text text"
+//        currentUser.email = currentUser.email
+//        
+//        return usr
+//        
+//    }
+    
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
         // Update user information
-        // NewSDK
-        appDel.rxTapglue.updateCurrentUser(currentUser).subscribe { (event) in
+        appDel.rxTapglue.updateCurrentUser(updatedUser!).subscribe { (event) in
             switch event {
-            case .Next( _):
+            case .Next(let usr):
                 print("Next")
+                print(usr.about)
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
@@ -45,14 +61,6 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
             }
         }.addDisposableTo(self.appDel.disposeBag)
         
-        // OldSDK
-//        TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError currentUser: \(error)")
-//                } else {
-//                    print("Success: \(success)")
-//                }
-//        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -81,6 +89,13 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     func keyboardWillHide(notification: NSNotification) {
         updateUIBarButton.enabled = true
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "EditProfileSegue") {
+            // pass data to next view
+            print("---- SEGUED Back ------")
+        }
+    }
 }
 
 extension EditProfileVC: UITableViewDataSource {
@@ -99,7 +114,27 @@ extension EditProfileVC: UITableViewDataSource {
         cell.userInfoTitleLabel.text = userInfoTitle[indexPath.row]
         cell.userInfoEditTextField.text = userInformation[indexPath.row] as? String
         cell.userInfoEditTextField.tag = indexPath.row
+        cell.delegate = self
         
         return cell
+    }
+}
+
+extension EditProfileVC: UpdateUserDelegate {
+    // Mark: - Custom delegate to update user information if there is any changes
+    func updateUsername(tf: UITextField) {
+        updatedUser.username = tf.text
+    }
+    func updateFirstname(tf: UITextField) {
+        updatedUser.firstName = tf.text
+    }
+    func updateLastname(tf: UITextField) {
+        updatedUser.lastName = tf.text
+    }
+    func updateAbout(tf: UITextField) {
+        updatedUser.about = tf.text
+    }
+    func updateEmail(tf: UITextField) {
+        updatedUser.email = tf.text
     }
 }

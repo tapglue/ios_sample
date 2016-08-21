@@ -89,6 +89,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                         print("Do tha action")
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.likeButton.selected = false
+                            self.updateLikeCountLabel()
                         })
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
@@ -106,6 +107,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.likeButton.selected = true
+                            self.updateLikeCountLabel()
                         })
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
@@ -165,8 +167,9 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             userNameButton.setTitle(postUser.username, forState: .Normal)
             
             // UserImage
-            let profileImage = postUser.images!["profile"]
-            self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+            if let profileImages = postUser.images {
+                self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+            }
         }
         
         let likeCountForPost = post.likeCount!
@@ -252,6 +255,28 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         ]
         
         self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+    
+    func updateLikeCountLabel() {
+        appDel.rxTapglue.retrievePost(post.id!).subscribe { (event) in
+            switch event {
+            case .Next(let post):
+                let likeCount = post.likeCount!
+                
+                if likeCount != 0 {
+                    if likeCount == 1{
+                        self.likesCountLabel.text = String(likeCount) + " Like"
+                    } else {
+                        self.likesCountLabel.text = String(likeCount) + " Likes"
+                    }
+                }
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                break
+                
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 

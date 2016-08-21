@@ -201,9 +201,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="O2l-Gi-ucs" id="sst-4D-phF"/>
-                                            <segue destination="JdR-Nv-kPQ" kind="popoverPresentation" identifier="postSegue" popoverAnchorView="vOZ-Uo-Kwt" id="j9e-y3-VES">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
-                                            </segue>
+                                            <segue destination="JdR-Nv-kPQ" kind="presentation" identifier="postSegue" id="j9e-y3-VES"/>
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z3W-4B-PaK">

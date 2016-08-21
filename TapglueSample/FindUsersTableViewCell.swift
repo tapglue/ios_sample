@@ -228,8 +228,9 @@ class FindUsersTableViewCell: UITableViewCell {
     func showUserImage(cellUser: User) {
         // TODO: Check nil
         // UserImage
-        let profileImage = cellUser.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = cellUser.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
     }
     
     func connectLeftBtnState(sender: UIButton){

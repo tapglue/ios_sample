@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4V0-OM-gEz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--NavigationVC-->
@@ -12,10 +13,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7W8-ps-k7O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="0.0"/>
-                            <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -39,23 +40,23 @@
         <!--Tapglue-->
         <scene sceneID="nWc-Xa-0Fo">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" customClass="TabBarVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Tapglue" id="Kxn-Wx-nBf"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="doY-Bn-bDJ">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="0.1764705882" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="FJI-oq-909" kind="relationship" relationship="viewControllers" id="QAG-na-8dE"/>
-                        <segue destination="zMc-Xk-eeZ" kind="relationship" relationship="viewControllers" id="TXA-O0-4r7"/>
-                        <segue destination="vKa-ru-bAv" kind="relationship" relationship="viewControllers" id="aD7-Qc-o29"/>
-                        <segue destination="3kx-2V-db0" kind="relationship" relationship="viewControllers" id="Ox6-i8-rMv"/>
+                        <segue destination="YO2-xO-hiF" kind="relationship" relationship="viewControllers" id="Guq-bF-OuK"/>
+                        <segue destination="UQu-AI-xjT" kind="relationship" relationship="viewControllers" id="gdh-0T-Wj2"/>
+                        <segue destination="M8t-4z-IDv" kind="relationship" relationship="viewControllers" id="G2Q-07-ANP"/>
+                        <segue destination="lLX-md-ryN" kind="relationship" relationship="viewControllers" id="zeg-Tq-Gla"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="quM-aA-Czd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -63,50 +64,54 @@
             <point key="canvasLocation" x="740" y="252"/>
         </scene>
         <!--Home-->
-        <scene sceneID="xte-Ku-Ncr">
+        <scene sceneID="ZrI-62-PHa">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="FJI-oq-909" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="HomeEmpty" id="3uw-cZ-64d"/>
+                <viewControllerPlaceholder storyboardName="Home" id="YO2-xO-hiF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="HomeEmpty" selectedImage="HomeFilled" id="1dE-tm-QBN"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5qL-3Z-Svs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W1j-Xp-z5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568" y="756"/>
-        </scene>
-        <!--Network-->
-        <scene sceneID="Jno-0l-LIT">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Network" id="zMc-Xk-eeZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Network" image="SearchFilled" id="wPE-7x-JyY"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VBc-Fu-vAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="687" y="756"/>
+            <point key="canvasLocation" x="474" y="756"/>
         </scene>
         <!--Notification-->
-        <scene sceneID="WSw-da-kTc">
+        <scene sceneID="xVV-Hi-6T1">
             <objects>
-                <viewControllerPlaceholder storyboardName="Notification" id="vKa-ru-bAv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" image="NotificationEmpty" id="yLo-tj-nVg"/>
+                <viewControllerPlaceholder storyboardName="Notification" id="M8t-4z-IDv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Notification" image="NotificationEmpty" selectedImage="NotificationFilled" id="Xfj-rs-VX6"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iHp-Kh-0WL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xtv-Od-wlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812.5" y="756"/>
+            <point key="canvasLocation" x="834.5" y="756"/>
         </scene>
         <!--Profile-->
-        <scene sceneID="etm-jM-JrK">
+        <scene sceneID="HQM-SL-jmr">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="3kx-2V-db0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profille" image="ProfileEmpty" id="Beq-Av-rXX"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="lLX-md-ryN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="ProfileEmpty" selectedImage="ProfileFilled" id="Ebu-ne-S5G"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ecH-Lq-w1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGj-5v-4Y1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="756"/>
+            <point key="canvasLocation" x="1004" y="756"/>
+        </scene>
+        <!--Connection-->
+        <scene sceneID="O5M-3w-Zps">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Connection" id="UQu-AI-xjT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Network" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llM-mM-aO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="756"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ConnectionEmpty" width="25" height="25"/>
+        <image name="ConnectionFilled" width="25" height="25"/>
         <image name="HomeEmpty" width="25" height="25"/>
+        <image name="HomeFilled" width="25" height="25"/>
         <image name="NotificationEmpty" width="25" height="25"/>
+        <image name="NotificationFilled" width="25" height="25"/>
         <image name="ProfileEmpty" width="25" height="25"/>
-        <image name="SearchFilled" width="25" height="25"/>
+        <image name="ProfileFilled" width="25" height="25"/>
     </resources>
 </document>

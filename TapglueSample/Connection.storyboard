@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--NetworkVC-->
+        <!--ConnectionVC-->
         <scene sceneID="guZ-a3-eGQ">
             <objects>
-                <viewController storyboardIdentifier="NetworkViewController" id="NFY-67-PYa" customClass="NetworkVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectionViewController" id="NFY-67-PYa" customClass="ConnectionVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pJp-YS-BQv"/>
                         <viewControllerLayoutGuide type="bottom" id="j8b-G1-ag0"/>
@@ -72,7 +72,7 @@
                                 <rect key="frame" x="0.0" y="114" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="Y0P-dJ-CJA" customClass="NetworkUserTableViewCell" customModule="TapglueSample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="Y0P-dJ-CJA" customClass="ConnectionUserTableViewCell" customModule="TapglueSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y0P-dJ-CJA" id="rhJ-mA-kSv">

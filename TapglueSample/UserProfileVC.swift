@@ -130,8 +130,9 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         
         // TODO: Check nil
         // UserImage
-        let profileImage = user.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = user.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
      }
     
     // Get events and posts for current user

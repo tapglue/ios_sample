@@ -39,6 +39,7 @@ class UserProfileTableViewCell: UITableViewCell {
         let targetUsername = activity.targetUser
         print(targetUsername)
         print("Type: \(activity.type!)")
+        print(activity.user?.id!)
         print(activity.post?.user?.username)
         
         switch activity.type! {
@@ -64,29 +65,6 @@ class UserProfileTableViewCell: UITableViewCell {
             }
         default: print("More event types then expected")
         }
-        
-        
-        
-        
-        // OldSDK TODO: fix if event target is available in new sdk
-//        switch activity.type! {
-//            case "tg_friend":
-//                if activity.target.user != nil {
-//                    self.typeLabel.text = "Friends"
-//                    self.infoLabel.text = "You are Friends with " + activity.target.user.username
-//                    print(activity.target.user.username)
-//                }
-//            case "tg_like":
-//                self.typeLabel.text = "Liked " + activity.post.user.username + "'s" + " post"
-//                self.infoLabel.text = activity.post.attachments[0].contents!["en"] as? String
-//            case "tg_follow":
-//                if activity.target.user != nil {
-//                    self.typeLabel.text = "Follow"
-//                    self.infoLabel.text = "You started to follow " + event.target.user.username
-//                    print(activity.target.user.username)
-//                }
-//            default: print("More event types then expected")
-//        }
     }
 
     func clearLabels(){

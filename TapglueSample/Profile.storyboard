@@ -199,9 +199,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="UlX-ej-rg6" kind="popoverPresentation" popoverAnchorView="Uea-qZ-CEY" id="UNN-Ze-scQ">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
-                                            </segue>
+                                            <segue destination="UlX-ej-rg6" kind="presentation" id="UNN-Ze-scQ"/>
                                         </connections>
                                     </button>
                                 </subviews>

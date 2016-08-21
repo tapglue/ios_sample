@@ -38,8 +38,10 @@ class HomeVC: UIViewController, UITableViewDelegate{
         
         // TODO Nil checker
         // UserImage
-        let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = appDel.rxTapglue.currentUser?.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
+        
         
         self.loadFriendsActivityFeed()
     }

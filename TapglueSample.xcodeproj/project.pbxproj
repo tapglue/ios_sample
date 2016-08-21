@@ -16,7 +16,7 @@
 		6A2216171D52094300D27B7C /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216161D52094300D27B7C /* UserProfile.storyboard */; };
 		6A2216191D520B3100D27B7C /* FindUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216181D520B3100D27B7C /* FindUsers.storyboard */; };
 		6A22161F1D520CC700D27B7C /* PostDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A22161E1D520CC700D27B7C /* PostDetail.storyboard */; };
-		6A2216251D520F1B00D27B7C /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216241D520F1B00D27B7C /* Network.storyboard */; };
+		6A2216251D520F1B00D27B7C /* Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216241D520F1B00D27B7C /* Connection.storyboard */; };
 		6A2216271D520F6800D27B7C /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216261D520F6800D27B7C /* Notification.storyboard */; };
 		6A22162A1D520FA700D27B7C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2216291D520FA700D27B7C /* Profile.storyboard */; };
 		6A22162C1D52174D00D27B7C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A22162B1D52174D00D27B7C /* Login.storyboard */; };
@@ -47,7 +47,7 @@
 		6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */; };
 		6A70082A1C2832F7003D385E /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7008291C2832F7003D385E /* PostDetailVC.swift */; };
 		6A70082C1C283F61003D385E /* PostDetailCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082B1C283F61003D385E /* PostDetailCommentsTableViewCell.swift */; };
-		6A70082E1C2862D1003D385E /* NetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082D1C2862D1003D385E /* NetworkVC.swift */; };
+		6A70082E1C2862D1003D385E /* ConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082D1C2862D1003D385E /* ConnectionVC.swift */; };
 		6A74F6FB1C2008BD006C51C7 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */; };
 		6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */; };
 		6A914D1E1D462FA000B7F838 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A914D1D1D462FA000B7F838 /* StringExtension.swift */; };
@@ -58,7 +58,7 @@
 		6AE416A11C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE416A01C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift */; };
 		6AF69F571C2412ED00376B54 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF69F561C2412ED00376B54 /* UserProfileVC.swift */; };
 		6AF69F591C241E8700376B54 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF69F581C241E8700376B54 /* UserProfileTableViewCell.swift */; };
-		970E6E5A1BDD6E9D00BCE1C0 /* NetworkUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E6E591BDD6E9D00BCE1C0 /* NetworkUserTableViewCell.swift */; };
+		970E6E5A1BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E6E591BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift */; };
 		9727BB0E1BEBAED800CC8279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9727BB0D1BEBAED800CC8279 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +74,7 @@
 		6A2216161D52094300D27B7C /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		6A2216181D520B3100D27B7C /* FindUsers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindUsers.storyboard; sourceTree = "<group>"; };
 		6A22161E1D520CC700D27B7C /* PostDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostDetail.storyboard; sourceTree = "<group>"; };
-		6A2216241D520F1B00D27B7C /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
+		6A2216241D520F1B00D27B7C /* Connection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connection.storyboard; sourceTree = "<group>"; };
 		6A2216261D520F6800D27B7C /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		6A2216291D520FA700D27B7C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6A22162B1D52174D00D27B7C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		6A7008291C2832F7003D385E /* PostDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		6A70082B1C283F61003D385E /* PostDetailCommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailCommentsTableViewCell.swift; sourceTree = "<group>"; };
-		6A70082D1C2862D1003D385E /* NetworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkVC.swift; sourceTree = "<group>"; };
+		6A70082D1C2862D1003D385E /* ConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionVC.swift; sourceTree = "<group>"; };
 		6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFeedTableViewCell.swift; sourceTree = "<group>"; };
 		6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapglueSample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		6AF35D1A1D61F5E700BDA030 /* Tapglue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tapglue.framework; path = Carthage/Build/iOS/Tapglue.framework; sourceTree = "<group>"; };
 		6AF69F561C2412ED00376B54 /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		6AF69F581C241E8700376B54 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
-		970E6E591BDD6E9D00BCE1C0 /* NetworkUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUserTableViewCell.swift; sourceTree = "<group>"; };
+		970E6E591BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionUserTableViewCell.swift; sourceTree = "<group>"; };
 		9727BB0D1BEBAED800CC8279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,8 +286,8 @@
 		6A2216231D520F0C00D27B7C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				6A2216241D520F1B00D27B7C /* Network.storyboard */,
-				6A70082D1C2862D1003D385E /* NetworkVC.swift */,
+				6A2216241D520F1B00D27B7C /* Connection.storyboard */,
+				6A70082D1C2862D1003D385E /* ConnectionVC.swift */,
 				6A9F0DAF1D5B79D700A8B41C /* Cell */,
 			);
 			name = Network;
@@ -403,7 +403,7 @@
 		6A9F0DAF1D5B79D700A8B41C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				970E6E591BDD6E9D00BCE1C0 /* NetworkUserTableViewCell.swift */,
+				970E6E591BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -471,12 +471,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Özgür Celebi";
 				TargetAttributes = {
 					6A61F3311BDACCFD00EC64DF = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 34MP7UPC72;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -515,7 +516,7 @@
 				6A2216171D52094300D27B7C /* UserProfile.storyboard in Resources */,
 				6A2216191D520B3100D27B7C /* FindUsers.storyboard in Resources */,
 				6A61F3401BDACCFD00EC64DF /* LaunchScreen.storyboard in Resources */,
-				6A2216251D520F1B00D27B7C /* Network.storyboard in Resources */,
+				6A2216251D520F1B00D27B7C /* Connection.storyboard in Resources */,
 				9727BB0E1BEBAED800CC8279 /* Assets.xcassets in Resources */,
 				6A61F33B1BDACCFD00EC64DF /* Main.storyboard in Resources */,
 				6AAEB8E51D51FF8D002124AB /* Post.storyboard in Resources */,
@@ -564,10 +565,10 @@
 				6A1A98B01C20724B00299CD1 /* NotificationTableViewCell.swift in Sources */,
 				6AF69F591C241E8700376B54 /* UserProfileTableViewCell.swift in Sources */,
 				6A2C88AA1C1EDA3800A4EE96 /* LoginVC.swift in Sources */,
-				6A70082E1C2862D1003D385E /* NetworkVC.swift in Sources */,
+				6A70082E1C2862D1003D385E /* ConnectionVC.swift in Sources */,
 				6A70082A1C2832F7003D385E /* PostDetailVC.swift in Sources */,
 				6A1A98AB1C2056C900299CD1 /* UsersTableViewCell.swift in Sources */,
-				970E6E5A1BDD6E9D00BCE1C0 /* NetworkUserTableViewCell.swift in Sources */,
+				970E6E5A1BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift in Sources */,
 				6A1A98A61C20563000299CD1 /* UsersVC.swift in Sources */,
 				6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */,
 				6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */,
@@ -625,8 +626,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -648,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -670,8 +673,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -687,7 +692,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -716,6 +721,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TapglueSample/TapglueSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -740,6 +746,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TapglueSample/TapglueSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -30,8 +30,9 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
        
         // TODO: Check nil
         // UserImage
-        let profileImage = comment.user?.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = comment.user?.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  NetworkVC.swift
+//  ConnectionVC.swift
 //  TapglueSample
 //
 //  Created by Özgür Celebi on 21/12/15.
@@ -12,7 +12,7 @@ import Contacts
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class NetworkVC: UIViewController, UITableViewDelegate {
+class ConnectionVC: UIViewController, UITableViewDelegate {
     
     // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
@@ -167,14 +167,14 @@ class NetworkVC: UIViewController, UITableViewDelegate {
     }
 }
 
-extension NetworkVC: UITableViewDataSource {
+extension ConnectionVC: UITableViewDataSource {
     // Mark: -TableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NetworkUserTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ConnectionUserTableViewCell
         
             if searchingForUser {
                 cell.searchingForUser = true
@@ -217,7 +217,7 @@ extension NetworkVC: UITableViewDataSource {
     }
 }
 
-extension NetworkVC: UISearchResultsUpdating {
+extension ConnectionVC: UISearchResultsUpdating {
     // Mark: -SearchBar
     func updateSearchResultsForSearchController(searchController: UISearchController){
         if (searchController.searchBar.text?.characters.count > 2) {

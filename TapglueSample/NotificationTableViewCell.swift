@@ -35,16 +35,18 @@ class NotificationTableViewCell: UITableViewCell {
         
             // TODO: Check nil
             // UserImage
-            let profileImage = activity.user!.images!["profile"]
-            self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+            if let profileImages = activity.user?.images {
+                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+            }
         
         case "tg_follow":
             eventNameLabel.text = activityUser! + " is now following " + (activity.targetUser?.username)!
             
             // TODO: Check nil
             // UserImage
-            let profileImage = activity.user!.images!["profile"]
-            self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+            if let profileImages = activity.user?.images {
+                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+            }
         
         case "tg_like":
             self.eventNameLabel.text = activityUser! + " liked a Post"

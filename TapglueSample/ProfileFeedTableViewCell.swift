@@ -68,26 +68,6 @@ class ProfileFeedTableViewCell: UITableViewCell {
             }
         default: print("More event types then expected")
         }
-        
-        // OldSDK TODO: Fix after old event target user is available in the new sdk
-//        switch activity.type! {
-//            case "tg_friend":
-//                if activity.target.user != nil {
-//                    self.typeLabel.text = "Friends"
-//                    self.infoLabel.text = "You are Friends with " + activity.target.user.username
-//                    print(activity.target.user.username)
-//                }
-//            case "tg_like":
-//                self.typeLabel.text = "Liked " + activity.post.user.username + "'s" + " post"
-//                self.infoLabel.text = activity.post.attachments[0].contents!["en"] as? String
-//            case "tg_follow":
-//                if activity.target.user != nil {
-//                    self.typeLabel.text = "Follow"
-//                    self.infoLabel.text = "You started to follow " + activity.target.user.username
-//                    print(event.target.user.username)
-//                }
-//            default: print("More event types then expected")
-//        }
     }
 
     func clearLabels(){

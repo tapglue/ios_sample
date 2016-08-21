@@ -39,11 +39,14 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        print("----- will Appear ----")
+        
         // Check for tapglue user
         if appDel.rxTapglue.currentUser != nil {
-            showUserInfos()
             
             refreshCurrentUser()
+            
+            showUserInfos()
         } else {
             // Show loginVC if User is nil
             self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
@@ -138,8 +141,9 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         
         // TO-DO: Check nil
         // UserImage
-        let profileImage = appDel.rxTapglue.currentUser?.images!["profile"]
-        self.userImageView.kf_setImageWithURL(NSURL(string: profileImage!.url!)!)
+        if let profileImages = appDel.rxTapglue.currentUser?.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
     }
     
     func getEventsAndPostsOfCurrentUser() {
@@ -188,6 +192,8 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     }
     
     func refreshCurrentUser() {
+        print("---- Refreshing CURRENTUSER -----")
+        
         appDel.rxTapglue.refreshCurrentUser().subscribe { (event) in
             switch event {
             case .Next(let usr):
