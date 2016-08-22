@@ -127,12 +127,10 @@
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp4-ju-7dL">
-                                                            <rect key="frame" x="15" y="144" width="570" height="27"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqe-wG-uTc">
+                                                            <rect key="frame" x="15" y="142" width="570" height="27"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -145,17 +143,17 @@
                                                         <constraint firstItem="zVq-8t-oBc" firstAttribute="top" secondItem="Fua-cT-a0o" secondAttribute="top" constant="8" id="7A2-bD-lDc"/>
                                                         <constraint firstItem="NnX-mN-mHk" firstAttribute="leading" secondItem="Fua-cT-a0o" secondAttribute="leading" constant="15" id="7GC-an-j4C"/>
                                                         <constraint firstItem="X45-cG-aD9" firstAttribute="leading" secondItem="Fua-cT-a0o" secondAttribute="leading" id="NJe-4U-6u1"/>
-                                                        <constraint firstItem="Hp4-ju-7dL" firstAttribute="top" secondItem="z3t-gh-9aS" secondAttribute="bottom" constant="3.5" id="NZe-6g-egN"/>
+                                                        <constraint firstItem="oqe-wG-uTc" firstAttribute="leading" secondItem="Fua-cT-a0o" secondAttribute="leading" constant="15" id="OJB-lN-Wyl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oqe-wG-uTc" secondAttribute="trailing" constant="15" id="UHw-hM-dSn"/>
                                                         <constraint firstItem="63Z-rY-ppE" firstAttribute="top" secondItem="zVq-8t-oBc" secondAttribute="bottom" constant="11" id="WXG-sH-aKc"/>
                                                         <constraint firstItem="FeC-gf-qLl" firstAttribute="leading" secondItem="63Z-rY-ppE" secondAttribute="trailing" constant="8" id="XYg-Xg-dVD"/>
                                                         <constraint firstAttribute="bottom" secondItem="tO0-AT-LN7" secondAttribute="bottom" constant="4" id="Zl4-Tu-NSP"/>
+                                                        <constraint firstItem="B0D-0C-qTb" firstAttribute="top" secondItem="oqe-wG-uTc" secondAttribute="bottom" constant="2" id="bxw-Be-HVf"/>
                                                         <constraint firstItem="zVq-8t-oBc" firstAttribute="leading" secondItem="NnX-mN-mHk" secondAttribute="trailing" constant="8" id="cwh-1F-maA"/>
                                                         <constraint firstAttribute="trailing" secondItem="tO0-AT-LN7" secondAttribute="trailing" id="efH-Oa-7vh"/>
-                                                        <constraint firstItem="Hp4-ju-7dL" firstAttribute="leading" secondItem="NnX-mN-mHk" secondAttribute="leading" id="f1X-WJ-O1b"/>
                                                         <constraint firstItem="z3t-gh-9aS" firstAttribute="leading" secondItem="NnX-mN-mHk" secondAttribute="leading" id="f28-Bc-pqr"/>
-                                                        <constraint firstItem="B0D-0C-qTb" firstAttribute="top" secondItem="Hp4-ju-7dL" secondAttribute="bottom" id="h9P-uX-qo1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Hp4-ju-7dL" secondAttribute="trailing" constant="15" id="hT1-Y3-waj"/>
                                                         <constraint firstAttribute="trailing" secondItem="zVq-8t-oBc" secondAttribute="trailing" constant="15" id="iMA-Qb-Vzn"/>
+                                                        <constraint firstItem="oqe-wG-uTc" firstAttribute="top" secondItem="z3t-gh-9aS" secondAttribute="bottom" constant="2" id="itb-rz-zc5"/>
                                                         <constraint firstItem="tO0-AT-LN7" firstAttribute="top" secondItem="B0D-0C-qTb" secondAttribute="bottom" id="nQJ-2M-NUM"/>
                                                         <constraint firstAttribute="trailing" secondItem="z3t-gh-9aS" secondAttribute="trailing" constant="15" id="y5c-1v-aZI"/>
                                                         <constraint firstItem="z3t-gh-9aS" firstAttribute="top" secondItem="NnX-mN-mHk" secondAttribute="bottom" constant="8" id="yYG-iR-OYr"/>
@@ -178,7 +176,7 @@
                                             <outlet property="likeButton" destination="X45-cG-aD9" id="BO1-rv-pX8"/>
                                             <outlet property="likesCountLabel" destination="s3M-MD-ksr" id="2ZJ-73-WQY"/>
                                             <outlet property="postTextLabel" destination="z3t-gh-9aS" id="LmW-oy-JBO"/>
-                                            <outlet property="tagLabel" destination="Hp4-ju-7dL" id="93J-6S-ffE"/>
+                                            <outlet property="tagsView" destination="oqe-wG-uTc" id="Oho-43-IKO"/>
                                             <outlet property="userImageView" destination="NnX-mN-mHk" id="x0K-c2-jaz"/>
                                             <outlet property="userNameLabel" destination="zVq-8t-oBc" id="4w1-rm-qN9"/>
                                             <outlet property="visibilityImageView" destination="63Z-rY-ppE" id="CeR-eS-htW"/>
