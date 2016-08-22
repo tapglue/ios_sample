@@ -37,10 +37,13 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
     
+    @IBOutlet weak var tagsView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
@@ -140,24 +143,12 @@ class HomeTableViewCell: UITableViewCell {
         
         // TagsText
         if let tags = post.tags {
-            var tagLabelText = ""
+            var x: CGFloat = 0
             
-            switch tags.count {
-            case 1:
-                for tag in tags {
-                    self.tagLabel.text = "Tag: " + tag
-                }
-            case 2...5:
-                for tag in tags {
-                    tagLabelText = tagLabelText + "\(tag) "
-                }
-                self.tagLabel.text = "Tags: " + tagLabelText
-            default:
-                print("switch default tags")
+            for tag in tags {
+                createTagBtn(x, title: tag)
+                x += 68
             }
-            
-        } else {
-            self.tagLabel.text = ""
         }
 
         if let profileImages = post.user?.images {
@@ -189,6 +180,23 @@ class HomeTableViewCell: UITableViewCell {
                 self.likeButton.selected = false
             })
         }
+    }
+    
+    func createTagBtn(x: CGFloat, title: String) {
+        let button = UIButton(type: .System)
+        button.frame = CGRectMake(x, 0, 60, self.tagsView.frame.height)
+        button.layer.cornerRadius = tagsView.frame.height / 2
+        button.layer.masksToBounds = true
+        button.backgroundColor = .lightGrayColor()
+        button.tintColor = .whiteColor()
+        button.setTitle(title, forState: UIControlState.Normal)
+        button.addTarget(self, action: #selector(HomeTableViewCell.action(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.tagsView.addSubview(button)
+    }
+    
+    func action(sender:UIButton) {
+       print("acion was pressed \(sender.titleLabel?.text!)")
     }
 }
 
