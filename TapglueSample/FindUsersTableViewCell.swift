@@ -11,7 +11,6 @@ import Tapglue
 
 class FindUsersTableViewCell: UITableViewCell {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     var cellUser = User()
@@ -33,7 +32,7 @@ class FindUsersTableViewCell: UITableViewCell {
         userImageView.layer.masksToBounds = true
     }
     
-    // Configure Cell with User data
+    // Configure Cell with friends or follows
     func configureCellWithUserToFriendOrFollow(user: User!){
         cellUser = user
         
@@ -64,22 +63,22 @@ class FindUsersTableViewCell: UITableViewCell {
     }
     
     // Configure Cell with User data
-    func configureCellWithUserWithPendingConnection(user: User!){
-        cellUser = user
-        
-        self.userAboutLabel.text = self.cellUser.about!
-        self.userNameLabel.text = self.cellUser.username
-        
-        showUserImage(cellUser)
-        
-        if self.connectRightButton != nil {
-            customizeBtn(.Accept)
-        }
-        
-        if self.connectLeftButton != nil {
-            customizeBtn(.Decline)
-        }
-    }
+//    func configureCellWithUserWithPendingConnection(user: User!){
+//        cellUser = user
+//        
+//        self.userAboutLabel.text = self.cellUser.about!
+//        self.userNameLabel.text = self.cellUser.username
+//        
+//        showUserImage(cellUser)
+//        
+//        if self.connectRightButton != nil {
+//            customizeBtn(.Accept)
+//        }
+//        
+//        if self.connectLeftButton != nil {
+//            customizeBtn(.Decline)
+//        }
+//    }
     
     // Configure Cell with Contacts that use the app
     func configureCellWithUserFromContactsThatUsesApp(contact: [String:String], user: User){
@@ -88,32 +87,30 @@ class FindUsersTableViewCell: UITableViewCell {
         self.userAboutLabel.text = self.cellUser.about!
         self.userNameLabel.text = contact["givenName"]
         
-        // OldSDK
         showUserImage(cellUser)
         
-//        if self.connectRightButton != nil {
-//            self.connectRightButton.hidden = false
+        if self.connectRightButton != nil {
+            self.connectRightButton.hidden = false
         
-            if user.isFriend! {
+            if (user.isFriend != nil) {
                 customizeBtn(.Friend)
                 self.connectRightButton.selected = true
             } else {
                 customizeBtn(.Unfriend)
                 self.connectRightButton.selected = false
             }
-//        }
-//        if self.connectLeftButton != nil {
-//            self.connectLeftButton.hidden = false
-        
-            if user.isFollowing! {
-//                self.followingUserCustomizeButton()
+        }
+        if self.connectLeftButton != nil {
+            self.connectLeftButton.hidden = false
+    
+            if (user.isFollowing != nil) {
                 customizeBtn(.Follow)
                 self.connectLeftButton.selected = true
             } else {
                 customizeBtn(.Unfollow)
                 self.connectLeftButton.selected = false
             }
-//        }
+        }
     }
     
     // Configure Cell with Contacts that need to be invited
@@ -133,60 +130,12 @@ class FindUsersTableViewCell: UITableViewCell {
         connectLeftBtnState(sender)
     }
     
-    
-//    func followingUserCustomizeButton(){
-//        self.connectLeftButton.setTitle("Following", forState: .Selected)
-//        self.connectLeftButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
-//        self.connectLeftButton.tag = BtnState.Unfollow.rawValue
-//    }
-//    func unfollowingUserCustomizeButton(){
-//        self.connectLeftButton.setTitle("Follow", forState: .Normal)
-//        self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
-//        self.connectLeftButton.tag = BtnState.Follow.rawValue
-//    }
-//    
-//    func friendUserCustomizeButton(){
-//        self.connectRightButton.setTitle("Friend", forState: .Selected)
-//        self.connectRightButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
-//        self.connectRightButton.tag = BtnState.Unfriend.rawValue
-//    }
-//    func unfriendUserCustomizeButton(){
-//        self.connectRightButton.setTitle("Add Friend", forState: .Normal)
-//        self.connectRightButton.backgroundColor = UIColor.lightGrayColor()
-//        self.connectRightButton.tag = BtnState.Friend.rawValue
-//    }
-//    
-//    func pendingUserCustomizeButton(){
-//        self.connectRightButton.setTitle("Pending", forState: .Selected)
-//        self.connectRightButton.backgroundColor = UIColor.orangeColor()
-//        self.connectRightButton.tag = BtnState.Pending.rawValue
-//    }
-//    
-//    func acceptFriendShipCustomizeButton(){
-//        self.connectRightButton.setTitle("Accept", forState: .Normal)
-//        self.connectRightButton.backgroundColor = UIColor.orangeColor()
-//        self.connectRightButton.tag = BtnState.Accept.rawValue
-//    }
-//    func declineFriendShipCustomizeButton(){
-//        self.connectLeftButton.setTitle("Decline", forState: .Normal)
-//        self.connectLeftButton.backgroundColor = UIColor.redColor()
-//        self.connectLeftButton.tag = BtnState.Decline.rawValue
-//    }
-//    
-//    func inviteCustomizeButton(){
-//        self.connectLeftButton.setTitle("Invite", forState: .Normal)
-//        self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
-//        self.connectLeftButton.tag = BtnState.Invite.rawValue
-//        self.connectRightButton.hidden = true
-//    }
-    
     func customizeBtn(state: BtnState) {
         switch state {
         case .Invite:
             self.connectLeftButton.setTitle("Invite", forState: .Normal)
             self.connectLeftButton.backgroundColor = UIColor.lightGrayColor()
             self.connectLeftButton.tag = BtnState.Invite.rawValue
-//            self.connectRightButton.hidden = true
         case .Follow:
             self.connectLeftButton.setTitle("Following", forState: .Selected)
             self.connectLeftButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
@@ -224,10 +173,7 @@ class FindUsersTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    // OldSDK
     func showUserImage(cellUser: User) {
-        // TODO: Check nil
-        // UserImage
         if let profileImages = cellUser.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }
@@ -240,7 +186,7 @@ class FindUsersTableViewCell: UITableViewCell {
         case BtnState.Follow.rawValue:
             print("Follow")
             
-            // NewSDK
+            // Confirm follow connection
             let connect = Connection(toUserId: cellUser.id!, type: .Follow, state: .Confirmed)
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
@@ -257,22 +203,10 @@ class FindUsersTableViewCell: UITableViewCell {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            Tapglue.followUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if success {
-//                    print("User follow successful: \(success)")
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        sender.selected = true
-//                        self.customizeBtn(.Follow)
-//                    })
-//                } else if error != nil{
-//                    print("\nError followUser: \(error)")
-//                }
-//            })
+
         case BtnState.Unfollow.rawValue:
             print("Unfollow")
-            // NewSDK
+            // Delete follow connection
             appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Follow).subscribe({ (event) in
                 switch event {
                 case .Next(let element):
@@ -287,23 +221,11 @@ class FindUsersTableViewCell: UITableViewCell {
                     })
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            Tapglue.unfollowUser(cellUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if success {
-//                    print("User unfollow successful")
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        sender.selected = false
-//                        self.customizeBtn(.Unfollow)
-//                    })
-//                } else if error != nil{
-//                    print("\nError unfollowUser: \(error)")
-//                }
-//            })
+
         case BtnState.Decline.rawValue:
             print("Decline")
             
-            // NewSDK
+            // Reject friend connection
             let connect = Connection(toUserId: cellUser.id!, type: .Friend, state: .Rejected)
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
@@ -321,14 +243,6 @@ class FindUsersTableViewCell: UITableViewCell {
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
-            // OldSDK
-//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Rejected, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
-//                if success {
-//                    print(success)
-//                } else if error != nil{
-//                    print("\nError friendUser: \(error)")
-//                }
-//            })
         default:
             print("default left")
         }
@@ -339,7 +253,7 @@ class FindUsersTableViewCell: UITableViewCell {
         case BtnState.Friend.rawValue:
             print("Friend")
             
-            // NewSDK
+            // Pending friend connection
             let connect = Connection(toUserId: cellUser.id!, type: .Friend, state: .Pending)
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
@@ -357,21 +271,9 @@ class FindUsersTableViewCell: UITableViewCell {
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
-            // OldSDK
-//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Pending, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
-//                if success {
-//                    print("Do friendship: \(success)")
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        sender.selected = true
-//                        self.customizeBtn(.Pending)
-//                    })
-//                } else if error != nil{
-//                    print("\nError friendUser: \(error)")
-//                }
-//            })
         case BtnState.Unfriend.rawValue:
             print("Unfriend")
-            // NewSDK
+            // Delete friend connection
             appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Friend).subscribe({ (event) in
                 switch event {
                 case .Next(let element):
@@ -387,25 +289,13 @@ class FindUsersTableViewCell: UITableViewCell {
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
-            // OldSDK
-//            Tapglue.unfriendUser(cellUser, withCompletionBlock: { (success: Bool,error: NSError!) -> Void in
-//                if success {
-//                    print("User unfriend successful")
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        sender.selected = false
-//                        self.customizeBtn(.Unfriend)
-//                    })
-//                } else if error != nil{
-//                    print("\nError unfriendUser: \(error)")
-//                }
-//            })
         case BtnState.Pending.rawValue:
             print("Still Pending")
             
         case BtnState.Accept.rawValue:
             print("Accept")
             
-            // NewSDK
+            // Confirm friend connection
             let connect = Connection(toUserId: cellUser.id!, type: .Friend, state: .Confirmed)
             
             appDel.rxTapglue.createConnection(connect).subscribe({ (event) in
@@ -418,15 +308,6 @@ class FindUsersTableViewCell: UITableViewCell {
                     print("Do the action")
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-            
-            // OldSDK
-//            Tapglue.friendUser(cellUser, withState: TGConnectionState.Confirmed, withCompletionBlock: { (success : Bool, error : NSError!) -> Void in
-//                if success {
-//                    print("Confirmed friendship: \(success)")
-//                } else if error != nil{
-//                    print("\nError friendUser: \(error)")
-//                }
-//            })
             
         default:
             print("default right")

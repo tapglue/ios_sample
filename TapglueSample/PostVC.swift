@@ -12,7 +12,6 @@ import WSTagsField
 
 class PostVC: UIViewController {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
 
     @IBOutlet weak var visibilitySegmentedControl: UISegmentedControl!
@@ -28,24 +27,23 @@ class PostVC: UIViewController {
     var tempPost: Post!
     
     @IBOutlet weak var wsTagsFieldView: UIView!
-    let tagsField = WSTagsField
+    
+    let tagsField = WSTagsField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Prepare postUIBarButton
+        // Enable postUIBarButton
         postUIBarButton.enabled = false
 
         postTextField.becomeFirstResponder()
         
         addWSTagsField()
         
-        // TO-DO: Check nil
-        // UserImage
         if let profileImages = appDel.rxTapglue.currentUser?.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }
         
-        // Old post will be edited
+        // Prepare edit old post
         if postBeginEditing {
             postTextField.text = tempPost.attachments![0].contents!["en"]
             switch tempPost.visibility!.rawValue {
@@ -77,11 +75,7 @@ class PostVC: UIViewController {
                 }
             }
             
-            
             if postBeginEditing {
-                // Prepare TGPost Edit
-                
-                // TODO: Currently unable to update attachments, no editing post possible atm
                 let attachment = Attachment(contents: ["en":postText!], name: "status", type: .Text)
                 tempPost.tags = tagArr
                 tempPost.attachments = [attachment]
@@ -96,7 +90,7 @@ class PostVC: UIViewController {
                     default: "More options then expected"
                 }
                 
-                // NewSDK
+                // Update edited post
                 appDel.rxTapglue.updatePost(tempPost.id!, post: tempPost).subscribe({ (event) in
                     switch event {
                     case .Next(let post):
@@ -109,7 +103,6 @@ class PostVC: UIViewController {
                 }).addDisposableTo(self.appDel.disposeBag)
 
             } else {
-                // Prepare Post creation
                 let attachment = Attachment(contents: ["en":postText!], name: "status", type: .Text)
                 let post = Post(visibility: .Connections, attachments: [attachment])
                 post.tags = tagArr
@@ -124,7 +117,7 @@ class PostVC: UIViewController {
                     default: "More options then expected"
                 }
                 
-                // NewSDK
+                // Create new post
                 appDel.rxTapglue.createPost(post).subscribe({ (event) in
                     switch event {
                     case .Next(let post):
@@ -160,13 +153,12 @@ class PostVC: UIViewController {
         
         alertController.addAction(OKAction)
         
-        // Present UIAlertController
         self.presentViewController(alertController, animated: true) {
         }
     }
     
     func addWSTagsField() {
-        tagsField.placeholder = "#Hashtags"
+        tagsField.placeholder = "Add hashtags to your post"
         tagsField.font = UIFont(name:"HelveticaNeue-Light", size: 14.0)
         tagsField.tintColor = UIColor(red:0.18, green:0.28, blue:0.3, alpha:1.0)
         tagsField.textColor = .whiteColor()

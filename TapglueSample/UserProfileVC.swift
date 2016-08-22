@@ -11,7 +11,6 @@ import Tapglue
 
 class UserProfileVC: UIViewController, UITableViewDelegate {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     var userProfile: User?
@@ -50,8 +49,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
-        
-        //NewSDK
+        // Retrieve friends with user ID
         appDel.rxTapglue.retrieveFriendsForUserId(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let usr):
@@ -70,12 +68,10 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-
     }
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
-        
-        //NewSDK
+        // Retrieve followers with user ID
         appDel.rxTapglue.retrieveFollowersForUserId(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let usr):
@@ -84,9 +80,8 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
                 
                 usersViewController.users = usr
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.navigationController?.pushViewController(usersViewController, animated: true)
-                })
+                
+                self.navigationController?.pushViewController(usersViewController, animated: true)
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
@@ -98,7 +93,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
-        //NewSDK
+        // Retrieve follows with user ID
         appDel.rxTapglue.retrieveFollowingsForUserId(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let usrs):
@@ -108,9 +103,8 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
                 
                 usersViewController.users = usrs
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.navigationController?.pushViewController(usersViewController, animated: true)
-                })
+                
+                self.navigationController?.pushViewController(usersViewController, animated: true)
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
@@ -118,26 +112,22 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-
     }
     
-    // Fill user profile
+    // Show user profile information
     func showUserInfos(user: User){
         userFullnameLabel.text = user.firstName! + " " + user.lastName!
         userUsernameLabel.text = "@" + user.username!
         userAboutLabel.text = user.about!
         
-        
-        // TODO: Check nil
-        // UserImage
         if let profileImages = user.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }
      }
     
-    // Get events and posts for current user
+    // Get activities and posts for current user
     func getEventsAndPostsOfCurrentUser() {
-        // NewSDK
+        // Retrieve activities by user with ID
         appDel.rxTapglue.retrieveActivitiesByUser(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let activities):
@@ -148,13 +138,11 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             case .Completed:
                 print("Do the action")
                 
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.userProfileFeedTableView.reloadData()
-                }
+                self.userProfileFeedTableView.reloadData()
             }
         }.addDisposableTo(self.appDel.disposeBag)
 
-        // NewSDK
+        // Retrieve posts by user with ID
         appDel.rxTapglue.retrievePostsByUser(userProfile!.id!).subscribe { (event) in
             switch event {
             case .Next(let posts):
@@ -165,10 +153,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             case .Completed:
                 print("Do the action")
                 
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.userProfileFeedTableView.reloadData()
-                }
+                self.userProfileFeedTableView.reloadData()
             }
         }.addDisposableTo(self.appDel.disposeBag)
     }
@@ -221,16 +206,37 @@ extension UserProfileVC: UITableViewDataSource {
         switch feedSegmentedControl.selectedSegmentIndex {
             case 0:
                 print("Activity segment")
+                if "tg_like" == activityFeed[indexPath.row].type! {
+                    
+                    //Fix: retrievePost does not give user
+                    let postID = activityFeed[indexPath.row].postId!
+                    appDel.rxTapglue.retrievePost(postID).subscribe({ (event) in
+                        switch event {
+                        case .Next(let post):
+                            print("RetrievePostUser: \(post)")
+                            let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
+                            let pdVC =
+                                storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
+                                    as! PostDetailVC
+                            
+                            pdVC.post = post
+                            
+                            self.navigationController!.pushViewController(pdVC, animated: true)
+                        case .Error(let error):
+                            self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                        case .Completed:
+                            print("Do the action")
+                        }
+                    }).addDisposableTo(self.appDel.disposeBag)
+                }
             case 1:
                 let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
                 let pdVC =
                     storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
                     as! PostDetailVC
                 
-                // pass data to sub-viewcontroller
                 pdVC.post = posts[indexPath.row]
                 
-                // tell the new controller to present itself
                 self.navigationController!.pushViewController(pdVC, animated: true)
             default: print("More then two segments")
         }

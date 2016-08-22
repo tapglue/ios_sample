@@ -14,7 +14,6 @@ import FBSDKCoreKit
 
 class ConnectionVC: UIViewController, UITableViewDelegate {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     @IBOutlet weak var friendsTableView: UITableView!
@@ -40,12 +39,12 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
+            controller.searchBar.backgroundColor = .whiteColor()
             
             self.friendsTableView.tableHeaderView = controller.searchBar
             
@@ -66,7 +65,6 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
         clearUsersArrayAndReloadTableView()
         checkForPendingConnections()
         
-        // Reload the TableView
         reloadTableViewWithAnimation()
         
         self.resultSearchController.searchBar.hidden = false
@@ -82,8 +80,9 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "FindUsers", bundle: nil)
         let fuVC = storyboard.instantiateViewControllerWithIdentifier("FindUsersViewController")
                 as! FindUsersVC
-        //TO-DO
+        
         fuVC.currentSelectedNetwork = "Contacts"
+        
         self.navigationController!.pushViewController(fuVC, animated: true)
     }
     
@@ -102,7 +101,7 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
     }
     
     func checkForPendingConnections(){
-        
+        // Retrieve pending connection requests
         appDel.rxTapglue.retrievePendingConnections().subscribe { (event) in
             switch event {
             case .Next(let connections):
@@ -137,33 +136,6 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK TODO: update pending request to new sdk
-//        Tapglue.retrievePendingConncetionsForCurrentUserWithCompletionBlock { (incoming: [AnyObject]!, outgoing: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrievePendingConncetionsForCurrentUser: \(error)")
-//            } else {
-//                for inc in incoming {
-//                    self.fromUsers.append((inc as! TGConnection).fromUser)
-//                }
-//                for out in outgoing {
-//                    self.toUsers.append((out as! TGConnection).toUser)
-//                }
-//                print("\nFrom: \(self.fromUsers)")
-//                print("\nTo: \(self.toUsers)")
-//                
-//                self.users = self.fromUsers
-//                
-//                
-//                self.users.sortInPlace({ (contact1, contact2) -> Bool in
-//                    return contact1.username < contact2.username
-//                })
-//                
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.reloadTableViewWithAnimation()
-//                })
-//            }
-//        }
     }
 }
 
@@ -180,6 +152,7 @@ extension ConnectionVC: UITableViewDataSource {
                 cell.searchingForUser = true
                 cell.configureCellWithUserToFriendOrFollow(self.users[indexPath.row])
             } else {
+                cell.delegate = self
                 cell.selectionStyle = .None
                 cell.userNameLabel.text = self.users[indexPath.row].firstName
                 let user = self.users[indexPath.row]
@@ -196,7 +169,7 @@ extension ConnectionVC: UITableViewDataSource {
             let storyboard = UIStoryboard(name: "FindUsers", bundle: nil)
             let fuVC = storyboard.instantiateViewControllerWithIdentifier("FindUsersViewController")
                 as! FindUsersVC
-            //TO-DO
+            
             fuVC.currentSelectedNetwork = networks[indexPath.row]
             
             self.navigationController!.pushViewController(fuVC, animated: true)
@@ -218,10 +191,10 @@ extension ConnectionVC: UITableViewDataSource {
 }
 
 extension ConnectionVC: UISearchResultsUpdating {
-    // Mark: -SearchBar
+    // Mark: - SearchController
     func updateSearchResultsForSearchController(searchController: UISearchController){
         if (searchController.searchBar.text?.characters.count > 2) {
-            // NewSDK
+            // Search for User
             appDel.rxTapglue.searchUsersForSearchTerm(searchController.searchBar.text!).subscribe({ (event) in
                 switch event {
                 case .Next(let usr):
@@ -242,7 +215,7 @@ extension ConnectionVC: UISearchResultsUpdating {
             }).addDisposableTo(self.appDel.disposeBag)
             
         } else {
-            // Clear tableView aslong a user was not found
+            // Clear tableView as long a user was not found
             searchingForUser = true
             users.removeAll(keepCapacity: false)
             self.friendsTableView.reloadData()
@@ -253,5 +226,54 @@ extension ConnectionVC: UISearchResultsUpdating {
             checkForPendingConnections()
             searchingForUser = false
         }
+    }
+}
+
+extension ConnectionVC: PendingConnectionsDelegate {
+    // Mark: - Custom delegate to update data, if cell recieves like button or share button pressed
+    func updatePendingConnections() {
+        clearUserArrays()
+        
+        // Retrieve pending connection requests
+        appDel.rxTapglue.retrievePendingConnections().subscribe { (event) in
+            switch event {
+            case .Next(let connections):
+                print("Next")
+                
+                for inc in connections.incoming! {
+                    print("incomging user: \(inc.userFrom)")
+                    self.fromUsers.append(inc.userFrom!)
+                }
+                
+                for out in connections.outgoing! {
+                    self.toUsers.append(out.userTo!)
+                }
+                
+                print("From user: \(self.fromUsers)")
+                print("To user: \(self.toUsers)")
+                
+                // As an example we are just showing inbound friends request
+                self.users = self.fromUsers
+                
+                self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                    return contact1.username < contact2.username
+                })
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.reloadTableViewWithAnimation()
+                })
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func clearUserArrays() {
+        self.users.removeAll(keepCapacity: false)
+        self.fromUsers.removeAll(keepCapacity: false)
+        self.toUsers.removeAll(keepCapacity: false)
     }
 }

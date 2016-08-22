@@ -14,7 +14,6 @@ class LoginSignInVC: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
-    // AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     override func viewDidLoad() {

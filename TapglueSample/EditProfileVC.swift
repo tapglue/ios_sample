@@ -11,7 +11,6 @@ import Tapglue
 
 class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
@@ -33,22 +32,9 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
-    
-//    func updateUser(currentUser: User) -> User {
-//        let usr = appDel.rxTapglue.currentUser!
-//        
-//        s.username = currentUser.username
-//        currentUser.firstName = currentUser.firstName
-//        currentUser.lastName = currentUser.lastName
-//        currentUser.about = "new text text text"
-//        currentUser.email = currentUser.email
-//        
-//        return usr
-//        
-//    }
-    
+
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
-        // Update user information
+        // Update current user information
         appDel.rxTapglue.updateCurrentUser(updatedUser!).subscribe { (event) in
             switch event {
             case .Next(let usr):

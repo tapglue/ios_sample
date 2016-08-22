@@ -13,7 +13,6 @@ class HomeVC: UIViewController, UITableViewDelegate{
 
     @IBOutlet weak var homeTableView: UITableView!
     
-    // TGPost array
     var posts: [Post] = []
     
     var refreshControl: UIRefreshControl!
@@ -26,22 +25,21 @@ class HomeVC: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Refreshcontrol
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(HomeVC.loadFriendsActivityFeed), forControlEvents: UIControlEvents.ValueChanged)
         self.homeTableView.addSubview(refreshControl)
         self.homeTableView.sendSubviewToBack(refreshControl)
         
         self.refreshControl?.beginRefreshing()
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        // TODO Nil checker
-        // UserImage
         if let profileImages = appDel.rxTapglue.currentUser?.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }
-        
         
         self.loadFriendsActivityFeed()
     }
@@ -66,24 +64,25 @@ class HomeVC: UIViewController, UITableViewDelegate{
                 })
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.retrievePostsFeedForCurrentUserWithCompletionBlock { (feed: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError retrievePostsFeedForCurrentUser: \(error)")
-//            }
-//            else {
-//                self.posts = feed as! [TGPost]
-//
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.homeTableView.reloadData()
-//                    self.refreshControl.endRefreshing()
-//                })
-//                
-//                
-//            }
-//        }
     }
+    
+    // TODO: filterPostTags
+//    func filterPostTags() {
+//        let tags: [String] = ["realpublic", "tester"]
+//        appDel.rxTapglue.filterPostsByTags(tags).subscribe { (event) in
+//            switch event {
+//                case .Next(let postArr):
+//                    print("Next")
+//                    for post in postArr {
+//                        print("filterdPosts: \(post.attachments![0].contents!["en"])")
+//                    }
+//                case .Error(let error):
+//                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+//                case .Completed:
+//                    print("Do the action")
+//            }
+//        }.addDisposableTo(self.appDel.disposeBag)
+//    }
 }
 
 
@@ -102,7 +101,7 @@ extension HomeVC: UITableViewDataSource {
         
         cell.configureCellWithPost(self.posts[indexPath.row])
         
-        // Self for custom delegate
+        // Listen custom delegate
         cell.delegate = self
         
         return cell

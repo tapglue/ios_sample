@@ -11,7 +11,6 @@ import Tapglue
 
 class PostDetailVC: UIViewController, UITableViewDelegate {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     var post: Post!
@@ -47,7 +46,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             fillPostDetailInformation()
         }
 
-        // Start commenting, when you pressed comment button in HomeTableViewCell
+        // Show keyboard and start commenting
         if commentButtonPressedSwitch {
             commentTextField.becomeFirstResponder()
         }
@@ -78,7 +77,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     @IBAction func likeButtonPressed(sender: UIButton) {
             if likeButton.selected == true {
-                //NewSDK
+                // Delete like for Post
                 appDel.rxTapglue.deleteLike(forPostId: post.id!).subscribe({ (event) in
                     switch event {
                     case .Next(let element):
@@ -95,7 +94,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 }).addDisposableTo(self.appDel.disposeBag)
 
             } else {
-                // NewSDK
+                // Create like for Post
                 appDel.rxTapglue.createLike(forPostId: post.id!).subscribe({ (event) in
                     switch event {
                     case .Next(let element):
@@ -115,7 +114,6 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func shareButtonPressed(sender: UIButton) {
-        
         showShareOptions()
     }
     
@@ -145,7 +143,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     // Retrieve all comments and reverse them
     func retrieveAllCommentsForPost(){
-        // NewSDK
+        // Retrieve comments for Post
         appDel.rxTapglue.retrieveComments(post.id!).subscribe { (event) in
                 switch event {
                 case .Next(let comments):
@@ -160,18 +158,18 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         }.addDisposableTo(self.appDel.disposeBag)
     }
     
-    // Show postDetails
+    // Show PostDetial information
     func fillPostDetailInformation(){
         userNameButton.contentHorizontalAlignment = .Left
         if let postUser = post.user {
             userNameButton.setTitle(postUser.username, forState: .Normal)
             
-            // UserImage
             if let profileImages = postUser.images {
                 self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }
         }
         
+        // Post like count
         let likeCountForPost = post.likeCount!
         
         if likeCountForPost != 0 {
@@ -180,6 +178,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             } else {
                 self.likesCountLabel.text = String(likeCountForPost) + " Likes"
             }
+        } else {
+            self.likesCountLabel.text = ""
         }
         
         // PostText
@@ -299,7 +299,7 @@ extension PostDetailVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // NewSDK
+        // Check if comment is own comment to edit it
         if self.postComments[indexPath.row].userId == appDel.rxTapglue.currentUser?.id {
             return true
         } else {
@@ -315,7 +315,6 @@ extension PostDetailVC: UITableViewDataSource {
                 
                 self.commentTextField.becomeFirstResponder()
                 
-                // NewSDK
                 let commentText: String = self.postComments[indexPath.row].contents!["en"]! 
                 self.commentTextField.text = commentText
                 
@@ -324,7 +323,7 @@ extension PostDetailVC: UITableViewDataSource {
             edit.backgroundColor = UIColor.lightGrayColor()
             
             let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
-                // NewSDK
+                // Delete comment for Post
                 self.appDel.rxTapglue.deleteComment(forPostId: self.post.id!, commentId: self.postComments[indexPath.row].id!).subscribeCompleted({ 
                     self.retrieveAllCommentsForPost()
                 }).addDisposableTo(self.appDel.disposeBag)
@@ -353,7 +352,7 @@ extension PostDetailVC: UITextFieldDelegate {
             let contents = ["en": textField.text!]
             self.editComment.contents = contents
             
-            //NewSDK
+            // Update comment for Post
             appDel.rxTapglue.updateComment(post.id!, commentId: editComment.id!, comment: editComment).subscribe({ (event) in
                 switch event {
                 case .Next( _):
@@ -374,7 +373,7 @@ extension PostDetailVC: UITextFieldDelegate {
             
             let comment = Comment(contents: ["en":textField.text!], postId: post.id!)
             
-            //NewSDK
+            // Create comment for Post
             appDel.rxTapglue.createComment(comment).subscribe({ (event) in
                 switch event {
                 case .Next( _):

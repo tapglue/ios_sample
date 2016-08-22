@@ -35,8 +35,6 @@ extension UsersVC: UITableViewDataSource {
         cell.userAboutLabel.text = users[indexPath.row].about!
         cell.userNameLabel.text = users[indexPath.row].username
         
-        // TODO: Check nil
-        // UserImage
         if let profileImages = users[indexPath.row].images {
             cell.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }

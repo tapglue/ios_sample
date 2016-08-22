@@ -21,20 +21,16 @@ class NotificationTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    // TO-DO
-    // Clean out custom events
     func configureCellWithEvent(activity: Activity!){
         let activityUser = activity.user?.username
         
-        // TODO: Fix to elapsed times
+        // String elapsed times
         self.dateLabel.text = activity.createdAt!.toNSDateTime().toTimeFormatInElapsedTimeToString()
         
         switch activity.type! {
         case "tg_friend":
             eventNameLabel.text = activityUser! + " is now friends with " + (activity.targetUser?.username)!
         
-            // TODO: Check nil
-            // UserImage
             if let profileImages = activity.user?.images {
                 self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }
@@ -42,8 +38,6 @@ class NotificationTableViewCell: UITableViewCell {
         case "tg_follow":
             eventNameLabel.text = activityUser! + " is now following " + (activity.targetUser?.username)!
             
-            // TODO: Check nil
-            // UserImage
             if let profileImages = activity.user?.images {
                 self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }

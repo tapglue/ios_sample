@@ -45,7 +45,7 @@ class HomeTableViewCell: UITableViewCell {
     
     @IBAction func likeButtonPressed(sender: UIButton) {
         if likeButton.selected == true {
-            //NewSDK
+            // Delete like of post
             appDel.rxTapglue.deleteLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
                 case .Next(let element):
@@ -63,7 +63,7 @@ class HomeTableViewCell: UITableViewCell {
             }).addDisposableTo(self.appDel.disposeBag)
             
         } else {
-            // NewSDK
+            // Create like of post
             appDel.rxTapglue.createLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
                 case .Next(let element):
@@ -89,48 +89,45 @@ class HomeTableViewCell: UITableViewCell {
         storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
             as! PostDetailVC
         
-        // pass the relevant data to the new sub-ViewController
+        // Pass the relevant data to the new sub-ViewController
         pdVC.post = cellPost
         pdVC.commentButtonPressedSwitch = true
         
-        // tell the new controller to present itself
         rootViewController.pushViewController(pdVC, animated: true)
     }
     
     @IBAction func shareButtonPressed(sender: UIButton) {
-        // Will be implemented in the future
-        print("Not implemented yet")
         delegate?.showShareOptions(cellPost)
     }
     
-    // Configure Cell with TGPost data
+    // Configure Cell with Post data
     func configureCellWithPost(post: Post!){
         cellPost = post
         
+        // PostLikeCount
         let cellPostLikeCount = cellPost.likeCount!
         
-        switch cellPostLikeCount {
-        case 0:
+        if cellPostLikeCount != 0 {
+            if cellPostLikeCount == 1{
+                self.likesCountLabel.text = String(cellPostLikeCount) + " Like"
+            } else {
+                self.likesCountLabel.text = String(cellPostLikeCount) + " Likes"
+            }
+        } else {
             self.likesCountLabel.text = ""
-        case 1:
-            self.likesCountLabel.text = String(cellPostLikeCount) + " Like"
-        case 2...100000:
-            self.likesCountLabel.text = String(cellPostLikeCount) + " Likes"
-        default:
-            print("switch default likesCount")
         }
         
+        // PostCommentCount
         let cellPostCommentCount = cellPost.commentCount!
         
-        switch cellPostCommentCount {
-        case 0:
-            self.commentsCountLabel.text = ""
-        case 1:
-            self.commentsCountLabel.text = String(cellPostCommentCount) + " Comment"
-        case 2...100000:
-            self.commentsCountLabel.text = String(cellPostCommentCount) + " Comments"
-        default:
-            print("switch default commentsCount")
+        if cellPostCommentCount != 0 {
+            if cellPostCommentCount == 1{
+                self.likesCountLabel.text = String(cellPostCommentCount) + " Comment"
+            } else {
+                self.likesCountLabel.text = String(cellPostCommentCount) + " Comments"
+            }
+        } else {
+            self.likesCountLabel.text = ""
         }
         
         // UserText
@@ -163,9 +160,6 @@ class HomeTableViewCell: UITableViewCell {
             self.tagLabel.text = ""
         }
 
-        
-        // TODO: Check nil
-        // UserImage
         if let profileImages = post.user?.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }

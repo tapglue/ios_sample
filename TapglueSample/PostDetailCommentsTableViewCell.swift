@@ -25,11 +25,9 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         userNameLabel.text = comment.user?.username
         userCommentLabel.text = comment.contents!["en"]
         
-        // OldSDK TODO: Fix to elapsed time
+        // String to elapsed time
         dateLabel.text = comment.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
        
-        // TODO: Check nil
-        // UserImage
         if let profileImages = comment.user?.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }

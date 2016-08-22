@@ -15,7 +15,6 @@ class ProfileFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     override func awakeFromNib() {
@@ -30,7 +29,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
         self.infoLabel.text = attachments![0].contents!["en"]
         self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
     
-        // TODO: Fix to elapsed time
+        // String to elapsed time
         self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
     }
 
@@ -53,7 +52,7 @@ class ProfileFeedTableViewCell: UITableViewCell {
             }
         case "tg_like":
             if activity.post?.user != nil {
-                self.typeLabel.text = "Liked " + (activity.post?.user?.username!)! + "'s" + " post"
+                self.typeLabel.text = "You Liked " + (activity.post?.user?.username!)! + "'s" + " post"
                 self.infoLabel.text = activity.post?.attachments![0].contents!["en"]
             }
         case "tg_follow":

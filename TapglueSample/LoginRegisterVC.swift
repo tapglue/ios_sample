@@ -20,7 +20,6 @@ class LoginRegisterVC: UIViewController {
     
     var currentAvatar: String?
     
-    // AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     // Free http://uifaces.com/authorized profile pictures

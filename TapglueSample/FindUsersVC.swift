@@ -14,7 +14,6 @@ import FBSDKCoreKit
 
 class FindUsersVC: UIViewController, UITableViewDelegate {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     @IBOutlet weak var friendsTableView: UITableView!
@@ -87,22 +86,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 }
             }
         }.addDisposableTo(self.appDel.disposeBag)
-        
-        // OldSDK
-//        Tapglue.searchUsersWithEmails(contactEmails) { (users: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil {
-//                print("\nError searchUsersWithEmails: \(error)")
-//            }
-//            else {
-//                print("\nSuccessful searchUsersWithEmails: \(users)")
-//                self.users = users as! [TGUser]
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    // TO-DO delete animation if not needed
-////                    self.reloadTableViewWithAnimation()
-//                    self.friendsTableView.reloadData()
-//                }
-//            }
-//        }
     }
     
     // ReadAddressBookByEmail and saving contacts in dicionary

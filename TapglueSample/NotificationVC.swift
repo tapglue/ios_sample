@@ -11,14 +11,12 @@ import Tapglue
 
 class NotificationVC: UIViewController, UITableViewDelegate {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     @IBOutlet weak var notificationsTableView: UITableView!
     
     var checkmarkedActivities: [Bool] = []
     
-    // Event arr
     var activityFeed: [Activity] = []
     
     var refreshControl: UIRefreshControl!
@@ -47,8 +45,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     func loadNotificationFeed() {
         self.refreshControl?.beginRefreshing()
         
-        // TODO: To use filtered activities you need first retrieveActivityWithType that is coming soon
-        // Get all activities
+        // Get me related activities
         appDel.rxTapglue.retrieveMeFeed().subscribe { (event) in
             switch event {
             case .Next(let activities):
@@ -106,44 +103,45 @@ extension NotificationVC: UITableViewDataSource {
     }
     
     func goToPostByID(id: String) {
-        let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
-        let pdVC =
-            storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
-                as! PostDetailVC
-        
+        // Retrieve Post with ID
         appDel.rxTapglue.retrievePost(id).subscribe { (event) in
             switch event {
             case .Next(let post):
                 print("Next")
+                let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
+                let pdVC =
+                    storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
+                        as! PostDetailVC
+                
                 pdVC.post = post
+                print("Post User: \(post.userId)")
+                
+                self.navigationController!.pushViewController(pdVC, animated: true)
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func goToUserByID(id: String) {
+        // Retrieve User with ID
+        appDel.rxTapglue.retrieveUser(id).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+                let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+                
+                userProfileViewController.userProfile = usr
+                
+                self.navigationController?.pushViewController(userProfileViewController, animated: true)
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
                 print("Do the action")
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.navigationController!.pushViewController(pdVC, animated: true)
-                })
-            }
-            }.addDisposableTo(self.appDel.disposeBag)
-    }
-    
-    func goToUserByID(id: String) {
-        let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
-        let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
-        
-        appDel.rxTapglue.retrieveUser(id).subscribe { (event) in
-            switch event {
-            case .Next(let usr):
-                print("Next")
-                userProfileViewController.userProfile = usr
-            case .Error(let error):
-                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
-            case .Completed:
-                print("Do the action")
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.navigationController?.pushViewController(userProfileViewController, animated: true)
-                })
             }
         }.addDisposableTo(self.appDel.disposeBag)
     }
