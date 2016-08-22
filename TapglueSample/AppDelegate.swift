@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Configuration()
         config.baseUrl = url
         config.appToken = appToken
-        // setting this to true makes the sdk print http requests and responses
+        // If you like to see logs: set true
         config.log = false
         rxTapglue = RxTapglue(configuration: config)
         
@@ -37,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
-    
     
     // Push Notifications related methods
     func registerForPushNotifications(application: UIApplication) {
@@ -59,14 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(notificationSettings)
     }
     
-    // Custom TapglueError method
+    // TapglueError handel
     func printOutErrorMessageAndCode(err: TapglueError?) {
         print(err?.code)
         print(err?.message)
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        // TODO: FacebookTODO
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 }
