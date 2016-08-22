@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4V0-OM-gEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4V0-OM-gEz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--NavigationVC-->
@@ -73,6 +72,16 @@
             </objects>
             <point key="canvasLocation" x="474" y="756"/>
         </scene>
+        <!--Connection-->
+        <scene sceneID="O5M-3w-Zps">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Connection" id="UQu-AI-xjT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Network" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llM-mM-aO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="756"/>
+        </scene>
         <!--Notification-->
         <scene sceneID="xVV-Hi-6T1">
             <objects>
@@ -92,16 +101,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGj-5v-4Y1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1004" y="756"/>
-        </scene>
-        <!--Connection-->
-        <scene sceneID="O5M-3w-Zps">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Connection" id="UQu-AI-xjT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Network" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="llM-mM-aO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="666" y="756"/>
         </scene>
     </scenes>
     <resources>
