@@ -173,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				6A61F3391BDACCFD00EC64DF /* Main.storyboard */,
+				6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -201,13 +202,13 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		6A1A98A21C20554E00299CD1 /* Connection */ = {
+		6A1A98A21C20554E00299CD1 /* Users */ = {
 			isa = PBXGroup;
 			children = (
 				6A2216151D52092B00D27B7C /* UserProfile */,
 				6A2216141D52076600D27B7C /* Users */,
 			);
-			name = Connection;
+			name = Users;
 			sourceTree = "<group>";
 		};
 		6A1A98A71C20566300299CD1 /* Cell */ = {
@@ -283,14 +284,14 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		6A2216231D520F0C00D27B7C /* Network */ = {
+		6A2216231D520F0C00D27B7C /* Connection */ = {
 			isa = PBXGroup;
 			children = (
 				6A2216241D520F1B00D27B7C /* Connection.storyboard */,
 				6A70082D1C2862D1003D385E /* ConnectionVC.swift */,
 				6A9F0DAF1D5B79D700A8B41C /* Cell */,
 			);
-			name = Network;
+			name = Connection;
 			sourceTree = "<group>";
 		};
 		6A2C88A71C1EDA0D00A4EE96 /* Login */ = {
@@ -328,20 +329,20 @@
 			children = (
 				6AAEB8E21D51FEC6002124AB /* Home.storyboard */,
 				6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */,
-				6AEAA4C51D649FE200436F6C /* HomeCell */,
+				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
 				6AAEB8E81D5201FE002124AB /* Post */,
 				6A22161B1D520CA900D27B7C /* PostDetailVC */,
 			);
 			name = Home;
 			sourceTree = "<group>";
 		};
-		6A2C88B61C1F26D300A4EE96 /* NetworkVC */ = {
+		6A2C88B61C1F26D300A4EE96 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				6A2216231D520F0C00D27B7C /* Network */,
+				6A2216231D520F0C00D27B7C /* Connection */,
 				6A22161A1D520B3800D27B7C /* FindUsers */,
 			);
-			name = NetworkVC;
+			name = Connection;
 			sourceTree = "<group>";
 		};
 		6A2C88B81C1F26F200A4EE96 /* Notifications */ = {
@@ -375,7 +376,6 @@
 		6A61F3341BDACCFD00EC64DF /* TapglueSample */ = {
 			isa = PBXGroup;
 			children = (
-				6A61F3351BDACCFD00EC64DF /* AppDelegate.swift */,
 				6A02F6C41D561E8A003D8945 /* Main */,
 				6A61F34D1BDADBD100EC64DF /* ViewControllers */,
 				6A1F10811C301C6500C445E0 /* Extensions */,
@@ -392,10 +392,10 @@
 				6A2C88A81C1EDA1500A4EE96 /* Navigation */,
 				6A2C88A71C1EDA0D00A4EE96 /* Login */,
 				6A2C88B31C1F269F00A4EE96 /* Home */,
-				6A2C88B61C1F26D300A4EE96 /* NetworkVC */,
+				6A2C88B61C1F26D300A4EE96 /* Connection */,
 				6A2C88B81C1F26F200A4EE96 /* Notifications */,
 				6A2C88AF1C1F170B00A4EE96 /* Profile */,
-				6A1A98A21C20554E00299CD1 /* Connection */,
+				6A1A98A21C20554E00299CD1 /* Users */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -433,14 +433,6 @@
 				6A1A98A81C20567900299CD1 /* Cell */,
 			);
 			name = EditProfile;
-			sourceTree = "<group>";
-		};
-		6AEAA4C51D649FE200436F6C /* HomeCell */ = {
-			isa = PBXGroup;
-			children = (
-				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
-			);
-			name = HomeCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
