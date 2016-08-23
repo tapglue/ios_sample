@@ -20,8 +20,8 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uBG-AT-kyS" kind="relationship" relationship="rootViewController" id="ysp-8K-CFj"/>
                         <segue destination="2In-2t-F8J" kind="show" identifier="loginSegue" animates="NO" id="zsj-aY-oie"/>
+                        <segue destination="uBG-AT-kyS" kind="relationship" relationship="rootViewController" id="BPv-qu-RLm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGF-hI-wPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,7 +39,7 @@
         <!--Tapglue-->
         <scene sceneID="nWc-Xa-0Fo">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uBG-AT-kyS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Tapglue" id="Kxn-Wx-nBf"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="doY-Bn-bDJ">
@@ -53,9 +53,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="YO2-xO-hiF" kind="relationship" relationship="viewControllers" id="Guq-bF-OuK"/>
-                        <segue destination="UQu-AI-xjT" kind="relationship" relationship="viewControllers" id="gdh-0T-Wj2"/>
+                        <segue destination="UQu-AI-xjT" kind="relationship" relationship="viewControllers" id="J2j-3L-QFd"/>
                         <segue destination="M8t-4z-IDv" kind="relationship" relationship="viewControllers" id="G2Q-07-ANP"/>
-                        <segue destination="lLX-md-ryN" kind="relationship" relationship="viewControllers" id="zeg-Tq-Gla"/>
+                        <segue destination="lLX-md-ryN" kind="relationship" relationship="viewControllers" id="VEu-qm-dje"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="quM-aA-Czd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -76,7 +76,7 @@
         <scene sceneID="O5M-3w-Zps">
             <objects>
                 <viewControllerPlaceholder storyboardName="Connection" id="UQu-AI-xjT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Network" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Network" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llM-mM-aO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -86,7 +86,7 @@
         <scene sceneID="xVV-Hi-6T1">
             <objects>
                 <viewControllerPlaceholder storyboardName="Notification" id="M8t-4z-IDv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notification" image="NotificationEmpty" selectedImage="NotificationFilled" id="Xfj-rs-VX6"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Notification" image="NotificationEmpty" selectedImage="NotificationFilled" id="Xfj-rs-VX6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtv-Od-wlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,7 +96,7 @@
         <scene sceneID="HQM-SL-jmr">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="lLX-md-ryN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="ProfileEmpty" selectedImage="ProfileFilled" id="Ebu-ne-S5G"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Profile" image="ProfileEmpty" selectedImage="ProfileFilled" id="Ebu-ne-S5G"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGj-5v-4Y1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

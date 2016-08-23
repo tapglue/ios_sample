@@ -1,0 +1,15 @@
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "1dE-tm-QBN"; */
+"1dE-tm-QBN.title" = "Home";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "Ebu-ne-S5G"; */
+"Ebu-ne-S5G.title" = "Profile";
+
+/* Class = "UINavigationItem"; title = "Tapglue"; ObjectID = "Kxn-Wx-nBf"; */
+"Kxn-Wx-nBf.title" = "Tapglue";
+
+/* Class = "UITabBarItem"; title = "Network"; ObjectID = "TRL-vq-NgN"; */
+"TRL-vq-NgN.title" = "Network";
+
+/* Class = "UITabBarItem"; title = "Notification"; ObjectID = "Xfj-rs-VX6"; */
+"Xfj-rs-VX6.title" = "Notification";
