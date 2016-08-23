@@ -93,22 +93,9 @@ extension HomeVC: UITableViewDataSource {
             as! PostDetailVC
         
         pdVC.post = posts[indexPath.row]
+        pdVC.usr = posts[indexPath.row].user
         
-        let postUserID = posts[indexPath.row].userId
-        
-        self.appDel.rxTapglue.retrieveUser(postUserID!).subscribe { (event) in
-            switch event {
-            case .Next(let usr):
-                print("Next")
-                pdVC.usr = usr
-                
-            case .Error(let error):
-                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
-            case .Completed:
-                print("Do the action")
-                self.navigationController?.pushViewController(pdVC, animated: true)
-            }
-        }.addDisposableTo(self.appDel.disposeBag)
+        self.navigationController?.pushViewController(pdVC, animated: true)
     }
 }
 
