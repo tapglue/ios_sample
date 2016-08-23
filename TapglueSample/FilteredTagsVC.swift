@@ -36,7 +36,6 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
         tagsField.onDidRemoveTag = { _ in
             self.filterPostByTags()
         }
-
     }
     
     func filterPostByTags() {

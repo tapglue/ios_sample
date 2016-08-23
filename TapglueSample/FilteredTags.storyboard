@@ -63,21 +63,21 @@
                                                                     <state key="normal" image="LikeFilled"/>
                                                                     <state key="selected" image="LikeFilledRed"/>
                                                                     <connections>
-                                                                        <action selector="likeButtonPressed:" destination="1jt-MC-JSS" eventType="touchUpInside" id="aYm-GX-6W5"/>
+                                                                        <action selector="likeButtonPressed:" destination="1jt-MC-JSS" eventType="touchUpInside" id="AE5-IR-upd"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eze-xc-SdT">
                                                                     <rect key="frame" x="200" y="0.0" width="200" height="30"/>
                                                                     <state key="normal" image="ChatFilled"/>
                                                                     <connections>
-                                                                        <action selector="commentButtonPressed:" destination="1jt-MC-JSS" eventType="touchUpInside" id="WAY-PJ-Qn5"/>
+                                                                        <action selector="commentButtonPressed:" destination="1jt-MC-JSS" eventType="touchUpInside" id="lxA-ny-Hti"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJr-W1-4rd">
                                                                     <rect key="frame" x="400" y="0.0" width="200" height="30"/>
                                                                     <state key="normal" image="ShareFilled"/>
                                                                     <connections>
-                                                                        <action selector="shareButtonPressed:" destination="1jt-MC-JSS" eventType="touchUpInside" id="fGh-hQ-JYn"/>
+                                                                        <action selector="shareButtonPressed:" destination="1jt-MC-JSS" eventType="touchUpInside" id="d2a-yO-yQj"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -167,15 +167,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="commentsCountLabel" destination="YHi-Ts-gEM" id="d92-Yx-NHY"/>
-                                            <outlet property="dateLabel" destination="NVp-i3-vaI" id="SYl-ds-YH7"/>
-                                            <outlet property="likeButton" destination="l7e-Oq-GGQ" id="QaX-pq-TTN"/>
-                                            <outlet property="likesCountLabel" destination="aKW-yo-XYb" id="gkv-zs-5Ph"/>
-                                            <outlet property="postTextLabel" destination="tmM-YD-1KJ" id="Tw0-be-Le6"/>
-                                            <outlet property="tagLabel" destination="nvK-38-Ytd" id="Z5E-kq-g8v"/>
-                                            <outlet property="userImageView" destination="Tqq-5I-781" id="EbW-xc-Ng3"/>
-                                            <outlet property="userNameLabel" destination="XSY-0p-CbO" id="m6b-HA-i9T"/>
-                                            <outlet property="visibilityImageView" destination="RbE-wp-pGo" id="NI3-8L-AIF"/>
+                                            <outlet property="commentsCountLabel" destination="YHi-Ts-gEM" id="ES3-ef-jPW"/>
+                                            <outlet property="dateLabel" destination="NVp-i3-vaI" id="AHy-7g-Fpj"/>
+                                            <outlet property="likeButton" destination="l7e-Oq-GGQ" id="XCi-uY-rG4"/>
+                                            <outlet property="likesCountLabel" destination="aKW-yo-XYb" id="F4g-eL-feA"/>
+                                            <outlet property="postTextLabel" destination="tmM-YD-1KJ" id="wTY-W1-u5i"/>
+                                            <outlet property="tagLabel" destination="nvK-38-Ytd" id="cXh-ml-CLx"/>
+                                            <outlet property="userImageView" destination="Tqq-5I-781" id="eoi-1v-eeL"/>
+                                            <outlet property="userNameLabel" destination="XSY-0p-CbO" id="GPK-ID-5Jk"/>
+                                            <outlet property="visibilityImageView" destination="RbE-wp-pGo" id="hQE-JV-yg1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
