@@ -55,12 +55,11 @@ class PostVC: UIViewController {
                     visibilitySegmentedControl.selectedSegmentIndex = 2
             default: print("More then expected switches")
             }
-            var wsTagArr: [WSTag] = []
-            for tag in tempPost.tags! {
-                let wsTag = WSTag(tag)
-                wsTagArr.append(wsTag)
+            
+            if let tags = tempPost.tags {
+                tagsField.addTags(tags)
             }
-            tagsField.addTags(wsTagArr)
+            
         }
     }
     

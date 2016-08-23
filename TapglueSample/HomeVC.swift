@@ -19,7 +19,6 @@ class HomeVC: UIViewController, UITableViewDelegate{
     
     @IBOutlet weak var userImageView: UIImageView!
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     override func viewDidLoad() {
@@ -32,8 +31,6 @@ class HomeVC: UIViewController, UITableViewDelegate{
         self.homeTableView.sendSubviewToBack(refreshControl)
         
         self.refreshControl?.beginRefreshing()
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,24 +62,6 @@ class HomeVC: UIViewController, UITableViewDelegate{
             }
         }.addDisposableTo(self.appDel.disposeBag)
     }
-    
-    // TODO: filterPostTags
-//    func filterPostTags() {
-//        let tags: [String] = ["realpublic", "tester"]
-//        appDel.rxTapglue.filterPostsByTags(tags).subscribe { (event) in
-//            switch event {
-//                case .Next(let postArr):
-//                    print("Next")
-//                    for post in postArr {
-//                        print("filterdPosts: \(post.attachments![0].contents!["en"])")
-//                    }
-//                case .Error(let error):
-//                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
-//                case .Completed:
-//                    print("Do the action")
-//            }
-//        }.addDisposableTo(self.appDel.disposeBag)
-//    }
 }
 
 

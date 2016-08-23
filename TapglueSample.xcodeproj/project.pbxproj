@@ -54,6 +54,9 @@
 		6AAEB8E31D51FEC6002124AB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAEB8E21D51FEC6002124AB /* Home.storyboard */; };
 		6AAEB8E51D51FF8D002124AB /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAEB8E41D51FF8D002124AB /* Post.storyboard */; };
 		6AAEB8EA1D520246002124AB /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAEB8E91D520246002124AB /* EditProfile.storyboard */; };
+		6AD9C9AF1D6C54A800517095 /* FilteredTags.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD9C9AE1D6C54A800517095 /* FilteredTags.storyboard */; };
+		6AD9C9B21D6C54E200517095 /* FilteredTagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9C9B11D6C54E200517095 /* FilteredTagsVC.swift */; };
+		6AD9C9B51D6C55E400517095 /* FilteredTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9C9B41D6C55E400517095 /* FilteredTagsTableViewCell.swift */; };
 		6AE4169F1C3AA3D600DEBEC0 /* FindUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4169E1C3AA3D600DEBEC0 /* FindUsersVC.swift */; };
 		6AE416A11C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE416A01C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift */; };
 		6AF69F571C2412ED00376B54 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF69F561C2412ED00376B54 /* UserProfileVC.swift */; };
@@ -113,6 +116,9 @@
 		6AAEB8E21D51FEC6002124AB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6AAEB8E41D51FF8D002124AB /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		6AAEB8E91D520246002124AB /* EditProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
+		6AD9C9AE1D6C54A800517095 /* FilteredTags.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilteredTags.storyboard; sourceTree = "<group>"; };
+		6AD9C9B11D6C54E200517095 /* FilteredTagsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredTagsVC.swift; sourceTree = "<group>"; };
+		6AD9C9B41D6C55E400517095 /* FilteredTagsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredTagsTableViewCell.swift; sourceTree = "<group>"; };
 		6AE4169E1C3AA3D600DEBEC0 /* FindUsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUsersVC.swift; sourceTree = "<group>"; };
 		6AE416A01C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUsersTableViewCell.swift; sourceTree = "<group>"; };
 		6AF35D181D61F5E300BDA030 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
 				6AAEB8E81D5201FE002124AB /* Post */,
 				6A22161B1D520CA900D27B7C /* PostDetailVC */,
+				6AD9C9B01D6C54AE00517095 /* FilteredTags */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -435,6 +442,24 @@
 			name = EditProfile;
 			sourceTree = "<group>";
 		};
+		6AD9C9B01D6C54AE00517095 /* FilteredTags */ = {
+			isa = PBXGroup;
+			children = (
+				6AD9C9AE1D6C54A800517095 /* FilteredTags.storyboard */,
+				6AD9C9B11D6C54E200517095 /* FilteredTagsVC.swift */,
+				6AD9C9B31D6C55C100517095 /* Cell */,
+			);
+			name = FilteredTags;
+			sourceTree = "<group>";
+		};
+		6AD9C9B31D6C55C100517095 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6AD9C9B41D6C55E400517095 /* FilteredTagsTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -513,6 +538,7 @@
 				6A61F33B1BDACCFD00EC64DF /* Main.storyboard in Resources */,
 				6AAEB8E51D51FF8D002124AB /* Post.storyboard in Resources */,
 				6A22162A1D520FA700D27B7C /* Profile.storyboard in Resources */,
+				6AD9C9AF1D6C54A800517095 /* FilteredTags.storyboard in Resources */,
 				6AAEB8E31D51FEC6002124AB /* Home.storyboard in Resources */,
 				6A2216271D520F6800D27B7C /* Notification.storyboard in Resources */,
 			);
@@ -557,6 +583,7 @@
 				6A1A98B01C20724B00299CD1 /* NotificationTableViewCell.swift in Sources */,
 				6AF69F591C241E8700376B54 /* UserProfileTableViewCell.swift in Sources */,
 				6A2C88AA1C1EDA3800A4EE96 /* LoginVC.swift in Sources */,
+				6AD9C9B21D6C54E200517095 /* FilteredTagsVC.swift in Sources */,
 				6A70082E1C2862D1003D385E /* ConnectionVC.swift in Sources */,
 				6A70082A1C2832F7003D385E /* PostDetailVC.swift in Sources */,
 				6A1A98AB1C2056C900299CD1 /* UsersTableViewCell.swift in Sources */,
@@ -568,6 +595,7 @@
 				6AE4169F1C3AA3D600DEBEC0 /* FindUsersVC.swift in Sources */,
 				6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */,
 				6A1A98AD1C20718D00299CD1 /* NotificationVC.swift in Sources */,
+				6AD9C9B51D6C55E400517095 /* FilteredTagsTableViewCell.swift in Sources */,
 				6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */,
 				6A2C88AC1C1EDA4C00A4EE96 /* LoginSignInVC.swift in Sources */,
 				6A509A411BDCEF6B00CC8A82 /* LoginRegisterVC.swift in Sources */,

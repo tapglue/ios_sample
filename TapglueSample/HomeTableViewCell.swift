@@ -18,7 +18,6 @@ protocol CustomCellDataUpdater {
 
 class HomeTableViewCell: UITableViewCell {
     
-    // Get the AppDelegate
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     var delegate: CustomCellDataUpdater?
@@ -125,12 +124,12 @@ class HomeTableViewCell: UITableViewCell {
         
         if cellPostCommentCount != 0 {
             if cellPostCommentCount == 1{
-                self.likesCountLabel.text = String(cellPostCommentCount) + " Comment"
+                self.commentsCountLabel.text = String(cellPostCommentCount) + " Comment"
             } else {
-                self.likesCountLabel.text = String(cellPostCommentCount) + " Comments"
+                self.commentsCountLabel.text = String(cellPostCommentCount) + " Comments"
             }
         } else {
-            self.likesCountLabel.text = ""
+            self.commentsCountLabel.text = ""
         }
         
         // UserText
@@ -141,15 +140,22 @@ class HomeTableViewCell: UITableViewCell {
         self.postTextLabel.text = postAttachment![0].contents!["en"]
         
         
-        // TagsText
+        // TagsBtn
         if let tags = post.tags {
             var x: CGFloat = 0
             
-            for tag in tags {
-                createTagBtn(x, title: tag)
-                x += 68
-            }
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                for tag in tags {
+                    self.createTagBtn(x, title: tag)
+                    x += 68
+                }
+            })
         }
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.likeButton.selected = false
+        })
 
         if let profileImages = post.user?.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
@@ -189,6 +195,7 @@ class HomeTableViewCell: UITableViewCell {
         button.layer.masksToBounds = true
         button.backgroundColor = .lightGrayColor()
         button.tintColor = .whiteColor()
+        button.titleLabel?.font = UIFont(name:"HelveticaNeue-Light", size: 13.0)
         button.setTitle(title, forState: UIControlState.Normal)
         button.addTarget(self, action: #selector(HomeTableViewCell.action(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -197,6 +204,33 @@ class HomeTableViewCell: UITableViewCell {
     
     func action(sender:UIButton) {
        print("acion was pressed \(sender.titleLabel?.text!)")
-    }
+        // TODO: filterPostTags
+            let tag = sender.titleLabel?.text!
+            let tags: [String] = [tag!]
+            appDel.rxTapglue.filterPostsByTags(tags).subscribe { (event) in
+                switch event {
+                case .Next(let posts):
+                    print("Next")
+                    for post in posts {
+                        print("filterdPosts: \(post.attachments![0].contents!["en"])")
+                    }
+                    let rootViewController = self.window!.rootViewController as! UINavigationController
+                    let storyboard = UIStoryboard(name: "FilteredTags", bundle: nil)
+                    let pdVC =
+                        storyboard.instantiateViewControllerWithIdentifier("FilteredTagsViewController")
+                            as! FilteredTagsVC
+                    
+                    // Pass the relevant data to the new sub-ViewController
+                    pdVC.posts = posts
+                    pdVC.tags = tags
+                    
+                    rootViewController.pushViewController(pdVC, animated: true)
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Do the action")
+                }
+            }.addDisposableTo(self.appDel.disposeBag)
+        }
 }
 
