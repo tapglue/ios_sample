@@ -120,15 +120,13 @@ extension NotificationVC: UITableViewDataSource {
                     switch event {
                     case .Next(let usr):
                         print("Next")
-                        
-                        print("THE USER POST ID USERNAME: \(usr.username!)")
+                        pdVC.usr = usr
                         
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
                         print("Do the action")
                         self.navigationController?.pushViewController(pdVC, animated: true)
-                        
                     }
                 }.addDisposableTo(self.appDel.disposeBag)
                 

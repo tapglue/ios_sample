@@ -13,6 +13,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
+    var usr: User?
     var post: Post!
     var postComments: [Comment] = []
     
@@ -68,7 +69,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
         let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = post.user
+        userProfileViewController.userProfile = usr
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.navigationController?.pushViewController(userProfileViewController, animated: true)
@@ -161,7 +162,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     // Show PostDetial information
     func fillPostDetailInformation(){
         userNameButton.contentHorizontalAlignment = .Left
-        if let postUser = post.user {
+        if let postUser = usr {
             userNameButton.setTitle(postUser.username, forState: .Normal)
             
             if let profileImages = postUser.images {
