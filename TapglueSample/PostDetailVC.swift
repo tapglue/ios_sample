@@ -238,7 +238,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     func showShareOptions() {
         let postAttachment = post.attachments
         let postText = postAttachment![0].contents!["en"]
-        if let postUserUsername = post.user?.username {
+        if let postUserUsername = usr?.username {
             let postActivityItem = "@" + postUserUsername + " posted: \(postText!)! Check it out on TapglueSample."
             
             let activityViewController: UIActivityViewController = UIActivityViewController(
