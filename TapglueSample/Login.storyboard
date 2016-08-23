@@ -151,10 +151,32 @@
                                     <constraint firstAttribute="width" constant="300" id="VXm-hc-nUy"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHU-j1-VLr">
+                                <rect key="frame" x="10" y="30" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.23529411759999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4Xc-iq-84b"/>
+                                    <constraint firstAttribute="height" constant="30" id="ba2-yb-k0w"/>
+                                </constraints>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="B1D-fP-Dfr" kind="show" id="llg-Nm-mXv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pHU-j1-VLr" firstAttribute="top" secondItem="n5l-EY-pi4" secondAttribute="bottom" constant="10" id="KBf-xZ-H7z"/>
                             <constraint firstItem="7bd-Wj-0Qq" firstAttribute="top" secondItem="iGH-R7-dhv" secondAttribute="bottom" constant="20" id="NuT-HL-HMi"/>
+                            <constraint firstItem="pHU-j1-VLr" firstAttribute="leading" secondItem="MSw-ct-VPl" secondAttribute="leading" constant="10" id="meH-R2-Swc"/>
                             <constraint firstItem="iGH-R7-dhv" firstAttribute="centerX" secondItem="MSw-ct-VPl" secondAttribute="centerX" id="omX-Nl-sWY"/>
                             <constraint firstItem="7bd-Wj-0Qq" firstAttribute="centerX" secondItem="MSw-ct-VPl" secondAttribute="centerX" id="xU7-0z-0EE"/>
                             <constraint firstItem="7bd-Wj-0Qq" firstAttribute="centerY" secondItem="MSw-ct-VPl" secondAttribute="centerY" id="xYq-bU-zkZ"/>
@@ -280,10 +302,32 @@
                                     <constraint firstAttribute="width" constant="300" id="JwI-9o-ZWb"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox4-mZ-P9Y">
+                                <rect key="frame" x="10" y="30" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.23529411759999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="e2h-JV-Ef2"/>
+                                    <constraint firstAttribute="width" constant="30" id="hZX-R3-bqf"/>
+                                </constraints>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="B1D-fP-Dfr" kind="show" id="7eq-SB-fKS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sIW-oo-zMM" firstAttribute="centerX" secondItem="gVr-Kh-1VO" secondAttribute="centerX" id="A8i-oz-Xgg"/>
+                            <constraint firstItem="ox4-mZ-P9Y" firstAttribute="leading" secondItem="gVr-Kh-1VO" secondAttribute="leading" constant="10" id="d5T-Ld-s5c"/>
+                            <constraint firstItem="ox4-mZ-P9Y" firstAttribute="top" secondItem="SOx-7M-qlh" secondAttribute="bottom" constant="10" id="pO4-Iw-81j"/>
                             <constraint firstItem="sIW-oo-zMM" firstAttribute="top" secondItem="SOx-7M-qlh" secondAttribute="bottom" constant="14" id="uDH-PO-U7l"/>
                         </constraints>
                     </view>
@@ -302,4 +346,7 @@
             <point key="canvasLocation" x="-223" y="1786"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7eq-SB-fKS"/>
+    </inferredMetricsTieBreakers>
 </document>

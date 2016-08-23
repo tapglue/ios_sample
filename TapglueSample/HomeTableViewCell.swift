@@ -142,15 +142,7 @@ class HomeTableViewCell: UITableViewCell {
         
         // TagsBtn
         if let tags = post.tags {
-            var x: CGFloat = 0
-            
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                for tag in tags {
-                    self.createTagBtn(x, title: tag)
-                    x += 68
-                }
-            })
+            self.createTagBtns(tags.count, tags: tags)
         }
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -188,18 +180,24 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    func createTagBtn(x: CGFloat, title: String) {
-        let button = UIButton(type: .System)
-        button.frame = CGRectMake(x, 0, 60, self.tagsView.frame.height)
-        button.layer.cornerRadius = tagsView.frame.height / 2
-        button.layer.masksToBounds = true
-        button.backgroundColor = .lightGrayColor()
-        button.tintColor = .whiteColor()
-        button.titleLabel?.font = UIFont(name:"HelveticaNeue-Light", size: 13.0)
-        button.setTitle(title, forState: UIControlState.Normal)
-        button.addTarget(self, action: #selector(HomeTableViewCell.action(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+    func createTagBtns(tagsCount: Int, tags: [String]) {
+        var x: CGFloat = 0
+        for tag in tags {
+            let button = UIButton(type: .System)
+            button.frame = CGRectMake(x, 0, 60, self.tagsView.frame.height)
+            button.layer.cornerRadius = tagsView.frame.height / 2
+            button.layer.masksToBounds = true
+            button.backgroundColor = .lightGrayColor()
+            button.tintColor = .whiteColor()
+            button.titleLabel?.font = UIFont(name:"HelveticaNeue-Light", size: 13.0)
+            button.setTitle(tag, forState: UIControlState.Normal)
+            button.addTarget(self, action: #selector(HomeTableViewCell.action(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            
+            self.tagsView.addSubview(button)
+            
+            x += 68
+        }
         
-        self.tagsView.addSubview(button)
     }
     
     func action(sender:UIButton) {
@@ -231,6 +229,6 @@ class HomeTableViewCell: UITableViewCell {
                     print("Do the action")
                 }
             }.addDisposableTo(self.appDel.disposeBag)
-        }
+    }
 }
 
