@@ -116,7 +116,22 @@ extension NotificationVC: UITableViewDataSource {
                 pdVC.post = post
                 print("Post User: \(post.userId)")
                 
-                self.navigationController!.pushViewController(pdVC, animated: true)
+                self.appDel.rxTapglue.retrieveUser(post.userId!).subscribe { (event) in
+                    switch event {
+                    case .Next(let usr):
+                        print("Next")
+                        
+                        print("THE USER POST ID USERNAME: \(usr.username!)")
+                        
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        print("Do the action")
+                        self.navigationController?.pushViewController(pdVC, animated: true)
+                        
+                    }
+                }.addDisposableTo(self.appDel.disposeBag)
+                
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
