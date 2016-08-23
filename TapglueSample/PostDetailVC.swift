@@ -237,24 +237,27 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     func showShareOptions() {
         let postAttachment = post.attachments
         let postText = postAttachment![0].contents!["en"]
-        let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
+        if let postUserUsername = post.user?.username {
+            let postActivityItem = "@" + postUserUsername + " posted: \(postText!)! Check it out on TapglueSample."
+            
+            let activityViewController: UIActivityViewController = UIActivityViewController(
+                activityItems: [postActivityItem], applicationActivities: nil)
+            
+            activityViewController.excludedActivityTypes = [
+                UIActivityTypePostToWeibo,
+                UIActivityTypePrint,
+                UIActivityTypeAssignToContact,
+                UIActivityTypeSaveToCameraRoll,
+                UIActivityTypeAddToReadingList,
+                UIActivityTypePostToFlickr,
+                UIActivityTypePostToVimeo,
+                UIActivityTypePostToTencentWeibo,
+                UIActivityTypeMail
+            ]
+            
+            self.presentViewController(activityViewController, animated: true, completion: nil)
+        }
         
-        let activityViewController: UIActivityViewController = UIActivityViewController(
-            activityItems: [postActivityItem], applicationActivities: nil)
-        
-        activityViewController.excludedActivityTypes = [
-            UIActivityTypePostToWeibo,
-            UIActivityTypePrint,
-            UIActivityTypeAssignToContact,
-            UIActivityTypeSaveToCameraRoll,
-            UIActivityTypeAddToReadingList,
-            UIActivityTypePostToFlickr,
-            UIActivityTypePostToVimeo,
-            UIActivityTypePostToTencentWeibo,
-            UIActivityTypeMail
-        ]
-        
-        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
     func updateLikeCountLabel() {

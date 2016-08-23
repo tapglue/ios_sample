@@ -29,14 +29,18 @@ class NotificationTableViewCell: UITableViewCell {
         
         switch activity.type! {
         case "tg_friend":
-            eventNameLabel.text = activityUser! + " is now friends with " + (activity.targetUser?.username)!
-        
+            if let targetUser = activity.targetUser {
+                eventNameLabel.text = activityUser! + " is now friends with " + targetUser.username!
+            }
+            
             if let profileImages = activity.user?.images {
                 self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }
         
         case "tg_follow":
-            eventNameLabel.text = activityUser! + " is now following " + (activity.targetUser?.username)!
+            if let targetUser = activity.targetUser {
+                eventNameLabel.text = activityUser! + " is now following " + targetUser.username!
+            }
             
             if let profileImages = activity.user?.images {
                 self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
