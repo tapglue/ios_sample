@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Aar-Xa-7dh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -62,6 +63,7 @@
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-gP-aOQ">
                                 <rect key="frame" x="68" y="122" width="512" height="40"/>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.1960784314" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="syO-C3-Z96"/>
                                 </constraints>
@@ -74,14 +76,53 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-xu-zif">
                                 <rect key="frame" x="68" y="170" width="512" height="30"/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3dU-Fr-fi4"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6N-mh-FSG">
+                                <rect key="frame" x="68" y="208" width="250" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oPL-4G-Tce">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                                        <color key="backgroundColor" red="0.015686274510000001" green="0.85882352939999995" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59T-qQ-qqS">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                                        <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
+                                        <state key="normal" image="CamFilled"/>
+                                        <connections>
+                                            <action selector="cameraButtonPressed:" destination="Aar-Xa-7dh" eventType="touchUpInside" id="Qt1-Gi-QZM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i6N-mh-FSG" secondAttribute="height" multiplier="5:3" id="0Se-3x-ekf"/>
+                                    <constraint firstItem="oPL-4G-Tce" firstAttribute="top" secondItem="i6N-mh-FSG" secondAttribute="top" id="Bl2-fX-07N"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Cvx-34-ySj"/>
+                                    <constraint firstItem="59T-qQ-qqS" firstAttribute="top" secondItem="i6N-mh-FSG" secondAttribute="top" id="Ksl-OZ-if8"/>
+                                    <constraint firstAttribute="trailing" secondItem="59T-qQ-qqS" secondAttribute="trailing" id="U8v-x4-ZMw"/>
+                                    <constraint firstAttribute="trailing" secondItem="oPL-4G-Tce" secondAttribute="trailing" id="VAE-GS-IlV"/>
+                                    <constraint firstAttribute="bottom" secondItem="59T-qQ-qqS" secondAttribute="bottom" id="Wuq-vj-Hoi"/>
+                                    <constraint firstItem="59T-qQ-qqS" firstAttribute="leading" secondItem="i6N-mh-FSG" secondAttribute="leading" id="aad-xF-YOv"/>
+                                    <constraint firstAttribute="bottom" secondItem="oPL-4G-Tce" secondAttribute="bottom" id="cAE-dN-j6a"/>
+                                    <constraint firstItem="oPL-4G-Tce" firstAttribute="leading" secondItem="i6N-mh-FSG" secondAttribute="leading" id="eFd-AY-2X6"/>
+                                    <constraint firstAttribute="height" constant="150" id="nbD-20-81h"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NG6-nU-ge3" firstAttribute="centerX" secondItem="uxD-eU-s7r" secondAttribute="centerX" id="61h-pf-IYU"/>
+                            <constraint firstItem="i6N-mh-FSG" firstAttribute="top" secondItem="Ip1-xu-zif" secondAttribute="bottom" constant="8" id="U41-al-5jw"/>
                             <constraint firstItem="KPp-Fe-GLr" firstAttribute="leading" secondItem="uxD-eU-s7r" secondAttribute="leading" id="VaN-bV-uif"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BiM-Pg-qli" secondAttribute="leading" id="cCM-hG-yI8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yLn-gP-aOQ" secondAttribute="trailing" id="hcj-mC-DS7"/>
@@ -89,6 +130,7 @@
                             <constraint firstItem="BiM-Pg-qli" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="kvZ-4C-Ofq"/>
                             <constraint firstItem="yLn-gP-aOQ" firstAttribute="top" secondItem="NG6-nU-ge3" secondAttribute="bottom" constant="15" id="mgh-dn-csT"/>
                             <constraint firstItem="KPp-Fe-GLr" firstAttribute="top" secondItem="gd4-dp-hyC" secondAttribute="bottom" id="n1X-Ks-Y01"/>
+                            <constraint firstItem="oPL-4G-Tce" firstAttribute="leading" secondItem="yLn-gP-aOQ" secondAttribute="leading" id="oSc-RU-jlA"/>
                             <constraint firstItem="Ip1-xu-zif" firstAttribute="leading" secondItem="yLn-gP-aOQ" secondAttribute="leading" id="q7v-wv-YXb"/>
                             <constraint firstItem="Ip1-xu-zif" firstAttribute="trailing" secondItem="yLn-gP-aOQ" secondAttribute="trailing" id="sso-l0-crf"/>
                             <constraint firstAttribute="trailing" secondItem="KPp-Fe-GLr" secondAttribute="trailing" id="uVE-mR-Jas"/>
@@ -97,6 +139,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="59T-qQ-qqS" id="UKW-tw-hBU"/>
+                        <outlet property="postImageView" destination="oPL-4G-Tce" id="cKi-5T-Mph"/>
                         <outlet property="postTextField" destination="yLn-gP-aOQ" id="biy-eS-V8Z"/>
                         <outlet property="postUIBarButton" destination="aB3-FN-Z4O" id="XRb-Cv-4bN"/>
                         <outlet property="userImageView" destination="BiM-Pg-qli" id="4qV-bO-YEM"/>
@@ -109,4 +153,7 @@
             <point key="canvasLocation" x="1421" y="-1334"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CamFilled" width="25" height="25"/>
+    </resources>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import Tapglue
 import WSTagsField
 
-class PostVC: UIViewController {
+class PostVC: UIViewController, UINavigationControllerDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
 
@@ -18,6 +18,10 @@ class PostVC: UIViewController {
     @IBOutlet weak var postTextField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var postUIBarButton: UIBarButtonItem!
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIButton!
+    
+    let imagePicker = UIImagePickerController()
     
     var postText: String?
     
@@ -61,6 +65,17 @@ class PostVC: UIViewController {
             }
             
         }
+        
+        // Listener
+        imagePicker.delegate = self
+    }
+    
+    @IBAction func cameraButtonPressed(sender: UIButton) {
+        print("camera pressed")
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func postButtonPressed(sender: UIBarButtonItem) {
@@ -165,6 +180,7 @@ class PostVC: UIViewController {
         tagsField.selectedTextColor = .whiteColor()
         tagsField.spaceBetweenTags = 4.0
         tagsField.padding.left = 0
+        tagsField.padding.top = wsTagsFieldView.frame.height/8
         tagsField.frame = CGRect(x: 0, y: 0, width: wsTagsFieldView.frame.width, height: wsTagsFieldView.frame.height)
         
         wsTagsFieldView.addSubview(tagsField)
@@ -195,6 +211,26 @@ extension PostVC: UITextFieldDelegate {
         
         // Keep it true
         return true
+    }
+}
+
+extension PostVC: UIImagePickerControllerDelegate {
+    // MARK: - UIImagePicker
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            // If you like to change the aspect programmatically
+            // myImageView.contentMode = .ScaleAspectFit
+            
+            postImageView.image = pickedImage
+            
+            cameraButton.setImage(nil, forState: .Normal)
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
