@@ -16,8 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhO-ww-Mc9">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LBh-tD-J0t">
+                                        <rect key="frame" x="8" y="8" width="584" height="29"/>
+                                        <segments>
+                                            <segment title="Activities"/>
+                                            <segment title="Feed"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.1764705882352941" green="0.27843137254901962" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="notificationSegmentedChanged:" destination="qgW-qm-iHw" eventType="valueChanged" id="OHS-F6-dHm"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="LBh-tD-J0t" firstAttribute="leading" secondItem="bhO-ww-Mc9" secondAttribute="leading" constant="8" id="H74-kH-WXd"/>
+                                    <constraint firstItem="LBh-tD-J0t" firstAttribute="top" secondItem="bhO-ww-Mc9" secondAttribute="top" constant="8" id="KFS-r1-9ct"/>
+                                    <constraint firstAttribute="height" constant="44" id="ZhD-l1-DV4"/>
+                                    <constraint firstAttribute="bottom" secondItem="LBh-tD-J0t" secondAttribute="bottom" constant="8" id="kNJ-FR-9JE"/>
+                                    <constraint firstAttribute="trailing" secondItem="LBh-tD-J0t" secondAttribute="trailing" constant="8" id="tfE-c5-5Un"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-Sv-jis">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="SBM-ci-wJv" userLabel="EmptyFooterView">
                                     <rect key="frame" x="0.0" y="128" width="600" height="0.0"/>
@@ -94,14 +118,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="FiD-Sv-jis" firstAttribute="top" secondItem="4aq-Pt-ADv" secondAttribute="bottom" id="4LJ-ur-T7M"/>
+                            <constraint firstItem="FiD-Sv-jis" firstAttribute="top" secondItem="bhO-ww-Mc9" secondAttribute="bottom" constant="5" id="5iI-my-3hi"/>
+                            <constraint firstItem="bhO-ww-Mc9" firstAttribute="leading" secondItem="HTP-Gx-53f" secondAttribute="leading" id="853-CB-MVa"/>
                             <constraint firstItem="d9K-vz-8xV" firstAttribute="top" secondItem="FiD-Sv-jis" secondAttribute="bottom" id="Ovl-pq-OaF"/>
                             <constraint firstAttribute="trailing" secondItem="FiD-Sv-jis" secondAttribute="trailing" id="gn3-qh-Nf5"/>
+                            <constraint firstAttribute="trailing" secondItem="bhO-ww-Mc9" secondAttribute="trailing" id="hNN-hT-uid"/>
                             <constraint firstItem="FiD-Sv-jis" firstAttribute="leading" secondItem="HTP-Gx-53f" secondAttribute="leading" id="n1S-ZD-zfW"/>
+                            <constraint firstItem="bhO-ww-Mc9" firstAttribute="top" secondItem="4aq-Pt-ADv" secondAttribute="bottom" id="zMw-UW-sUL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Notifications" image="NotificationEmpty" selectedImage="NotificationFilled" id="Kvv-hI-GOo"/>
                     <connections>
+                        <outlet property="notificationSegmentedControl" destination="LBh-tD-J0t" id="SzU-ui-eQL"/>
                         <outlet property="notificationsTableView" destination="FiD-Sv-jis" id="VeN-g0-mnp"/>
                     </connections>
                 </viewController>

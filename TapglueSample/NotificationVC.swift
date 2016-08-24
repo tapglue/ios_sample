@@ -18,8 +18,11 @@ class NotificationVC: UIViewController, UITableViewDelegate {
     var checkmarkedActivities: [Bool] = []
     
     var activityFeed: [Activity] = []
+    var meFeed: [Activity] = []
     
     var refreshControl: UIRefreshControl!
+    
+    @IBOutlet weak var notificationSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,12 @@ class NotificationVC: UIViewController, UITableViewDelegate {
         tabBarController?.navigationItem.rightBarButtonItem = nil
     }
     
+    @IBAction func notificationSegmentedChanged(sender: UISegmentedControl) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.notificationsTableView.reloadData()
+        }
+    }
+    
     func refresh(sender:AnyObject){
         self.loadNotificationFeed()
     }
@@ -52,7 +61,7 @@ class NotificationVC: UIViewController, UITableViewDelegate {
                 print("Next")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     print(activities)
-                    self.activityFeed = activities
+                    self.meFeed = activities
                     self.notificationsTableView.reloadData()
                 })
                 self.refreshControl.endRefreshing()
@@ -62,6 +71,24 @@ class NotificationVC: UIViewController, UITableViewDelegate {
                 print("Do the action")
             }
         }.addDisposableTo(self.appDel.disposeBag)
+        
+        // Get me related activities
+        appDel.rxTapglue.retrieveActivityFeed().subscribe { (event) in
+            switch event {
+            case .Next(let activities):
+                print("Next")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    print(activities)
+                    self.activityFeed = activities
+                    self.notificationsTableView.reloadData()
+                })
+                self.refreshControl.endRefreshing()
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 
@@ -72,34 +99,73 @@ extension NotificationVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(activityFeed.count)
-        return activityFeed.count
+        var numberOfRows = 0
+        
+        switch notificationSegmentedControl.selectedSegmentIndex {
+        case 0:
+            numberOfRows = activityFeed.count
+        case 1:
+            numberOfRows = meFeed.count
+        default: print("More then two segments")
+        }
+        return numberOfRows
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! NotificationTableViewCell
                 
-        cell.configureCellWithEvent(activityFeed[indexPath.row])
+        
+        
+        switch notificationSegmentedControl.selectedSegmentIndex {
+        case 0:
+            cell.configureCellWithEvent(activityFeed[indexPath.row])
+        case 1:
+            cell.configureCellWithEvent(meFeed[indexPath.row])
+        default: print("More then two segments")
+        }
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        switch activityFeed[indexPath.row].type! {
-        case "tg_friend":
-            goToUserByID(activityFeed[indexPath.row].userId!)
-        case "tg_follow":
-            goToUserByID(activityFeed[indexPath.row].userId!)
-        case "tg_like":
-            goToPostByID(activityFeed[indexPath.row].postId!)
-        case "tg_comment":
-            goToPostByID(activityFeed[indexPath.row].postId!)
-        default:
-            print("rest")
+        goToActivityFeedOrMeFeed(notificationSegmentedControl.selectedSegmentIndex, indexPath: indexPath)
+    }
+    
+    func goToActivityFeedOrMeFeed(index: Int, indexPath: NSIndexPath) {
+        switch index {
+        case 0:
+            print("Activity segment")
+            switch activityFeed[indexPath.row].type! {
+            case "tg_friend":
+                goToUserByID(activityFeed[indexPath.row].targetUser!.id!)
+            case "tg_follow":
+                goToUserByID(activityFeed[indexPath.row].targetUser!.id!)
+            case "tg_like":
+                goToPostByID(activityFeed[indexPath.row].postId!)
+            case "tg_comment":
+                goToPostByID(activityFeed[indexPath.row].postId!)
+            default:
+                print("rest")
+                
+            }
+        case 1:
+            print("MeFeed segment")
+            switch meFeed[indexPath.row].type! {
+            case "tg_friend":
+                goToUserByID(meFeed[indexPath.row].userId!)
+            case "tg_follow":
+                goToUserByID(meFeed[indexPath.row].userId!)
+            case "tg_like":
+                goToPostByID(meFeed[indexPath.row].postId!)
+            case "tg_comment":
+                goToPostByID(meFeed[indexPath.row].postId!)
+            default:
+                print("rest")
+                
+            }
             
+        default: print("More then two segments")
         }
-        
     }
     
     func goToPostByID(id: String) {
@@ -113,13 +179,13 @@ extension NotificationVC: UITableViewDataSource {
                     storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
                         as! PostDetailVC
                 
-                pdVC.post = post
                 print("Post User: \(post.userId)")
                 
                 self.appDel.rxTapglue.retrieveUser(post.userId!).subscribe { (event) in
                     switch event {
                     case .Next(let usr):
                         print("Next")
+                        pdVC.post = post
                         pdVC.usr = usr
                         
                     case .Error(let error):
