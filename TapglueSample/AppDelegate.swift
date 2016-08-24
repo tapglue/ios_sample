@@ -9,6 +9,7 @@
 import UIKit
 import Tapglue
 import RxSwift
+import AWSS3
 
 
 @UIApplicationMain
@@ -22,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rxTapglue: RxTapglue!
     
     let disposeBag = DisposeBag()
+    
+    // AWS
+    let S3BucketName = "tapglue-sampleapp"
+    let cognitoAccountId = "775034650473"
+    let cognitoIdentityPoolId = "eu-west-1:9b74dda9-5643-479c-a6c4-88d2871ec787"
+    let region = AWSRegionType.EUWest1
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -29,11 +36,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         config.baseUrl = url
         config.appToken = appToken
         // If you like to see logs: set true
-        config.log = false
+        config.log = true
         rxTapglue = RxTapglue(configuration: config)
         
         sims = TapglueSims(withConfiguration: config, environment: .Sandbox)
         registerForPushNotifications(application)
+        
+        
+        // configure authentication with Cognito
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: region,
+                                                                identityPoolId:cognitoIdentityPoolId)
+        let configuration = AWSServiceConfiguration(region: region, credentialsProvider: credentialsProvider)
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+        
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -65,5 +80,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    // AWS
+    func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
+        /*
+         Store the completion handler.
+         */
+        AWSS3TransferUtility.interceptApplication(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
     }
 }

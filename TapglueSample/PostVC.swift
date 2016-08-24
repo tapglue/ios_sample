@@ -10,6 +10,8 @@ import UIKit
 import Tapglue
 import WSTagsField
 
+import AWSS3
+
 class PostVC: UIViewController, UINavigationControllerDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
@@ -33,6 +35,18 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var wsTagsFieldView: UIView!
     
     let tagsField = WSTagsField()
+    
+    var selectedImageUrl: NSURL!
+    var localFileName: String?
+    
+    var imageURL = NSURL()
+    
+    var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
+    var progressBlock: AWSS3TransferUtilityProgressBlock?
+   
+//    var awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/public/"
+    
+    var latestUUID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +82,7 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
         
         // Listener
         imagePicker.delegate = self
+        
     }
     
     @IBAction func cameraButtonPressed(sender: UIButton) {
@@ -117,8 +132,10 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
                 }).addDisposableTo(self.appDel.disposeBag)
 
             } else {
-                let attachment = Attachment(contents: ["en":postText!], name: "status", type: .Text)
-                let post = Post(visibility: .Connections, attachments: [attachment])
+                let postImageURL = "public/" + latestUUID! + ".jpeg"
+                let attachmentPost = Attachment(contents: ["en":postText!], name: "status", type: .Text)
+                let attachmentURL = Attachment(contents: ["en":postImageURL], name: "image", type: .URL)
+                let post = Post(visibility: .Connections, attachments: [attachmentPost, attachmentURL])
                 post.tags = tagArr
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
@@ -215,22 +232,109 @@ extension PostVC: UITextFieldDelegate {
 }
 
 extension PostVC: UIImagePickerControllerDelegate {
+    
+    
+    
     // MARK: - UIImagePicker
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             // If you like to change the aspect programmatically
             // myImageView.contentMode = .ScaleAspectFit
-            
             postImageView.image = pickedImage
             
             cameraButton.setImage(nil, forState: .Normal)
+            
+            //getting details of image
+            let uploadFileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            print(uploadFileURL)
+            
+            let imageName = uploadFileURL.lastPathComponent
+            print(imageName)
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+            
+            // getting local path
+            let localPath = (documentDirectory as NSString).stringByAppendingPathComponent(imageName!)
+            
+            
+            //getting actual image
+            let originalImg = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let size = CGSizeApplyAffineTransform(originalImg.size, CGAffineTransformMakeScale(0.5, 0.5))
+            let resizedImg = scaleImageToSize(originalImg, size: size)
+            
+            let data = UIImageJPEGRepresentation(resizedImg, 0.6)
+            data!.writeToFile(localPath, atomically: true)
+            
+            let imageData = NSData(contentsOfFile: localPath)!
+            imageURL = NSURL(fileURLWithPath: localPath)
+            
+            uploadData(imageData)
+            
+            picker.dismissViewControllerAnimated(true, completion: nil)
+            
         }
-        
-        dismissViewControllerAnimated(true, completion: nil)
     }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func uploadData(data: NSData) {
+        //defining bucket and upload file name
+        latestUUID = NSUUID().UUIDString
+        
+        let S3UploadKeyName: String = "public/" + latestUUID! + ".jpeg"
+        let S3BucketName: String = "tapglue-sample"
+        
+        let expression = AWSS3TransferUtilityUploadExpression()
+        expression.progressBlock = progressBlock
+        
+        let transferUtility = AWSS3TransferUtility.defaultS3TransferUtility()
+        
+        transferUtility.uploadData(
+            data,
+            bucket: S3BucketName,
+            key: S3UploadKeyName,
+            contentType: "image/jpg",
+            expression: expression,
+            completionHander: completionHandler).continueWithBlock { (task) -> AnyObject! in
+                if let error = task.error {
+                    print("Error: %@",error.localizedDescription)
+                }
+                if let exception = task.exception {
+                    print("Exception: %@",exception.description)
+                }
+                if let _ = task.result {
+                    print("Upload Starting!")
+                    
+                    expression.progressBlock = { (task: AWSS3TransferUtilityTask, progress: NSProgress) in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            print(Float(progress.fractionCompleted))
+                        })
+                    }
+                }
+                if task.completed {
+                    print("UPLOAD COMPLETED")
+                    
+                }
+                if task.cancelled {
+                    print("UPLOAD CANCELLED")
+                }
+                
+                return nil
+        }
+    }
+    
+    func scaleImageToSize(img: UIImage, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        
+        img.drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        return scaledImage
+    }
+    
 }
 

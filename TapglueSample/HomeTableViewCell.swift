@@ -9,6 +9,7 @@
 import UIKit
 import Tapglue
 import Kingfisher
+import AWSS3
 
 // the name of the protocol you can put any
 protocol CustomCellDataUpdater {
@@ -37,6 +38,10 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var tagLabel: UILabel!
     
     @IBOutlet weak var tagsView: UIView!
+    
+    @IBOutlet weak var postImageView: UIImageView!
+    
+    var completionHandler: AWSS3TransferUtilityDownloadCompletionHandlerBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -105,6 +110,8 @@ class HomeTableViewCell: UITableViewCell {
     
     // Configure Cell with Post data
     func configureCellWithPost(post: Post!){
+        print(post)
+        
         cellPost = post
         
         // PostLikeCount
@@ -137,8 +144,17 @@ class HomeTableViewCell: UITableViewCell {
         self.userNameLabel.text = cellPost.user?.username
         
         // PostText
-        let postAttachment = post.attachments
-        self.postTextLabel.text = postAttachment![0].contents!["en"]
+        let postAttachments = post.attachments!
+        self.postTextLabel.text = postAttachments[0].contents!["en"]
+        
+        // PostImageURL
+        for att in postAttachments {
+            if att.name == "image" {
+                print(att.contents!["en"])
+                
+                downloadImageWithAWS(att.contents!["en"]!)
+            }
+        }
         
         
         // TagsBtn
@@ -230,6 +246,51 @@ class HomeTableViewCell: UITableViewCell {
                     print("Do the action")
                 }
             }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func downloadImageWithAWS(downloadKeyName: String) {
+        let S3DownloadKeyName: String = downloadKeyName
+        let S3BucketName: String = "tapglue-sample"
+        
+        self.postImageView.image = nil
+        
+        let expression = AWSS3TransferUtilityDownloadExpression()
+        expression.progressBlock = {(task, progress) in
+            dispatch_async(dispatch_get_main_queue(), {
+                print(progress)
+            })
+        }
+        
+        self.completionHandler = { (task, location, data, error) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                if ((error) != nil){
+                    NSLog("Error: %@",error!)
+                }
+                else{
+                    self.postImageView.image = UIImage(data: data!)
+                }
+            })
+        }
+        
+        let transferUtility = AWSS3TransferUtility.defaultS3TransferUtility()
+        
+        transferUtility.downloadDataFromBucket(
+            S3BucketName,
+            key: S3DownloadKeyName,
+            expression: expression,
+            completionHander: completionHandler).continueWithBlock { (task) -> AnyObject? in
+                if let error = task.error {
+                    print("Error: %@",error.localizedDescription)
+                }
+                if let exception = task.exception {
+                    print("Exception: %@",exception.description)
+                }
+                if let _ = task.result {
+                    print("Download Starting!")
+                    // Do something with uploadTask.
+                }
+                return nil
+        }
     }
 }
 

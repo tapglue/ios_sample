@@ -21,6 +21,7 @@ class HomeVC: UIViewController, UITableViewDelegate{
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
