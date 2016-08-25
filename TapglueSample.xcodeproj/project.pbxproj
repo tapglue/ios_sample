@@ -45,6 +45,9 @@
 		6A61F33B1BDACCFD00EC64DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A61F3391BDACCFD00EC64DF /* Main.storyboard */; };
 		6A61F3401BDACCFD00EC64DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */; };
 		6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */; };
+		6A65B1441D6DC33300A313B1 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A65B1431D6DC33300A313B1 /* AWSS3.framework */; };
+		6A65B1461D6DC36000A313B1 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A65B1451D6DC36000A313B1 /* AWSCore.framework */; };
+		6A65B1491D6DCE6000A313B1 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A65B1481D6DCE6000A313B1 /* AWSCognito.framework */; };
 		6A70082A1C2832F7003D385E /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7008291C2832F7003D385E /* PostDetailVC.swift */; };
 		6A70082C1C283F61003D385E /* PostDetailCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082B1C283F61003D385E /* PostDetailCommentsTableViewCell.swift */; };
 		6A70082E1C2862D1003D385E /* ConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70082D1C2862D1003D385E /* ConnectionVC.swift */; };
@@ -59,6 +62,10 @@
 		6AD9C9B51D6C55E400517095 /* FilteredTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9C9B41D6C55E400517095 /* FilteredTagsTableViewCell.swift */; };
 		6AE4169F1C3AA3D600DEBEC0 /* FindUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4169E1C3AA3D600DEBEC0 /* FindUsersVC.swift */; };
 		6AE416A11C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE416A01C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift */; };
+		6AEAA13D1D6F2369000379EB /* PostViewWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEAA13C1D6F2369000379EB /* PostViewWithImage.swift */; };
+		6AEAA13F1D6F2377000379EB /* PostViewWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AEAA13E1D6F2377000379EB /* PostViewWithImage.xib */; };
+		6AEAA1441D6F2E30000379EB /* PostViewWithStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AEAA1431D6F2E30000379EB /* PostViewWithStatus.xib */; };
+		6AEAA1461D6F2E46000379EB /* PostViewWithStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEAA1451D6F2E46000379EB /* PostViewWithStatus.swift */; };
 		6AF69F571C2412ED00376B54 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF69F561C2412ED00376B54 /* UserProfileVC.swift */; };
 		6AF69F591C241E8700376B54 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF69F581C241E8700376B54 /* UserProfileTableViewCell.swift */; };
 		970E6E5A1BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E6E591BDD6E9D00BCE1C0 /* ConnectionUserTableViewCell.swift */; };
@@ -106,6 +113,9 @@
 		6A61F33F1BDACCFD00EC64DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A61F3411BDACCFD00EC64DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A61F34B1BDAD30E00EC64DF /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		6A65B1431D6DC33300A313B1 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Carthage/Build/iOS/AWSS3.framework; sourceTree = "<group>"; };
+		6A65B1451D6DC36000A313B1 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Carthage/Build/iOS/AWSCore.framework; sourceTree = "<group>"; };
+		6A65B1481D6DCE6000A313B1 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognito.framework; path = Carthage/Build/iOS/AWSCognito.framework; sourceTree = "<group>"; };
 		6A7008291C2832F7003D385E /* PostDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		6A70082B1C283F61003D385E /* PostDetailCommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		6A70082D1C2862D1003D385E /* ConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionVC.swift; sourceTree = "<group>"; };
@@ -121,6 +131,10 @@
 		6AD9C9B41D6C55E400517095 /* FilteredTagsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredTagsTableViewCell.swift; sourceTree = "<group>"; };
 		6AE4169E1C3AA3D600DEBEC0 /* FindUsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUsersVC.swift; sourceTree = "<group>"; };
 		6AE416A01C3AA3ED00DEBEC0 /* FindUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUsersTableViewCell.swift; sourceTree = "<group>"; };
+		6AEAA13C1D6F2369000379EB /* PostViewWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewWithImage.swift; sourceTree = "<group>"; };
+		6AEAA13E1D6F2377000379EB /* PostViewWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewWithImage.xib; sourceTree = "<group>"; };
+		6AEAA1431D6F2E30000379EB /* PostViewWithStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewWithStatus.xib; sourceTree = "<group>"; };
+		6AEAA1451D6F2E46000379EB /* PostViewWithStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewWithStatus.swift; sourceTree = "<group>"; };
 		6AF35D181D61F5E300BDA030 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		6AF35D1A1D61F5E700BDA030 /* Tapglue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tapglue.framework; path = Carthage/Build/iOS/Tapglue.framework; sourceTree = "<group>"; };
 		6AF69F561C2412ED00376B54 /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
@@ -147,6 +161,9 @@
 				6A339BC81D61FDEB0028A042 /* RxSwift.framework in Frameworks */,
 				6A339BC91D61FDEB0028A042 /* Tapglue.framework in Frameworks */,
 				6A339BCA1D61FDEB0028A042 /* WSTagsField.framework in Frameworks */,
+				6A65B1441D6DC33300A313B1 /* AWSS3.framework in Frameworks */,
+				6A65B1461D6DC36000A313B1 /* AWSCore.framework in Frameworks */,
+				6A65B1491D6DCE6000A313B1 /* AWSCognito.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +173,9 @@
 		358D991F824B0CEC60127C33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A65B1481D6DCE6000A313B1 /* AWSCognito.framework */,
+				6A65B1451D6DC36000A313B1 /* AWSCore.framework */,
+				6A65B1431D6DC33300A313B1 /* AWSS3.framework */,
 				6AF35D1A1D61F5E700BDA030 /* Tapglue.framework */,
 				6AF35D181D61F5E300BDA030 /* RxSwift.framework */,
 				6A231FA81D61E84E00EFC28E /* Alamofire.framework */,
@@ -333,9 +353,7 @@
 		6A2C88B31C1F269F00A4EE96 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				6AAEB8E21D51FEC6002124AB /* Home.storyboard */,
-				6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */,
-				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
+				6AEAA1401D6F2893000379EB /* Home */,
 				6AAEB8E81D5201FE002124AB /* Post */,
 				6A22161B1D520CA900D27B7C /* PostDetailVC */,
 				6AD9C9B01D6C54AE00517095 /* FilteredTags */,
@@ -460,6 +478,36 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		6AEAA1401D6F2893000379EB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6AAEB8E21D51FEC6002124AB /* Home.storyboard */,
+				6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */,
+				6AEAA1411D6F28A0000379EB /* Cell */,
+				6AEAA1421D6F28AE000379EB /* Custom View */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		6AEAA1411D6F28A0000379EB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		6AEAA1421D6F28AE000379EB /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				6AEAA13E1D6F2377000379EB /* PostViewWithImage.xib */,
+				6AEAA13C1D6F2369000379EB /* PostViewWithImage.swift */,
+				6AEAA1431D6F2E30000379EB /* PostViewWithStatus.xib */,
+				6AEAA1451D6F2E46000379EB /* PostViewWithStatus.swift */,
+			);
+			name = "Custom View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -534,9 +582,11 @@
 				6A2216191D520B3100D27B7C /* FindUsers.storyboard in Resources */,
 				6A61F3401BDACCFD00EC64DF /* LaunchScreen.storyboard in Resources */,
 				6A2216251D520F1B00D27B7C /* Connection.storyboard in Resources */,
+				6AEAA13F1D6F2377000379EB /* PostViewWithImage.xib in Resources */,
 				9727BB0E1BEBAED800CC8279 /* Assets.xcassets in Resources */,
 				6A61F33B1BDACCFD00EC64DF /* Main.storyboard in Resources */,
 				6AAEB8E51D51FF8D002124AB /* Post.storyboard in Resources */,
+				6AEAA1441D6F2E30000379EB /* PostViewWithStatus.xib in Resources */,
 				6A22162A1D520FA700D27B7C /* Profile.storyboard in Resources */,
 				6AD9C9AF1D6C54A800517095 /* FilteredTags.storyboard in Resources */,
 				6AAEB8E31D51FEC6002124AB /* Home.storyboard in Resources */,
@@ -566,6 +616,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FacebookShare.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSDKShareKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSS3.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCognito.framework",
 			);
 			outputPaths = (
 			);
@@ -592,8 +645,10 @@
 				6A74F6FD1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift in Sources */,
 				6A61F34C1BDAD30E00EC64DF /* ProfileVC.swift in Sources */,
 				6A914D1E1D462FA000B7F838 /* StringExtension.swift in Sources */,
+				6AEAA1461D6F2E46000379EB /* PostViewWithStatus.swift in Sources */,
 				6AE4169F1C3AA3D600DEBEC0 /* FindUsersVC.swift in Sources */,
 				6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */,
+				6AEAA13D1D6F2369000379EB /* PostViewWithImage.swift in Sources */,
 				6A1A98AD1C20718D00299CD1 /* NotificationVC.swift in Sources */,
 				6AD9C9B51D6C55E400517095 /* FilteredTagsTableViewCell.swift in Sources */,
 				6A509A431BDCF5BC00CC8A82 /* NavigationVC.swift in Sources */,
