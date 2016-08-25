@@ -44,7 +44,7 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
     var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
     var progressBlock: AWSS3TransferUtilityProgressBlock?
    
-//    var awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/public/"
+    
     
     var latestUUID: String?
     
@@ -132,10 +132,16 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
                 }).addDisposableTo(self.appDel.disposeBag)
 
             } else {
-                let postImageURL = "public/" + latestUUID! + ".jpeg"
-                let attachmentPost = Attachment(contents: ["en":postText!], name: "status", type: .Text)
-                let attachmentURL = Attachment(contents: ["en":postImageURL], name: "image", type: .URL)
-                let post = Post(visibility: .Connections, attachments: [attachmentPost, attachmentURL])
+                var attachments: [Attachment] = []
+                if postImageView.image != nil {
+                    let postImageURL = "public/" + latestUUID! + ".jpeg"
+                    attachments.append(Attachment(contents: ["en":postText!], name: "status", type: .Text))
+                    attachments.append(Attachment(contents: ["en":postImageURL], name: "image", type: .URL))
+                } else {
+                    attachments.append(Attachment(contents: ["en":postText!], name: "status", type: .Text))
+                }
+                
+                let post = Post(visibility: .Connections, attachments: attachments)
                 post.tags = tagArr
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
