@@ -192,8 +192,8 @@ class PostViewWithStatus: UIView {
             button.frame = CGRectMake(x, 4, 60, 24)
             button.layer.cornerRadius = 12
             button.layer.masksToBounds = true
-            button.backgroundColor = .lightGrayColor()
-            button.tintColor = .whiteColor()
+            button.backgroundColor = UIColor(white:0.92, alpha:1.0)
+            button.tintColor = .darkGrayColor()
             button.titleLabel?.font = UIFont(name:"HelveticaNeue-Light", size: 13.0)
             button.setTitle(tag, forState: UIControlState.Normal)
             button.addTarget(self, action: #selector(PostViewWithStatus.action(_:)), forControlEvents: UIControlEvents.TouchUpInside)
