@@ -79,10 +79,26 @@ extension HomeVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
         
-        cell.configureCellWithPost(self.posts[indexPath.row])
-        
-        // Listen custom delegate
-        cell.delegate = self
+        // Show the post with customPostStatusView or customPostImageView
+        if self.posts[indexPath.row].attachments!.count == 1 {
+            cell.postViewWithImage.hidden = true
+            cell.postViewWithStatus.hidden = false
+
+            cell.postViewWithStatus.configureViewWithPost(self.posts[indexPath.row])
+            // Listen custom delegate
+            cell.postViewWithStatus.delegate = self
+            self.homeTableView.rowHeight = 181
+        }
+        if self.posts[indexPath.row].attachments!.count == 2 {
+            print("image attachments")
+            cell.postViewWithStatus.hidden = true
+            cell.postViewWithImage.hidden = false
+            
+            cell.postViewWithImage.configureViewWithPost(self.posts[indexPath.row])
+            // Listen custom delegate
+            cell.postViewWithImage.delegate = self
+            self.homeTableView.rowHeight = 400
+        }
         
         return cell
     }
@@ -112,9 +128,9 @@ extension HomeVC: UITextFieldDelegate {
 }
 
 
-extension HomeVC: CustomCellDataUpdater {
+extension HomeVC: PostStatusViewDataUpdater {
     // Mark: - Custom delegate to update data, if cell recieves like button or share button pressed
-    func updateTableViewData() {
+    func updatePostsWithStatusTableViewData() {
         // Load All Posts from your connections
         appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
             switch event {
@@ -131,7 +147,50 @@ extension HomeVC: CustomCellDataUpdater {
         }.addDisposableTo(self.appDel.disposeBag)
     }
     
-    func showShareOptions(post: Post) {
+    func showPostsWithStatusShareOptions(post: Post) {
+        let postAttachment = post.attachments
+        let postText = postAttachment![0].contents!["en"]
+        let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(
+            activityItems: [postActivityItem], applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [
+            UIActivityTypePostToWeibo,
+            UIActivityTypePrint,
+            UIActivityTypeAssignToContact,
+            UIActivityTypeSaveToCameraRoll,
+            UIActivityTypeAddToReadingList,
+            UIActivityTypePostToFlickr,
+            UIActivityTypePostToVimeo,
+            UIActivityTypePostToTencentWeibo,
+            UIActivityTypeMail
+        ]
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension HomeVC: PostImageViewDataUpdater {
+    // Mark: - Custom delegate to update data, if cell recieves like button or share button pressed
+    func updatePostsWithImageTableViewData() {
+        // Load All Posts from your connections
+        appDel.rxTapglue.retrievePostFeed().subscribe { (event) in
+            switch event {
+            case .Next(let posts):
+                self.posts = posts
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.homeTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                })
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func showPostsWithImageShareOptions(post: Post) {
         let postAttachment = post.attachments
         let postText = postAttachment![0].contents!["en"]
         let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
