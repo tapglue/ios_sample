@@ -52,9 +52,6 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q31-jV-1ld">
                             <rect key="frame" x="15" y="56" width="570" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="JxT-1i-9J8"/>
-                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -131,9 +128,9 @@
                         <constraint firstItem="ds0-qc-WLL" firstAttribute="top" secondItem="8OU-Xn-3MY" secondAttribute="bottom" id="CPp-iN-Imu"/>
                         <constraint firstItem="scI-uJ-beV" firstAttribute="top" secondItem="bbk-tl-anF" secondAttribute="bottom" constant="5" id="DaZ-rL-GuH"/>
                         <constraint firstAttribute="trailing" secondItem="gyh-Kl-ZvU" secondAttribute="trailing" constant="15" id="GnZ-xZ-yjI"/>
-                        <constraint firstItem="FKZ-D9-qfF" firstAttribute="leading" secondItem="2Dl-mO-0AV" secondAttribute="trailing" constant="8" id="Ipf-li-OgT"/>
                         <constraint firstItem="2Dl-mO-0AV" firstAttribute="leading" secondItem="JWV-0G-sMG" secondAttribute="leading" constant="15" id="JMC-iH-QwX"/>
                         <constraint firstAttribute="trailing" secondItem="ds0-qc-WLL" secondAttribute="trailing" id="MeL-Kt-o6M"/>
+                        <constraint firstItem="FKZ-D9-qfF" firstAttribute="leading" secondItem="bbk-tl-anF" secondAttribute="leading" id="Oh0-ev-EYA"/>
                         <constraint firstItem="bbk-tl-anF" firstAttribute="leading" secondItem="2Dl-mO-0AV" secondAttribute="trailing" constant="8" id="S6P-09-tmk"/>
                         <constraint firstItem="psj-8L-KFb" firstAttribute="top" secondItem="gyh-Kl-ZvU" secondAttribute="bottom" constant="2" id="TEF-ge-GYj"/>
                         <constraint firstItem="ds0-qc-WLL" firstAttribute="top" secondItem="psj-8L-KFb" secondAttribute="bottom" constant="2" id="UAp-CK-Ob4"/>
