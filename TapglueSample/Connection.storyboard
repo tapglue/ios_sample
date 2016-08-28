@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--ConnectionVC-->
+        <!--Connection-->
         <scene sceneID="guZ-a3-eGQ">
             <objects>
                 <viewController storyboardIdentifier="ConnectionViewController" id="NFY-67-PYa" customClass="ConnectionVC" customModule="TapglueSample" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzd-9g-vYy">
-                                        <rect key="frame" x="293" y="0.0" width="277" height="40"/>
+                                        <rect key="frame" x="292" y="0.0" width="278" height="40"/>
                                         <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="Facebook">
@@ -69,7 +69,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-2Q-bpS">
-                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="Y0P-dJ-CJA" customClass="ConnectionUserTableViewCell" customModule="TapglueSample" customModuleProvider="target">
@@ -165,15 +165,17 @@
                             <constraint firstItem="xsX-Zi-YqG" firstAttribute="leading" secondItem="67p-IH-q2J" secondAttribute="leading" constant="15" id="7Wr-hk-8ov"/>
                             <constraint firstItem="xsX-Zi-YqG" firstAttribute="top" secondItem="pJp-YS-BQv" secondAttribute="bottom" constant="2" id="Dfm-fD-c8W"/>
                             <constraint firstAttribute="trailing" secondItem="xsX-Zi-YqG" secondAttribute="trailing" constant="15" id="IlE-TM-zGY"/>
+                            <constraint firstItem="j8b-G1-ag0" firstAttribute="top" secondItem="C4i-2Q-bpS" secondAttribute="bottom" id="KlO-xK-w2H"/>
                             <constraint firstAttribute="trailing" secondItem="C4i-2Q-bpS" secondAttribute="trailing" id="QtT-2r-GWc"/>
                             <constraint firstItem="Fi9-KW-nyZ" firstAttribute="leading" secondItem="67p-IH-q2J" secondAttribute="leading" constant="15" id="fz4-mC-TUo"/>
                             <constraint firstItem="C4i-2Q-bpS" firstAttribute="top" secondItem="Fi9-KW-nyZ" secondAttribute="bottom" constant="4" id="n3O-Q4-EMy"/>
                             <constraint firstItem="Fi9-KW-nyZ" firstAttribute="top" secondItem="xsX-Zi-YqG" secondAttribute="bottom" constant="4" id="pIc-on-CSS"/>
                             <constraint firstItem="C4i-2Q-bpS" firstAttribute="leading" secondItem="67p-IH-q2J" secondAttribute="leading" id="q3h-XO-MAs"/>
-                            <constraint firstItem="j8b-G1-ag0" firstAttribute="top" secondItem="C4i-2Q-bpS" secondAttribute="bottom" id="qAO-y6-RCg"/>
                             <constraint firstAttribute="trailing" secondItem="Fi9-KW-nyZ" secondAttribute="trailing" constant="15" id="w9k-BU-wWg"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Connection" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="x8u-XE-cVf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="friendsTableView" destination="C4i-2Q-bpS" id="APm-aE-M6z"/>
                     </connections>
@@ -183,4 +185,8 @@
             <point key="canvasLocation" x="1304" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ConnectionEmpty" width="25" height="25"/>
+        <image name="ConnectionFilled" width="25" height="25"/>
+    </resources>
 </document>

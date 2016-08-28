@@ -76,7 +76,7 @@
         <scene sceneID="O5M-3w-Zps">
             <objects>
                 <viewControllerPlaceholder storyboardName="Connection" id="UQu-AI-xjT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Network" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Connection" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="TRL-vq-NgN"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llM-mM-aO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

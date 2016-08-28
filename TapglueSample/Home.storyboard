@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Cz-Dc-dRk" userLabel="Home Table View">
-                                <rect key="frame" x="0.0" y="87" width="600" height="513"/>
+                                <rect key="frame" x="0.0" y="87" width="600" height="464"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="OLL-Vh-9Kh" userLabel="EmptyFooterView">
@@ -111,6 +111,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="HomeEmpty" selectedImage="HomeFilled" id="Mhw-Wb-fkJ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="homeTableView" destination="4Cz-Dc-dRk" id="KWI-q6-nZU"/>
                         <outlet property="userImageView" destination="Z3W-4B-PaK" id="dkH-rm-sDK"/>
