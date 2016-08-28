@@ -114,6 +114,15 @@ extension HomeVC: UITableViewDataSource {
         
         self.navigationController?.pushViewController(pdVC, animated: true)
     }
+    
+    // Remove buttons that are created dynamically
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
+        
+        for view in cell.postViewWithImage.tagsView.subviews {
+            view.removeFromSuperview()
+        }
+    }
 }
 
 
