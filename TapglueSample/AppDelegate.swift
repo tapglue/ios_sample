@@ -68,8 +68,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Failed to register:", error)
     }
-    func application(application: UIApplication, didReceiveRemoteNotification notificationSettings: [NSObject : AnyObject]) {
-        print(notificationSettings)
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("UserInfo: \(userInfo)")
+        print(userInfo)
+        
+        if let aps = userInfo["aps"] as? NSDictionary {
+            if let alert = aps["alert"] as? NSDictionary {
+                if let message = alert["message"] as? NSString {
+                    //Do stuff
+                    print("Message: \(message)")
+                }
+            } else if let alert = aps["alert"] as? NSString {
+                //Do stuff
+                print("Alert: \(alert)")
+            }
+        }
+        
     }
     
     // TapglueError handel
@@ -78,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(err?.message)
     }
     
+    // Facebook
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
