@@ -108,7 +108,6 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
                 print("Next")
                 
                 for inc in connections.incoming! {
-                    print("incomging user: \(inc.userFrom)")
                     self.fromUsers.append(inc.userFrom!)
                 }
                 
@@ -116,8 +115,8 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
                     self.toUsers.append(out.userTo!)
                 }
                 
-                print("From user: \(self.fromUsers)")
-                print("To user: \(self.toUsers)")
+//                print("From user: \(self.fromUsers)")
+//                print("To user: \(self.toUsers)")
                 
                 // As an example we are just showing inbound friends request
                 self.users = self.fromUsers
