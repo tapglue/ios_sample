@@ -25,8 +25,6 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
         currentUser = appDel.rxTapglue.currentUser
         updatedUser = currentUser
         
-        print("Current Username: \(currentUser.username)")
-        
         userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, currentUser.about!, currentUser.email!]
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
@@ -74,13 +72,6 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     }
     func keyboardWillHide(notification: NSNotification) {
         updateUIBarButton.enabled = true
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "EditProfileSegue") {
-            // pass data to next view
-            print("---- SEGUED Back ------")
-        }
     }
 }
 
