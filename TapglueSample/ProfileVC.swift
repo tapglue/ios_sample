@@ -8,8 +8,9 @@
 
 import UIKit
 import Tapglue
+import AWSS3
 
-class ProfileVC: UIViewController, UITableViewDelegate {
+class ProfileVC: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
@@ -27,14 +28,32 @@ class ProfileVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var profileFeedTableView: UITableView!
     
+    
     var activityFeed: [Activity] = []
     var posts: [Post] = []
     
     var postEditingText: String?
     var tempPost: Post?
 
+    let imagePicker = UIImagePickerController()
+    
+    let tapRec = UITapGestureRecognizer()
+    
+    var selectedImageUrl: NSURL!
+    var localFileName: String?
+    var imageURL = NSURL()
+    
+    var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
+    var progressBlock: AWSS3TransferUtilityProgressBlock?
+    var awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/"
+    
+    var latestUUID: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Listener
+        imagePicker.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,6 +67,18 @@ class ProfileVC: UIViewController, UITableViewDelegate {
             // Show loginVC if User is nil
             self.navigationController?.performSegueWithIdentifier("loginSegue", sender: nil)
         }
+        
+        tapRec.addTarget(self, action: #selector(imageTappged))
+        userImageView.userInteractionEnabled = true
+        userImageView.addGestureRecognizer(tapRec)
+    }
+    
+    func imageTappged() {
+        print("Image was tapped")
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     // Friends, Follower and Following buttons
@@ -332,4 +363,128 @@ extension ProfileVC: UITableViewDataSource {
         return [delete, edit]
     }
 }
+
+extension ProfileVC: UIImagePickerControllerDelegate {
+    // MARK: - UIImagePicker
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            // If you like to change the aspect programmatically
+            // myImageView.contentMode = .ScaleAspectFit
+            userImageView.image = pickedImage
+            
+            //getting details of image
+            let uploadFileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            print(uploadFileURL)
+            
+            let imageName = uploadFileURL.lastPathComponent
+            print(imageName)
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+            
+            // getting local path
+            let localPath = (documentDirectory as NSString).stringByAppendingPathComponent(imageName!)
+            
+            
+            //getting actual image
+            let originalImg = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let size = CGSizeApplyAffineTransform(originalImg.size, CGAffineTransformMakeScale(0.1, 0.1))
+            let resizedImg = scaleImageToSize(originalImg, size: size)
+            
+            let data = UIImageJPEGRepresentation(resizedImg, 0.6)
+            data!.writeToFile(localPath, atomically: true)
+            
+            let imageData = NSData(contentsOfFile: localPath)!
+            imageURL = NSURL(fileURLWithPath: localPath)
+            
+            uploadData(imageData)
+            
+            
+            
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func uploadData(data: NSData) {
+        //defining bucket and upload file name
+        latestUUID = NSUUID().UUIDString
+        
+        let S3UploadKeyName: String = "public/" + latestUUID! + ".jpeg"
+        let S3BucketName: String = "tapglue-sample"
+        
+        let expression = AWSS3TransferUtilityUploadExpression()
+        expression.progressBlock = progressBlock
+        
+        let transferUtility = AWSS3TransferUtility.defaultS3TransferUtility()
+        
+        transferUtility.uploadData(
+            data,
+            bucket: S3BucketName,
+            key: S3UploadKeyName,
+            contentType: "image/jpg",
+            expression: expression,
+            completionHander: completionHandler).continueWithBlock { (task) -> AnyObject! in
+                if let error = task.error {
+                    print("Error: %@",error.localizedDescription)
+                }
+                if let exception = task.exception {
+                    print("Exception: %@",exception.description)
+                }
+                if let _ = task.result {
+                    print("Upload Starting!")
+                    
+                    expression.progressBlock = { (task: AWSS3TransferUtilityTask, progress: NSProgress) in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            print(Float(progress.fractionCompleted))
+                        })
+                    }
+                }
+                if task.completed {
+                    print("UPLOAD COMPLETED")
+                    
+                    // Get currentUser, add new image and update currentUser
+                    if let currentUser = self.appDel.rxTapglue.currentUser {
+                        let userImage = Image(url: self.awsHost + S3UploadKeyName)
+                        currentUser.images = ["profile": userImage]
+                        print(currentUser.images)
+                        print(S3UploadKeyName)
+                        self.appDel.rxTapglue.updateCurrentUser(currentUser).subscribe({ (event) in
+                            switch event {
+                            case .Next(let usr):
+                                print("Next")
+                                print(usr.images!["profile"]!.url)
+                            case .Error(let error):
+                                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                            case .Completed:
+                                print("Do the action")
+                                self.imagePicker.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                        }).addDisposableTo(self.appDel.disposeBag)
+                    }
+                    
+                    
+                }
+                if task.cancelled {
+                    print("UPLOAD CANCELLED")
+                }
+                
+                return nil
+        }
+    }
+    
+    func scaleImageToSize(img: UIImage, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        
+        img.drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        return scaledImage
+    }
+    
+}
+
 
