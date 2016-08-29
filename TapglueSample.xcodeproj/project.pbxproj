@@ -121,6 +121,7 @@
 		6A70082D1C2862D1003D385E /* ConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionVC.swift; sourceTree = "<group>"; };
 		6A74F6FA1C2008BD006C51C7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		6A74F6FC1C203D5C006C51C7 /* ProfileFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFeedTableViewCell.swift; sourceTree = "<group>"; };
+		6A76035F1D7440EE00C05A18 /* TapglueSample.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TapglueSample.playground; sourceTree = "<group>"; };
 		6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapglueSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		6A914D1D1D462FA000B7F838 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; usesTabs = 0; };
 		6AAEB8E21D51FEC6002124AB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -407,6 +408,7 @@
 				6A61F33E1BDACCFD00EC64DF /* LaunchScreen.storyboard */,
 				6A61F3411BDACCFD00EC64DF /* Info.plist */,
 				6A7EA3F11C297296004D43AD /* TapglueSample-Bridging-Header.h */,
+				6A76035F1D7440EE00C05A18 /* TapglueSample.playground */,
 			);
 			path = TapglueSample;
 			sourceTree = "<group>";
