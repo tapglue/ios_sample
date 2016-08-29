@@ -66,13 +66,11 @@ class LoginRegisterVC: UIViewController {
             // Create New User
             appDel.rxTapglue.createUser(usr).subscribe { (event) in
                 switch event {
-                case .Next(let newUser):
-                    print(newUser.email)
+                case .Next( _):
                     // Login new User
                     self.appDel.rxTapglue.loginUser(usr.username!, password: usr.password!).subscribe({ (event) in
                         switch event {
-                        case .Next(let newUser):
-                            print(newUser.email)
+                        case .Next( _):
                             print("Go to next screen")
                         case .Error(let error):
                             self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
