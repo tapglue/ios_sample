@@ -9,7 +9,6 @@
 import UIKit
 import Tapglue
 import WSTagsField
-
 import AWSS3
 
 class PostVC: UIViewController, UINavigationControllerDelegate {
@@ -43,8 +42,6 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
     
     var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
     var progressBlock: AWSS3TransferUtilityProgressBlock?
-   
-    
     
     var latestUUID: String?
     
@@ -82,7 +79,6 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
         
         // Listener
         imagePicker.delegate = self
-        
     }
     
     @IBAction func cameraButtonPressed(sender: UIButton) {
@@ -239,8 +235,6 @@ extension PostVC: UITextFieldDelegate {
 
 extension PostVC: UIImagePickerControllerDelegate {
     
-    
-    
     // MARK: - UIImagePicker
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -265,7 +259,7 @@ extension PostVC: UIImagePickerControllerDelegate {
             
             //getting actual image
             let originalImg = info[UIImagePickerControllerOriginalImage] as! UIImage
-            let size = CGSizeApplyAffineTransform(originalImg.size, CGAffineTransformMakeScale(0.5, 0.5))
+            let size = CGSizeApplyAffineTransform(originalImg.size, CGAffineTransformMakeScale(0.4, 0.4))
             let resizedImg = scaleImageToSize(originalImg, size: size)
             
             let data = UIImageJPEGRepresentation(resizedImg, 0.6)
