@@ -48,18 +48,21 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         if post != nil {
-            print("PostDetail: \(post)")
+            print("PostDetail: \(post.userId)")
             fillPostDetailInformation()
+            retrieveAllCommentsForPost()
         }
         
         // Show keyboard and start commenting
         if commentButtonPressedSwitch {
             commentTextField.becomeFirstResponder()
         }
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-        retrieveAllCommentsForPost()
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PostDetailVC.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PostDetailVC.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -154,14 +157,15 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             switch event {
             case .Next(let comments):
                 self.postComments = (comments).reverse()
-            case .Error(let error):
-                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
-            case .Completed:
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.commentsTableView.reloadData()
                 })
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
             }
-            }.addDisposableTo(self.appDel.disposeBag)
+        }.addDisposableTo(self.appDel.disposeBag)
     }
     
     // Show PostDetial information
@@ -377,12 +381,13 @@ extension PostDetailVC: UITextFieldDelegate {
             appDel.rxTapglue.updateComment(post.id!, commentId: editComment.id!, comment: editComment).subscribe({ (event) in
                 switch event {
                 case .Next( _):
-                    self.retrieveAllCommentsForPost()
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.commentsTableView.reloadData()
+                        self.retrieveAllCommentsForPost()
+                        
                         self.commentTextField.text = nil
                         self.commentTextField.resignFirstResponder()
                         self.beginEditComment = false
@@ -398,12 +403,13 @@ extension PostDetailVC: UITextFieldDelegate {
             appDel.rxTapglue.createComment(comment).subscribe({ (event) in
                 switch event {
                 case .Next( _):
-                    self.retrieveAllCommentsForPost()
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.commentsTableView.reloadData()
+                        self.retrieveAllCommentsForPost()
+                        
                         self.commentTextField.text = nil
                         self.commentTextField.resignFirstResponder()
                         self.beginEditComment = false
