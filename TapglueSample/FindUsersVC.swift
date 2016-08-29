@@ -40,20 +40,16 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("find friends")
         
         configureFacebook()
         
         switch currentSelectedNetwork {
             case "Contacts":
-                print("contacts selected")
                 self.searchForUserByEmail()
             case "Facebook":
-                print("facebook selected")
                 let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
                 
                 if facebookPermission {
-                    print("facebookPermissionGranted")
                     self.returnUserFriendsData()
                 } else {
                     // Show facebookLoginButton
