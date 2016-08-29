@@ -113,7 +113,6 @@ class ConnectionUserTableViewCell: UITableViewCell {
                 appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
                     switch event {
                     case .Next( _):
-                        print("Cell USER ID to friend\(self.cellUser.id!)")
                         print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
