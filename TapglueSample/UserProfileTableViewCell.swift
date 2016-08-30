@@ -14,7 +14,7 @@ class UserProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,12 +35,6 @@ class UserProfileTableViewCell: UITableViewCell {
         clearLabels()
         
         self.dateLabel.text = activity.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
-        
-        let targetUsername = activity.targetUser
-        print(targetUsername)
-        print("Type: \(activity.type!)")
-        print(activity.user?.id!)
-        print(activity.post?.user?.username)
         
         switch activity.type! {
         case "tg_friend":
@@ -66,7 +60,7 @@ class UserProfileTableViewCell: UITableViewCell {
         default: print("More event types then expected")
         }
     }
-
+    
     func clearLabels(){
         self.typeLabel.text = ""
         self.infoLabel.text = ""

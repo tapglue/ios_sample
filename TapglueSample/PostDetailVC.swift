@@ -39,7 +39,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var tagsLabel: UILabel!
     
-    var awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/"
+    
     
     var beginEditComment = false
     var editComment: Comment!
@@ -48,9 +48,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         if post != nil {
-            print("PostDetail: \(post.userId)")
             fillPostDetailInformation()
-            
         }
         
         // Show keyboard and start commenting
@@ -90,16 +88,15 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             // Delete like for Post
             appDel.rxTapglue.deleteLike(forPostId: post.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.likeButton.selected = false
-                        self.updateLikeCountLabel()
-                    })
+                    print("Completed")
+                    
+                    self.likeButton.selected = false
+                    self.updateLikeCountLabel()
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
@@ -107,12 +104,12 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             // Create like for Post
             appDel.rxTapglue.createLike(forPostId: post.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.likeButton.selected = true
@@ -166,7 +163,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             case .Completed:
                 print("Completed")
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
     // Show PostDetial information
@@ -176,8 +173,8 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         for att in post.attachments! {
             
             if att.name == "image" {
-                let imgURL = awsHost + att.contents!["en"]!
-                print(imgURL)
+                let imgURL = appDel.awsHost + att.contents!["en"]!
+                
                 self.heightLayoutConstraint.constant = 400
                 postImageView.kf_setImageWithURL(NSURL(string: imgURL))
             }
@@ -226,7 +223,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 }
                 self.tagsLabel.text = "Tags: " + tagLabelText
             default:
-                print("switch default tags")
+                print("default")
             }
             
         } else {
@@ -302,7 +299,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 break
                 
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 
@@ -335,7 +332,6 @@ extension PostDetailVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
-            print("favorite button tapped")
             
             self.beginEditComment = true
             

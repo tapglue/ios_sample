@@ -17,7 +17,7 @@ protocol PendingConnectionsDelegate {
 class ConnectionUserTableViewCell: UITableViewCell {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
-
+    
     var delegate: PendingConnectionsDelegate?
     
     var cellUser = User()
@@ -85,7 +85,7 @@ class ConnectionUserTableViewCell: UITableViewCell {
             }
         }
     }
-
+    
     
     @IBAction func connectRightPressed(sender: UIButton) {
         if searchingForUser {
@@ -98,14 +98,14 @@ class ConnectionUserTableViewCell: UITableViewCell {
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
-                        print("Do the action")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = false
-                            self.unfriendUserCustomizeButton()
-                        })
+                        print("Completed")
+                        
+                        sender.selected = false
+                        self.unfriendUserCustomizeButton()
+                        
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
-
+                
             } else {
                 // Pending friend connection
                 let connection = Connection(toUserId: cellUser.id!, type: .Friend, state: .Pending)
@@ -117,11 +117,11 @@ class ConnectionUserTableViewCell: UITableViewCell {
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
-                        print("Do the action")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = true
-                            self.pendingUserCustomizeButton()
-                        })
+                        print("Completed")
+                        
+                        sender.selected = true
+                        self.pendingUserCustomizeButton()
+                        
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
             }
@@ -136,7 +136,7 @@ class ConnectionUserTableViewCell: UITableViewCell {
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
+                    print("Completed")
                     self.delegate?.updatePendingConnections()
                 }
             }).addDisposableTo(self.appDel.disposeBag)
@@ -155,14 +155,14 @@ class ConnectionUserTableViewCell: UITableViewCell {
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
-                        print("Do the action")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = false
-                            self.unfollowingUserCustomizeButton()
-                        })
+                        print("Completed")
+                        
+                        sender.selected = false
+                        self.unfollowingUserCustomizeButton()
+                        
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
-
+                
             } else {
                 // Create follow connection
                 let connection = Connection(toUserId: cellUser.id!, type: .Follow, state: .Confirmed)
@@ -174,11 +174,11 @@ class ConnectionUserTableViewCell: UITableViewCell {
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
-                        print("Do the action")
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sender.selected = true
-                            self.followingUserCustomizeButton()
-                        })
+                        print("Completed")
+                        
+                        sender.selected = true
+                        self.followingUserCustomizeButton()
+                        
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
             }
@@ -193,13 +193,13 @@ class ConnectionUserTableViewCell: UITableViewCell {
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
+                    print("Completed")
                     self.delegate?.updatePendingConnections()
                 }
             }).addDisposableTo(self.appDel.disposeBag)
         }
     }
-        
+    
     
     func acceptFriendShipCustomizeButton(){
         self.connectRightButton.setTitle("Accept", forState: .Normal)
@@ -209,8 +209,8 @@ class ConnectionUserTableViewCell: UITableViewCell {
         self.connectLeftButton.setTitle("Decline", forState: .Normal)
         self.connectLeftButton.backgroundColor = UIColor.redColor()
     }
-        
-        
+    
+    
     func followingUserCustomizeButton(){
         self.connectLeftButton.setTitle("Following", forState: .Selected)
         self.connectLeftButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)

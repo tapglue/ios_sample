@@ -24,7 +24,7 @@ class FindUsersTableViewCell: UITableViewCell {
     
     
     let inviteTag = 10
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -63,22 +63,22 @@ class FindUsersTableViewCell: UITableViewCell {
     }
     
     // Configure Cell with User data
-//    func configureCellWithUserWithPendingConnection(user: User!){
-//        cellUser = user
-//        
-//        self.userAboutLabel.text = self.cellUser.about!
-//        self.userNameLabel.text = self.cellUser.username
-//        
-//        showUserImage(cellUser)
-//        
-//        if self.connectRightButton != nil {
-//            customizeBtn(.Accept)
-//        }
-//        
-//        if self.connectLeftButton != nil {
-//            customizeBtn(.Decline)
-//        }
-//    }
+    //    func configureCellWithUserWithPendingConnection(user: User!){
+    //        cellUser = user
+    //
+    //        self.userAboutLabel.text = self.cellUser.about!
+    //        self.userNameLabel.text = self.cellUser.username
+    //
+    //        showUserImage(cellUser)
+    //
+    //        if self.connectRightButton != nil {
+    //            customizeBtn(.Accept)
+    //        }
+    //
+    //        if self.connectLeftButton != nil {
+    //            customizeBtn(.Decline)
+    //        }
+    //    }
     
     // Configure Cell with Contacts that use the app
     func configureCellWithUserFromContactsThatUsesApp(contact: [String:String], user: User){
@@ -91,7 +91,7 @@ class FindUsersTableViewCell: UITableViewCell {
         
         if self.connectRightButton != nil {
             self.connectRightButton.hidden = false
-        
+            
             if (user.isFriend != nil) {
                 customizeBtn(.Friend)
                 self.connectRightButton.selected = true
@@ -102,7 +102,7 @@ class FindUsersTableViewCell: UITableViewCell {
         }
         if self.connectLeftButton != nil {
             self.connectLeftButton.hidden = false
-    
+            
             if (user.isFollowing != nil) {
                 customizeBtn(.Follow)
                 self.connectLeftButton.selected = true
@@ -166,13 +166,13 @@ class FindUsersTableViewCell: UITableViewCell {
             self.connectLeftButton.tag = BtnState.Decline.rawValue
         }
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     func showUserImage(cellUser: User) {
         if let profileImages = cellUser.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
@@ -196,32 +196,30 @@ class FindUsersTableViewCell: UITableViewCell {
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = true
-                        self.customizeBtn(.Follow)
-                    })
+                    print("Completed")
+                    
+                    sender.selected = true
+                    self.customizeBtn(.Follow)
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-
+            
         case BtnState.Unfollow.rawValue:
             print("Unfollow")
             // Delete follow connection
             appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Follow).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = false
-                        self.customizeBtn(.Unfollow)
-                    })
+                    print("Completed")
+                    
+                    sender.selected = false
+                    self.customizeBtn(.Unfollow)
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-
+            
         case BtnState.Decline.rawValue:
             print("Decline")
             
@@ -235,11 +233,10 @@ class FindUsersTableViewCell: UITableViewCell {
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = true
-                        self.customizeBtn(.Pending)
-                    })
+                    print("Completed")
+                    
+                    sender.selected = true
+                    self.customizeBtn(.Pending)
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
@@ -263,11 +260,10 @@ class FindUsersTableViewCell: UITableViewCell {
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = true
-                        self.customizeBtn(.Pending)
-                    })
+                    print("Completed")
+                    
+                    sender.selected = true
+                    self.customizeBtn(.Pending)
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
@@ -276,16 +272,15 @@ class FindUsersTableViewCell: UITableViewCell {
             // Delete friend connection
             appDel.rxTapglue.deleteConnection(toUserId: cellUser.id!, type: .Friend).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        sender.selected = false
-                        self.customizeBtn(.Unfriend)
-                    })
+                    print("Completed")
+                    
+                    sender.selected = false
+                    self.customizeBtn(.Unfriend)
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
@@ -305,12 +300,12 @@ class FindUsersTableViewCell: UITableViewCell {
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
+                    print("Completed")
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
         default:
-            print("default right")
+            print("default")
         }
     }
     

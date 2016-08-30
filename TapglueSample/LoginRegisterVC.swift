@@ -24,21 +24,21 @@ class LoginRegisterVC: UIViewController {
     
     // Free http://uifaces.com/authorized profile pictures
     let userProfileImageURLs =  ["https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/nedknowles/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/zack415/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/nuraika/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/raquelromanp/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/geeftvorm/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/hellgy/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg"]
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/nedknowles/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/zack415/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/nuraika/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/raquelromanp/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/geeftvorm/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/hellgy/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         // Show navigationBar again when view disappears
         self.navigationController?.navigationBarHidden = false
@@ -71,14 +71,13 @@ class LoginRegisterVC: UIViewController {
                     self.appDel.rxTapglue.loginUser(usr.username!, password: usr.password!).subscribe({ (event) in
                         switch event {
                         case .Next( _):
-                            print("Go to next screen")
+                            print("Next")
                         case .Error(let error):
                             self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                         case .Completed:
-                            print("Completed Login")
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.navigationController?.popToRootViewControllerAnimated(false)
-                            })
+                            print("Completed")
+                            
+                            self.navigationController?.popToRootViewControllerAnimated(false)
                         }
                     }).addDisposableTo(self.appDel.disposeBag)
                 case .Error(let error):
@@ -86,10 +85,15 @@ class LoginRegisterVC: UIViewController {
                 case .Completed:
                     break
                 }
-            }.addDisposableTo(self.appDel.disposeBag)
+                }.addDisposableTo(self.appDel.disposeBag)
             
         } else {
-            print("Not enough characters")
+            
+            let alertController = UIAlertController(title: "Fill form correctly", message:
+                "Use at least 3 characters for every field.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }
@@ -99,19 +103,19 @@ extension LoginRegisterVC: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Jump to the next textField, when you press next
         switch textField.tag {
-            case 0:
-                firstNameTextField.becomeFirstResponder()
-            case 1:
-                lastNameTextField.becomeFirstResponder()
-            case 2:
-                aboutTextField.becomeFirstResponder()
-            case 3:
-                emailTextField.becomeFirstResponder()
-            case 4:
-                passwordTextField.becomeFirstResponder()
-            case 5:
-                textField.resignFirstResponder()
-            default: print("default was triggered")
+        case 0:
+            firstNameTextField.becomeFirstResponder()
+        case 1:
+            lastNameTextField.becomeFirstResponder()
+        case 2:
+            aboutTextField.becomeFirstResponder()
+        case 3:
+            emailTextField.becomeFirstResponder()
+        case 4:
+            passwordTextField.becomeFirstResponder()
+        case 5:
+            textField.resignFirstResponder()
+        default: print("default")
         }
         
         return false

@@ -14,36 +14,35 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
-        
+    
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
     var userInformation = []
     var currentUser: User!
     var updatedUser: User!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = appDel.rxTapglue.currentUser
         updatedUser = currentUser
         
         userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, currentUser.about!, currentUser.email!]
-
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
-
+    
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
         // Update current user information
         appDel.rxTapglue.updateCurrentUser(updatedUser!).subscribe { (event) in
             switch event {
-            case .Next(let usr):
+            case .Next( _):
                 print("Next")
-                print(usr.about)
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -55,15 +54,15 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     @IBAction func logoutButtonPressed(sender: UIButton) {
         appDel.rxTapglue.logout().subscribe { (event) in
             switch event {
-            case .Next(let element):
-                print(element)
+            case .Next( _):
+                print("Next")
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
     // Mark: Keyboard methods(update button will enabled, if keyboard is dismissed)

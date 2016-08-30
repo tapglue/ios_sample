@@ -125,17 +125,17 @@
                                                             </constraints>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0p3-om-sxV">
-                                                            <rect key="frame" x="15" y="88" width="570" height="32"/>
+                                                            <rect key="frame" x="15" y="86" width="570" height="34"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="32" id="VwF-we-5cp"/>
+                                                                <constraint firstAttribute="height" constant="34" id="VwF-we-5cp"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="iBX-ok-G9Z" secondAttribute="trailing" constant="15" id="0bd-f4-tHp"/>
-                                                        <constraint firstItem="0p3-om-sxV" firstAttribute="top" secondItem="b0b-Wi-4iX" secondAttribute="bottom" constant="2" id="199-VI-CxJ"/>
+                                                        <constraint firstItem="0p3-om-sxV" firstAttribute="top" secondItem="b0b-Wi-4iX" secondAttribute="bottom" id="199-VI-CxJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="b0b-Wi-4iX" secondAttribute="trailing" constant="15" id="1gs-sq-wp9"/>
                                                         <constraint firstItem="ehp-1O-TuZ" firstAttribute="centerX" secondItem="ba1-sX-Vc9" secondAttribute="centerX" id="9aH-Gf-nlE"/>
                                                         <constraint firstItem="RRW-vG-123" firstAttribute="top" secondItem="OEb-my-dIF" secondAttribute="top" constant="8" id="AvT-XM-yPV"/>
@@ -250,9 +250,9 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGf-N3-FqB">
-                                                            <rect key="frame" x="8" y="307" width="584" height="32"/>
+                                                            <rect key="frame" x="8" y="305" width="584" height="34"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="32" id="44v-Yl-VDY"/>
+                                                                <constraint firstAttribute="height" constant="34" id="44v-Yl-VDY"/>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-ei-iPF">

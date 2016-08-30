@@ -44,24 +44,24 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
         configureFacebook()
         
         switch currentSelectedNetwork {
-            case "Contacts":
-                self.searchForUserByEmail()
-            case "Facebook":
-                let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
-                
-                if facebookPermission {
-                    self.returnUserFriendsData()
-                } else {
-                    // Show facebookLoginButton
-                    facebookLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
-                    facebookLogInButton.layer.masksToBounds = true
-                    facebookLogInButton.layer.cornerRadius = 4
-                    self.view.addSubview(facebookLogInButton)
-                }
-            default: print("More then expected switches")
+        case "Contacts":
+            self.searchForUserByEmail()
+        case "Facebook":
+            let facebookPermission = defaults.objectForKey("facebookPermission") as! Bool
+            
+            if facebookPermission {
+                self.returnUserFriendsData()
+            } else {
+                // Show facebookLoginButton
+                facebookLogInButton.frame = CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height / 2 - 25, 200, 50)
+                facebookLogInButton.layer.masksToBounds = true
+                facebookLogInButton.layer.cornerRadius = 4
+                self.view.addSubview(facebookLogInButton)
+            }
+        default: print("default")
         }
     }
- 
+    
     // SearchForUserByEmail and reload tableview if user was found
     func searchForUserByEmail() {
         readAddressBookByEmail()
@@ -74,14 +74,11 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
-                dispatch_async(dispatch_get_main_queue()) {
-                    // TO-DO delete animation if not needed
-                    //                    self.reloadTableViewWithAnimation()
-                    self.friendsTableView.reloadData()
-                }
+                print("Completed")
+                
+                self.friendsTableView.reloadData()
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
     // ReadAddressBookByEmail and saving contacts in dicionary
@@ -90,7 +87,7 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
             try contactStore.enumerateContactsWithFetchRequest(CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey])) {
                 (contact, cursor) -> Void in
                 if (!contact.emailAddresses.isEmpty){
-                    print(contact)
+                    
                     var itemCount = 0
                     for item in contact.emailAddresses {
                         itemCount += 1
@@ -120,7 +117,6 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                 if ((error) != nil){
                     // error
                     print("Error: \(error)")
-                    print("Connection: \(connection)")
                 } else {
                     let resultdict = result as! NSDictionary
                     let data: NSArray = resultdict.objectForKey("data") as! NSArray
@@ -138,27 +134,27 @@ class FindUsersVC: UIViewController, UITableViewDelegate {
                     
                     // OldSDK - TODO: FacebookTODO and TapglueFindFriends
                     // add friends that are found
-//                    Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyFacebook, withSocialUsersIds: self.friendsFromFacebook, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
-//                        if error != nil {
-//                            print("\nError searchUsersOnSocialPlatform: \(error)")
-//                        }
-//                        else {
-//                            print("\nSuccessful-facebook friends: \(facebookUsers)")
-//                            
-//                            self.users.removeAll(keepCapacity: false)
-//                            self.users = facebookUsers as! [TGUser]
-//                            
-//                            self.users.sortInPlace({ (contact1, contact2) -> Bool in
-//                                return contact1.username < contact2.username
-//                            })
-//                            
-//                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                                self.facebookLogInButton.hidden = true
-//                                
-//                                self.reloadTableViewWithAnimation()
-//                            })
-//                        }
-//                    })
+                    //                    Tapglue.searchUsersOnSocialPlatform(TGPlatformKeyFacebook, withSocialUsersIds: self.friendsFromFacebook, andCompletionBlock: { (facebookUsers: [AnyObject]!, error: NSError!) -> Void in
+                    //                        if error != nil {
+                    //                            print("\nError searchUsersOnSocialPlatform: \(error)")
+                    //                        }
+                    //                        else {
+                    //                            print("\nSuccessful-facebook friends: \(facebookUsers)")
+                    //
+                    //                            self.users.removeAll(keepCapacity: false)
+                    //                            self.users = facebookUsers as! [TGUser]
+                    //
+                    //                            self.users.sortInPlace({ (contact1, contact2) -> Bool in
+                    //                                return contact1.username < contact2.username
+                    //                            })
+                    //
+                    //                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    //                                self.facebookLogInButton.hidden = true
+                    //
+                    //                                self.reloadTableViewWithAnimation()
+                    //                            })
+                    //                        }
+                    //                    })
                 }
             })
         }
@@ -174,11 +170,11 @@ extension FindUsersVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch currentSelectedNetwork {
-            case "Contacts":
-                return contacts.count
-            case "Facebook":
-                return users.count
-            default: return 0
+        case "Contacts":
+            return contacts.count
+        case "Facebook":
+            return users.count
+        default: return 0
         }
     }
     
@@ -186,23 +182,23 @@ extension FindUsersVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FindUsersTableViewCell
         
         switch currentSelectedNetwork {
-            case "Contacts":
+        case "Contacts":
+            
+            // Show users that use the app in the right cell
+            for usr in users {
+                let tempContact = contacts[indexPath.row]
                 
-                // Show users that use the app in the right cell
-                for usr in users {
-                    let tempContact = contacts[indexPath.row]
-                    
-                    if usr.email == tempContact["email"] {
-                        cell.configureCellWithUserFromContactsThatUsesApp(contacts[indexPath.row], user: usr)
-                        break
-                    } else {
-                        cell.configureCellWithUserFromContacts(contacts[indexPath.row])
-                    }
+                if usr.email == tempContact["email"] {
+                    cell.configureCellWithUserFromContactsThatUsesApp(contacts[indexPath.row], user: usr)
+                    break
+                } else {
+                    cell.configureCellWithUserFromContacts(contacts[indexPath.row])
                 }
-
-            case "Facebook":
-                let user = self.users[indexPath.row]
-                cell.configureCellWithUserToFriendOrFollow(user)
+            }
+            
+        case "Facebook":
+            let user = self.users[indexPath.row]
+            cell.configureCellWithUserToFriendOrFollow(user)
             
         default: print("more then expected segments")
         }
@@ -235,7 +231,7 @@ extension FindUsersVC: FBSDKLoginButtonDelegate {
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), id, bio"]).startWithCompletionHandler { (connection, result, error) -> Void in
             
             if error != nil{
-                print(error)
+                print("Error: \(error)")
             } else {
                 self.facebookID = (result.objectForKey("id") as? String)!
                 print(self.facebookID)
@@ -244,26 +240,26 @@ extension FindUsersVC: FBSDKLoginButtonDelegate {
                 
                 print("https://graph.facebook.com/\(self.facebookID)/picture?type=large")
                 
-//                // Init CurrentUser
-//                let currentUser = self.appDel.rxTapglue.currentUser!
+                //                // Init CurrentUser
+                //                let currentUser = self.appDel.rxTapglue.currentUser!
                 
                 
                 // OldSDK - TODO: FacebookTODO
-//                // Get facebook about and at to currentUserMetadata
-//                if result.objectForKey("bio") != nil {
-//                    let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
-//                    currentUser.metadata = about
-//                }
-//                // Add Facebook ImageURL to currentUser
-//                let userImage = TGImage()
-//                userImage.url = "https://graph.facebook.com/\(self.facebookID)/picture?type=large"
-//                currentUser.images.setValue(userImage, forKey: "profilePic")
-//                // Add socialID to currentUser
-//                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
-//                // Update currentUser
-//                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
-//                    print(success)
-//                })
+                //                // Get facebook about and at to currentUserMetadata
+                //                if result.objectForKey("bio") != nil {
+                //                    let about: [NSObject : AnyObject!] = ["about" : (result.objectForKey("bio") as? String)!]
+                //                    currentUser.metadata = about
+                //                }
+                //                // Add Facebook ImageURL to currentUser
+                //                let userImage = TGImage()
+                //                userImage.url = "https://graph.facebook.com/\(self.facebookID)/picture?type=large"
+                //                currentUser.images.setValue(userImage, forKey: "profilePic")
+                //                // Add socialID to currentUser
+                //                currentUser.setSocialId(self.facebookID, forKey: TGPlatformKeyFacebook)
+                //                // Update currentUser
+                //                currentUser.saveWithCompletionBlock({ (success: Bool, error: NSError!) -> Void in
+                //                    print(success)
+                //                })
             }
             
         }

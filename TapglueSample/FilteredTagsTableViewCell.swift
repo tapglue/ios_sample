@@ -35,29 +35,29 @@ class FilteredTagsTableViewCell: UITableViewCell {
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     @IBAction func likeButtonPressed(sender: UIButton) {
         if likeButton.selected == true {
             // Delete like of post
             appDel.rxTapglue.deleteLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     self.delegate?.updateFilteredTableViewData()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -70,17 +70,15 @@ class FilteredTagsTableViewCell: UITableViewCell {
             // Create like of post
             appDel.rxTapglue.createLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     self.delegate?.updateFilteredTableViewData()
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.likeButton.selected = true
-                    })
+                    self.likeButton.selected = true
                 }
             }).addDisposableTo(self.appDel.disposeBag)
         }

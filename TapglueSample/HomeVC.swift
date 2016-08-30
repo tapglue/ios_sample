@@ -10,7 +10,7 @@ import UIKit
 import Tapglue
 
 class HomeVC: UIViewController, UITableViewDelegate{
-
+    
     @IBOutlet weak var homeTableView: UITableView!
     
     var posts: [Post] = []
@@ -58,12 +58,10 @@ class HomeVC: UIViewController, UITableViewDelegate{
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.homeTableView.reloadData()
-                    self.refreshControl.endRefreshing()
-                })
+                self.homeTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 
@@ -85,8 +83,7 @@ extension HomeVC: UITableViewDataSource {
         if self.posts[indexPath.row].attachments!.count <= 1 {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("PostWithStatusCell", forIndexPath: indexPath) as! PostWithStatusTableViewCell
-
-//            self.homeTableView.rowHeight = cell.frame.height
+            
             self.homeTableView.estimatedRowHeight = cell.frame.height
             
             cell.configureViewWithPost(self.posts[indexPath.row])
@@ -95,10 +92,9 @@ extension HomeVC: UITableViewDataSource {
             
             return cell
         } else {
-            print("image attachments")
+            
             let cell = tableView.dequeueReusableCellWithIdentifier("PostWithImageCell", forIndexPath: indexPath) as! PostWithImageTableViewCell
             
-//            self.homeTableView.rowHeight = cell.frame.height
             self.homeTableView.estimatedRowHeight = cell.frame.height
             
             cell.configureViewWithPost(self.posts[indexPath.row])
@@ -113,7 +109,7 @@ extension HomeVC: UITableViewDataSource {
         let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
         let pdVC =
             storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
-            as! PostDetailVC
+                as! PostDetailVC
         
         pdVC.post = posts[indexPath.row]
         pdVC.usr = posts[indexPath.row].user
@@ -121,14 +117,18 @@ extension HomeVC: UITableViewDataSource {
         self.navigationController?.pushViewController(pdVC, animated: true)
     }
     
-    // Remove buttons that are created dynamically
-//    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
-//        
-//        for view in cell.postViewWithImage.tagsView.subviews {
-//            view.removeFromSuperview()
-//        }
-//    }
+    // Remove dynamically created buttons
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let postImageCell = tableView.dequeueReusableCellWithIdentifier("PostWithImageCell", forIndexPath: indexPath) as! PostWithImageTableViewCell
+        for view in postImageCell.tagsView.subviews {
+            view.removeFromSuperview()
+        }
+        
+        let postStatusCell = tableView.dequeueReusableCellWithIdentifier("PostWithStatusCell", forIndexPath: indexPath) as! PostWithStatusTableViewCell
+        for view in postStatusCell.tagsView.subviews {
+            view.removeFromSuperview()
+        }
+    }
 }
 
 
@@ -154,12 +154,10 @@ extension HomeVC: PostStatusViewDataUpdater {
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.homeTableView.reloadData()
-                    self.refreshControl.endRefreshing()
-                })
+                self.homeTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
     func showPostsWithStatusShareOptions(post: Post) {
@@ -197,10 +195,8 @@ extension HomeVC: PostImageViewDataUpdater {
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.homeTableView.reloadData()
-                    self.refreshControl.endRefreshing()
-                })
+                self.homeTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
             }.addDisposableTo(self.appDel.disposeBag)
     }

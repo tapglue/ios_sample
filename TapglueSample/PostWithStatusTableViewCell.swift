@@ -21,10 +21,6 @@ class PostWithStatusTableViewCell: UITableViewCell {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
-    var completionHandler: AWSS3TransferUtilityDownloadCompletionHandlerBlock?
-    
-    var awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/"
-    
     var delegate: PostStatusViewDataUpdater?
     
     var cellPost: Post!
@@ -53,17 +49,15 @@ class PostWithStatusTableViewCell: UITableViewCell {
             // Delete like of post
             appDel.rxTapglue.deleteLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     self.delegate?.updatePostsWithStatusTableViewData()
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.likeButton.selected = false
-                    })
+                    self.likeButton.selected = false
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
@@ -71,17 +65,15 @@ class PostWithStatusTableViewCell: UITableViewCell {
             // Create like of post
             appDel.rxTapglue.createLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     self.delegate?.updatePostsWithStatusTableViewData()
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.likeButton.selected = true
-                    })
+                    self.likeButton.selected = true
                 }
             }).addDisposableTo(self.appDel.disposeBag)
         }
@@ -108,7 +100,6 @@ class PostWithStatusTableViewCell: UITableViewCell {
     
     // Configure Cell with Post data
     func configureViewWithPost(post: Post!){
-        print(post)
         
         cellPost = post
         
@@ -189,24 +180,27 @@ class PostWithStatusTableViewCell: UITableViewCell {
         var x: CGFloat = 0
         for tag in tags {
             let button = UIButton(type: .System)
-            button.frame = CGRectMake(x, 4, 60, 24)
-            button.layer.cornerRadius = 12
+            let extraWidthForButton: CGFloat = 20
+            let spaceBetweenButtons: CGFloat = 8
+            
+            button.layer.cornerRadius = 13
             button.layer.masksToBounds = true
             button.backgroundColor = UIColor(white:0.92, alpha:1.0)
             button.tintColor = .darkGrayColor()
             button.titleLabel?.font = UIFont(name:"HelveticaNeue-Light", size: 13.0)
             button.setTitle(tag, forState: UIControlState.Normal)
+            button.frame = CGRectMake(x, 4, (button.titleLabel?.intrinsicContentSize().width)! + extraWidthForButton, 26)
+            
             button.addTarget(self, action: #selector(PostWithStatusTableViewCell.tagPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             
             self.tagsView.addSubview(button)
             
-            x += 68
+            x += (button.titleLabel?.intrinsicContentSize().width)! + extraWidthForButton + spaceBetweenButtons
         }
         
     }
     
     func tagPressed(sender:UIButton) {
-        print("acion was pressed \(sender.titleLabel?.text!)")
         // TODO: filterPostTags
         let tag = sender.titleLabel?.text!
         let tags: [String] = [tag!]
@@ -214,9 +208,7 @@ class PostWithStatusTableViewCell: UITableViewCell {
             switch event {
             case .Next(let posts):
                 print("Next")
-                for post in posts {
-                    print("filterdPosts: \(post.attachments![0].contents!["en"])")
-                }
+                
                 let rootViewController = self.window!.rootViewController as! UINavigationController
                 let storyboard = UIStoryboard(name: "FilteredTags", bundle: nil)
                 let pdVC =
@@ -231,9 +223,9 @@ class PostWithStatusTableViewCell: UITableViewCell {
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 

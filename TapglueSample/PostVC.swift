@@ -14,7 +14,7 @@ import AWSS3
 class PostVC: UIViewController, UINavigationControllerDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
-
+    
     @IBOutlet weak var visibilitySegmentedControl: UISegmentedControl!
     @IBOutlet weak var postTextField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
@@ -49,7 +49,7 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         // Enable postUIBarButton
         postUIBarButton.enabled = false
-
+        
         postTextField.becomeFirstResponder()
         
         addWSTagsField()
@@ -62,13 +62,13 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
         if postBeginEditing {
             postTextField.text = tempPost.attachments![0].contents!["en"]
             switch tempPost.visibility!.rawValue {
-                case 10:
-                    visibilitySegmentedControl.selectedSegmentIndex = 0
-                case 20:
-                    visibilitySegmentedControl.selectedSegmentIndex = 1
-                case 30:
-                    visibilitySegmentedControl.selectedSegmentIndex = 2
-            default: print("More then expected switches")
+            case 10:
+                visibilitySegmentedControl.selectedSegmentIndex = 0
+            case 20:
+                visibilitySegmentedControl.selectedSegmentIndex = 1
+            case 30:
+                visibilitySegmentedControl.selectedSegmentIndex = 2
+            default: print("default")
             }
             
             if let tags = tempPost.tags {
@@ -82,7 +82,6 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func cameraButtonPressed(sender: UIButton) {
-        print("camera pressed")
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         
@@ -96,7 +95,6 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
             if tagsField.tags.count != 0 {
                 for tag in tagsField.tags {
                     tagArr.append(tag.text)
-                    print(tagArr.count)
                 }
             }
             
@@ -106,27 +104,27 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
                 tempPost.attachments = [attachment]
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
-                    case 0:
-                        tempPost.visibility = Visibility.Private
-                    case 1:
-                        tempPost.visibility = Visibility.Connections
-                    case 2:
-                        tempPost.visibility = Visibility.Public
-                    default: "More options then expected"
+                case 0:
+                    tempPost.visibility = Visibility.Private
+                case 1:
+                    tempPost.visibility = Visibility.Connections
+                case 2:
+                    tempPost.visibility = Visibility.Public
+                default: "More options then expected"
                 }
                 
                 // Update edited post
                 appDel.rxTapglue.updatePost(tempPost.id!, post: tempPost).subscribe({ (event) in
                     switch event {
-                    case .Next(let post):
-                        print(post)
+                    case .Next( _):
+                        print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
                         break
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
-
+                
             } else {
                 var attachments: [Attachment] = []
                 if postImageView.image != nil {
@@ -141,20 +139,20 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
                 post.tags = tagArr
                 
                 switch visibilitySegmentedControl.selectedSegmentIndex {
-                    case 0:
-                        post.visibility = Visibility.Private
-                    case 1:
-                        post.visibility = Visibility.Connections
-                    case 2:
-                        post.visibility = Visibility.Public
-                    default: "More options then expected"
+                case 0:
+                    post.visibility = Visibility.Private
+                case 1:
+                    post.visibility = Visibility.Connections
+                case 2:
+                    post.visibility = Visibility.Public
+                default: "More options then expected"
                 }
                 
                 // Create new post
                 appDel.rxTapglue.createPost(post).subscribe({ (event) in
                     switch event {
-                    case .Next(let post):
-                        print(post)
+                    case .Next( _):
+                        print("Next")
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                     case .Completed:
@@ -162,7 +160,7 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
                     }
                 }).addDisposableTo(self.appDel.disposeBag)
             }
-
+            
             resignKeyboardAndDismissVC()
         } else {
             showAlert()
@@ -172,7 +170,7 @@ class PostVC: UIViewController, UINavigationControllerDelegate {
     @IBAction func dismissVC(sender: AnyObject) {
         resignKeyboardAndDismissVC()
     }
- 
+    
     func resignKeyboardAndDismissVC(){
         postTextField.resignFirstResponder()
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -212,8 +210,6 @@ extension PostVC: UITextFieldDelegate {
         let textFieldText = textField.text
         
         postText = textFieldText!
-                
-        print(postText)
         
         textField.resignFirstResponder()
         
@@ -247,10 +243,9 @@ extension PostVC: UIImagePickerControllerDelegate {
             
             //getting details of image
             let uploadFileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-            print(uploadFileURL)
             
             let imageName = uploadFileURL.lastPathComponent
-            print(imageName)
+            
             let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
             
             // getting local path

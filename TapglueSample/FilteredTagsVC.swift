@@ -22,10 +22,10 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
     var resultSearchController: UISearchController!
     
     let tagsField = WSTagsField()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addWSTagsField()
         
         // Events
@@ -42,7 +42,6 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
         var tempTags: [String] = []
         
         for wsTag in self.tagsField.tags {
-            print(wsTag.text)
             tempTags.append(wsTag.text)
         }
         
@@ -53,14 +52,11 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
                 self.posts.removeAll(keepCapacity: false)
                 self.posts = posts
                 
-                print(posts.count)
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.filteredTableView.reloadData()
-                })
+                self.filteredTableView.reloadData()
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
             }
             }.addDisposableTo(self.appDel.disposeBag)
     }
@@ -81,25 +77,25 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
         
         self.filteredTableView.tableHeaderView = tagsField
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     
-
+    
 }
 
 extension FilteredTagsVC: UITableViewDataSource {

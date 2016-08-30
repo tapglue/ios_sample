@@ -108,7 +108,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="575-Ds-Ygw">
-                                        <rect key="frame" x="0.0" y="84" width="600" height="3"/>
+                                        <rect key="frame" x="0.0" y="83" width="600" height="4"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,7 +132,7 @@
                                     <constraint firstItem="uuO-Ak-JwP" firstAttribute="leading" secondItem="Pmp-fL-DzJ" secondAttribute="leading" id="h2P-GW-QKg"/>
                                     <constraint firstAttribute="trailing" secondItem="575-Ds-Ygw" secondAttribute="trailing" id="pAa-PZ-vl2"/>
                                     <constraint firstAttribute="height" constant="132" id="pUh-fk-dAj"/>
-                                    <constraint firstItem="575-Ds-Ygw" firstAttribute="top" secondItem="jb0-sw-Xxl" secondAttribute="bottom" constant="2" id="q09-0t-5Qh"/>
+                                    <constraint firstItem="575-Ds-Ygw" firstAttribute="top" secondItem="jb0-sw-Xxl" secondAttribute="bottom" constant="1" id="q09-0t-5Qh"/>
                                     <constraint firstItem="Pmp-fL-DzJ" firstAttribute="top" secondItem="tSe-am-MG9" secondAttribute="top" constant="8" id="qKp-Do-R18"/>
                                     <constraint firstItem="31d-eU-vZI" firstAttribute="top" secondItem="575-Ds-Ygw" secondAttribute="bottom" constant="2" id="sYQ-H5-pWk"/>
                                     <constraint firstItem="5tY-Rx-USq" firstAttribute="leading" secondItem="tSe-am-MG9" secondAttribute="leading" constant="8" id="stZ-qo-cdS"/>

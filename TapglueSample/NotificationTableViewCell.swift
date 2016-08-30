@@ -15,7 +15,7 @@ class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,7 +36,7 @@ class NotificationTableViewCell: UITableViewCell {
             if let profileImages = activity.user?.images {
                 self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }
-        
+            
         case "tg_follow":
             if let targetUser = activity.targetUser {
                 eventNameLabel.text = activityUser! + " is now following " + targetUser.username!
@@ -45,7 +45,7 @@ class NotificationTableViewCell: UITableViewCell {
             if let profileImages = activity.user?.images {
                 self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }
-        
+            
         case "tg_like":
             self.eventNameLabel.text = activityUser! + " liked a Post"
             self.eventTypeImageView.image = UIImage(named: "LikeFilledRed")
@@ -54,7 +54,7 @@ class NotificationTableViewCell: UITableViewCell {
             self.eventNameLabel.text = activityUser! + " commented on your Post"
             self.eventTypeImageView.image = UIImage(named: "ChatFilled")
             
-            default: print("Unkown event type")
+        default: print("default")
         }
     }
 }

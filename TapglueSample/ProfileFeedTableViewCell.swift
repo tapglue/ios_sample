@@ -21,28 +21,22 @@ class ProfileFeedTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     func configureCellWithPost(post: Post!){
         clearLabels()
         
         let attachments = post.attachments
         self.infoLabel.text = attachments![0].contents!["en"]
         self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
-    
+        
         // String to elapsed time
         self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
     }
-
+    
     func configureCellWithEvent(activity: Activity!){
         clearLabels()
         
         self.dateLabel.text = activity.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
-        
-        let targetUsername = activity.targetUser
-        print(targetUsername)
-        print("Type: \(activity.type!)")
-        print(activity.user?.id!)
-        print(activity.post?.user?.username)
         
         switch activity.type! {
         case "tg_friend":
@@ -65,10 +59,10 @@ class ProfileFeedTableViewCell: UITableViewCell {
                 self.typeLabel.text = "Commented"
                 self.infoLabel.text = "You commented on " + (activity.post?.user?.username!)! + "'s post"
             }
-        default: print("More event types then expected")
+        default: print("default")
         }
     }
-
+    
     func clearLabels(){
         self.typeLabel.text = ""
         self.infoLabel.text = ""

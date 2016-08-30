@@ -12,7 +12,7 @@ import Tapglue
 class UsersVC: UIViewController, UITableViewDelegate {
     
     var users: [User] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

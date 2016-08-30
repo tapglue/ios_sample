@@ -15,7 +15,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userCommentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +27,7 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
         
         // String to elapsed time
         dateLabel.text = comment.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
-       
+        
         if let profileImages = comment.user?.images {
             self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }

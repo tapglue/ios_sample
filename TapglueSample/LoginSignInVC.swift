@@ -13,7 +13,7 @@ class LoginSignInVC: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class LoginSignInVC: UIViewController {
         // If textFields have more then 2 characters, begin Tapglue login
         if userNameTextField.text?.characters.count > 2 &&
             passwordTextField.text?.characters.count > 2 {
-            1
+            
             let username = userNameTextField.text!
             let password = passwordTextField.text!
             
@@ -40,16 +40,37 @@ class LoginSignInVC: UIViewController {
                     print("User logged in: \(user)")
                     
                 case .Error(let error):
-                    print("Login error: \(error)")
+                    let err = error as! TapglueError
+                    
+                    switch err.code! {
+                    case 1001:
+                        let alertController = UIAlertController(title: "Error", message:
+                            "User does not exist.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+                        
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    case 0:
+                        let alertController = UIAlertController(title: "Error", message:
+                            "Wrong password.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+                        
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    default:
+                        "Error code was not added to switch"
+                    }
+                    
                 case .Completed:
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.navigationController?.popToRootViewControllerAnimated(false)
-                    })
+                    self.navigationController?.popToRootViewControllerAnimated(false)
                 }
             }).addDisposableTo(self.appDel.disposeBag)
-
+            
         } else {
-            print("Please enter all details and select an avatar")
+            
+            let alertController = UIAlertController(title: "Not enough characters", message:
+                "Username and Password must be at least 3 characters.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }

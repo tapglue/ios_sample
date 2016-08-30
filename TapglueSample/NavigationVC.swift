@@ -15,10 +15,10 @@ class NavigationVC: UINavigationController {
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
     let defaults = NSUserDefaults.standardUserDefaults()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {

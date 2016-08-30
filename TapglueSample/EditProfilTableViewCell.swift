@@ -19,7 +19,7 @@ protocol UpdateUserDelegate {
 }
 
 class EditProfilTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var userInfoTitleLabel: UILabel!
     @IBOutlet weak var userInfoEditTextField: UITextField!
     
@@ -33,17 +33,17 @@ class EditProfilTableViewCell: UITableViewCell {
     
     func changeUserInformation(tf: UITextField){
         switch tf.tag {
-            case 0:
-                delegate?.updateUsername(tf)
-            case 1:
-                delegate?.updateFirstname(tf)
-            case 2:
-                delegate?.updateLastname(tf)
-            case 3:
-                delegate?.updateAbout(tf)
-            case 4:
-                delegate?.updateEmail(tf)
-            default: print("More then expected switches")
+        case 0:
+            delegate?.updateUsername(tf)
+        case 1:
+            delegate?.updateFirstname(tf)
+        case 2:
+            delegate?.updateLastname(tf)
+        case 3:
+            delegate?.updateAbout(tf)
+        case 4:
+            delegate?.updateEmail(tf)
+        default: print("default")
         }
     }
 }

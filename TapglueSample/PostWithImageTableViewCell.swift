@@ -18,23 +18,19 @@ protocol PostImageViewDataUpdater {
 }
 
 class PostWithImageTableViewCell: UITableViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
-    
-    var completionHandler: AWSS3TransferUtilityDownloadCompletionHandlerBlock?
-    
-    var awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/"
     
     var delegate: PostImageViewDataUpdater?
     
@@ -60,23 +56,20 @@ class PostWithImageTableViewCell: UITableViewCell {
     
     
     
-    
     @IBAction func likeButtonPressed(sender: UIButton) {
         if likeButton.selected == true {
             // Delete like of post
             appDel.rxTapglue.deleteLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     self.delegate?.updatePostsWithImageTableViewData()
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.likeButton.selected = false
-                    })
+                    self.likeButton.selected = false
                 }
             }).addDisposableTo(self.appDel.disposeBag)
             
@@ -84,17 +77,15 @@ class PostWithImageTableViewCell: UITableViewCell {
             // Create like of post
             appDel.rxTapglue.createLike(forPostId: cellPost.id!).subscribe({ (event) in
                 switch event {
-                case .Next(let element):
-                    print(element)
+                case .Next( _):
+                    print("Next")
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do tha action")
+                    print("Completed")
                     self.delegate?.updatePostsWithImageTableViewData()
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.likeButton.selected = true
-                    })
+                    self.likeButton.selected = true
                 }
             }).addDisposableTo(self.appDel.disposeBag)
         }
@@ -121,7 +112,6 @@ class PostWithImageTableViewCell: UITableViewCell {
     
     // Configure Cell with Post data
     func configureViewWithPost(post: Post!){
-        print(post)
         
         cellPost = post
         
@@ -163,12 +153,9 @@ class PostWithImageTableViewCell: UITableViewCell {
         // PostImageURL
         for att in postAttachments {
             if att.name == "image" {
-                let imgURL = awsHost + att.contents!["en"]!
-                print(imgURL)
+                let imgURL = appDel.awsHost + att.contents!["en"]!
                 
-                //                dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.postImageView.kf_setImageWithURL(NSURL(string: imgURL))
-                //                })
             }
         }
         
@@ -217,24 +204,29 @@ class PostWithImageTableViewCell: UITableViewCell {
         var x: CGFloat = 0
         for tag in tags {
             let button = UIButton(type: .System)
-            button.frame = CGRectMake(x, 4, 60, 24)
-            button.layer.cornerRadius = 12
+            let extraWidthForButton: CGFloat = 20
+            let spaceBetweenButtons: CGFloat = 8
+            
+            button.layer.cornerRadius = 13
             button.layer.masksToBounds = true
             button.backgroundColor = .whiteColor()
             button.tintColor = .lightGrayColor()
             button.titleLabel?.font = UIFont(name:"HelveticaNeue-Light", size: 13.0)
             button.setTitle(tag, forState: UIControlState.Normal)
+            button.frame = CGRectMake(x, 4, (button.titleLabel?.intrinsicContentSize().width)! + extraWidthForButton, 26)
+            
             button.addTarget(self, action: #selector(PostWithImageTableViewCell.tagPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             
             self.tagsView.addSubview(button)
             
-            x += 68
+            
+            x += (button.titleLabel?.intrinsicContentSize().width)! + extraWidthForButton + spaceBetweenButtons
         }
         
     }
     
     func tagPressed(sender:UIButton) {
-        print("acion was pressed \(sender.titleLabel?.text!)")
+        
         // TODO: filterPostTags
         let tag = sender.titleLabel?.text!
         let tags: [String] = [tag!]
@@ -242,9 +234,7 @@ class PostWithImageTableViewCell: UITableViewCell {
             switch event {
             case .Next(let posts):
                 print("Next")
-                for post in posts {
-                    print("filterdPosts: \(post.attachments![0].contents!["en"])")
-                }
+                
                 let rootViewController = self.window!.rootViewController as! UINavigationController
                 let storyboard = UIStoryboard(name: "FilteredTags", bundle: nil)
                 let pdVC =
@@ -259,55 +249,8 @@ class PostWithImageTableViewCell: UITableViewCell {
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
             }
             }.addDisposableTo(self.appDel.disposeBag)
     }
-    
-    func downloadImageWithAWS(downloadKeyName: String) {
-        let S3DownloadKeyName: String = downloadKeyName
-        let S3BucketName: String = "tapglue-sample"
-        
-        self.postImageView.image = nil
-        
-        let expression = AWSS3TransferUtilityDownloadExpression()
-        expression.progressBlock = {(task, progress) in
-            dispatch_async(dispatch_get_main_queue(), {
-                print(progress)
-            })
-        }
-        
-        self.completionHandler = { (task, location, data, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                if ((error) != nil){
-                    NSLog("Error: %@",error!)
-                }
-                else{
-                    self.postImageView.image = UIImage(data: data!)
-                }
-            })
-        }
-        
-        let transferUtility = AWSS3TransferUtility.defaultS3TransferUtility()
-        
-        transferUtility.downloadDataFromBucket(
-            S3BucketName,
-            key: S3DownloadKeyName,
-            expression: expression,
-            completionHander: completionHandler).continueWithBlock { (task) -> AnyObject? in
-                if let error = task.error {
-                    print("Error: %@",error.localizedDescription)
-                }
-                if let exception = task.exception {
-                    print("Exception: %@",exception.description)
-                }
-                if let _ = task.result {
-                    print("Download Starting!")
-                    // Do something with uploadTask.
-                }
-                return nil
-        }
-    }
-    
-
 }

@@ -35,10 +35,10 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
     var sections = ["Find Friends", "Pending Requests"]
     var networks = ["Contacts", "Facebook"]
     let networkImages = ["AddressBookFilled", "FacebookFilled"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -68,7 +68,7 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
         reloadTableViewWithAnimation()
         
         self.resultSearchController.searchBar.hidden = false
-
+        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -79,7 +79,7 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
     @IBAction func conctactsBtnPressed(sender: UIButton) {
         let storyboard = UIStoryboard(name: "FindUsers", bundle: nil)
         let fuVC = storyboard.instantiateViewControllerWithIdentifier("FindUsersViewController")
-                as! FindUsersVC
+            as! FindUsersVC
         
         fuVC.currentSelectedNetwork = "Contacts"
         
@@ -115,8 +115,8 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
                     self.toUsers.append(out.userTo!)
                 }
                 
-//                print("From user: \(self.fromUsers)")
-//                print("To user: \(self.toUsers)")
+                //                print("From user: \(self.fromUsers)")
+                //                print("To user: \(self.toUsers)")
                 
                 // As an example we are just showing inbound friends request
                 self.users = self.fromUsers
@@ -125,16 +125,15 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
                     return contact1.username < contact2.username
                 })
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.reloadTableViewWithAnimation()
-                })
+                self.reloadTableViewWithAnimation()
+                
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
                 
             }
-        }.addDisposableTo(self.appDel.disposeBag)
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 
@@ -147,17 +146,17 @@ extension ConnectionVC: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ConnectionUserTableViewCell
         
-            if searchingForUser {
-                cell.searchingForUser = true
-                cell.configureCellWithUserToFriendOrFollow(self.users[indexPath.row])
-            } else {
-                cell.delegate = self
-                cell.selectionStyle = .None
-                cell.userNameLabel.text = self.users[indexPath.row].firstName
-                let user = self.users[indexPath.row]
-                cell.configureCellWithUserWithPendingConnection(user)
-            }
-
+        if searchingForUser {
+            cell.searchingForUser = true
+            cell.configureCellWithUserToFriendOrFollow(self.users[indexPath.row])
+        } else {
+            cell.delegate = self
+            cell.selectionStyle = .None
+            cell.userNameLabel.text = self.users[indexPath.row].firstName
+            let user = self.users[indexPath.row]
+            cell.configureCellWithUserWithPendingConnection(user)
+        }
+        
         
         return cell
         
@@ -199,16 +198,16 @@ extension ConnectionVC: UISearchResultsUpdating {
                 case .Next(let usr):
                     print("Next")
                     self.searchingForUser = true
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.users.removeAll(keepCapacity: false)
-                        self.users = usr
-                        
-                        self.reloadTableViewWithAnimation()
-                    })
+                    
+                    self.users.removeAll(keepCapacity: false)
+                    self.users = usr
+                    
+                    self.reloadTableViewWithAnimation()
+                    
                 case .Error(let error):
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
-                    print("Do the action")
+                    print("Completed")
                 }
                 
             }).addDisposableTo(self.appDel.disposeBag)
@@ -258,13 +257,13 @@ extension ConnectionVC: PendingConnectionsDelegate {
                     return contact1.username < contact2.username
                 })
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.reloadTableViewWithAnimation()
-                })
+                
+                self.reloadTableViewWithAnimation()
+                
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
             case .Completed:
-                print("Do the action")
+                print("Completed")
                 
             }
         }.addDisposableTo(self.appDel.disposeBag)
