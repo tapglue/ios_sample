@@ -32,20 +32,84 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var userProfileFeedTableView: UITableView!
     
+    @IBOutlet weak var followButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         showUserInfos(userProfile!)
         
         countFriendsFollowsAndFollowings()
         
         getEventsAndPostsOfCurrentUser()
+        
+        print(userProfile?.followedCount)
+        print(userProfile?.followerCount)
+        print(userProfile?.friendCount)
+        print(userProfile?.isFollowing)
+        print(userProfile?.isFollowed)
+        print(userProfile?.isFriend)
+        
+        
+        if userProfile!.isFollowed! {
+            print("Is following")
+            followingUserCustomizeButton()
+            self.followButton.selected = true
+        } else {
+            print("Is not following")
+            unfollowingUserCustomizeButton()
+            self.followButton.selected = false
+        }
     }
     
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
         self.userProfileFeedTableView.reloadData()
     }
+    
+    @IBAction func followButtonPressed(sender: UIButton) {
+        if sender.selected {
+            // Delete follow connection
+            appDel.rxTapglue.deleteConnection(toUserId: userProfile!.id!, type: .Follow).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Do the action")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        sender.selected = false
+                        self.unfollowingUserCustomizeButton()
+                    })
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+            
+        } else {
+            // Create follow connection
+            let connection = Connection(toUserId: userProfile!.id!, type: .Follow, state: .Confirmed)
+            
+            appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Do the action")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        sender.selected = true
+                        self.followingUserCustomizeButton()
+                    })
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+        }
+    }
+    
     
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
@@ -165,6 +229,15 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         friendsCountButton.setTitle(String(userProfile!.friendCount!) + " Friends", forState: .Normal)
         followerCountButton.setTitle(String(userProfile!.followerCount!) + " Follower", forState: .Normal)
         followingCountButton.setTitle(String(userProfile!.followedCount!) + " Following", forState: .Normal)
+    }
+    
+    func followingUserCustomizeButton(){
+        self.followButton.setTitle("Following", forState: .Selected)
+        self.followButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
+    }
+    func unfollowingUserCustomizeButton(){
+        self.followButton.setTitle("Follow", forState: .Normal)
+        self.followButton.backgroundColor = UIColor.lightGrayColor()
     }
 }
 
