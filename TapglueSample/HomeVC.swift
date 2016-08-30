@@ -32,6 +32,8 @@ class HomeVC: UIViewController, UITableViewDelegate{
         self.homeTableView.sendSubviewToBack(refreshControl)
         
         self.refreshControl?.beginRefreshing()
+        
+        homeTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,30 +79,34 @@ extension HomeVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
+        
         
         // Show the post with customPostStatusView or customPostImageView
-        if self.posts[indexPath.row].attachments!.count == 1 {
-            cell.postViewWithImage.hidden = true
-            cell.postViewWithStatus.hidden = false
-
-            cell.postViewWithStatus.configureViewWithPost(self.posts[indexPath.row])
-            // Listen custom delegate
-            cell.postViewWithStatus.delegate = self
-            self.homeTableView.rowHeight = 181
-        }
-        if self.posts[indexPath.row].attachments!.count == 2 {
-            print("image attachments")
-            cell.postViewWithStatus.hidden = true
-            cell.postViewWithImage.hidden = false
+        if self.posts[indexPath.row].attachments!.count <= 1 {
             
-            cell.postViewWithImage.configureViewWithPost(self.posts[indexPath.row])
+            let cell = tableView.dequeueReusableCellWithIdentifier("PostWithStatusCell", forIndexPath: indexPath) as! PostWithStatusTableViewCell
+
+//            self.homeTableView.rowHeight = cell.frame.height
+            self.homeTableView.estimatedRowHeight = cell.frame.height
+            
+            cell.configureViewWithPost(self.posts[indexPath.row])
             // Listen custom delegate
-            cell.postViewWithImage.delegate = self
-            self.homeTableView.rowHeight = 400
+            cell.delegate = self
+            
+            return cell
+        } else {
+            print("image attachments")
+            let cell = tableView.dequeueReusableCellWithIdentifier("PostWithImageCell", forIndexPath: indexPath) as! PostWithImageTableViewCell
+            
+//            self.homeTableView.rowHeight = cell.frame.height
+            self.homeTableView.estimatedRowHeight = cell.frame.height
+            
+            cell.configureViewWithPost(self.posts[indexPath.row])
+            // Listen custom delegate
+            cell.delegate = self
+            
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -116,13 +122,13 @@ extension HomeVC: UITableViewDataSource {
     }
     
     // Remove buttons that are created dynamically
-    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
-        
-        for view in cell.postViewWithImage.tagsView.subviews {
-            view.removeFromSuperview()
-        }
-    }
+//    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HomeTableViewCell
+//        
+//        for view in cell.postViewWithImage.tagsView.subviews {
+//            view.removeFromSuperview()
+//        }
+//    }
 }
 
 
