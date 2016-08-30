@@ -50,7 +50,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         if post != nil {
             print("PostDetail: \(post.userId)")
             fillPostDetailInformation()
-            retrieveAllCommentsForPost()
+            
         }
         
         // Show keyboard and start commenting
@@ -62,7 +62,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        retrieveAllCommentsForPost()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PostDetailVC.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PostDetailVC.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -74,6 +74,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func userNameButtonPressed(sender: UIButton) {
+        
         let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
         let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
@@ -301,7 +302,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 break
                 
             }
-            }.addDisposableTo(self.appDel.disposeBag)
+        }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 
