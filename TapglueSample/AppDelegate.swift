@@ -10,12 +10,14 @@ import UIKit
 import Tapglue
 import RxSwift
 import AWSS3
-
+import Whisper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
+    
+    let awsHost = "https://tapglue-sample.s3-eu-west-1.amazonaws.com/"
     
     let appToken = "02930ef5d193f8c78e5d8c7d80a5a9dc"
     let url = "https://api.tapglue.com"
@@ -29,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let cognitoAccountId = "775034650473"
     let cognitoIdentityPoolId = "eu-west-1:9b74dda9-5643-479c-a6c4-88d2871ec787"
     let region = AWSRegionType.EUWest1
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let config = Configuration()
@@ -74,17 +76,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register:", error)
     }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
-        if let urn = NSURL(string: userInfo["urn"] as! String) {
-            switch urn.pathComponents![1] {
-            case "posts":
-                retrievePostWithIDAndUserWithID(urn.pathComponents![urn.pathComponents!.indexOf("posts")!+1])
-            case "users":
-                retrieveUserWithID(urn.pathComponents![urn.pathComponents!.indexOf("users")!+1])
-            default: ""
+                
+        if application.applicationState == UIApplicationState.Active {
+            // Get message
+            if let aps = userInfo["aps"] as? NSDictionary {
+                if let alert = aps["alert"] as? NSString {
+                    
+                    let murmur = Murmur(title: alert as String)
+                    
+                    // Show and hide a message after delay
+                    show(whistle: murmur, action: .Show(3))
+                }
+            }
+        } else {
+            if let urn = NSURL(string: userInfo["urn"] as! String) {
+                switch urn.pathComponents![1] {
+                case "posts":
+                    retrievePostWithIDAndUserWithID(urn.pathComponents![urn.pathComponents!.indexOf("posts")!+1])
+                case "users":
+                    retrieveUserWithID(urn.pathComponents![urn.pathComponents!.indexOf("users")!+1])
+                default: ""
+                }
             }
         }
-    
     }
     
     //Mark: - Tapglue
@@ -136,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .Completed:
                 rootViewController.pushViewController(upVC, animated: false)
             }
-        }.addDisposableTo(self.disposeBag)
+            }.addDisposableTo(self.disposeBag)
     }
     
     func printOutErrorMessageAndCode(err: TapglueError?) {
