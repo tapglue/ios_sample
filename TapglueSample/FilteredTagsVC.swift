@@ -36,6 +36,8 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
         tagsField.onDidRemoveTag = { _ in
             self.filterPostByTags()
         }
+        
+        filteredTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func filterPostByTags() {
@@ -77,25 +79,6 @@ class FilteredTagsVC: UIViewController, UITableViewDelegate {
         
         self.filteredTableView.tableHeaderView = tagsField
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
-    
 }
 
 extension FilteredTagsVC: UITableViewDataSource {
@@ -109,14 +92,31 @@ extension FilteredTagsVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FilteredTagsTableViewCell
         
-        cell.configureCellWithPost(self.posts[indexPath.row])
-        
-        // Listen custom delegate
-        cell.delegate = self
-        
-        return cell
+        // Show the post with customPostStatusView or customPostImageView
+        if self.posts[indexPath.row].attachments!.count <= 1 {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("FilteredPostWithStatusCell", forIndexPath: indexPath) as! FilteredPostWithStatusTableViewCell
+            
+            self.filteredTableView.estimatedRowHeight = cell.frame.height
+            
+            cell.configureCellWithPost(self.posts[indexPath.row])
+            // Listen custom delegate
+            cell.delegate = self
+            
+            return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("FilteredPostWithImageCell", forIndexPath: indexPath) as! FilteredPostWithImageTableViewCell
+            
+            self.filteredTableView.estimatedRowHeight = cell.frame.height
+            
+            cell.configureCellWithPost(self.posts[indexPath.row])
+            // Listen custom delegate
+            cell.delegate = self
+            
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -133,14 +133,45 @@ extension FilteredTagsVC: UITableViewDataSource {
     }
 }
 
-extension FilteredTagsVC: FilteredCustomCellDataUpdater {
+extension FilteredTagsVC: FilteredPostWithStatusCellDataUpdater {
     // Mark: - Custom delegate to update data, if cell recieves like button or share button pressed
-    func updateFilteredTableViewData() {
+    func updateFilteredPostWithStatusTableViewData() {
         // Load All Posts from your connections
         filterPostByTags()
     }
     
-    func showFilteredShareOptions(post: Post) {
+    func showFilteredPostWithStatusShareOptions(post: Post) {
+        let postAttachment = post.attachments
+        let postText = postAttachment![0].contents!["en"]
+        let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(
+            activityItems: [postActivityItem], applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [
+            UIActivityTypePostToWeibo,
+            UIActivityTypePrint,
+            UIActivityTypeAssignToContact,
+            UIActivityTypeSaveToCameraRoll,
+            UIActivityTypeAddToReadingList,
+            UIActivityTypePostToFlickr,
+            UIActivityTypePostToVimeo,
+            UIActivityTypePostToTencentWeibo,
+            UIActivityTypeMail
+        ]
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension FilteredTagsVC: FilteredPostWithImageCellDataUpdater {
+    // Mark: - Custom delegate to update data, if cell recieves like button or share button pressed
+    func updateFilteredPostWithImageTableViewData() {
+        // Load All Posts from your connections
+        filterPostByTags()
+    }
+    
+    func showFilteredPostWithImageShareOptions(post: Post) {
         let postAttachment = post.attachments
         let postText = postAttachment![0].contents!["en"]
         let postActivityItem = "@" + (post.user?.username)! + " posted: \(postText!)! Check it out on TapglueSample."
