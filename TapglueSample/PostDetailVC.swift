@@ -72,14 +72,18 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     @IBAction func userNameButtonPressed(sender: UIButton) {
         
-        let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
-        let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
-        
-        userProfileViewController.userID = user?.id
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.navigationController?.pushViewController(userProfileViewController, animated: true)
-        })
+        if user?.id! == self.appDel.rxTapglue.currentUser?.id! {
+            print("sameID")
+        } else {
+            let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+            
+            userProfileViewController.userID = user?.id
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.navigationController?.pushViewController(userProfileViewController, animated: true)
+            })
+        }
     }
     
     @IBAction func likeButtonPressed(sender: UIButton) {
