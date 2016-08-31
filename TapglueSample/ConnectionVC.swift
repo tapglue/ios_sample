@@ -9,8 +9,6 @@
 import UIKit
 import Tapglue
 import Contacts
-import FBSDKLoginKit
-import FBSDKCoreKit
 
 class ConnectionVC: UIViewController, UITableViewDelegate {
     
@@ -33,8 +31,7 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
     var searchingForUser = false
     
     var sections = ["Find Friends", "Pending Requests"]
-    var networks = ["Contacts", "Facebook"]
-    let networkImages = ["AddressBookFilled", "FacebookFilled"]
+    var networks = ["Contacts"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,10 +81,6 @@ class ConnectionVC: UIViewController, UITableViewDelegate {
         fuVC.currentSelectedNetwork = "Contacts"
         
         self.navigationController!.pushViewController(fuVC, animated: true)
-    }
-    
-    @IBAction func facebookBtnPressed(sender: UIButton) {
-        
     }
     
     func clearUsersArrayAndReloadTableView(){

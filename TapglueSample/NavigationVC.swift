@@ -26,16 +26,9 @@ class NavigationVC: UINavigationController {
         if self.appDel.rxTapglue.currentUser != nil {
             
         } else {
-            setupSocialPermissionDefaults()
             
             // Show loginVC if no user
             performSegueWithIdentifier("loginSegue", sender: nil)
         }
-    }
-    
-    // Prepare permissions for FindUsersVC
-    func setupSocialPermissionDefaults(){
-        defaults.setObject(false, forKey: "facebookPermission")
-        defaults.synchronize()
     }
 }

@@ -26,48 +26,6 @@
                                 <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Fi9-KW-nyZ">
-                                <rect key="frame" x="15" y="66" width="570" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-t2-yjf">
-                                        <rect key="frame" x="0.0" y="0.0" width="278" height="40"/>
-                                        <color key="backgroundColor" red="0.015686274510000001" green="0.76078431369999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="dxe-rg-iJU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                        <state key="normal" title="Contacts">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="conctactsBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="Wcz-dX-6BU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzd-9g-vYy">
-                                        <rect key="frame" x="292" y="0.0" width="278" height="40"/>
-                                        <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                        <state key="normal" title="Facebook">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="facebookBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="2bU-xe-HHm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-2Q-bpS">
                                 <rect key="frame" x="0.0" y="110" width="600" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,19 +117,39 @@
                                     <outlet property="delegate" destination="NFY-67-PYa" id="Ypv-ms-hbg"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-t2-yjf">
+                                <rect key="frame" x="200" y="66" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="0.76078431369999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0zz-iU-wJv"/>
+                                    <constraint firstAttribute="height" constant="40" id="dxe-rg-iJU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Contacts">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="conctactsBtnPressed:" destination="NFY-67-PYa" eventType="touchUpInside" id="Wcz-dX-6BU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TCn-t2-yjf" firstAttribute="top" secondItem="xsX-Zi-YqG" secondAttribute="bottom" constant="4" id="3lr-dJ-D81"/>
+                            <constraint firstItem="TCn-t2-yjf" firstAttribute="centerX" secondItem="67p-IH-q2J" secondAttribute="centerX" id="6iZ-8w-Rg2"/>
                             <constraint firstItem="xsX-Zi-YqG" firstAttribute="leading" secondItem="67p-IH-q2J" secondAttribute="leading" constant="15" id="7Wr-hk-8ov"/>
                             <constraint firstItem="xsX-Zi-YqG" firstAttribute="top" secondItem="pJp-YS-BQv" secondAttribute="bottom" constant="2" id="Dfm-fD-c8W"/>
                             <constraint firstAttribute="trailing" secondItem="xsX-Zi-YqG" secondAttribute="trailing" constant="15" id="IlE-TM-zGY"/>
                             <constraint firstItem="j8b-G1-ag0" firstAttribute="top" secondItem="C4i-2Q-bpS" secondAttribute="bottom" id="KlO-xK-w2H"/>
+                            <constraint firstItem="C4i-2Q-bpS" firstAttribute="top" secondItem="TCn-t2-yjf" secondAttribute="bottom" constant="4" id="MFn-RU-V8F"/>
                             <constraint firstAttribute="trailing" secondItem="C4i-2Q-bpS" secondAttribute="trailing" id="QtT-2r-GWc"/>
-                            <constraint firstItem="Fi9-KW-nyZ" firstAttribute="leading" secondItem="67p-IH-q2J" secondAttribute="leading" constant="15" id="fz4-mC-TUo"/>
-                            <constraint firstItem="C4i-2Q-bpS" firstAttribute="top" secondItem="Fi9-KW-nyZ" secondAttribute="bottom" constant="4" id="n3O-Q4-EMy"/>
-                            <constraint firstItem="Fi9-KW-nyZ" firstAttribute="top" secondItem="xsX-Zi-YqG" secondAttribute="bottom" constant="4" id="pIc-on-CSS"/>
                             <constraint firstItem="C4i-2Q-bpS" firstAttribute="leading" secondItem="67p-IH-q2J" secondAttribute="leading" id="q3h-XO-MAs"/>
-                            <constraint firstAttribute="trailing" secondItem="Fi9-KW-nyZ" secondAttribute="trailing" constant="15" id="w9k-BU-wWg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Connection" image="ConnectionEmpty" selectedImage="ConnectionFilled" id="x8u-XE-cVf"/>

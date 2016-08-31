@@ -27,12 +27,6 @@
 		6A2C88B51C1F26B900A4EE96 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C88B41C1F26B900A4EE96 /* HomeVC.swift */; };
 		6A339BBE1D61FDEB0028A042 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FA81D61E84E00EFC28E /* Alamofire.framework */; };
 		6A339BBF1D61FDEB0028A042 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FA91D61E84E00EFC28E /* Bolts.framework */; };
-		6A339BC01D61FDEB0028A042 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FAA1D61E84E00EFC28E /* FacebookCore.framework */; };
-		6A339BC11D61FDEB0028A042 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FAB1D61E84E00EFC28E /* FacebookLogin.framework */; };
-		6A339BC21D61FDEB0028A042 /* FacebookShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FAC1D61E84E00EFC28E /* FacebookShare.framework */; };
-		6A339BC31D61FDEB0028A042 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FAD1D61E84E00EFC28E /* FBSDKCoreKit.framework */; };
-		6A339BC41D61FDEB0028A042 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FAE1D61E84E00EFC28E /* FBSDKLoginKit.framework */; };
-		6A339BC51D61FDEB0028A042 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FAF1D61E84E00EFC28E /* FBSDKShareKit.framework */; };
 		6A339BC61D61FDEB0028A042 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FB01D61E84E00EFC28E /* Kingfisher.framework */; };
 		6A339BC71D61FDEB0028A042 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A231FB11D61E84E00EFC28E /* ObjectMapper.framework */; };
 		6A339BC81D61FDEB0028A042 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF35D181D61F5E300BDA030 /* RxSwift.framework */; };
@@ -148,12 +142,6 @@
 			files = (
 				6A339BBE1D61FDEB0028A042 /* Alamofire.framework in Frameworks */,
 				6A339BBF1D61FDEB0028A042 /* Bolts.framework in Frameworks */,
-				6A339BC01D61FDEB0028A042 /* FacebookCore.framework in Frameworks */,
-				6A339BC11D61FDEB0028A042 /* FacebookLogin.framework in Frameworks */,
-				6A339BC21D61FDEB0028A042 /* FacebookShare.framework in Frameworks */,
-				6A339BC31D61FDEB0028A042 /* FBSDKCoreKit.framework in Frameworks */,
-				6A339BC41D61FDEB0028A042 /* FBSDKLoginKit.framework in Frameworks */,
-				6A339BC51D61FDEB0028A042 /* FBSDKShareKit.framework in Frameworks */,
 				6A339BC61D61FDEB0028A042 /* Kingfisher.framework in Frameworks */,
 				6A339BC71D61FDEB0028A042 /* ObjectMapper.framework in Frameworks */,
 				6A339BC81D61FDEB0028A042 /* RxSwift.framework in Frameworks */,
@@ -594,16 +582,10 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Tapglue.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FacebookCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WSTagsField.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FacebookLogin.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FacebookShare.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKShareKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AWSS3.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AWSCognito.framework",
