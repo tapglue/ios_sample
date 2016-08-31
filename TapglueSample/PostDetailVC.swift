@@ -11,10 +11,15 @@ import Tapglue
 
 class PostDetailVC: UIViewController, UITableViewDelegate {
     
-    var post: TGPost!
-    var postComments: [TGComment] = []
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
+    var user: User?
+    var post: Post!
+    var postComments: [Comment] = []
     
     var commentButtonPressedSwitch: Bool = false
+    
+    @IBOutlet weak var heightLayoutConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var userNameButton: UIButton!
@@ -27,26 +32,29 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var visibilityImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
-    @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
     
+    
+    var userID: String?
     var beginEditComment = false
-    var editComment: TGComment!
+    var editComment: Comment!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if post != nil {
-            print("PostDetail: \(post)")
-            fillPostDetailInformation()
-        }
-
-        // Start commenting, when you pressed comment button in HomeTableViewCell
+        
+        // Show keyboard and start commenting
         if commentButtonPressedSwitch {
             commentTextField.becomeFirstResponder()
+        }
+        
+        if userID != nil {
+            // When completed fillUserProfileInformation
+            retrieveUserWithUserID(userID!)
         }
     }
     
@@ -63,46 +71,61 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func userNameButtonPressed(sender: UIButton) {
-        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = post.user
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.navigationController?.pushViewController(userProfileViewController, animated: true)
-        })
-    }
-    
-    @IBAction func likeButtonPressed(sender: UIButton) {
-            if likeButton.selected == true {
-                Tapglue.deleteLike(post) { (success: Bool, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError deleteLike: \(error)")
-                    }
-                    else {
-                        print("\nSuccessly deleted like to post: \(success)")
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.likeButton.selected = false
-                        })
-                    }
-                }
-            } else {
-                post.likeWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError like: \(error)")
-                    }
-                    else {
-                        print("\nSuccessly liked a post: \(success)")
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.likeButton.selected = true
-                            
-                        })
-                    }
-            }
+        if user?.id! == self.appDel.rxTapglue.currentUser?.id! {
+            print("sameID")
+        } else {
+            let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+            
+            userProfileViewController.userID = user?.id
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.navigationController?.pushViewController(userProfileViewController, animated: true)
+            })
         }
     }
     
+    @IBAction func likeButtonPressed(sender: UIButton) {
+        if likeButton.selected == true {
+            // Delete like for Post
+            appDel.rxTapglue.deleteLike(forPostId: post.id!).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Completed")
+                    
+                    self.likeButton.selected = false
+                    self.updateLikeCountLabel()
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+            
+        } else {
+            // Create like for Post
+            appDel.rxTapglue.createLike(forPostId: post.id!).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Completed")
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.likeButton.selected = true
+                        self.updateLikeCountLabel()
+                    })
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+        }
+    }
+    
+    @IBAction func shareButtonPressed(sender: UIButton) {
+        showShareOptions()
+    }
     
     // MARK: - Keyboard Notification
     func keyboardWillShowNotification(notification:NSNotification){
@@ -113,13 +136,13 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
         
         UIView.animateWithDuration(animationDuration,
-            delay: 0,
-            options: animationOptions,
-            animations: {
-                self.commentContainerBottonConstraint.constant = keyboardFrame.size.height
-                self.view.layoutIfNeeded()
+                                   delay: 0,
+                                   options: animationOptions,
+                                   animations: {
+                                    self.commentContainerBottonConstraint.constant = keyboardFrame.size.height
+                                    self.view.layoutIfNeeded()
             },
-            completion: { completed in
+                                   completion: { completed in
         })
     }
     
@@ -130,67 +153,118 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     // Retrieve all comments and reverse them
     func retrieveAllCommentsForPost(){
-        Tapglue.retrieveCommentsForPost(post) { (comments: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrieveCommentsForPost: \(error)")
-            }
-            else {
-                print("\nComments: \(comments)")
-                
-                self.postComments = (comments as! [TGComment]).reverse()
-                
+        // Retrieve comments for Post
+        appDel.rxTapglue.retrieveComments(post.id!).subscribe { (event) in
+            switch event {
+            case .Next(let comments):
+                self.postComments = (comments).reverse()
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.commentsTableView.reloadData()
                 })
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
             }
-        }
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
-    // Show postDetails
-    func fillPostDetailInformation(){
-        userNameButton.contentHorizontalAlignment = .Left
-        userNameButton.setTitle(post.user.username, forState: .Normal)
-        
-        if post.likesCount != 0 {
-            if post.likesCount == 1{
-                self.likesCountLabel.text = String(post.likesCount) + " Like"
+    func retrieveUserWithUserID(userID: String) {
+        appDel.rxTapglue.retrieveUser(userID).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                self.user = usr
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+                if self.post != nil {
+                    self.fillPostDetailInformation()
+                }
             }
-            self.likesCountLabel.text = String(post.likesCount) + " Likes"
+        }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    // Show PostDetial information
+    func fillPostDetailInformation(){
+        
+        // PostImageURL
+        for att in post.attachments! {
+            
+            if att.name == "image" {
+                let imgURL = appDel.awsHost + att.contents!["en"]!
+                
+                self.heightLayoutConstraint.constant = 400
+                postImageView.kf_setImageWithURL(NSURL(string: imgURL))
+            }
         }
         
-        if post.commentsCount != 0 {
-            if post.commentsCount == 1 {
-                self.commentsCountLabel.text = String(post.commentsCount) + " Comment"
+        userNameButton.contentHorizontalAlignment = .Left
+        if let postUser = user {
+            userNameButton.setTitle(postUser.username, forState: .Normal)
+            
+            if let profileImages = postUser.images {
+                self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
             }
-            self.commentsCountLabel.text = String(post.commentsCount) + " Comments"
+        }
+        
+        // Post like count
+        let likeCountForPost = post.likeCount!
+        
+        if likeCountForPost != 0 {
+            if likeCountForPost == 1{
+                self.likesCountLabel.text = String(likeCountForPost) + " Like"
+            } else {
+                self.likesCountLabel.text = String(likeCountForPost) + " Likes"
+            }
+        } else {
+            self.likesCountLabel.text = ""
         }
         
         // PostText
         let postAttachment = post.attachments
-        self.postTextLabel.text = postAttachment[0].contents!["en"] as? String
+        self.postTextLabel.text = postAttachment![0].contents!["en"]
+        // OldSDK : needs to show elpased time
+        self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
         
-        // Date to string
-        self.dateLabel.text = post.createdAt.toStringFormatHoursMinutes()
-        
-        // User Avatar Image from sample asset
-        var userImage = TGImage()
-        userImage = post.user.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        // TagsText
+        if let tags = post.tags {
+            var tagLabelText = ""
+            
+            switch tags.count {
+            case 1:
+                for tag in tags {
+                    self.tagsLabel.text = "Tag: " + tag
+                }
+            case 2...5:
+                for tag in tags {
+                    tagLabelText = tagLabelText + "\(tag) "
+                }
+                self.tagsLabel.text = "Tags: " + tagLabelText
+            default:
+                print("default")
+            }
+            
+        } else {
+            self.tagsLabel.text = ""
+        }
         
         // Check visibility
-        switch post.visibility {
-        case TGVisibility.Private:
+        switch post.visibility! {
+        case Visibility.Private:
             self.visibilityImageView.image = UIImage(named: "privateFilled")
             
-        case TGVisibility.Connection:
+        case Visibility.Connections:
             self.visibilityImageView.image = UIImage(named: "connectionFilled")
             
-        case TGVisibility.Public:
+        case Visibility.Public:
             self.visibilityImageView.image = UIImage(named: "publicFilled")
         }
         
         // Check if post isLiked already
-        if post.isLiked {
+        if post.isLiked! {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.likeButton.selected = true
             })
@@ -199,6 +273,54 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
                 self.likeButton.selected = false
             })
         }
+    }
+    
+    func showShareOptions() {
+        let postAttachment = post.attachments
+        let postText = postAttachment![0].contents!["en"]
+        if let postUserUsername = user?.username {
+            let postActivityItem = "@" + postUserUsername + " posted: \(postText!)! Check it out on TapglueSample."
+            
+            let activityViewController: UIActivityViewController = UIActivityViewController(
+                activityItems: [postActivityItem], applicationActivities: nil)
+            
+            activityViewController.excludedActivityTypes = [
+                UIActivityTypePostToWeibo,
+                UIActivityTypePrint,
+                UIActivityTypeAssignToContact,
+                UIActivityTypeSaveToCameraRoll,
+                UIActivityTypeAddToReadingList,
+                UIActivityTypePostToFlickr,
+                UIActivityTypePostToVimeo,
+                UIActivityTypePostToTencentWeibo,
+                UIActivityTypeMail
+            ]
+            
+            self.presentViewController(activityViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func updateLikeCountLabel() {
+        appDel.rxTapglue.retrievePost(post.id!).subscribe { (event) in
+            switch event {
+            case .Next(let post):
+                let likeCount = post.likeCount!
+                
+                if likeCount != 0 {
+                    if likeCount == 1{
+                        self.likesCountLabel.text = String(likeCount) + " Like"
+                    } else {
+                        self.likesCountLabel.text = String(likeCount) + " Likes"
+                    }
+                }
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                break
+                
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
     }
 }
 
@@ -221,7 +343,8 @@ extension PostDetailVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if self.postComments[indexPath.row].user.isCurrentUser {
+        // Check if comment is own comment to edit it
+        if self.postComments[indexPath.row].userId == appDel.rxTapglue.currentUser?.id {
             return true
         } else {
             return false
@@ -229,44 +352,44 @@ extension PostDetailVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-            let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
-                print("favorite button tapped")
-                
-                self.beginEditComment = true
-                
-                self.commentTextField.becomeFirstResponder()
-                
-                let commentText: String = self.postComments[indexPath.row].contents["en"] as! String
-                self.commentTextField.text = commentText
-                
-                self.editComment = self.postComments[indexPath.row]
-            }
-            edit.backgroundColor = UIColor.lightGrayColor()
+        let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
             
-            let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
-                Tapglue.deleteComment(self.postComments[indexPath.row], withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError deleteComment: \(error)")
-                    }
-                    else {
-                        print("\nSuccess: \(success)")
-                        
-                        self.retrieveAllCommentsForPost()
-                    }
-                })
-            }
-            delete.backgroundColor = UIColor.redColor()
-            return [delete, edit]
+            self.beginEditComment = true
+            
+            self.commentTextField.becomeFirstResponder()
+            
+            let commentText: String = self.postComments[indexPath.row].contents!["en"]!
+            self.commentTextField.text = commentText
+            
+            self.editComment = self.postComments[indexPath.row]
+        }
+        edit.backgroundColor = UIColor.lightGrayColor()
+        
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, index in
+            // Delete comment for Post
+            self.appDel.rxTapglue.deleteComment(forPostId: self.post.id!, commentId: self.postComments[indexPath.row].id!).subscribeCompleted({
+                self.retrieveAllCommentsForPost()
+            }).addDisposableTo(self.appDel.disposeBag)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        return [delete, edit]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = postComments[indexPath.row].user
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.navigationController?.pushViewController(userProfileViewController, animated: true)
-        })
+        if postComments[indexPath.row].userId! == self.appDel.rxTapglue.currentUser?.id! {
+            print("sameID")
+        } else {
+            let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+            
+            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+            
+            userProfileViewController.userID = postComments[indexPath.row].userId
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.navigationController?.pushViewController(userProfileViewController, animated: true)
+            })
+        }
     }
 }
 
@@ -274,61 +397,49 @@ extension PostDetailVC: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        let comment = ["en": textField.text!]
-        
         if beginEditComment {
-            self.editComment.contents = comment
+            let contents = ["en": textField.text!]
+            self.editComment.contents = contents
             
-            Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError updateComment: \(error)")
-                }
-                else {
-                    print("\nSuccess update comment: \(success)")
-                    self.retrieveAllCommentsForPost()
-                    
+            // Update comment for Post
+            appDel.rxTapglue.updateComment(post.id!, commentId: editComment.id!, comment: editComment).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.commentsTableView.reloadData()
+                        self.retrieveAllCommentsForPost()
+                        
                         self.commentTextField.text = nil
                         self.commentTextField.resignFirstResponder()
                         self.beginEditComment = false
                     })
                 }
-            })
-            
-            
-//            Tapglue.updateComment(editComment, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-//                if error != nil {
-//                    print("\nError updateComment: \(error)")
-//                }
-//                else {
-//                    print("\nSuccess update comment: \(success)")
-//                    self.retrieveAllCommentsForPost()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.commentsTableView.reloadData()
-//                        self.commentTextField.text = nil
-//                        self.commentTextField.resignFirstResponder()
-//                        self.beginEditComment = false
-//                    })
-//                }
-//            })
+            }).addDisposableTo(self.appDel.disposeBag)
             
         } else {
-            Tapglue.createCommentWithContent(comment, forPost: post) { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError createCommentWithContent: \(error)")
-                } else {
-                    print("\nSuccess create comment: \(success)")
-                    self.retrieveAllCommentsForPost()
-                    
+            
+            let comment = Comment(contents: ["en":textField.text!], postId: post.id!)
+            
+            // Create comment for Post
+            appDel.rxTapglue.createComment(comment).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.commentsTableView.reloadData()
+                        self.retrieveAllCommentsForPost()
+                        
                         self.commentTextField.text = nil
                         self.commentTextField.resignFirstResponder()
+                        self.beginEditComment = false
                     })
                 }
-            }
+            }).addDisposableTo(self.appDel.disposeBag)
         }
         return true
     }

@@ -20,24 +20,25 @@ class LoginRegisterVC: UIViewController {
     
     var currentAvatar: String?
     
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     // Free http://uifaces.com/authorized profile pictures
     let userProfileImageURLs =  ["https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/nedknowles/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/zack415/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/philcoffman/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/nuraika/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/raquelromanp/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/geeftvorm/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/hellgy/128.jpg",
-                                "https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg"]
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/nedknowles/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/zack415/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/nuraika/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/raquelromanp/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/geeftvorm/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/hellgy/128.jpg",
+                                 "https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         // Show navigationBar again when view disappears
         self.navigationController?.navigationBarHidden = false
@@ -47,34 +48,52 @@ class LoginRegisterVC: UIViewController {
         // If all textFields have more than 2 charcaters, begin Tapglue login
         if userNameTextField.text?.characters.count > 2 && firstNameTextField.text?.characters.count > 2 && lastNameTextField.text?.characters.count > 2 && aboutTextField.text?.characters.count > 2 && emailTextField.text?.characters.count > 2 && passwordTextField.text?.characters.count > 2 {
             
-            let tapglueUser = TGUser()
+            let usr = User()
             
-            let about: [NSObject : AnyObject!] = ["about" : aboutTextField.text]
-            tapglueUser.metadata = about
+            usr.username = userNameTextField.text!
+            usr.firstName = firstNameTextField.text!
+            usr.lastName = lastNameTextField.text!
+            usr.email = emailTextField.text!
+            usr.password = passwordTextField.text
+            usr.about = aboutTextField.text!
             
-            tapglueUser.username = userNameTextField.text!
-            tapglueUser.firstName = firstNameTextField.text!
-            tapglueUser.lastName = lastNameTextField.text!
-            tapglueUser.email = emailTextField.text!
-            tapglueUser.setPassword(passwordTextField.text!)
-            
-            let userImage = TGImage()
+            // New SDK
             let randomIndex = Int(arc4random_uniform(UInt32(userProfileImageURLs.count)))
-            userImage.url = userProfileImageURLs[randomIndex]
-            tapglueUser.images.setValue(userImage, forKey: "profilePic")
+            let imageURL = userProfileImageURLs[randomIndex]
+            let userImage = Image(url: imageURL)
+            usr.images = ["profile": userImage]
             
-            Tapglue.createAndLoginUser(tapglueUser, withCompletionBlock: { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError createAndLoginUser: \(error)")
-                } else {
-                    print("\nUser was created: \(success)")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.navigationController?.popToRootViewControllerAnimated(false)
-                    })
+            // Create New User
+            appDel.rxTapglue.createUser(usr).subscribe { (event) in
+                switch event {
+                case .Next( _):
+                    // Login new User
+                    self.appDel.rxTapglue.loginUser(usr.username!, password: usr.password!).subscribe({ (event) in
+                        switch event {
+                        case .Next( _):
+                            print("Next")
+                        case .Error(let error):
+                            self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                        case .Completed:
+                            print("Completed")
+                            
+                            self.navigationController?.popToRootViewControllerAnimated(false)
+                        }
+                    }).addDisposableTo(self.appDel.disposeBag)
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    break
                 }
-            })
+                }.addDisposableTo(self.appDel.disposeBag)
+            
         } else {
-            print("Not enough characters")
+            
+            let alertController = UIAlertController(title: "Fill form correctly", message:
+                "Use at least 3 characters for every field.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }
@@ -84,19 +103,19 @@ extension LoginRegisterVC: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Jump to the next textField, when you press next
         switch textField.tag {
-            case 0:
-                firstNameTextField.becomeFirstResponder()
-            case 1:
-                lastNameTextField.becomeFirstResponder()
-            case 2:
-                aboutTextField.becomeFirstResponder()
-            case 3:
-                emailTextField.becomeFirstResponder()
-            case 4:
-                passwordTextField.becomeFirstResponder()
-            case 5:
-                textField.resignFirstResponder()
-            default: print("default was triggered")
+        case 0:
+            firstNameTextField.becomeFirstResponder()
+        case 1:
+            lastNameTextField.becomeFirstResponder()
+        case 2:
+            aboutTextField.becomeFirstResponder()
+        case 3:
+            emailTextField.becomeFirstResponder()
+        case 4:
+            passwordTextField.becomeFirstResponder()
+        case 5:
+            textField.resignFirstResponder()
+        default: print("default")
         }
         
         return false

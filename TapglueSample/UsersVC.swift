@@ -11,10 +11,10 @@ import Tapglue
 
 class UsersVC: UIViewController, UITableViewDelegate {
     
-    var users: [TGUser] = []
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
-    var meta: AnyObject?
-
+    var users: [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -34,29 +34,29 @@ extension UsersVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UsersTableViewCell
         
         cell.userImageView.image = nil
-        
-        meta = users[indexPath.row].metadata as AnyObject
-        if meta != nil {
-            cell.userAboutLabel.text = String(meta!.valueForKey("about")!)
-        }
-        
+        cell.userAboutLabel.text = users[indexPath.row].about!
         cell.userNameLabel.text = users[indexPath.row].username
         
-        // User image
-        var userImage = TGImage()
-        userImage = users[indexPath.row].images.valueForKey("profilePic") as! TGImage
-        cell.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        if let profileImages = users[indexPath.row].images {
+            cell.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let userProfileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = self.users[indexPath.row]
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.navigationController?.pushViewController(userProfileViewController, animated: true)
-        })
+        if self.users[indexPath.row].id! == self.appDel.rxTapglue.currentUser?.id! {
+            print("sameID")
+        } else {
+            let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
+            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
+            
+            userProfileViewController.userID = self.users[indexPath.row].id
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.navigationController?.pushViewController(userProfileViewController, animated: true)
+            })
+        }
     }
 }

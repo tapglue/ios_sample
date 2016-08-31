@@ -14,63 +14,53 @@ class UserProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configureCellWithPost(post: TGPost!){
+    func configureCellWithPost(post: Post!){
         clearLabels()
         
-        self.typeLabel.text = post.user.username
+        let attachments = post.attachments
+        self.infoLabel.text = attachments![0].contents!["en"]
+        self.typeLabel.text = String(attachments![0].name!).capitalizeFirst
         
-        self.dateLabel.text = post.createdAt.toTimeFormatInElapsedTimeToString()
-        
-        // Post attachment
-        let postAttachment = post.attachments
-        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
+        // OldSDK TODO: show elapsed time
+        self.dateLabel.text = post.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
     }
     
-    func configureCellWithEvent(event: TGEvent!){
+    func configureCellWithActivity(activity: Activity!){
         clearLabels()
         
-        self.dateLabel.text = event.createdAt.toTimeFormatInElapsedTimeToString()
+        self.dateLabel.text = activity.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
         
-        switch event.type {
-            case "like_event":
-                self.typeLabel.text = "Likes event"
-            case "bookmark_event":
-                self.typeLabel.text = "Bookmarked"
-            case "tg_friend":
-                if event.target.user != nil {
-                    self.typeLabel.text = "Friends"
-                    self.infoLabel.text = "You are Friends with " + event.target.user.username
-                    print(event.target.user.username)
-                }
-            case "tg_like":
-                self.typeLabel.text = "Liked " + "'s" + " post"
-                
-                Tapglue.retrievePostWithId(event.tgObjectId, withCompletionBlock: { (post: TGPost!, error: NSError!) -> Void in
-                    if error != nil {
-                        print("\nError retrievePostWithId: \(error)")
-                    } else {
-                        // PostText
-                        print(post)
-                        let postAttachment = post.attachments
-                        self.infoLabel.text = postAttachment[0].contents!["en"] as? String
-                    }
-                })
-            case "tg_follow":
-                if event.target.user != nil {
-                    self.typeLabel.text = "Follow"
-                    self.infoLabel.text = "You started to follow " + event.target.user.username
-                    print(event.target.user.username)
-                }
-            default: print("More event types then expected")
+        switch activity.type! {
+        case "tg_friend":
+            if activity.targetUser != nil {
+                self.typeLabel.text = "Friends"
+                self.infoLabel.text = "You are Friends with " + (activity.targetUser?.username!)!
+            }
+        case "tg_like":
+            if activity.post?.user != nil {
+                self.typeLabel.text = "Liked " + (activity.post?.user?.username!)! + "'s" + " post"
+                self.infoLabel.text = activity.post?.attachments![0].contents!["en"]
+            }
+        case "tg_follow":
+            if activity.targetUser != nil {
+                self.typeLabel.text = "Follow"
+                self.infoLabel.text = "You started to follow " + (activity.targetUser?.username!)!
+            }
+        case "tg_comment":
+            if activity.post?.user != nil {
+                self.typeLabel.text = "Commented"
+                self.infoLabel.text = "You commented on " + (activity.post?.user?.username!)! + "'s post"
+            }
+        default: print("More event types then expected")
         }
     }
-
+    
     func clearLabels(){
         self.typeLabel.text = ""
         self.infoLabel.text = ""

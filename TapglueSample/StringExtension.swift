@@ -10,13 +10,13 @@ import Foundation
 
 extension String {
 
+    // If you like to get tags out from a textfield
     func withoutTags(txt: String) -> String{
         let text = txt
         let withoutHashtags = text.componentsSeparatedByString(" ").filter { !$0.containsString("#") }.joinWithSeparator(" ")
         
         return withoutHashtags
     }
-    
     func filterTagsAsStrings(txt: String) -> [String]{
         var wordArr: [String] = []
         var tagArr: [String] = []
@@ -38,6 +38,29 @@ extension String {
         }
         
         return tagArr
+    }
+    
+    var capitalizeFirst: String {
+        if isEmpty { return "" }
+        var result = self
+        result.replaceRange(startIndex...startIndex, with: String(self[startIndex]).uppercaseString)
+        return result
+    }
+    
+    func toNSDateTime() -> NSDate {
+        //Create Date Formatter
+        let dateFormatter = NSDateFormatter()
+        
+        //Specify Format of String to Parse
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        
+        //Parse into NSDate
+        let dateFromString: NSDate = dateFormatter.dateFromString(self)!
+        
+        //Return Parsed Date
+        return dateFromString
     }
 }
 

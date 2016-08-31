@@ -9,31 +9,41 @@
 import UIKit
 import Tapglue
 
-class EditProfilTableViewCell: UITableViewCell {
+// the name of the protocol you can put any
+protocol UpdateUserDelegate {
+    func updateUsername(tf: UITextField)
+    func updateFirstname(tf: UITextField)
+    func updateLastname(tf: UITextField)
+    func updateAbout(tf: UITextField)
+    func updateEmail(tf: UITextField)
+}
 
+class EditProfilTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var userInfoTitleLabel: UILabel!
     @IBOutlet weak var userInfoEditTextField: UITextField!
     
+    var delegate: UpdateUserDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         userInfoEditTextField.delegate = self
     }
     
-    func changeTGUserInformation(tf: UITextField){
+    func changeUserInformation(tf: UITextField){
         switch tf.tag {
-            case 0:
-                TGUser.currentUser().username = tf.text!
-            case 1:
-                TGUser.currentUser().firstName = tf.text!
-            case 2:
-                TGUser.currentUser().lastName = tf.text!
-            case 3:
-                let about: [NSObject : AnyObject!] = ["about" : tf.text!]
-                TGUser.currentUser().metadata = about
-            case 4:
-                TGUser.currentUser().email = tf.text!
-            default: print("More then expected switches")
+        case 0:
+            delegate?.updateUsername(tf)
+        case 1:
+            delegate?.updateFirstname(tf)
+        case 2:
+            delegate?.updateLastname(tf)
+        case 3:
+            delegate?.updateAbout(tf)
+        case 4:
+            delegate?.updateEmail(tf)
+        default: print("default")
         }
     }
 }
@@ -41,11 +51,11 @@ class EditProfilTableViewCell: UITableViewCell {
 extension EditProfilTableViewCell: UITextFieldDelegate {
     // Mark: - TextField
     func textFieldDidEndEditing(textField: UITextField) {
-        changeTGUserInformation(textField)
+        changeUserInformation(textField)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        changeTGUserInformation(textField)
+        changeUserInformation(textField)
         
         textField.resignFirstResponder()
         

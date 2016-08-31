@@ -11,32 +11,39 @@ import Tapglue
 
 class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControllerDelegate {
     
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
+    
     @IBOutlet weak var updateUIBarButton: UIBarButtonItem!
-        
+    
     let userInfoTitle = ["Username:", "Firstname:", "Lastname:", "About:", "Email:"]
     var userInformation = []
-
+    var currentUser: User!
+    var updatedUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentUser = appDel.rxTapglue.currentUser
+        updatedUser = currentUser
         
-        let meta = TGUser.currentUser().metadata as AnyObject
-        let about = String(meta.valueForKey("about")!)
+        userInformation = [currentUser.username!, currentUser.firstName!, currentUser.lastName!, currentUser.about!, currentUser.email!]
         
-        userInformation = [TGUser.currentUser().username, TGUser.currentUser().firstName, TGUser.currentUser().lastName, about, TGUser.currentUser().email]
-
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
     
     @IBAction func updateButtonPressed(sender: UIBarButtonItem) {
-        // Update user information
-        TGUser.currentUser().saveWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-                if error != nil {
-                    print("\nError currentUser: \(error)")
-                } else {
-                    print("Success: \(success)")
-                }
-        }
+        // Update current user information
+        appDel.rxTapglue.updateCurrentUser(updatedUser!).subscribe { (event) in
+            switch event {
+            case .Next( _):
+                print("Next")
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -45,13 +52,17 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
     }
     
     @IBAction func logoutButtonPressed(sender: UIButton) {
-        Tapglue.logoutWithCompletionBlock { (success: Bool, error: NSError!) -> Void in
-            if error != nil {
-                print(error)
-            } else {
+        appDel.rxTapglue.logout().subscribe { (event) in
+            switch event {
+            case .Next( _):
+                print("Next")
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-        }
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
     // Mark: Keyboard methods(update button will enabled, if keyboard is dismissed)
@@ -64,7 +75,7 @@ class EditProfileVC: UIViewController, UITableViewDelegate, UINavigationControll
 }
 
 extension EditProfileVC: UITableViewDataSource {
-    // MARK: -TableView
+    // MARK: - TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -79,7 +90,27 @@ extension EditProfileVC: UITableViewDataSource {
         cell.userInfoTitleLabel.text = userInfoTitle[indexPath.row]
         cell.userInfoEditTextField.text = userInformation[indexPath.row] as? String
         cell.userInfoEditTextField.tag = indexPath.row
+        cell.delegate = self
         
         return cell
+    }
+}
+
+extension EditProfileVC: UpdateUserDelegate {
+    // Mark: - Custom delegate to update user information if there is any changes
+    func updateUsername(tf: UITextField) {
+        updatedUser.username = tf.text
+    }
+    func updateFirstname(tf: UITextField) {
+        updatedUser.firstName = tf.text
+    }
+    func updateLastname(tf: UITextField) {
+        updatedUser.lastName = tf.text
+    }
+    func updateAbout(tf: UITextField) {
+        updatedUser.about = tf.text
+    }
+    func updateEmail(tf: UITextField) {
+        updatedUser.email = tf.text
     }
 }

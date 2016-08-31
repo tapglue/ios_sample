@@ -11,10 +11,14 @@ import Tapglue
 
 class UserProfileVC: UIViewController, UITableViewDelegate {
     
-    var userProfile: TGUser?
+    let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
-    var events: [TGEvent] = []
-    var posts: [TGPost] = []
+    var user: User?
+    var userID: String?
+    
+    var activityFeed: [Activity] = []
+    var posts: [Post] = []
+    
     
     @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
     
@@ -30,109 +34,220 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var userProfileFeedTableView: UITableView!
     
-
+    @IBOutlet weak var followButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        showUserInformation(userProfile!)
         
-        currentFriendsFollowerFollowingCount()
-        
-        getEventsAndPostsOfCurrentUser()
+        if userID != nil {
+            // When completed fillUserInformation
+            retrieveUserWithUserID(userID!)
+        }
     }
-    
+
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
         self.userProfileFeedTableView.reloadData()
     }
     
+    @IBAction func followButtonPressed(sender: UIButton) {
+        if sender.selected {
+            // Delete follow connection
+            appDel.rxTapglue.deleteConnection(toUserId: user!.id!, type: .Follow).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Completed")
+                    
+                    sender.selected = false
+                    self.unfollowingUserCustomizeButton()
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+            
+        } else {
+            // Create follow connection
+            let connection = Connection(toUserId: user!.id!, type: .Follow, state: .Confirmed)
+            
+            appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
+                switch event {
+                case .Next( _):
+                    print("Next")
+                case .Error(let error):
+                    self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                case .Completed:
+                    print("Completed")
+                    
+                    sender.selected = true
+                    self.followingUserCustomizeButton()
+                }
+            }).addDisposableTo(self.appDel.disposeBag)
+        }
+    }
+    
+    
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
-        Tapglue.retrieveFriendsForUser(userProfile) { (friends: [AnyObject]!, error: NSError!) -> Void in
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-            
-            usersViewController.users = friends as! [TGUser]
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        // Retrieve friends with user ID
+        appDel.rxTapglue.retrieveFriendsForUserId(user!.id!).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                let storyboard = UIStoryboard(name: "Users", bundle: nil)
+                let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
+                
+                usersViewController.users = usr
+                
                 self.navigationController?.pushViewController(usersViewController, animated: true)
-            })
-        }
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
+                
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
     }
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
-        Tapglue.retrieveFollowersForUser(userProfile) { (followers: [AnyObject]!, error: NSError!) -> Void in
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-            
-            usersViewController.users = followers as! [TGUser]
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        // Retrieve followers with user ID
+        appDel.rxTapglue.retrieveFollowersForUserId(user!.id!).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                let storyboard = UIStoryboard(name: "Users", bundle: nil)
+                let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
+                
+                usersViewController.users = usr
+                
                 self.navigationController?.pushViewController(usersViewController, animated: true)
-            })
-        }
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
+                
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+        
     }
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
-        Tapglue.retrieveFollowsForUser(userProfile) { (following: [AnyObject]!, error: NSError!) -> Void in
-            let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
-            
-            usersViewController.users = following as! [TGUser]
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.navigationController?.pushViewController(usersViewController, animated: true)
-            })
-        }
-    }
-    
-    // Fill user profile
-    func showUserInformation(user: TGUser){
-        userFullnameLabel.text = user.firstName + " " + user.lastName
-        userUsernameLabel.text = user.username
-        
-        let meta = user.metadata as AnyObject
-        userAboutLabel.text = String(meta.valueForKey("about")!)
-        
-        var userImage = TGImage()
-        userImage = self.userProfile!.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-     }
-    
-    // Get events and posts for current user
-    func getEventsAndPostsOfCurrentUser() {
-        Tapglue.retrieveEventsForUser(userProfile) { (events: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrieveEventsForUser: \(error)")
-            } else {
-                self.events = events as! [TGEvent]
+        // Retrieve follows with user ID
+        appDel.rxTapglue.retrieveFollowingsForUserId(user!.id!).subscribe { (event) in
+            switch event {
+            case .Next(let usrs):
+                print("Next")
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.userProfileFeedTableView.reloadData()
-                })
+                let storyboard = UIStoryboard(name: "Users", bundle: nil)
+                let usersViewController = storyboard.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersVC
+                
+                usersViewController.users = usrs
+                
+                self.navigationController?.pushViewController(usersViewController, animated: true)
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
+                
             }
-        }
-
-        Tapglue.retrievePostsForUser(userProfile) { (posts: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil {
-                print("\nError retrievePostsForUser: \(error)")
-            }
-            else {
-                self.posts = posts as! [TGPost]
+            }.addDisposableTo(self.appDel.disposeBag)
+    }
     
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.userProfileFeedTableView.reloadData()
-                })
-            }
+    // Show user profile information
+    func showUserInfos(user: User){
+        userFullnameLabel.text = user.firstName! + " " + user.lastName!
+        userUsernameLabel.text = "@" + user.username!
+        userAboutLabel.text = user.about!
+        
+        if let profileImages = user.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
         }
     }
     
-    func currentFriendsFollowerFollowingCount() {
-        let friendsCount = String(userProfile!.friendsCount)
-        let followersCount = String(userProfile!.followersCount)
-        let followingCount = String(userProfile!.followingCount)
+    func retrieveUserWithUserID(userID: String) {
+        appDel.rxTapglue.retrieveUser(userID).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                self.user = usr
+                
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+                self.showUserInfos(self.user!)
+                
+                self.countFriendsFollowsAndFollowings()
+                
+                self.getEventsAndPostsOfCurrentUser()
+                
+                if (self.user!.isFollowed != nil) {
+                    self.followingUserCustomizeButton()
+                    self.followButton.selected = true
+                } else {
+                    self.unfollowingUserCustomizeButton()
+                    self.followButton.selected = false
+                }
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    // Get activities and posts for current user
+    func getEventsAndPostsOfCurrentUser() {
+        // Retrieve activities by user with ID
+        appDel.rxTapglue.retrieveActivitiesByUser(user!.id!).subscribe { (event) in
+            switch event {
+            case .Next(let activities):
+                print("Next")
+                self.activityFeed = activities
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
+                
+                self.userProfileFeedTableView.reloadData()
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
         
-        friendsCountButton.setTitle(friendsCount + " Friends", forState: .Normal)
-        followerCountButton.setTitle(followersCount + " Follower", forState: .Normal)
-        followingCountButton.setTitle(followingCount + " Following", forState: .Normal)
+        // Retrieve posts by user with ID
+        appDel.rxTapglue.retrievePostsByUser(user!.id!).subscribe { (event) in
+            switch event {
+            case .Next(let posts):
+                print("Next")
+                self.posts = posts
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Completed")
+                
+                self.userProfileFeedTableView.reloadData()
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
+    func countFriendsFollowsAndFollowings() {
+        
+        if let friendsCount = user?.friendCount {
+            friendsCountButton.setTitle(String(friendsCount) + " Friends", forState: .Normal)
+        }
+        if let followerCount = user?.followerCount {
+            followerCountButton.setTitle(String(followerCount) + " Follower", forState: .Normal)
+        }
+        if let followedCount = user?.followedCount {
+            followingCountButton.setTitle(String(followedCount) + " Following", forState: .Normal)
+        }
+        
+    }
+    
+    func followingUserCustomizeButton(){
+        self.followButton.setTitle("Following", forState: .Selected)
+        self.followButton.backgroundColor = UIColor(red:0.016, green:0.859, blue:0.675, alpha:1)
+    }
+    func unfollowingUserCustomizeButton(){
+        self.followButton.setTitle("Follow", forState: .Normal)
+        self.followButton.backgroundColor = UIColor.lightGrayColor()
     }
 }
 
@@ -146,11 +261,11 @@ extension UserProfileVC: UITableViewDataSource {
         var numberOfRows = 0
         
         switch feedSegmentedControl.selectedSegmentIndex {
-            case 0:
-                numberOfRows = events.count
-            case 1:
-                numberOfRows = posts.count
-            default: print("More then two segments")
+        case 0:
+            numberOfRows = activityFeed.count
+        case 1:
+            numberOfRows = posts.count
+        default: print("default")
         }
         
         return numberOfRows
@@ -160,11 +275,11 @@ extension UserProfileVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UserProfileTableViewCell
         
         switch feedSegmentedControl.selectedSegmentIndex {
-            case 0:
-                cell.configureCellWithEvent(events[indexPath.row])
-            case 1:
-                cell.configureCellWithPost(posts[indexPath.row])
-            default: print("More then two segments")
+        case 0:
+            cell.configureCellWithActivity(activityFeed[indexPath.row])
+        case 1:
+            cell.configureCellWithPost(posts[indexPath.row])
+        default: print("default")
         }
         
         return cell
@@ -172,19 +287,54 @@ extension UserProfileVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch feedSegmentedControl.selectedSegmentIndex {
-            case 0:
-                print("Activity segment")
-            case 1:
-                let pdVC =
-                self.storyboard!.instantiateViewControllerWithIdentifier("PostDetailViewController")
+        case 0:
+            if "tg_like" == activityFeed[indexPath.row].type! {
+                
+                //Fix: retrievePost does not give user
+                let postID = activityFeed[indexPath.row].postId!
+                appDel.rxTapglue.retrievePost(postID).subscribe({ (event) in
+                    switch event {
+                    case .Next(let post):
+                        
+                        let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
+                        let pdVC =
+                            storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
+                                as! PostDetailVC
+                        
+                        pdVC.post = post
+                        
+                        self.appDel.rxTapglue.retrieveUser(post.userId!).subscribe { (event) in
+                            switch event {
+                            case .Next(let usr):
+                                print("Next")
+                                pdVC.userID = usr.id
+                                
+                            case .Error(let error):
+                                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                            case .Completed:
+                                print("Completed")
+                                self.navigationController?.pushViewController(pdVC, animated: true)
+                            }
+                            }.addDisposableTo(self.appDel.disposeBag)
+                    case .Error(let error):
+                        self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+                    case .Completed:
+                        print("Completed")
+                    }
+                }).addDisposableTo(self.appDel.disposeBag)
+            }
+        case 1:
+            let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
+            let pdVC =
+                storyboard.instantiateViewControllerWithIdentifier("PostDetailViewController")
                     as! PostDetailVC
-                
-                // pass data to sub-viewcontroller
-                pdVC.post = posts[indexPath.row]
-                
-                // tell the new controller to present itself
-                self.navigationController!.pushViewController(pdVC, animated: true)
-            default: print("More then two segments")
+            
+            pdVC.post = posts[indexPath.row]
+            
+            pdVC.userID = posts[indexPath.row].userId
+            
+            self.navigationController?.pushViewController(pdVC, animated: true)
+        default: print("default")
         }
         
     }

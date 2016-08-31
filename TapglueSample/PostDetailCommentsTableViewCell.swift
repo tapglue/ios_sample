@@ -15,21 +15,22 @@ class PostDetailCommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userCommentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configureCellWithPostComment(comment: TGComment) {
-        userNameLabel.text = comment.user.username
-        userCommentLabel.text = comment.contents["en"] as? String
+    func configureCellWithPostComment(comment: Comment) {
+        userNameLabel.text = comment.user?.username
+        userCommentLabel.text = comment.contents!["en"]
         
-        dateLabel.text = comment.createdAt.toTimeFormatInElapsedTimeToString()
+        // String to elapsed time
+        dateLabel.text = comment.createdAt!.toNSDateTime().toStringFormatDayMonthYear()
         
-        var userImage = TGImage()
-        userImage = comment.user.images.valueForKey("profilePic") as! TGImage
-        self.userImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
+        if let profileImages = comment.user?.images {
+            self.userImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+        }
     }
 }
 

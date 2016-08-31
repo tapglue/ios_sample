@@ -13,50 +13,48 @@ class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventTypeImageView: UIImageView!
     
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configureCellWithEvent(event: TGEvent!){
-        let eventUser = event.user.username
+    func configureCellWithEvent(activity: Activity!){
+        let activityUser = activity.user?.username
         
-        self.dateLabel.text = event.createdAt.toTimeFormatInElapsedTimeToString()
+        // String elapsed times
+        self.dateLabel.text = activity.createdAt!.toNSDateTime().toTimeFormatInElapsedTimeToString()
         
-        switch event.type {
-            case "tg_friend":
-                eventNameLabel.text = eventUser + " is now friends with " + event.target.user.username
-                
-                if let userImage = event.target.user.images.valueForKey("profilePic") as! TGImage? {
-                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-                }
+        switch activity.type! {
+        case "tg_friend":
+            if let targetUser = activity.targetUser {
+                eventNameLabel.text = activityUser! + " is now friends with " + targetUser.username!
+            }
             
-            case "tg_follow":
-                eventNameLabel.text = eventUser + " is now following " + event.target.user.username
-                
-                if let userImage = event.target.user.images.valueForKey("profilePic") as! TGImage? {
-                    self.eventTypeImageView.kf_setImageWithURL(NSURL(string: userImage.url)!)
-                }
+            if let profileImages = activity.user?.images {
+                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+            }
             
-            case "tg_like":
-                self.eventNameLabel.text = eventUser + " liked a Post"
-                self.eventTypeImageView.image = UIImage(named: "LikeFilledRed")
+        case "tg_follow":
+            if let targetUser = activity.targetUser {
+                eventNameLabel.text = activityUser! + " is now following " + targetUser.username!
+            }
             
-            case "like_event":
-                self.eventNameLabel.text = eventUser + " liked an Article"
-                self.eventTypeImageView.image = UIImage(named: event.type)
+            if let profileImages = activity.user?.images {
+                self.eventTypeImageView.kf_setImageWithURL(NSURL(string: profileImages["profile"]!.url!)!)
+            }
             
-            case "bookmark_event":
-                self.eventNameLabel.text = eventUser + " bookmarked an Article"
-                self.eventTypeImageView.image = UIImage(named: event.type)
+        case "tg_like":
+            self.eventNameLabel.text = activityUser! + " liked a Post"
+            self.eventTypeImageView.image = UIImage(named: "LikeFilledRed")
             
-            default: print("Unkown event type")
+        case "tg_comment":
+            self.eventNameLabel.text = activityUser! + " commented on your Post"
+            self.eventTypeImageView.image = UIImage(named: "ChatFilled")
+            
+        default: print("default")
         }
-        
-        
     }
 }
