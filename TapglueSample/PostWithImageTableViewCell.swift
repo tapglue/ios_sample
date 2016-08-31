@@ -148,7 +148,7 @@ class PostWithImageTableViewCell: UITableViewCell {
         let postAttachments = post.attachments!
         self.postTextLabel.text = postAttachments[0].contents!["en"]
         
-        // Cleat PostImageView
+        // Clear PostImageView
         postImageView.image = nil
         // PostImageURL
         for att in postAttachments {
