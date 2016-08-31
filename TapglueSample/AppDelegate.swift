@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let murmur = Murmur(title: alert as String)
                     
                     // Show and hide a message after delay
-                    show(whistle: murmur, action: .Show(3))
+                    show(whistle: murmur, action: .Show(4))
                 }
             }
         } else {
