@@ -40,18 +40,12 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(userID)
         if userID != nil {
+            // When completed fillUserInformation
             retrieveUserWithUserID(userID!)
-            
-            
         }
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-    }
-    
+
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
         self.userProfileFeedTableView.reloadData()
     }
@@ -177,7 +171,6 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             case .Next(let usr):
                 print("Next")
                 self.user = usr
-                
                 
             case .Error(let error):
                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
