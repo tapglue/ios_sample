@@ -1,8 +1,8 @@
 //
-//  FilteredTagsTableViewCell.swift
+//  FilteredPostWithStatusTableViewCell.swift
 //  TapglueSample
 //
-//  Created by Özgür Celebi on 23/08/16.
+//  Created by Özgür Celebi on 31/08/16.
 //  Copyright © 2016 Özgür Celebi. All rights reserved.
 //
 
@@ -11,16 +11,16 @@ import Tapglue
 import Kingfisher
 
 // the name of the protocol you can put any
-protocol FilteredCustomCellDataUpdater {
-    func updateFilteredTableViewData()
-    func showFilteredShareOptions(post: Post)
+protocol FilteredPostWithStatusCellDataUpdater {
+    func updateFilteredPostWithStatusTableViewData()
+    func showFilteredPostWithStatusShareOptions(post: Post)
 }
 
-class FilteredTagsTableViewCell: UITableViewCell {
-    
+class FilteredPostWithStatusTableViewCell: UITableViewCell {
+
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
-    var delegate: FilteredCustomCellDataUpdater?
+    var delegate: FilteredPostWithStatusCellDataUpdater?
     
     var cellPost: Post!
     
@@ -58,7 +58,7 @@ class FilteredTagsTableViewCell: UITableViewCell {
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
                     print("Completed")
-                    self.delegate?.updateFilteredTableViewData()
+                    self.delegate?.updateFilteredPostWithStatusTableViewData()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.likeButton.selected = false
@@ -76,7 +76,7 @@ class FilteredTagsTableViewCell: UITableViewCell {
                     self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
                 case .Completed:
                     print("Completed")
-                    self.delegate?.updateFilteredTableViewData()
+                    self.delegate?.updateFilteredPostWithStatusTableViewData()
                     
                     self.likeButton.selected = true
                 }
@@ -100,7 +100,7 @@ class FilteredTagsTableViewCell: UITableViewCell {
     }
     
     @IBAction func shareButtonPressed(sender: UIButton) {
-        delegate?.showFilteredShareOptions(cellPost)
+        delegate?.showFilteredPostWithStatusShareOptions(cellPost)
     }
     
     // Configure Cell with Post data
