@@ -13,10 +13,12 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
-    var userProfile: User?
+    var user: User?
+    var userID: String?
     
     var activityFeed: [Activity] = []
     var posts: [Post] = []
+    
     
     @IBOutlet weak var feedSegmentedControl: UISegmentedControl!
     
@@ -38,23 +40,16 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print(userID)
+        if userID != nil {
+            retrieveUserWithUserID(userID!)
+            
+            
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
-        showUserInfos(userProfile!)
         
-        countFriendsFollowsAndFollowings()
-        
-        getEventsAndPostsOfCurrentUser()
-        
-        if (userProfile!.isFollowed != nil) {
-            followingUserCustomizeButton()
-            self.followButton.selected = true
-        } else {
-            unfollowingUserCustomizeButton()
-            self.followButton.selected = false
-        }
     }
     
     @IBAction func feedSegmentedChanged(sender: UISegmentedControl) {
@@ -64,7 +59,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     @IBAction func followButtonPressed(sender: UIButton) {
         if sender.selected {
             // Delete follow connection
-            appDel.rxTapglue.deleteConnection(toUserId: userProfile!.id!, type: .Follow).subscribe({ (event) in
+            appDel.rxTapglue.deleteConnection(toUserId: user!.id!, type: .Follow).subscribe({ (event) in
                 switch event {
                 case .Next( _):
                     print("Next")
@@ -80,7 +75,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             
         } else {
             // Create follow connection
-            let connection = Connection(toUserId: userProfile!.id!, type: .Follow, state: .Confirmed)
+            let connection = Connection(toUserId: user!.id!, type: .Follow, state: .Confirmed)
             
             appDel.rxTapglue.createConnection(connection).subscribe({ (event) in
                 switch event {
@@ -102,7 +97,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     // Friends, Follower and Following buttons
     @IBAction func friendsCountButtonPressed(sender: UIButton) {
         // Retrieve friends with user ID
-        appDel.rxTapglue.retrieveFriendsForUserId(userProfile!.id!).subscribe { (event) in
+        appDel.rxTapglue.retrieveFriendsForUserId(user!.id!).subscribe { (event) in
             switch event {
             case .Next(let usr):
                 print("Next")
@@ -123,7 +118,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBAction func followerCountButtonPressed(sender: UIButton) {
         // Retrieve followers with user ID
-        appDel.rxTapglue.retrieveFollowersForUserId(userProfile!.id!).subscribe { (event) in
+        appDel.rxTapglue.retrieveFollowersForUserId(user!.id!).subscribe { (event) in
             switch event {
             case .Next(let usr):
                 print("Next")
@@ -145,7 +140,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     @IBAction func followingCountButtonPressed(sender: UIButton) {
         // Retrieve follows with user ID
-        appDel.rxTapglue.retrieveFollowingsForUserId(userProfile!.id!).subscribe { (event) in
+        appDel.rxTapglue.retrieveFollowingsForUserId(user!.id!).subscribe { (event) in
             switch event {
             case .Next(let usrs):
                 print("Next")
@@ -176,10 +171,40 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
         }
     }
     
+    func retrieveUserWithUserID(userID: String) {
+        appDel.rxTapglue.retrieveUser(userID).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                self.user = usr
+                
+                
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+                self.showUserInfos(self.user!)
+                
+                self.countFriendsFollowsAndFollowings()
+                
+                self.getEventsAndPostsOfCurrentUser()
+                
+                if (self.user!.isFollowed != nil) {
+                    self.followingUserCustomizeButton()
+                    self.followButton.selected = true
+                } else {
+                    self.unfollowingUserCustomizeButton()
+                    self.followButton.selected = false
+                }
+            }
+            }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
     // Get activities and posts for current user
     func getEventsAndPostsOfCurrentUser() {
         // Retrieve activities by user with ID
-        appDel.rxTapglue.retrieveActivitiesByUser(userProfile!.id!).subscribe { (event) in
+        appDel.rxTapglue.retrieveActivitiesByUser(user!.id!).subscribe { (event) in
             switch event {
             case .Next(let activities):
                 print("Next")
@@ -194,7 +219,7 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
             }.addDisposableTo(self.appDel.disposeBag)
         
         // Retrieve posts by user with ID
-        appDel.rxTapglue.retrievePostsByUser(userProfile!.id!).subscribe { (event) in
+        appDel.rxTapglue.retrievePostsByUser(user!.id!).subscribe { (event) in
             switch event {
             case .Next(let posts):
                 print("Next")
@@ -211,13 +236,13 @@ class UserProfileVC: UIViewController, UITableViewDelegate {
     
     func countFriendsFollowsAndFollowings() {
         
-        if let friendsCount = userProfile?.friendCount {
+        if let friendsCount = user?.friendCount {
             friendsCountButton.setTitle(String(friendsCount) + " Friends", forState: .Normal)
         }
-        if let followerCount = userProfile?.followerCount {
+        if let followerCount = user?.followerCount {
             followerCountButton.setTitle(String(followerCount) + " Follower", forState: .Normal)
         }
-        if let followedCount = userProfile?.followedCount {
+        if let followedCount = user?.followedCount {
             followingCountButton.setTitle(String(followedCount) + " Following", forState: .Normal)
         }
         
@@ -289,7 +314,7 @@ extension UserProfileVC: UITableViewDataSource {
                             switch event {
                             case .Next(let usr):
                                 print("Next")
-                                pdVC.usr = usr
+                                pdVC.userID = usr.id
                                 
                             case .Error(let error):
                                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -313,7 +338,7 @@ extension UserProfileVC: UITableViewDataSource {
             
             pdVC.post = posts[indexPath.row]
             
-            pdVC.usr = posts[indexPath.row].user
+            pdVC.userID = posts[indexPath.row].userId
             
             self.navigationController?.pushViewController(pdVC, animated: true)
         default: print("default")

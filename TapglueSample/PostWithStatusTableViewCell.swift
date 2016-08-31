@@ -88,7 +88,7 @@ class PostWithStatusTableViewCell: UITableViewCell {
         
         // Pass the relevant data to the new sub-ViewController
         pdVC.post = cellPost
-        pdVC.usr = cellPost.user
+        pdVC.userID = cellPost.userId
         pdVC.commentButtonPressedSwitch = true
         
         rootViewController.pushViewController(pdVC, animated: true)

@@ -82,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let aps = userInfo["aps"] as? NSDictionary {
                 if let alert = aps["alert"] as? NSString {
                     
+                    // Mark: - Whisper
                     let murmur = Murmur(title: alert as String)
                     
                     // Show and hide a message after delay
@@ -117,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.rxTapglue.retrieveUser(post.userId!).subscribe { (event) in
                     switch event {
                     case .Next(let usr):
-                        pdVC.usr = usr
+                        pdVC.userID = usr.id
                         
                     case .Error(let error):
                         self.printOutErrorMessageAndCode(error as? TapglueError)
@@ -143,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.rxTapglue.retrieveUser(userID).subscribe { (event) in
             switch event {
             case .Next(let usr):
-                upVC.userProfile = usr
+                upVC.userID = usr.id
                 
             case .Error(let error):
                 self.printOutErrorMessageAndCode(error as? TapglueError)

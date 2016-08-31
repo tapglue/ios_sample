@@ -13,7 +13,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     
     let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
     
-    var usr: User?
+    var user: User?
     var post: Post!
     var postComments: [Comment] = []
     
@@ -40,23 +40,22 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tagsLabel: UILabel!
     
     
-    
+    var userID: String?
     var beginEditComment = false
     var editComment: Comment!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if post != nil {
-            fillPostDetailInformation()
-        }
-        
         // Show keyboard and start commenting
         if commentButtonPressedSwitch {
             commentTextField.becomeFirstResponder()
         }
         
-        
+        if userID != nil {
+            // When completed fillUserProfileInformation
+            retrieveUserWithUserID(userID!)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,7 +75,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
         let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = usr
+        userProfileViewController.userID = user?.id
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.navigationController?.pushViewController(userProfileViewController, animated: true)
@@ -166,6 +165,24 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
             }.addDisposableTo(self.appDel.disposeBag)
     }
     
+    func retrieveUserWithUserID(userID: String) {
+        appDel.rxTapglue.retrieveUser(userID).subscribe { (event) in
+            switch event {
+            case .Next(let usr):
+                print("Next")
+                self.user = usr
+            case .Error(let error):
+                self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
+            case .Completed:
+                print("Do the action")
+                
+                if self.post != nil {
+                    self.fillPostDetailInformation()
+                }
+            }
+        }.addDisposableTo(self.appDel.disposeBag)
+    }
+    
     // Show PostDetial information
     func fillPostDetailInformation(){
         
@@ -181,7 +198,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
         }
         
         userNameButton.contentHorizontalAlignment = .Left
-        if let postUser = usr {
+        if let postUser = user {
             userNameButton.setTitle(postUser.username, forState: .Normal)
             
             if let profileImages = postUser.images {
@@ -257,7 +274,7 @@ class PostDetailVC: UIViewController, UITableViewDelegate {
     func showShareOptions() {
         let postAttachment = post.attachments
         let postText = postAttachment![0].contents!["en"]
-        if let postUserUsername = usr?.username {
+        if let postUserUsername = user?.username {
             let postActivityItem = "@" + postUserUsername + " posted: \(postText!)! Check it out on TapglueSample."
             
             let activityViewController: UIActivityViewController = UIActivityViewController(
@@ -358,7 +375,7 @@ extension PostDetailVC: UITableViewDataSource {
         let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
         let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = postComments[indexPath.row].user
+        userProfileViewController.userID = postComments[indexPath.row].userId
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.navigationController?.pushViewController(userProfileViewController, animated: true)

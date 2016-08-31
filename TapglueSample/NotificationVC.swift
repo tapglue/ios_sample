@@ -178,7 +178,7 @@ extension NotificationVC: UITableViewDataSource {
                     case .Next(let usr):
                         print("Next")
                         pdVC.post = post
-                        pdVC.usr = usr
+                        pdVC.userID = usr.id
                         
                     case .Error(let error):
                         self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -205,7 +205,7 @@ extension NotificationVC: UITableViewDataSource {
                 let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
                 let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
                 
-                userProfileViewController.userProfile = usr
+                userProfileViewController.userID = usr.id
                 
                 self.navigationController?.pushViewController(userProfileViewController, animated: true)
             case .Error(let error):

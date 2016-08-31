@@ -127,7 +127,7 @@ extension FilteredTagsVC: UITableViewDataSource {
         
         pdVC.post = posts[indexPath.row]
         
-        pdVC.usr = posts[indexPath.row].user
+        pdVC.userID = posts[indexPath.row].userId
         
         self.navigationController?.pushViewController(pdVC, animated: true)
     }

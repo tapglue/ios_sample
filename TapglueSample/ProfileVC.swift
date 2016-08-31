@@ -283,7 +283,7 @@ extension ProfileVC: UITableViewDataSource {
                             switch event {
                             case .Next(let usr):
                                 print("Next")
-                                pdVC.usr = usr
+                                pdVC.userID = usr.id
                                 
                             case .Error(let error):
                                 self.appDel.printOutErrorMessageAndCode(error as? TapglueError)
@@ -307,7 +307,7 @@ extension ProfileVC: UITableViewDataSource {
             
             pdVC.post = posts[indexPath.row]
             
-            pdVC.usr = posts[indexPath.row].user
+            pdVC.userID = posts[indexPath.row].userId
             
             self.navigationController?.pushViewController(pdVC, animated: true)
             

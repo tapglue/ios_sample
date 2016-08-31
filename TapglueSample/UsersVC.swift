@@ -46,7 +46,7 @@ extension UsersVC: UITableViewDataSource {
         let storyboard = UIStoryboard(name: "UserProfile", bundle: nil)
         let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileVC
         
-        userProfileViewController.userProfile = self.users[indexPath.row]
+        userProfileViewController.userID = self.users[indexPath.row].id
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.navigationController?.pushViewController(userProfileViewController, animated: true)
