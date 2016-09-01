@@ -4,13 +4,13 @@ This will help you get started with Tapglue on iOS by showing a complete app.
 
 A more detailed documentation can be found on our [documentation](http://developers.tapglue.com/docs/ios) website.
 
-## Installing the SDK with Carthage
+## Installing with Carthage
 
-The easiest way to install Tapglue into your iOS project is to use [CocoaPods](http://cocoapods.org/).
+To install Tapglue with [Carthage](https://github.com/Carthage/Carthage):
 
-1. Install Carthage with `brew install carthage` or check their [releases](https://github.com/Carthage/Carthage/releases).
-2. Run `carthage update --platform iOS` to fetch all dependancies for iOS.
-3. Restart your Xcode project
+1. Install Carthage with `brew update` followed by `brew install Carthage`
+2. Create a Cartfile in the root of your project
+3. Run `Carthage update --platform iOS`
  
 ## Installing the SDK with CocoaPods
 
