@@ -10,6 +10,7 @@ To install Tapglue with [Carthage](https://github.com/Carthage/Carthage):
 
 1. Install Carthage with `brew update` followed by `brew install Carthage`
 2. Create a Cartfile in the root of your project
+3. Add to your Cartfile `github "Tapglue/ios_sdk"`
 3. Run `Carthage update --platform iOS`
  
 ## Installing the SDK with CocoaPods
